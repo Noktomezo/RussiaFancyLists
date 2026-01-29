@@ -221,11 +221,11 @@ merge_hosts() {
     fi
 
     validate_file_dir "${output_file}"
-    cat "${files[@]}" \
+    sed 's/#.*//' "${files[@]}" \
+        | tr -d '\r' \
         | rg -v '^(#|0\.0\.0\.0|127\.0\.0\.1|::1)|^\s*$' \
-        | awk '{ print $2, $1 }' \
-        | sort \
-        | awk '{ if (!seen[$1]) { seen[$1] = 1; print $2, $1 } }' \
+        | awk '!seen[$2]++' \
+        | sort -k2 \
         > "${output_file}"
 }
 
