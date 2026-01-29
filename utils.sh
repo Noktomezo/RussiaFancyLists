@@ -117,7 +117,7 @@ download() {
     local url="$1"
     local output_file="${2:-}"
 
-    local args=(--retry 5 --retry-delay 2 --retry-all-errors -fsSL)
+    local args=(--retry 5 --retry-delay 2 --retry-all-errors --insecure -fsSL)
 
     if [[ -n "${output_file}" ]]; then
         validate_file_dir "${output_file}"
@@ -128,7 +128,7 @@ download() {
 }
 
 
-cleanup_hostlist() {
+cleanup_domains() {
   local input_file=$1
   local output_file=$2
 
@@ -158,6 +158,9 @@ cleanup_hostlist() {
 
   rg -v -N -f "${regex_patterns}" "${to_scan}" > "${clean_scanned}"
   cat "${safe_domains}" "${clean_scanned}" > "${output_file}"
+  local trimmed="${TEMP_DIR}/trimmed.tmp"
+  trim_sub_domains "${output_file}" "${trimmed}"
+  mv "${trimmed}" "${output_file}"
   rm "${regex_patterns}" "${safe_domains}" "${to_scan}" "${clean_scanned}"
 }
 
@@ -199,47 +202,45 @@ merge_lists() {
     sort -uV "${files[@]}" > "${output_file}"
 }
 
-# resolve_hostlist() {
-#   local input_file=$1
-#   local output_file=$2
+merge_hosts() {
+    local input_dir="$1"
+    local output_file="$2"
 
-#   local dns_resolver_list="${ROOT_DIR}/resolvers.txt"
+    if [[ ! -d "${input_dir}" ]]; then
+        echo -e "[${RED}${ERROR_SYM}${NC}] ${RED}Directory \"${input_dir}\" not found.${NC}" >&2
+        exit 1
+    fi
 
-#   validate_file_availability "${input_file}"
-#   validate_tool_availaibility "dnsx"
+    shopt -s nullglob
+    local files=("${input_dir}"/*.lst)
+    shopt -u nullglob
 
-#   if ! command -v ulimit &> /dev/null ; then
-#     ulimit -n 100000
-#   fi
+    if (( ${#files[@]} == 0 )); then
+        echo -e "[${RED}${ERROR_SYM}${NC}] There are no files with the .lst extension in the \"$input_dir\" folder" >&2
+        exit 1
+    fi
 
-#   dnsx \
-#      -list "${input_file}" \
-#      -output "${output_file}" \
-#      -resolver "${dns_resolver_list}" \
-#      -threads 500 \
-#      -resp \
-#      -silent \
-#      -no-color \
-#      > /dev/null
+    validate_file_dir "${output_file}"
+    # Merge, filter, sort by domain, unique by domain
+    cat "${files[@]}" | grep -v '^#' | grep -v '^$' | grep -v '^0\.0\.0\.0' | grep -v '^127\.0\.0\.1' | grep -v '^::1' | awk '{ print $2, $1 }' | sort | awk '!seen[$1]++ { print $2, $1 }' > "${output_file}"
+}
 
-# }
+add_localhost() {
+  local input_file=$1
+  local output_file=$2
 
-# parse_resolved_results() {
-#   local input_file="$1"
-#   local ipset_output="$2"
-#   local hostlist_output="$3"
+  validate_file_availability "${input_file}"
+  validate_file_dir "${output_file}"
 
-#   validate_file_availability "${input_file}"
+  echo "127.0.0.1 localhost" > "${output_file}"
+  echo "::1 localhost ip6-localhost ip6-loopback" >> "${output_file}"
+  echo "ff02::1 ip6-allnodes" >> "${output_file}"
+  echo "ff02::2 ip6-allrouters" >> "${output_file}"
+  echo "" >> "${output_file}"
+  cat "${input_file}" >> "${output_file}"
+}
 
-#   awk -v host_out="$hostlist_output" -v ip_out="$ipset_output" '{
-#     print $1 >> host_out
-
-#     gsub(/[\[\]]/, "", $3)
-#     print $3 | "sort -uV > \"" ip_out "\""
-#   }' "${input_file}"
-# }
-
-optimize_hostlist() {
+optimize_domains() {
   local input_file=$1
   local output_file=$2
 
@@ -256,4 +257,14 @@ optimize_ipset() {
   validate_tool_availaibility "iprange"
 
   rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' "${input_file}" | iprange --optimize - > "${output_file}"
+}
+
+combine_hosts() {
+  local input_file=$1
+  local output_file=$2
+
+  validate_file_availability "${input_file}"
+  validate_file_dir "${output_file}"
+
+  rg -v '^(#|0\.0\.0\.0|127\.0\.0\.1|::1)' "${input_file}" | rg -v '^$' > "${output_file}"
 }
