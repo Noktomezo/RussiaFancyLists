@@ -68,7 +68,7 @@ main() {
   merge_hosts "${LIST_FOLDER}/hosts" "${LIST_FOLDER}/hosts/combined.lst" &
   spinner $! "Hosts merging and processing"
 
-  add_localhost "${LIST_FOLDER}/hosts/combined.lst" "${LIST_FOLDER}/hosts/combined-and-ready-to-use.lst" &
+  add_localhost "${LIST_FOLDER}/hosts/combined.lst" "${LIST_FOLDER}/hosts/ready-to-use.lst" &
   spinner $! "Hosts localhost addition"
 
   # --- Post-Processing ---

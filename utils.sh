@@ -221,8 +221,12 @@ merge_hosts() {
     fi
 
     validate_file_dir "${output_file}"
-    # Merge, filter, sort by domain, unique by domain
-    cat "${files[@]}" | grep -v '^#' | grep -v '^$' | grep -v '^0\.0\.0\.0' | grep -v '^127\.0\.0\.1' | grep -v '^::1' | awk '{ print $2, $1 }' | sort | awk '!seen[$1]++ { print $2, $1 }' > "${output_file}"
+    cat "${files[@]}" \
+        | rg -v '^(#|0\.0\.0\.0|127\.0\.0\.1|::1)|^\s*$' \
+        | awk '{ print $2, $1 }' \
+        | sort \
+        | awk '!seen[$1]++ { print $2, $1 }' \
+        > "${output_file}"
 }
 
 add_localhost() {
