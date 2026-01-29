@@ -225,7 +225,7 @@ merge_hosts() {
         | rg -v '^(#|0\.0\.0\.0|127\.0\.0\.1|::1)|^\s*$' \
         | awk '{ print $2, $1 }' \
         | sort \
-        | awk '!seen[$1]++ { print $2, $1 }' \
+        | awk '{ if (!seen[$1]) { seen[$1] = 1; print $2, $1 } }' \
         > "${output_file}"
 }
 
