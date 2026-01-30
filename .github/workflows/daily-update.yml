@@ -3,7 +3,7 @@ name: Daily List Update
 on:
   schedule:
     # Run at 00:00 UTC every day
-    - cron: '0 0 * * *'
+    - cron: '0 21 * * *'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
@@ -23,10 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         # Install iprange (used in optimize_ipset)
-        sudo apt update && sudo apt install iprange -y && sudo apt install ripgrep
-
-        # Add Go bin to PATH
-        echo "$HOME/go/bin" >> $GITHUB_PATH
+        sudo apt update && sudo apt install iprange -y && sudo apt install ripgrep -y
 
     - name: Run update script
       run: |
