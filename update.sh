@@ -72,11 +72,23 @@ main() {
   spinner $! "Hosts localhost addition"
 
   # --- Post-Processing ---
-  cleanup_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/domains/smart.lst" &
-  spinner $! "Domains filtering and optimization"
+  resolve_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/meta/resolvable.meta" &
+  spinner $! "Domains resolving"
 
-  optimize_ipset "${LIST_FOLDER}/ipsets/full.lst" "${LIST_FOLDER}/ipsets/smart.lst" &
-  spinner $! "IPSet optimization"
+  parse_resolvable_meta "${LIST_FOLDER}/meta/resolvable.meta" "${LIST_FOLDER}/ipsets/resolvable.lst" "${LIST_FOLDER}/domains/resolvable.lst" &
+  spinner $! "Resolvable meta parsing"
+
+  cleanup_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/domains/full-smart.lst" &
+  spinner $! "All domains filtering and optimization"
+
+  cleanup_domains "${LIST_FOLDER}/domains/resolvable.lst" "${LIST_FOLDER}/domains/resolvable-smart.lst" &
+  spinner $! "Resolvable domains filtering and optimization"
+
+  optimize_ipset "${LIST_FOLDER}/ipsets/full.lst" "${LIST_FOLDER}/ipsets/full-smart.lst" &
+  spinner $! "Full ipset optimization"
+
+  optimize_ipset "${LIST_FOLDER}/ipsets/resolvable.lst" "${LIST_FOLDER}/ipsets/resolvable-smart.lst" &
+  spinner $! "Resolvable ipset optimization"
 
   echo -e "[${GREEN}${SUCCESS_SYM}${NC}] ${BOLD}${GREEN}Process completed!${NC}"
 
