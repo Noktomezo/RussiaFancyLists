@@ -244,6 +244,15 @@ add_localhost() {
   cat "${input_file}" >> "${output_file}"
 }
 
+fetch_cdn_ip_ranges() {
+  local output_file=$2
+
+  validate_file_dir "${output_file}"
+  validate_tool_availaibility "cdn-ranges"
+
+  cdn-ranges -ipv4 -output "${output_file}"
+}
+
 resolve_domains() {
   local input_file=$1
   local output_file=$2
