@@ -28,13 +28,14 @@ jobs:
 
     - name: Install dependencies
       run: |
-        # Install dnsx (used in resolve_domains)
         echo "+ go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest"
         go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest >/dev/null
-        
-        # Install iprange (used in optimize_ipset)
-        sudo apt update && sudo apt install iprange -y && sudo apt install ripgrep -y >/dev/null
-        echo "+ sudo apt update && sudo apt install iprange -y && sudo apt install ripgrep -y"
+
+        echo "+ go install -v github.com/taythebot/cdn-ranges/cmd/cdn-ranges@latest"
+        go install -v github.com/taythebot/cdn-ranges/cmd/cdn-ranges@latest >/dev/null
+
+        echo "+ sudo apt update && sudo apt install -y iprange ripgrep"
+        (sudo apt update && sudo apt install -y iprange ripgrep) >/dev/null
 
     - name: Run update script
       run: |
