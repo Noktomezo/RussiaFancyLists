@@ -245,7 +245,7 @@ add_localhost() {
 }
 
 fetch_cdn_ip_ranges() {
-  local output_file=$2
+  local output_file=$1
 
   validate_file_dir "${output_file}"
   validate_tool_availaibility "cdn-ranges"
