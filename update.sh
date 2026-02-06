@@ -71,6 +71,10 @@ main() {
   add_localhost "${LIST_FOLDER}/hosts/combined.lst" "${LIST_FOLDER}/hosts/ready-to-use.lst" &
   spinner $! "Hosts localhost addition"
 
+  # --- CDN IP Ranges ---
+  fetch_cdn_ip_ranges "${LIST_FOLDER}/ipsets/cdn.lst"
+  spinner $! "CDN IP Ranges fetching"
+
   # --- Post-Processing ---
   resolve_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/meta/resolvable.meta" &
   spinner $! "Domains resolving"
