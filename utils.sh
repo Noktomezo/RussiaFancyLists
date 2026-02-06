@@ -250,7 +250,7 @@ fetch_cdn_ip_ranges() {
   validate_file_dir "${output_file}"
   validate_tool_availaibility "cdn-ranges"
 
-  cdn-ranges -ipv4 -output "${output_file}"
+  cdn-ranges -v4 -output "${output_file}"
 }
 
 resolve_domains() {
