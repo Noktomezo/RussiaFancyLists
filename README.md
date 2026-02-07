@@ -6,7 +6,7 @@ This repository provides curated, auto-updating lists of domains and resources t
 > This project is for educational and research purposes. Use it to keep your dev environment stable and your information access free. Stay safe out there.
 
 > [!NOTE]
-> 🤖 **Automated Updates**: Lists are updated daily at 00:00 UTC via GitHub Actions. Only pushes when lists actually change.
+> 🤖 **Automated Updates**: Lists are updated daily at 21:00 UTC via GitHub Actions. Only pushes when lists actually change.
 
 &nbsp;
 
