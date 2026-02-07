@@ -14,6 +14,8 @@ ANTIFILTER_EXTRA_IPSET="https://antifilter.download/list/ipresolve.lst"
 ANTIFILTER_COMMUNITY_IPSET="https://community.antifilter.download/list/community.lst"
 RE_FILTER_IPSET="https://github.com/1andrevich/Re-filter-lists/raw/refs/heads/main/ipsum.lst"
 
+CDN_IP_RANGES_EXTERNAL="https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt"
+
 MALW_HOSTS="https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts"
 MAFIOZNIK_HOSTS="https://freedom.mafioznik.xyz/file/hosts"
 
@@ -39,7 +41,7 @@ main() {
   download "${RE_FILTER_DOMAINLIST}" "${TEMP_FOLDER}/domains/re-filter.lst" &
   spinner $! "Re:filter domain list downloading"
 
-  merge_lists "${TEMP_FOLDER}/domains" "${LIST_FOLDER}/domains/full.lst" &
+  merge_lists "${TEMP_FOLDER}/domains" "${LIST_FOLDER}/domains/external.lst" &
   spinner $! "Domains merging"
 
   # --- IPSets ---
@@ -55,7 +57,7 @@ main() {
   download "${RE_FILTER_IPSET}" "${TEMP_FOLDER}/ipsets/re-filter.lst" &
   spinner $! "Re:filter IPSet downloading"
 
-  merge_lists "${TEMP_FOLDER}/ipsets" "${LIST_FOLDER}/ipsets/full.lst" &
+  merge_lists "${TEMP_FOLDER}/ipsets" "${LIST_FOLDER}/ipsets/external.lst" &
   spinner $! "IPSets merging"
 
   # --- Hosts ---
@@ -72,27 +74,33 @@ main() {
   spinner $! "Hosts localhost addition"
 
   # --- CDN IP Ranges ---
-  fetch_cdn_ip_ranges "${LIST_FOLDER}/ipsets/cdn.lst"
-  spinner $! "CDN IP Ranges fetching"
+  fetch_cdn_ip_ranges "${TEMP_FOLDER}/cdn-ip-ranges/resolvable-cdn.lst"
+  spinner $! "Internal CDN IP Ranges resolving"
+
+  download "${CDN_IP_RANGES_EXTERNAL}" "${TEMP_FOLDER}/cdn-ip-ranges/external-cdn.lst" &
+  spinner $! "External CDN IP Ranges downloading"
+
+  merge_lists "${TEMP_FOLDER}/cdn-ip-ranges" "${LIST_FOLDER}/ipsets/cdn.lst" &
+  spinner $! "CDN IP Ranges merging"
 
   # --- Post-Processing ---
-  resolve_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/meta/resolvable.meta" &
+  resolve_domains "${LIST_FOLDER}/domains/external.lst" "${LIST_FOLDER}/meta/resolvable.meta" &
   spinner $! "Domains resolving"
 
   parse_resolvable_meta "${LIST_FOLDER}/meta/resolvable.meta" "${LIST_FOLDER}/ipsets/resolvable.lst" "${LIST_FOLDER}/domains/resolvable.lst" &
   spinner $! "Resolvable meta parsing"
 
-  cleanup_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/domains/full-smart.lst" &
-  spinner $! "All domains filtering and optimization"
+  cleanup_domains "${LIST_FOLDER}/domains/external.lst" "${LIST_FOLDER}/domains/external-smart.lst" &
+  spinner $! "External domains filtering and optimization"
 
   cleanup_domains "${LIST_FOLDER}/domains/resolvable.lst" "${LIST_FOLDER}/domains/resolvable-smart.lst" &
   spinner $! "Resolvable domains filtering and optimization"
 
-  optimize_ipset "${LIST_FOLDER}/ipsets/full.lst" "${LIST_FOLDER}/ipsets/full-smart.lst" &
-  spinner $! "Full ipset optimization"
-
   optimize_ipset "${LIST_FOLDER}/ipsets/resolvable.lst" "${LIST_FOLDER}/ipsets/resolvable-smart.lst" &
   spinner $! "Resolvable ipset optimization"
+
+  optimize_ipset "${LIST_FOLDER}/ipsets/external.lst" "${LIST_FOLDER}/ipsets/external-smart.lst" &
+  spinner $! "External ipset optimization"
 
   echo -e "[${GREEN}${SUCCESS_SYM}${NC}] ${BOLD}${GREEN}Process completed!${NC}"
 
