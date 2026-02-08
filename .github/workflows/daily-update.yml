@@ -31,8 +31,8 @@ jobs:
         echo "+ go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest"
         go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest >/dev/null
 
-        echo "+ go install -v github.com/taythebot/cdn-ranges/cmd/cdn-ranges@latest"
-        go install -v github.com/taythebot/cdn-ranges/cmd/cdn-ranges@latest >/dev/null
+        echo "+ go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest"
+        go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest >/dev/null
 
         echo "+ sudo apt update && sudo apt install -y iprange ripgrep"
         (sudo apt update && sudo apt install -y iprange ripgrep) >/dev/null
