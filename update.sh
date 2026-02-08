@@ -14,7 +14,7 @@ ANTIFILTER_EXTRA_IPSET="https://antifilter.download/list/ipresolve.lst"
 ANTIFILTER_COMMUNITY_IPSET="https://community.antifilter.download/list/community.lst"
 RE_FILTER_IPSET="https://github.com/1andrevich/Re-filter-lists/raw/refs/heads/main/ipsum.lst"
 
-CDN_IP_RANGES_EXTERNAL="https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt"
+CDN_IP_RANGES="https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt"
 
 MALW_HOSTS="https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts"
 MAFIOZNIK_HOSTS="https://freedom.mafioznik.xyz/file/hosts"
@@ -80,14 +80,13 @@ main() {
   spinner $! "Hosts localhost addition"
 
   # --- CDN IP Ranges ---
-  fetch_cdn_ip_ranges "${TEMP_FOLDER}/cdn-ip-ranges/resolvable-cdn.lst" &
-  spinner $! "Independent CDN IP Ranges resolving"
+  download "${CDN_IP_RANGES}" "${LIST_FOLDER}/ipsets/cdn.lst" &
+  spinner $! "CDN IP Ranges downloading"
 
-  download "${CDN_IP_RANGES_EXTERNAL}" "${TEMP_FOLDER}/cdn-ip-ranges/external-cdn.lst" &
-  spinner $! "External CDN IP Ranges downloading"
-
-  merge_lists "${TEMP_FOLDER}/cdn-ip-ranges" "${LIST_FOLDER}/ipsets/cdn.lst" &
-  spinner $! "CDN IP Ranges merging"
+  cat "${LIST_FOLDER}/ipsets/cdn.lst" \
+    "${LIST_FOLDER}/ipsets/full-smart.lst" \
+    | mapcidr -silent -a -o "${LIST_FOLDER}/ipsets/full-smart-and-cdn.lst" >/dev/null &
+  spinner $! "CDN IP Ranges and blocked ipset merging"
 
   echo -e "[${GREEN}${SUCCESS_SYM}${NC}] ${BOLD}${GREEN}Process completed!${NC}"
 
