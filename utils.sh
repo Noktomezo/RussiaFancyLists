@@ -63,8 +63,8 @@ cleanup_spinner() {
 spinner() {
     local pid=$1
     local wait_msg=$2
-    local success_msg="${3:-\"$wait_msg\" successfully completed}"
-    local error_msg="${4:-\"$wait_msg\" failed}"
+    local success_msg="${3:-$wait_msg successfully completed}"
+    local error_msg="${4:-$wait_msg failed}"
 
     # validate if stdout is a terminal (TTY)
     if [[ ! -t 1 ]]; then
@@ -144,6 +144,7 @@ cleanup_domains() {
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
   validate_tool_availaibility "rg"
+  validate_tool_availaibility "jq"
 
   cat "${filters_dir}"/*.json | jq -r '.[]' > "${regex_patterns}"
 
@@ -250,56 +251,7 @@ fetch_cdn_ip_ranges() {
   validate_file_dir "${output_file}"
   validate_tool_availaibility "cdn-ranges"
 
-  cdn-ranges -v4 -output "${output_file}"
-}
-
-resolve_domains() {
-  local input_file=$1
-  local output_file=$2
-
-  local dns_resolver_file="${ROOT_DIR}/resolvers.txt"
-
-  validate_file_availability "${input_file}"
-  validate_file_dir "${output_file}"
-  validate_tool_availaibility "dnsx"
-
-  if ! command -v ulimit &> /dev/null ; then
-    ulimit -n 100000
-  fi
-
-  dnsx \
-    -list="${input_file}" \
-    -resolver="${dns_resolver_file}" \
-    -threads=500 \
-    -resp \
-    -silent \
-    -no-color \
-    -output="${output_file}" \
-    >/dev/null
-}
-
-parse_resolvable_meta() {
-  local input_file="$1"
-  local ipset_output="$2"
-  local hostlist_output="$3"
-  
-  validate_file_availability "${input_file}"
-  validate_file_dir "${ipset_output}"
-  validate_file_dir "${hostlist_output}"
-
-  awk -v host_out="$hostlist_output" -v ip_out="$ipset_output" '{
-    print $1 >> host_out
-    gsub(/[\[\]]/, "", $3)
-    print $3 | "sort -uV > \"" ip_out "\""
-  }' "${input_file}"
-}
-
-optimize_domains() {
-  local input_file=$1
-  local output_file=$2
-
-  validate_file_availability "${input_file}"
-  trim_sub_domains "${input_file}" "${output_file}"
+  cdn-ranges -v4 -output "${output_file}" >/dev/null
 }
 
 optimize_ipset() {
@@ -308,9 +260,10 @@ optimize_ipset() {
 
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
-  validate_tool_availaibility "iprange"
+  validate_tool_availaibility "mapcidr"
 
-  rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' "${input_file}" | iprange --optimize - > "${output_file}"
+  rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' "${input_file}" \
+    | mapcidr -silent -a -o "${output_file}" >/dev/null
 }
 
 combine_hosts() {
@@ -320,5 +273,5 @@ combine_hosts() {
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
 
-  rg -v '^(#|0\.0\.0\.0|127\.0\.0\.1|::1)' "${input_file}" | rg -v '^$' > "${output_file}"
+  sed 's/#.*\n//' "${input_file}" | rg -v '^(0\.|127\.|::1)' |  rg -v '^\s*$' > "${output_file}"
 }
