@@ -18,6 +18,7 @@ CDN_IP_RANGES="https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/head
 
 MALW_HOSTS="https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts"
 MAFIOZNIK_HOSTS="https://freedom.mafioznik.xyz/file/hosts"
+ITDOGINFO_GEOBLOCK="https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst"
 
 setup() {
   rm -rf "${LIST_FOLDER}"
@@ -67,13 +68,16 @@ main() {
   spinner $! "IPSet optimization"
 
   # --- Hosts ---
-  download "${MALW_HOSTS}" "${LIST_FOLDER}/hosts/malw-hosts.lst" &
-  spinner $! "Malw hosts downloading"
+  download "${MALW_HOSTS}" "${TEMP_FOLDER}/hosts/malw-hosts.lst" &
+  spinner $! "ImMALWARE's hosts downloading"
 
-  download "${MAFIOZNIK_HOSTS}" "${LIST_FOLDER}/hosts/mafioznik-hosts.lst" &
-  spinner $! "Mafioznik hosts downloading"
+  download "${MAFIOZNIK_HOSTS}" "${TEMP_FOLDER}/hosts/mafioznik-hosts.lst" &
+  spinner $! "Mafioznik's hosts downloading"
 
-  merge_hosts "${LIST_FOLDER}/hosts" "${LIST_FOLDER}/hosts/combined.lst" &
+  download "${ITDOGINFO_GEOBLOCK}" "${TEMP_FOLDER}/hosts/itdoginfo-geoblock.lst" &
+  spinner $! "ItDogInfo's geoblock domains downloading"
+
+  merge_hosts "${TEMP_FOLDER}/hosts" "${LIST_FOLDER}/hosts/combined.lst" &
   spinner $! "Hosts merging and processing"
 
   add_localhost "${LIST_FOLDER}/hosts/combined.lst" "${LIST_FOLDER}/hosts/ready-to-use.lst" &
