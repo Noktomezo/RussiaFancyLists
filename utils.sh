@@ -32,7 +32,7 @@ validate_file_availability() {
   local input_file=$1
 
   if [[ ! -f "$input_file" ]]; then
-      echo -e "\n[${RED}${ERROR_SYM}${NC}] ${RED} File \"$input_file\" not found!"
+      echo -e "\n[${RED}${ERROR_SYM}${NC}] ${RED}File \"$input_file\" not found!${NC}"
       exit 1
   fi
 }
@@ -206,28 +206,48 @@ merge_lists() {
 merge_hosts() {
     local input_dir="$1"
     local output_file="$2"
+    local sni_proxy_ip_file="${ROOT_DIR}/sni-proxy-ips.lst"
 
-    if [[ ! -d "${input_dir}" ]]; then
-        echo -e "[${RED}${ERROR_SYM}${NC}] ${RED}Directory \"${input_dir}\" not found.${NC}" >&2
-        exit 1
-    fi
-
-    shopt -s nullglob
-    local files=("${input_dir}"/*.lst)
-    shopt -u nullglob
-
-    if (( ${#files[@]} == 0 )); then
-        echo -e "[${RED}${ERROR_SYM}${NC}] There are no files with the .lst extension in the \"$input_dir\" folder" >&2
-        exit 1
-    fi
-
+    validate_file_availability "${sni_proxy_ip_file}"
+    validate_tool_availaibility "rg"
     validate_file_dir "${output_file}"
-    sed 's/#.*//' "${files[@]}" \
-        | tr -d '\r' \
-        | rg -v '^(#|0\.0\.0\.0|127\.0\.0\.1|::1)|^\s*$' \
-        | awk '!seen[$2]++' \
-        | sort -k2 \
-        > "${output_file}"
+
+    rg -IN . "$input_dir" -g "*.lst" | \
+      # remove comments and spaces
+      sed -E 's/#.*//; /^[[:space:]]*$/d' | \
+      # remove wrong ips
+      rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' | \
+      # grep only (sub.)domains
+      rg -io '([a-z0-9-]+\.)+[a-z]{2,}' | \
+      tr '[:upper:]' '[:lower:]' | \
+      sort -u | \
+      awk -v ip_file="$sni_proxy_ip_file" '
+      BEGIN {
+        while ((getline < ip_file) > 0) {
+          if ($0 ~ /^[0-9.]+$/) {
+            ips[ip_count++] = $0
+          }
+        }
+        close(ip_file)
+
+        if (ip_count == 0) {
+          print "No valid IPs found!" > "/dev/stderr"
+          exit 1
+        }
+        srand()
+      }
+      {
+        n = split($0, parts, ".")
+        root = (n >= 2) ? parts[n-1] "." parts[n] : "misc"
+        groups[root] = (groups[root] == "") ? $0 : groups[root] " " $0
+      }
+      END {
+        for (g in groups) {
+          random_ip = ips[int(rand() * ip_count)]
+          print random_ip " " groups[g]
+        }
+      }
+      ' > "$output_file"
 }
 
 add_localhost() {
@@ -261,6 +281,7 @@ optimize_ipset() {
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
   validate_tool_availaibility "mapcidr"
+  validate_tool_availaibility "rg"
 
   rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' "${input_file}" \
     | mapcidr -silent -a -o "${output_file}" >/dev/null
@@ -272,6 +293,7 @@ combine_hosts() {
 
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
+  validate_tool_availaibility "rg"
 
   sed 's/#.*\n//' "${input_file}" | rg -v '^(0\.|127\.|::1)' |  rg -v '^\s*$' > "${output_file}"
 }
