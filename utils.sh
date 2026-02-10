@@ -19,7 +19,7 @@ BLUE=$(printf '\033[34m')
 UNBOLD=$(printf '\033[22m')
 DIM=$(printf '\033[2m')
 
-validate_tool_availaibility() {
+validate_tool_availability() {
   local input_tool=$1
 
   if ! command -v $1 &>/dev/null; then
@@ -134,34 +134,37 @@ cleanup_domains() {
   local filters_dir="filters"
   local whitelist_file="filters/whitelist.txt"
 
-  mkdir -p "${TEMP_DIR}"
-  local regex_patterns="${TEMP_DIR}/patterns.tmp"
-  local safe_domains="${TEMP_DIR}/safe.tmp"
-  local to_scan="${TEMP_DIR}/to_scan.tmp"
-  local clean_scanned="${TEMP_DIR}/scanned_clean.tmp"
-
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
-  validate_tool_availaibility "rg"
-  validate_tool_availaibility "jq"
 
-  cat "${filters_dir}"/*.json | jq -r '.[]' >"${regex_patterns}"
+  mkdir -p "${TEMP_DIR}"
+  local regex_patterns="${TEMP_DIR}/patterns.tmp"
+
+  cat "${filters_dir}"/*.json | jq -r '.[]' > "${regex_patterns}"
 
   if [ -f "${whitelist_file}" ] && [ -s "${whitelist_file}" ]; then
-    rg -F -x -f "${whitelist_file}" "${input_file}" >"${safe_domains}"
-    rg -v -F -x -f "${whitelist_file}" "${input_file}" >"${to_scan}"
+     awk -v wlist="$whitelist_file" -v blist="$regex_patterns" '
+       BEGIN {
+         while((getline < wlist) > 0) whitelist[$0]=1
+       }
+       {
+         if ($0 in whitelist) {
+           print $0
+         } else {
+           print $0 | "rg -v -N -f " blist
+         }
+       }
+     ' "${input_file}" | sort -uV > "${TEMP_DIR}/pre_trimmed.tmp"
+
   else
-    touch "${safe_domains}"
-    touch "${to_scan}"
-    cp "${input_file}" "${to_scan}"
+     rg -v -N -f "${regex_patterns}" "${input_file}" | sort -uV > "${TEMP_DIR}/pre_trimmed.tmp"
   fi
 
-  rg -v -N -f "${regex_patterns}" "${to_scan}" >"${clean_scanned}"
-  cat "${safe_domains}" "${clean_scanned}" >"${output_file}"
-  local trimmed="${TEMP_DIR}/trimmed.tmp"
-  trim_sub_domains "${output_file}" "${trimmed}"
-  mv "${trimmed}" "${output_file}"
-  rm "${regex_patterns}" "${safe_domains}" "${to_scan}" "${clean_scanned}"
+  awk -F. '!/^#/ && NF {
+      if (NF >= 2) print $(NF-1)"."$NF; else print $0
+  }' "${TEMP_DIR}/pre_trimmed.tmp" | sort -uV > "${output_file}"
+
+  rm -f "${regex_patterns}" "${TEMP_DIR}/pre_trimmed.tmp"
 }
 
 trim_sub_domains() {
@@ -215,42 +218,44 @@ merge_hosts() {
   local sni_proxy_ip_file="${ROOT_DIR}/sni-proxy-ips.lst"
 
   validate_file_availability "${sni_proxy_ip_file}"
-  validate_tool_availaibility "rg"
   validate_file_dir "${output_file}"
 
-  rg -IN . "$input_dir" -g "*.lst" \
-    | sed -E 's/#.*//; /^[[:space:]]*$/d' \
-    | rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' \
-    | rg -io '([a-z0-9-]+\.)+[a-z]{2,}' \
-    | tr '[:upper:]' '[:lower:]' \
-    | sort -u \
-    | awk -v ip_file="$sni_proxy_ip_file" '
-      BEGIN {
-        while ((getline < ip_file) > 0) {
-          if ($0 ~ /^[0-9.]+$/) {
-            ips[ip_count++] = $0
-          }
-        }
-        close(ip_file)
+  rg -IN . "$input_dir" -g "*.lst" | \
+  awk -v ip_file="$sni_proxy_ip_file" '
+    BEGIN {
+      while ((getline < ip_file) > 0) {
+        if ($0 ~ /^[0-9.]+$/) ips[ip_count++] = $0
+      }
+      close(ip_file)
+      if (ip_count == 0) { print "No valid IPs found!" > "/dev/stderr"; exit 1 }
+      srand()
+    }
 
-        if (ip_count == 0) {
-          print "No valid IPs found!" > "/dev/stderr"
-          exit 1
-        }
-        srand()
+    {
+      sub(/#.*/, "")
+      gsub(/^[ \t]+|[ \t]+$/, "")
+      if (length($0) == 0) next
+
+      $0 = tolower($0)
+
+      if ($0 ~ /^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$)/) next
+      if ($0 !~ /^([a-z0-9-]+\.)+[a-z]{2,}$/) next
+
+      n = split($0, parts, ".")
+      root = (n >= 2) ? parts[n-1] "." parts[n] : "misc"
+
+      if (!seen[$0]++) {
+          groups[root] = (groups[root] == "") ? $0 : groups[root] " " $0
       }
-      {
-        n = split($0, parts, ".")
-        root = (n >= 2) ? parts[n-1] "." parts[n] : "misc"
-        groups[root] = (groups[root] == "") ? $0 : groups[root] " " $0
+    }
+
+    END {
+      for (g in groups) {
+        random_ip = ips[int(rand() * ip_count)]
+        print random_ip " " groups[g]
       }
-      END {
-        for (g in groups) {
-          random_ip = ips[int(rand() * ip_count)]
-          print random_ip " " groups[g]
-        }
-      }
-    ' >"$output_file"
+    }
+  ' > "$output_file"
 }
 
 add_localhost() {
@@ -272,22 +277,9 @@ fetch_cdn_ip_ranges() {
   local output_file=$1
 
   validate_file_dir "${output_file}"
-  validate_tool_availaibility "cdn-ranges"
+  validate_tool_availability "cdn-ranges"
 
   cdn-ranges -v4 -output "${output_file}" >/dev/null
-}
-
-optimize_ipset() {
-  local input_file=$1
-  local output_file=$2
-
-  validate_file_availability "${input_file}"
-  validate_file_dir "${output_file}"
-  validate_tool_availaibility "mapcidr"
-  validate_tool_availaibility "rg"
-
-  rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' "${input_file}" \
-    | mapcidr -silent -a -o "${output_file}" >/dev/null
 }
 
 combine_hosts() {
@@ -296,7 +288,12 @@ combine_hosts() {
 
   validate_file_availability "${input_file}"
   validate_file_dir "${output_file}"
-  validate_tool_availaibility "rg"
+  validate_tool_availability "rg"
 
-  sed 's/#.*\n//' "${input_file}" | rg -v '^(0\.|127\.|::1)' | rg -v '^\s*$' >"${output_file}"
+  awk '
+    { sub(/#.*/, "") }
+    /^\s*$/ { next }
+    /^(0\.|127\.|::1)/ { next }
+    { print }
+  ' "${input_file}" > "${output_file}"
 }
