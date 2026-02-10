@@ -45,7 +45,7 @@ main() {
   merge_lists "${TEMP_FOLDER}/domains" "${LIST_FOLDER}/domains/full.lst" &
   spinner $! "Domains merging"
 
-  cleanup_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/domains/full-smart.lst" &
+  cleanup_domains "${LIST_FOLDER}/domains/full.lst" "${LIST_FOLDER}/domains/full-sld.lst" &
   spinner $! "Domains filtering and optimization"
 
   # --- IPSets ---
@@ -63,9 +63,6 @@ main() {
 
   merge_lists "${TEMP_FOLDER}/ipsets" "${LIST_FOLDER}/ipsets/full.lst" &
   spinner $! "IPSets merging"
-
-  optimize_ipset "${LIST_FOLDER}/ipsets/full.lst" "${LIST_FOLDER}/ipsets/full-smart.lst" &
-  spinner $! "IPSet optimization"
 
   # --- Hosts ---
   download "${MALW_HOSTS}" "${TEMP_FOLDER}/hosts/malw-hosts.lst" &
@@ -88,8 +85,8 @@ main() {
   spinner $! "CDN IP Ranges downloading"
 
   cat "${LIST_FOLDER}/ipsets/cdn.lst" \
-    "${LIST_FOLDER}/ipsets/full-smart.lst" \
-    | mapcidr -silent -a -o "${LIST_FOLDER}/ipsets/full-smart-and-cdn.lst" >/dev/null &
+    "${LIST_FOLDER}/ipsets/full.lst" \
+    | mapcidr -silent -a -o "${LIST_FOLDER}/ipsets/full-and-cdn.lst" >/dev/null &
   spinner $! "CDN IP Ranges and blocked ipset merging"
 
   echo -e "[${GREEN}${SUCCESS_SYM}${NC}] ${BOLD}${GREEN}Process completed!${NC}"

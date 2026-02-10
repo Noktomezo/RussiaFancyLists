@@ -1,0 +1,23 @@
+# http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+
+# Shell scripts
+[*.sh]
+indent_size = 2
+shell_variant = bash
+
+# Markdown
+[*.{md,mdx,diff}]
+trim_trailing_whitespace = false
+
+# Windows specific files
+[*.{cmd,bat,ps1}]
+end_of_line = crlf
