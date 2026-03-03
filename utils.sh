@@ -233,42 +233,34 @@ merge_hosts() {
 
     {
       sub(/#.*/, "")
-      gsub(/^[ \t]+|[ \t]+$/, "")
       if (NF == 0) next
 
-      # Check if the first field is an IP (IPv4 or IPv6), then domain is the second field
-      if ($1 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/ || $1 ~ /^[0-9a-fA-F:]+$/) {
-        domain = $2
-      } else {
-        domain = $1
-      }
+      # Извлекаем домен: если $1 это IP, берем $2, иначе берем $1
+      dom = ($1 ~ /^[0-9.]+$/) ? $2 : $1
+      if (!dom) next
+      
+      dom = tolower(dom)
+      gsub(/[ \t\r\n]+/, "", dom)
 
-      if (domain == "") next
-      domain = tolower(domain)
+      # Валидация формата домена
+      if (dom !~ /^([a-z0-9-]+\.)+[a-z]{2,}$/) next
 
-      # Validate domain format
-      if (domain !~ /^([a-z0-9-]+\.)+[a-z]{2,}$/) next
+      # Выделяем SLD (например, openai.com)
+      n = split(dom, parts, ".")
+      if (n < 2) next
+      root = parts[n-1] "." parts[n]
 
-      # Extract SLD
-      n = split(domain, parts, ".")
-      root = (n >= 2) ? parts[n-1] "." parts[n] : "misc"
-
-      # Store unique domains by SLD, separated by a newline
-      if (!seen[domain]++) {
-          groups[root] = (groups[root] == "") ? domain : groups[root] "\n" domain
+      # Собираем уникальные домены в строку через пробел для каждого root
+      if (!seen[dom]++) {
+        groups[root] = (groups[root] == "") ? dom : groups[root] " " dom
       }
     }
 
     END {
       for (g in groups) {
-        # Assign one random IP per SLD group
+        # Один случайный IP на всю строку поддоменов этого SLD
         random_ip = ips[int(rand() * ip_count)]
-        
-        # Print each domain on a new line with the assigned IP
-        dom_count = split(groups[g], doms, "\n")
-        for (i = 1; i <= dom_count; i++) {
-          print random_ip " " doms[i]
-        }
+        print random_ip " " groups[g]
       }
     }
   ' > "$output_file"
