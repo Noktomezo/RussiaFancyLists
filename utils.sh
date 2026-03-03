@@ -234,25 +234,41 @@ merge_hosts() {
     {
       sub(/#.*/, "")
       gsub(/^[ \t]+|[ \t]+$/, "")
-      if (length($0) == 0) next
+      if (NF == 0) next
 
-      $0 = tolower($0)
+      # Check if the first field is an IP (IPv4 or IPv6), then domain is the second field
+      if ($1 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/ || $1 ~ /^[0-9a-fA-F:]+$/) {
+        domain = $2
+      } else {
+        domain = $1
+      }
 
-      if ($0 ~ /^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$)/) next
-      if ($0 !~ /^([a-z0-9-]+\.)+[a-z]{2,}$/) next
+      if (domain == "") next
+      domain = tolower(domain)
 
-      n = split($0, parts, ".")
+      # Validate domain format
+      if (domain !~ /^([a-z0-9-]+\.)+[a-z]{2,}$/) next
+
+      # Extract SLD
+      n = split(domain, parts, ".")
       root = (n >= 2) ? parts[n-1] "." parts[n] : "misc"
 
-      if (!seen[$0]++) {
-          groups[root] = (groups[root] == "") ? $0 : groups[root] " " $0
+      # Store unique domains by SLD, separated by a newline
+      if (!seen[domain]++) {
+          groups[root] = (groups[root] == "") ? domain : groups[root] "\n" domain
       }
     }
 
     END {
       for (g in groups) {
+        # Assign one random IP per SLD group
         random_ip = ips[int(rand() * ip_count)]
-        print random_ip " " groups[g]
+        
+        # Print each domain on a new line with the assigned IP
+        dom_count = split(groups[g], doms, "\n")
+        for (i = 1; i <= dom_count; i++) {
+          print random_ip " " doms[i]
+        }
       }
     }
   ' > "$output_file"
