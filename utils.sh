@@ -27,7 +27,6 @@ validate_tool_availability() {
     exit 1
   fi
 }
-
 validate_file_availability() {
   local input_file=$1
 
@@ -142,45 +141,29 @@ cleanup_domains() {
 
   cat "${filters_dir}"/*.json | jq -r '.[]' > "${regex_patterns}"
 
-  if [ -f "${whitelist_file}" ] && [ -s "${whitelist_file}" ]; then
-     awk -v wlist="$whitelist_file" -v blist="$regex_patterns" '
-       BEGIN {
-         while((getline < wlist) > 0) whitelist[$0]=1
-       }
-       {
-         if ($0 in whitelist) {
-           print $0
-         } else {
-           print $0 | "rg -v -N -f " blist
+  {
+    if [ -f "${whitelist_file}" ] && [ -s "${whitelist_file}" ]; then
+       awk -v wlist="$whitelist_file" -v blist="$regex_patterns" '
+         BEGIN {
+           while((getline < wlist) > 0) whitelist[$0]=1
          }
-       }
-     ' "${input_file}" | sort -uV > "${TEMP_DIR}/pre_trimmed.tmp"
+         {
+           if ($0 in whitelist) {
+             print $0
+           } else {
+             print $0 | "rg -v -N -f " blist
+           }
+         }
+       ' "${input_file}"
 
-  else
-     rg -v -N -f "${regex_patterns}" "${input_file}" | sort -uV > "${TEMP_DIR}/pre_trimmed.tmp"
-  fi
-
-  awk -F. '!/^#/ && NF {
+    else
+       rg -v -N -f "${regex_patterns}" "${input_file}"
+    fi
+  } | awk -F. '!/^#/ && NF {
       if (NF >= 2) print $(NF-1)"."$NF; else print $0
-  }' "${TEMP_DIR}/pre_trimmed.tmp" | sort -uV > "${output_file}"
+  }' | sort -uV > "${output_file}"
 
-  rm -f "${regex_patterns}" "${TEMP_DIR}/pre_trimmed.tmp"
-}
-
-trim_sub_domains() {
-  local input_file=$1
-  local output_file=$2
-
-  validate_file_availability "${input_file}"
-  validate_file_dir "${output_file}"
-
-  awk -F. '!/^#/ && NF {
-    if (NF >= 2) {
-        print $(NF-1)"."$NF
-    } else {
-        print $0
-    }
-  }' "${input_file}" | sort -uV >"${output_file}"
+  rm -f "${regex_patterns}"
 }
 
 merge_lists() {
@@ -216,11 +199,18 @@ merge_hosts() {
   local input_dir="$1"
   local output_file="$2"
   local sni_proxy_ip_file="${ROOT_DIR}/sni-proxy-ips.lst"
+  local blacklist_file="${ROOT_DIR}/filters/hosts-blacklist.json"
 
   validate_file_availability "${sni_proxy_ip_file}"
+  validate_file_availability "${blacklist_file}"
   validate_file_dir "${output_file}"
 
+  mkdir -p "${TEMP_DIR}"
+  local blacklist_patterns="${TEMP_DIR}/hosts-blacklist-patterns.tmp"
+  jq -r '.[]' "${blacklist_file}" > "${blacklist_patterns}" || return 1
+
   rg -IN . "$input_dir" -g "*.lst" | \
+  rg -v -N -f "${blacklist_patterns}" | \
   awk -v ip_file="$sni_proxy_ip_file" '
     BEGIN {
       while ((getline < ip_file) > 0) {
@@ -267,6 +257,8 @@ merge_hosts() {
       }
     }
   ' > "$output_file"
+
+  rm -f "${blacklist_patterns}"
 }
 
 add_localhost() {
@@ -284,27 +276,49 @@ add_localhost() {
   cat "${input_file}" >>"${output_file}"
 }
 
-fetch_cdn_ip_ranges() {
-  local output_file=$1
-
-  validate_file_dir "${output_file}"
-  validate_tool_availability "cdn-ranges"
-
-  cdn-ranges -v4 -output "${output_file}" >/dev/null
-}
-
-combine_hosts() {
-  local input_file=$1
-  local output_file=$2
+generate_sing_box_ruleset() {
+  local rule_key=$1
+  local input_file=$2
+  local json_output_file=$3
+  local srs_output_file=$4
 
   validate_file_availability "${input_file}"
-  validate_file_dir "${output_file}"
-  validate_tool_availability "rg"
+  validate_file_dir "${json_output_file}"
+  validate_file_dir "${srs_output_file}"
+  validate_tool_availability "jq"
+  validate_tool_availability "sing-box"
 
-  awk '
-    { sub(/#.*/, "") }
-    /^\s*$/ { next }
-    /^(0\.|127\.|::1)/ { next }
-    { print }
-  ' "${input_file}" > "${output_file}"
+  mkdir -p "${TEMP_DIR}"
+  local values_json="${TEMP_DIR}/sing-box-values-${rule_key}.json"
+
+  case "${rule_key}" in
+    domain)
+      jq -Rsc 'split("\n") | map(select(length > 0))' "${input_file}" > "${values_json}" || return 1
+      ;;
+    domain_suffix)
+      awk 'NF { print "." $0 }' "${input_file}" \
+        | jq -Rsc 'split("\n") | map(select(length > 0))' > "${values_json}" || return 1
+      ;;
+    ip_cidr)
+      jq -Rsc 'split("\n") | map(select(length > 0))' "${input_file}" > "${values_json}" || return 1
+      ;;
+    *)
+      echo -e "[${RED}${ERROR_SYM}${NC}] ${RED}Unsupported sing-box rule key \"${rule_key}\".${NC}" >&2
+      return 1
+      ;;
+  esac
+
+  jq -n \
+    --arg rule_key "${rule_key}" \
+    --slurpfile values "${values_json}" \
+    '{
+      version: 1,
+      rules: [
+        { ($rule_key): $values[0] }
+      ]
+    }' > "${json_output_file}" || return 1
+
+  sing-box rule-set compile --output "${srs_output_file}" "${json_output_file}" || return 1
+
+  rm -f "${values_json}"
 }

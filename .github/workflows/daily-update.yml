@@ -26,6 +26,16 @@ jobs:
         go-version: '1.25.7'
     - run: go version
 
+    - name: Cache Go build artifacts
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/go/pkg/mod
+          ~/.cache/go-build
+        key: ${{ runner.os }}-go-tools-${{ hashFiles('.github/workflows/daily-update.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-go-tools-
+
     - name: Install dependencies
       run: |
         echo "+ go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest"
@@ -33,6 +43,9 @@ jobs:
 
         echo "+ go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest"
         go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest >/dev/null
+
+        echo "+ go install -v github.com/sagernet/sing-box/cmd/sing-box@latest"
+        go install -v github.com/sagernet/sing-box/cmd/sing-box@latest >/dev/null
 
         echo "+ sudo apt update && sudo apt install -y iprange ripgrep"
         (sudo apt update && sudo apt install -y iprange ripgrep) >/dev/null
