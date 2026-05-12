@@ -14,9 +14,7 @@ RED=$(printf '\033[31m')
 GREEN=$(printf '\033[32m')
 YELLOW=$(printf '\033[33m')
 NC=$(printf '\033[0m')
-BOLD=$(printf '\033[1m')
-BLUE=$(printf '\033[34m')
-UNBOLD=$(printf '\033[22m')
+export BOLD=$(printf '\033[1m')
 DIM=$(printf '\033[2m')
 
 validate_tool_availability() {
@@ -112,6 +110,102 @@ spinner() {
   return $exit_status
 }
 
+spinner_pool() {
+  if (($# == 0 || $# % 2 != 0)); then
+    echo -e "[${RED}${ERROR_SYM}${NC}] ${RED}spinner_pool expects pid/message pairs.${NC}" >&2
+    return 1
+  fi
+
+  local -a pids=()
+  local -a messages=()
+  local -a statuses=()
+
+  while (($# > 0)); do
+    pids+=("$1")
+    messages+=("$2")
+    statuses+=(-1)
+    shift 2
+  done
+
+  local task_count=${#pids[@]}
+  local exit_status=0
+
+  if [[ ! -t 1 ]]; then
+    local idx
+    for ((idx = 0; idx < task_count; idx++)); do
+      printf "[RUNNING] %s...\n" "${messages[$idx]}"
+    done
+
+    for ((idx = 0; idx < task_count; idx++)); do
+      wait "${pids[$idx]}"
+      statuses[$idx]=$?
+
+      if [ "${statuses[$idx]}" -eq 0 ]; then
+        printf "[%s] %s successfully completed\n" "$SUCCESS_SYM" "${messages[$idx]}"
+      else
+        printf "[%s] %s failed (exit code: %s)\n" "$ERROR_SYM" "${messages[$idx]}" "${statuses[$idx]}"
+        exit_status=1
+      fi
+    done
+
+    return $exit_status
+  fi
+
+  local spinstr='|/-\\'
+  local delay=0.1
+  local i=0
+  local running_count=1
+
+  printf "\033[?25l"
+  trap cleanup_spinner SIGINT SIGTERM
+
+  while ((running_count > 0)); do
+    running_count=0
+
+    local idx
+    for ((idx = 0; idx < task_count; idx++)); do
+      if [ "${statuses[$idx]}" -eq -1 ]; then
+        if kill -0 "${pids[$idx]}" 2>/dev/null; then
+          ((running_count++))
+        else
+          wait "${pids[$idx]}"
+          statuses[$idx]=$?
+        fi
+      fi
+    done
+
+    local frame="${spinstr:$i:1}"
+    for ((idx = 0; idx < task_count; idx++)); do
+      printf "\r\033[K"
+      if [ "${statuses[$idx]}" -eq -1 ]; then
+        printf "[%b%s%b] %b%s%b\n" "${YELLOW}" "$frame" "${NC}" "${YELLOW}" "${messages[$idx]}" "${NC}"
+      elif [ "${statuses[$idx]}" -eq 0 ]; then
+        printf "%b[%b%s%b%b] %b%s successfully completed%b\n" "${DIM}" "${GREEN}" "$SUCCESS_SYM" "${NC}" "${DIM}" "${GREEN}" "${messages[$idx]}" "${NC}"
+      else
+        printf "[%b%s%b] %b%s failed (exit code: %s)%b\n" "${RED}" "$ERROR_SYM" "${NC}" "${RED}" "${messages[$idx]}" "${statuses[$idx]}" "${NC}"
+      fi
+    done
+
+    if ((running_count > 0)); then
+      sleep "$delay"
+      printf "\033[%sA" "$task_count"
+      ((i = (i + 1) % ${#spinstr}))
+    fi
+  done
+
+  printf "\033[?25h"
+  trap - SIGINT SIGTERM
+
+  local idx
+  for ((idx = 0; idx < task_count; idx++)); do
+    if [ "${statuses[$idx]}" -ne 0 ]; then
+      exit_status=1
+    fi
+  done
+
+  return $exit_status
+}
+
 download() {
   local url="$1"
   local output_file="${2:-}"
@@ -139,11 +233,11 @@ cleanup_domains() {
   mkdir -p "${TEMP_DIR}"
   local regex_patterns="${TEMP_DIR}/patterns.tmp"
 
-  cat "${filters_dir}"/*.json | jq -r '.[]' > "${regex_patterns}"
+  cat "${filters_dir}"/*.json | jq -r '.[]' >"${regex_patterns}"
 
   {
     if [ -f "${whitelist_file}" ] && [ -s "${whitelist_file}" ]; then
-       awk -v wlist="$whitelist_file" -v blist="$regex_patterns" '
+      awk -v wlist="$whitelist_file" -v blist="$regex_patterns" '
          BEGIN {
            while((getline < wlist) > 0) whitelist[$0]=1
          }
@@ -157,11 +251,11 @@ cleanup_domains() {
        ' "${input_file}"
 
     else
-       rg -v -N -f "${regex_patterns}" "${input_file}"
+      rg -v -N -f "${regex_patterns}" "${input_file}"
     fi
   } | awk -F. '!/^#/ && NF {
       if (NF >= 2) print $(NF-1)"."$NF; else print $0
-  }' | sort -uV > "${output_file}"
+  }' | sort -uV >"${output_file}"
 
   rm -f "${regex_patterns}"
 }
@@ -187,11 +281,11 @@ merge_lists() {
   validate_file_dir "${output_file}"
 
   if rg -m 1 '^[^#]' "${files[0]}" | rg -qP '^[0-9./\r]+$'; then
-    cat "${files[@]}" \
-    | rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' \
-    | mapcidr -silent -a -o "${output_file}" >/dev/null
+    cat "${files[@]}" |
+      rg -v '^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)' |
+      mapcidr -silent -a -o "${output_file}" >/dev/null
   else
-    sort -uV "${files[@]}" > "${output_file}"
+    sort -uV "${files[@]}" >"${output_file}"
   fi
 }
 
@@ -207,11 +301,11 @@ merge_hosts() {
 
   mkdir -p "${TEMP_DIR}"
   local blacklist_patterns="${TEMP_DIR}/hosts-blacklist-patterns.tmp"
-  jq -r '.[]' "${blacklist_file}" > "${blacklist_patterns}" || return 1
+  jq -r '.[]' "${blacklist_file}" >"${blacklist_patterns}" || return 1
 
-  rg -IN . "$input_dir" -g "*.lst" | \
-  rg -v -N -f "${blacklist_patterns}" | \
-  awk -v ip_file="$sni_proxy_ip_file" '
+  rg -IN . "$input_dir" -g "*.lst" |
+    rg -v -N -f "${blacklist_patterns}" |
+    awk -v ip_file="$sni_proxy_ip_file" '
     BEGIN {
       while ((getline < ip_file) > 0) {
         if ($0 ~ /^[0-9.]+$/) ips[ip_count++] = $0
@@ -256,7 +350,7 @@ merge_hosts() {
         print random_ip " " groups[g]
       }
     }
-  ' > "$output_file"
+  ' >"$output_file"
 
   rm -f "${blacklist_patterns}"
 }
@@ -292,20 +386,20 @@ generate_sing_box_ruleset() {
   local values_json="${TEMP_DIR}/sing-box-values-${rule_key}.json"
 
   case "${rule_key}" in
-    domain)
-      jq -Rsc 'split("\n") | map(select(length > 0))' "${input_file}" > "${values_json}" || return 1
-      ;;
-    domain_suffix)
-      awk 'NF { print "." $0 }' "${input_file}" \
-        | jq -Rsc 'split("\n") | map(select(length > 0))' > "${values_json}" || return 1
-      ;;
-    ip_cidr)
-      jq -Rsc 'split("\n") | map(select(length > 0))' "${input_file}" > "${values_json}" || return 1
-      ;;
-    *)
-      echo -e "[${RED}${ERROR_SYM}${NC}] ${RED}Unsupported sing-box rule key \"${rule_key}\".${NC}" >&2
-      return 1
-      ;;
+  domain)
+    jq -Rsc 'split("\n") | map(select(length > 0))' "${input_file}" >"${values_json}" || return 1
+    ;;
+  domain_suffix)
+    awk 'NF { print "." $0 }' "${input_file}" |
+      jq -Rsc 'split("\n") | map(select(length > 0))' >"${values_json}" || return 1
+    ;;
+  ip_cidr)
+    jq -Rsc 'split("\n") | map(select(length > 0))' "${input_file}" >"${values_json}" || return 1
+    ;;
+  *)
+    echo -e "[${RED}${ERROR_SYM}${NC}] ${RED}Unsupported sing-box rule key \"${rule_key}\".${NC}" >&2
+    return 1
+    ;;
   esac
 
   jq -n \
@@ -316,7 +410,7 @@ generate_sing_box_ruleset() {
       rules: [
         { ($rule_key): $values[0] }
       ]
-    }' > "${json_output_file}" || return 1
+    }' >"${json_output_file}" || return 1
 
   sing-box rule-set compile --output "${srs_output_file}" "${json_output_file}" || return 1
 
