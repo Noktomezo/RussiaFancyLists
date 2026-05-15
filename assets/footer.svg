@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1200"
+  height="64"
+  viewBox="0 0 1200 64"
+  preserveAspectRatio="xMidYMid meet"
+  fill="none"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Catppuccin ECG footer</title>
+  <desc id="desc">
+    Animated Catppuccin-style ECG line with human-like beat spacing and a clean heart-shaped beat.
+  </desc>
+
+  <defs>
+    <linearGradient id="pulse-gradient" x1="0" y1="32" x2="1200" y2="32">
+      <stop offset="0%" stop-color="#75609f" />
+      <stop offset="35%" stop-color="#9a7adf" />
+      <stop offset="70%" stop-color="#b49aee" />
+      <stop offset="100%" stop-color="#d2c4f8" />
+    </linearGradient>
+
+    <filter id="soft-glow" x="-4%" y="-120%" width="108%" height="340%">
+      <feGaussianBlur stdDeviation="2.4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <clipPath id="reveal-mask" clipPathUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="0" height="64">
+        <animate
+          attributeName="x"
+          values="0;0;0;1200"
+          keyTimes="0;0.48;0.56;1"
+          dur="8s"
+          repeatCount="indefinite"
+          calcMode="linear"
+        />
+        <animate
+          attributeName="width"
+          values="0;1200;1200;0"
+          keyTimes="0;0.48;0.56;1"
+          dur="8s"
+          repeatCount="indefinite"
+          calcMode="linear"
+        />
+      </rect>
+    </clipPath>
+
+    <path
+      id="pulse-path"
+      d="
+        M 0 32
+        H 240
+
+        H 292
+        C 298 32, 302 28, 306 28
+        C 310 28, 314 32, 320 32
+        L 330 32
+        L 336 36
+        L 344 8
+        L 353 54
+        L 362 32
+        C 372 32, 378 26, 386 26
+        C 395 26, 402 32, 412 32
+        H 452
+
+        H 500
+        C 506 32, 510 28, 514 28
+        C 518 28, 522 32, 528 32
+        L 538 32
+        L 544 36
+        L 552 10
+        L 561 52
+        L 570 32
+        C 580 32, 587 25, 596 25
+        C 606 25, 613 32, 624 32
+        H 664
+
+        H 716
+        C 722 32, 726 28, 730 28
+        C 734 28, 738 32, 744 32
+        L 754 32
+        L 760 37
+        L 768 7
+        L 778 56
+        L 788 32
+        C 798 32, 805 24, 815 24
+        C 826 24, 834 32, 846 32
+        H 886
+
+        H 930
+        C 936 32, 940 28, 944 28
+        C 948 28, 952 32, 958 32
+
+        H 960
+        C 976 22, 984 11, 975 7
+        C 968 3, 962 8, 960 14
+        C 958 8, 952 3, 945 7
+        C 936 11, 944 22, 960 32
+
+        H 1010
+
+        H 1050
+        C 1056 32, 1060 28, 1064 28
+        C 1068 28, 1072 32, 1078 32
+        L 1088 32
+        L 1094 36
+        L 1102 11
+        L 1111 51
+        L 1120 32
+        C 1130 32, 1137 25, 1146 25
+        C 1156 25, 1163 32, 1174 32
+        H 1200
+      "
+    />
+  </defs>
+
+  <use
+    href="#pulse-path"
+    clip-path="url(#reveal-mask)"
+    stroke="url(#pulse-gradient)"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+    opacity="0.20"
+    filter="url(#soft-glow)"
+  />
+
+  <use
+    href="#pulse-path"
+    clip-path="url(#reveal-mask)"
+    stroke="url(#pulse-gradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+  />
+</svg>
