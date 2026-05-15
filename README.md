@@ -16,6 +16,6 @@ Generated artifacts are split by format:
 &nbsp;
 
 <div align="center">
-  <img src="./assets/heartbeat.svg" alt="heartbeat" width="600px">
+  <img src="./assets/footer.svg" alt="heartbeat" width="600px">
   <p>Made with 💜. Published under <a href="LICENSE">MIT license</a>.</p>
 </div>
