@@ -1,22 +1,21 @@
 <div align="center">
   <img src="./assets/thumbnail.svg" alt="Russia Fancy Lists" width="100%">
   <p>This repository provides curated, auto-updating lists of domains and resources that are currently restricted or throttled in Russia. Perfect for your home-lab, VPN gateway, or custom routing setup.</p>
+  <p><b>English</b> • <a href="README.ru.md">Русский</a></p>
 </div>
 
-Generated artifacts are organized as follows:
-- `lists/plain/...` — Standard plain-text lists, separated into:
-  - `domains/` — Curated domain blocklists split into raw formats (`full.lst`) and optimized second-level domains (`full-sld.lst`).
-  - `ipsets/` — IP address ranges split into CDN IP ranges (`cdn.lst`), blocked IP blocklists (`full.lst`), and unified blocked-with-CDNs IP lists (`full-and-cdn.lst`).
-- `lists/sing-box/...` — Optimized `sing-box` rulesets (`.json` and compiled binary `.srs` side-by-side) for seamless rule-based routing.
-- `lists/hosts/...` — Hosts-format mappings routing blocked domains through free public SNI proxies (acting as a lightweight, DNS-level alternative to proxy routing), separated into:
-  - `malw.lst` — Processed hosts mapping for ImMALWARE's domains.
-  - `mafioznik.lst` — Processed hosts mapping for freedom.mafioznik.xyz domains.
-  - `combined.lst` — Unified hosts mapping merging both standard sources.
-  - `ready-to-use.lst` — The combined hosts mapping with a standard local loopback header prepended.
-- `lists/geoblock/...` — Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned domains), available in standard (`full.lst`) and SLD (`full-sld.lst`) variants.
+## 👀 Content
 
-> [!IMPORTANT]
-> This project is for educational and research purposes. Use it to keep your dev environment stable and your information access free. Stay safe out there.
+Generated artifacts are organized as follows:
+
+| Component | Path | Format / Variant | Description |
+| :--- | :--- | :--- | :--- |
+| **Plain Domains** | `lists/plain/domains/` | [`full.lst`](./lists/plain/domains/full.lst)<br>[`full-sld.lst`](./lists/plain/domains/full-sld.lst) | Curated domain blocklists in raw format and optimized second-level domains (SLD). |
+| **Plain IPSets** | `lists/plain/ipsets/` | [`cdn.lst`](./lists/plain/ipsets/cdn.lst)<br>[`full.lst`](./lists/plain/ipsets/full.lst)<br>[`full-and-cdn.lst`](./lists/plain/ipsets/full-and-cdn.lst) | IP address ranges: CDN ranges, blocked IPs, and unified blocked IPs including CDNs. |
+| **Sing-Box Domains** | `lists/sing-box/domains/` | [`full.json`](./lists/sing-box/domains/full.json)<br>[`full.srs`](./lists/sing-box/domains/full.srs)<br>[`full-sld.json`](./lists/sing-box/domains/full-sld.json)<br>[`full-sld.srs`](./lists/sing-box/domains/full-sld.srs) | Optimized domain rulesets for `sing-box` (JSON and compiled binary `.srs` side-by-side) in raw and SLD formats. |
+| **Sing-Box IPSets** | `lists/sing-box/ipsets/` | [`full.json`](./lists/sing-box/ipsets/full.json)<br>[`full.srs`](./lists/sing-box/ipsets/full.srs)<br>[`full-and-cdn.json`](./lists/sing-box/ipsets/full-and-cdn.json)<br>[`full-and-cdn.srs`](./lists/sing-box/ipsets/full-and-cdn.srs) | Optimized IP-CIDR rulesets for `sing-box` (JSON and compiled binary `.srs` side-by-side), split into blocked IPs and unified blocked IPs with CDNs. |
+| **Geoblock** | `lists/geoblock/` | [`full.lst`](./lists/geoblock/full.lst)<br>[`full-sld.lst`](./lists/geoblock/full-sld.lst) | Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned services). |
+| **Hosts (SNI Proxy)** | `lists/hosts/` | [`malw.lst`](./lists/hosts/malw.lst)<br>[`mafioznik.lst`](./lists/hosts/mafioznik.lst)<br>[`combined.lst`](./lists/hosts/combined.lst)<br>[`ready-to-use.lst`](./lists/hosts/ready-to-use.lst) | Hosts-format mappings routing blocked domains through free public SNI proxies. `ready-to-use.lst` includes standard local loopback headers. |
 
 > [!NOTE]
 > 🤖 **Automated Updates**: Lists are updated daily at 21:00 UTC via GitHub Actions. Only pushes when lists actually change.
