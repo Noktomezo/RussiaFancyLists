@@ -7,9 +7,6 @@
 
 Generated artifacts are organized as follows:
 
-> [!IMPORTANT]
-> This project is for educational and research purposes. Use it to keep your dev environment stable and your information access free. Stay safe out there.
-
 | Component | Path | Format / Variant | Description |
 | :--- | :--- | :--- | :--- |
 | **Plain Domains** | `lists/plain/domains/` | [`full.lst`](./lists/plain/domains/full.lst)<br>[`full-sld.lst`](./lists/plain/domains/full-sld.lst) | Curated domain blocklists in raw format and optimized second-level domains (SLD). |
