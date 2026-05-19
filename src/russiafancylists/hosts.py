@@ -57,6 +57,10 @@ def merge_hosts(input_dir: Path, output_file: Path, sni_proxy_ip_file: Path, bla
                     
                 dom = dom.lower().strip()
                 
+                # Filter out internet connectivity check domains (which do not work well with SNI proxies)
+                if any(k in dom for k in ("msftconnecttest", "msftncsi", "captive.apple", "connectivitycheck", "detectportal")):
+                    continue
+                
                 if not re.match(r'^([a-z0-9-]+\.)+[a-z]{2,}$', dom):
                     continue
                     
