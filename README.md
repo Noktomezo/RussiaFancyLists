@@ -1,4 +1,6 @@
-# 🛡️ Russia Fancy Lists
+<p align="center">
+  <img src="./assets/thumbnail.svg" alt="Russia Fancy Lists" width="600px">
+</p>
 
 This repository provides curated, auto-updating lists of domains and resources that are currently restricted or throttled in Russia. Perfect for your home-lab, VPN gateway, or custom routing setup.
 
