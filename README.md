@@ -3,7 +3,12 @@
   <p>This repository provides curated, auto-updating lists of domains and resources that are currently restricted or throttled in Russia. Perfect for your home-lab, VPN gateway, or custom routing setup.</p>
 </div>
 
+## 👀 Content
+
 Generated artifacts are organized as follows:
+
+> [!IMPORTANT]
+> This project is for educational and research purposes. Use it to keep your dev environment stable and your information access free. Stay safe out there.
 
 | Component | Path | Format / Variant | Description |
 | :--- | :--- | :--- | :--- |
@@ -13,9 +18,6 @@ Generated artifacts are organized as follows:
 | **Sing-Box IPSets** | `lists/sing-box/ipsets/` | [`full.json`](./lists/sing-box/ipsets/full.json)<br>[`full.srs`](./lists/sing-box/ipsets/full.srs)<br>[`full-and-cdn.json`](./lists/sing-box/ipsets/full-and-cdn.json)<br>[`full-and-cdn.srs`](./lists/sing-box/ipsets/full-and-cdn.srs) | Optimized IP-CIDR rulesets for `sing-box` (JSON and compiled binary `.srs` side-by-side), split into blocked IPs and unified blocked IPs with CDNs. |
 | **Hosts (SNI Proxy)** | `lists/hosts/` | [`malw.lst`](./lists/hosts/malw.lst)<br>[`mafioznik.lst`](./lists/hosts/mafioznik.lst)<br>[`combined.lst`](./lists/hosts/combined.lst)<br>[`ready-to-use.lst`](./lists/hosts/ready-to-use.lst) | Hosts-format mappings routing blocked domains through free public SNI proxies. `ready-to-use.lst` includes standard local loopback headers. |
 | **Geoblock** | `lists/geoblock/` | [`full.lst`](./lists/geoblock/full.lst)<br>[`full-sld.lst`](./lists/geoblock/full-sld.lst) | Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned services). |
-
-> [!IMPORTANT]
-> This project is for educational and research purposes. Use it to keep your dev environment stable and your information access free. Stay safe out there.
 
 > [!NOTE]
 > 🤖 **Automated Updates**: Lists are updated daily at 21:00 UTC via GitHub Actions. Only pushes when lists actually change.
