@@ -4,16 +4,14 @@
 </div>
 
 Generated artifacts are organized as follows:
-- `lists/plain/...` — Standard plain-text lists, separated into:
-  - `domains/` — Curated domain blocklists split into raw formats (`full.lst`) and optimized second-level domains (`full-sld.lst`).
-  - `ipsets/` — IP address ranges split into CDN IP ranges (`cdn.lst`), blocked IP blocklists (`full.lst`), and unified blocked-with-CDNs IP lists (`full-and-cdn.lst`).
-- `lists/sing-box/...` — Optimized `sing-box` rulesets (`.json` and compiled binary `.srs` side-by-side) for seamless rule-based routing.
-- `lists/hosts/...` — Hosts-format mappings routing blocked domains through free public SNI proxies (acting as a lightweight, DNS-level alternative to proxy routing), separated into:
-  - `malw.lst` — Processed hosts mapping for ImMALWARE's domains.
-  - `mafioznik.lst` — Processed hosts mapping for freedom.mafioznik.xyz domains.
-  - `combined.lst` — Unified hosts mapping merging both standard sources.
-  - `ready-to-use.lst` — The combined hosts mapping with a standard local loopback header prepended.
-- `lists/geoblock/...` — Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned domains), available in standard (`full.lst`) and SLD (`full-sld.lst`) variants.
+
+| Component | Path | Format / Variant | Description |
+| :--- | :--- | :--- | :--- |
+| **Plain Domains** | `lists/plain/domains/` | `full.lst`<br>`full-sld.lst` | Curated domain blocklists in raw format and optimized second-level domains (SLD). |
+| **Plain IPSets** | `lists/plain/ipsets/` | `cdn.lst`<br>`full.lst`<br>`full-and-cdn.lst` | IP address ranges: CDN ranges, blocked IPs, and unified blocked IPs including CDNs. |
+| **Sing-Box** | `lists/sing-box/` | `*.json`<br>`*.srs` | Optimized rulesets (domains and IPSets) for seamless rule-based routing in `sing-box` (JSON and compiled binary `.srs` side-by-side). |
+| **Hosts (SNI Proxy)** | `lists/hosts/` | `malw.lst`<br>`mafioznik.lst`<br>`combined.lst`<br>`ready-to-use.lst` | Hosts-format mappings routing blocked domains through free public SNI proxies. `ready-to-use.lst` includes standard local loopback headers. |
+| **Geoblock** | `lists/geoblock/` | `full.lst`<br>`full-sld.lst` | Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned services). |
 
 > [!IMPORTANT]
 > This project is for educational and research purposes. Use it to keep your dev environment stable and your information access free. Stay safe out there.
