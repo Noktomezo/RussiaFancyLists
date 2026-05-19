@@ -1,8 +1,7 @@
-<p align="center">
+<div align="center">
   <img src="./assets/thumbnail.svg" alt="Russia Fancy Lists" width="100%">
-</p>
-
-This repository provides curated, auto-updating lists of domains and resources that are currently restricted or throttled in Russia. Perfect for your home-lab, VPN gateway, or custom routing setup.
+  <p>This repository provides curated, auto-updating lists of domains and resources that are currently restricted or throttled in Russia. Perfect for your home-lab, VPN gateway, or custom routing setup.</p>
+</div>
 
 Generated artifacts are organized as follows:
 - `lists/plain/...` — Standard plain-text lists, separated into:
