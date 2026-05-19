@@ -2,7 +2,7 @@ name: Daily List Update
 
 on:
   schedule:
-    # Run at 00:00 UTC every day
+    # Run at 21:00 UTC every day
     - cron: '0 21 * * *'
   workflow_dispatch: # Allow manual trigger
 
@@ -20,6 +20,11 @@ jobs:
         # Allow pushing back to the repository
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+
     - name: Setting up Go
       uses: actions/setup-go@v6
       with:
@@ -36,25 +41,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-go-tools-
 
-    - name: Install dependencies
+    - name: Install sing-box
       run: |
-        echo "+ go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest"
-        go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest >/dev/null
-
-        echo "+ go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest"
-        go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest >/dev/null
-
         echo "+ go install -v github.com/sagernet/sing-box/cmd/sing-box@latest"
         go install -v github.com/sagernet/sing-box/cmd/sing-box@latest >/dev/null
 
-        echo "+ sudo apt update && sudo apt install -y iprange ripgrep"
-        (sudo apt update && sudo apt install -y iprange ripgrep) >/dev/null
-
     - name: Run update script
       run: |
-        chmod +x update.sh
-        chmod +x utils.sh
-        ./update.sh
+        uv run russiafancylists
 
     - name: Check for changes in lists directory
       id: check_changes

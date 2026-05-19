@@ -1,0 +1,17 @@
+[project]
+name = "russiafancylists"
+version = "0.1.0"
+description = "Curated, auto-updating lists of domains and resources restricted in Russia"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "rich>=15.0.0",
+]
+
+[project.scripts]
+russiafancylists = "russiafancylists.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,9 @@
+.soulforge
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+temp/
+.idea/
+.vscode/
