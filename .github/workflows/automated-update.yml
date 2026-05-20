@@ -1,4 +1,4 @@
-name: Daily List Update
+name: Automated List Update
 
 on:
   schedule:
@@ -37,7 +37,7 @@ jobs:
         path: |
           ~/go/pkg/mod
           ~/.cache/go-build
-        key: ${{ runner.os }}-go-tools-${{ hashFiles('.github/workflows/daily-update.yml') }}
+        key: ${{ runner.os }}-go-tools-${{ hashFiles('.github/workflows/automated-update.yml') }}
         restore-keys: |
           ${{ runner.os }}-go-tools-
 
