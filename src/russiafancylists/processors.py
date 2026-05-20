@@ -74,14 +74,31 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
             for net in collapsed:
                 f.write(str(net) + '\n')
     else:
-        # Domains merging
+        # Domains merging (robustly handling both hosts format with IP prefixes and plain domain lists)
         domains = set()
         for file_path in lst_files:
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
-                    line = line.strip()
-                    if line and not line.startswith('#'):
-                        domains.add(line.lower())
+                    line = re.sub(r'#.*', '', line).strip()
+                    if not line:
+                        continue
+                    cols = line.split()
+                    if not cols:
+                        continue
+                    # Skip loopback, multicast, and standard blocking addresses
+                    if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::"):
+                        continue
+                    # Check if the first column is an IP address
+                    is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
+                    is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', cols[0])
+                    if is_ipv4 or is_ipv6:
+                        domains_to_process = cols[1:]
+                    else:
+                        domains_to_process = cols
+                    for d in domains_to_process:
+                        d = d.lower().strip()
+                        if d:
+                            domains.add(d)
         sorted_domains = sorted(list(domains))
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
