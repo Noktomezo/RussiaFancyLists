@@ -2,8 +2,8 @@ name: Daily List Update
 
 on:
   schedule:
-    # Run at 21:00 UTC every day
-    - cron: '0 21 * * *'
+    # Run every 3 hours (including 21:00 UTC)
+    - cron: '0 */3 * * *'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
@@ -68,7 +68,7 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
         git add lists/
-        git commit -m "chore: daily list update $(date +'%Y-%m-%d')
+        git commit -m "chore: automated list update $(date +'%Y-%m-%d')
 
         Updated blocklists with latest restricted domains and IPs.
         Changes detected in lists/ directory."
