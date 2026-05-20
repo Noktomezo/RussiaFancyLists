@@ -10,6 +10,7 @@ HOSTS_LIST_FOLDER = LIST_FOLDER / "hosts"
 
 # Geoblock subfolder
 GEOBLOCK_FOLDER = LIST_FOLDER / "geoblock"
+SING_BOX_GEOBLOCK_FOLDER = SING_BOX_LIST_FOLDER / "geoblock"
 
 # --- Source URLs for Download ---
 DOWNLOADS = {

@@ -21,7 +21,7 @@ if hasattr(sys.stderr, "reconfigure"):
 from russiafancylists.config import (
     ROOT_DIR, TEMP_FOLDER, LIST_FOLDER, PLAIN_LIST_FOLDER,
     SING_BOX_LIST_FOLDER, HOSTS_LIST_FOLDER,
-    GEOBLOCK_FOLDER
+    GEOBLOCK_FOLDER, SING_BOX_GEOBLOCK_FOLDER
 )
 from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
@@ -31,9 +31,23 @@ from russiafancylists.ruleset import generate_sing_box_ruleset
 console = Console()
 
 def setup_dirs():
-    """Recreate lists folder and ensure temp folders exist."""
+    """Clear lists folder files and ensure all output folders exist, robustly handling locked directories on Windows."""
     if LIST_FOLDER.exists():
-        shutil.rmtree(LIST_FOLDER)
+        def safe_clear(path: Path):
+            for item in path.iterdir():
+                if item.is_file():
+                    try:
+                        item.unlink()
+                    except Exception:
+                        pass
+                elif item.is_dir():
+                    safe_clear(item)
+                    try:
+                        item.rmdir()
+                    except Exception:
+                        pass
+        safe_clear(LIST_FOLDER)
+        
     for folder in [
         TEMP_FOLDER / "domains",
         TEMP_FOLDER / "ipsets",
@@ -43,7 +57,8 @@ def setup_dirs():
         SING_BOX_LIST_FOLDER / "domains",
         SING_BOX_LIST_FOLDER / "ipsets",
         HOSTS_LIST_FOLDER,
-        GEOBLOCK_FOLDER
+        GEOBLOCK_FOLDER,
+        SING_BOX_GEOBLOCK_FOLDER
     ]:
         folder.mkdir(parents=True, exist_ok=True)
 
@@ -83,32 +98,31 @@ async def run_pipeline():
                     merge_hosts,
                     TEMP_FOLDER / "hosts",
                     HOSTS_LIST_FOLDER / "combined.lst",
-                    ROOT_DIR / "sni-proxy-ips.lst",
                     ROOT_DIR / "filters" / "hosts-blacklist.json",
-                    file_pattern="*hosts.lst"
+                    file_pattern="*.lst"
                 ),
                 asyncio.to_thread(
                     merge_hosts,
                     TEMP_FOLDER / "hosts",
                     HOSTS_LIST_FOLDER / "malw.lst",
-                    ROOT_DIR / "sni-proxy-ips.lst",
                     ROOT_DIR / "filters" / "hosts-blacklist.json",
-                    file_pattern="malw-hosts.lst"
+                    file_pattern="malw-hosts.lst",
+                    use_original_ips=True
                 ),
                 asyncio.to_thread(
                     merge_hosts,
                     TEMP_FOLDER / "hosts",
                     HOSTS_LIST_FOLDER / "mafioznik.lst",
-                    ROOT_DIR / "sni-proxy-ips.lst",
                     ROOT_DIR / "filters" / "hosts-blacklist.json",
-                    file_pattern="mafioznik-hosts.lst"
+                    file_pattern="mafioznik-hosts.lst",
+                    use_original_ips=True
                 ),
                 # Geoblock lists
                 asyncio.to_thread(
                     merge_lists,
                     TEMP_FOLDER / "hosts",
                     GEOBLOCK_FOLDER / "full.lst",
-                    file_pattern="itdoginfo-geoblock.lst"
+                    file_pattern="*.lst"
                 )
             )
             status.update("[green]✓ Domains, IPSets, and Hosts merged successfully[/green]")
@@ -153,7 +167,10 @@ async def run_pipeline():
                 asyncio.to_thread(generate_sing_box_ruleset, "domain", PLAIN_LIST_FOLDER / "domains" / "full.lst", SING_BOX_LIST_FOLDER / "domains" / "full.json", SING_BOX_LIST_FOLDER / "domains" / "full.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", PLAIN_LIST_FOLDER / "domains" / "full-sld.lst", SING_BOX_LIST_FOLDER / "domains" / "full-sld.json", SING_BOX_LIST_FOLDER / "domains" / "full-sld.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", PLAIN_LIST_FOLDER / "ipsets" / "full.lst", SING_BOX_LIST_FOLDER / "ipsets" / "full.json", SING_BOX_LIST_FOLDER / "ipsets" / "full.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", PLAIN_LIST_FOLDER / "ipsets" / "full-and-cdn.lst", SING_BOX_LIST_FOLDER / "ipsets" / "full-and-cdn.json", SING_BOX_LIST_FOLDER / "ipsets" / "full-and-cdn.srs")
+                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", PLAIN_LIST_FOLDER / "ipsets" / "full-and-cdn.lst", SING_BOX_LIST_FOLDER / "ipsets" / "full-and-cdn.json", SING_BOX_LIST_FOLDER / "ipsets" / "full-and-cdn.srs"),
+                # Geoblock rulesets
+                asyncio.to_thread(generate_sing_box_ruleset, "domain", GEOBLOCK_FOLDER / "full.lst", SING_BOX_GEOBLOCK_FOLDER / "full.json", SING_BOX_GEOBLOCK_FOLDER / "full.srs"),
+                asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", GEOBLOCK_FOLDER / "full-sld.lst", SING_BOX_GEOBLOCK_FOLDER / "full-sld.json", SING_BOX_GEOBLOCK_FOLDER / "full-sld.srs")
             )
             status.update("[green]✓ Compiled all rule-sets[/green]")
             
