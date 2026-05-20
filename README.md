@@ -19,7 +19,7 @@ Generated artifacts are organized as follows:
 | **Hosts (SNI Proxy)** | `lists/hosts/` | [`malw.lst`](./lists/hosts/malw.lst)<br>[`mafioznik.lst`](./lists/hosts/mafioznik.lst)<br>[`combined.lst`](./lists/hosts/combined.lst)<br>[`ready-to-use.lst`](./lists/hosts/ready-to-use.lst) | Hosts-format mappings routing blocked domains through free public SNI proxies. `ready-to-use.lst` includes standard local loopback headers. |
 
 > [!NOTE]
-> 🤖 **Automated Updates**: Lists are updated daily at 21:00 UTC via GitHub Actions. Only pushes when lists actually change.
+> 🤖 **Automated Updates**: Lists are updated every 3 hours (including 21:00 UTC) via GitHub Actions. Only pushes when lists actually change.
 
 &nbsp;
 
