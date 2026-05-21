@@ -17,8 +17,16 @@ def main():
         combined_lines = [line.rstrip() for line in f]
         
     with open(ready_path, "r", encoding="utf-8") as f:
-        # Skip the first 5 lines (header)
-        ready_lines = [line.rstrip() for line in f][5:]
+        all_ready_lines = [line.rstrip() for line in f]
+        
+    # Dynamically skip header lines by advancing past the first blank line
+    header_end_idx = 0
+    for idx, line in enumerate(all_ready_lines):
+        if not line.strip():
+            header_end_idx = idx + 1
+            break
+            
+    ready_lines = all_ready_lines[header_end_idx:]
         
     # Normalize trailing empty lines
     while combined_lines and not combined_lines[-1]:

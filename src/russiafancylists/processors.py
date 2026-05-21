@@ -34,14 +34,11 @@ def is_private_ip(ip_str: str) -> bool:
 
 def clean_and_validate_domain(d: str) -> list[str]:
     """Clean and validate domain entries."""
-    # 1. Strip or replace control characters (remove \v, \t, etc.)
-    d = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', d)
+    # 1. Decode percent-encoded sequences
+    d = unquote(d)
     
-    # 2. Decode percent-encoded sequences
-    try:
-        d = unquote(d)
-    except Exception:
-        pass
+    # 2. Strip or replace control characters (remove \v, \t, etc.)
+    d = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', d)
     
     # 3. Split concatenated entries by comma
     parts = d.split(',')

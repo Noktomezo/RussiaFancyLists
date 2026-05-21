@@ -43,8 +43,8 @@ def generate_sing_box_ruleset(rule_key: str, input_file: Path, json_output_file:
         try:
             subprocess.run(cmd_upgrade, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=TIMEOUT)
         except subprocess.TimeoutExpired as te:
-            stderr_msg = te.stderr.decode().strip() if te.stderr else "No stderr captured"
-            raise RuntimeError(f"sing-box command {cmd_upgrade} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}")
+            stderr_msg = te.stderr.decode(errors="replace").strip() if te.stderr else "No stderr captured"
+            raise RuntimeError(f"sing-box command {cmd_upgrade} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}") from te
             
         # Compile upgraded JSON to binary .srs format
         cmd_compile = [
@@ -55,7 +55,8 @@ def generate_sing_box_ruleset(rule_key: str, input_file: Path, json_output_file:
         try:
             subprocess.run(cmd_compile, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=TIMEOUT)
         except subprocess.TimeoutExpired as te:
-            stderr_msg = te.stderr.decode().strip() if te.stderr else "No stderr captured"
-            raise RuntimeError(f"sing-box command {cmd_compile} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}")
+            stderr_msg = te.stderr.decode(errors="replace").strip() if te.stderr else "No stderr captured"
+            raise RuntimeError(f"sing-box command {cmd_compile} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}") from te
     except subprocess.CalledProcessError as e:
-        raise RuntimeError(f"sing-box execution failed: {e.stderr.decode().strip()}")
+        stderr_msg = e.stderr.decode(errors="replace").strip() if e.stderr else "No stderr captured"
+        raise RuntimeError(f"sing-box execution failed: {stderr_msg}") from e
