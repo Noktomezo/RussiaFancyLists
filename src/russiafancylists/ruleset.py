@@ -19,7 +19,7 @@ def generate_sing_box_ruleset(rule_key: str, input_file: Path, json_output_file:
                 values.append(line)
                 
     ruleset = {
-        "version": 1,
+        "version": 4,
         "rules": [
             {
                 rule_key: values
