@@ -3,6 +3,7 @@ import re
 import glob
 import json
 import ipaddress
+from urllib.parse import unquote
 from pathlib import Path
 from rich.console import Console
 
@@ -30,6 +31,40 @@ def is_private_ip(ip_str: str) -> bool:
             except ValueError:
                 pass
     return False
+
+def clean_and_validate_domain(d: str) -> list[str]:
+    """Clean and validate domain entries."""
+    # 1. Decode percent-encoded sequences
+    d = unquote(d)
+    
+    # 2. Strip or replace control characters (remove \v, \t, etc.)
+    d = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', d)
+    
+    # 3. Split concatenated entries by comma
+    parts = d.split(',')
+    cleaned_parts = []
+    for p in parts:
+        p = p.strip()
+        # Remove trailing and leading dots
+        p = p.strip('.')
+        if not p:
+            continue
+            
+        # 4. Skip bare TLDs or non-hostnames (e.g. com, net, ru, or anything without a dot)
+        domain_parts = p.split('.')
+        if len(domain_parts) < 2:
+            continue
+            
+        if any(not part for part in domain_parts):
+            continue
+            
+        # Ensure there are no spaces or obviously invalid chars
+        if any(c in p for c in " \t\r\n\\/,;*?\"'"):
+            continue
+            
+        cleaned_parts.append(p)
+        
+    return cleaned_parts
 
 def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst"):
     """Merge and sort domain lists or collapse IP/CIDR blocklists."""
@@ -96,9 +131,8 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                     else:
                         domains_to_process = cols
                     for d in domains_to_process:
-                        d = d.lower().strip()
-                        if d:
-                            domains.add(d)
+                        for cleaned in clean_and_validate_domain(d):
+                            domains.add(cleaned.lower().strip())
         sorted_domains = sorted(list(domains))
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
