@@ -76,7 +76,7 @@ async def run_pipeline():
         setup_dirs()
         
         # --- Stage 1: Async Downloads ---
-        console.print("[bold purple]Stage 1: Downloading source lists (concurrently)...[/bold purple]")
+        console.print("[bold purple]Stage 1: Downloading source lists...[/bold purple]")
         progress = Progress(
             SpinnerColumn(),
             TextColumn("[progress.description]{task.description}"),
@@ -87,8 +87,8 @@ async def run_pipeline():
         with progress:
             await run_downloads(progress)
             
-        # --- Stage 2: Merging (Concurrently) ---
-        console.print("\n[bold purple]Stage 2: Merging lists (concurrently)...[/bold purple]")
+        # --- Stage 2: Merging ---
+        console.print("\n[bold purple]Stage 2: Merging lists...[/bold purple]")
         with Status("[cyan]Merging domains, IPSets, and hosts in parallel...", console=console) as status:
             await asyncio.gather(
                 # Main lists
@@ -127,8 +127,8 @@ async def run_pipeline():
             )
             status.update("[green]✓ Domains, IPSets, and Hosts merged successfully[/green]")
             
-        # --- Stage 3: Dependent Processing (Concurrently) ---
-        console.print("\n[bold purple]Stage 3: Dependent processing (concurrently)...[/bold purple]")
+        # --- Stage 3: Dependent Processing ---
+        console.print("\n[bold purple]Stage 3: Dependent processing...[/bold purple]")
         with Status("[cyan]Filtering domains, loopbacks, and CDN ipsets in parallel...", console=console) as status:
             await asyncio.gather(
                 # Main lists
@@ -159,8 +159,8 @@ async def run_pipeline():
             )
             status.update("[green]✓ Dependent processing completed[/green]")
             
-        # --- Stage 4: sing-box Rule-sets (Concurrently) ---
-        console.print("\n[bold purple]Stage 4: Generating sing-box rulesets (concurrently)...[/bold purple]")
+        # --- Stage 4: sing-box Rule-sets ---
+        console.print("\n[bold purple]Stage 4: Generating sing-box rulesets...[/bold purple]")
         with Status("[cyan]Compiling all sing-box rule-sets in parallel...", console=console) as status:
             await asyncio.gather(
                 # Main rulesets
