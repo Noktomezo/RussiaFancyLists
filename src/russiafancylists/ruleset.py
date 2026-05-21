@@ -4,6 +4,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+TIMEOUT = 30
+
 def generate_sing_box_ruleset(rule_key: str, input_file: Path, json_output_file: Path, srs_output_file: Path):
     """Build ruleset JSON and compile it to binary .srs using sing-box CLI."""
     if not shutil.which("sing-box"):
@@ -34,16 +36,26 @@ def generate_sing_box_ruleset(rule_key: str, input_file: Path, json_output_file:
     srs_output_file.parent.mkdir(parents=True, exist_ok=True)
     try:
         # Upgrade JSON to the highest version supported by local sing-box binary
-        subprocess.run([
+        cmd_upgrade = [
             "sing-box", "rule-set", "upgrade",
             "-w", str(json_output_file)
-        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
-        
+        ]
+        try:
+            subprocess.run(cmd_upgrade, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=TIMEOUT)
+        except subprocess.TimeoutExpired as te:
+            stderr_msg = te.stderr.decode().strip() if te.stderr else "No stderr captured"
+            raise RuntimeError(f"sing-box command {cmd_upgrade} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}")
+            
         # Compile upgraded JSON to binary .srs format
-        subprocess.run([
+        cmd_compile = [
             "sing-box", "rule-set", "compile",
             "--output", str(srs_output_file),
             str(json_output_file)
-        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+        ]
+        try:
+            subprocess.run(cmd_compile, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=TIMEOUT)
+        except subprocess.TimeoutExpired as te:
+            stderr_msg = te.stderr.decode().strip() if te.stderr else "No stderr captured"
+            raise RuntimeError(f"sing-box command {cmd_compile} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"sing-box execution failed: {e.stderr.decode().strip()}")
