@@ -11,10 +11,10 @@ Generated artifacts are organized as follows:
 <table>
   <thead>
     <tr>
-      <th width="12%" align="left">Component</th>
-      <th width="28%" align="left">Path</th>
-      <th width="38%" align="left">Format / Variant</th>
-      <th width="22%" align="left">Description</th>
+      <th width="12%" align="center"><b>Component</b></th>
+      <th width="28%" align="center"><b>Path</b></th>
+      <th width="38%" align="center"><b>Format / Variant</b></th>
+      <th width="22%" align="center"><b>Description</b></th>
     </tr>
   </thead>
   <tbody>

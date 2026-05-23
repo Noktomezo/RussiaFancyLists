@@ -11,10 +11,10 @@
 <table>
   <thead>
     <tr>
-      <th width="12%" align="left">Компонент</th>
-      <th width="28%" align="left">Путь</th>
-      <th width="38%" align="left">Формат / Вариант</th>
-      <th width="22%" align="left">Описание</th>
+      <th width="12%" align="center"><b>Компонент</b></th>
+      <th width="28%" align="center"><b>Путь</b></th>
+      <th width="38%" align="center"><b>Формат / Вариант</b></th>
+      <th width="22%" align="center"><b>Описание</b></th>
     </tr>
   </thead>
   <tbody>
