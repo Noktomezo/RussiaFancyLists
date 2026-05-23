@@ -43,8 +43,8 @@ jobs:
 
     - name: Install sing-box
       run: |
-        echo "+ go install -v github.com/sagernet/sing-box/cmd/sing-box@latest"
-        go install -v github.com/sagernet/sing-box/cmd/sing-box@latest >/dev/null
+        echo "+ go install -v github.com/sagernet/sing-box/cmd/sing-box@v1.14.0-alpha.25"
+        go install -v github.com/sagernet/sing-box/cmd/sing-box@v1.14.0-alpha.25 >/dev/null
 
     - name: Run update script
       run: |
