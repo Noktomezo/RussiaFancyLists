@@ -168,6 +168,7 @@ async def run_pipeline():
                 asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", PLAIN_LIST_FOLDER / "domains" / "full-sld.lst", SING_BOX_LIST_FOLDER / "domains" / "full-sld.json", SING_BOX_LIST_FOLDER / "domains" / "full-sld.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", PLAIN_LIST_FOLDER / "ipsets" / "full.lst", SING_BOX_LIST_FOLDER / "ipsets" / "full.json", SING_BOX_LIST_FOLDER / "ipsets" / "full.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", PLAIN_LIST_FOLDER / "ipsets" / "full-and-cdn.lst", SING_BOX_LIST_FOLDER / "ipsets" / "full-and-cdn.json", SING_BOX_LIST_FOLDER / "ipsets" / "full-and-cdn.srs"),
+                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", PLAIN_LIST_FOLDER / "ipsets" / "cdn.lst", SING_BOX_LIST_FOLDER / "ipsets" / "cdn.json", SING_BOX_LIST_FOLDER / "ipsets" / "cdn.srs"),
                 # Geoblock rulesets
                 asyncio.to_thread(generate_sing_box_ruleset, "domain", GEOBLOCK_FOLDER / "full.lst", SING_BOX_GEOBLOCK_FOLDER / "full.json", SING_BOX_GEOBLOCK_FOLDER / "full.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", GEOBLOCK_FOLDER / "full-sld.lst", SING_BOX_GEOBLOCK_FOLDER / "full-sld.json", SING_BOX_GEOBLOCK_FOLDER / "full-sld.srs")
