@@ -13,8 +13,8 @@ Generated artifacts are organized as follows:
     <tr>
       <th width="12%" align="center"><b>Component</b></th>
       <th width="28%" align="center"><b>Path</b></th>
-      <th width="38%" align="center"><b>Format / Variant</b></th>
-      <th width="22%" align="center"><b>Description</b></th>
+      <th width="26%" align="center"><b>Format / Variant</b></th>
+      <th width="34%" align="center"><b>Description</b></th>
     </tr>
   </thead>
   <tbody>

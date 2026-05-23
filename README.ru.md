@@ -13,8 +13,8 @@
     <tr>
       <th width="12%" align="center"><b>Компонент</b></th>
       <th width="28%" align="center"><b>Путь</b></th>
-      <th width="38%" align="center"><b>Формат / Вариант</b></th>
-      <th width="22%" align="center"><b>Описание</b></th>
+      <th width="26%" align="center"><b>Формат / Вариант</b></th>
+      <th width="34%" align="center"><b>Описание</b></th>
     </tr>
   </thead>
   <tbody>
