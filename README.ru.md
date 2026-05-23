@@ -8,15 +8,92 @@
 
 Сгенерированные списки организованы следующим образом:
 
-| Компонент | Путь | Формат / Вариант | Описание |
-| :--- | :--- | :--- | :--- |
-| **Домены (Plain)** | `lists/plain/domains/` | [`full.lst`](./lists/plain/domains/full.lst)<br>[`full-sld.lst`](./lists/plain/domains/full-sld.lst) | Курируемые списки доменов в исходном формате и оптимизированные домены второго уровня (SLD). |
-| **IP-адреса (Plain)** | `lists/plain/ipsets/` | [`cdn.lst`](./lists/plain/ipsets/cdn.lst)<br>[`full.lst`](./lists/plain/ipsets/full.lst)<br>[`full-and-cdn.lst`](./lists/plain/ipsets/full-and-cdn.lst) | Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями. |
-| **Правила Sing-Box (Домены)** | `lists/sing-box/domains/` | [`full.json`](./lists/sing-box/domains/full.json)<br>[`full.srs`](./lists/sing-box/domains/full.srs)<br>[`full-sld.json`](./lists/sing-box/domains/full-sld.json)<br>[`full-sld.srs`](./lists/sing-box/domains/full-sld.srs) | Оптимизированные правила маршрутизации доменов для `sing-box` (JSON и скомпилированные бинарные SRS-файлы). |
-| **Правила Sing-Box (IP)** | `lists/sing-box/ipsets/` | [`full.json`](./lists/sing-box/ipsets/full.json)<br>[`full.srs`](./lists/sing-box/ipsets/full.srs)<br>[`full-and-cdn.json`](./lists/sing-box/ipsets/full-and-cdn.json)<br>[`full-and-cdn.srs`](./lists/sing-box/ipsets/full-and-cdn.srs)<br>[`cdn.json`](./lists/sing-box/ipsets/cdn.json)<br>[`cdn.srs`](./lists/sing-box/ipsets/cdn.srs) | Оптимизированные IP-CIDR правила маршрутизации для `sing-box` (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети. |
-| **Геоблокировки** | `lists/geoblock/` | [`full.lst`](./lists/geoblock/full.lst)<br>[`full-sld.lst`](./lists/geoblock/full-sld.lst) | Домены зарубежных сервисов, ограничивающих доступ для пользователей с российскими IP-адресами (геоблокировки/санкции). |
-| **Правила Sing-Box (Геоблок)** | `lists/sing-box/geoblock/` | [`full.json`](./lists/sing-box/geoblock/full.json)<br>[`full.srs`](./lists/sing-box/geoblock/full.srs)<br>[`full-sld.json`](./lists/sing-box/geoblock/full-sld.json)<br>[`full-sld.srs`](./lists/sing-box/geoblock/full-sld.srs) | Оптимизированные правила маршрутизации геоблокировок доменов для `sing-box` (JSON и скомпилированные бинарные SRS-файлы). |
-| **Хосты (SNI-прокси)** | `lists/hosts/` | [`malw.lst`](./lists/hosts/malw.lst)<br>[`mafioznik.lst`](./lists/hosts/mafioznik.lst)<br>[`combined.lst`](./lists/hosts/combined.lst)<br>[`ready-to-use.lst`](./lists/hosts/ready-to-use.lst) | Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). `ready-to-use.lst` включает стандартный локальный loopback-заголовок. |
+<table>
+  <thead>
+    <tr>
+      <th width="12%" align="center"><b>Компонент</b></th>
+      <th width="28%" align="center"><b>Путь</b></th>
+      <th width="26%" align="center"><b>Формат / Вариант</b></th>
+      <th width="34%" align="center"><b>Описание</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Домены (Plain)</b></td>
+      <td><code>lists/plain/domains/</code></td>
+      <td>
+        • <a href="./lists/plain/domains/full.lst"><code>full.lst</code></a><br>
+        • <a href="./lists/plain/domains/full-sld.lst"><code>full-sld.lst</code></a>
+      </td>
+      <td>Курируемые списки доменов в исходном формате и оптимизированные домены второго уровня (SLD).</td>
+    </tr>
+    <tr>
+      <td><b>IP-адреса (Plain)</b></td>
+      <td><code>lists/plain/ipsets/</code></td>
+      <td>
+        • <a href="./lists/plain/ipsets/cdn.lst"><code>cdn.lst</code></a><br>
+        • <a href="./lists/plain/ipsets/full.lst"><code>full.lst</code></a><br>
+        • <a href="./lists/plain/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
+      </td>
+      <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
+    </tr>
+    <tr>
+      <td><b>Правила Sing-Box (Домены)</b></td>
+      <td><code>lists/sing-box/domains/</code></td>
+      <td>
+        • <a href="./lists/sing-box/domains/full.json"><code>full.json</code></a><br>
+        • <a href="./lists/sing-box/domains/full.srs"><code>full.srs</code></a><br>
+        • <a href="./lists/sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
+        • <a href="./lists/sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
+      </td>
+      <td>Оптимизированные правила маршрутизации доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
+    </tr>
+    <tr>
+      <td><b>Правила Sing-Box (IP)</b></td>
+      <td><code>lists/sing-box/ipsets/</code></td>
+      <td>
+        • <a href="./lists/sing-box/ipsets/full.json"><code>full.json</code></a><br>
+        • <a href="./lists/sing-box/ipsets/full.srs"><code>full.srs</code></a><br>
+        • <a href="./lists/sing-box/ipsets/full-and-cdn.json"><code>full-and-cdn.json</code></a><br>
+        • <a href="./lists/sing-box/ipsets/full-and-cdn.srs"><code>full-and-cdn.srs</code></a><br>
+        • <a href="./lists/sing-box/ipsets/cdn.json"><code>cdn.json</code></a><br>
+        • <a href="./lists/sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
+      </td>
+      <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
+    </tr>
+    <tr>
+      <td><b>Геоблокировки</b></td>
+      <td><code>lists/geoblock/</code></td>
+      <td>
+        • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
+        • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
+      </td>
+      <td>Домены зарубежных сервисов, ограничивающих доступ для пользователей с российскими IP-адресами (геоблокировки/санкции).</td>
+    </tr>
+    <tr>
+      <td><b>Правила Sing-Box (Геоблок)</b></td>
+      <td><code>lists/sing-box/geoblock/</code></td>
+      <td>
+        • <a href="./lists/sing-box/geoblock/full.json"><code>full.json</code></a><br>
+        • <a href="./lists/sing-box/geoblock/full.srs"><code>full.srs</code></a><br>
+        • <a href="./lists/sing-box/geoblock/full-sld.json"><code>full-sld.json</code></a><br>
+        • <a href="./lists/sing-box/geoblock/full-sld.srs"><code>full-sld.srs</code></a>
+      </td>
+      <td>Оптимизированные правила маршрутизации геоблокировок доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
+    </tr>
+    <tr>
+      <td><b>Хосты (SNI-прокси)</b></td>
+      <td><code>lists/hosts/</code></td>
+      <td>
+        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
+        • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
+        • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a><br>
+        • <a href="./lists/hosts/ready-to-use.lst"><code>ready-to-use.lst</code></a>
+      </td>
+      <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). <code>ready-to-use.lst</code> включает стандартный локальный loopback-заголовок.</td>
+    </tr>
+  </tbody>
+</table>
 
 > [!NOTE]
 > 🤖 **Автоматическое обновление**: Списки обновляются каждые 3 часа (включая 21:00 UTC) с помощью GitHub Actions. Пуш происходит только при фактическом изменении списков.
