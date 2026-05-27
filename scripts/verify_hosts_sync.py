@@ -1,59 +1,84 @@
 import sys
+import re
 from pathlib import Path
+
+def parse_domains_from_hosts(file_path: Path) -> set[str]:
+    """Parse domain names from a hosts file, ignoring loopback headers and comments."""
+    domains = set()
+    with open(file_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = re.sub(r'#.*', '', line).strip()
+            if not line:
+                continue
+            cols = line.split()
+            if not cols:
+                continue
+                
+            # Skip loopback, multicast, and standard blocking addresses
+            if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::", "ff02::1", "ff02::2"):
+                continue
+                
+            is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
+            is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', cols[0])
+            
+            if is_ipv4 or is_ipv6:
+                for dom in cols[1:]:
+                    domains.add(dom.lower().strip())
+            else:
+                # If no IP, treat the whole line as domains
+                for dom in cols:
+                    domains.add(dom.lower().strip())
+    return domains
 
 def main():
     root_dir = Path(__file__).parent.parent
-    combined_path = root_dir / "lists" / "hosts" / "combined.lst"
-    ready_path = root_dir / "lists" / "hosts" / "ready-to-use.lst"
+    hosts_dir = root_dir / "lists" / "hosts"
     
+    if not hosts_dir.exists():
+        print(f"Error: {hosts_dir} does not exist.")
+        sys.exit(1)
+        
+    combined_path = hosts_dir / "combined.lst"
     if not combined_path.exists():
         print(f"Error: {combined_path} does not exist.")
         sys.exit(1)
-    if not ready_path.exists():
-        print(f"Error: {ready_path} does not exist.")
+        
+    # Find all generated provider .lst files
+    provider_paths = [
+        f for f in hosts_dir.glob("*.lst")
+        if f.is_file() and f.name != "combined.lst"
+    ]
+    
+    if not provider_paths:
+        print("Error: No provider hosts files found.")
         sys.exit(1)
         
-    with open(combined_path, "r", encoding="utf-8") as f:
-        combined_lines = [line.rstrip() for line in f]
-        
-    with open(ready_path, "r", encoding="utf-8") as f:
-        all_ready_lines = [line.rstrip() for line in f]
-        
-    # Dynamically skip header lines by advancing past the first blank line
-    header_end_idx = 0
-    for idx, line in enumerate(all_ready_lines):
-        if not line.strip():
-            header_end_idx = idx + 1
-            break
-            
-    ready_lines = all_ready_lines[header_end_idx:]
-        
-    # Normalize trailing empty lines
-    while combined_lines and not combined_lines[-1]:
-        combined_lines.pop()
-    while ready_lines and not ready_lines[-1]:
-        ready_lines.pop()
-        
-    # Check if lines match
-    if len(combined_lines) != len(ready_lines):
-        print(f"Mismatch: combined.lst has {len(combined_lines)} lines, but ready-to-use.lst body has {len(ready_lines)} lines.")
-        sys.exit(1)
-        
+    # Read domains from combined.lst
+    combined_domains = parse_domains_from_hosts(combined_path)
+    print(f"combined.lst has {len(combined_domains)} unique domains.")
+    
     mismatches = 0
-    for idx, (l1, l2) in enumerate(zip(combined_lines, ready_lines)):
-        if l1 != l2:
-            print(f"Mismatch at line {idx + 1}:")
-            print(f"  combined: {repr(l1)}")
-            print(f"  ready   : {repr(l2)}")
+    for p_path in provider_paths:
+        p_domains = parse_domains_from_hosts(p_path)
+        print(f"{p_path.name} has {len(p_domains)} unique domains.")
+        
+        # Check for perfect parity with combined.lst
+        diff1 = p_domains - combined_domains
+        diff2 = combined_domains - p_domains
+        
+        if diff1 or diff2:
+            print(f"Mismatch between {p_path.name} and combined.lst:")
+            if diff1:
+                print(f"  Only in {p_path.name} (first 5): {sorted(list(diff1))[:5]}")
+            if diff2:
+                print(f"  Only in combined.lst (first 5): {sorted(list(diff2))[:5]}")
             mismatches += 1
-            if mismatches >= 10:
-                print("Too many mismatches, aborting check.")
-                break
-                
+            
     if mismatches > 0:
+        print("Error: Domains mismatch detected across hosts files.")
         sys.exit(1)
         
-    print("Verification successful: combined.lst is in sync with ready-to-use.lst.")
+    print("Verification successful: all hosts files have perfect domain parity!")
     sys.exit(0)
 
 if __name__ == "__main__":

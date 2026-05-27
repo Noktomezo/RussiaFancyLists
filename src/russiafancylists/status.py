@@ -22,18 +22,27 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Measure latencies and update status blocks in README.md and README.ru.md."""
     # 1. Retrieve current proxy IPs
     try:
-        malw_ip, _ = get_source_info(hosts_temp_dir / "malw-hosts.lst")
-        mafioznik_ip, _ = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
-        geohide_ip, _ = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
+        malw_ips, _ = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+        mafioznik_ips, _ = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+        geohide_ips, _ = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
     except Exception:
         # Fallbacks if file parsing fails
-        malw_ip, mafioznik_ip, geohide_ip = "77.239.114.0", "103.27.157.38", "45.155.204.190"
+        malw_ips = ["77.239.114.0"]
+        mafioznik_ips = ["103.27.157.38"]
+        geohide_ips = ["45.155.204.190", "37.230.192.51"]
 
-    providers = [
-        ("GeoHide", geohide_ip),
-        ("Mafioznik", mafioznik_ip),
-        ("Malw", malw_ip)
-    ]
+    providers = []
+    
+    def register_ips(name: str, ips: list[str]):
+        if len(ips) == 1:
+            providers.append((name, ips[0]))
+        else:
+            for idx, ip in enumerate(ips):
+                providers.append((f"{name} v{idx+1}", ip))
+
+    register_ips("GeoHide", geohide_ips)
+    register_ips("Mafioznik", mafioznik_ips)
+    register_ips("Malw", malw_ips)
 
     # 2. Measure latencies concurrently
     tasks = [test_ip_latency(ip) for _, ip in providers]
@@ -82,3 +91,31 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
             flags=re.DOTALL
         )
         readme_ru_path.write_text(new_content, encoding="utf-8")
+
+async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
+    """Dynamically update the lists/hosts links in README files based on actual files in lists/hosts."""
+    # Find all .lst files in lists/hosts
+    files = sorted([f.name for f in hosts_dir.glob("*.lst") if f.is_file()])
+    # Put combined.lst at the end
+    if "combined.lst" in files:
+        files.remove("combined.lst")
+        files.append("combined.lst")
+        
+    links_lines = []
+    for f in files:
+        links_lines.append(f"        • <a href=\"./lists/hosts/{f}\"><code>{f}</code></a>")
+    
+    links_block = "<br>\n".join(links_lines)
+    
+    # Update both READMEs
+    for filename in ("README.md", "README.ru.md"):
+        path = root_dir / filename
+        if path.exists():
+            content = path.read_text(encoding="utf-8")
+            new_content = re.sub(
+                r"<!-- HOSTS_LINKS_START -->.*?<!-- HOSTS_LINKS_END -->",
+                f"<!-- HOSTS_LINKS_START -->\n{links_block}\n<!-- HOSTS_LINKS_END -->",
+                content,
+                flags=re.DOTALL
+            )
+            path.write_text(new_content, encoding="utf-8")

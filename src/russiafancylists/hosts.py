@@ -137,9 +137,12 @@ def add_localhost(input_file: Path, output_file: Path):
             f.write(inf.read())
 
 def get_source_info(file_path: Path):
-    """Parse original hosts file to find the most frequent IP and collect its original domains."""
+    """Parse original hosts file to find the most frequent IPs (up to 2) and collect their original domains.
+    Returns:
+        tuple: (list of top IPs, dict mapping IP to set of domains)
+    """
     ips = Counter()
-    domains = set()
+    ip_domains = {}
     if not file_path.exists():
         raise FileNotFoundError(f"Source hosts file not found at '{file_path}'. This indicates an upstream download/parse failure.")
     
@@ -164,16 +167,23 @@ def get_source_info(file_path: Path):
                 ips[ip] += len(cols[1:])
                 domains_to_process = cols[1:]
             else:
+                ip = None
                 domains_to_process = cols
                 
             for dom in domains_to_process:
                 dom = dom.lower().strip()
-                domains.add(dom)
+                if ip:
+                    ip_domains.setdefault(ip, set()).add(dom)
                 
     if not ips:
         raise ValueError(f"No valid IP addresses could be parsed from source hosts file at '{file_path}'. The file might be empty or malformed.")
-    most_common_ip, _ = ips.most_common(1)[0]
-    return most_common_ip, domains
+    
+    common = ips.most_common(2)
+    top_ips = [common[0][0]]
+    if len(common) > 1 and common[1][1] >= 0.8 * common[0][1]:
+        top_ips.append(common[1][0])
+        
+    return top_ips, ip_domains
 
 def generate_aligned_hosts(
     geoblock_file: Path,
@@ -201,11 +211,11 @@ def generate_aligned_hosts(
             blacklist_patterns.append(re.compile(py_p))
             
     # 2. Get source info (most frequent IPs and original domains)
-    malw_ip, malw_orig_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
-    mafioznik_ip, mafioznik_orig_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
-    geohide_ip, geohide_orig_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
+    malw_ips, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+    mafioznik_ips, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+    geohide_ips, geohide_ip_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
     
-    ips_list = sorted(list(set([malw_ip, mafioznik_ip, geohide_ip])))
+    ips_list = sorted(list(set(malw_ips + mafioznik_ips + geohide_ips)))
     if not ips_list:
         ips_list = ["127.0.0.1"]
         
@@ -267,10 +277,7 @@ def generate_aligned_hosts(
                 break
         resolved_brands[dom] = brand
         
-    # 4. Group domains for malw.lst, mafioznik.lst, geohide.lst, and combined.lst
-    malw_groups = {}
-    mafioznik_groups = {}
-    geohide_groups = {}
+    # 4. Group domains for individual provider lists and combined.lst
     combined_groups = {}
     
     # Pre-group domains by brand
@@ -279,31 +286,24 @@ def generate_aligned_hosts(
         brand = resolved_brands[dom]
         brand_domains.setdefault(brand, []).append(dom)
         
-        # Add to malw.lst
-        malw_groups.setdefault(brand, []).append(dom)
-        
-        # Add to mafioznik.lst
-        mafioznik_groups.setdefault(brand, []).append(dom)
-        
-        # Add to geohide.lst
-        geohide_groups.setdefault(brand, []).append(dom)
-        
     for brand, doms in brand_domains.items():
         # Determine dominant IP for the brand in combined.lst
-        malw_count = sum(1 for d in doms if d in malw_orig_domains)
-        mafioznik_count = sum(1 for d in doms if d in mafioznik_orig_domains)
-        geohide_count = sum(1 for d in doms if d in geohide_orig_domains)
+        ip_counts = []
+        for ip in malw_ips:
+            cnt = sum(1 for d in doms if d in malw_ip_domains.get(ip, set()))
+            ip_counts.append((cnt, ip))
+        for ip in mafioznik_ips:
+            cnt = sum(1 for d in doms if d in mafioznik_ip_domains.get(ip, set()))
+            ip_counts.append((cnt, ip))
+        for ip in geohide_ips:
+            cnt = sum(1 for d in doms if d in geohide_ip_domains.get(ip, set()))
+            ip_counts.append((cnt, ip))
+            
+        ip_counts.sort(key=lambda x: x[0], reverse=True)
         
-        counts = [
-            (malw_count, malw_ip),
-            (mafioznik_count, mafioznik_ip),
-            (geohide_count, geohide_ip)
-        ]
-        counts.sort(key=lambda x: x[0], reverse=True)
-        
-        max_count = counts[0][0]
+        max_count = ip_counts[0][0]
         if max_count > 0:
-            top_ips = [ip for count, ip in counts if count == max_count]
+            top_ips = [ip for count, ip in ip_counts if count == max_count]
             if len(top_ips) == 1:
                 assigned_ip = top_ips[0]
             else:
@@ -315,28 +315,39 @@ def generate_aligned_hosts(
             
         combined_groups.setdefault((assigned_ip, brand), []).extend(doms)
         
-    # 5. Write output files
-    output_malw.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_malw, 'w', encoding='utf-8') as f:
-        f.write(LOOPBACK_HEADER)
-        for brand in sorted(malw_groups.keys()):
-            dom_list = " ".join(sorted(malw_groups[brand]))
-            f.write(f"{malw_ip} {dom_list}\n")
-            
-    output_mafioznik.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_mafioznik, 'w', encoding='utf-8') as f:
-        f.write(LOOPBACK_HEADER)
-        for brand in sorted(mafioznik_groups.keys()):
-            dom_list = " ".join(sorted(mafioznik_groups[brand]))
-            f.write(f"{mafioznik_ip} {dom_list}\n")
-            
-    output_geohide.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_geohide, 'w', encoding='utf-8') as f:
-        f.write(LOOPBACK_HEADER)
-        for brand in sorted(geohide_groups.keys()):
-            dom_list = " ".join(sorted(geohide_groups[brand]))
-            f.write(f"{geohide_ip} {dom_list}\n")
-            
+    # 5. Write individual output files dynamically
+    def write_provider_hosts(base_output: Path, ips: list[str]):
+        v1_path = base_output.parent / (base_output.stem + "-v1.lst")
+        v2_path = base_output.parent / (base_output.stem + "-v2.lst")
+        
+        if len(ips) == 1:
+            base_output.parent.mkdir(parents=True, exist_ok=True)
+            with open(base_output, 'w', encoding='utf-8') as f:
+                f.write(LOOPBACK_HEADER)
+                for brand in sorted(brand_domains.keys()):
+                    dom_list = " ".join(sorted(brand_domains[brand]))
+                    f.write(f"{ips[0]} {dom_list}\n")
+            if v1_path.exists():
+                v1_path.unlink()
+            if v2_path.exists():
+                v2_path.unlink()
+        else:
+            for idx, ip in enumerate(ips):
+                v_path = base_output.parent / (base_output.stem + f"-v{idx+1}.lst")
+                v_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(v_path, 'w', encoding='utf-8') as f:
+                    f.write(LOOPBACK_HEADER)
+                    for brand in sorted(brand_domains.keys()):
+                        dom_list = " ".join(sorted(brand_domains[brand]))
+                        f.write(f"{ip} {dom_list}\n")
+            if base_output.exists():
+                base_output.unlink()
+
+    write_provider_hosts(output_malw, malw_ips)
+    write_provider_hosts(output_mafioznik, mafioznik_ips)
+    write_provider_hosts(output_geohide, geohide_ips)
+    
+    # 6. Write combined output file
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
         f.write(LOOPBACK_HEADER)

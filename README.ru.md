@@ -88,10 +88,13 @@
       <td><b>Хосты (SNI-прокси)</b></td>
       <td><code>lists/hosts/</code></td>
       <td>
-        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
+<!-- HOSTS_LINKS_START -->
+        • <a href="./lists/hosts/geohide-v1.lst"><code>geohide-v1.lst</code></a><br>
+        • <a href="./lists/hosts/geohide-v2.lst"><code>geohide-v2.lst</code></a><br>
         • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
-        • <a href="./lists/hosts/geohide.lst"><code>geohide.lst</code></a><br>
+        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
         • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a>
+<!-- HOSTS_LINKS_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). Все файлы включают стандартный локальный loopback-заголовок.</td>
     </tr>
@@ -99,12 +102,13 @@
 </table>
 
 > [!WARNING]
-> Файл `combined.lst` смешивает IP-адреса прокси от разных провайдеров. Не используйте комбинированный список, если какой-либо из прокси-провайдеров ниже в данный момент недоступен (🔴), так как это приведет к сбоям подключения для части доменов. Настоятельно рекомендуется использовать список конкретного провайдера (например, `malw.lst`, `mafioznik.lst` или `geohide.lst`). Для максимальной надежности рекомендуется развернуть собственное решение.
+> Файл `combined.lst` смешивает IP-адреса прокси от разных провайдеров. Не используйте комбинированный список, если какой-либо из прокси-провайдеров ниже в данный момент недоступен (🔴), так как это приведет к сбоям подключения для части доменов. Настоятельно рекомендуется использовать список конкретного провайдера (например, `malw.lst`, `mafioznik.lst`, `geohide-v1.lst` или `geohide-v2.lst`). Для максимальной надежности рекомендуется развернуть собственное решение.
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-🟢 **GeoHide**: 11мс<br>
-🟢 **Mafioznik**: 50мс<br>
+🟢 **GeoHide v1**: 11мс<br>
+🟢 **GeoHide v2**: 11мс<br>
+🟢 **Mafioznik**: 48мс<br>
 🔴 **Malw**: недоступен
 <!-- STATUS_END -->
 

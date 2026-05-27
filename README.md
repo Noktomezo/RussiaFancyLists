@@ -88,10 +88,13 @@ Generated artifacts are organized as follows:
       <td><b>Hosts (SNI Proxy)</b></td>
       <td><code>lists/hosts/</code></td>
       <td>
-        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
+<!-- HOSTS_LINKS_START -->
+        • <a href="./lists/hosts/geohide-v1.lst"><code>geohide-v1.lst</code></a><br>
+        • <a href="./lists/hosts/geohide-v2.lst"><code>geohide-v2.lst</code></a><br>
         • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
-        • <a href="./lists/hosts/geohide.lst"><code>geohide.lst</code></a><br>
+        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
         • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a>
+<!-- HOSTS_LINKS_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies. All files include standard local loopback headers.</td>
     </tr>
@@ -99,12 +102,13 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!WARNING]
-> The `combined.lst` file mixes proxy IP addresses from multiple providers. Avoid using the combined list if any of the proxy providers below are currently unavailable (🔴), as this will cause connection failures for part of the domains. It is highly recommended to use a single-provider hosts list (e.g., `malw.lst`, `mafioznik.lst`, or `geohide.lst`) instead. For absolute reliability and control, you should deploy your own custom setup.
+> The `combined.lst` file mixes proxy IP addresses from multiple providers. Avoid using the combined list if any of the proxy providers below are currently unavailable (🔴), as this will cause connection failures for part of the domains. It is highly recommended to use a single-provider hosts list (e.g., `malw.lst`, `mafioznik.lst`, `geohide-v1.lst`, or `geohide-v2.lst`) instead. For absolute reliability and control, you should deploy your own custom setup.
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-🟢 **GeoHide**: 11ms<br>
-🟢 **Mafioznik**: 50ms<br>
+🟢 **GeoHide v1**: 11ms<br>
+🟢 **GeoHide v2**: 11ms<br>
+🟢 **Mafioznik**: 48ms<br>
 🔴 **Malw**: unavailable
 <!-- STATUS_END -->
 
