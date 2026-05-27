@@ -104,9 +104,25 @@ Generated artifacts are organized as follows:
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
 🟢 **GeoHide**: 10ms<br>
-🟢 **Mafioznik**: 49ms<br>
+🟢 **Mafioznik**: 55ms<br>
 🔴 **Malw**: unavailable
 <!-- STATUS_END -->
+
+## 🔗 Sources
+
+💜 [Antifilter Domain List](https://antifilter.download/list/domains.lst)<br>
+💜 [Antifilter Community Domain List](https://community.antifilter.download/list/domains.lst)<br>
+💜 [Re:filter Domain List](https://raw.githubusercontent.com/1andrevich/Re-filter-lists/refs/heads/main/domains_all.lst)<br>
+💜 [Antifilter IPSet](https://antifilter.download/list/allyouneed.lst)<br>
+💜 [Antifilter Community IPSet](https://community.antifilter.download/list/community.lst)<br>
+💜 [Antifilter Extra IPSet](https://antifilter.download/list/ipresolve.lst)<br>
+💜 [Re:filter IPSet](https://github.com/1andrevich/Re-filter-lists/raw/refs/heads/main/ipsum.lst)<br>
+💜 [ImMALWARE's Hosts](https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts)<br>
+💜 [Mafioznik's Hosts](https://freedom.mafioznik.xyz/file/hosts)<br>
+💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts)<br>
+💜 [ItDogInfo's Geoblock Domains](https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst)<br>
+💜 [Zapret-Manager Shell Script](https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh)<br>
+💜 [CDN IP Ranges](https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt)
 
 &nbsp;
 
