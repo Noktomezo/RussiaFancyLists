@@ -131,3 +131,169 @@ def add_localhost(input_file: Path, output_file: Path):
         
         with open(input_file, 'r', encoding='utf-8') as inf:
             f.write(inf.read())
+
+def get_source_info(file_path: Path):
+    """Parse original hosts file to find the most frequent IP and collect its original domains."""
+    ips = Counter()
+    domains = set()
+    if not file_path.exists():
+        return "127.0.0.1", domains
+    
+    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+        for line in f:
+            line = re.sub(r'#.*', '', line).strip()
+            if not line:
+                continue
+            cols = line.split()
+            if not cols:
+                continue
+            if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::"):
+                continue
+            
+            is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
+            is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', cols[0])
+            
+            if is_ipv4 or is_ipv6:
+                if len(cols) < 2:
+                    continue
+                ip = cols[0]
+                ips[ip] += len(cols[1:])
+                domains_to_process = cols[1:]
+            else:
+                domains_to_process = cols
+                
+            for dom in domains_to_process:
+                dom = dom.lower().strip()
+                domains.add(dom)
+                
+    most_common_ip = "127.0.0.1"
+    if ips:
+        most_common_ip, _ = ips.most_common(1)[0]
+    return most_common_ip, domains
+
+def generate_aligned_hosts(
+    geoblock_file: Path,
+    hosts_temp_dir: Path,
+    output_combined: Path,
+    output_malw: Path,
+    output_mafioznik: Path,
+    blacklist_file: Path
+):
+    """Compile domains from geoblock list into identical hosts lists with original IPs.
+    - malw.lst: all geoblock domains mapped to malw's most frequent IP.
+    - mafioznik.lst: all geoblock domains mapped to mafioznik's most frequent IP.
+    - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice between the two.
+    """
+    import zlib
+    
+    # 1. Load blacklist patterns
+    blacklist_patterns = []
+    with open(blacklist_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        for p in data:
+            py_p = p.replace("[[:space:]]", r"\s")
+            blacklist_patterns.append(re.compile(py_p))
+            
+    # 2. Get source info (most frequent IPs and original domains)
+    malw_ip, malw_orig_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+    mafioznik_ip, mafioznik_orig_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+    
+    ips_list = sorted(list(set([malw_ip, mafioznik_ip])))
+    if not ips_list:
+        ips_list = ["127.0.0.1"]
+        
+    # 3. Load and filter domains from the geoblock list
+    geoblock_domains = []
+    if geoblock_file.exists():
+        with open(geoblock_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                dom = line.strip().lower()
+                if not dom or dom.startswith('#'):
+                    continue
+                
+                # Apply blacklist
+                is_blacklisted = False
+                for p in blacklist_patterns:
+                    if p.search(dom):
+                        is_blacklisted = True
+                        break
+                if is_blacklisted:
+                    continue
+                    
+                # Skip connectivity checks
+                if any(k in dom for k in ("msftconnecttest", "msftncsi", "captive.apple", "connectivitycheck", "detectportal")):
+                    continue
+                    
+                if not re.match(r'^([a-z0-9-]+\.)+[a-z]{2,}$', dom):
+                    continue
+                    
+                parts = dom.split('.')
+                if len(parts) < 2:
+                    continue
+                    
+                geoblock_domains.append(dom)
+                
+    # Sort for deterministic output
+    geoblock_domains = sorted(list(set(geoblock_domains)))
+    
+    def get_brand(dom: str) -> str:
+        parts = dom.split('.')
+        brand = parts[-2]
+        if len(parts) >= 3:
+            penultimate = parts[-2]
+            tld = parts[-1]
+            if penultimate in ("co", "com", "org", "net", "gov", "edu", "mil") and len(tld) in (2, 3):
+                brand = parts[-3]
+        return brand
+        
+    # 4. Group domains for malw.lst, mafioznik.lst, and combined.lst
+    malw_groups = {}
+    mafioznik_groups = {}
+    combined_groups = {}
+    
+    for dom in geoblock_domains:
+        brand = get_brand(dom)
+        
+        # Add to malw.lst
+        malw_groups.setdefault(brand, []).append(dom)
+        
+        # Add to mafioznik.lst
+        mafioznik_groups.setdefault(brand, []).append(dom)
+        
+        # Determine IP for combined.lst
+        is_in_malw = dom in malw_orig_domains
+        is_in_mafioznik = dom in mafioznik_orig_domains
+        
+        if is_in_malw and not is_in_mafioznik:
+            assigned_ip = malw_ip
+        elif is_in_mafioznik and not is_in_malw:
+            assigned_ip = mafioznik_ip
+        elif is_in_malw and is_in_mafioznik:
+            # Stable deterministic pick between the two IPs using Adler32 hash of the domain
+            stable_idx = zlib.adler32(dom.encode('utf-8')) % len(ips_list)
+            assigned_ip = ips_list[stable_idx]
+        else:
+            # Neither (itdog source) - stable deterministic pick
+            stable_idx = zlib.adler32(dom.encode('utf-8')) % len(ips_list)
+            assigned_ip = ips_list[stable_idx]
+            
+        combined_groups.setdefault((assigned_ip, brand), []).append(dom)
+        
+    # 5. Write output files
+    output_malw.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_malw, 'w', encoding='utf-8') as f:
+        for brand in sorted(malw_groups.keys()):
+            dom_list = " ".join(sorted(malw_groups[brand]))
+            f.write(f"{malw_ip} {dom_list}\n")
+            
+    output_mafioznik.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_mafioznik, 'w', encoding='utf-8') as f:
+        for brand in sorted(mafioznik_groups.keys()):
+            dom_list = " ".join(sorted(mafioznik_groups[brand]))
+            f.write(f"{mafioznik_ip} {dom_list}\n")
+            
+    output_combined.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_combined, 'w', encoding='utf-8') as f:
+        for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[0], x[1])):
+            dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
+            f.write(f"{ip} {dom_list}\n")

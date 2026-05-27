@@ -25,7 +25,7 @@ from russiafancylists.config import (
 )
 from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
-from russiafancylists.hosts import merge_hosts, add_localhost
+from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts
 from russiafancylists.ruleset import generate_sing_box_ruleset
 
 console = Console()
@@ -89,35 +89,11 @@ async def run_pipeline():
             
         # --- Stage 2: Merging ---
         console.print("\n[bold purple]Stage 2: Merging lists...[/bold purple]")
-        with Status("[cyan]Merging domains, IPSets, and hosts in parallel...", console=console) as status:
+        with Status("[cyan]Merging domains, IPSets, and geoblocks...", console=console) as status:
+            # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
             await asyncio.gather(
-                # Main lists
                 asyncio.to_thread(merge_lists, TEMP_FOLDER / "domains", PLAIN_LIST_FOLDER / "domains" / "full.lst"),
                 asyncio.to_thread(merge_lists, TEMP_FOLDER / "ipsets", PLAIN_LIST_FOLDER / "ipsets" / "full.lst"),
-                asyncio.to_thread(
-                    merge_hosts,
-                    TEMP_FOLDER / "hosts",
-                    HOSTS_LIST_FOLDER / "combined.lst",
-                    ROOT_DIR / "filters" / "hosts-blacklist.json",
-                    file_pattern="*.lst"
-                ),
-                asyncio.to_thread(
-                    merge_hosts,
-                    TEMP_FOLDER / "hosts",
-                    HOSTS_LIST_FOLDER / "malw.lst",
-                    ROOT_DIR / "filters" / "hosts-blacklist.json",
-                    file_pattern="malw-hosts.lst",
-                    use_original_ips=True
-                ),
-                asyncio.to_thread(
-                    merge_hosts,
-                    TEMP_FOLDER / "hosts",
-                    HOSTS_LIST_FOLDER / "mafioznik.lst",
-                    ROOT_DIR / "filters" / "hosts-blacklist.json",
-                    file_pattern="mafioznik-hosts.lst",
-                    use_original_ips=True
-                ),
-                # Geoblock lists
                 asyncio.to_thread(
                     merge_lists,
                     TEMP_FOLDER / "hosts",
@@ -125,7 +101,19 @@ async def run_pipeline():
                     file_pattern="*.lst"
                 )
             )
-            status.update("[green]✓ Domains, IPSets, and Hosts merged successfully[/green]")
+            status.update("[cyan]Building aligned hosts files from full geoblock list...")
+            
+            # 2. Build aligned hosts files from the completed full geoblock list
+            await asyncio.to_thread(
+                generate_aligned_hosts,
+                GEOBLOCK_FOLDER / "full.lst",
+                TEMP_FOLDER / "hosts",
+                HOSTS_LIST_FOLDER / "combined.lst",
+                HOSTS_LIST_FOLDER / "malw.lst",
+                HOSTS_LIST_FOLDER / "mafioznik.lst",
+                ROOT_DIR / "filters" / "hosts-blacklist.json"
+            )
+            status.update("[green]✓ Domains, IPSets, Geoblocks, and aligned Hosts compiled successfully[/green]")
             
         # --- Stage 3: Dependent Processing ---
         console.print("\n[bold purple]Stage 3: Dependent processing...[/bold purple]")
