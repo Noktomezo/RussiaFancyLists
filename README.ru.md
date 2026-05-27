@@ -87,6 +87,7 @@
       <td>
         • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
         • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
+        • <a href="./lists/hosts/geohide.lst"><code>geohide.lst</code></a><br>
         • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a>
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). Все файлы включают стандартный локальный loopback-заголовок.</td>
