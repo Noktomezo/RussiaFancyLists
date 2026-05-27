@@ -265,8 +265,11 @@ def generate_aligned_hosts(
     mafioznik_groups = {}
     combined_groups = {}
     
+    # Pre-group domains by brand
+    brand_domains = {}
     for dom in geoblock_domains:
         brand = resolved_brands[dom]
+        brand_domains.setdefault(brand, []).append(dom)
         
         # Add to malw.lst
         malw_groups.setdefault(brand, []).append(dom)
@@ -274,24 +277,21 @@ def generate_aligned_hosts(
         # Add to mafioznik.lst
         mafioznik_groups.setdefault(brand, []).append(dom)
         
-        # Determine IP for combined.lst
-        is_in_malw = dom in malw_orig_domains
-        is_in_mafioznik = dom in mafioznik_orig_domains
+    for brand, doms in brand_domains.items():
+        # Determine dominant IP for the brand in combined.lst
+        malw_count = sum(1 for d in doms if d in malw_orig_domains)
+        mafioznik_count = sum(1 for d in doms if d in mafioznik_orig_domains)
         
-        if is_in_malw and not is_in_mafioznik:
+        if malw_count > mafioznik_count:
             assigned_ip = malw_ip
-        elif is_in_mafioznik and not is_in_malw:
+        elif mafioznik_count > malw_count:
             assigned_ip = mafioznik_ip
-        elif is_in_malw and is_in_mafioznik:
-            # Stable deterministic pick between the two IPs using Adler32 hash of the domain
-            stable_idx = zlib.adler32(dom.encode('utf-8')) % len(ips_list)
-            assigned_ip = ips_list[stable_idx]
         else:
-            # Neither (itdog source) - stable deterministic pick
-            stable_idx = zlib.adler32(dom.encode('utf-8')) % len(ips_list)
+            # Tie or neither - stable deterministic pick based on brand name
+            stable_idx = zlib.adler32(brand.encode('utf-8')) % len(ips_list)
             assigned_ip = ips_list[stable_idx]
             
-        combined_groups.setdefault((assigned_ip, brand), []).append(dom)
+        combined_groups.setdefault((assigned_ip, brand), []).extend(doms)
         
     # 5. Write output files
     output_malw.parent.mkdir(parents=True, exist_ok=True)
