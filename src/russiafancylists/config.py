@@ -62,6 +62,11 @@ DOWNLOADS = {
         TEMP_FOLDER / "hosts" / "mafioznik-hosts.lst",
         "Mafioznik's hosts"
     ),
+    "geohide_hosts": (
+        "https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts",
+        TEMP_FOLDER / "hosts" / "geohide-hosts.lst",
+        "GeoHide's hosts"
+    ),
     "itdoginfo_hosts": (
         "https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst",
         TEMP_FOLDER / "hosts" / "itdoginfo-geoblock.lst",

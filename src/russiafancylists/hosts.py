@@ -177,12 +177,14 @@ def generate_aligned_hosts(
     output_combined: Path,
     output_malw: Path,
     output_mafioznik: Path,
+    output_geohide: Path,
     blacklist_file: Path
 ):
     """Compile domains from geoblock list into identical hosts lists with original IPs.
     - malw.lst: all geoblock domains mapped to malw's most frequent IP.
     - mafioznik.lst: all geoblock domains mapped to mafioznik's most frequent IP.
-    - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice between the two.
+    - geohide.lst: all geoblock domains mapped to geohide's most frequent IP.
+    - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice.
     """
     import zlib
     
@@ -197,8 +199,9 @@ def generate_aligned_hosts(
     # 2. Get source info (most frequent IPs and original domains)
     malw_ip, malw_orig_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     mafioznik_ip, mafioznik_orig_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+    geohide_ip, geohide_orig_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
     
-    ips_list = sorted(list(set([malw_ip, mafioznik_ip])))
+    ips_list = sorted(list(set([malw_ip, mafioznik_ip, geohide_ip])))
     if not ips_list:
         ips_list = ["127.0.0.1"]
         
@@ -260,9 +263,10 @@ def generate_aligned_hosts(
                 break
         resolved_brands[dom] = brand
         
-    # 4. Group domains for malw.lst, mafioznik.lst, and combined.lst
+    # 4. Group domains for malw.lst, mafioznik.lst, geohide.lst, and combined.lst
     malw_groups = {}
     mafioznik_groups = {}
+    geohide_groups = {}
     combined_groups = {}
     
     # Pre-group domains by brand
@@ -277,17 +281,31 @@ def generate_aligned_hosts(
         # Add to mafioznik.lst
         mafioznik_groups.setdefault(brand, []).append(dom)
         
+        # Add to geohide.lst
+        geohide_groups.setdefault(brand, []).append(dom)
+        
     for brand, doms in brand_domains.items():
         # Determine dominant IP for the brand in combined.lst
         malw_count = sum(1 for d in doms if d in malw_orig_domains)
         mafioznik_count = sum(1 for d in doms if d in mafioznik_orig_domains)
+        geohide_count = sum(1 for d in doms if d in geohide_orig_domains)
         
-        if malw_count > mafioznik_count:
-            assigned_ip = malw_ip
-        elif mafioznik_count > malw_count:
-            assigned_ip = mafioznik_ip
+        counts = [
+            (malw_count, malw_ip),
+            (mafioznik_count, mafioznik_ip),
+            (geohide_count, geohide_ip)
+        ]
+        counts.sort(key=lambda x: x[0], reverse=True)
+        
+        max_count = counts[0][0]
+        if max_count > 0:
+            top_ips = [ip for count, ip in counts if count == max_count]
+            if len(top_ips) == 1:
+                assigned_ip = top_ips[0]
+            else:
+                stable_idx = zlib.adler32(brand.encode('utf-8')) % len(top_ips)
+                assigned_ip = sorted(top_ips)[stable_idx]
         else:
-            # Tie or neither - stable deterministic pick based on brand name
             stable_idx = zlib.adler32(brand.encode('utf-8')) % len(ips_list)
             assigned_ip = ips_list[stable_idx]
             
@@ -313,6 +331,16 @@ def generate_aligned_hosts(
         for brand in sorted(mafioznik_groups.keys()):
             dom_list = " ".join(sorted(mafioznik_groups[brand]))
             f.write(f"{mafioznik_ip} {dom_list}\n")
+            
+    output_geohide.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_geohide, 'w', encoding='utf-8') as f:
+        f.write("127.0.0.1 localhost\n")
+        f.write("::1 localhost ip6-localhost ip6-loopback\n")
+        f.write("ff02::1 ip6-allnodes\n")
+        f.write("ff02::2 ip6-allrouters\n\n")
+        for brand in sorted(geohide_groups.keys()):
+            dom_list = " ".join(sorted(geohide_groups[brand]))
+            f.write(f"{geohide_ip} {dom_list}\n")
             
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:

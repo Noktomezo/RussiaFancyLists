@@ -118,6 +118,7 @@ async def run_pipeline():
                 HOSTS_LIST_FOLDER / "combined.lst",
                 HOSTS_LIST_FOLDER / "malw.lst",
                 HOSTS_LIST_FOLDER / "mafioznik.lst",
+                HOSTS_LIST_FOLDER / "geohide.lst",
                 ROOT_DIR / "config" / "hosts-blacklist.json"
             )
             status.update("[green]✓ Domains, IPSets, Geoblocks, and aligned Hosts compiled successfully[/green]")
