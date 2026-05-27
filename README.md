@@ -96,8 +96,8 @@ Generated artifacts are organized as follows:
 </table>
 
 <!-- STATUS_START -->
-🟢 **GeoHide**: 9ms
-🟢 **Mafioznik**: 55ms
+🟢 **GeoHide**: 11ms<br>
+🟢 **Mafioznik**: 48ms<br>
 🔴 **Malw**: unavailable
 <!-- STATUS_END -->
 

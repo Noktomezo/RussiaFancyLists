@@ -56,8 +56,8 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
                 status_en.append(f"🟡 **{name}**: {ms}ms (high latency)")
                 status_ru.append(f"🟡 **{name}**: {ms}мс (высокая задержка)")
 
-    en_block = "\n".join(status_en)
-    ru_block = "\n".join(status_ru)
+    en_block = "<br>\n".join(status_en)
+    ru_block = "<br>\n".join(status_ru)
 
     # 4. Update README.md
     readme_en_path = root_dir / "README.md"

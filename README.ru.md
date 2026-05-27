@@ -96,8 +96,8 @@
 </table>
 
 <!-- STATUS_START -->
-🟢 **GeoHide**: 9мс
-🟢 **Mafioznik**: 55мс
+🟢 **GeoHide**: 11мс<br>
+🟢 **Mafioznik**: 48мс<br>
 🔴 **Malw**: недоступен
 <!-- STATUS_END -->
 
