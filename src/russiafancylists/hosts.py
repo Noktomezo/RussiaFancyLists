@@ -296,18 +296,30 @@ def generate_aligned_hosts(
     # 5. Write output files
     output_malw.parent.mkdir(parents=True, exist_ok=True)
     with open(output_malw, 'w', encoding='utf-8') as f:
+        f.write("127.0.0.1 localhost\n")
+        f.write("::1 localhost ip6-localhost ip6-loopback\n")
+        f.write("ff02::1 ip6-allnodes\n")
+        f.write("ff02::2 ip6-allrouters\n\n")
         for brand in sorted(malw_groups.keys()):
             dom_list = " ".join(sorted(malw_groups[brand]))
             f.write(f"{malw_ip} {dom_list}\n")
             
     output_mafioznik.parent.mkdir(parents=True, exist_ok=True)
     with open(output_mafioznik, 'w', encoding='utf-8') as f:
+        f.write("127.0.0.1 localhost\n")
+        f.write("::1 localhost ip6-localhost ip6-loopback\n")
+        f.write("ff02::1 ip6-allnodes\n")
+        f.write("ff02::2 ip6-allrouters\n\n")
         for brand in sorted(mafioznik_groups.keys()):
             dom_list = " ".join(sorted(mafioznik_groups[brand]))
             f.write(f"{mafioznik_ip} {dom_list}\n")
             
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
+        f.write("127.0.0.1 localhost\n")
+        f.write("::1 localhost ip6-localhost ip6-loopback\n")
+        f.write("ff02::1 ip6-allnodes\n")
+        f.write("ff02::2 ip6-allrouters\n\n")
         # Sort by brand name first (x[1]) to ensure mixed IPs throughout the combined list, then by IP (x[0])
         for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
             dom_list = " ".join(sorted(combined_groups[(ip, brand)]))

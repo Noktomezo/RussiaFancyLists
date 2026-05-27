@@ -133,11 +133,7 @@ async def run_pipeline():
                     PLAIN_LIST_FOLDER / "domains" / "full-sld.lst",
                     ROOT_DIR / "filters"
                 ),
-                asyncio.to_thread(
-                    add_localhost,
-                    HOSTS_LIST_FOLDER / "combined.lst",
-                    HOSTS_LIST_FOLDER / "ready-to-use.lst"
-                ),
+
                 asyncio.to_thread(
                     merge_cdn_and_full_ipset,
                     PLAIN_LIST_FOLDER / "ipsets" / "cdn.lst",
