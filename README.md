@@ -99,12 +99,12 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!WARNING]
-> The `combined.lst` file mixes proxy IP addresses from multiple providers. This can lead to unstable behavior and makes debugging extremely difficult because it is impossible to determine which specific proxy provider is experiencing issues; use it for experimental purposes only. In general, it is highly recommended to use a single-provider hosts list (e.g., `malw.lst`, `mafioznik.lst`, or `geohide.lst`) instead. Furthermore, relying on third-party public SNI proxies or Smart DNS services is not recommended for critical environments. For absolute reliability and control, you should deploy your own custom setup. **Anyway, make sure to check the active status and latency of the providers below.**
+> The `combined.lst` file mixes proxy IP addresses from multiple providers. Avoid using the combined list if any of the proxy providers below are currently unavailable (🔴), as this will cause connection failures for part of the domains. It is highly recommended to use a single-provider hosts list (e.g., `malw.lst`, `mafioznik.lst`, or `geohide.lst`) instead. For absolute reliability and control, you should deploy your own custom setup.
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-🟢 **GeoHide**: 10ms<br>
-🟢 **Mafioznik**: 55ms<br>
+🟢 **GeoHide**: 11ms<br>
+🟢 **Mafioznik**: 50ms<br>
 🔴 **Malw**: unavailable
 <!-- STATUS_END -->
 
