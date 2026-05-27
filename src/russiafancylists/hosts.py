@@ -5,6 +5,13 @@ import random
 from pathlib import Path
 from collections import Counter
 
+LOOPBACK_HEADER = (
+    "127.0.0.1 localhost\n"
+    "::1 localhost ip6-localhost ip6-loopback\n"
+    "ff02::1 ip6-allnodes\n"
+    "ff02::2 ip6-allrouters\n\n"
+)
+
 def merge_hosts(input_dir: Path, output_file: Path, blacklist_file: Path, file_pattern: str = "*.lst", use_original_ips: bool = False):
     """Compile domains into hosts.
     - If use_original_ips is True (individual list): all domains are mapped to the single most frequent target IP from that file, grouped by root SLD.
@@ -124,10 +131,7 @@ def add_localhost(input_file: Path, output_file: Path):
     """Prepend local loopback hosts mappings to output file."""
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, 'w', encoding='utf-8') as f:
-        f.write("127.0.0.1 localhost\n")
-        f.write("::1 localhost ip6-localhost ip6-loopback\n")
-        f.write("ff02::1 ip6-allnodes\n")
-        f.write("ff02::2 ip6-allrouters\n\n")
+        f.write(LOOPBACK_HEADER)
         
         with open(input_file, 'r', encoding='utf-8') as inf:
             f.write(inf.read())
@@ -314,40 +318,28 @@ def generate_aligned_hosts(
     # 5. Write output files
     output_malw.parent.mkdir(parents=True, exist_ok=True)
     with open(output_malw, 'w', encoding='utf-8') as f:
-        f.write("127.0.0.1 localhost\n")
-        f.write("::1 localhost ip6-localhost ip6-loopback\n")
-        f.write("ff02::1 ip6-allnodes\n")
-        f.write("ff02::2 ip6-allrouters\n\n")
+        f.write(LOOPBACK_HEADER)
         for brand in sorted(malw_groups.keys()):
             dom_list = " ".join(sorted(malw_groups[brand]))
             f.write(f"{malw_ip} {dom_list}\n")
             
     output_mafioznik.parent.mkdir(parents=True, exist_ok=True)
     with open(output_mafioznik, 'w', encoding='utf-8') as f:
-        f.write("127.0.0.1 localhost\n")
-        f.write("::1 localhost ip6-localhost ip6-loopback\n")
-        f.write("ff02::1 ip6-allnodes\n")
-        f.write("ff02::2 ip6-allrouters\n\n")
+        f.write(LOOPBACK_HEADER)
         for brand in sorted(mafioznik_groups.keys()):
             dom_list = " ".join(sorted(mafioznik_groups[brand]))
             f.write(f"{mafioznik_ip} {dom_list}\n")
             
     output_geohide.parent.mkdir(parents=True, exist_ok=True)
     with open(output_geohide, 'w', encoding='utf-8') as f:
-        f.write("127.0.0.1 localhost\n")
-        f.write("::1 localhost ip6-localhost ip6-loopback\n")
-        f.write("ff02::1 ip6-allnodes\n")
-        f.write("ff02::2 ip6-allrouters\n\n")
+        f.write(LOOPBACK_HEADER)
         for brand in sorted(geohide_groups.keys()):
             dom_list = " ".join(sorted(geohide_groups[brand]))
             f.write(f"{geohide_ip} {dom_list}\n")
             
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
-        f.write("127.0.0.1 localhost\n")
-        f.write("::1 localhost ip6-localhost ip6-loopback\n")
-        f.write("ff02::1 ip6-allnodes\n")
-        f.write("ff02::2 ip6-allrouters\n\n")
+        f.write(LOOPBACK_HEADER)
         # Sort by brand name first (x[1]) to ensure mixed IPs throughout the combined list, then by IP (x[0])
         for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
             dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
