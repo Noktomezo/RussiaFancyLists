@@ -94,8 +94,7 @@ async def run_pipeline():
             await asyncio.to_thread(
                 parse_zapret_sh,
                 TEMP_FOLDER / "zapret-manager.sh",
-                TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst",
-                ROOT_DIR / "config" / "apex-suffixes.json"
+                TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst"
             )
             
             # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
