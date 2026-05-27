@@ -325,14 +325,25 @@ def generate_aligned_hosts(
             dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
             f.write(f"{ip} {dom_list}\n")
 
-def parse_zapret_sh(input_sh: Path, output_lst: Path):
+def parse_zapret_sh(input_sh: Path, output_lst: Path, apex_suffixes_file: Path):
     """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
     import re
+    import json
     if not input_sh.exists():
         raise FileNotFoundError(
             f"Zapret source file (input_sh) not found at '{input_sh}'. "
             f"This prevents compiling the parsed hosts list '{output_lst}'."
         )
+        
+    if not apex_suffixes_file.exists():
+        raise FileNotFoundError(
+            f"Apex suffixes configuration file not found at '{apex_suffixes_file}'."
+        )
+        
+    with open(apex_suffixes_file, 'r', encoding='utf-8') as sf:
+        suffixes = json.load(sf)
+        if not isinstance(suffixes, list):
+            raise ValueError(f"Invalid format in apex suffixes file '{apex_suffixes_file}': expected a JSON list.")
         
     with open(input_sh, 'r', encoding='utf-8', errors='ignore') as f:
         text = f.read()
@@ -371,7 +382,6 @@ def parse_zapret_sh(input_sh: Path, output_lst: Path):
                 if clean_domains:
                     # Automatically add apex domains for specified suffixes if subdomains are present
                     apexes_to_add = set()
-                    suffixes = ["githubusercontent.com", "nalog.ru", "rus.ec", "spotifycdn.com", "xbox.com"]
                     for cd in clean_domains:
                         for suff in suffixes:
                             if cd.endswith("." + suff) and cd != suff:

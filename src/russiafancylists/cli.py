@@ -94,7 +94,8 @@ async def run_pipeline():
             await asyncio.to_thread(
                 parse_zapret_sh,
                 TEMP_FOLDER / "zapret-manager.sh",
-                TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst"
+                TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst",
+                ROOT_DIR / "config" / "apex-suffixes.json"
             )
             
             # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
@@ -118,7 +119,7 @@ async def run_pipeline():
                 HOSTS_LIST_FOLDER / "combined.lst",
                 HOSTS_LIST_FOLDER / "malw.lst",
                 HOSTS_LIST_FOLDER / "mafioznik.lst",
-                ROOT_DIR / "filters" / "hosts-blacklist.json"
+                ROOT_DIR / "config" / "hosts-blacklist.json"
             )
             status.update("[green]✓ Domains, IPSets, Geoblocks, and aligned Hosts compiled successfully[/green]")
             
@@ -131,7 +132,7 @@ async def run_pipeline():
                     cleanup_domains,
                     PLAIN_LIST_FOLDER / "domains" / "full.lst",
                     PLAIN_LIST_FOLDER / "domains" / "full-sld.lst",
-                    ROOT_DIR / "filters"
+                    ROOT_DIR / "config"
                 ),
 
                 asyncio.to_thread(
@@ -145,7 +146,7 @@ async def run_pipeline():
                     cleanup_domains,
                     GEOBLOCK_FOLDER / "full.lst",
                     GEOBLOCK_FOLDER / "full-sld.lst",
-                    ROOT_DIR / "filters"
+                    ROOT_DIR / "config"
                 )
             )
             status.update("[green]✓ Dependent processing completed[/green]")

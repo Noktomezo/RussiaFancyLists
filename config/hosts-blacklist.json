@@ -1,0 +1,6 @@
+[
+  "(^|[[:space:]])www\\.msftconnecttest\\.com([[:space:]]|$)",
+  "(^|[[:space:]])ipv6\\.msftconnecttest\\.com([[:space:]]|$)",
+  "(^|[[:space:]])www\\.msftncsi\\.com([[:space:]]|$)",
+  "(^|[[:space:]])ipv6\\.msftncsi\\.com([[:space:]]|$)"
+]
