@@ -87,10 +87,9 @@ Generated artifacts are organized as follows:
       <td>
         • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
         • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
-        • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a><br>
-        • <a href="./lists/hosts/ready-to-use.lst"><code>ready-to-use.lst</code></a>
+        • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a>
       </td>
-      <td>Hosts-format mappings routing blocked domains through free public SNI proxies. <code>ready-to-use.lst</code> includes standard local loopback headers.</td>
+      <td>Hosts-format mappings routing blocked domains through free public SNI proxies. All files include standard local loopback headers.</td>
     </tr>
   </tbody>
 </table>
