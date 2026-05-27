@@ -27,6 +27,7 @@ from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
 from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts, parse_zapret_sh
 from russiafancylists.ruleset import generate_sing_box_ruleset
+from russiafancylists.status import update_readme_status
 
 console = Console()
 
@@ -149,7 +150,9 @@ async def run_pipeline():
                     ROOT_DIR / "config"
                 )
             )
-            status.update("[green]✓ Dependent processing completed[/green]")
+            status.update("[cyan]Measuring SNI proxy latencies and updating README status...")
+            await update_readme_status(TEMP_FOLDER / "hosts", ROOT_DIR)
+            status.update("[green]✓ Dependent processing and status checks completed[/green]")
             
         # --- Stage 4: sing-box Rule-sets ---
         console.print("\n[bold purple]Stage 4: Generating sing-box rulesets...[/bold purple]")
