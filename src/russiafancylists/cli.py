@@ -25,7 +25,7 @@ from russiafancylists.config import (
 )
 from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
-from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts
+from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts, parse_zapret_sh
 from russiafancylists.ruleset import generate_sing_box_ruleset
 
 console = Console()
@@ -89,7 +89,14 @@ async def run_pipeline():
             
         # --- Stage 2: Merging ---
         console.print("\n[bold purple]Stage 2: Merging lists...[/bold purple]")
-        with Status("[cyan]Merging domains, IPSets, and geoblocks...", console=console) as status:
+        with Status("[cyan]Parsing shell scripts and merging domains...", console=console) as status:
+            # 0. Parse downloaded Zapret-Manager.sh file into a standard hosts-formatted .lst file
+            await asyncio.to_thread(
+                parse_zapret_sh,
+                TEMP_FOLDER / "zapret-manager.sh",
+                TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst"
+            )
+            
             # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
             await asyncio.gather(
                 asyncio.to_thread(merge_lists, TEMP_FOLDER / "domains", PLAIN_LIST_FOLDER / "domains" / "full.lst"),

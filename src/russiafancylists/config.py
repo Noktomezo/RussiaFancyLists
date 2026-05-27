@@ -67,6 +67,11 @@ DOWNLOADS = {
         TEMP_FOLDER / "hosts" / "itdoginfo-geoblock.lst",
         "ItDogInfo's geoblock domains"
     ),
+    "zapret_manager_sh": (
+        "https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh",
+        TEMP_FOLDER / "zapret-manager.sh",
+        "Zapret-Manager shell script"
+    ),
     # CDN IP Ranges (direct to plain folder)
     "cdn_ip_ranges": (
         "https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt",

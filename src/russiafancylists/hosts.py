@@ -312,3 +312,51 @@ def generate_aligned_hosts(
         for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
             dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
             f.write(f"{ip} {dom_list}\n")
+
+def parse_zapret_sh(input_sh: Path, output_lst: Path):
+    """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
+    import re
+    if not input_sh.exists():
+        return
+        
+    with open(input_sh, 'r', encoding='utf-8', errors='ignore') as f:
+        text = f.read()
+        
+    # Replace escaped newlines with actual newlines
+    text = text.replace('\\n', '\n')
+    
+    # Split into lines
+    lines = text.split('\n')
+    parsed_lines = []
+    
+    for line in lines:
+        # Strip comments and outer quotes/spaces
+        line = re.sub(r'#.*', '', line).strip('\"\' ')
+        
+        # Split by semicolon since bash separates commands with them
+        parts = line.split(';')
+        for part in parts:
+            cols = part.strip().split()
+            if not cols:
+                continue
+                
+            # Clean quotes/braces from the first column (potential IP)
+            first = cols[0].strip('\"\'')
+            is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', first)
+            is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', first) and ':' in first
+            
+            if is_ipv4 or is_ipv6:
+                clean_domains = []
+                for d in cols[1:]:
+                    d = d.strip('\"\' ').lower()
+                    # Clean trailing quotes/slashes/brackets
+                    d = re.sub(r'[\"\'\\/]*$', '', d)
+                    if d and '.' in d and '$' not in d:
+                        clean_domains.append(d)
+                if clean_domains:
+                    parsed_lines.append(f"{first} " + " ".join(clean_domains))
+                    
+    output_lst.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_lst, 'w', encoding='utf-8') as f:
+        for pl in parsed_lines:
+            f.write(pl + '\n')

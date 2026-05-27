@@ -64,6 +64,8 @@
 77.239.114.0 capacitorjs.com
 103.27.157.38 carrefouruae.com
 77.239.114.0 cats.com
+103.27.157.38 scontent-hel3-1.cdninstagram.com
+77.239.114.0 scontent.cdninstagram.com static.cdninstagram.com
 77.239.114.0 cdromance.org
 103.27.157.38 cdw.com
 77.239.114.0 chainreactioncycles.com
@@ -122,8 +124,13 @@
 103.27.157.38 expandrive.com
 103.27.157.38 extremetech.com
 77.239.114.0 f1.com
-77.239.114.0 z-p42-chat-e2ee-ig.facebook.com
+103.27.157.38 facebook.com
+77.239.114.0 www.facebook.com z-p42-chat-e2ee-ig.facebook.com
 103.27.157.38 fast.com
+103.27.157.38 fb.com
+103.27.157.38 scontent-hel3-1.xx.fbcdn.net
+77.239.114.0 scontent.xx.fbcdn.net static.xx.fbcdn.net
+77.239.114.0 fbsbx.com
 77.239.114.0 filebin.net
 103.27.157.38 api.fitbit.com
 77.239.114.0 fivetran.com
@@ -148,14 +155,14 @@
 103.27.157.38 gfn.am
 77.239.114.0 code.gist.build
 77.239.114.0 dashboard.gitguardian.com
-103.27.157.38 api.individual.githubcopilot.com proxy.individual.githubcopilot.com
-77.239.114.0 api.github.com
+103.27.157.38 api.individual.githubcopilot.com gist.githubusercontent.com proxy.individual.githubcopilot.com release-assets.githubusercontent.com
+77.239.114.0 api.github.com avatars.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com
 77.239.114.0 glpals.com
 103.27.157.38 gofund.me
 77.239.114.0 gofundme.com
 77.239.114.0 gonift.com
 103.27.157.38 fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com news.google.com robinfrontend-pa.googleapis.com
-77.239.114.0 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit.google.com lookerstudio.google.com notebooklm.google.com proactivebackend-pa.googleapis.com suggestqueries.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+77.239.114.0 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit.google.com labs.google.com lookerstudio.google.com notebooklm.google.com proactivebackend-pa.googleapis.com suggestqueries.google.com webchannel-alkalimakersuite-pa.clients6.google.com
 77.239.114.0 gpsonextra.net
 103.27.157.38 gpu-monkey.com
 103.27.157.38 grafana.com
@@ -190,7 +197,8 @@
 103.27.157.38 ikea.com
 103.27.157.38 api.imgur.com imgur.com
 77.239.114.0 indeed.com
-77.239.114.0 b.i.instagram.com help.instagram.com instagram.com www.instagram.com
+103.27.157.38 api.instagram.com edge-chat.instagram.com graph.instagram.com
+77.239.114.0 b.i.instagram.com help.instagram.com i.instagram.com instagram.com www.instagram.com
 103.27.157.38 intel.com intel.de www.intel.de
 77.239.114.0 intel.nl www.intel.com
 103.27.157.38 intercom.io
@@ -250,6 +258,7 @@
 103.27.157.38 myjetbrains.com
 103.27.157.38 myparallels.com
 103.27.157.38 myqrcode.com
+103.27.157.38 lkfl2.nalog.ru lknpd.nalog.ru
 77.239.114.0 nba.com
 103.27.157.38 neo4j.com
 103.27.157.38 netacad.com
@@ -337,7 +346,9 @@
 103.27.157.38 remove.bg
 77.239.114.0 research.net
 103.27.157.38 reve.art
-77.239.114.0 d.rutor.info
+103.27.157.38 lib.rus.ec
+77.239.114.0 www.lib.rus.ec
+77.239.114.0 d.rutor.info rutor.info
 103.27.157.38 salesforce-experience.com salesforce-scrt.com salesforce-sites.com salesforceliveagent.com
 77.239.114.0 salesforce-hub.com salesforce-setup.com salesforce.com salesforceiq.com
 77.239.114.0 accounts.scdn.co encore.scdn.co www-growth.scdn.co
@@ -373,7 +384,7 @@
 103.27.157.38 spiceworks.com
 103.27.157.38 spitfireaudio.com
 103.27.157.38 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api.spotify.com appresolve.spotify.com login.app.spotify.com login5.spotify.com open.spotify.com spclient.wg.spotify.com spotify.com xpui.app.spotify.com
-77.239.114.0 api-partner.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com www.spotify.com
+77.239.114.0 api-partner.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com open-exp.spotifycdn.com www.spotify.com
 103.27.157.38 squadbustersgame.com
 77.239.114.0 game.squadbustersgame.com
 103.27.157.38 api-global.squareup.com api.squareup.com squareup.com
@@ -385,14 +396,19 @@
 77.239.114.0 swagger.io
 103.27.157.38 swapd.co
 103.27.157.38 synoforum.com
+77.239.114.0 t.me
 103.27.157.38 tableau.com
 77.239.114.0 controlplane.tailscale.com pkgs.tailscale.com
 103.27.157.38 talosintelligence.com
 77.239.114.0 teamviewer.com
 77.239.114.0 techbargains.com
+103.27.157.38 api.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org
+77.239.114.0 core.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org venus.web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 77.239.114.0 telemetr.io
+77.239.114.0 telesco.pe
 103.27.157.38 tempmail.plus
 77.239.114.0 terraform.io
+77.239.114.0 tg.dev
 77.239.114.0 theaudiodb.com
 103.27.157.38 api.themoviedb.org themoviedb.org
 77.239.114.0 ti.com
@@ -447,7 +463,7 @@
 77.239.114.0 wpengine.com
 103.27.157.38 wunderground.com
 77.239.114.0 accounts.x.ai grok.x.com x-minus.pro x.ai
-77.239.114.0 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
+77.239.114.0 xboxdesignlab.xbox.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
 77.239.114.0 support.xerox.com
 103.27.157.38 xiaomi.eu
 103.27.157.38 xrite.com
