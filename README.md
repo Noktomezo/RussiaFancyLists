@@ -6,6 +6,9 @@
 
 ## 👀 Content
 
+> [!NOTE]
+> 🤖 **Automated Updates**: Lists are updated every 3 hours (including 21:00 UTC) via GitHub Actions. Only pushes when lists actually change.
+
 Generated artifacts are organized as follows:
 
 <table>
@@ -101,12 +104,9 @@ Generated artifacts are organized as follows:
 ### ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
 🟢 **GeoHide**: 10ms<br>
-🟢 **Mafioznik**: 55ms<br>
+🟢 **Mafioznik**: 53ms<br>
 🔴 **Malw**: unavailable
 <!-- STATUS_END -->
-
-> [!NOTE]
-> 🤖 **Automated Updates**: Lists are updated every 3 hours (including 21:00 UTC) via GitHub Actions. Only pushes when lists actually change.
 
 &nbsp;
 
