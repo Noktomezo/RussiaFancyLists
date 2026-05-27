@@ -137,7 +137,7 @@ def get_source_info(file_path: Path):
     ips = Counter()
     domains = set()
     if not file_path.exists():
-        return "127.0.0.1", domains
+        raise FileNotFoundError(f"Source hosts file not found at '{file_path}'. This indicates an upstream download/parse failure.")
     
     with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
         for line in f:
@@ -166,9 +166,9 @@ def get_source_info(file_path: Path):
                 dom = dom.lower().strip()
                 domains.add(dom)
                 
-    most_common_ip = "127.0.0.1"
-    if ips:
-        most_common_ip, _ = ips.most_common(1)[0]
+    if not ips:
+        raise ValueError(f"No valid IP addresses could be parsed from source hosts file at '{file_path}'. The file might be empty or malformed.")
+    most_common_ip, _ = ips.most_common(1)[0]
     return most_common_ip, domains
 
 def generate_aligned_hosts(
@@ -329,7 +329,10 @@ def parse_zapret_sh(input_sh: Path, output_lst: Path):
     """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
     import re
     if not input_sh.exists():
-        return
+        raise FileNotFoundError(
+            f"Zapret source file (input_sh) not found at '{input_sh}'. "
+            f"This prevents compiling the parsed hosts list '{output_lst}'."
+        )
         
     with open(input_sh, 'r', encoding='utf-8', errors='ignore') as f:
         text = f.read()
@@ -366,6 +369,17 @@ def parse_zapret_sh(input_sh: Path, output_lst: Path):
                     if d and '.' in d and '$' not in d:
                         clean_domains.append(d)
                 if clean_domains:
+                    # Automatically add apex domains for specified suffixes if subdomains are present
+                    apexes_to_add = set()
+                    suffixes = ["githubusercontent.com", "nalog.ru", "rus.ec", "spotifycdn.com", "xbox.com"]
+                    for cd in clean_domains:
+                        for suff in suffixes:
+                            if cd.endswith("." + suff) and cd != suff:
+                                apexes_to_add.add(suff)
+                    for apex in apexes_to_add:
+                        if apex not in clean_domains:
+                            clean_domains.append(apex)
+                            
                     parsed_lines.append(f"{first} " + " ".join(clean_domains))
                     
     output_lst.parent.mkdir(parents=True, exist_ok=True)
