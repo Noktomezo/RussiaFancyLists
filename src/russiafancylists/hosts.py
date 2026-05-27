@@ -236,7 +236,7 @@ def generate_aligned_hosts(
     # Sort for deterministic output
     geoblock_domains = sorted(list(set(geoblock_domains)))
     
-    def get_brand(dom: str) -> str:
+    def get_raw_brand(dom: str) -> str:
         parts = dom.split('.')
         brand = parts[-2]
         if len(parts) >= 3:
@@ -244,7 +244,21 @@ def generate_aligned_hosts(
             tld = parts[-1]
             if penultimate in ("co", "com", "org", "net", "gov", "edu", "mil") and len(tld) in (2, 3):
                 brand = parts[-3]
+        if '-' in brand:
+            brand = brand.split('-')[0]
         return brand
+        
+    raw_brands = {get_raw_brand(d) for d in geoblock_domains}
+    
+    # Resolve base brands by matching prefixes
+    resolved_brands = {}
+    for dom in geoblock_domains:
+        brand = get_raw_brand(dom)
+        for known in sorted(list(raw_brands), key=len):
+            if brand != known and brand.startswith(known) and len(known) >= 4:
+                brand = known
+                break
+        resolved_brands[dom] = brand
         
     # 4. Group domains for malw.lst, mafioznik.lst, and combined.lst
     malw_groups = {}
@@ -252,7 +266,7 @@ def generate_aligned_hosts(
     combined_groups = {}
     
     for dom in geoblock_domains:
-        brand = get_brand(dom)
+        brand = resolved_brands[dom]
         
         # Add to malw.lst
         malw_groups.setdefault(brand, []).append(dom)
@@ -294,6 +308,7 @@ def generate_aligned_hosts(
             
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
-        for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[0], x[1])):
+        # Sort by brand name first (x[1]) to ensure mixed IPs throughout the combined list, then by IP (x[0])
+        for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
             dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
             f.write(f"{ip} {dom_list}\n")

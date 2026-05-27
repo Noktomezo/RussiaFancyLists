@@ -8,17 +8,14 @@
 77.239.114.0 ai.com
 77.239.114.0 aircanada.com
 77.239.114.0 azwindows.ipv6.microsoft.com.akadns.net www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
-77.239.114.0 a1961.g2.akamai.net a1968.i6g1.akamai.net
-77.239.114.0 e13678.dscb.akamaiedge.net
-77.239.114.0 a-vrv.akamaized.net
+77.239.114.0 a-vrv.akamaized.net a1961.g2.akamai.net a1968.i6g1.akamai.net e13678.dscb.akamaiedge.net
 77.239.114.0 akc.org
 77.239.114.0 dashboard.algolia.com
 77.239.114.0 all3dp.com
 77.239.114.0 alphacoders.com
 77.239.114.0 alza.hu
 77.239.114.0 amazfitwatchfaces.com
-77.239.114.0 gaming.amazon.com
-77.239.114.0 notion-emojis.s3-us-west-2.amazonaws.com
+77.239.114.0 gaming.amazon.com notion-emojis.s3-us-west-2.amazonaws.com
 77.239.114.0 amplitude.com
 77.239.114.0 analog.com
 77.239.114.0 andrevi.ch
@@ -43,9 +40,7 @@
 77.239.114.0 bitnami.com
 77.239.114.0 exchanger.bits.media
 77.239.114.0 blinkshot.io
-77.239.114.0 bosch.com
-77.239.114.0 boschaftermarket.com
-77.239.114.0 boschautoparts.com
+77.239.114.0 bosch.com boschaftermarket.com boschautoparts.com
 77.239.114.0 ai-chat.bsg.brave.com
 77.239.114.0 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
 77.239.114.0 access.broadcom.com broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
@@ -63,8 +58,7 @@
 77.239.114.0 cdw.com
 77.239.114.0 chainreactioncycles.com
 77.239.114.0 chaos.com
-77.239.114.0 chat.com
-77.239.114.0 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+77.239.114.0 ab.chatgpt.com chat.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 77.239.114.0 cisco.com
 77.239.114.0 cisecurity.org
 77.239.114.0 citrix.com
@@ -83,14 +77,12 @@
 77.239.114.0 cpu-monkey.com
 77.239.114.0 credly.com
 77.239.114.0 backend-v2.crixet.com
-77.239.114.0 crunchyroll.com
-77.239.114.0 vod-fy.crunchyrollcdn.com
+77.239.114.0 crunchyroll.com vod-fy.crunchyrollcdn.com
 77.239.114.0 cvedetails.com
 77.239.114.0 daemon-tools.cc
 77.239.114.0 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 77.239.114.0 deezer.com payment.deezer.com www.deezer.com
-77.239.114.0 dds.dell.com dell.com i.dell.com nexus.dell.com www.dell.com
-77.239.114.0 afcs.dellcdn.com dellcdn.com
+77.239.114.0 afcs.dellcdn.com dds.dell.com dell.com dellcdn.com i.dell.com nexus.dell.com www.dell.com
 77.239.114.0 devexpress.com
 77.239.114.0 diabrowser.com
 77.239.114.0 digitalcontent.sky
@@ -118,12 +110,10 @@
 77.239.114.0 fivetran.com
 77.239.114.0 flir.com flir.eu
 77.239.114.0 flourish.studio
-77.239.114.0 fluke.com
-77.239.114.0 flukenetworks.com
+77.239.114.0 fluke.com flukenetworks.com
 77.239.114.0 flyertalk.com
 77.239.114.0 global.fncstatic.com
-77.239.114.0 force.com
-77.239.114.0 force-user-content.com
+77.239.114.0 force-user-content.com force.com
 77.239.114.0 formula1.com
 77.239.114.0 framer.com
 77.239.114.0 freeimages.com
@@ -137,14 +127,11 @@
 77.239.114.0 gfn.am
 77.239.114.0 code.gist.build
 77.239.114.0 dashboard.gitguardian.com
-77.239.114.0 api.github.com
-77.239.114.0 api.individual.githubcopilot.com proxy.individual.githubcopilot.com
+77.239.114.0 api.github.com api.individual.githubcopilot.com proxy.individual.githubcopilot.com
 77.239.114.0 glpals.com
-77.239.114.0 gofund.me
-77.239.114.0 gofundme.com
+77.239.114.0 gofund.me gofundme.com
 77.239.114.0 gonift.com
-77.239.114.0 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com lookerstudio.google.com news.google.com notebooklm.google.com suggestqueries.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-77.239.114.0 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+77.239.114.0 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com lookerstudio.google.com news.google.com notebooklm.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com suggestqueries.google.com webchannel-alkalimakersuite-pa.clients6.google.com
 77.239.114.0 gpsonextra.net
 77.239.114.0 gpu-monkey.com
 77.239.114.0 grafana.com
@@ -162,8 +149,7 @@
 77.239.114.0 hc-ping.com
 77.239.114.0 hchk.io
 77.239.114.0 healthline.com
-77.239.114.0 assets.heroku.com
-77.239.114.0 herokucdn.com
+77.239.114.0 assets.heroku.com herokucdn.com
 77.239.114.0 hollisterco.com
 77.239.114.0 home-connect.com
 77.239.114.0 hostinger.com
@@ -181,10 +167,8 @@
 77.239.114.0 indeed.com
 77.239.114.0 b.i.instagram.com help.instagram.com instagram.com www.instagram.com
 77.239.114.0 intel.com intel.de intel.nl www.intel.com www.intel.de
-77.239.114.0 intercom.io
-77.239.114.0 downloads.intercomcdn.com
-77.239.114.0 intuit.com
-77.239.114.0 intuitibits.com
+77.239.114.0 downloads.intercomcdn.com intercom.io
+77.239.114.0 intuit.com intuitibits.com
 77.239.114.0 itninja.com
 77.239.114.0 jamf.com
 77.239.114.0 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.com jetbrains.space plugins.jetbrains.com
@@ -240,9 +224,7 @@
 77.239.114.0 neo4j.com
 77.239.114.0 netacad.com
 77.239.114.0 netapp.com
-77.239.114.0 netflix.ca netflix.com netflix.net
-77.239.114.0 netflixinvestor.com
-77.239.114.0 netflixtechblog.com
+77.239.114.0 netflix.ca netflix.com netflix.net netflixinvestor.com netflixtechblog.com
 77.239.114.0 forum.netgate.com
 77.239.114.0 netlify.com
 77.239.114.0 newark.com
@@ -252,8 +234,7 @@
 77.239.114.0 nflxsearch.net
 77.239.114.0 nflxso.net
 77.239.114.0 nflxvideo.net
-77.239.114.0 ngrok.com
-77.239.114.0 connect.ngrok-agent.com
+77.239.114.0 connect.ngrok-agent.com ngrok.com
 77.239.114.0 ni.com
 77.239.114.0 nike.com
 77.239.114.0 nitropdf.com
@@ -261,8 +242,7 @@
 77.239.114.0 nordcdn.com
 77.239.114.0 nordvpn.com
 77.239.114.0 notebooklm.google
-77.239.114.0 calendar.notion.so notion.com notion.new notion.site notion.so www.notion.so
-77.239.114.0 notion-static.com
+77.239.114.0 calendar.notion.so notion-static.com notion.com notion.new notion.site notion.so www.notion.so
 77.239.114.0 ntc.party
 77.239.114.0 developer.nvidia.com install.launcher.omniverse.nvidia.com
 77.239.114.0 nxp.com
@@ -279,20 +259,16 @@
 77.239.114.0 openh264.org
 77.239.114.0 openrouter.ai
 77.239.114.0 clip.opus.pro
-77.239.114.0 oracle.com
-77.239.114.0 oraclecloud.com
-77.239.114.0 paddle.com
-77.239.114.0 paddlestatus.com
+77.239.114.0 oracle.com oraclecloud.com
+77.239.114.0 paddle.com paddlestatus.com
 77.239.114.0 pandasecurity.com
-77.239.114.0 parallels.cn parallels.com parallels.net
-77.239.114.0 parallelsaccess.com
+77.239.114.0 parallels.cn parallels.com parallels.net parallelsaccess.com
 77.239.114.0 paritydeals.com
 77.239.114.0 builds.parsec.app public.parsec.app
 77.239.114.0 patreon.com www.patreon.com
 77.239.114.0 pcgamesn.com
 77.239.114.0 pcmag.com
-77.239.114.0 penguin.com
-77.239.114.0 penguinrandomhouse.com
+77.239.114.0 penguin.com penguinrandomhouse.com
 77.239.114.0 pexels.com
 77.239.114.0 philiascans.org
 77.239.114.0 pingdom.com
@@ -316,21 +292,13 @@
 77.239.114.0 qwant.com www.qwant.com
 77.239.114.0 reactflow.dev
 77.239.114.0 recraft.ai
-77.239.114.0 redis.io
-77.239.114.0 redislabs.com
+77.239.114.0 redis.io redislabs.com
 77.239.114.0 remna.st
 77.239.114.0 remove.bg
 77.239.114.0 research.net
 77.239.114.0 reve.art
 77.239.114.0 d.rutor.info
-77.239.114.0 salesforce.com
-77.239.114.0 salesforce-experience.com
-77.239.114.0 salesforce-hub.com
-77.239.114.0 salesforce-scrt.com
-77.239.114.0 salesforce-setup.com
-77.239.114.0 salesforce-sites.com
-77.239.114.0 salesforceiq.com
-77.239.114.0 salesforceliveagent.com
+77.239.114.0 salesforce-experience.com salesforce-hub.com salesforce-scrt.com salesforce-setup.com salesforce-sites.com salesforce.com salesforceiq.com salesforceliveagent.com
 77.239.114.0 accounts.scdn.co encore.scdn.co www-growth.scdn.co
 77.239.114.0 schneider-electric.com
 77.239.114.0 sdxcentral.com
@@ -343,8 +311,7 @@
 77.239.114.0 sfdcopens.com
 77.239.114.0 shinyhardware.co.uk
 77.239.114.0 singlekey-id.com
-77.239.114.0 site.com
-77.239.114.0 siteground.com
+77.239.114.0 site.com siteground.com
 77.239.114.0 sketchup.com
 77.239.114.0 sky.com
 77.239.114.0 skycdp.com
@@ -429,8 +396,7 @@
 77.239.114.0 miracleptr.wordpress.com
 77.239.114.0 wpengine.com
 77.239.114.0 wunderground.com
-77.239.114.0 accounts.x.ai grok.x.com x.ai
-77.239.114.0 x-minus.pro
+77.239.114.0 accounts.x.ai grok.x.com x-minus.pro x.ai
 77.239.114.0 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
 77.239.114.0 support.xerox.com
 77.239.114.0 xiaomi.eu
