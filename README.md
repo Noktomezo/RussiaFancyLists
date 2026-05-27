@@ -95,6 +95,9 @@ Generated artifacts are organized as follows:
   </tbody>
 </table>
 
+> [!CAUTION]
+> ⚠️ **Combined List Instability**: The `combined.lst` file mixes proxy IP addresses from multiple providers. This can lead to unstable behavior and makes debugging extremely difficult because it is impossible to determine which specific proxy provider is experiencing issues. It is highly recommended to use a single-provider hosts list (e.g., `malw.lst`, `mafioznik.lst`, or `geohide.lst`) instead.
+
 > [!NOTE]
 > 🤖 **Automated Updates**: Lists are updated every 3 hours (including 21:00 UTC) via GitHub Actions. Only pushes when lists actually change.
 
