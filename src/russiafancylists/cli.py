@@ -25,7 +25,7 @@ from russiafancylists.config import (
 )
 from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
-from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts, parse_zapret_sh
+from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts, parse_zapret_sh, clean_source_hosts_files
 from russiafancylists.ruleset import generate_sing_box_ruleset
 from russiafancylists.status import update_readme_status, update_readme_hosts_links
 
@@ -96,6 +96,12 @@ async def run_pipeline():
                 parse_zapret_sh,
                 TEMP_FOLDER / "zapret-manager.sh",
                 TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst"
+            )
+            
+            # Filter out non-primary/differing IP domains from source files before merging
+            await asyncio.to_thread(
+                clean_source_hosts_files,
+                TEMP_FOLDER / "hosts"
             )
             
             # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
