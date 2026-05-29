@@ -5,7 +5,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Direct addresses
-103.27.157.38 web.archive.org
 31.25.239.132 game.boombeachgame.com
 185.246.223.127 game.brawlstarsgame.com
 31.25.239.132 game-assets.brawlstarsgame.com
@@ -39,8 +38,6 @@ ff02::2 ip6-allrouters
 173.245.59.219 rutor.info rutor.is
 108.61.167.26 game.squadbustersgame.com
 31.25.239.132 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-103.27.157.38 controlplane.tailscale.com
-103.27.157.38 static-assets-1.truthsocial.com truthsocial.com
 62.133.62.97 aitestkitchen.withgoogle.com stitch.withgoogle.com
 
 # Geoblock
@@ -148,6 +145,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 arc.net
 45.155.204.190 arc.net
 77.239.114.0 arc.net
+103.27.157.38 web.archive.org
+37.230.192.51 web.archive.org
+45.155.204.190 web.archive.org
+77.239.114.0 web.archive.org
 103.27.157.38 arduino.cc
 37.230.192.51 arduino.cc
 45.155.204.190 arduino.cc
@@ -1448,10 +1449,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 tableau.com www.tableau.com
 45.155.204.190 tableau.com www.tableau.com
 77.239.114.0 tableau.com www.tableau.com
-103.27.157.38 pkgs.tailscale.com
-37.230.192.51 pkgs.tailscale.com
-45.155.204.190 pkgs.tailscale.com
-77.239.114.0 pkgs.tailscale.com
+103.27.157.38 controlplane.tailscale.com pkgs.tailscale.com
+37.230.192.51 controlplane.tailscale.com pkgs.tailscale.com
+45.155.204.190 controlplane.tailscale.com pkgs.tailscale.com
+77.239.114.0 controlplane.tailscale.com pkgs.tailscale.com
 103.27.157.38 talosintelligence.com
 37.230.192.51 talosintelligence.com
 45.155.204.190 talosintelligence.com
@@ -1552,6 +1553,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 id.trimble.com sketchup.trimble.com
 45.155.204.190 id.trimble.com sketchup.trimble.com
 77.239.114.0 id.trimble.com sketchup.trimble.com
+103.27.157.38 static-assets-1.truthsocial.com truthsocial.com
+37.230.192.51 static-assets-1.truthsocial.com truthsocial.com
+45.155.204.190 static-assets-1.truthsocial.com truthsocial.com
+77.239.114.0 static-assets-1.truthsocial.com truthsocial.com
 103.27.157.38 tsmc.com
 37.230.192.51 tsmc.com
 45.155.204.190 tsmc.com

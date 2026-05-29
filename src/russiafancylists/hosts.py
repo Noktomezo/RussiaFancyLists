@@ -284,18 +284,20 @@ def generate_aligned_hosts(
         brand = resolved_brands[dom]
         brand_domains.setdefault(brand, []).append(dom)
         
-    # 4. Extract custom IP mappings (IPs in source files that are not the main SNI proxy IPs)
-    def get_custom_mappings(ips: list[str], ip_domains: dict) -> dict:
+    # 4. Extract custom IP mappings (IPs in source files that are not the main SNI proxy IPs of any provider)
+    primary_proxy_ips = set(malw_ips + mafioznik_ips + geohide_ips)
+    
+    def get_custom_mappings(ip_domains: dict) -> dict:
         custom = {}
         for ip, doms in ip_domains.items():
-            if ip not in ips:
+            if ip not in primary_proxy_ips:
                 for d in doms:
                     custom[d] = ip
         return custom
 
-    malw_custom = get_custom_mappings(malw_ips, malw_ip_domains)
-    mafioznik_custom = get_custom_mappings(mafioznik_ips, mafioznik_ip_domains)
-    geohide_custom = get_custom_mappings(geohide_ips, geohide_ip_domains)
+    malw_custom = get_custom_mappings(malw_ip_domains)
+    mafioznik_custom = get_custom_mappings(mafioznik_ip_domains)
+    geohide_custom = get_custom_mappings(geohide_ip_domains)
 
     # 5. Helper to group domains for a provider, preserving custom IPs
     def get_provider_groups(main_ip: str, custom_mappings: dict) -> tuple[dict, dict]:

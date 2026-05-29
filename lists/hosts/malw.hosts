@@ -5,7 +5,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Direct addresses
-103.27.157.38 web.archive.org
 185.246.223.127 game.brawlstarsgame.com
 193.23.209.189 gamea.clashofclans.com
 62.133.62.97 game.clashroyaleapp.com
@@ -21,8 +20,6 @@ ff02::2 ip6-allrouters
 62.133.62.97 o.pki.goog
 172.64.33.155 d.rutor.info
 108.61.167.26 game.squadbustersgame.com
-103.27.157.38 controlplane.tailscale.com
-103.27.157.38 static-assets-1.truthsocial.com truthsocial.com
 62.133.62.97 aitestkitchen.withgoogle.com stitch.withgoogle.com
 
 # Geoblock
@@ -52,6 +49,7 @@ ff02::2 ip6-allrouters
 77.239.114.0 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
 77.239.114.0 support.anydesk.com
 77.239.114.0 arc.net
+77.239.114.0 web.archive.org
 77.239.114.0 arduino.cc
 77.239.114.0 atlassian.com
 77.239.114.0 att.com
@@ -384,7 +382,7 @@ ff02::2 ip6-allrouters
 77.239.114.0 synoforum.com
 77.239.114.0 t.me
 77.239.114.0 tableau.com www.tableau.com
-77.239.114.0 pkgs.tailscale.com
+77.239.114.0 controlplane.tailscale.com pkgs.tailscale.com
 77.239.114.0 talosintelligence.com
 77.239.114.0 dl.teamviewer.com download.teamviewer.com teamviewer.com
 77.239.114.0 techbargains.com
@@ -410,6 +408,7 @@ ff02::2 ip6-allrouters
 77.239.114.0 transferwise.com
 77.239.114.0 tria.ge www.tria.ge
 77.239.114.0 id.trimble.com sketchup.trimble.com
+77.239.114.0 static-assets-1.truthsocial.com truthsocial.com
 77.239.114.0 tsmc.com
 77.239.114.0 usher.ttvnw.net
 77.239.114.0 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com tutanota.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
