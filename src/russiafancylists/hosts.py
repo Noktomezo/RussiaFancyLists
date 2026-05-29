@@ -277,60 +277,91 @@ def generate_aligned_hosts(
                 break
         resolved_brands[dom] = brand
         
-    # 4. Group domains for individual provider lists and combined.lst
-    combined_groups = {}
-    
     # Pre-group domains by brand
     brand_domains = {}
     for dom in geoblock_domains:
         brand = resolved_brands[dom]
         brand_domains.setdefault(brand, []).append(dom)
         
-    for brand, doms in brand_domains.items():
-        # Map each domain group to all active proxy IPs to enable built-in client-side TCP fallback
-        for ip in ips_list:
-            combined_groups.setdefault((ip, brand), []).extend(doms)
-        
-    # 5. Write individual output files dynamically
-    def write_provider_hosts(base_output: Path, ips: list[str]):
+    # 4. Extract custom IP mappings (IPs in source files that are not the main SNI proxy IPs)
+    def get_custom_mappings(ips: list[str], ip_domains: dict) -> dict:
+        custom = {}
+        for ip, doms in ip_domains.items():
+            if ip not in ips:
+                for d in doms:
+                    custom[d] = ip
+        return custom
+
+    malw_custom = get_custom_mappings(malw_ips, malw_ip_domains)
+    mafioznik_custom = get_custom_mappings(mafioznik_ips, mafioznik_ip_domains)
+    geohide_custom = get_custom_mappings(geohide_ips, geohide_ip_domains)
+
+    # 5. Helper to group domains for a provider, preserving custom IPs
+    def get_provider_groups(main_ip: str, custom_mappings: dict) -> dict:
+        groups = {}
+        for brand, doms in brand_domains.items():
+            for d in doms:
+                if d in custom_mappings:
+                    ip = custom_mappings[d]
+                else:
+                    ip = main_ip
+                groups.setdefault((ip, brand), []).append(d)
+        return groups
+
+    # 6. Write individual output files dynamically and collect groups
+    def write_provider_hosts(base_output: Path, ips: list[str], custom_mappings: dict) -> list[dict]:
         suffix = base_output.suffix
         v1_path = base_output.parent / (base_output.stem + "-v1" + suffix)
         v2_path = base_output.parent / (base_output.stem + "-v2" + suffix)
         
         if len(ips) == 1:
             base_output.parent.mkdir(parents=True, exist_ok=True)
+            groups = get_provider_groups(ips[0], custom_mappings)
             with open(base_output, 'w', encoding='utf-8') as f:
                 f.write(LOOPBACK_HEADER)
-                for brand in sorted(brand_domains.keys()):
-                    dom_list = " ".join(sorted(brand_domains[brand]))
-                    f.write(f"{ips[0]} {dom_list}\n")
+                # Sort by brand name first (x[1]), then by IP (x[0])
+                for ip, brand in sorted(groups.keys(), key=lambda x: (x[1], x[0])):
+                    dom_list = " ".join(sorted(groups[(ip, brand)]))
+                    f.write(f"{ip} {dom_list}\n")
             if v1_path.exists():
                 v1_path.unlink()
             if v2_path.exists():
                 v2_path.unlink()
+            return [groups]
         else:
+            provider_groups = []
             for idx, ip in enumerate(ips):
                 v_path = base_output.parent / (base_output.stem + f"-v{idx+1}" + suffix)
                 v_path.parent.mkdir(parents=True, exist_ok=True)
+                groups = get_provider_groups(ip, custom_mappings)
+                provider_groups.append(groups)
                 with open(v_path, 'w', encoding='utf-8') as f:
                     f.write(LOOPBACK_HEADER)
-                    for brand in sorted(brand_domains.keys()):
-                        dom_list = " ".join(sorted(brand_domains[brand]))
-                        f.write(f"{ip} {dom_list}\n")
+                    for ip_key, brand in sorted(groups.keys(), key=lambda x: (x[1], x[0])):
+                        dom_list = " ".join(sorted(groups[(ip_key, brand)]))
+                        f.write(f"{ip_key} {dom_list}\n")
             if base_output.exists():
                 base_output.unlink()
+            return provider_groups
 
-    write_provider_hosts(output_malw, malw_ips)
-    write_provider_hosts(output_mafioznik, mafioznik_ips)
-    write_provider_hosts(output_geohide, geohide_ips)
+    all_groups = []
+    all_groups.extend(write_provider_hosts(output_malw, malw_ips, malw_custom))
+    all_groups.extend(write_provider_hosts(output_mafioznik, mafioznik_ips, mafioznik_custom))
+    all_groups.extend(write_provider_hosts(output_geohide, geohide_ips, geohide_custom))
     
-    # 6. Write combined output file
+    # 7. Merge all provider groups into combined_groups
+    combined_groups = {}
+    for groups in all_groups:
+        for (ip, brand), doms in groups.items():
+            combined_groups.setdefault((ip, brand), set()).update(doms)
+            
+    # 8. Write combined output file
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
         f.write(LOOPBACK_HEADER)
         # Sort by brand name first (x[1]) to ensure mixed IPs throughout the combined list, then by IP (x[0])
         for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
-            dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
+            dom_list = " ".join(sorted(list(combined_groups[(ip, brand)])))
             f.write(f"{ip} {dom_list}\n")
 
 def parse_zapret_sh(input_sh: Path, output_lst: Path):
