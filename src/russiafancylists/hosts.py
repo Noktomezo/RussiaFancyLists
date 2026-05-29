@@ -6,6 +6,7 @@ from pathlib import Path
 from collections import Counter
 
 LOOPBACK_HEADER = (
+    "# Loopback\n"
     "127.0.0.1 localhost\n"
     "::1 localhost ip6-localhost ip6-loopback\n"
     "ff02::1 ip6-allnodes\n"
@@ -297,49 +298,71 @@ def generate_aligned_hosts(
     geohide_custom = get_custom_mappings(geohide_ips, geohide_ip_domains)
 
     # 5. Helper to group domains for a provider, preserving custom IPs
-    def get_provider_groups(main_ip: str, custom_mappings: dict) -> dict:
-        groups = {}
+    def get_provider_groups(main_ip: str, custom_mappings: dict) -> tuple[dict, dict]:
+        direct = {}
+        geoblock = {}
         for brand, doms in brand_domains.items():
             for d in doms:
                 if d in custom_mappings:
                     ip = custom_mappings[d]
+                    direct.setdefault((ip, brand), []).append(d)
                 else:
-                    ip = main_ip
-                groups.setdefault((ip, brand), []).append(d)
-        return groups
+                    geoblock.setdefault((main_ip, brand), []).append(d)
+        return direct, geoblock
 
     # 6. Write individual output files dynamically and collect groups
-    def write_provider_hosts(base_output: Path, ips: list[str], custom_mappings: dict) -> list[dict]:
+    def write_provider_hosts(base_output: Path, ips: list[str], custom_mappings: dict) -> list[tuple[dict, dict]]:
         suffix = base_output.suffix
         v1_path = base_output.parent / (base_output.stem + "-v1" + suffix)
         v2_path = base_output.parent / (base_output.stem + "-v2" + suffix)
         
         if len(ips) == 1:
             base_output.parent.mkdir(parents=True, exist_ok=True)
-            groups = get_provider_groups(ips[0], custom_mappings)
+            direct_groups, geoblock_groups = get_provider_groups(ips[0], custom_mappings)
             with open(base_output, 'w', encoding='utf-8') as f:
                 f.write(LOOPBACK_HEADER)
-                # Sort by brand name first (x[1]), then by IP (x[0])
-                for ip, brand in sorted(groups.keys(), key=lambda x: (x[1], x[0])):
-                    dom_list = " ".join(sorted(groups[(ip, brand)]))
-                    f.write(f"{ip} {dom_list}\n")
+                
+                if direct_groups:
+                    f.write("# Direct addresses\n")
+                    for ip, brand in sorted(direct_groups.keys(), key=lambda x: (x[1], x[0])):
+                        dom_list = " ".join(sorted(direct_groups[(ip, brand)]))
+                        f.write(f"{ip} {dom_list}\n")
+                    f.write("\n")
+                    
+                if geoblock_groups:
+                    f.write("# Geoblock\n")
+                    for ip, brand in sorted(geoblock_groups.keys(), key=lambda x: (x[1], x[0])):
+                        dom_list = " ".join(sorted(geoblock_groups[(ip, brand)]))
+                        f.write(f"{ip} {dom_list}\n")
+                        
             if v1_path.exists():
                 v1_path.unlink()
             if v2_path.exists():
                 v2_path.unlink()
-            return [groups]
+            return [(direct_groups, geoblock_groups)]
         else:
             provider_groups = []
             for idx, ip in enumerate(ips):
                 v_path = base_output.parent / (base_output.stem + f"-v{idx+1}" + suffix)
                 v_path.parent.mkdir(parents=True, exist_ok=True)
-                groups = get_provider_groups(ip, custom_mappings)
-                provider_groups.append(groups)
+                direct_groups, geoblock_groups = get_provider_groups(ip, custom_mappings)
+                provider_groups.append((direct_groups, geoblock_groups))
                 with open(v_path, 'w', encoding='utf-8') as f:
                     f.write(LOOPBACK_HEADER)
-                    for ip_key, brand in sorted(groups.keys(), key=lambda x: (x[1], x[0])):
-                        dom_list = " ".join(sorted(groups[(ip_key, brand)]))
-                        f.write(f"{ip_key} {dom_list}\n")
+                    
+                    if direct_groups:
+                        f.write("# Direct addresses\n")
+                        for ip_key, brand in sorted(direct_groups.keys(), key=lambda x: (x[1], x[0])):
+                            dom_list = " ".join(sorted(direct_groups[(ip_key, brand)]))
+                            f.write(f"{ip_key} {dom_list}\n")
+                        f.write("\n")
+                        
+                    if geoblock_groups:
+                        f.write("# Geoblock\n")
+                        for ip_key, brand in sorted(geoblock_groups.keys(), key=lambda x: (x[1], x[0])):
+                            dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
+                            f.write(f"{ip_key} {dom_list}\n")
+                            
             if base_output.exists():
                 base_output.unlink()
             return provider_groups
@@ -358,27 +381,40 @@ def generate_aligned_hosts(
     for d, ip in geohide_custom.items():
         all_custom_ips.setdefault(d, set()).add(ip)
 
-    # 7. Merge all provider groups into combined_groups
-    combined_groups = {}
-    for groups in all_groups:
-        for (ip, brand), doms in groups.items():
+    # 7. Merge all provider groups into combined_direct and combined_geoblock
+    combined_direct = {}
+    combined_geoblock = {}
+    for direct_groups, geoblock_groups in all_groups:
+        for (ip, brand), doms in direct_groups.items():
+            for d in doms:
+                for custom_ip in all_custom_ips[d]:
+                    combined_direct.setdefault((custom_ip, brand), set()).add(d)
+                    
+        for (ip, brand), doms in geoblock_groups.items():
             for d in doms:
                 if d in all_custom_ips:
-                    # Exclusive direct IP domain: map only to its original custom IP(s)
                     for custom_ip in all_custom_ips[d]:
-                        combined_groups.setdefault((custom_ip, brand), set()).add(d)
+                        combined_direct.setdefault((custom_ip, brand), set()).add(d)
                 else:
-                    # Standard domain: map to the provider's proxy IP
-                    combined_groups.setdefault((ip, brand), set()).add(d)
+                    combined_geoblock.setdefault((ip, brand), set()).add(d)
             
     # 8. Write combined output file
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
         f.write(LOOPBACK_HEADER)
-        # Sort by brand name first (x[1]) to ensure mixed IPs throughout the combined list, then by IP (x[0])
-        for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
-            dom_list = " ".join(sorted(list(combined_groups[(ip, brand)])))
-            f.write(f"{ip} {dom_list}\n")
+        
+        if combined_direct:
+            f.write("# Direct addresses\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+            f.write("\n")
+            
+        if combined_geoblock:
+            f.write("# Geoblock\n")
+            for ip, brand in sorted(combined_geoblock.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(combined_geoblock[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
 
 def parse_zapret_sh(input_sh: Path, output_lst: Path):
     """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
