@@ -106,8 +106,8 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 9ms<br>
 💚 **GeoHide v2**: 10ms<br>
+💚 **GeoHide v1**: 11ms<br>
 💚 **Mafioznik**: 48ms<br>
 ❤️ **Malw**: unavailable
 <!-- STATUS_END -->

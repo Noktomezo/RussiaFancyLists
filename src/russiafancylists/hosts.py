@@ -349,11 +349,27 @@ def generate_aligned_hosts(
     all_groups.extend(write_provider_hosts(output_mafioznik, mafioznik_ips, mafioznik_custom))
     all_groups.extend(write_provider_hosts(output_geohide, geohide_ips, geohide_custom))
     
+    # Build a dictionary of custom IPs for each domain across all providers
+    all_custom_ips = {}
+    for d, ip in malw_custom.items():
+        all_custom_ips.setdefault(d, set()).add(ip)
+    for d, ip in mafioznik_custom.items():
+        all_custom_ips.setdefault(d, set()).add(ip)
+    for d, ip in geohide_custom.items():
+        all_custom_ips.setdefault(d, set()).add(ip)
+
     # 7. Merge all provider groups into combined_groups
     combined_groups = {}
     for groups in all_groups:
         for (ip, brand), doms in groups.items():
-            combined_groups.setdefault((ip, brand), set()).update(doms)
+            for d in doms:
+                if d in all_custom_ips:
+                    # Exclusive direct IP domain: map only to its original custom IP(s)
+                    for custom_ip in all_custom_ips[d]:
+                        combined_groups.setdefault((custom_ip, brand), set()).add(d)
+                else:
+                    # Standard domain: map to the provider's proxy IP
+                    combined_groups.setdefault((ip, brand), set()).add(d)
             
     # 8. Write combined output file
     output_combined.parent.mkdir(parents=True, exist_ok=True)
