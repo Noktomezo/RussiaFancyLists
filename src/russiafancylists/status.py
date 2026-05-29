@@ -48,21 +48,22 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     tasks = [test_ip_latency(ip) for _, ip in providers]
     latencies = await asyncio.gather(*tasks)
 
-    # 3. Format status strings
-    status_en = []
-    status_ru = []
-
+    # 3. Sort by latency: available sorted ascending, unavailable (None) at the bottom
+    results = []
     for (name, ip), latency in zip(providers, latencies):
-        if latency is None:
-            status_en.append(f"🔴 **{name}**: unavailable")
-            status_ru.append(f"🔴 **{name}**: недоступен")
-        else:
-            ms = int(latency * 1000)
-            status_en.append(f"🟢 **{name}**: {ms}ms")
-            status_ru.append(f"🟢 **{name}**: {ms}мс")
+        results.append((name, latency))
+    results.sort(key=lambda x: (1 if x[1] is None else 0, x[1] if x[1] is not None else 999999))
 
-    en_block = "<br>\n".join(status_en)
-    ru_block = "<br>\n".join(status_ru)
+    # 4. Format status strings
+    status_blocks = []
+    for name, latency in results:
+        if latency is None:
+            status_blocks.append(f"🔴 **{name}**")
+        else:
+            status_blocks.append(f"🟢 **{name}**")
+
+    en_block = "<br>\n".join(status_blocks)
+    ru_block = "<br>\n".join(status_blocks)
 
     # 4. Update README.md
     readme_en_path = root_dir / "README.md"
