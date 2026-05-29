@@ -58,12 +58,8 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
             status_ru.append(f"🔴 **{name}**: недоступен")
         else:
             ms = int(latency * 1000)
-            if ms < 80:
-                status_en.append(f"🟢 **{name}**: {ms}ms")
-                status_ru.append(f"🟢 **{name}**: {ms}мс")
-            else:
-                status_en.append(f"🟡 **{name}**: {ms}ms (high latency)")
-                status_ru.append(f"🟡 **{name}**: {ms}мс (высокая задержка)")
+            status_en.append(f"🟢 **{name}**: {ms}ms")
+            status_ru.append(f"🟢 **{name}**: {ms}мс")
 
     en_block = "<br>\n".join(status_en)
     ru_block = "<br>\n".join(status_ru)
