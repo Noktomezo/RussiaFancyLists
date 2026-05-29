@@ -136,80 +136,13 @@ def add_localhost(input_file: Path, output_file: Path):
         with open(input_file, 'r', encoding='utf-8') as inf:
             f.write(inf.read())
 
-def clean_source_hosts_files(hosts_dir: Path):
-    """Filter out lines with non-primary (differing) IPs from hosts files before merging."""
-    import re
-    from collections import Counter
-    
-    target_files = [
-        "malw-hosts.lst",
-        "mafioznik-hosts.lst",
-        "geohide-hosts.lst",
-        "zapret-manager-parsed.lst"
-    ]
-    
-    for filename in target_files:
-        file_path = hosts_dir / filename
-        if not file_path.exists():
-            continue
-            
-        ips = Counter()
-        lines = []
-        
-        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-            for line in f:
-                raw_line = line
-                line = re.sub(r'#.*', '', line).strip()
-                if not line:
-                    lines.append((None, raw_line))
-                    continue
-                    
-                cols = line.split()
-                if not cols:
-                    lines.append((None, raw_line))
-                    continue
-                    
-                if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::"):
-                    lines.append((None, raw_line))
-                    continue
-                    
-                is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
-                is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', cols[0])
-                
-                if is_ipv4 or is_ipv6:
-                    if len(cols) < 2:
-                        lines.append((None, raw_line))
-                        continue
-                    ip = cols[0]
-                    ips[ip] += len(cols[1:])
-                    lines.append((ip, raw_line))
-                else:
-                    lines.append((None, raw_line))
-                    
-        if not ips:
-            continue
-            
-        common = ips.most_common(2)
-        top_ips = [common[0][0]]
-        if len(common) > 1 and common[1][1] >= 0.8 * common[0][1]:
-            top_ips.append(common[1][0])
-            
-        with open(file_path, 'w', encoding='utf-8') as f:
-            for ip, raw_line in lines:
-                if ip is None:
-                    f.write(raw_line)
-                elif ip in top_ips:
-                    f.write(raw_line)
-                else:
-                    # Cut differing IP lines
-                    pass
-
 def get_source_info(file_path: Path):
-    """Parse original hosts file to find the most frequent IPs (up to 2).
+    """Parse original hosts file to find the most frequent IPs (up to 2) and collect their original domains.
     Returns:
-        list: list of top IPs
+        tuple: (list of top IPs, dict mapping IP to set of domains)
     """
     ips = Counter()
+    ip_domains = {}
     if not file_path.exists():
         raise FileNotFoundError(f"Source hosts file not found at '{file_path}'. This indicates an upstream download/parse failure.")
     
@@ -232,6 +165,15 @@ def get_source_info(file_path: Path):
                     continue
                 ip = cols[0]
                 ips[ip] += len(cols[1:])
+                domains_to_process = cols[1:]
+            else:
+                ip = None
+                domains_to_process = cols
+                
+            for dom in domains_to_process:
+                dom = dom.lower().strip()
+                if ip:
+                    ip_domains.setdefault(ip, set()).add(dom)
                 
     if not ips:
         raise ValueError(f"No valid IP addresses could be parsed from source hosts file at '{file_path}'. The file might be empty or malformed.")
@@ -241,7 +183,7 @@ def get_source_info(file_path: Path):
     if len(common) > 1 and common[1][1] >= 0.8 * common[0][1]:
         top_ips.append(common[1][0])
         
-    return top_ips
+    return top_ips, ip_domains
 
 def generate_aligned_hosts(
     geoblock_file: Path,
@@ -258,6 +200,8 @@ def generate_aligned_hosts(
     - geohide.lst: all geoblock domains mapped to geohide's most frequent IP.
     - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice.
     """
+    import zlib
+    
     # 1. Load blacklist patterns
     blacklist_patterns = []
     with open(blacklist_file, 'r', encoding='utf-8') as f:
@@ -266,11 +210,15 @@ def generate_aligned_hosts(
             py_p = p.replace("[[:space:]]", r"\s")
             blacklist_patterns.append(re.compile(py_p))
             
-    # 2. Get source info (most frequent IPs)
-    malw_ips = get_source_info(hosts_temp_dir / "malw-hosts.lst")
-    mafioznik_ips = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
-    geohide_ips = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
+    # 2. Get source info (most frequent IPs and original domains)
+    malw_ips, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+    mafioznik_ips, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+    geohide_ips, geohide_ip_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
     
+    ips_list = sorted(list(set(malw_ips + mafioznik_ips + geohide_ips)))
+    if not ips_list:
+        ips_list = ["127.0.0.1"]
+        
     # 3. Load and filter domains from the geoblock list
     geoblock_domains = []
     if geoblock_file.exists():
@@ -329,73 +277,60 @@ def generate_aligned_hosts(
                 break
         resolved_brands[dom] = brand
         
+    # 4. Group domains for individual provider lists and combined.lst
+    combined_groups = {}
+    
     # Pre-group domains by brand
     brand_domains = {}
     for dom in geoblock_domains:
         brand = resolved_brands[dom]
         brand_domains.setdefault(brand, []).append(dom)
         
-    # 4. Helper to group domains for a provider
-    def get_provider_groups(main_ip: str) -> dict:
-        groups = {}
-        for brand, doms in brand_domains.items():
-            groups[(main_ip, brand)] = doms
-        return groups
-
-    # 5. Write individual output files dynamically and collect groups
-    def write_provider_hosts(base_output: Path, ips: list[str]) -> list[dict]:
+    for brand, doms in brand_domains.items():
+        # Map each domain group to all active proxy IPs to enable built-in client-side TCP fallback
+        for ip in ips_list:
+            combined_groups.setdefault((ip, brand), []).extend(doms)
+        
+    # 5. Write individual output files dynamically
+    def write_provider_hosts(base_output: Path, ips: list[str]):
         suffix = base_output.suffix
         v1_path = base_output.parent / (base_output.stem + "-v1" + suffix)
         v2_path = base_output.parent / (base_output.stem + "-v2" + suffix)
         
         if len(ips) == 1:
             base_output.parent.mkdir(parents=True, exist_ok=True)
-            groups = get_provider_groups(ips[0])
             with open(base_output, 'w', encoding='utf-8') as f:
                 f.write(LOOPBACK_HEADER)
-                # Sort by brand name
-                for ip, brand in sorted(groups.keys(), key=lambda x: x[1]):
-                    dom_list = " ".join(sorted(groups[(ip, brand)]))
-                    f.write(f"{ip} {dom_list}\n")
+                for brand in sorted(brand_domains.keys()):
+                    dom_list = " ".join(sorted(brand_domains[brand]))
+                    f.write(f"{ips[0]} {dom_list}\n")
             if v1_path.exists():
                 v1_path.unlink()
             if v2_path.exists():
                 v2_path.unlink()
-            return [groups]
         else:
-            provider_groups = []
             for idx, ip in enumerate(ips):
                 v_path = base_output.parent / (base_output.stem + f"-v{idx+1}" + suffix)
                 v_path.parent.mkdir(parents=True, exist_ok=True)
-                groups = get_provider_groups(ip)
-                provider_groups.append(groups)
                 with open(v_path, 'w', encoding='utf-8') as f:
                     f.write(LOOPBACK_HEADER)
-                    for ip_key, brand in sorted(groups.keys(), key=lambda x: x[1]):
-                        dom_list = " ".join(sorted(groups[(ip_key, brand)]))
-                        f.write(f"{ip_key} {dom_list}\n")
+                    for brand in sorted(brand_domains.keys()):
+                        dom_list = " ".join(sorted(brand_domains[brand]))
+                        f.write(f"{ip} {dom_list}\n")
             if base_output.exists():
                 base_output.unlink()
-            return provider_groups
 
-    all_groups = []
-    all_groups.extend(write_provider_hosts(output_malw, malw_ips))
-    all_groups.extend(write_provider_hosts(output_mafioznik, mafioznik_ips))
-    all_groups.extend(write_provider_hosts(output_geohide, geohide_ips))
+    write_provider_hosts(output_malw, malw_ips)
+    write_provider_hosts(output_mafioznik, mafioznik_ips)
+    write_provider_hosts(output_geohide, geohide_ips)
     
-    # 6. Merge all provider groups into combined_groups
-    combined_groups = {}
-    for groups in all_groups:
-        for (ip, brand), doms in groups.items():
-            combined_groups.setdefault((ip, brand), set()).update(doms)
-            
-    # 7. Write combined output file
+    # 6. Write combined output file
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
         f.write(LOOPBACK_HEADER)
         # Sort by brand name first (x[1]) to ensure mixed IPs throughout the combined list, then by IP (x[0])
         for ip, brand in sorted(combined_groups.keys(), key=lambda x: (x[1], x[0])):
-            dom_list = " ".join(sorted(list(combined_groups[(ip, brand)])))
+            dom_list = " ".join(sorted(combined_groups[(ip, brand)]))
             f.write(f"{ip} {dom_list}\n")
 
 def parse_zapret_sh(input_sh: Path, output_lst: Path):
