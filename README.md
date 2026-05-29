@@ -89,11 +89,11 @@ Generated artifacts are organized as follows:
       <td><code>lists/hosts/</code></td>
       <td>
 <!-- HOSTS_LINKS_START -->
-        • <a href="./lists/hosts/geohide-v1.lst"><code>geohide-v1.lst</code></a><br>
-        • <a href="./lists/hosts/geohide-v2.lst"><code>geohide-v2.lst</code></a><br>
-        • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
-        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
-        • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a>
+        • <a href="./lists/hosts/geohide-v1.hosts"><code>geohide-v1.hosts</code></a><br>
+        • <a href="./lists/hosts/geohide-v2.hosts"><code>geohide-v2.hosts</code></a><br>
+        • <a href="./lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a><br>
+        • <a href="./lists/hosts/malw.hosts"><code>malw.hosts</code></a><br>
+        • <a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a>
 <!-- HOSTS_LINKS_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies. All files include standard local loopback headers.</td>
@@ -102,13 +102,13 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!TIP]
-> The `combined.lst` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (🔴), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
+> The `combined.hosts` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (🔴), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 9ms<br>
-💚 **GeoHide v2**: 11ms<br>
-💚 **Mafioznik**: 55ms<br>
+💚 **GeoHide v2**: 10ms<br>
+💚 **GeoHide v1**: 11ms<br>
+💚 **Mafioznik**: 58ms<br>
 ❤️ **Malw**: unavailable
 <!-- STATUS_END -->
 

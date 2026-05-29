@@ -89,11 +89,11 @@
       <td><code>lists/hosts/</code></td>
       <td>
 <!-- HOSTS_LINKS_START -->
-        • <a href="./lists/hosts/geohide-v1.lst"><code>geohide-v1.lst</code></a><br>
-        • <a href="./lists/hosts/geohide-v2.lst"><code>geohide-v2.lst</code></a><br>
-        • <a href="./lists/hosts/mafioznik.lst"><code>mafioznik.lst</code></a><br>
-        • <a href="./lists/hosts/malw.lst"><code>malw.lst</code></a><br>
-        • <a href="./lists/hosts/combined.lst"><code>combined.lst</code></a>
+        • <a href="./lists/hosts/geohide-v1.hosts"><code>geohide-v1.hosts</code></a><br>
+        • <a href="./lists/hosts/geohide-v2.hosts"><code>geohide-v2.hosts</code></a><br>
+        • <a href="./lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a><br>
+        • <a href="./lists/hosts/malw.hosts"><code>malw.hosts</code></a><br>
+        • <a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a>
 <!-- HOSTS_LINKS_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). Все файлы включают стандартный локальный loopback-заголовок.</td>
@@ -102,13 +102,13 @@
 </table>
 
 > [!TIP]
-> Файл `combined.lst` сопоставляет каждый домен со **всеми** активными IP-адресами SNI-прокси. Это создает автоматическую отказоустойчивость: если какой-либо из прокси-серверов в данный момент недоступен (🔴), ваш браузер автоматически перенаправит трафик через остальные работающие прокси (примечание: для работы подключения хотя бы один прокси-провайдер в таблице статуса ниже должен быть активен). Это наиболее надежный и рекомендуемый вариант для настройки hosts!
+> Файл `combined.hosts` сопоставляет каждый домен со **всеми** активными IP-адресами SNI-прокси. Это создает автоматическую отказоустойчивость: если какой-либо из прокси-серверов в данный момент недоступен (🔴), ваш браузер автоматически перенаправит трафик через остальные работающие прокси (примечание: для работы подключения хотя бы один прокси-провайдер в таблице статуса ниже должен быть активен). Это наиболее надежный и рекомендуемый вариант для настройки hosts!
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 9мс<br>
-💚 **GeoHide v2**: 11мс<br>
-💚 **Mafioznik**: 55мс<br>
+💚 **GeoHide v2**: 10мс<br>
+💚 **GeoHide v1**: 11мс<br>
+💚 **Mafioznik**: 58мс<br>
 ❤️ **Malw**: недоступен
 <!-- STATUS_END -->
 

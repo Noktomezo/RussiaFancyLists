@@ -121,12 +121,12 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
 
 async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     """Dynamically update the lists/hosts links in README files based on actual files in lists/hosts."""
-    # Find all .lst files in lists/hosts
-    files = sorted([f.name for f in hosts_dir.glob("*.lst") if f.is_file()])
-    # Put combined.lst at the end
-    if "combined.lst" in files:
-        files.remove("combined.lst")
-        files.append("combined.lst")
+    # Find all .hosts files in lists/hosts
+    files = sorted([f.name for f in hosts_dir.glob("*.hosts") if f.is_file()])
+    # Put combined.hosts at the end
+    if "combined.hosts" in files:
+        files.remove("combined.hosts")
+        files.append("combined.hosts")
         
     links_lines = []
     for f in files:

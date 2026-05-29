@@ -293,8 +293,9 @@ def generate_aligned_hosts(
         
     # 5. Write individual output files dynamically
     def write_provider_hosts(base_output: Path, ips: list[str]):
-        v1_path = base_output.parent / (base_output.stem + "-v1.lst")
-        v2_path = base_output.parent / (base_output.stem + "-v2.lst")
+        suffix = base_output.suffix
+        v1_path = base_output.parent / (base_output.stem + "-v1" + suffix)
+        v2_path = base_output.parent / (base_output.stem + "-v2" + suffix)
         
         if len(ips) == 1:
             base_output.parent.mkdir(parents=True, exist_ok=True)
@@ -309,7 +310,7 @@ def generate_aligned_hosts(
                 v2_path.unlink()
         else:
             for idx, ip in enumerate(ips):
-                v_path = base_output.parent / (base_output.stem + f"-v{idx+1}.lst")
+                v_path = base_output.parent / (base_output.stem + f"-v{idx+1}" + suffix)
                 v_path.parent.mkdir(parents=True, exist_ok=True)
                 with open(v_path, 'w', encoding='utf-8') as f:
                     f.write(LOOPBACK_HEADER)

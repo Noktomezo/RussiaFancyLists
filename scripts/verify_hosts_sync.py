@@ -38,24 +38,24 @@ def main():
         print(f"Error: {hosts_dir} does not exist.")
         sys.exit(1)
         
-    combined_path = hosts_dir / "combined.lst"
+    combined_path = hosts_dir / "combined.hosts"
     if not combined_path.exists():
         print(f"Error: {combined_path} does not exist.")
         sys.exit(1)
         
-    # Find all generated provider .lst files
+    # Find all generated provider .hosts files
     provider_paths = [
-        f for f in hosts_dir.glob("*.lst")
-        if f.is_file() and f.name != "combined.lst"
+        f for f in hosts_dir.glob("*.hosts")
+        if f.is_file() and f.name != "combined.hosts"
     ]
     
     if not provider_paths:
         print("Error: No provider hosts files found.")
         sys.exit(1)
         
-    # Read domains from combined.lst
+    # Read domains from combined.hosts
     combined_domains = parse_domains_from_hosts(combined_path)
-    print(f"combined.lst has {len(combined_domains)} unique domains.")
+    print(f"{combined_path.name} has {len(combined_domains)} unique domains.")
     
     mismatches = 0
     for p_path in provider_paths:
