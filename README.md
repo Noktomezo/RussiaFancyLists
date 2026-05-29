@@ -102,7 +102,7 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!TIP]
-> The `combined.lst` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (🔴), your browser will automatically route through the remaining active servers. This is the most robust and recommended option for hosts-based proxying!
+> The `combined.lst` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (🔴), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
