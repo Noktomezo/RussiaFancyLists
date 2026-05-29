@@ -287,33 +287,9 @@ def generate_aligned_hosts(
         brand_domains.setdefault(brand, []).append(dom)
         
     for brand, doms in brand_domains.items():
-        # Determine dominant IP for the brand in combined.lst
-        ip_counts = []
-        for ip in malw_ips:
-            cnt = sum(1 for d in doms if d in malw_ip_domains.get(ip, set()))
-            ip_counts.append((cnt, ip))
-        for ip in mafioznik_ips:
-            cnt = sum(1 for d in doms if d in mafioznik_ip_domains.get(ip, set()))
-            ip_counts.append((cnt, ip))
-        for ip in geohide_ips:
-            cnt = sum(1 for d in doms if d in geohide_ip_domains.get(ip, set()))
-            ip_counts.append((cnt, ip))
-            
-        ip_counts.sort(key=lambda x: x[0], reverse=True)
-        
-        max_count = ip_counts[0][0]
-        if max_count > 0:
-            top_ips = [ip for count, ip in ip_counts if count == max_count]
-            if len(top_ips) == 1:
-                assigned_ip = top_ips[0]
-            else:
-                stable_idx = zlib.adler32(brand.encode('utf-8')) % len(top_ips)
-                assigned_ip = sorted(top_ips)[stable_idx]
-        else:
-            stable_idx = zlib.adler32(brand.encode('utf-8')) % len(ips_list)
-            assigned_ip = ips_list[stable_idx]
-            
-        combined_groups.setdefault((assigned_ip, brand), []).extend(doms)
+        # Map each domain group to all active proxy IPs to enable built-in client-side TCP fallback
+        for ip in ips_list:
+            combined_groups.setdefault((ip, brand), []).extend(doms)
         
     # 5. Write individual output files dynamically
     def write_provider_hosts(base_output: Path, ips: list[str]):

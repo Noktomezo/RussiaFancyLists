@@ -101,14 +101,14 @@ Generated artifacts are organized as follows:
   </tbody>
 </table>
 
-> [!WARNING]
-> The `combined.lst` file mixes proxy IP addresses from multiple providers. Avoid using the combined list if any of the proxy providers below are currently unavailable (🔴), as this will cause connection failures for part of the domains. It is highly recommended to use a single-provider hosts list (e.g., `malw.lst`, `mafioznik.lst`, `geohide-v1.lst`, or `geohide-v2.lst`) instead. For absolute reliability and control, you should deploy your own custom setup.
+> [!TIP]
+> The `combined.lst` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (🔴), your browser will automatically route through the remaining active servers. This is the most robust and recommended option for hosts-based proxying!
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
+🟢 **GeoHide v2**: 11ms<br>
 🟢 **GeoHide v1**: 11ms<br>
-🟢 **Mafioznik**: 48ms<br>
-🟢 **GeoHide v2**: ~85ms<br>
+🟢 **Mafioznik**: 50ms<br>
 🔴 **Malw**: unavailable
 <!-- STATUS_END -->
 
