@@ -85,12 +85,12 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     status_ru = []
     for name, latency in results:
         if latency is None:
-            status_en.append(f"🔴 **{name}**: unavailable")
-            status_ru.append(f"🔴 **{name}**: недоступен")
+            status_en.append(f"❤️ **{name}**: unavailable")
+            status_ru.append(f"❤️ **{name}**: недоступен")
         else:
             ms = int(latency * 1000)
-            status_en.append(f"🟢 **{name}**: {estimate_local_ping(name, ms, 'en')}")
-            status_ru.append(f"🟢 **{name}**: {estimate_local_ping(name, ms, 'ru')}")
+            status_en.append(f"💚 **{name}**: {estimate_local_ping(name, ms, 'en')}")
+            status_ru.append(f"💚 **{name}**: {estimate_local_ping(name, ms, 'ru')}")
 
     en_block = "<br>\n".join(status_en)
     ru_block = "<br>\n".join(status_ru)

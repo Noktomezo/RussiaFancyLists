@@ -24,9 +24,9 @@ async def test_local_latency(name: str, ip: str, port: int = 443, timeout: float
         writer.close()
         await writer.wait_closed()
         ms = int((time.perf_counter() - start_time) * 1000)
-        print(f"🟢 {name}: {ms}ms")
+        print(f"💚 {name}: {ms}ms")
     except Exception:
-        print(f"🔴 {name}: unavailable")
+        print(f"❤️ {name}: unavailable")
 
 async def main():
     print("====================================================")
