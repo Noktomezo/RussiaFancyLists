@@ -4,27 +4,6 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-# Direct addresses
-31.25.239.132 game.boombeachgame.com
-185.246.223.127 game.brawlstarsgame.com
-31.25.239.132 game-assets.brawlstarsgame.com
-31.25.239.132 game-assets.clashofclans.com
-64.188.98.242 gamea.clashofclans.com
-31.25.239.132 game-assets.clashroyaleapp.com
-45.95.233.23 game.clashroyaleapp.com
-104.25.158.178 finland10000.discord.media finland10001.discord.media finland10002.discord.media finland10003.discord.media finland10004.discord.media finland10005.discord.media finland10006.discord.media finland10007.discord.media finland10008.discord.media finland10009.discord.media finland10010.discord.media finland10011.discord.media finland10012.discord.media finland10013.discord.media finland10014.discord.media finland10015.discord.media finland10016.discord.media finland10017.discord.media finland10018.discord.media finland10019.discord.media finland10020.discord.media finland10021.discord.media finland10022.discord.media finland10023.discord.media finland10024.discord.media finland10025.discord.media finland10026.discord.media finland10027.discord.media finland10028.discord.media finland10029.discord.media finland10030.discord.media finland10031.discord.media finland10032.discord.media finland10033.discord.media finland10034.discord.media finland10035.discord.media finland10036.discord.media finland10037.discord.media finland10038.discord.media finland10039.discord.media finland10040.discord.media finland10041.discord.media finland10042.discord.media finland10043.discord.media finland10044.discord.media finland10045.discord.media finland10046.discord.media finland10047.discord.media finland10048.discord.media finland10049.discord.media finland10050.discord.media finland10051.discord.media finland10052.discord.media finland10053.discord.media finland10054.discord.media finland10055.discord.media finland10056.discord.media finland10057.discord.media finland10058.discord.media finland10059.discord.media finland10060.discord.media finland10061.discord.media finland10062.discord.media finland10063.discord.media finland10064.discord.media finland10065.discord.media finland10066.discord.media finland10067.discord.media finland10068.discord.media finland10069.discord.media finland10070.discord.media finland10071.discord.media finland10072.discord.media finland10073.discord.media finland10074.discord.media finland10075.discord.media finland10076.discord.media finland10077.discord.media finland10078.discord.media finland10079.discord.media finland10080.discord.media finland10081.discord.media finland10082.discord.media finland10083.discord.media finland10084.discord.media finland10085.discord.media finland10086.discord.media finland10087.discord.media finland10088.discord.media finland10089.discord.media finland10090.discord.media finland10091.discord.media finland10092.discord.media finland10093.discord.media finland10094.discord.media finland10095.discord.media finland10096.discord.media finland10097.discord.media finland10098.discord.media finland10099.discord.media finland10100.discord.media finland10101.discord.media finland10102.discord.media finland10103.discord.media finland10104.discord.media finland10105.discord.media finland10106.discord.media finland10107.discord.media finland10108.discord.media finland10109.discord.media finland10110.discord.media finland10111.discord.media finland10112.discord.media finland10113.discord.media finland10114.discord.media finland10115.discord.media finland10116.discord.media finland10117.discord.media finland10118.discord.media finland10119.discord.media finland10120.discord.media finland10121.discord.media finland10122.discord.media finland10123.discord.media finland10124.discord.media finland10125.discord.media finland10126.discord.media finland10127.discord.media finland10128.discord.media finland10129.discord.media finland10130.discord.media finland10131.discord.media finland10132.discord.media finland10133.discord.media finland10134.discord.media finland10135.discord.media finland10136.discord.media finland10137.discord.media finland10138.discord.media finland10139.discord.media finland10140.discord.media finland10141.discord.media finland10142.discord.media finland10143.discord.media finland10144.discord.media finland10145.discord.media finland10146.discord.media finland10147.discord.media finland10148.discord.media finland10149.discord.media finland10150.discord.media finland10151.discord.media finland10152.discord.media finland10153.discord.media finland10154.discord.media finland10155.discord.media finland10156.discord.media finland10157.discord.media finland10158.discord.media finland10159.discord.media finland10160.discord.media finland10161.discord.media finland10162.discord.media finland10163.discord.media finland10164.discord.media finland10165.discord.media finland10166.discord.media finland10167.discord.media finland10168.discord.media finland10169.discord.media finland10170.discord.media finland10171.discord.media finland10172.discord.media finland10173.discord.media finland10174.discord.media finland10175.discord.media finland10176.discord.media finland10177.discord.media finland10178.discord.media finland10179.discord.media finland10180.discord.media finland10181.discord.media finland10182.discord.media finland10183.discord.media finland10184.discord.media finland10185.discord.media finland10186.discord.media finland10187.discord.media finland10188.discord.media finland10189.discord.media finland10190.discord.media finland10191.discord.media finland10192.discord.media finland10193.discord.media finland10194.discord.media finland10195.discord.media finland10196.discord.media finland10197.discord.media finland10198.discord.media finland10199.discord.media
-57.144.244.34 z-p42-chat-e2ee-ig.facebook.com
-57.144.248.1 facebook.com www.facebook.com
-57.144.248.1 fb.com
-157.240.205.11 scontent-hel3-1.xx.fbcdn.net
-57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
-57.144.248.1 fbcdn.net www.fbcdn.net
-57.144.248.1 fbsbx.com
-52.223.13.41 tracker.openbittorrent.com
-172.64.33.155 d.rutor.info d.rutor.is
-173.245.59.219 rutor.info rutor.is
-31.25.239.132 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-
 # Geoblock
 37.230.192.51 4pda.to 4pda.ws
 37.230.192.51 new.abb.com
@@ -139,7 +118,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 f1.com
 37.230.192.51 fast.com
 37.230.192.51 filebin.net
-37.230.192.51 api.fitbit.com
 37.230.192.51 fivetran.com
 37.230.192.51 flir.com flir.eu
 37.230.192.51 flourish.studio
@@ -166,7 +144,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 glpals.com
 37.230.192.51 gofund.me gofundme.com
 37.230.192.51 gonift.com
-37.230.192.51 ai.google.dev aisandbox-pa.googleapis.com aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com bard.google.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com geller-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com news.google.com notebooklm-pa.googleapis.com notebooklm.google.com opal.google.com people-pa.clients6.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com signaler-pa.clients6.google.com suggestqueries.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+37.230.192.51 ai.google.dev alkalicore-pa.clients6.google.com apis.google.com appcatalyst.pa.googleapis.com bard.google.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com labs.google.com lookerstudio.google.com makersuite.google.com news.google.com notebooklm-pa.googleapis.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com suggestqueries.google.com waa-pa.clients6.google.com
 37.230.192.51 gpsonextra.net
 37.230.192.51 gpt3-openai.com
 37.230.192.51 gpu-monkey.com
@@ -201,7 +179,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 ikea.com
 37.230.192.51 api.imgur.com imgur.com
 37.230.192.51 indeed.com
-37.230.192.51 api.instagram.com b.i.instagram.com edge-chat.instagram.com graph.instagram.com help.instagram.com i.instagram.com instagram.com www.instagram.com
+37.230.192.51 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 37.230.192.51 intel.com intel.de intel.nl www.intel.com www.intel.de
 37.230.192.51 downloads.intercomcdn.com intercom.io
 37.230.192.51 intuit.com intuitibits.com
@@ -215,7 +193,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 kinogo.la
 37.230.192.51 klarna.com
 37.230.192.51 kmail-lists.com
-37.230.192.51 labs.google
 37.230.192.51 lambdalabs.com
 37.230.192.51 langdock.com
 37.230.192.51 last.fm
@@ -233,7 +210,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 mailerlite.com
 37.230.192.51 mailinator.com
 37.230.192.51 make.com www.make.com
-37.230.192.51 test.dns.malw.link
 37.230.192.51 api.manus.im files.manus.cdn manus.im
 37.230.192.51 manybooks.net
 37.230.192.51 marvelsnap.com
@@ -249,7 +225,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 middlewareinventory.com
 37.230.192.51 mintmobile.com
 37.230.192.51 mixcloud.com
-37.230.192.51 game.mocogame.com
 37.230.192.51 mongodb.com
 37.230.192.51 monoprice.com
 37.230.192.51 mouser.com mouser.fi
@@ -286,7 +261,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 nordvpn.com
 37.230.192.51 notebooklm.google
 37.230.192.51 app.notion.com calendar.notion.com calendar.notion.so notion-static.com notion.com notion.new notion.site notion.so www.notion.com www.notion.so
-37.230.192.51 ntc.party
 37.230.192.51 developer.nvidia.com install.launcher.omniverse.nvidia.com
 37.230.192.51 nxp.com
 37.230.192.51 cdn.oaistatic.com oaistatic.com
@@ -309,14 +283,13 @@ ff02::2 ip6-allrouters
 37.230.192.51 parallels.cn parallels.com parallels.net parallelsaccess.com
 37.230.192.51 paritydeals.com
 37.230.192.51 builds.parsec.app public.parsec.app
-37.230.192.51 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreon.com www.patreon.com
+37.230.192.51 c10.patreonusercontent.com c13.patreon.com c5.patreon.com
 37.230.192.51 pcgamesn.com
 37.230.192.51 pcmag.com
 37.230.192.51 penguin.com penguinrandomhouse.com
 37.230.192.51 pexels.com
 37.230.192.51 philiascans.org
 37.230.192.51 pingdom.com
-37.230.192.51 o.pki.goog
 37.230.192.51 plugshare.com
 37.230.192.51 newsroom.porsche.com
 37.230.192.51 eu.posthog.com posthog.com us.posthog.com
@@ -373,7 +346,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 spiceworks.com
 37.230.192.51 spitfireaudio.com
 37.230.192.51 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
-37.230.192.51 game.squadbustersgame.com squadbustersgame.com
+37.230.192.51 squadbustersgame.com
 37.230.192.51 api-global.squareup.com api.squareup.com squareup.com
 37.230.192.51 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
 37.230.192.51 streamable.com
@@ -442,7 +415,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 wikidot.com
 37.230.192.51 marketplace.windsurf.com windsurf.com
 37.230.192.51 wise.com
-37.230.192.51 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
+37.230.192.51 opal.withgoogle.com
 37.230.192.51 miracleptr.wordpress.com
 37.230.192.51 api.workos.com
 37.230.192.51 wpengine.com
