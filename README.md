@@ -15,9 +15,10 @@ Generated artifacts are organized as follows:
   <thead>
     <tr>
       <th width="12%" align="center"><b>Component</b></th>
-      <th width="28%" align="center"><b>Path</b></th>
-      <th width="26%" align="center"><b>Format / Variant</b></th>
-      <th width="34%" align="center"><b>Description</b></th>
+      <th width="25%" align="center"><b>Path</b></th>
+      <th width="23%" align="center"><b>Format / Variant</b></th>
+      <th width="15%" align="center"><b>Size</b></th>
+      <th width="25%" align="center"><b>Description</b></th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,10 @@ Generated artifacts are organized as follows:
       <td>
         • <a href="./lists/plain/domains/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/plain/domains/full-sld.lst"><code>full-sld.lst</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/plain/domains/full.lst -->26.80 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/plain/domains/full-sld.lst -->19.53 MB<!-- SIZE_END -->
       </td>
       <td>Curated domain blocklists in raw format and optimized second-level domains (SLD).</td>
     </tr>
@@ -38,6 +43,11 @@ Generated artifacts are organized as follows:
         • <a href="./lists/plain/ipsets/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/plain/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
       </td>
+      <td>
+        • <!-- SIZE:lists/plain/ipsets/cdn.lst -->164.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/plain/ipsets/full.lst -->928.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/plain/ipsets/full-and-cdn.lst -->580.9 KB<!-- SIZE_END -->
+      </td>
       <td>IP address ranges: CDN ranges, blocked IPs, and unified blocked IPs including CDNs.</td>
     </tr>
     <tr>
@@ -48,6 +58,12 @@ Generated artifacts are organized as follows:
         • <a href="./lists/sing-box/domains/full.srs"><code>full.srs</code></a><br>
         • <a href="./lists/sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
         • <a href="./lists/sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/sing-box/domains/full.json -->42.14 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/domains/full.srs -->7.58 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/domains/full-sld.json -->31.34 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/domains/full-sld.srs -->6.36 MB<!-- SIZE_END -->
       </td>
       <td>Optimized domain rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side) in raw and SLD formats.</td>
     </tr>
@@ -62,6 +78,14 @@ Generated artifacts are organized as follows:
         • <a href="./lists/sing-box/ipsets/cdn.json"><code>cdn.json</code></a><br>
         • <a href="./lists/sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
+      <td>
+        • <!-- SIZE:lists/sing-box/ipsets/full.json -->1.47 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/full.srs -->168.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/full-and-cdn.json -->950.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/full-and-cdn.srs -->121.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/cdn.json -->291.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/cdn.srs -->38.3 KB<!-- SIZE_END -->
+      </td>
       <td>Optimized IP-CIDR rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
     </tr>
     <tr>
@@ -70,6 +94,10 @@ Generated artifacts are organized as follows:
       <td>
         • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/geoblock/full.lst -->31.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/full-sld.lst -->7.0 KB<!-- SIZE_END -->
       </td>
       <td>Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned services).</td>
     </tr>
@@ -81,6 +109,12 @@ Generated artifacts are organized as follows:
         • <a href="./lists/sing-box/geoblock/full.srs"><code>full.srs</code></a><br>
         • <a href="./lists/sing-box/geoblock/full-sld.json"><code>full-sld.json</code></a><br>
         • <a href="./lists/sing-box/geoblock/full-sld.srs"><code>full-sld.srs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/sing-box/geoblock/full.json -->47.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/geoblock/full.srs -->9.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/geoblock/full-sld.json -->12.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/geoblock/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
       <td>Optimized geoblock domain rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side) in raw and SLD formats.</td>
     </tr>
@@ -96,6 +130,15 @@ Generated artifacts are organized as follows:
         • <a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a>
 <!-- HOSTS_LINKS_END -->
       </td>
+      <td>
+<!-- HOSTS_SIZES_START -->
+        • 29.7 KB<br>
+        • 29.3 KB<br>
+        • 29.3 KB<br>
+        • 29.7 KB<br>
+        • 87.9 KB
+<!-- HOSTS_SIZES_END -->
+      </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies. All files include standard local loopback headers.</td>
     </tr>
   </tbody>
@@ -106,10 +149,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Mafioznik**: 130ms<br>
-💚 **GeoHide v2**: 157ms<br>
-💚 **GeoHide v1**: 158ms<br>
-💚 **Malw**: 165ms
+💚 **Malw**: 11ms<br>
+💚 **GeoHide v2**: 11ms<br>
+💚 **GeoHide v1**: 11ms<br>
+💚 **Mafioznik**: 48ms
 <!-- STATUS_END -->
 
 > [!NOTE]

@@ -27,7 +27,7 @@ from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
 from russiafancylists.hosts import merge_hosts, add_localhost, generate_aligned_hosts, parse_zapret_sh
 from russiafancylists.ruleset import generate_sing_box_ruleset
-from russiafancylists.status import update_readme_status, update_readme_hosts_links
+from russiafancylists.status import update_readme_status, update_readme_hosts_links, update_readme_sizes
 
 console = Console()
 
@@ -169,7 +169,9 @@ async def run_pipeline():
                 asyncio.to_thread(generate_sing_box_ruleset, "domain", GEOBLOCK_FOLDER / "full.lst", SING_BOX_GEOBLOCK_FOLDER / "full.json", SING_BOX_GEOBLOCK_FOLDER / "full.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", GEOBLOCK_FOLDER / "full-sld.lst", SING_BOX_GEOBLOCK_FOLDER / "full-sld.json", SING_BOX_GEOBLOCK_FOLDER / "full-sld.srs")
             )
-            status.update("[green]✓ Compiled all rule-sets[/green]")
+            status.update("[cyan]Updating README file size tables...")
+            await update_readme_sizes(ROOT_DIR)
+            status.update("[green]✓ Compiled all rule-sets and updated sizes[/green]")
             
         console.print("\n[bold green]✓ Process completed successfully![/bold green]")
         

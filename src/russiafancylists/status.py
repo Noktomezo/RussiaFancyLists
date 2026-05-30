@@ -94,7 +94,7 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         readme_ru_path.write_text(new_content, encoding="utf-8")
 
 async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
-    """Dynamically update the lists/hosts links in README files based on actual files in lists/hosts."""
+    """Dynamically update the lists/hosts links and sizes in README files based on actual files in lists/hosts."""
     # Find all .hosts files in lists/hosts
     files = sorted([f.name for f in hosts_dir.glob("*.hosts") if f.is_file()])
     # Put combined.hosts at the end
@@ -103,20 +103,77 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         files.append("combined.hosts")
         
     links_lines = []
+    sizes_lines = []
+    
     for f in files:
         links_lines.append(f"        • <a href=\"./lists/hosts/{f}\"><code>{f}</code></a>")
+        
+        file_path = hosts_dir / f
+        if file_path.exists():
+            size = file_path.stat().st_size
+            if size >= 1024 * 1024:
+                size_str = f"{size / (1024 * 1024):.2f} MB"
+            elif size >= 1024:
+                size_str = f"{size / 1024:.1f} KB"
+            else:
+                size_str = f"{size} B"
+        else:
+            size_str = "unknown"
+        sizes_lines.append(f"        • {size_str}")
     
     links_block = "<br>\n".join(links_lines)
+    sizes_block = "<br>\n".join(sizes_lines)
     
     # Update both READMEs
     for filename in ("README.md", "README.ru.md"):
         path = root_dir / filename
         if path.exists():
             content = path.read_text(encoding="utf-8")
-            new_content = re.sub(
+            
+            # Update links
+            content = re.sub(
                 r"<!-- HOSTS_LINKS_START -->.*?<!-- HOSTS_LINKS_END -->",
                 f"<!-- HOSTS_LINKS_START -->\n{links_block}\n<!-- HOSTS_LINKS_END -->",
                 content,
                 flags=re.DOTALL
             )
+            
+            # Update sizes
+            content = re.sub(
+                r"<!-- HOSTS_SIZES_START -->.*?<!-- HOSTS_SIZES_END -->",
+                f"<!-- HOSTS_SIZES_START -->\n{sizes_block}\n<!-- HOSTS_SIZES_END -->",
+                content,
+                flags=re.DOTALL
+            )
+            
+            path.write_text(content, encoding="utf-8")
+
+async def update_readme_sizes(root_dir: Path):
+    """Scan README files and dynamically update <!-- SIZE:path/to/file --> placeholders with actual file sizes."""
+    import re
+    
+    def format_size(size_bytes: int) -> str:
+        if size_bytes >= 1024 * 1024:
+            return f"{size_bytes / (1024 * 1024):.2f} MB"
+        if size_bytes >= 1024:
+            return f"{size_bytes / 1024:.1f} KB"
+        return f"{size_bytes} B"
+        
+    for filename in ("README.md", "README.ru.md"):
+        path = root_dir / filename
+        if path.exists():
+            content = path.read_text(encoding="utf-8")
+            
+            # Replacement function for <!-- SIZE:path -->...<!-- SIZE_END -->
+            def repl(match):
+                file_rel_path = match.group(1)
+                file_path = root_dir / file_rel_path
+                if file_path.exists():
+                    size = file_path.stat().st_size
+                    size_str = format_size(size)
+                else:
+                    size_str = "unknown"
+                return f"<!-- SIZE:{file_rel_path} -->{size_str}<!-- SIZE_END -->"
+                
+            new_content = re.sub(r"<!-- SIZE:([^\s>]+) -->.*?<!-- SIZE_END -->", repl, content)
             path.write_text(new_content, encoding="utf-8")
