@@ -282,49 +282,37 @@ async def generate_aligned_hosts(
     # Sort for deterministic output
     geoblock_domains = sorted(list(set(geoblock_domains)))
     
-    # 4. Extract custom/direct IP mappings (IPs in source files that are not the main SNI proxy IPs of any provider)
-    primary_proxy_ips = set(malw_ips + mafioznik_ips + geohide_ips)
-    
-    def get_custom_mappings(ip_domains: dict) -> dict:
-        custom = {}
-        for ip, doms in ip_domains.items():
-            if ip not in primary_proxy_ips:
-                for d in doms:
-                    custom[d] = ip
-        return custom
-
-    malw_custom = get_custom_mappings(malw_ip_domains)
-    mafioznik_custom = get_custom_mappings(mafioznik_ip_domains)
-    geohide_custom = get_custom_mappings(geohide_ip_domains)
-
-    # Parse zapret-manager-parsed.lst for custom direct IP mappings
-    zapret_custom = {}
-    zapret_path = hosts_temp_dir / "zapret-manager-parsed.lst"
-    if zapret_path.exists():
-        with open(zapret_path, 'r', encoding='utf-8', errors='ignore') as f:
+    # 4. Extract allowed standard geoblock domains (mapped to primary proxy IPs or from non-hosts sources)
+    allowed_domains = set()
+    for ip in malw_ips:
+        if ip in malw_ip_domains:
+            allowed_domains.update(malw_ip_domains[ip])
+    for ip in mafioznik_ips:
+        if ip in mafioznik_ip_domains:
+            allowed_domains.update(mafioznik_ip_domains[ip])
+    for ip in geohide_ips:
+        if ip in geohide_ip_domains:
+            allowed_domains.update(geohide_ip_domains[ip])
+            
+    # Load domains from non-hosts sources (like itdoginfo-geoblock.lst which has no IP mappings)
+    itdog_path = hosts_temp_dir / "itdoginfo-geoblock.lst"
+    if itdog_path.exists():
+        with open(itdog_path, 'r', encoding='utf-8', errors='ignore') as f:
             for line in f:
                 line = re.sub(r'#.*', '', line).strip()
                 if not line:
                     continue
-                cols = line.split()
-                if not cols:
-                    continue
-                is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
-                is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', cols[0])
-                if is_ipv4 or is_ipv6:
-                    if len(cols) >= 2:
-                        ip = cols[0]
-                        for d in cols[1:]:
-                            zapret_custom[d.lower().strip()] = ip
+                dom = line.lower().strip()
+                if dom:
+                    allowed_domains.add(dom)
 
-    # Exclude domains with custom/direct IP mappings entirely (to delete Direct addresses completely)
-    custom_domains_to_exclude = (
-        set(malw_custom.keys()) |
-        set(mafioznik_custom.keys()) |
-        set(geohide_custom.keys()) |
-        set(zapret_custom.keys())
-    )
-    geoblock_domains = [d for d in geoblock_domains if d not in custom_domains_to_exclude]
+    # Filter geoblock_domains to only keep those allowed (acting as if custom/direct mappings didn't exist in source files)
+    geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
+
+    # No custom/direct IP mappings are used anymore (Direct addresses completely removed)
+    malw_custom = {}
+    mafioznik_custom = {}
+    geohide_custom = {}
     
     def get_raw_brand(dom: str) -> str:
         parts = dom.split('.')
