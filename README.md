@@ -102,15 +102,18 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!TIP]
-> The `combined.hosts` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (🔴), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
+> The `combined.hosts` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (❤️), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Malw**: 9ms<br>
+💚 **GeoHide v2**: 9ms<br>
 💚 **GeoHide v1**: 11ms<br>
-💚 **GeoHide v2**: 11ms<br>
-💚 **Mafioznik**: 47ms
+💚 **Malw**: 11ms<br>
+💚 **Mafioznik**: 49ms
 <!-- STATUS_END -->
+
+> [!NOTE]
+> **Latency Notice**: Latency measurements are conducted from the automated compilation server located in the US/EU, so the absolute ping values do not reflect typical domestic latency within Russia (which is usually 8–10 times lower locally). The primary indicator in this block is the server **activity status** (💚 vs ❤️).
 
 ## 🔗 Sources
 
