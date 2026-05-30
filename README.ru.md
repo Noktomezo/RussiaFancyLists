@@ -106,9 +106,9 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **GeoHide v2**: 9мс<br>
-💚 **GeoHide v1**: 10мс<br>
-💚 **Mafioznik**: 48мс<br>
+💚 **Mafioznik**: ~65мс<br>
+💚 **GeoHide v2**: ~15мс<br>
+💚 **GeoHide v1**: ~20мс<br>
 ❤️ **Malw**: недоступен
 <!-- STATUS_END -->
 
