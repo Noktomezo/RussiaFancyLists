@@ -27,11 +27,9 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         malw_ips, _ = get_source_info(hosts_temp_dir / "malw-hosts.lst")
         mafioznik_ips, _ = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
         geohide_ips, _ = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
-    except Exception:
-        # Fallbacks if file parsing fails
-        malw_ips = ["77.239.114.0"]
-        mafioznik_ips = ["103.27.157.38"]
-        geohide_ips = ["45.155.204.190", "37.230.192.51"]
+    except Exception as e:
+        print(f"Warning: Failed to retrieve proxy IPs for latency checks: {e}")
+        return
 
     providers = []
     
