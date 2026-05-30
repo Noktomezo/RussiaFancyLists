@@ -297,8 +297,33 @@ async def generate_aligned_hosts(
     mafioznik_custom = get_custom_mappings(mafioznik_ip_domains)
     geohide_custom = get_custom_mappings(geohide_ip_domains)
 
+    # Parse zapret-manager-parsed.lst for custom direct IP mappings
+    zapret_custom = {}
+    zapret_path = hosts_temp_dir / "zapret-manager-parsed.lst"
+    if zapret_path.exists():
+        with open(zapret_path, 'r', encoding='utf-8', errors='ignore') as f:
+            for line in f:
+                line = re.sub(r'#.*', '', line).strip()
+                if not line:
+                    continue
+                cols = line.split()
+                if not cols:
+                    continue
+                is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
+                is_ipv6 = re.match(r'^[0-9a-fA-F:]+$', cols[0])
+                if is_ipv4 or is_ipv6:
+                    if len(cols) >= 2:
+                        ip = cols[0]
+                        for d in cols[1:]:
+                            zapret_custom[d.lower().strip()] = ip
+
     # Exclude domains with custom/direct IP mappings entirely (to delete Direct addresses completely)
-    custom_domains_to_exclude = set(malw_custom.keys()) | set(mafioznik_custom.keys()) | set(geohide_custom.keys())
+    custom_domains_to_exclude = (
+        set(malw_custom.keys()) |
+        set(mafioznik_custom.keys()) |
+        set(geohide_custom.keys()) |
+        set(zapret_custom.keys())
+    )
     geoblock_domains = [d for d in geoblock_domains if d not in custom_domains_to_exclude]
     
     def get_raw_brand(dom: str) -> str:
