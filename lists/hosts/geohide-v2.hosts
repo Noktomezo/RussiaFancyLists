@@ -20,13 +20,9 @@ ff02::2 ip6-allrouters
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.248.1 fbcdn.net www.fbcdn.net
 57.144.248.1 fbsbx.com
-157.240.245.174 b.i.instagram.com help.instagram.com instagram.com www.instagram.com
-31.7.60.157 game.mocogame.com
-2a02:e00:ffec:4b8::1 ntc.party
 52.223.13.41 tracker.openbittorrent.com
 172.64.33.155 d.rutor.info d.rutor.is
 173.245.59.219 rutor.info rutor.is
-108.61.167.26 game.squadbustersgame.com
 31.25.239.132 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
 
 # Geoblock
@@ -205,7 +201,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 ikea.com
 37.230.192.51 api.imgur.com imgur.com
 37.230.192.51 indeed.com
-37.230.192.51 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
+37.230.192.51 api.instagram.com b.i.instagram.com edge-chat.instagram.com graph.instagram.com help.instagram.com i.instagram.com instagram.com www.instagram.com
 37.230.192.51 intel.com intel.de intel.nl www.intel.com www.intel.de
 37.230.192.51 downloads.intercomcdn.com intercom.io
 37.230.192.51 intuit.com intuitibits.com
@@ -253,6 +249,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 middlewareinventory.com
 37.230.192.51 mintmobile.com
 37.230.192.51 mixcloud.com
+37.230.192.51 game.mocogame.com
 37.230.192.51 mongodb.com
 37.230.192.51 monoprice.com
 37.230.192.51 mouser.com mouser.fi
@@ -289,6 +286,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 nordvpn.com
 37.230.192.51 notebooklm.google
 37.230.192.51 calendar.notion.com calendar.notion.so notion-static.com notion.com notion.new notion.site notion.so www.notion.com www.notion.so
+37.230.192.51 ntc.party
 37.230.192.51 developer.nvidia.com install.launcher.omniverse.nvidia.com
 37.230.192.51 nxp.com
 37.230.192.51 cdn.oaistatic.com oaistatic.com
@@ -375,7 +373,7 @@ ff02::2 ip6-allrouters
 37.230.192.51 spiceworks.com
 37.230.192.51 spitfireaudio.com
 37.230.192.51 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
-37.230.192.51 squadbustersgame.com
+37.230.192.51 game.squadbustersgame.com squadbustersgame.com
 37.230.192.51 api-global.squareup.com api.squareup.com squareup.com
 37.230.192.51 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
 37.230.192.51 streamable.com

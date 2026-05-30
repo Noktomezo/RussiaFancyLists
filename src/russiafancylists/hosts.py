@@ -4,6 +4,7 @@ import json
 import random
 from pathlib import Path
 from collections import Counter
+import asyncio
 
 LOOPBACK_HEADER = (
     "# Loopback\n"
@@ -186,7 +187,34 @@ def get_source_info(file_path: Path):
         
     return top_ips, ip_domains
 
-def generate_aligned_hosts(
+async def check_ip_active(ip: str, timeout: float = 2.0) -> bool:
+    """Check TCP connectivity to an IP on ports 443 and 80 in parallel with a timeout."""
+    # Loopback addresses are always active
+    if ip in ("127.0.0.1", "::1", "localhost", "ip6-localhost"):
+        return True
+        
+    async def try_connect(port: int) -> bool:
+        try:
+            reader, writer = await asyncio.wait_for(
+                asyncio.open_connection(ip, port),
+                timeout=timeout
+            )
+            writer.close()
+            await writer.wait_closed()
+            return True
+        except Exception:
+            return False
+
+    results = await asyncio.gather(
+        try_connect(443),
+        try_connect(80),
+        return_exceptions=True
+    )
+    active = any(isinstance(r, bool) and r for r in results)
+    print(f"IP connectivity check: {ip} is {'ACTIVE' if active else 'OFFLINE'}")
+    return active
+
+async def generate_aligned_hosts(
     geoblock_file: Path,
     hosts_temp_dir: Path,
     output_combined: Path,
@@ -299,6 +327,29 @@ def generate_aligned_hosts(
     mafioznik_custom = get_custom_mappings(mafioznik_ip_domains)
     geohide_custom = get_custom_mappings(geohide_ip_domains)
 
+    # Perform TCP connectivity checks on all unique IPs in parallel
+    unique_custom_ips = set(malw_custom.values()) | set(mafioznik_custom.values()) | set(geohide_custom.values())
+    unique_primary_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
+    all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
+    
+    print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
+    ip_status_results = await asyncio.gather(*(check_ip_active(ip) for ip in all_ips_to_test), return_exceptions=True)
+    active_ips = {
+        ip for ip, active in zip(all_ips_to_test, ip_status_results)
+        if isinstance(active, bool) and active
+    }
+    
+    print(f"Active IPs ({len(active_ips)}): {', '.join(sorted(list(active_ips)))}")
+    offline_ips = set(all_ips_to_test) - active_ips
+    if offline_ips:
+        print(f"Offline IPs ({len(offline_ips)}): {', '.join(sorted(list(offline_ips)))}")
+        
+    # Filter custom mappings to keep only active direct/custom IPs
+    # If a custom IP is offline, its domain will naturally fallback to primary_proxy_ips and move to # Geoblock
+    malw_custom = {d: ip for d, ip in malw_custom.items() if ip in active_ips}
+    mafioznik_custom = {d: ip for d, ip in mafioznik_custom.items() if ip in active_ips}
+    geohide_custom = {d: ip for d, ip in geohide_custom.items() if ip in active_ips}
+
     # 5. Helper to group domains for a provider, preserving custom IPs
     def get_provider_groups(main_ip: str, custom_mappings: dict) -> tuple[dict, dict]:
         direct = {}
@@ -369,10 +420,39 @@ def generate_aligned_hosts(
                 base_output.unlink()
             return provider_groups
 
+    # Write all individual files using the original settings (regardless of activity status)
+    malw_res = write_provider_hosts(output_malw, malw_ips, malw_custom)
+    mafioznik_res = write_provider_hosts(output_mafioznik, mafioznik_ips, mafioznik_custom)
+    geohide_res = write_provider_hosts(output_geohide, geohide_ips, geohide_custom)
+    
+    # Filter groups to be merged into combined.hosts based on whether the primary IP is active.
+    # If a primary IP is offline, it is excluded from combined.hosts.
     all_groups = []
-    all_groups.extend(write_provider_hosts(output_malw, malw_ips, malw_custom))
-    all_groups.extend(write_provider_hosts(output_mafioznik, mafioznik_ips, mafioznik_custom))
-    all_groups.extend(write_provider_hosts(output_geohide, geohide_ips, geohide_custom))
+    
+    for ip_res, ip in zip(malw_res, malw_ips):
+        if ip in active_ips:
+            all_groups.append(ip_res)
+        else:
+            print(f"Skipping malw IP {ip} from combined.hosts because it is offline.")
+            
+    for ip_res, ip in zip(mafioznik_res, mafioznik_ips):
+        if ip in active_ips:
+            all_groups.append(ip_res)
+        else:
+            print(f"Skipping mafioznik IP {ip} from combined.hosts because it is offline.")
+            
+    for ip_res, ip in zip(geohide_res, geohide_ips):
+        if ip in active_ips:
+            all_groups.append(ip_res)
+        else:
+            print(f"Skipping geohide IP {ip} from combined.hosts because it is offline.")
+            
+    # Fallback to including all if everything is offline
+    if not all_groups:
+        print("All providers/IPs are offline! Falling back to including all of them in combined.hosts.")
+        all_groups.extend(malw_res)
+        all_groups.extend(mafioznik_res)
+        all_groups.extend(geohide_res)
     
     # Build a dictionary of custom IPs for each domain across all providers
     all_custom_ips = {}

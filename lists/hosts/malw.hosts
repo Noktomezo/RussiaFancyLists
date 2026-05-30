@@ -8,10 +8,8 @@ ff02::2 ip6-allrouters
 185.246.223.127 game.brawlstarsgame.com
 193.23.209.189 gamea.clashofclans.com
 62.133.62.97 game.clashroyaleapp.com
-157.240.245.174 z-p42-chat-e2ee-ig.facebook.com
 62.133.62.97 api.fitbit.com
 62.133.62.97 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com notebooklm.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com webchannel-alkalimakersuite-pa.clients6.google.com
-157.240.245.174 b.i.instagram.com help.instagram.com instagram.com www.instagram.com
 62.133.62.97 labs.google
 185.31.40.18 test.dns.malw.link
 62.133.62.97 game.mocogame.com
@@ -19,7 +17,6 @@ ff02::2 ip6-allrouters
 52.223.13.41 tracker.openbittorrent.com
 62.133.62.97 o.pki.goog
 172.64.33.155 d.rutor.info
-108.61.167.26 game.squadbustersgame.com
 62.133.62.97 aitestkitchen.withgoogle.com stitch.withgoogle.com
 
 # Geoblock
@@ -136,7 +133,7 @@ ff02::2 ip6-allrouters
 77.239.114.0 expandrive.com
 77.239.114.0 extremetech.com
 77.239.114.0 f1.com
-77.239.114.0 facebook.com www.facebook.com
+77.239.114.0 facebook.com www.facebook.com z-p42-chat-e2ee-ig.facebook.com
 77.239.114.0 fast.com
 77.239.114.0 fb.com
 77.239.114.0 fbcdn.net scontent-hel3-1.xx.fbcdn.net scontent.xx.fbcdn.net static.xx.fbcdn.net www.fbcdn.net
@@ -203,7 +200,7 @@ ff02::2 ip6-allrouters
 77.239.114.0 ikea.com
 77.239.114.0 api.imgur.com imgur.com
 77.239.114.0 indeed.com
-77.239.114.0 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
+77.239.114.0 api.instagram.com b.i.instagram.com edge-chat.instagram.com graph.instagram.com help.instagram.com i.instagram.com instagram.com www.instagram.com
 77.239.114.0 intel.com intel.de intel.nl www.intel.com www.intel.de
 77.239.114.0 downloads.intercomcdn.com intercom.io
 77.239.114.0 intuit.com intuitibits.com
@@ -371,7 +368,7 @@ ff02::2 ip6-allrouters
 77.239.114.0 spiceworks.com
 77.239.114.0 spitfireaudio.com
 77.239.114.0 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
-77.239.114.0 squadbustersgame.com
+77.239.114.0 game.squadbustersgame.com squadbustersgame.com
 77.239.114.0 api-global.squareup.com api.squareup.com squareup.com
 77.239.114.0 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
 77.239.114.0 streamable.com

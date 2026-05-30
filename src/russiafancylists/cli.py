@@ -112,8 +112,7 @@ async def run_pipeline():
             status.update("[cyan]Building aligned hosts files from full geoblock list...")
             
             # 2. Build aligned hosts files from the completed full geoblock list
-            await asyncio.to_thread(
-                generate_aligned_hosts,
+            await generate_aligned_hosts(
                 GEOBLOCK_FOLDER / "full.lst",
                 TEMP_FOLDER / "hosts",
                 HOSTS_LIST_FOLDER / "combined.hosts",
