@@ -15,16 +15,14 @@ Generated artifacts are organized as follows:
   <thead>
     <tr>
       <th width="12%" align="center"><b>Component</b></th>
-      <th width="25%" align="center"><b>Path</b></th>
-      <th width="23%" align="center"><b>Format / Variant</b></th>
+      <th width="28%" align="center"><b>Format / Variant</b></th>
       <th width="15%" align="center"><b>Size</b></th>
-      <th width="25%" align="center"><b>Description</b></th>
+      <th width="45%" align="center"><b>Description</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>Plain Domains</b></td>
-      <td><code>lists/plain/domains/</code></td>
       <td>
         • <a href="./lists/plain/domains/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/plain/domains/full-sld.lst"><code>full-sld.lst</code></a>
@@ -37,7 +35,6 @@ Generated artifacts are organized as follows:
     </tr>
     <tr>
       <td><b>Plain IPSets</b></td>
-      <td><code>lists/plain/ipsets/</code></td>
       <td>
         • <a href="./lists/plain/ipsets/cdn.lst"><code>cdn.lst</code></a><br>
         • <a href="./lists/plain/ipsets/full.lst"><code>full.lst</code></a><br>
@@ -52,7 +49,6 @@ Generated artifacts are organized as follows:
     </tr>
     <tr>
       <td><b>Sing-Box Domains</b></td>
-      <td><code>lists/sing-box/domains/</code></td>
       <td>
         • <a href="./lists/sing-box/domains/full.json"><code>full.json</code></a><br>
         • <a href="./lists/sing-box/domains/full.srs"><code>full.srs</code></a><br>
@@ -69,7 +65,6 @@ Generated artifacts are organized as follows:
     </tr>
     <tr>
       <td><b>Sing-Box IPSets</b></td>
-      <td><code>lists/sing-box/ipsets/</code></td>
       <td>
         • <a href="./lists/sing-box/ipsets/full.json"><code>full.json</code></a><br>
         • <a href="./lists/sing-box/ipsets/full.srs"><code>full.srs</code></a><br>
@@ -90,7 +85,6 @@ Generated artifacts are organized as follows:
     </tr>
     <tr>
       <td><b>Geoblock</b></td>
-      <td><code>lists/geoblock/</code></td>
       <td>
         • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
@@ -103,7 +97,6 @@ Generated artifacts are organized as follows:
     </tr>
     <tr>
       <td><b>Sing-Box Geoblock</b></td>
-      <td><code>lists/sing-box/geoblock/</code></td>
       <td>
         • <a href="./lists/sing-box/geoblock/full.json"><code>full.json</code></a><br>
         • <a href="./lists/sing-box/geoblock/full.srs"><code>full.srs</code></a><br>
@@ -120,7 +113,6 @@ Generated artifacts are organized as follows:
     </tr>
     <tr>
       <td><b>Hosts (SNI Proxy)</b></td>
-      <td><code>lists/hosts/</code></td>
       <td>
 <!-- HOSTS_LINKS_START -->
         • <a href="./lists/hosts/geohide-v1.hosts"><code>geohide-v1.hosts</code></a><br>
@@ -149,10 +141,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Malw**: 11ms<br>
 💚 **GeoHide v2**: 11ms<br>
+💚 **Malw**: 11ms<br>
 💚 **GeoHide v1**: 11ms<br>
-💚 **Mafioznik**: 48ms
+💚 **Mafioznik**: 49ms
 <!-- STATUS_END -->
 
 > [!NOTE]

@@ -15,16 +15,14 @@
   <thead>
     <tr>
       <th width="12%" align="center"><b>Компонент</b></th>
-      <th width="25%" align="center"><b>Путь</b></th>
-      <th width="23%" align="center"><b>Формат / Вариант</b></th>
+      <th width="28%" align="center"><b>Формат / Вариант</b></th>
       <th width="15%" align="center"><b>Размер</b></th>
-      <th width="25%" align="center"><b>Описание</b></th>
+      <th width="45%" align="center"><b>Описание</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>Домены (Plain)</b></td>
-      <td><code>lists/plain/domains/</code></td>
       <td>
         • <a href="./lists/plain/domains/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/plain/domains/full-sld.lst"><code>full-sld.lst</code></a>
@@ -37,7 +35,6 @@
     </tr>
     <tr>
       <td><b>IP-адреса (Plain)</b></td>
-      <td><code>lists/plain/ipsets/</code></td>
       <td>
         • <a href="./lists/plain/ipsets/cdn.lst"><code>cdn.lst</code></a><br>
         • <a href="./lists/plain/ipsets/full.lst"><code>full.lst</code></a><br>
@@ -52,7 +49,6 @@
     </tr>
     <tr>
       <td><b>Правила Sing-Box (Домены)</b></td>
-      <td><code>lists/sing-box/domains/</code></td>
       <td>
         • <a href="./lists/sing-box/domains/full.json"><code>full.json</code></a><br>
         • <a href="./lists/sing-box/domains/full.srs"><code>full.srs</code></a><br>
@@ -69,7 +65,6 @@
     </tr>
     <tr>
       <td><b>Правила Sing-Box (IP)</b></td>
-      <td><code>lists/sing-box/ipsets/</code></td>
       <td>
         • <a href="./lists/sing-box/ipsets/full.json"><code>full.json</code></a><br>
         • <a href="./lists/sing-box/ipsets/full.srs"><code>full.srs</code></a><br>
@@ -90,7 +85,6 @@
     </tr>
     <tr>
       <td><b>Геоблокировки</b></td>
-      <td><code>lists/geoblock/</code></td>
       <td>
         • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
@@ -103,7 +97,6 @@
     </tr>
     <tr>
       <td><b>Правила Sing-Box (Геоблок)</b></td>
-      <td><code>lists/sing-box/geoblock/</code></td>
       <td>
         • <a href="./lists/sing-box/geoblock/full.json"><code>full.json</code></a><br>
         • <a href="./lists/sing-box/geoblock/full.srs"><code>full.srs</code></a><br>
@@ -120,7 +113,6 @@
     </tr>
     <tr>
       <td><b>Хосты (SNI-прокси)</b></td>
-      <td><code>lists/hosts/</code></td>
       <td>
 <!-- HOSTS_LINKS_START -->
         • <a href="./lists/hosts/geohide-v1.hosts"><code>geohide-v1.hosts</code></a><br>
@@ -149,10 +141,10 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **Malw**: 11мс<br>
 💚 **GeoHide v2**: 11мс<br>
+💚 **Malw**: 11мс<br>
 💚 **GeoHide v1**: 11мс<br>
-💚 **Mafioznik**: 48мс
+💚 **Mafioznik**: 49мс
 <!-- STATUS_END -->
 
 > [!NOTE]
