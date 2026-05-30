@@ -18,42 +18,7 @@ async def test_ip_latency(ip: str, port: int = 443, timeout: float = 3.0) -> flo
     except Exception:
         return None
 
-def estimate_local_ping(name: str, raw_ms: int, lang: str = "en") -> str:
-    """Smartly scale high CI latencies to represent approximate local Russian ISP pings (~ms)."""
-    unit = "ms" if lang == "en" else "мс"
-    
-    # If the measurement is extremely low (e.g. < 5ms), it's likely intercepted locally (fake loopback).
-    # Return a realistic simulated local Russian ping instead of showing a broken 0ms.
-    if raw_ms < 5:
-        if "GeoHide" in name:
-            return f"~15{unit}"
-        if "Mafioznik" in name:
-            return f"~45{unit}"
-        if "Malw" in name:
-            return f"~20{unit}"
-        return f"~15{unit}"
-        
-    # If the measurement is already low (e.g. < 60ms), it's either local or extremely fast, keep it exact!
-    if raw_ms < 60:
-        return f"{raw_ms}{unit}"
-        
-    # If running in CI (high latency to US/Europe runner), estimate the local Russian ping
-    # GeoHide v1 & v2: usually ~10-20ms locally (raw in CI is ~120-170ms)
-    if "GeoHide" in name:
-        estimated = max(10, int(raw_ms / 12))
-        return f"~{estimated}{unit}"
-        
-    # Mafioznik: usually ~40-55ms locally (raw in CI is ~90-130ms)
-    if "Mafioznik" in name:
-        estimated = max(40, int(raw_ms / 2.2))
-        return f"~{estimated}{unit}"
-        
-    # Malw: usually ~10-25ms locally (raw in CI is ~110-150ms)
-    if "Malw" in name:
-        estimated = max(10, int(raw_ms / 10))
-        return f"~{estimated}{unit}"
-        
-    return f"~{raw_ms}{unit}"
+# Raw measured TCP latency formatting is used directly now
 
 async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Measure latencies and update status blocks in README.md and README.ru.md."""
@@ -100,8 +65,8 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
             status_ru.append(f"❤️ **{name}**: недоступен")
         else:
             ms = int(latency * 1000)
-            status_en.append(f"💚 **{name}**: {estimate_local_ping(name, ms, 'en')}")
-            status_ru.append(f"💚 **{name}**: {estimate_local_ping(name, ms, 'ru')}")
+            status_en.append(f"💚 **{name}**: {ms}ms")
+            status_ru.append(f"💚 **{name}**: {ms}мс")
 
     en_block = "<br>\n".join(status_en)
     ru_block = "<br>\n".join(status_ru)
