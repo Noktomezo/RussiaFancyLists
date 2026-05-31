@@ -4,13 +4,17 @@ from pathlib import Path
 ROOT_DIR = Path.cwd()
 TEMP_FOLDER = ROOT_DIR / "temp"
 LIST_FOLDER = ROOT_DIR / "lists"
-PLAIN_LIST_FOLDER = LIST_FOLDER / "plain"
-SING_BOX_LIST_FOLDER = LIST_FOLDER / "sing-box"
+BLACKLIST_LIST_FOLDER = LIST_FOLDER / "blacklist"
+BLACKLIST_SING_BOX_FOLDER = LIST_FOLDER / "blacklist-sing-box"
 HOSTS_LIST_FOLDER = LIST_FOLDER / "hosts"
 
 # Geoblock subfolder
 GEOBLOCK_FOLDER = LIST_FOLDER / "geoblock"
-SING_BOX_GEOBLOCK_FOLDER = SING_BOX_LIST_FOLDER / "geoblock"
+GEOBLOCK_SING_BOX_FOLDER = LIST_FOLDER / "geoblock-sing-box"
+
+# Whitelist subfolders
+WHITELIST_LIST_FOLDER = LIST_FOLDER / "whitelist"
+WHITELIST_SING_BOX_FOLDER = LIST_FOLDER / "whitelist-sing-box"
 
 # --- Source URLs for Download ---
 DOWNLOADS = {
@@ -77,10 +81,26 @@ DOWNLOADS = {
         TEMP_FOLDER / "zapret-manager.sh",
         "Zapret-Manager shell script"
     ),
-    # CDN IP Ranges (direct to plain folder)
+    # CDN IP Ranges (direct to blacklist folder)
     "cdn_ip_ranges": (
         "https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt",
-        PLAIN_LIST_FOLDER / "ipsets" / "cdn.lst",
+        BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst",
         "CDN IP Ranges"
+    ),
+    # Whitelist Sources (direct to whitelist folder)
+    "whitelist_cidr": (
+        "https://raw.githubusercontent.com/hxehex/russia-mobile-internet-whitelist/refs/heads/main/cidrwhitelist.txt",
+        WHITELIST_LIST_FOLDER / "cidr.lst",
+        "Whitelist CIDR list"
+    ),
+    "whitelist_domains": (
+        "https://raw.githubusercontent.com/hxehex/russia-mobile-internet-whitelist/refs/heads/main/whitelist.txt",
+        WHITELIST_LIST_FOLDER / "domains.lst",
+        "Whitelist Domains list"
+    ),
+    "whitelist_ipset": (
+        "https://raw.githubusercontent.com/hxehex/russia-mobile-internet-whitelist/refs/heads/main/ipwhitelist.txt",
+        WHITELIST_LIST_FOLDER / "ipset.lst",
+        "Whitelist IPSet list"
     )
 }
