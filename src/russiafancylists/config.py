@@ -14,7 +14,6 @@ GEOBLOCK_SING_BOX_FOLDER = LIST_FOLDER / "geoblock-sing-box"
 
 # Whitelist subfolders
 WHITELIST_LIST_FOLDER = LIST_FOLDER / "whitelist"
-WHITELIST_SING_BOX_FOLDER = LIST_FOLDER / "whitelist-sing-box"
 
 # --- Source URLs for Download ---
 DOWNLOADS = {

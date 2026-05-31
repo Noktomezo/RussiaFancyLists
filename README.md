@@ -126,26 +126,6 @@ Generated artifacts are organized as follows:
       <td>Universal community-compiled lists of allowed domains (SNI), IPs, and CIDR subnets accessible during whitelist lockdowns by Russian mobile carriers. Essential for SNI spoofing and whitelisted hostings.</td>
     </tr>
     <tr>
-      <td><b>Whitelist Sing-Box</b></td>
-      <td>
-        • <a href="./lists/whitelist-sing-box/domains.json"><code>domains.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a><br>
-        • <a href="./lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
-        • <a href="./lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
-      </td>
-      <td>
-        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END -->
-      </td>
-      <td>Whitelist routing rulesets for <code>sing-box</code> to bypass restrictions during lockdowns, built from allowed domains, IPs, and subnets.</td>
-    </tr>
-    <tr>
       <td><b>Hosts (SNI Proxy)</b></td>
       <td>
 <!-- HOSTS_LINKS_START -->
@@ -175,10 +155,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 9ms<br>
+💚 **GeoHide v2**: 9ms<br>
 💚 **Malw**: 10ms<br>
-💚 **GeoHide v2**: 11ms<br>
-💚 **Mafioznik**: 59ms
+💚 **GeoHide v1**: 11ms<br>
+💚 **Mafioznik**: 55ms
 <!-- STATUS_END -->
 
 > [!NOTE]

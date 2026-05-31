@@ -22,7 +22,7 @@ from russiafancylists.config import (
     ROOT_DIR, TEMP_FOLDER, LIST_FOLDER, BLACKLIST_LIST_FOLDER,
     BLACKLIST_SING_BOX_FOLDER, HOSTS_LIST_FOLDER,
     GEOBLOCK_FOLDER, GEOBLOCK_SING_BOX_FOLDER,
-    WHITELIST_LIST_FOLDER, WHITELIST_SING_BOX_FOLDER
+    WHITELIST_LIST_FOLDER
 )
 from russiafancylists.downloader import run_downloads
 from russiafancylists.processors import merge_lists, cleanup_domains, merge_cdn_and_full_ipset
@@ -61,8 +61,7 @@ def setup_dirs():
         HOSTS_LIST_FOLDER,
         GEOBLOCK_FOLDER,
         GEOBLOCK_SING_BOX_FOLDER,
-        WHITELIST_LIST_FOLDER,
-        WHITELIST_SING_BOX_FOLDER
+        WHITELIST_LIST_FOLDER
     ]:
         folder.mkdir(parents=True, exist_ok=True)
 
@@ -170,11 +169,7 @@ async def run_pipeline():
                 asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.srs"),
                 # Geoblock rulesets
                 asyncio.to_thread(generate_sing_box_ruleset, "domain", GEOBLOCK_FOLDER / "full.lst", GEOBLOCK_SING_BOX_FOLDER / "full.json", GEOBLOCK_SING_BOX_FOLDER / "full.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", GEOBLOCK_FOLDER / "full-sld.lst", GEOBLOCK_SING_BOX_FOLDER / "full-sld.json", GEOBLOCK_SING_BOX_FOLDER / "full-sld.srs"),
-                # Whitelist rulesets
-                asyncio.to_thread(generate_sing_box_ruleset, "domain", WHITELIST_LIST_FOLDER / "domains.lst", WHITELIST_SING_BOX_FOLDER / "domains.json", WHITELIST_SING_BOX_FOLDER / "domains.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", WHITELIST_LIST_FOLDER / "ipset.lst", WHITELIST_SING_BOX_FOLDER / "ipset.json", WHITELIST_SING_BOX_FOLDER / "ipset.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", WHITELIST_LIST_FOLDER / "cidr.lst", WHITELIST_SING_BOX_FOLDER / "cidr.json", WHITELIST_SING_BOX_FOLDER / "cidr.srs")
+                asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", GEOBLOCK_FOLDER / "full-sld.lst", GEOBLOCK_SING_BOX_FOLDER / "full-sld.json", GEOBLOCK_SING_BOX_FOLDER / "full-sld.srs")
             )
             status.update("[cyan]Updating README file size tables...")
             await update_readme_sizes(ROOT_DIR)
