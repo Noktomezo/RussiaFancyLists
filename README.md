@@ -123,7 +123,7 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/whitelist/ipset.lst -->1.68 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist/cidr.lst -->459.4 KB<!-- SIZE_END -->
       </td>
-      <td>Domains, IP addresses, and CIDR ranges of Russian mobile carriers whitelist.</td>
+      <td>Universal community-compiled lists of allowed domains (SNI), IPs, and CIDR subnets accessible during whitelist lockdowns by Russian mobile carriers. Essential for SNI spoofing and whitelisted hostings.</td>
     </tr>
     <tr>
       <td><b>Whitelist Sing-Box</b></td>
@@ -137,7 +137,7 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END --><br>
       </td>
-      <td>Optimized whitelist routing rulesets for <code>sing-box</code> (JSON and compiled binary SRS).</td>
+      <td>Whitelist routing rulesets for <code>sing-box</code> to bypass restrictions during lockdowns, built from allowed domains, IPs, and subnets.</td>
     </tr>
     <tr>
       <td><b>Hosts (SNI Proxy)</b></td>

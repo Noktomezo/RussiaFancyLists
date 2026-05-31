@@ -123,7 +123,7 @@
         • <!-- SIZE:lists/whitelist/ipset.lst -->1.68 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist/cidr.lst -->459.4 KB<!-- SIZE_END -->
       </td>
-      <td>Домены, IP-адреса и CIDR-диапазоны из белого списка мобильных операторов РФ.</td>
+      <td>Общественные списки разрешенных доменов (SNI), IP и CIDR-подсетей, доступных во время белых списков мобильных операторов РФ. Используются для SNI-спуфинга и белых хостингов.</td>
     </tr>
     <tr>
       <td><b>Правила Sing-Box (Whitelist)</b></td>
@@ -137,7 +137,7 @@
         • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END --><br>
       </td>
-      <td>Оптимизированные правила маршрутизации белого списка для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
+      <td>Правила обхода блокировок во время «белых списков» для <code>sing-box</code>, сгенерированные на основе разрешенных доменов, IP и подсетей.</td>
     </tr>
     <tr>
       <td><b>Хосты (SNI-прокси)</b></td>
