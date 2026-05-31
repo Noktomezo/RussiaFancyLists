@@ -28,8 +28,8 @@
         • <a href="./lists/plain/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/plain/domains/full.lst -->26.80 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/plain/domains/full-sld.lst -->19.53 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/plain/domains/full.lst -->25.44 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/plain/domains/full-sld.lst -->18.45 MB<!-- SIZE_END -->
       </td>
       <td>Курируемые списки доменов в исходном формате и оптимизированные домены второго уровня (SLD).</td>
     </tr>
@@ -42,8 +42,8 @@
       </td>
       <td>
         • <!-- SIZE:lists/plain/ipsets/cdn.lst -->164.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/plain/ipsets/full.lst -->928.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/plain/ipsets/full-and-cdn.lst -->580.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/plain/ipsets/full.lst -->876.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/plain/ipsets/full-and-cdn.lst -->547.3 KB<!-- SIZE_END -->
       </td>
       <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
     </tr>
@@ -56,9 +56,9 @@
         • <a href="./lists/sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/sing-box/domains/full.json -->42.14 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/domains/full.json -->40.78 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/domains/full.srs -->7.58 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/sing-box/domains/full-sld.json -->31.34 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/domains/full-sld.json -->30.27 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/domains/full-sld.srs -->6.36 MB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные правила маршрутизации доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
@@ -74,11 +74,11 @@
         • <a href="./lists/sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/sing-box/ipsets/full.json -->1.47 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/full.json -->1.42 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/ipsets/full.srs -->168.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/sing-box/ipsets/full-and-cdn.json -->950.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/full-and-cdn.json -->917.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/ipsets/full-and-cdn.srs -->121.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/sing-box/ipsets/cdn.json -->291.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/ipsets/cdn.json -->281.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/ipsets/cdn.srs -->38.3 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
@@ -90,8 +90,8 @@
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/full.lst -->31.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock/full-sld.lst -->7.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/full.lst -->29.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
       <td>Домены зарубежных сервисов, ограничивающих доступ для пользователей с российскими IP-адресами (геоблокировки/санкции).</td>
     </tr>
@@ -104,9 +104,9 @@
         • <a href="./lists/sing-box/geoblock/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/sing-box/geoblock/full.json -->47.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/geoblock/full.json -->46.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/geoblock/full.srs -->9.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/sing-box/geoblock/full-sld.json -->12.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/sing-box/geoblock/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/sing-box/geoblock/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные правила маршрутизации геоблокировок доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
@@ -124,11 +124,11 @@
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 29.7 KB<br>
         • 29.3 KB<br>
+        • 28.8 KB<br>
+        • 28.8 KB<br>
         • 29.3 KB<br>
-        • 29.7 KB<br>
-        • 87.9 KB
+        • 86.7 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). Все файлы включают стандартный локальный loopback-заголовок.</td>
@@ -141,10 +141,10 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **GeoHide v2**: 11мс<br>
-💚 **Malw**: 11мс<br>
-💚 **GeoHide v1**: 11мс<br>
-💚 **Mafioznik**: 49мс
+💚 **Mafioznik**: 88мс<br>
+💚 **GeoHide v1**: 127мс<br>
+💚 **GeoHide v2**: 129мс<br>
+💚 **Malw**: 129мс
 <!-- STATUS_END -->
 
 > [!NOTE]
