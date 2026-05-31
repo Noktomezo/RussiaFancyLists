@@ -128,14 +128,20 @@
     <tr>
       <td><b>Правила Sing-Box (Whitelist)</b></td>
       <td>
-        • <a href="./lists/whitelist-sing-box/domains.json"><code>domains.json</code></a> / <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a><br>
-        • <a href="./lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a> / <a href="./lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
-        • <a href="./lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a> / <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
+        • <a href="./lists/whitelist-sing-box/domains.json"><code>domains.json</code></a><br>
+        • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a><br>
+        • <a href="./lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a><br>
+        • <a href="./lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
+        • <a href="./lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a><br>
+        • <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --> / <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END -->
       </td>
       <td>Правила обхода блокировок во время «белых списков» для <code>sing-box</code>, сгенерированные на основе разрешенных доменов, IP и подсетей.</td>
     </tr>
