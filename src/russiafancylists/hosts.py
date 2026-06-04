@@ -156,7 +156,7 @@ def get_source_info(file_path: Path):
             cols = line.split()
             if not cols:
                 continue
-            if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::"):
+            if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::", "ff02::1", "ff02::2"):
                 continue
             
             is_ipv4 = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', cols[0])
@@ -244,6 +244,16 @@ async def generate_aligned_hosts(
     mafioznik_ips, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
     geohide_ips, geohide_ip_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
     
+    # Parse zapret-manager-parsed.lst as an IP source
+    zapret_ips = []
+    zapret_ip_domains = {}
+    zapret_path = hosts_temp_dir / "zapret-manager-parsed.lst"
+    if zapret_path.exists():
+        try:
+            _, zapret_ip_domains = get_source_info(zapret_path)
+        except Exception as e:
+            print(f"Warning: Failed to parse zapret-manager-parsed.lst as hosts source: {e}")
+    
     ips_list = sorted(list(set(malw_ips + mafioznik_ips + geohide_ips)))
     if not ips_list:
         ips_list = ["127.0.0.1"]
@@ -296,6 +306,7 @@ async def generate_aligned_hosts(
     malw_custom_raw = get_custom_mappings(malw_ip_domains)
     mafioznik_custom_raw = get_custom_mappings(mafioznik_ip_domains)
     geohide_custom_raw = get_custom_mappings(geohide_ip_domains)
+    zapret_custom_raw = get_custom_mappings(zapret_ip_domains)
 
     # Extract allowed standard geoblock domains (all domains from provider hosts files plus non-hosts sources)
     allowed_domains = set()
@@ -304,6 +315,8 @@ async def generate_aligned_hosts(
     for ip, doms in mafioznik_ip_domains.items():
         allowed_domains.update(doms)
     for ip, doms in geohide_ip_domains.items():
+        allowed_domains.update(doms)
+    for ip, doms in zapret_ip_domains.items():
         allowed_domains.update(doms)
             
     # Load domains from non-hosts sources (like itdoginfo-geoblock.lst which has no IP mappings)
@@ -352,7 +365,7 @@ async def generate_aligned_hosts(
         brand_domains.setdefault(brand, []).append(dom)
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
-    unique_custom_ips = set(malw_custom_raw.values()) | set(mafioznik_custom_raw.values()) | set(geohide_custom_raw.values())
+    unique_custom_ips = set(malw_custom_raw.values()) | set(mafioznik_custom_raw.values()) | set(geohide_custom_raw.values()) | set(zapret_custom_raw.values())
     unique_primary_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
     all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
     
@@ -373,6 +386,7 @@ async def generate_aligned_hosts(
     malw_custom = {d: ip for d, ip in malw_custom_raw.items() if ip in active_ips}
     mafioznik_custom = {d: ip for d, ip in mafioznik_custom_raw.items() if ip in active_ips}
     geohide_custom = {d: ip for d, ip in geohide_custom_raw.items() if ip in active_ips}
+    zapret_custom = {d: ip for d, ip in zapret_custom_raw.items() if ip in active_ips}
 
     # 5. Helper to group domains for a provider, preserving custom IPs
     def get_provider_groups(main_ip: str, custom_mappings: dict) -> tuple[dict, dict]:
@@ -485,6 +499,8 @@ async def generate_aligned_hosts(
     for d, ip in mafioznik_custom.items():
         all_custom_ips.setdefault(d, set()).add(ip)
     for d, ip in geohide_custom.items():
+        all_custom_ips.setdefault(d, set()).add(ip)
+    for d, ip in zapret_custom.items():
         all_custom_ips.setdefault(d, set()).add(ip)
 
     # 7. Merge all provider groups into combined_direct and combined_geoblock
