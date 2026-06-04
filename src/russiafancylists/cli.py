@@ -32,12 +32,17 @@ from russiafancylists.status import update_readme_status, update_readme_hosts_li
 
 console = Console()
 
-def setup_dirs():
+def setup_dirs(skip_download: bool = False):
     """Clear lists folder files and ensure all output folders exist, robustly handling locked directories on Windows."""
     if LIST_FOLDER.exists():
+        from russiafancylists.config import DOWNLOADS
+        download_paths = {Path(p).resolve() for _, p, _ in DOWNLOADS.values()}
+        
         def safe_clear(path: Path):
             for item in path.iterdir():
                 if item.is_file():
+                    if skip_download and item.resolve() in download_paths:
+                        continue
                     try:
                         item.unlink()
                     except Exception:
@@ -73,22 +78,25 @@ def cleanup():
     if TEMP_FOLDER.exists():
         shutil.rmtree(TEMP_FOLDER)
 
-async def run_pipeline():
+async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
     """Run all steps of the update pipeline concurrently, matching original Bash parallelism."""
     try:
-        setup_dirs()
+        setup_dirs(skip_download=skip_download)
         
         # --- Stage 1: Async Downloads ---
-        console.print("[bold purple]Stage 1: Downloading source lists...[/bold purple]")
-        progress = Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            BarColumn(bar_width=30),
-            TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
-            console=console
-        )
-        with progress:
-            await run_downloads(progress)
+        if not skip_download:
+            console.print("[bold purple]Stage 1: Downloading source lists...[/bold purple]")
+            progress = Progress(
+                SpinnerColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                BarColumn(bar_width=30),
+                TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+                console=console
+            )
+            with progress:
+                await run_downloads(progress)
+        else:
+            console.print("[bold purple]Stage 1: Skipping download stage (using local temp files)...[/bold purple]")
             
         # --- Stage 2: Merging ---
         console.print("\n[bold purple]Stage 2: Merging lists...[/bold purple]")
@@ -181,10 +189,21 @@ async def run_pipeline():
         console.print(f"\n[bold red]✗ Process failed: {e}[/bold red]")
         sys.exit(1)
     finally:
-        cleanup()
+        if not keep_temp:
+            cleanup()
+        else:
+            resume_cfg = ROOT_DIR / "resume.cfg"
+            if resume_cfg.exists():
+                resume_cfg.unlink()
 
 def main():
-    asyncio.run(run_pipeline())
+    import argparse
+    parser = argparse.ArgumentParser(description="RussiaFancyLists compilation pipeline")
+    parser.add_argument("--skip-download", action="store_true", help="Skip downloading files and use local temp files")
+    parser.add_argument("--keep-temp", action="store_true", help="Keep the temp directory after running")
+    args = parser.parse_args()
+    
+    asyncio.run(run_pipeline(skip_download=args.skip_download, keep_temp=args.keep_temp))
 
 if __name__ == "__main__":
     main()

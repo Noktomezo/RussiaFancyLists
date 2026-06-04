@@ -410,6 +410,26 @@ async def generate_aligned_hosts(
         if len(ips) == 1:
             base_output.parent.mkdir(parents=True, exist_ok=True)
             direct_groups, geoblock_groups = get_provider_groups(ips[0], custom_mappings)
+            
+            # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
+            geoblock_domains = set()
+            for (ip, brand), doms in geoblock_groups.items():
+                geoblock_domains.update(doms)
+            keys_to_move = []
+            for (ip, brand) in direct_groups:
+                if any(d == g or d.endswith("." + g) for d in direct_groups[(ip, brand)] for g in geoblock_domains):
+                    keys_to_move.append((ip, brand))
+            for (ip, brand) in keys_to_move:
+                doms = direct_groups.pop((ip, brand))
+                brand_keys = [k for k in geoblock_groups if k[1] == brand]
+                target_key = brand_keys[0] if brand_keys else (ips[0], brand)
+                geoblock_groups.setdefault(target_key, []).extend(doms)
+                geoblock_groups[target_key] = sorted(list(set(geoblock_groups[target_key])))
+
+            geoblock_domains = set()
+            for (ip, brand), doms in geoblock_groups.items():
+                geoblock_domains.update(doms)
+                
             with open(base_output, 'w', encoding='utf-8') as f:
                 f.write(LOOPBACK_HEADER)
                 
@@ -437,7 +457,28 @@ async def generate_aligned_hosts(
                 v_path = base_output.parent / (base_output.stem + f"-v{idx+1}" + suffix)
                 v_path.parent.mkdir(parents=True, exist_ok=True)
                 direct_groups, geoblock_groups = get_provider_groups(ip, custom_mappings)
+                
+                # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
+                geoblock_domains = set()
+                for (ip_key, brand), doms in geoblock_groups.items():
+                    geoblock_domains.update(doms)
+                keys_to_move = []
+                for (ip_key, brand) in direct_groups:
+                    if any(d == g or d.endswith("." + g) for d in direct_groups[(ip_key, brand)] for g in geoblock_domains):
+                        keys_to_move.append((ip_key, brand))
+                for (ip_key, brand) in keys_to_move:
+                    doms = direct_groups.pop((ip_key, brand))
+                    brand_keys = [k for k in geoblock_groups if k[1] == brand]
+                    target_key = brand_keys[0] if brand_keys else (ip, brand)
+                    geoblock_groups.setdefault(target_key, []).extend(doms)
+                    geoblock_groups[target_key] = sorted(list(set(geoblock_groups[target_key])))
+                
                 provider_groups.append((direct_groups, geoblock_groups))
+                
+                geoblock_domains = set()
+                for (ip_key, brand), doms in geoblock_groups.items():
+                    geoblock_domains.update(doms)
+                    
                 with open(v_path, 'w', encoding='utf-8') as f:
                     f.write(LOOPBACK_HEADER)
                     
@@ -521,6 +562,25 @@ async def generate_aligned_hosts(
                     combined_geoblock.setdefault((ip, brand), set()).add(d)
             
     # 8. Write combined output file
+    combined_geoblock_domains = set()
+    for (ip, brand), doms in combined_geoblock.items():
+        combined_geoblock_domains.update(doms)
+        
+    # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
+    combined_keys_to_move = []
+    for (ip, brand) in combined_direct:
+        if any(d == g or d.endswith("." + g) for d in combined_direct[(ip, brand)] for g in combined_geoblock_domains):
+            combined_keys_to_move.append((ip, brand))
+    for (ip, brand) in combined_keys_to_move:
+        doms = combined_direct.pop((ip, brand))
+        brand_keys = [k for k in combined_geoblock if k[1] == brand]
+        target_key = brand_keys[0] if brand_keys else ("127.0.0.1", brand)
+        combined_geoblock.setdefault(target_key, set()).update(doms)
+        
+    combined_geoblock_domains = set()
+    for (ip, brand), doms in combined_geoblock.items():
+        combined_geoblock_domains.update(doms)
+        
     output_combined.parent.mkdir(parents=True, exist_ok=True)
     with open(output_combined, 'w', encoding='utf-8') as f:
         f.write(LOOPBACK_HEADER)
