@@ -282,17 +282,29 @@ async def generate_aligned_hosts(
     # Sort for deterministic output
     geoblock_domains = sorted(list(set(geoblock_domains)))
     
-    # 4. Extract allowed standard geoblock domains (mapped to primary proxy IPs or from non-hosts sources)
+    # 4. Extract custom/direct IP mappings (IPs in source files that are not the main SNI proxy IPs of any provider)
+    primary_proxy_ips = set(malw_ips + mafioznik_ips + geohide_ips)
+    
+    def get_custom_mappings(ip_domains: dict) -> dict:
+        custom = {}
+        for ip, doms in ip_domains.items():
+            if ip not in primary_proxy_ips:
+                for d in doms:
+                    custom[d] = ip
+        return custom
+
+    malw_custom_raw = get_custom_mappings(malw_ip_domains)
+    mafioznik_custom_raw = get_custom_mappings(mafioznik_ip_domains)
+    geohide_custom_raw = get_custom_mappings(geohide_ip_domains)
+
+    # Extract allowed standard geoblock domains (all domains from provider hosts files plus non-hosts sources)
     allowed_domains = set()
-    for ip in malw_ips:
-        if ip in malw_ip_domains:
-            allowed_domains.update(malw_ip_domains[ip])
-    for ip in mafioznik_ips:
-        if ip in mafioznik_ip_domains:
-            allowed_domains.update(mafioznik_ip_domains[ip])
-    for ip in geohide_ips:
-        if ip in geohide_ip_domains:
-            allowed_domains.update(geohide_ip_domains[ip])
+    for ip, doms in malw_ip_domains.items():
+        allowed_domains.update(doms)
+    for ip, doms in mafioznik_ip_domains.items():
+        allowed_domains.update(doms)
+    for ip, doms in geohide_ip_domains.items():
+        allowed_domains.update(doms)
             
     # Load domains from non-hosts sources (like itdoginfo-geoblock.lst which has no IP mappings)
     itdog_path = hosts_temp_dir / "itdoginfo-geoblock.lst"
@@ -306,13 +318,8 @@ async def generate_aligned_hosts(
                 if dom:
                     allowed_domains.add(dom)
 
-    # Filter geoblock_domains to only keep those allowed (acting as if custom/direct mappings didn't exist in source files)
+    # Filter geoblock_domains to only keep those allowed
     geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
-
-    # No custom/direct IP mappings are used anymore (Direct addresses completely removed)
-    malw_custom = {}
-    mafioznik_custom = {}
-    geohide_custom = {}
     
     def get_raw_brand(dom: str) -> str:
         parts = dom.split('.')
@@ -344,11 +351,12 @@ async def generate_aligned_hosts(
         brand = resolved_brands[dom]
         brand_domains.setdefault(brand, []).append(dom)
 
-    # Perform TCP connectivity checks on unique primary/proxy IPs in parallel
+    # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
+    unique_custom_ips = set(malw_custom_raw.values()) | set(mafioznik_custom_raw.values()) | set(geohide_custom_raw.values())
     unique_primary_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
-    all_ips_to_test = list(unique_primary_ips)
+    all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
     
-    print(f"Testing connectivity of {len(all_ips_to_test)} unique primary proxy IPs...")
+    print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
     ip_status_results = await asyncio.gather(*(check_ip_active(ip) for ip in all_ips_to_test), return_exceptions=True)
     active_ips = {
         ip for ip, active in zip(all_ips_to_test, ip_status_results)
@@ -359,6 +367,12 @@ async def generate_aligned_hosts(
     offline_ips = set(all_ips_to_test) - active_ips
     if offline_ips:
         print(f"Offline IPs ({len(offline_ips)}): {', '.join(sorted(list(offline_ips)))}")
+        
+    # Filter custom mappings to keep only active direct/custom IPs
+    # If a custom IP is offline, its domain will naturally fallback to primary_proxy_ips and move to # Geoblock
+    malw_custom = {d: ip for d, ip in malw_custom_raw.items() if ip in active_ips}
+    mafioznik_custom = {d: ip for d, ip in mafioznik_custom_raw.items() if ip in active_ips}
+    geohide_custom = {d: ip for d, ip in geohide_custom_raw.items() if ip in active_ips}
 
     # 5. Helper to group domains for a provider, preserving custom IPs
     def get_provider_groups(main_ip: str, custom_mappings: dict) -> tuple[dict, dict]:
