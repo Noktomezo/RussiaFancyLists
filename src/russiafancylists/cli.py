@@ -172,9 +172,9 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 # Blacklist rulesets
                 asyncio.to_thread(generate_sing_box_ruleset, "domain", BLACKLIST_LIST_FOLDER / "domains" / "full.lst", BLACKLIST_SING_BOX_FOLDER / "domains" / "full.json", BLACKLIST_SING_BOX_FOLDER / "domains" / "full.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", BLACKLIST_LIST_FOLDER / "domains" / "full-sld.lst", BLACKLIST_SING_BOX_FOLDER / "domains" / "full-sld.json", BLACKLIST_SING_BOX_FOLDER / "domains" / "full-sld.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "full.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "full-and-cdn.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full-and-cdn.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full-and-cdn.srs"),
-                asyncio.to_thread(generate_sing_box_ruleset, "ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.srs"),
+                asyncio.to_thread(generate_sing_box_ruleset, "source_ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "full.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full.srs"),
+                asyncio.to_thread(generate_sing_box_ruleset, "source_ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "full-and-cdn.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full-and-cdn.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full-and-cdn.srs"),
+                asyncio.to_thread(generate_sing_box_ruleset, "source_ip_cidr", BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.json", BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.srs"),
                 # Geoblock rulesets
                 asyncio.to_thread(generate_sing_box_ruleset, "domain", GEOBLOCK_FOLDER / "full.lst", GEOBLOCK_SING_BOX_FOLDER / "full.json", GEOBLOCK_SING_BOX_FOLDER / "full.srs"),
                 asyncio.to_thread(generate_sing_box_ruleset, "domain_suffix", GEOBLOCK_FOLDER / "full-sld.lst", GEOBLOCK_SING_BOX_FOLDER / "full-sld.json", GEOBLOCK_SING_BOX_FOLDER / "full-sld.srs")

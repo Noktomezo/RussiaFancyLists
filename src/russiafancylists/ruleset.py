@@ -11,21 +11,29 @@ def generate_sing_box_ruleset(rule_key: str, input_file: Path, json_output_file:
     if not shutil.which("sing-box"):
         raise RuntimeError("sing-box binary is not installed or not in PATH")
         
-    values = []
+    rules_dict = {}
     with open(input_file, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.strip()
-            if line:
-                if rule_key == "domain_suffix":
-                    line = re.sub(r'^\.', '', line)
-                values.append(line)
+            if not line:
+                continue
+                
+            if rule_key == "domain_suffix":
+                line = re.sub(r'^\.', '', line)
+                rules_dict.setdefault("domain_suffix", []).append(line)
+            elif rule_key == "domain":
+                # If domain is an SLD (exactly one dot), map as domain_suffix
+                if line.count('.') == 1:
+                    rules_dict.setdefault("domain_suffix", []).append(line)
+                else:
+                    rules_dict.setdefault("domain", []).append(line)
+            else:
+                rules_dict.setdefault(rule_key, []).append(line)
                 
     ruleset = {
         "version": 5,
         "rules": [
-            {
-                rule_key: values
-            }
+            rules_dict
         ]
     }
     
