@@ -435,7 +435,7 @@ async def generate_aligned_hosts(
                 f.write(LOOPBACK_HEADER)
                 
                 if direct_groups:
-                    f.write("# Crutch/Костыль\n")
+                    f.write("# Crutch\n")
                     for ip, brand in sorted(direct_groups.keys(), key=lambda x: (x[1], x[0])):
                         dom_list = " ".join(sorted(direct_groups[(ip, brand)]))
                         f.write(f"{ip} {dom_list}\n")
@@ -506,7 +506,7 @@ async def generate_aligned_hosts(
                     f.write(LOOPBACK_HEADER)
                     
                     if direct_groups:
-                        f.write("# Crutch/Костыль\n")
+                        f.write("# Crutch\n")
                         for ip_key, brand in sorted(direct_groups.keys(), key=lambda x: (x[1], x[0])):
                             dom_list = " ".join(sorted(direct_groups[(ip_key, brand)]))
                             f.write(f"{ip_key} {dom_list}\n")
@@ -538,10 +538,23 @@ async def generate_aligned_hosts(
                 
             return provider_groups
 
-    # Write all individual files using the original settings (regardless of activity status)
-    malw_res = write_provider_hosts(output_malw, malw_ips, malw_custom)
-    mafioznik_res = write_provider_hosts(output_mafioznik, mafioznik_ips, mafioznik_custom)
-    geohide_res = write_provider_hosts(output_geohide, geohide_ips, geohide_custom)
+    # Build a unified global custom mapping
+    global_custom_raw = {}
+    for d, ip in zapret_custom_raw.items():
+        global_custom_raw[d] = ip
+    for d, ip in geohide_custom_raw.items():
+        global_custom_raw[d] = ip
+    for d, ip in mafioznik_custom_raw.items():
+        global_custom_raw[d] = ip
+    for d, ip in malw_custom_raw.items():
+        global_custom_raw[d] = ip
+        
+    global_custom = {d: ip for d, ip in global_custom_raw.items() if ip in active_ips}
+
+    # Write all individual files using the global settings (making the Crutch section identical everywhere)
+    malw_res = write_provider_hosts(output_malw, malw_ips, global_custom)
+    mafioznik_res = write_provider_hosts(output_mafioznik, mafioznik_ips, global_custom)
+    geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
     
     # Filter groups to be merged into combined.hosts based on whether the primary IP is active.
     # If a primary IP is offline, it is excluded from combined.hosts.
@@ -574,17 +587,6 @@ async def generate_aligned_hosts(
             all_groups.append((ip_res[0], ip_res[1], ip))
         for ip_res, ip in zip(geohide_res, geohide_ips):
             all_groups.append((ip_res[0], ip_res[1], ip))
-    
-    # Build a dictionary of custom IPs for each domain across all providers
-    all_custom_ips = {}
-    for d, ip in malw_custom.items():
-        all_custom_ips.setdefault(d, set()).add(ip)
-    for d, ip in mafioznik_custom.items():
-        all_custom_ips.setdefault(d, set()).add(ip)
-    for d, ip in geohide_custom.items():
-        all_custom_ips.setdefault(d, set()).add(ip)
-    for d, ip in zapret_custom.items():
-        all_custom_ips.setdefault(d, set()).add(ip)
 
     # 7. Merge all provider groups into combined_direct and combined_geoblock
     combined_direct = {}
@@ -592,23 +594,17 @@ async def generate_aligned_hosts(
     for direct_groups, geoblock_groups, main_ip in all_groups:
         for (ip, brand), doms in direct_groups.items():
             for d in doms:
-                for custom_ip in all_custom_ips[d]:
-                    combined_direct.setdefault((custom_ip, brand), set()).add(d)
+                combined_direct.setdefault((ip, brand), set()).add(d)
                     
         for (ip, brand), doms in geoblock_groups.items():
             for d in doms:
-                if d in all_custom_ips:
-                    for custom_ip in all_custom_ips[d]:
-                        combined_direct.setdefault((custom_ip, brand), set()).add(d)
-                else:
-                    combined_geoblock.setdefault((ip, brand), set()).add(d)
+                combined_geoblock.setdefault((ip, brand), set()).add(d)
             
-    # 8. Write combined output file
+    # 8. Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
     combined_geoblock_domains = set()
     for (ip, brand), doms in combined_geoblock.items():
         combined_geoblock_domains.update(doms)
         
-    # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
     combined_keys_to_move = []
     for (ip, brand) in combined_direct:
         if any(d == g or d.endswith("." + g) for d in combined_direct[(ip, brand)] for g in combined_geoblock_domains):
@@ -630,7 +626,7 @@ async def generate_aligned_hosts(
         f.write(LOOPBACK_HEADER)
         
         if combined_direct:
-            f.write("# Crutch/Костыль\n")
+            f.write("# Crutch\n")
             for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
                 dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
                 f.write(f"{ip} {dom_list}\n")
