@@ -15,9 +15,9 @@ Generated artifacts are organized as follows:
   <thead>
     <tr>
       <th width="12%" align="center"><b>Component</b></th>
-      <th width="58%" align="center"><b>Format / Variant</b></th>
+      <th width="41.5%" align="center"><b>Format / Variant</b></th>
       <th width="15%" align="center"><b>Size</b></th>
-      <th width="15%" align="center"><b>Description</b></th>
+      <th width="31.5%" align="center"><b>Description</b></th>
     </tr>
   </thead>
   <tbody>
@@ -152,7 +152,7 @@ Generated artifacts are organized as follows:
         • 36.5 KB<br>
         • 36.6 KB<br>
         • 108.4 KB<br>
-        • 94.2 KB
+        • 93.7 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies. All files include standard local loopback headers.</td>
@@ -165,9 +165,9 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 17ms<br>
-💚 **Malw**: 37ms<br>
-💚 **GeoHide v2**: 37ms<br>
+💚 **GeoHide v2**: 17ms<br>
+💚 **GeoHide v1**: 18ms<br>
+💚 **Malw**: 39ms<br>
 💚 **Mafioznik**: 58ms
 <!-- STATUS_END -->
 

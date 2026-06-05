@@ -15,9 +15,9 @@
   <thead>
     <tr>
       <th width="12%" align="center"><b>Компонент</b></th>
-      <th width="58%" align="center"><b>Формат / Вариант</b></th>
+      <th width="41.5%" align="center"><b>Формат / Вариант</b></th>
       <th width="15%" align="center"><b>Размер</b></th>
-      <th width="15%" align="center"><b>Описание</b></th>
+      <th width="31.5%" align="center"><b>Описание</b></th>
     </tr>
   </thead>
   <tbody>
@@ -152,7 +152,7 @@
         • 36.5 KB<br>
         • 36.6 KB<br>
         • 108.4 KB<br>
-        • 94.2 KB
+        • 93.7 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (легковесная DNS-альтернатива проксированию). Все файлы включают стандартный локальный loopback-заголовок.</td>
@@ -165,9 +165,9 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 17мс<br>
-💚 **Malw**: 37мс<br>
-💚 **GeoHide v2**: 37мс<br>
+💚 **GeoHide v2**: 17мс<br>
+💚 **GeoHide v1**: 18мс<br>
+💚 **Malw**: 39мс<br>
 💚 **Mafioznik**: 58мс
 <!-- STATUS_END -->
 
