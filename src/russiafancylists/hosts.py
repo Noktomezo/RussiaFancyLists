@@ -449,13 +449,12 @@ async def generate_aligned_hosts(
                         
             # No-crutch hosts file
             no_crutch_output = base_output.parent / (base_output.stem + "-no-crutch" + suffix)
-            _, geoblock_groups_nc = get_provider_groups(ips[0], {})
             with open(no_crutch_output, 'w', encoding='utf-8') as f:
                 f.write(LOOPBACK_HEADER)
-                if geoblock_groups_nc:
+                if geoblock_groups:
                     f.write("# Geoblock\n")
-                    for ip, brand in sorted(geoblock_groups_nc.keys(), key=lambda x: (x[1], x[0])):
-                        dom_list = " ".join(sorted(geoblock_groups_nc[(ip, brand)]))
+                    for ip, brand in sorted(geoblock_groups.keys(), key=lambda x: (x[1], x[0])):
+                        dom_list = " ".join(sorted(geoblock_groups[(ip, brand)]))
                         f.write(f"{ip} {dom_list}\n")
                         
             if v1_path.exists():
@@ -519,13 +518,12 @@ async def generate_aligned_hosts(
                             f.write(f"{ip_key} {dom_list}\n")
 
                 # No-crutch v-path file
-                _, geoblock_groups_nc = get_provider_groups(ip, {})
                 with open(v_path_nc, 'w', encoding='utf-8') as f:
                     f.write(LOOPBACK_HEADER)
-                    if geoblock_groups_nc:
+                    if geoblock_groups:
                         f.write("# Geoblock\n")
-                        for ip_key, brand in sorted(geoblock_groups_nc.keys(), key=lambda x: (x[1], x[0])):
-                            dom_list = " ".join(sorted(geoblock_groups_nc[(ip_key, brand)]))
+                        for ip_key, brand in sorted(geoblock_groups.keys(), key=lambda x: (x[1], x[0])):
+                            dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
                             f.write(f"{ip_key} {dom_list}\n")
                             
             if base_output.exists():
@@ -641,10 +639,8 @@ async def generate_aligned_hosts(
     # No-crutch combined file
     combined_geoblock_nc = {}
     for direct_groups, geoblock_groups, main_ip in all_groups:
-        for (ip, brand), doms in direct_groups.items():
-            combined_geoblock_nc.setdefault((main_ip, brand), set()).update(doms)
         for (ip, brand), doms in geoblock_groups.items():
-            combined_geoblock_nc.setdefault((main_ip, brand), set()).update(doms)
+            combined_geoblock_nc.setdefault((ip, brand), set()).update(doms)
             
     output_combined_nc = output_combined.parent / (output_combined.stem + "-no-crutch" + output_combined.suffix)
     with open(output_combined_nc, 'w', encoding='utf-8') as f:

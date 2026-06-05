@@ -39,46 +39,77 @@ def main():
         sys.exit(1)
         
     combined_path = hosts_dir / "combined.hosts"
+    combined_nc_path = hosts_dir / "combined-no-crutch.hosts"
+    
     if not combined_path.exists():
         print(f"Error: {combined_path} does not exist.")
         sys.exit(1)
         
-    # Find all generated provider .hosts files
-    provider_paths = [
-        f for f in hosts_dir.glob("*.hosts")
-        if f.is_file() and f.name != "combined.hosts"
-    ]
-    
-    if not provider_paths:
-        print("Error: No provider hosts files found.")
+    if not combined_nc_path.exists():
+        print(f"Error: {combined_nc_path} does not exist.")
         sys.exit(1)
         
     # Read domains from combined.hosts
     combined_domains = parse_domains_from_hosts(combined_path)
     print(f"{combined_path.name} has {len(combined_domains)} unique domains.")
     
+    # Read domains from combined-no-crutch.hosts
+    combined_nc_domains = parse_domains_from_hosts(combined_nc_path)
+    print(f"{combined_nc_path.name} has {len(combined_nc_domains)} unique domains.")
+    
+    # Find all generated provider .hosts files
+    all_hosts = [f for f in hosts_dir.glob("*.hosts") if f.is_file()]
+    
+    standard_files = []
+    nocrutch_files = []
+    
+    for f in all_hosts:
+        if f.name == "combined.hosts" or f.name == "combined-no-crutch.hosts":
+            continue
+        if "-no-crutch" in f.name:
+            nocrutch_files.append(f)
+        else:
+            standard_files.append(f)
+            
     mismatches = 0
-    for p_path in provider_paths:
+    
+    print("\n--- Verifying Standard Hosts Files (with Crutches) ---")
+    for p_path in sorted(standard_files, key=lambda x: x.name):
         p_domains = parse_domains_from_hosts(p_path)
         print(f"{p_path.name} has {len(p_domains)} unique domains.")
         
-        # Check for perfect parity with combined.lst
         diff1 = p_domains - combined_domains
         diff2 = combined_domains - p_domains
         
         if diff1 or diff2:
-            print(f"Mismatch between {p_path.name} and combined.lst:")
+            print(f"Mismatch between {p_path.name} and combined.hosts:")
             if diff1:
                 print(f"  Only in {p_path.name} (first 5): {sorted(list(diff1))[:5]}")
             if diff2:
-                print(f"  Only in combined.lst (first 5): {sorted(list(diff2))[:5]}")
+                print(f"  Only in combined.hosts (first 5): {sorted(list(diff2))[:5]}")
+            mismatches += 1
+            
+    print("\n--- Verifying No-Crutch Hosts Files ---")
+    for p_path in sorted(nocrutch_files, key=lambda x: x.name):
+        p_domains = parse_domains_from_hosts(p_path)
+        print(f"{p_path.name} has {len(p_domains)} unique domains.")
+        
+        diff1 = p_domains - combined_nc_domains
+        diff2 = combined_nc_domains - p_domains
+        
+        if diff1 or diff2:
+            print(f"Mismatch between {p_path.name} and combined-no-crutch.hosts:")
+            if diff1:
+                print(f"  Only in {p_path.name} (first 5): {sorted(list(diff1))[:5]}")
+            if diff2:
+                print(f"  Only in combined-no-crutch.hosts (first 5): {sorted(list(diff2))[:5]}")
             mismatches += 1
             
     if mismatches > 0:
-        print("Error: Domains mismatch detected across hosts files.")
+        print("\nError: Domains mismatch detected across hosts files.")
         sys.exit(1)
         
-    print("Verification successful: all hosts files have perfect domain parity!")
+    print("\nVerification successful: all hosts families have perfect domain parity!")
     sys.exit(0)
 
 if __name__ == "__main__":
