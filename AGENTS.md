@@ -44,11 +44,3 @@ This file contains global rules, workflow requirements, and architectural guidel
 ### 3. No-Crutch Hosts Files
 - In the `-no-crutch.hosts` files (including `combined-no-crutch.hosts`), all crutch/direct domains (e.g., `facebook.com`, `api.fitbit.com`) must be **completely cut out/removed**.
 - *Rationale*: These files are tailored for users who route all non-geoblocked traffic through a VPN, making crutch entries redundant or undesirable.
-
----
-
-## 📝 README Documentation & Formatting
-
-### 1. Update Notice Moscow Time
-- The update notice in the READMEs must specify the update time with Moscow Time (`00:00 GMT+3` or equivalent timestamp and timezone).
-- The Latency Notice and Tips section must include appropriate emojis.
