@@ -19,7 +19,7 @@ def get_active_proxies() -> list[tuple[str, str]]:
         return []
         
     for file_path in sorted(hosts_dir.glob("*.hosts")):
-        if file_path.name == "combined.hosts":
+        if file_path.name == "combined.hosts" or "-no-crutch" in file_path.name:
             continue
             
         # Extract provider name (e.g. geohide-v1.hosts -> GeoHide v1)

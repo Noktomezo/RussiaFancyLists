@@ -97,7 +97,10 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     """Dynamically update the lists/hosts links and sizes in README files based on actual files in lists/hosts."""
     # Find all .hosts files in lists/hosts
     files = sorted([f.name for f in hosts_dir.glob("*.hosts") if f.is_file()])
-    # Put combined.hosts at the end
+    # Put combined-no-crutch.hosts and combined.hosts at the end
+    if "combined-no-crutch.hosts" in files:
+        files.remove("combined-no-crutch.hosts")
+        files.append("combined-no-crutch.hosts")
     if "combined.hosts" in files:
         files.remove("combined.hosts")
         files.append("combined.hosts")

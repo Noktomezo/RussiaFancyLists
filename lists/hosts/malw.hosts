@@ -4,7 +4,7 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-# Direct addresses
+# Crutch/Костыль
 62.133.62.97 api.fitbit.com
 62.133.62.97 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com notebooklm.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com webchannel-alkalimakersuite-pa.clients6.google.com
 62.133.62.97 labs.google
