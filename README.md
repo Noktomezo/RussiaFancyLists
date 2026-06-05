@@ -7,7 +7,7 @@
 ## 👀 Content
 
 > [!NOTE]
-> 🤖 **Automated Updates**: Lists are updated every 3 hours (including 21:00 UTC) via GitHub Actions. Only pushes when lists actually change.
+> 🤖 **Automated Updates**: Lists are updated every 3 hours (including 21:00 UTC / 00:00 GMT+3 — Moscow Standard Time) via GitHub Actions. Only pushes when lists actually change.
 
 Generated artifacts are organized as follows:
 
