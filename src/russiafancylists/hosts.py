@@ -537,17 +537,21 @@ async def generate_aligned_hosts(
             return provider_groups
 
     # Build a unified global custom mapping
-    global_custom_raw = {}
+    global_custom_candidates = {}
     for d, ip in zapret_custom_raw.items():
-        global_custom_raw[d] = ip
+        global_custom_candidates.setdefault(d, []).append(ip)
     for d, ip in geohide_custom_raw.items():
-        global_custom_raw[d] = ip
+        global_custom_candidates.setdefault(d, []).append(ip)
     for d, ip in mafioznik_custom_raw.items():
-        global_custom_raw[d] = ip
+        global_custom_candidates.setdefault(d, []).append(ip)
     for d, ip in malw_custom_raw.items():
-        global_custom_raw[d] = ip
+        global_custom_candidates.setdefault(d, []).append(ip)
         
-    global_custom = {d: ip for d, ip in global_custom_raw.items() if ip in active_ips}
+    global_custom = {}
+    for d, ips in global_custom_candidates.items():
+        active_candidates = [ip for ip in ips if ip in active_ips]
+        if active_candidates:
+            global_custom[d] = active_candidates[-1]
 
     # Write all individual files using the global settings (making the Crutch section identical everywhere)
     malw_res = write_provider_hosts(output_malw, malw_ips, global_custom)
