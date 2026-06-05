@@ -28,8 +28,8 @@
         • <a href="./lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/domains/full.lst -->12.31 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->9.15 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/domains/full.lst -->27.00 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->19.63 MB<!-- SIZE_END -->
       </td>
       <td>Курируемые списки доменов в исходном формате и оптимизированные домены второго уровня (SLD).</td>
     </tr>
@@ -41,9 +41,9 @@
         • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->176.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->926.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->582.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->165.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->926.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->583.5 KB<!-- SIZE_END -->
       </td>
       <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
     </tr>
@@ -56,10 +56,10 @@
         • <a href="./lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->19.13 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->3.92 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->14.63 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->3.07 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->42.44 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->8.30 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->31.52 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->6.39 MB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные правила маршрутизации заблокированных доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
     </tr>
@@ -75,10 +75,10 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.47 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->167.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->952.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->122.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->293.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->167.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->955.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->122.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->293.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->38.5 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
@@ -119,9 +119,9 @@
         • <a href="./lists/whitelist/cidr.lst"><code>cidr.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist/domains.lst -->16.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist/ipset.lst -->1.81 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist/cidr.lst -->488.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/whitelist/domains.lst -->15.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist/ipset.lst -->1.68 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist/cidr.lst -->459.4 KB<!-- SIZE_END -->
       </td>
       <td>Общественные списки разрешенных доменов (SNI), IP и CIDR-подсетей, доступных во время белых списков мобильных операторов РФ. Используются для SNI-спуфинга и белых хостингов.</td>
     </tr>
@@ -168,10 +168,10 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 23мс<br>
-💚 **Malw**: 23мс<br>
+💚 **Malw**: 21мс<br>
+💚 **GeoHide v1**: 21мс<br>
 💚 **GeoHide v2**: 43мс<br>
-💚 **Mafioznik**: 62мс
+💚 **Mafioznik**: 64мс
 <!-- STATUS_END -->
 
 > [!NOTE]

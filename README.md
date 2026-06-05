@@ -28,8 +28,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/domains/full.lst -->12.31 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->9.15 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/domains/full.lst -->27.00 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->19.63 MB<!-- SIZE_END -->
       </td>
       <td>Curated domain blocklists in raw format and optimized second-level domains (SLD).</td>
     </tr>
@@ -41,9 +41,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->176.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->926.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->582.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->165.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->926.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->583.5 KB<!-- SIZE_END -->
       </td>
       <td>IP address ranges: CDN ranges, blocked IPs, and unified blocked IPs including CDNs.</td>
     </tr>
@@ -56,10 +56,10 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->19.13 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->3.92 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->14.63 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->3.07 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->42.44 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->8.30 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->31.52 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->6.39 MB<!-- SIZE_END -->
       </td>
       <td>Optimized domain rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side) in raw and SLD formats.</td>
     </tr>
@@ -75,10 +75,10 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.47 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->167.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->952.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->122.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->293.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->167.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->955.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->122.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->293.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->38.5 KB<!-- SIZE_END -->
       </td>
       <td>Optimized IP-CIDR rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
@@ -119,9 +119,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/whitelist/cidr.lst"><code>cidr.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist/domains.lst -->16.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist/ipset.lst -->1.81 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist/cidr.lst -->488.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/whitelist/domains.lst -->15.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist/ipset.lst -->1.68 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist/cidr.lst -->459.4 KB<!-- SIZE_END -->
       </td>
       <td>Universal community-compiled lists of allowed domains (SNI), IPs, and CIDR subnets accessible during whitelist lockdowns by Russian mobile carriers. Essential for SNI spoofing and whitelisted hostings.</td>
     </tr>
@@ -168,10 +168,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **GeoHide v1**: 23ms<br>
-💚 **Malw**: 23ms<br>
+💚 **Malw**: 21ms<br>
+💚 **GeoHide v1**: 21ms<br>
 💚 **GeoHide v2**: 43ms<br>
-💚 **Mafioznik**: 62ms
+💚 **Mafioznik**: 64ms
 <!-- STATUS_END -->
 
 > [!NOTE]
