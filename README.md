@@ -175,7 +175,7 @@ Generated artifacts are organized as follows:
 <!-- STATUS_END -->
 
 > [!NOTE]
-> **Latency Notice**: Latency measurements are conducted from the automated compilation server located in the US/EU, so the absolute ping values do not reflect typical domestic latency within Russia (which is usually 8–10 times lower locally). The primary indicator in this block is the server **activity status** (💚 vs ❤️).
+> **⏳ Latency Notice**: Latency measurements are conducted from the automated compilation server located in the US/EU, so the absolute ping values do not reflect typical domestic latency within Russia (which is usually 8–10 times lower locally). The primary indicator in this block is the server **activity status** (💚 vs ❤️).
 
 ## 🔗 Sources
 
