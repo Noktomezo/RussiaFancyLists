@@ -1,55 +1,54 @@
-# Инструкции для Агентов / Coding Agent Guidelines
+# Coding Agent Guidelines (AGENTS.md)
 
-Этот файл содержит глобальные правила, требования к рабочему процессу и архитектурные решения, которые должны соблюдаться всеми ИИ-агентами при работе с репозиторием **RussiaFancyLists**.
-
----
-
-## 🚀 Рабочий процесс / Workflow Guidelines
-
-### 1. Полное скачивание перед финальным пушем / Full Download Before Push
-*   **Правило**: Перед тем как делать финальный коммит и пушить изменения в репозиторий, обязательно запускайте генерацию списков в **полном режиме** (с загрузкой источников из интернета):
-    ```powershell
-    uv run russiafancylists --keep-temp
-    ```
-*   **Исключение**: Флаг `--skip-download` разрешено использовать **только во время активной разработки** для ускорения отладки локального кода:
-    ```powershell
-    uv run russiafancylists --skip-download --keep-temp
-    ```
-
-### 2. Обязательная верификация / Mandatory Verification
-*   После любой генерации списков/хостов обязательно запускайте скрипт верификации:
-    ```powershell
-    uv run python scripts/verify_hosts_sync.py
-    ```
-*   Код не должен отправляться в репозиторий, если проверка завершается с ошибкой.
+This file contains global rules, workflow requirements, and architectural guidelines that must be strictly followed by all coding agents working on the **RussiaFancyLists** repository.
 
 ---
 
-## 📐 Архитектура хостов / Hosts Structure & Parity Rules
+## 🚀 Workflow Guidelines
 
-### 1. Разделение семейств хостов / Hosts Families Parity
-*   Генерируемые hosts-файлы разделены на два семейства:
-    1.  **Стандартные (с костылями)**: `combined.hosts`, `malw.hosts`, `mafioznik.hosts`, `geohide-v*.hosts`.
-    2.  **Без костылей (No-Crutch)**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-v*-no-crutch.hosts`.
-*   **Паритет доменов**:
-    *   Все стандартные hosts-файлы должны содержать **абсолютно одинаковый набор доменов** и совпадать с `combined.hosts`.
-    *   Все `-no-crutch` файлы должны содержать **абсолютно одинаковый набор доменов** и совпадать с `combined-no-crutch.hosts`.
-    *   `verify_hosts_sync.py` проверяет эти семейства раздельно.
+### 1. Full Download Before Final Push
+- **Rule**: Before making your final commit and pushing changes to the repository, you must run the list generation pipeline in **full download mode** (without skipping downloads):
+  ```powershell
+  uv run russiafancylists --keep-temp
+  ```
+- **Exception**: Using the `--skip-download` flag is **only** permitted during active local development to speed up iteration and testing:
+  ```powershell
+  uv run russiafancylists --skip-download --keep-temp
+  ```
 
-### 2. Секция костылей / `# Crutch` Section
-*   Заголовок секции с кастомными/прямыми IP-адресами должен называться строго `# Crutch` (без русских приписок вроде `/Костыль`).
-*   Секция костылей (`# Crutch`) во всех стандартных файлах хостов провайдеров должна быть **абсолютно одинаковой** (используется единый глобальный словарь `global_custom`).
-*   **Что такое Crutch (Костыль)**: Это кастомное сопоставление IP-адреса для домена (например, обход локальной блокировки из блэклиста или использование SNI-прокси только для определенного адреса).
-
-### 3. Файлы без костылей / `-no-crutch` Files
-*   В версиях `-no-crutch.hosts` (включая `combined-no-crutch.hosts`) все костыльные/прямые домены (например, `facebook.com`, `api.fitbit.com`) должны быть **полностью вырезаны** (удалены из файла).
-*   *Обоснование*: Эти файлы предназначены для пользователей, у которых на роутере/клиенте настроен VPN для всего трафика кроме геоблока (`geoblock`), поэтому костыли им не нужны.
+### 2. Mandatory Verification
+- After generating hosts/lists, you must run the verification script to ensure domain parity holds across files:
+  ```powershell
+  uv run python scripts/verify_hosts_sync.py
+  ```
+- Do not commit or push changes if the verification script fails.
 
 ---
 
-## 📝 Оформление документации / README Formatting
+## 📐 Hosts Architecture & Parity Constraints
 
-### 1. Время обновления / Update Time Notice
-*   В уведомлении о времени обновления в README обязательно указывается московское время в формате:
-    `00:00 GMT+3` (или аналогичное актуальное время с указанием часового пояса Москвы).
-*   В уведомлении о задержке (Latency Notice) и подсказках (Tips) обязательно должны использоваться соответствующие эмодзи.
+### 1. Separate Hosts Families
+- The generated hosts files are split into two distinct families:
+  1. **Standard Hosts Files (with Crutches)**: `combined.hosts`, `malw.hosts`, `mafioznik.hosts`, `geohide-v*.hosts`.
+  2. **No-Crutch Hosts Files**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-v*-no-crutch.hosts`.
+- **Parity Rules**:
+  - All standard hosts files must contain **exactly identical domains** and match `combined.hosts`.
+  - All no-crutch hosts files must contain **exactly identical domains** and match `combined-no-crutch.hosts`.
+  - The verification script `verify_hosts_sync.py` checks these two families independently.
+
+### 2. The `# Crutch` Section
+- The header comment for custom/direct IP mappings must be exactly `# Crutch` (with no Russian translations or extra suffixes).
+- The crutch section in all standard hosts files must be **identical** across all providers (sharing the global `global_custom` mapping).
+- **Definition of Crutch**: A crutch maps a domain to a custom, direct IP (e.g. bypassing local censorship or routing specifically to a target SNI proxy).
+
+### 3. No-Crutch Hosts Files
+- In the `-no-crutch.hosts` files (including `combined-no-crutch.hosts`), all crutch/direct domains (e.g., `facebook.com`, `api.fitbit.com`) must be **completely cut out/removed**.
+- *Rationale*: These files are tailored for users who route all non-geoblocked traffic through a VPN, making crutch entries redundant or undesirable.
+
+---
+
+## 📝 README Documentation & Formatting
+
+### 1. Update Notice Moscow Time
+- The update notice in the READMEs must specify the update time with Moscow Time (`00:00 GMT+3` or equivalent timestamp and timezone).
+- The Latency Notice and Tips section must include appropriate emojis.
