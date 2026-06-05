@@ -163,15 +163,8 @@ Generated artifacts are organized as follows:
 > [!TIP]
 > The `combined.hosts` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (❤️), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
 
-### 🩹 What is a "Crutch"?
-
-Standard hosts files contain a `# Crutch` section next to `# Geoblock`:
-* **`# Geoblock`**: Maps blocked domains to a public SNI proxy IP. All traffic goes through the proxy.
-* **`# Crutch`**: Maps specific domains to their **direct/original IP addresses** rather than the proxy. This is used as a workaround (hence "crutch") for two main reasons:
-  1. **SNI Proxy Alternative**: Some services or specific IP addresses function similarly to an SNI proxy only for their own domains.
-  2. **Bypassing Local Blocks**: Certain domains in the geoblock list are blocked locally (within Russia) but resolve to IPs that are not blacklisted, allowing them to be accessed directly without proxy overhead.
-
-Files ending with `-no-crutch.hosts` completely omit this section and route all domains directly through the SNI proxy.
+> [!NOTE]
+> **🩹 What is a "Crutch"?:** Standard hosts files contain a `# Crutch` section next to `# Geoblock`. While `# Geoblock` maps domains to a public SNI proxy, `# Crutch` maps specific domains to their **direct/original IP addresses** rather than the proxy. This acts as a workaround for two reasons: (1) some services act as an SNI proxy only for their own domains, and (2) some geoblocked domains are blocked locally in Russia but resolve to IPs that aren't blacklisted, allowing them to be accessed directly without proxy overhead. Files ending with `-no-crutch.hosts` completely omit this section.
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
