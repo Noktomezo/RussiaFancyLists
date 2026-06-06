@@ -41,7 +41,7 @@
         • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->165.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->166.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->876.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->550.8 KB<!-- SIZE_END -->
       </td>
@@ -76,9 +76,9 @@
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.42 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->168.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->923.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->923.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->122.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->282.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->283.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->38.6 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
@@ -143,16 +143,16 @@
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 28.9 KB<br>
+        • 28.8 KB<br>
         • 36.2 KB<br>
-        • 28.5 KB<br>
+        • 28.4 KB<br>
         • 35.8 KB<br>
-        • 29.3 KB<br>
+        • 29.2 KB<br>
         • 36.6 KB<br>
-        • 28.9 KB<br>
+        • 28.8 KB<br>
         • 36.2 KB<br>
-        • 60.4 KB<br>
-        • 67.7 KB
+        • 60.3 KB<br>
+        • 67.6 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>
@@ -168,10 +168,10 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **Mafioznik**: 88мс<br>
-💚 **GeoHide v2**: 121мс<br>
-💚 **GeoHide v1**: 123мс<br>
-💚 **Malw**: 123мс
+💚 **Mafioznik**: 159мс<br>
+💚 **GeoHide v2**: 180мс<br>
+💚 **GeoHide v1**: 185мс<br>
+💚 **Malw**: 189мс
 <!-- STATUS_END -->
 
 > [!NOTE]
