@@ -155,7 +155,7 @@ Generated artifacts are organized as follows:
         • 47.6 KB
 <!-- HOSTS_SIZES_END -->
       </td>
-      <td>Hosts-format mappings routing blocked domains through free public SNI proxies. All files include standard local loopback headers.</td>
+      <td>Hosts-format mappings routing blocked domains through free public SNI proxies (specifically for geoblocked domains) and custom direct IP mappings (crutches) for bypassing local blocklists. All files include standard local loopback headers.</td>
     </tr>
   </tbody>
 </table>
@@ -164,14 +164,14 @@ Generated artifacts are organized as follows:
 > **🔄 Client-Side Failover:** The `combined.hosts` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (❤️), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
 
 > [!NOTE]
-> **🩹 What is a "Crutch"?:** Standard hosts files contain a `# Crutch` section next to `# Geoblock`. While `# Geoblock` maps domains to a public SNI proxy, `# Crutch` maps specific domains to their **direct/original IP addresses** rather than the proxy. This acts as a workaround for two reasons: (1) some services act as an SNI proxy only for their own domains, and (2) some geoblocked domains are blocked locally in Russia but resolve to IPs that aren't blacklisted, allowing them to be accessed directly without proxy overhead. Files ending with `-no-crutch.hosts` completely omit this section.
+> **🩹 What is a "Crutch"?:** Standard hosts files contain a `# Crutch` section next to `# Geoblock`. While `# Geoblock` maps domains to a public SNI proxy (intended only for geoblocked domains), `# Crutch` provides workarounds for bypassing local blocklists. A crutch either maps a domain to an unblocked IP address from its subnet (to bypass local censorship directly) or routes it to a specialized SNI proxy dedicated only to that specific domain. Files ending with `-no-crutch.hosts` completely omit this section.
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Malw**: 16ms<br>
 💚 **GeoHide v2**: 17ms<br>
-💚 **GeoHide v1**: 17ms<br>
-💚 **Mafioznik**: 55ms
+💚 **GeoHide v1**: 18ms<br>
+💚 **Malw**: 38ms<br>
+💚 **Mafioznik**: 60ms
 <!-- STATUS_END -->
 
 > [!NOTE]
