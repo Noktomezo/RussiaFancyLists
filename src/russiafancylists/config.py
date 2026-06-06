@@ -70,6 +70,11 @@ DOWNLOADS = {
         TEMP_FOLDER / "hosts" / "geohide-hosts.lst",
         "GeoHide's hosts"
     ),
+    "itdoginfo_hosts": (
+        "https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst",
+        TEMP_FOLDER / "hosts" / "itdoginfo-geoblock.lst",
+        "ItDogInfo's geoblock domains"
+    ),
     "zapret_manager_sh": (
         "https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh",
         TEMP_FOLDER / "zapret-manager.sh",
