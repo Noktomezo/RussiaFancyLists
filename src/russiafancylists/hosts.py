@@ -377,7 +377,12 @@ async def generate_aligned_hosts(
     zapret_custom = {d: ip for d, ip in zapret_custom_raw.items() if ip in active_ips}
 
     # 5. Helper to group domains for a provider, preserving custom IPs
-    def get_provider_groups(main_ip: str, custom_mappings: dict) -> tuple[dict, dict]:
+    def get_provider_groups(
+        main_ip: str, 
+        custom_mappings: dict,
+        allowed_set: set = None,
+        fallback_ips: list = None
+    ) -> tuple[dict, dict]:
         direct = {}
         geoblock = {}
         for brand, doms in brand_domains.items():
@@ -386,18 +391,28 @@ async def generate_aligned_hosts(
                     ip = custom_mappings[d]
                     direct.setdefault((ip, brand), []).append(d)
                 else:
-                    geoblock.setdefault((main_ip, brand), []).append(d)
+                    if allowed_set is None or d in allowed_set:
+                        ip_to_use = main_ip
+                    else:
+                        ip_to_use = fallback_ips[0] if fallback_ips else main_ip
+                    geoblock.setdefault((ip_to_use, brand), []).append(d)
         return direct, geoblock
 
     # 6. Write individual output files dynamically and collect groups
-    def write_provider_hosts(base_output: Path, ips: list[str], custom_mappings: dict) -> list[tuple[dict, dict]]:
+    def write_provider_hosts(
+        base_output: Path, 
+        ips: list[str], 
+        custom_mappings: dict,
+        allowed_set: set = None,
+        fallback_ips: list = None
+    ) -> list[tuple[dict, dict]]:
         suffix = base_output.suffix
         v1_path = base_output.parent / (base_output.stem + "-v1" + suffix)
         v2_path = base_output.parent / (base_output.stem + "-v2" + suffix)
         
         if len(ips) == 1:
             base_output.parent.mkdir(parents=True, exist_ok=True)
-            direct_groups, geoblock_groups = get_provider_groups(ips[0], custom_mappings)
+            direct_groups, geoblock_groups = get_provider_groups(ips[0], custom_mappings, allowed_set, fallback_ips)
             
             # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
             geoblock_domains = set()
@@ -465,7 +480,7 @@ async def generate_aligned_hosts(
                 v_path = base_output.parent / (base_output.stem + f"-v{idx+1}" + suffix)
                 v_path_nc = base_output.parent / (base_output.stem + f"-v{idx+1}-no-crutch" + suffix)
                 v_path.parent.mkdir(parents=True, exist_ok=True)
-                direct_groups, geoblock_groups = get_provider_groups(ip, custom_mappings)
+                direct_groups, geoblock_groups = get_provider_groups(ip, custom_mappings, allowed_set, fallback_ips)
                 
                 # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
                 geoblock_domains = set()
@@ -541,9 +556,20 @@ async def generate_aligned_hosts(
         if active_candidates:
             global_custom[d] = active_candidates[-1]
 
+    # Build sets of domains allowed by Mafioznik to implement fallback routing for restricted SNI proxies
+    mafioznik_allowed = {d for doms in mafioznik_ip_domains.values() for d in doms}
+    
+    # Identify active primary IPs of open/unrestricted providers (Malw and GeoHide) to serve as fallbacks
+    active_malw_ips = [ip for ip in malw_ips if ip in active_ips]
+    active_geohide_ips = [ip for ip in geohide_ips if ip in active_ips]
+    open_active_proxies = active_malw_ips + active_geohide_ips
+    if not open_active_proxies:
+        active_mafioznik_ips = [ip for ip in mafioznik_ips if ip in active_ips]
+        open_active_proxies = active_mafioznik_ips if active_mafioznik_ips else ["127.0.0.1"]
+
     # Write all individual files using the global settings (making the Crutch section identical everywhere)
     malw_res = write_provider_hosts(output_malw, malw_ips, global_custom)
-    mafioznik_res = write_provider_hosts(output_mafioznik, mafioznik_ips, global_custom)
+    mafioznik_res = write_provider_hosts(output_mafioznik, mafioznik_ips, global_custom, mafioznik_allowed, open_active_proxies)
     geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
     
     # Filter groups to be merged into combined.hosts based on whether the primary IP is active.
