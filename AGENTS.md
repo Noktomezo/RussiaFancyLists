@@ -37,8 +37,8 @@ This file contains global rules, workflow requirements, and architectural guidel
 
 ### 1. Separate Hosts Families
 - The generated hosts files are split into two distinct families:
-  1. **Standard Hosts Files (with Crutches)**: `combined.hosts`, `malw.hosts`, `mafioznik.hosts`, `geohide-v*.hosts`.
-  2. **No-Crutch Hosts Files**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-v*-no-crutch.hosts`.
+  1. **Standard Hosts Files (with Crutches)**: `combined.hosts`, `malw.hosts`, `mafioznik.hosts`, `geohide.hosts`.
+  2. **No-Crutch Hosts Files**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-no-crutch.hosts`.
 - **Parity Rules**:
   - All standard hosts files (except `mafioznik.hosts`) must contain **exactly identical domains** and match `combined.hosts`.
   - All no-crutch hosts files (except `mafioznik-no-crutch.hosts`) must contain **exactly identical domains** and match `combined-no-crutch.hosts`.

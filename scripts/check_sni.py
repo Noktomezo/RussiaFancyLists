@@ -23,6 +23,7 @@ except ImportError:
 
 DEFAULT_PROXIES = {
     "103.27.157.38": "Mafioznik",
+    "31.25.239.132": "GeoHide v3",
     "37.230.192.51": "GeoHide v2",
     "45.155.204.190": "Malw / GeoHide v1",
 }

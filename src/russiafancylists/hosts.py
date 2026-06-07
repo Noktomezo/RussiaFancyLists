@@ -275,6 +275,9 @@ async def generate_aligned_hosts(
     geohide_ips, geohide_ip_domains = get_source_info(
         hosts_temp_dir / "geohide-hosts.lst"
     )
+    for gh_ip in ("45.155.204.190", "37.230.192.51", "31.25.239.132"):
+        if gh_ip not in geohide_ips:
+            geohide_ips.append(gh_ip)
 
     # Parse zapret-manager-parsed.lst as an IP source
     zapret_ip_domains = {}
@@ -444,12 +447,14 @@ async def generate_aligned_hosts(
 
     # 5. Helper to group domains for a provider, preserving custom IPs
     def get_provider_groups(
-        main_ip: str,
+        ips: list[str],
         custom_mappings: dict,
         allowed_set: set = None,
     ) -> tuple[dict, dict]:
         direct = {}
         geoblock = {}
+        # Pre-group by brand for geoblocks first
+        brand_geoblocks = {}
         for brand, doms in brand_domains.items():
             for d in doms:
                 if d in custom_mappings:
@@ -457,7 +462,14 @@ async def generate_aligned_hosts(
                     direct.setdefault((ip, brand), []).append(d)
                 else:
                     if allowed_set is None or d in allowed_set:
-                        geoblock.setdefault((main_ip, brand), []).append(d)
+                        brand_geoblocks.setdefault(brand, []).append(d)
+
+        # Distribute brands round-robin across the list of IPs
+        sorted_brands = sorted(list(brand_geoblocks.keys()))
+        for idx, brand in enumerate(sorted_brands):
+            ip_to_use = ips[idx % len(ips)]
+            geoblock.setdefault((ip_to_use, brand), []).extend(brand_geoblocks[brand])
+
         return direct, geoblock
 
     # 6. Write individual output files dynamically and collect groups
@@ -468,181 +480,81 @@ async def generate_aligned_hosts(
         allowed_set: set = None,
     ) -> list[tuple[dict, dict]]:
         suffix = base_output.suffix
-        v1_path = base_output.parent / (base_output.stem + "-v1" + suffix)
-        v2_path = base_output.parent / (base_output.stem + "-v2" + suffix)
+        base_output.parent.mkdir(parents=True, exist_ok=True)
 
-        if len(ips) == 1:
-            base_output.parent.mkdir(parents=True, exist_ok=True)
-            direct_groups, geoblock_groups = get_provider_groups(
-                ips[0], custom_mappings, allowed_set
-            )
+        # Filter to active IPs to balance/distribute load only on online proxies
+        active_provider_ips = [ip for ip in ips if ip in active_ips]
+        ips_to_use = active_provider_ips if active_provider_ips else ips
 
-            # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
-            geoblock_domains = set()
-            for (_, _), doms in geoblock_groups.items():
-                geoblock_domains.update(doms)
-            keys_to_move = []
-            for ip, brand in direct_groups:
-                if any(
-                    d == g or d.endswith("." + g)
-                    for d in direct_groups[(ip, brand)]
-                    for g in geoblock_domains
+        direct_groups, geoblock_groups = get_provider_groups(
+            ips_to_use, custom_mappings, allowed_set
+        )
+
+        # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
+        geoblock_domains = set()
+        for doms in geoblock_groups.values():
+            geoblock_domains.update(doms)
+        keys_to_move = []
+        for ip_key, brand in direct_groups:
+            if any(
+                d == g or d.endswith("." + g)
+                for d in direct_groups[(ip_key, brand)]
+                for g in geoblock_domains
+            ):
+                keys_to_move.append((ip_key, brand))
+        for ip_key, brand in keys_to_move:
+            doms = direct_groups.pop((ip_key, brand))
+            brand_keys = [k for k in geoblock_groups if k[1] == brand]
+            target_key = brand_keys[0] if brand_keys else (ips_to_use[0], brand)
+            geoblock_groups.setdefault(target_key, []).extend(doms)
+            geoblock_groups[target_key] = sorted(list(set(geoblock_groups[target_key])))
+
+        # Standard hosts file (with crutches)
+        with open(base_output, "w", encoding="utf-8") as f:
+            f.write(LOOPBACK_HEADER)
+
+            if direct_groups:
+                f.write("# Crutch\n")
+                for ip_key, brand in sorted(
+                    direct_groups.keys(), key=lambda x: (x[1], x[0])
                 ):
-                    keys_to_move.append((ip, brand))
-            for ip, brand in keys_to_move:
-                doms = direct_groups.pop((ip, brand))
-                brand_keys = [k for k in geoblock_groups if k[1] == brand]
-                target_key = brand_keys[0] if brand_keys else (ips[0], brand)
-                geoblock_groups.setdefault(target_key, []).extend(doms)
-                geoblock_groups[target_key] = sorted(
-                    list(set(geoblock_groups[target_key]))
-                )
+                    dom_list = " ".join(sorted(direct_groups[(ip_key, brand)]))
+                    f.write(f"{ip_key} {dom_list}\n")
+                f.write("\n")
 
-            geoblock_domains = set()
-            for (_, _), doms in geoblock_groups.items():
-                geoblock_domains.update(doms)
+            if geoblock_groups:
+                f.write("# Geoblock\n")
+                for ip_key, brand in sorted(
+                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
+                ):
+                    dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
+                    f.write(f"{ip_key} {dom_list}\n")
 
-            # Standard hosts file (with crutches)
-            with open(base_output, "w", encoding="utf-8") as f:
-                f.write(LOOPBACK_HEADER)
+        # No-crutch hosts file
+        no_crutch_output = base_output.parent / (
+            base_output.stem + "-no-crutch" + suffix
+        )
+        with open(no_crutch_output, "w", encoding="utf-8") as f:
+            f.write(LOOPBACK_HEADER)
+            if geoblock_groups:
+                f.write("# Geoblock\n")
+                for ip_key, brand in sorted(
+                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
+                ):
+                    dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
+                    f.write(f"{ip_key} {dom_list}\n")
 
-                if direct_groups:
-                    f.write("# Crutch\n")
-                    for ip, brand in sorted(
-                        direct_groups.keys(), key=lambda x: (x[1], x[0])
-                    ):
-                        dom_list = " ".join(sorted(direct_groups[(ip, brand)]))
-                        f.write(f"{ip} {dom_list}\n")
-                    f.write("\n")
-
-                if geoblock_groups:
-                    f.write("# Geoblock\n")
-                    for ip, brand in sorted(
-                        geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                    ):
-                        dom_list = " ".join(sorted(geoblock_groups[(ip, brand)]))
-                        f.write(f"{ip} {dom_list}\n")
-
-            # No-crutch hosts file
-            no_crutch_output = base_output.parent / (
-                base_output.stem + "-no-crutch" + suffix
-            )
-            with open(no_crutch_output, "w", encoding="utf-8") as f:
-                f.write(LOOPBACK_HEADER)
-                if geoblock_groups:
-                    f.write("# Geoblock\n")
-                    for ip, brand in sorted(
-                        geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                    ):
-                        dom_list = " ".join(sorted(geoblock_groups[(ip, brand)]))
-                        f.write(f"{ip} {dom_list}\n")
-
-            if v1_path.exists():
-                v1_path.unlink()
-            if v2_path.exists():
-                v2_path.unlink()
-
-            # Clean up old version no-crutch files if they exist
-            v1_nc_path = base_output.parent / (
-                base_output.stem + "-v1-no-crutch" + suffix
-            )
-            v2_nc_path = base_output.parent / (
-                base_output.stem + "-v2-no-crutch" + suffix
-            )
-            if v1_nc_path.exists():
-                v1_nc_path.unlink()
-            if v2_nc_path.exists():
-                v2_nc_path.unlink()
-
-            return [(direct_groups, geoblock_groups)]
-        else:
-            provider_groups = []
-            for idx, ip in enumerate(ips):
+        # Clean up any legacy -v1, -v2, etc. files in the output directory
+        for idx in range(1, 10):
+            for v_nc in (False, True):
+                nc_suffix = "-no-crutch" if v_nc else ""
                 v_path = base_output.parent / (
-                    base_output.stem + f"-v{idx + 1}" + suffix
+                    base_output.stem + f"-v{idx}" + nc_suffix + suffix
                 )
-                v_path_nc = base_output.parent / (
-                    base_output.stem + f"-v{idx + 1}-no-crutch" + suffix
-                )
-                v_path.parent.mkdir(parents=True, exist_ok=True)
-                direct_groups, geoblock_groups = get_provider_groups(
-                    ip, custom_mappings, allowed_set
-                )
+                if v_path.exists():
+                    v_path.unlink()
 
-                # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
-                geoblock_domains = set()
-                for doms in geoblock_groups.values():
-                    geoblock_domains.update(doms)
-                keys_to_move = []
-                for ip_key, brand in direct_groups:
-                    if any(
-                        d == g or d.endswith("." + g)
-                        for d in direct_groups[(ip_key, brand)]
-                        for g in geoblock_domains
-                    ):
-                        keys_to_move.append((ip_key, brand))
-                for ip_key, brand in keys_to_move:
-                    doms = direct_groups.pop((ip_key, brand))
-                    brand_keys = [k for k in geoblock_groups if k[1] == brand]
-                    target_key = brand_keys[0] if brand_keys else (ip, brand)
-                    geoblock_groups.setdefault(target_key, []).extend(doms)
-                    geoblock_groups[target_key] = sorted(
-                        list(set(geoblock_groups[target_key]))
-                    )
-
-                provider_groups.append((direct_groups, geoblock_groups))
-
-                geoblock_domains = set()
-                for doms in geoblock_groups.values():
-                    geoblock_domains.update(doms)
-
-                # Standard v-path file
-                with open(v_path, "w", encoding="utf-8") as f:
-                    f.write(LOOPBACK_HEADER)
-
-                    if direct_groups:
-                        f.write("# Crutch\n")
-                        for ip_key, brand in sorted(
-                            direct_groups.keys(), key=lambda x: (x[1], x[0])
-                        ):
-                            dom_list = " ".join(sorted(direct_groups[(ip_key, brand)]))
-                            f.write(f"{ip_key} {dom_list}\n")
-                        f.write("\n")
-
-                    if geoblock_groups:
-                        f.write("# Geoblock\n")
-                        for ip_key, brand in sorted(
-                            geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                        ):
-                            dom_list = " ".join(
-                                sorted(geoblock_groups[(ip_key, brand)])
-                            )
-                            f.write(f"{ip_key} {dom_list}\n")
-
-                # No-crutch v-path file
-                with open(v_path_nc, "w", encoding="utf-8") as f:
-                    f.write(LOOPBACK_HEADER)
-                    if geoblock_groups:
-                        f.write("# Geoblock\n")
-                        for ip_key, brand in sorted(
-                            geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                        ):
-                            dom_list = " ".join(
-                                sorted(geoblock_groups[(ip_key, brand)])
-                            )
-                            f.write(f"{ip_key} {dom_list}\n")
-
-            if base_output.exists():
-                base_output.unlink()
-
-            # Clean up the base no-crutch path if it exists
-            base_nc_path = base_output.parent / (
-                base_output.stem + "-no-crutch" + suffix
-            )
-            if base_nc_path.exists():
-                base_nc_path.unlink()
-
-            return provider_groups
+        return [(direct_groups, geoblock_groups)]
 
     # Build a unified global custom mapping
     global_custom_candidates = {}
@@ -674,43 +586,39 @@ async def generate_aligned_hosts(
     )
     geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
 
-    # Filter groups to be merged into combined.hosts based on whether the primary IP is active.
-    # If a primary IP is offline, it is excluded from combined.hosts.
+    # Filter groups to be merged into combined.hosts based on whether at least one IP of the provider is active.
+    # If all primary IPs of a provider are offline, it is excluded from combined.hosts.
     all_groups = []
 
-    for ip_res, ip in zip(malw_res, malw_ips, strict=False):
-        if ip in active_ips:
-            all_groups.append((ip_res[0], ip_res[1], ip))
-        else:
-            print(f"Skipping malw IP {ip} from combined.hosts because it is offline.")
+    # Check malw
+    malw_active_ips = [ip for ip in malw_ips if ip in active_ips]
+    if malw_active_ips:
+        all_groups.append((malw_res[0][0], malw_res[0][1], malw_ips[0]))
+    else:
+        print("Skipping malw from combined.hosts because all its IPs are offline.")
 
-    for ip_res, ip in zip(mafioznik_res, mafioznik_ips, strict=False):
-        if ip in active_ips:
-            all_groups.append((ip_res[0], ip_res[1], ip))
-        else:
-            print(
-                f"Skipping mafioznik IP {ip} from combined.hosts because it is offline."
-            )
+    # Check mafioznik
+    mafioznik_active_ips = [ip for ip in mafioznik_ips if ip in active_ips]
+    if mafioznik_active_ips:
+        all_groups.append((mafioznik_res[0][0], mafioznik_res[0][1], mafioznik_ips[0]))
+    else:
+        print("Skipping mafioznik from combined.hosts because all its IPs are offline.")
 
-    for ip_res, ip in zip(geohide_res, geohide_ips, strict=False):
-        if ip in active_ips:
-            all_groups.append((ip_res[0], ip_res[1], ip))
-        else:
-            print(
-                f"Skipping geohide IP {ip} from combined.hosts because it is offline."
-            )
+    # Check geohide
+    geohide_active_ips = [ip for ip in geohide_ips if ip in active_ips]
+    if geohide_active_ips:
+        all_groups.append((geohide_res[0][0], geohide_res[0][1], geohide_ips[0]))
+    else:
+        print("Skipping geohide from combined.hosts because all its IPs are offline.")
 
     # Fallback to including all if everything is offline
     if not all_groups:
         print(
             "All providers/IPs are offline! Falling back to including all of them in combined.hosts."
         )
-        for ip_res, ip in zip(malw_res, malw_ips, strict=False):
-            all_groups.append((ip_res[0], ip_res[1], ip))
-        for ip_res, ip in zip(mafioznik_res, mafioznik_ips, strict=False):
-            all_groups.append((ip_res[0], ip_res[1], ip))
-        for ip_res, ip in zip(geohide_res, geohide_ips, strict=False):
-            all_groups.append((ip_res[0], ip_res[1], ip))
+        all_groups.append((malw_res[0][0], malw_res[0][1], malw_ips[0]))
+        all_groups.append((mafioznik_res[0][0], mafioznik_res[0][1], mafioznik_ips[0]))
+        all_groups.append((geohide_res[0][0], geohide_res[0][1], geohide_ips[0]))
 
     # 7. Merge all provider groups into combined_direct and combined_geoblock
     combined_direct = {}

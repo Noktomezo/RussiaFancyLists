@@ -29,8 +29,8 @@ def get_active_proxies() -> list[tuple[str, str]]:
         else:
             name = stem.capitalize()
 
-        # Parse the hosts file to find the IP in the # Geoblock section
-        ip = None
+        # Parse the hosts file to find the IPs in the # Geoblock section
+        ips = []
         with open(file_path, encoding="utf-8", errors="ignore") as f:
             in_geoblock = False
             for line in f:
@@ -41,10 +41,12 @@ def get_active_proxies() -> list[tuple[str, str]]:
                 if in_geoblock and line and not line.startswith("#"):
                     cols = line.split()
                     if cols:
-                        ip = cols[0]
-                        break
-        if ip:
-            providers.append((name, ip))
+                        ips.append(cols[0])
+        if len(ips) == 1:
+            providers.append((name, ips[0]))
+        elif len(ips) > 1:
+            for idx, ip in enumerate(ips):
+                providers.append((f"{name} v{idx + 1}", ip))
 
     return providers
 
