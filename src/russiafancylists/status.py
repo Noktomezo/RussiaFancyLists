@@ -30,6 +30,9 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     # 1. Retrieve current proxy IPs
     try:
         malw_ips, _ = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+        for mw_ip in ("45.155.204.190", "62.133.62.97"):
+            if mw_ip not in malw_ips:
+                malw_ips.append(mw_ip)
         mafioznik_ips, _ = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
         geohide_ips, _ = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
         for gh_ip in ("45.155.204.190", "37.230.192.51", "31.25.239.132"):

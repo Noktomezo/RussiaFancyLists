@@ -23,11 +23,14 @@ ff02::2 ip6-allrouters
 103.27.157.38 www.microsoft.com-c-3.edgekey.net
 103.27.157.38 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 103.27.157.38 elevenreader.io
+103.27.157.38 api.fitbit.com
+103.27.157.38 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com notebooklm.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com webchannel-alkalimakersuite-pa.clients6.google.com
 103.27.157.38 assets.grok.com grok.com
 103.27.157.38 guilded.gg www.guilded.gg
 103.27.157.38 api.imgur.com
 103.27.157.38 www.intel.com www.intel.de
 103.27.157.38 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+103.27.157.38 labs.google
 103.27.157.38 api.manus.im
 103.27.157.38 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
 103.27.157.38 copilot.microsoft.com win1910.ipv6.microsoft.com
@@ -39,6 +42,7 @@ ff02::2 ip6-allrouters
 103.27.157.38 geolocation.onetrust.com
 103.27.157.38 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com
 103.27.157.38 builds.parsec.app
+103.27.157.38 o.pki.goog
 103.27.157.38 eu.posthog.com us.posthog.com
 103.27.157.38 encore.scdn.co
 103.27.157.38 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com gew1-spclient.spotify.com login.app.spotify.com login5.spotify.com open.spotify.com spclient.wg.spotify.com www.spotify.com xpui.app.spotify.com
@@ -51,5 +55,6 @@ ff02::2 ip6-allrouters
 103.27.157.38 usher.ttvnw.net
 103.27.157.38 gql.twitch.tv
 103.27.157.38 upsx.weather.com weather.com
+103.27.157.38 aitestkitchen.withgoogle.com stitch.withgoogle.com
 103.27.157.38 accounts.x.ai
 103.27.157.38 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com

@@ -269,6 +269,9 @@ async def generate_aligned_hosts(
 
     # 2. Get source info (most frequent IPs and original domains)
     malw_ips, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+    for mw_ip in ("45.155.204.190", "62.133.62.97"):
+        if mw_ip not in malw_ips:
+            malw_ips.append(mw_ip)
     mafioznik_ips, mafioznik_ip_domains = get_source_info(
         hosts_temp_dir / "mafioznik-hosts.lst"
     )
