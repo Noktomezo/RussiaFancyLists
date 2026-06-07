@@ -42,8 +42,8 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->166.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->876.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->550.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->875.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->550.9 KB<!-- SIZE_END -->
       </td>
       <td>IP address ranges: CDN ranges, blocked IPs, and unified blocked IPs including CDNs.</td>
     </tr>
@@ -75,7 +75,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.42 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->168.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->168.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->923.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->122.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->283.0 KB<!-- SIZE_END --><br>
@@ -143,16 +143,16 @@ Generated artifacts are organized as follows:
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 28.9 KB<br>
+        • 28.8 KB<br>
         • 36.2 KB<br>
-        • 28.5 KB<br>
+        • 28.4 KB<br>
         • 35.8 KB<br>
-        • 29.3 KB<br>
+        • 29.2 KB<br>
         • 36.6 KB<br>
-        • 28.9 KB<br>
+        • 28.8 KB<br>
         • 36.2 KB<br>
-        • 60.4 KB<br>
-        • 67.7 KB
+        • 60.3 KB<br>
+        • 67.6 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies (specifically for geoblocked domains) and custom direct IP mappings (crutches) for bypassing local blocklists. All files include standard local loopback headers.</td>
@@ -168,10 +168,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Mafioznik**: 114ms<br>
-💚 **GeoHide v1**: 146ms<br>
-💚 **GeoHide v2**: 151ms<br>
-💚 **Malw**: 154ms
+💚 **Mafioznik**: 132ms<br>
+💚 **GeoHide v1**: 155ms<br>
+💚 **GeoHide v2**: 161ms<br>
+💚 **Malw**: 164ms
 <!-- STATUS_END -->
 
 > [!NOTE]
