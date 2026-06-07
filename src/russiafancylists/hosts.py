@@ -644,51 +644,54 @@ async def generate_aligned_hosts(
     )
     geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
 
-    # Filter groups to be merged into combined.hosts based on whether at least one IP of the provider is active.
-    # If all primary IPs of a provider are offline, it is excluded from combined.hosts.
-    all_groups = []
-
-    # Check malw
-    malw_active_ips = [ip for ip in malw_ips if ip in active_ips]
-    if malw_active_ips:
-        all_groups.append((malw_res[0][0], malw_res[0][1], malw_ips[0]))
-    else:
-        print("Skipping malw from combined.hosts because all its IPs are offline.")
-
-    # Check mafioznik
-    mafioznik_active_ips = [ip for ip in mafioznik_ips if ip in active_ips]
-    if mafioznik_active_ips:
-        all_groups.append((mafioznik_res[0][0], mafioznik_res[0][1], mafioznik_ips[0]))
-    else:
-        print("Skipping mafioznik from combined.hosts because all its IPs are offline.")
-
-    # Check geohide
-    geohide_active_ips = [ip for ip in geohide_ips if ip in active_ips]
-    if geohide_active_ips:
-        all_groups.append((geohide_res[0][0], geohide_res[0][1], geohide_ips[0]))
-    else:
-        print("Skipping geohide from combined.hosts because all its IPs are offline.")
-
-    # Fallback to including all if everything is offline
-    if not all_groups:
-        print(
-            "All providers/IPs are offline! Falling back to including all of them in combined.hosts."
-        )
-        all_groups.append((malw_res[0][0], malw_res[0][1], malw_ips[0]))
-        all_groups.append((mafioznik_res[0][0], mafioznik_res[0][1], mafioznik_ips[0]))
-        all_groups.append((geohide_res[0][0], geohide_res[0][1], geohide_ips[0]))
-
-    # 7. Merge all provider groups into combined_direct and combined_geoblock
+    # Merge custom direct mappings (crutches) from all providers
     combined_direct = {}
-    combined_geoblock = {}
-    for direct_groups, geoblock_groups, _main_ip in all_groups:
+    for direct_groups, _ in (malw_res[0], mafioznik_res[0], geohide_res[0]):
         for (ip, brand), doms in direct_groups.items():
             for d in doms:
                 combined_direct.setdefault((ip, brand), set()).add(d)
 
-        for (ip, brand), doms in geoblock_groups.items():
-            for d in doms:
-                combined_geoblock.setdefault((ip, brand), set()).add(d)
+    # For combined_geoblock: every domain maps to ALL active proxy IPs of active providers
+    combined_geoblock = {}
+    malw_active_ips = [ip for ip in malw_ips if ip in active_ips]
+    mw_ips_to_use = malw_active_ips if malw_active_ips else malw_ips
+    geohide_active_ips = [ip for ip in geohide_ips if ip in active_ips]
+    gh_ips_to_use = geohide_active_ips if geohide_active_ips else geohide_ips
+    mafioznik_active_ips = [ip for ip in mafioznik_ips if ip in active_ips]
+    m_ips_to_use = mafioznik_active_ips if mafioznik_active_ips else mafioznik_ips
+
+    use_malw = len(malw_active_ips) > 0 or not active_ips
+    use_geohide = len(geohide_active_ips) > 0 or not active_ips
+    use_mafioznik = len(mafioznik_active_ips) > 0 or not active_ips
+
+    if use_malw:
+        for ip in mw_ips_to_use:
+            for brand, doms in brand_domains.items():
+                filtered_doms = [d for d in doms if d not in global_custom]
+                if filtered_doms:
+                    combined_geoblock.setdefault((ip, brand), set()).update(
+                        filtered_doms
+                    )
+
+    if use_geohide:
+        for ip in gh_ips_to_use:
+            for brand, doms in brand_domains.items():
+                filtered_doms = [d for d in doms if d not in global_custom]
+                if filtered_doms:
+                    combined_geoblock.setdefault((ip, brand), set()).update(
+                        filtered_doms
+                    )
+
+    if use_mafioznik:
+        for ip in m_ips_to_use:
+            for brand, doms in brand_domains.items():
+                filtered_doms = [
+                    d for d in doms if d in mafioznik_allowed and d not in global_custom
+                ]
+                if filtered_doms:
+                    combined_geoblock.setdefault((ip, brand), set()).update(
+                        filtered_doms
+                    )
 
     # 8. Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
     combined_geoblock_domains = set()
@@ -709,9 +712,8 @@ async def generate_aligned_hosts(
         target_key = brand_keys[0] if brand_keys else ("127.0.0.1", brand)
         combined_geoblock.setdefault(target_key, set()).update(doms)
 
-    combined_geoblock_domains = set()
-    for doms in combined_geoblock.values():
-        combined_geoblock_domains.update(doms)
+    # Copy to combined_geoblock_nc after conflict resolution
+    combined_geoblock_nc = {k: set(v) for k, v in combined_geoblock.items()}
 
     output_combined.parent.mkdir(parents=True, exist_ok=True)
 
@@ -735,11 +737,6 @@ async def generate_aligned_hosts(
                 f.write(f"{ip} {dom_list}\n")
 
     # No-crutch combined file
-    combined_geoblock_nc = {}
-    for _, geoblock_groups, _ in all_groups:
-        for (ip, brand), doms in geoblock_groups.items():
-            combined_geoblock_nc.setdefault((ip, brand), set()).update(doms)
-
     output_combined_nc = output_combined.parent / (
         output_combined.stem + "-no-crutch" + output_combined.suffix
     )
