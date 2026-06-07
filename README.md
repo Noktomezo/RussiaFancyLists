@@ -164,16 +164,13 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Malw v1**: 21ms<br>
-💚 **GeoHide v2**: 21ms<br>
-💚 **GeoHide v1**: 21ms<br>
-💚 **Mafioznik**: 61ms<br>
-💚 **GeoHide v3**: 63ms<br>
-💚 **Malw v2**: 73ms
-<!-- STATUS_END -->
+- **Malw**: 💚💚
+- **GeoHide**: 💚💚💚
+- **Mafioznik**: 💚
 
 > [!NOTE]
-> **⏳ Latency Notice**: Latency measurements are conducted from the automated compilation server located in the US/EU, so the absolute ping values do not reflect typical domestic latency within Russia (which is usually 8–10 times lower locally). The primary indicator in this block is the server **activity status** (💚 vs ❤️).
+> Each heart represents the availability of a distinct proxy server IP (💚 - active, ❤️ - offline).
+<!-- STATUS_END -->
 
 ## 🔗 Sources
 

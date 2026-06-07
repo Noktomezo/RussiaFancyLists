@@ -3,7 +3,7 @@ import re
 import time
 from pathlib import Path
 
-from russiafancylists.hosts import get_source_info
+from russiafancylists.hosts import resolve_all_provider_ips
 
 
 async def test_ip_latency(
@@ -29,58 +29,61 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Measure latencies and update status blocks in README.md and README.ru.md."""
     # 1. Retrieve current proxy IPs
     try:
-        malw_ips, _ = get_source_info(hosts_temp_dir / "malw-hosts.lst")
-        for mw_ip in ("45.155.204.190", "62.133.62.97"):
-            if mw_ip not in malw_ips:
-                malw_ips.append(mw_ip)
-        mafioznik_ips, _ = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
-        geohide_ips, _ = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
-        for gh_ip in ("45.155.204.190", "37.230.192.51", "31.25.239.132"):
-            if gh_ip not in geohide_ips:
-                geohide_ips.append(gh_ip)
+        malw_ips, mafioznik_ips, geohide_ips = resolve_all_provider_ips(hosts_temp_dir)
     except Exception as e:
         print(f"Warning: Failed to retrieve proxy IPs for latency checks: {e}")
         return
 
-    providers = []
-
-    def register_ips(name: str, ips: list[str]):
-        if len(ips) == 1:
-            providers.append((name, ips[0]))
-        else:
-            for idx, ip in enumerate(ips):
-                providers.append((f"{name} v{idx + 1}", ip))
-
-    register_ips("GeoHide", geohide_ips)
-    register_ips("Mafioznik", mafioznik_ips)
-    register_ips("Malw", malw_ips)
+    provider_ips = {
+        "Malw": malw_ips,
+        "GeoHide": geohide_ips,
+        "Mafioznik": mafioznik_ips,
+    }
 
     # 2. Measure latencies concurrently
-    tasks = [test_ip_latency(ip) for _, ip in providers]
+    flat_targets = []
+    for provider, ips in provider_ips.items():
+        for ip in ips:
+            flat_targets.append((provider, ip))
+
+    tasks = [test_ip_latency(ip) for _, ip in flat_targets]
     latencies = await asyncio.gather(*tasks)
 
-    # 3. Sort by latency: available sorted ascending, unavailable (None) at the bottom
-    results = []
-    for (name, _ip), latency in zip(providers, latencies, strict=False):
-        results.append((name, latency))
-    results.sort(
-        key=lambda x: (1 if x[1] is None else 0, x[1] if x[1] is not None else 999999)
-    )
+    # 3. Group results by provider
+    provider_results = {p: [] for p in provider_ips}
+    for (provider, _ip), latency in zip(flat_targets, latencies, strict=False):
+        provider_results[provider].append(latency)
 
     # 4. Format status strings
     status_en = []
     status_ru = []
-    for name, latency in results:
-        if latency is None:
-            status_en.append(f"❤️ **{name}**: unavailable")
-            status_ru.append(f"❤️ **{name}**: недоступен")
-        else:
-            ms = int(latency * 1000)
-            status_en.append(f"💚 **{name}**: {ms}ms")
-            status_ru.append(f"💚 **{name}**: {ms}мс")
+    for provider in ("Malw", "GeoHide", "Mafioznik"):
+        hearts = []
+        for latency in provider_results[provider]:
+            if latency is None:
+                hearts.append("❤️")
+            else:
+                hearts.append("💚")
+        heart_str = "".join(hearts)
+        status_en.append(f"- **{provider}**: {heart_str}")
+        status_ru.append(f"- **{provider}**: {heart_str}")
 
-    en_block = "<br>\n".join(status_en)
-    ru_block = "<br>\n".join(status_ru)
+    en_block = (
+        "\n".join(status_en)
+        + "\n\n"
+        + (
+            "> [!NOTE]\n"
+            "> Each heart represents the availability of a distinct proxy server IP (💚 - active, ❤️ - offline)."
+        )
+    )
+    ru_block = (
+        "\n".join(status_ru)
+        + "\n\n"
+        + (
+            "> [!NOTE]\n"
+            "> Каждое сердечко обозначает доступность конкретного IP-адреса прокси-сервера (💚 - активен, ❤️ - недоступен)."
+        )
+    )
 
     # 4. Update README.md
     readme_en_path = root_dir / "README.md"

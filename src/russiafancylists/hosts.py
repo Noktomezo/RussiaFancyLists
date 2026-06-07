@@ -243,6 +243,70 @@ async def check_ip_active(ip: str, timeout: float = 2.0) -> bool:
     return active
 
 
+def extract_ips_from_comments(file_path: Path) -> list[str]:
+    """Extract IPv4 addresses from comment lines in a hosts file header."""
+    ips = []
+    if file_path.exists():
+        with open(file_path, encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                if line.startswith("#"):
+                    matches = re.findall(
+                        r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b", line
+                    )
+                    for ip in matches:
+                        if ip not in ("127.0.0.1", "0.0.0.0") and ip not in ips:
+                            ips.append(ip)
+                else:
+                    cleaned = line.strip()
+                    if cleaned and not cleaned.startswith("#"):
+                        break
+    return ips
+
+
+def resolve_all_provider_ips(
+    hosts_temp_dir: Path,
+) -> tuple[list[str], list[str], list[str]]:
+    """Dynamically resolve primary proxy IPs for Malw, Mafioznik, and GeoHide providers without hardcoding.
+    Returns:
+        tuple: (malw_ips, mafioznik_ips, geohide_ips)
+    """
+    # 1. Mafioznik: most common IP in mafioznik-hosts.lst
+    mafioznik_ips, _ = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+
+    # 2. GeoHide: comments or top IPs
+    geohide_ips = extract_ips_from_comments(hosts_temp_dir / "geohide-hosts.lst")
+    geohide_raw_ips, _ = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
+    if not geohide_ips:
+        geohide_ips = list(geohide_raw_ips)
+    else:
+        for ip in geohide_raw_ips:
+            if ip not in geohide_ips:
+                geohide_ips.append(ip)
+
+    # 3. Malw: IPs with domain count >= 10, excluding Mafioznik and GeoHide.
+    # We always include the top IP of malw since it might be shared (e.g. 45.155.204.190).
+    malw_raw_ips, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+    malw_ips = []
+    if malw_raw_ips:
+        malw_ips.append(malw_raw_ips[0])
+
+    for ip, doms in malw_ip_domains.items():
+        if (
+            len(doms) >= 10
+            and ip not in mafioznik_ips
+            and ip not in geohide_ips
+            and ip not in malw_ips
+        ):
+            malw_ips.append(ip)
+    if not malw_ips:
+        malw_ips = list(malw_raw_ips)
+    else:
+        # Sort descending by domain count
+        malw_ips.sort(key=lambda ip: len(malw_ip_domains.get(ip, ())), reverse=True)
+
+    return malw_ips, mafioznik_ips, geohide_ips
+
+
 async def generate_aligned_hosts(
     geoblock_file: Path,
     hosts_temp_dir: Path,
@@ -268,19 +332,10 @@ async def generate_aligned_hosts(
             blacklist_patterns.append(re.compile(py_p))
 
     # 2. Get source info (most frequent IPs and original domains)
-    malw_ips, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
-    for mw_ip in ("45.155.204.190", "62.133.62.97"):
-        if mw_ip not in malw_ips:
-            malw_ips.append(mw_ip)
-    mafioznik_ips, mafioznik_ip_domains = get_source_info(
-        hosts_temp_dir / "mafioznik-hosts.lst"
-    )
-    geohide_ips, geohide_ip_domains = get_source_info(
-        hosts_temp_dir / "geohide-hosts.lst"
-    )
-    for gh_ip in ("45.155.204.190", "37.230.192.51", "31.25.239.132"):
-        if gh_ip not in geohide_ips:
-            geohide_ips.append(gh_ip)
+    _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
+    _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+    _, geohide_ip_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
+    malw_ips, mafioznik_ips, geohide_ips = resolve_all_provider_ips(hosts_temp_dir)
 
     # Parse zapret-manager-parsed.lst as an IP source
     zapret_ip_domains = {}
