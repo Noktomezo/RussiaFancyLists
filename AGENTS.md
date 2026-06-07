@@ -23,6 +23,14 @@ This file contains global rules, workflow requirements, and architectural guidel
   ```
 - Do not commit or push changes if the verification script fails.
 
+### 3. Mandatory Ruff Formatting & Linting
+- **Rule**: If your changes touch any Python (`.py`) files, you must run `ruff` to format and check the code before committing:
+  ```powershell
+  uv run ruff format .
+  uv run ruff check .
+  ```
+- All checks must pass cleanly.
+
 ---
 
 ## 📐 Hosts Architecture & Parity Constraints
