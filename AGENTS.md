@@ -32,9 +32,10 @@ This file contains global rules, workflow requirements, and architectural guidel
   1. **Standard Hosts Files (with Crutches)**: `combined.hosts`, `malw.hosts`, `mafioznik.hosts`, `geohide-v*.hosts`.
   2. **No-Crutch Hosts Files**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-v*-no-crutch.hosts`.
 - **Parity Rules**:
-  - All standard hosts files must contain **exactly identical domains** and match `combined.hosts`.
-  - All no-crutch hosts files must contain **exactly identical domains** and match `combined-no-crutch.hosts`.
-  - The verification script `verify_hosts_sync.py` checks these two families independently.
+  - All standard hosts files (except `mafioznik.hosts`) must contain **exactly identical domains** and match `combined.hosts`.
+  - All no-crutch hosts files (except `mafioznik-no-crutch.hosts`) must contain **exactly identical domains** and match `combined-no-crutch.hosts`.
+  - `mafioznik.hosts` and `mafioznik-no-crutch.hosts` are restricted to only Mafioznik's original allowed domains and the crutch section, verified as subsets.
+  - The verification script `verify_hosts_sync.py` checks these rules accordingly.
 
 ### 2. The `# Crutch` Section
 - The header comment for custom/direct IP mappings must be exactly `# Crutch` (with no Russian translations or extra suffixes).

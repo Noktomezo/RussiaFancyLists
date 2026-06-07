@@ -147,8 +147,8 @@ Generated artifacts are organized as follows:
         • 36.6 KB<br>
         • 28.9 KB<br>
         • 36.2 KB<br>
-        • 29.7 KB<br>
-        • 37.1 KB<br>
+        • 3.3 KB<br>
+        • 11.0 KB<br>
         • 29.3 KB<br>
         • 36.6 KB<br>
         • 61.2 KB<br>
@@ -168,10 +168,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-💚 **Malw**: 21ms<br>
-💚 **GeoHide v2**: 24ms<br>
-💚 **GeoHide v1**: 44ms<br>
-💚 **Mafioznik**: 62ms
+💚 **Malw**: 24ms<br>
+💚 **GeoHide v1**: 26ms<br>
+💚 **GeoHide v2**: 46ms<br>
+💚 **Mafioznik**: 64ms
 <!-- STATUS_END -->
 
 > [!NOTE]

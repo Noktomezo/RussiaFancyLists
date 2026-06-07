@@ -147,8 +147,8 @@
         • 36.6 KB<br>
         • 28.9 KB<br>
         • 36.2 KB<br>
-        • 29.7 KB<br>
-        • 37.1 KB<br>
+        • 3.3 KB<br>
+        • 11.0 KB<br>
         • 29.3 KB<br>
         • 36.6 KB<br>
         • 61.2 KB<br>
@@ -168,10 +168,10 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-💚 **Malw**: 21мс<br>
-💚 **GeoHide v2**: 24мс<br>
-💚 **GeoHide v1**: 44мс<br>
-💚 **Mafioznik**: 62мс
+💚 **Malw**: 24мс<br>
+💚 **GeoHide v1**: 26мс<br>
+💚 **GeoHide v2**: 46мс<br>
+💚 **Mafioznik**: 64мс
 <!-- STATUS_END -->
 
 > [!NOTE]
