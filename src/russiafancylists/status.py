@@ -1,16 +1,19 @@
 import asyncio
-import time
 import re
+import time
 from pathlib import Path
+
 from russiafancylists.hosts import get_source_info
 
-async def test_ip_latency(ip: str, port: int = 443, timeout: float = 3.0) -> float | None:
+
+async def test_ip_latency(
+    ip: str, port: int = 443, timeout: float = 3.0
+) -> float | None:
     """Measure TCP handshake latency to the target IP:port in seconds. Returns None if offline."""
     start_time = time.perf_counter()
     try:
         reader, writer = await asyncio.wait_for(
-            asyncio.open_connection(ip, port),
-            timeout=timeout
+            asyncio.open_connection(ip, port), timeout=timeout
         )
         writer.close()
         await writer.wait_closed()
@@ -18,7 +21,9 @@ async def test_ip_latency(ip: str, port: int = 443, timeout: float = 3.0) -> flo
     except Exception:
         return None
 
+
 # Raw measured TCP latency formatting is used directly now
+
 
 async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Measure latencies and update status blocks in README.md and README.ru.md."""
@@ -32,13 +37,13 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         return
 
     providers = []
-    
+
     def register_ips(name: str, ips: list[str]):
         if len(ips) == 1:
             providers.append((name, ips[0]))
         else:
             for idx, ip in enumerate(ips):
-                providers.append((f"{name} v{idx+1}", ip))
+                providers.append((f"{name} v{idx + 1}", ip))
 
     register_ips("GeoHide", geohide_ips)
     register_ips("Mafioznik", mafioznik_ips)
@@ -50,9 +55,11 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
 
     # 3. Sort by latency: available sorted ascending, unavailable (None) at the bottom
     results = []
-    for (name, ip), latency in zip(providers, latencies):
+    for (name, _ip), latency in zip(providers, latencies, strict=False):
         results.append((name, latency))
-    results.sort(key=lambda x: (1 if x[1] is None else 0, x[1] if x[1] is not None else 999999))
+    results.sort(
+        key=lambda x: (1 if x[1] is None else 0, x[1] if x[1] is not None else 999999)
+    )
 
     # 4. Format status strings
     status_en = []
@@ -77,7 +84,7 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
             r"<!-- STATUS_START -->.*?<!-- STATUS_END -->",
             f"<!-- STATUS_START -->\n{en_block}\n<!-- STATUS_END -->",
             content,
-            flags=re.DOTALL
+            flags=re.DOTALL,
         )
         readme_en_path.write_text(new_content, encoding="utf-8")
 
@@ -89,9 +96,10 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
             r"<!-- STATUS_START -->.*?<!-- STATUS_END -->",
             f"<!-- STATUS_START -->\n{ru_block}\n<!-- STATUS_END -->",
             content,
-            flags=re.DOTALL
+            flags=re.DOTALL,
         )
         readme_ru_path.write_text(new_content, encoding="utf-8")
+
 
 async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     """Dynamically update the lists/hosts links and sizes in README files based on actual files in lists/hosts."""
@@ -104,13 +112,15 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     if "combined.hosts" in files:
         files.remove("combined.hosts")
         files.append("combined.hosts")
-        
+
     links_lines = []
     sizes_lines = []
-    
+
     for f in files:
-        links_lines.append(f"        • <a href=\"./lists/hosts/{f}\"><code>{f}</code></a>")
-        
+        links_lines.append(
+            f'        • <a href="./lists/hosts/{f}"><code>{f}</code></a>'
+        )
+
         file_path = hosts_dir / f
         if file_path.exists():
             size = file_path.stat().st_size
@@ -123,50 +133,51 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         else:
             size_str = "unknown"
         sizes_lines.append(f"        • {size_str}")
-    
+
     links_block = "<br>\n".join(links_lines)
     sizes_block = "<br>\n".join(sizes_lines)
-    
+
     # Update both READMEs
     for filename in ("README.md", "README.ru.md"):
         path = root_dir / filename
         if path.exists():
             content = path.read_text(encoding="utf-8")
-            
+
             # Update links
             content = re.sub(
                 r"<!-- HOSTS_LINKS_START -->.*?<!-- HOSTS_LINKS_END -->",
                 f"<!-- HOSTS_LINKS_START -->\n{links_block}\n<!-- HOSTS_LINKS_END -->",
                 content,
-                flags=re.DOTALL
+                flags=re.DOTALL,
             )
-            
+
             # Update sizes
             content = re.sub(
                 r"<!-- HOSTS_SIZES_START -->.*?<!-- HOSTS_SIZES_END -->",
                 f"<!-- HOSTS_SIZES_START -->\n{sizes_block}\n<!-- HOSTS_SIZES_END -->",
                 content,
-                flags=re.DOTALL
+                flags=re.DOTALL,
             )
-            
+
             path.write_text(content, encoding="utf-8")
+
 
 async def update_readme_sizes(root_dir: Path):
     """Scan README files and dynamically update <!-- SIZE:path/to/file --> placeholders with actual file sizes."""
     import re
-    
+
     def format_size(size_bytes: int) -> str:
         if size_bytes >= 1024 * 1024:
             return f"{size_bytes / (1024 * 1024):.2f} MB"
         if size_bytes >= 1024:
             return f"{size_bytes / 1024:.1f} KB"
         return f"{size_bytes} B"
-        
+
     for filename in ("README.md", "README.ru.md"):
         path = root_dir / filename
         if path.exists():
             content = path.read_text(encoding="utf-8")
-            
+
             # Replacement function for <!-- SIZE:path -->...<!-- SIZE_END -->
             def repl(match):
                 file_rel_path = match.group(1)
@@ -177,6 +188,8 @@ async def update_readme_sizes(root_dir: Path):
                 else:
                     size_str = "unknown"
                 return f"<!-- SIZE:{file_rel_path} -->{size_str}<!-- SIZE_END -->"
-                
-            new_content = re.sub(r"<!-- SIZE:([^\s>]+) -->.*?<!-- SIZE_END -->", repl, content)
+
+            new_content = re.sub(
+                r"<!-- SIZE:([^\s>]+) -->.*?<!-- SIZE_END -->", repl, content
+            )
             path.write_text(new_content, encoding="utf-8")
