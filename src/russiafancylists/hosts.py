@@ -285,22 +285,18 @@ def resolve_all_provider_ips(
                 geohide_ips.append(ip)
 
     # 3. Malw: IPs with domain count >= 10, excluding Mafioznik and GeoHide.
-    # We always include the top IP of malw since it might be shared (e.g. 45.155.204.190).
     malw_raw_ips, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     malw_ips = []
-    if malw_raw_ips:
-        malw_ips.append(malw_raw_ips[0])
+    excluded_ips = set(mafioznik_ips + geohide_ips)
 
     for ip, doms in malw_ip_domains.items():
-        if (
-            len(doms) >= 10
-            and ip not in mafioznik_ips
-            and ip not in geohide_ips
-            and ip not in malw_ips
-        ):
+        if len(doms) >= 10 and ip not in excluded_ips and ip not in malw_ips:
             malw_ips.append(ip)
+
     if not malw_ips:
-        malw_ips = list(malw_raw_ips)
+        malw_ips = [ip for ip in malw_raw_ips if ip not in excluded_ips]
+        if not malw_ips:
+            malw_ips = list(malw_raw_ips)
     else:
         # Sort descending by domain count
         malw_ips.sort(key=lambda ip: len(malw_ip_domains.get(ip, ())), reverse=True)

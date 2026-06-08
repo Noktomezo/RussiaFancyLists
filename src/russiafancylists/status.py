@@ -64,6 +64,8 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
                 hearts.append("❤️")
             else:
                 hearts.append("💚")
+        if not hearts:
+            hearts.append("❤️")
         heart_str = "".join(hearts)
         status_en.append(f"- **{provider}**: {heart_str}")
         status_ru.append(f"- **{provider}**: {heart_str}")
