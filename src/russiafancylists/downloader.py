@@ -50,12 +50,19 @@ async def download_file(
 
         except Exception as e:
             if attempt == retries:
-                progress.update(
-                    task_id, description=f"[red]✗ {description} failed[/red]"
+                if output_path.exists():
+                    progress.update(
+                        task_id,
+                        description=f"[yellow]⚠ {description} download failed; using cached version[/yellow]",
+                    )
+                else:
+                    progress.update(
+                        task_id, description=f"[red]✗ {description} failed[/red]"
+                    )
+                print(
+                    f"\nWarning: Failed to download {description} from {url} after {retries} attempts: {e}."
                 )
-                raise RuntimeError(
-                    f"Failed to download {description} from {url} after {retries} attempts: {e}"
-                ) from e
+                return
             else:
                 progress.update(
                     task_id,

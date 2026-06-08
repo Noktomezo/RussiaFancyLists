@@ -172,9 +172,10 @@ def get_source_info(file_path: Path):
     ips = Counter()
     ip_domains = {}
     if not file_path.exists():
-        raise FileNotFoundError(
-            f"Source hosts file not found at '{file_path}'. This indicates an upstream download/parse failure."
+        print(
+            f"Warning: Source hosts file not found at '{file_path}'. Skipping source parsing."
         )
+        return [], {}
 
     with open(file_path, encoding="utf-8", errors="ignore") as f:
         for line in f:
@@ -524,8 +525,9 @@ async def generate_aligned_hosts(
 
         # Distribute brands round-robin across the list of IPs
         sorted_brands = sorted(list(brand_geoblocks.keys()))
+        ips_list = ips if ips else ["127.0.0.1"]
         for idx, brand in enumerate(sorted_brands):
-            ip_to_use = ips[idx % len(ips)]
+            ip_to_use = ips_list[idx % len(ips_list)]
             geoblock.setdefault((ip_to_use, brand), []).extend(brand_geoblocks[brand])
 
         return direct, geoblock

@@ -125,11 +125,20 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
             "[cyan]Parsing shell scripts and merging domains...", console=console
         ) as status:
             # 0. Parse downloaded Zapret-Manager.sh file into a standard hosts-formatted .lst file
-            await asyncio.to_thread(
-                parse_zapret_sh,
-                TEMP_FOLDER / "zapret-manager.sh",
-                TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst",
-            )
+            if (TEMP_FOLDER / "zapret-manager.sh").exists():
+                await asyncio.to_thread(
+                    parse_zapret_sh,
+                    TEMP_FOLDER / "zapret-manager.sh",
+                    TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst",
+                )
+            elif (TEMP_FOLDER / "hosts" / "zapret-manager-parsed.lst").exists():
+                console.print(
+                    "[yellow]⚠ Zapret-Manager.sh not found; reusing cached parsed list[/yellow]"
+                )
+            else:
+                console.print(
+                    "[yellow]⚠ Zapret-Manager.sh not found, skipping its parsing[/yellow]"
+                )
 
             # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
             await asyncio.gather(
