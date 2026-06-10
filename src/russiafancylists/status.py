@@ -3,7 +3,7 @@ import re
 import time
 from pathlib import Path
 
-from russiafancylists.hosts import resolve_all_provider_ips
+from russiafancylists.config import PROVIDER_IPS
 
 
 async def test_ip_latency(
@@ -28,16 +28,10 @@ async def test_ip_latency(
 async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Measure latencies and update status blocks in README.md and README.ru.md."""
     # 1. Retrieve current proxy IPs
-    try:
-        malw_ips, mafioznik_ips, geohide_ips = resolve_all_provider_ips(hosts_temp_dir)
-    except Exception as e:
-        print(f"Warning: Failed to retrieve proxy IPs for latency checks: {e}")
-        return
-
     provider_ips = {
-        "Malw": malw_ips,
-        "GeoHide": geohide_ips,
-        "Mafioznik": mafioznik_ips,
+        "Malw": PROVIDER_IPS["malw"],
+        "GeoHide": PROVIDER_IPS["geohide"],
+        "Mafioznik": PROVIDER_IPS["mafioznik"],
     }
 
     # 2. Measure latencies concurrently

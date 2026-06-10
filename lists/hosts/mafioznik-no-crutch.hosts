@@ -4,3 +4,57 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
+# Geoblock
+45.95.233.23 azwindows.ipv6.microsoft.com.akadns.net www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
+45.95.233.23 a1961.g2.akamai.net a1968.i6g1.akamai.net e13678.dscb.akamaiedge.net
+45.95.233.23 api.anthropic.com auth.anthropic.com console.anthropic.com
+45.95.233.23 web.archive.org
+45.95.233.23 cdn.auth0.com
+45.95.233.23 edgeservices.bing.com rewards.bing.com sydney.bing.com
+45.95.233.23 access.broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
+45.95.233.23 www.canva.com
+45.95.233.23 ab.chatgpt.com chatgpt.com operator.chatgpt.com webrtc.chatgpt.com
+45.95.233.23 claude.ai
+45.95.233.23 api-free.deepl.com auth.deepl.com backend.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+45.95.233.23 deezer.com payment.deezer.com www.deezer.com
+45.95.233.23 afcs.dellcdn.com dds.dell.com i.dell.com nexus.dell.com www.dell.com
+45.95.233.23 www.dyson.com www.dyson.fr
+45.95.233.23 dzcdn.net
+45.95.233.23 www.microsoft.com-c-3.edgekey.net
+45.95.233.23 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
+45.95.233.23 elevenreader.io
+45.95.233.23 api.fitbit.com
+45.95.233.23 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com notebooklm.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com webchannel-alkalimakersuite-pa.clients6.google.com
+45.95.233.23 assets.grok.com grok.com
+45.95.233.23 guilded.gg www.guilded.gg
+45.95.233.23 api.imgur.com
+45.95.233.23 www.intel.com www.intel.de
+45.95.233.23 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+45.95.233.23 labs.google
+45.95.233.23 api.manus.im
+45.95.233.23 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
+45.95.233.23 copilot.microsoft.com win1910.ipv6.microsoft.com
+45.95.233.23 notebooklm.google
+45.95.233.23 www.notion.so
+45.95.233.23 developer.nvidia.com
+45.95.233.23 cdn.oaistatic.com
+45.95.233.23 files.oaiusercontent.com
+45.95.233.23 geolocation.onetrust.com
+45.95.233.23 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com
+45.95.233.23 builds.parsec.app
+45.95.233.23 o.pki.goog
+45.95.233.23 eu.posthog.com us.posthog.com
+45.95.233.23 encore.scdn.co
+45.95.233.23 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com gew1-spclient.spotify.com login.app.spotify.com login5.spotify.com open.spotify.com spclient.wg.spotify.com www.spotify.com xpui.app.spotify.com
+45.95.233.23 api-global.squareup.com api.squareup.com
+45.95.233.23 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
+45.95.233.23 www.tiktok.com
+45.95.233.23 ncsi-geo.trafficmanager.net ncsiv6-geo.trafficmanager.net
+45.95.233.23 tria.ge
+45.95.233.23 static-assets-1.truthsocial.com truthsocial.com
+45.95.233.23 usher.ttvnw.net
+45.95.233.23 gql.twitch.tv
+45.95.233.23 upsx.weather.com weather.com
+45.95.233.23 aitestkitchen.withgoogle.com stitch.withgoogle.com
+45.95.233.23 accounts.x.ai
+45.95.233.23 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
