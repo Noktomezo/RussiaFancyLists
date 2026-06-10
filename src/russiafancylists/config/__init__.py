@@ -2,6 +2,7 @@ from pathlib import Path
 
 # --- Config & Paths ---
 ROOT_DIR = Path.cwd()
+CONFIG_DIR = Path(__file__).parent
 TEMP_FOLDER = ROOT_DIR / "temp"
 LIST_FOLDER = ROOT_DIR / "lists"
 BLACKLIST_LIST_FOLDER = LIST_FOLDER / "blacklist"
