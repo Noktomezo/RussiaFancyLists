@@ -1,12 +1,11 @@
 import asyncio
 import glob
-import json
 import random
 import re
 from collections import Counter
 from pathlib import Path
 
-from russiafancylists.config import PROVIDER_IPS
+from russiafancylists.config import HOSTS_DIRECT, PROVIDER_IPS
 
 LOOPBACK_HEADER = (
     "# Loopback\n"
@@ -20,7 +19,6 @@ LOOPBACK_HEADER = (
 def merge_hosts(
     input_dir: Path,
     output_file: Path,
-    config_file: Path,
     file_pattern: str = "*.lst",
     use_original_ips: bool = False,
 ):
@@ -29,11 +27,9 @@ def merge_hosts(
     - If use_original_ips is False (consolidated list): domains are randomly mapped to the most frequent target IP from each source file, grouped by root SLD.
     """
     blacklist_patterns = []
-    with open(config_file, encoding="utf-8") as f:
-        config_data = json.load(f)
-        for p in config_data.get("hosts_direct", []):
-            py_p = p.replace("[[:space:]]", r"\s")
-            blacklist_patterns.append(re.compile(py_p))
+    for p in HOSTS_DIRECT:
+        py_p = p.replace("[[:space:]]", r"\s")
+        blacklist_patterns.append(re.compile(py_p))
 
     seen_domains = set()
     groups = {}
@@ -253,7 +249,6 @@ async def generate_aligned_hosts(
     output_malw: Path,
     output_mafioznik: Path,
     output_geohide: Path,
-    config_file: Path,
 ):
     """Compile domains from geoblock list into identical hosts lists with original IPs.
     - malw.lst: all geoblock domains mapped to malw's most frequent IP.
@@ -264,11 +259,9 @@ async def generate_aligned_hosts(
 
     # 1. Load blacklist patterns
     blacklist_patterns = []
-    with open(config_file, encoding="utf-8") as f:
-        config_data = json.load(f)
-        for p in config_data.get("hosts_direct", []):
-            py_p = p.replace("[[:space:]]", r"\s")
-            blacklist_patterns.append(re.compile(py_p))
+    for p in HOSTS_DIRECT:
+        py_p = p.replace("[[:space:]]", r"\s")
+        blacklist_patterns.append(re.compile(py_p))
 
     # 2. Get source info (most frequent IPs and original domains)
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")

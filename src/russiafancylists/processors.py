@@ -1,12 +1,13 @@
 import glob
 import ipaddress
-import json
 import os
 import re
 from pathlib import Path
 from urllib.parse import unquote
 
 from rich.console import Console
+
+from russiafancylists.config import HOSTS_DIRECT, ILLEGAL_CHARS, WHITELIST
 
 console = Console()
 
@@ -144,25 +145,14 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                 f.write(d + "\n")
 
 
-def cleanup_domains(input_file: Path, output_file: Path, config_file: Path):
+def cleanup_domains(input_file: Path, output_file: Path):
     """Filter domains with patterns and whitelists, converting them to Second Level Domains (SLDs)."""
-    patterns = []
-    whitelist = set()
-
-    if config_file.exists():
-        with open(config_file, encoding="utf-8") as f:
-            try:
-                config_data = json.load(f)
-                patterns.extend(config_data.get("hosts_direct", []))
-                patterns.extend(config_data.get("illegal_chars", []))
-                for item in config_data.get("whitelist", []):
-                    item = item.strip()
-                    if item and not item.startswith("#"):
-                        whitelist.add(item.lower())
-            except Exception as e:
-                console.print(
-                    f"[yellow]⚠ Error loading config {config_file}: {e}[/yellow]"
-                )
+    patterns = HOSTS_DIRECT + ILLEGAL_CHARS
+    whitelist = {
+        item.strip().lower()
+        for item in WHITELIST
+        if item.strip() and not item.strip().startswith("#")
+    }
 
     compiled_patterns = []
     for p in patterns:

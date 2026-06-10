@@ -21,7 +21,6 @@ import contextlib
 from russiafancylists.config import (
     BLACKLIST_LIST_FOLDER,
     BLACKLIST_SING_BOX_FOLDER,
-    CONFIG_FILE,
     GEOBLOCK_FOLDER,
     GEOBLOCK_SING_BOX_FOLDER,
     HOSTS_LIST_FOLDER,
@@ -172,7 +171,6 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 HOSTS_LIST_FOLDER / "malw.hosts",
                 HOSTS_LIST_FOLDER / "mafioznik.hosts",
                 HOSTS_LIST_FOLDER / "geohide.hosts",
-                CONFIG_FILE,
             )
             status.update(
                 "[green]✓ Domains, IPSets, Geoblocks, and aligned Hosts compiled successfully[/green]"
@@ -190,7 +188,6 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     cleanup_domains,
                     BLACKLIST_LIST_FOLDER / "domains" / "full.lst",
                     BLACKLIST_LIST_FOLDER / "domains" / "full-sld.lst",
-                    CONFIG_FILE,
                 ),
                 asyncio.to_thread(
                     merge_cdn_and_full_ipset,
@@ -203,7 +200,6 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     cleanup_domains,
                     GEOBLOCK_FOLDER / "full.lst",
                     GEOBLOCK_FOLDER / "full-sld.lst",
-                    CONFIG_FILE,
                 ),
             )
             status.update(
