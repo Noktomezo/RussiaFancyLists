@@ -5,9 +5,9 @@ from russiafancylists.config.paths import (
 )
 
 PROVIDER_IPS = {
-    "malw": ["103.27.157.38", "62.133.62.97"],
+    "malw": ["62.133.62.97"],
     "geohide": ["45.155.204.190", "37.230.192.51", "31.25.239.132"],
-    "mafioznik": ["45.95.233.23"],
+    "mafioznik": ["103.27.157.38"],
 }
 
 DOWNLOADS = {
