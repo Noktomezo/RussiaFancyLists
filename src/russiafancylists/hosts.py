@@ -20,7 +20,7 @@ LOOPBACK_HEADER = (
 def merge_hosts(
     input_dir: Path,
     output_file: Path,
-    blacklist_file: Path,
+    config_file: Path,
     file_pattern: str = "*.lst",
     use_original_ips: bool = False,
 ):
@@ -29,9 +29,9 @@ def merge_hosts(
     - If use_original_ips is False (consolidated list): domains are randomly mapped to the most frequent target IP from each source file, grouped by root SLD.
     """
     blacklist_patterns = []
-    with open(blacklist_file, encoding="utf-8") as f:
-        data = json.load(f)
-        for p in data:
+    with open(config_file, encoding="utf-8") as f:
+        config_data = json.load(f)
+        for p in config_data.get("hosts_direct", []):
             py_p = p.replace("[[:space:]]", r"\s")
             blacklist_patterns.append(re.compile(py_p))
 
@@ -253,7 +253,7 @@ async def generate_aligned_hosts(
     output_malw: Path,
     output_mafioznik: Path,
     output_geohide: Path,
-    blacklist_file: Path,
+    config_file: Path,
 ):
     """Compile domains from geoblock list into identical hosts lists with original IPs.
     - malw.lst: all geoblock domains mapped to malw's most frequent IP.
@@ -264,9 +264,9 @@ async def generate_aligned_hosts(
 
     # 1. Load blacklist patterns
     blacklist_patterns = []
-    with open(blacklist_file, encoding="utf-8") as f:
-        data = json.load(f)
-        for p in data:
+    with open(config_file, encoding="utf-8") as f:
+        config_data = json.load(f)
+        for p in config_data.get("hosts_direct", []):
             py_p = p.replace("[[:space:]]", r"\s")
             blacklist_patterns.append(re.compile(py_p))
 

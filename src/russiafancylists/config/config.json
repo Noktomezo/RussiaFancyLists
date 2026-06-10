@@ -1,0 +1,18 @@
+{
+  "hosts_direct": [
+    "(^|[[:space:]])www\\.msftconnecttest\\.com([[:space:]]|$)",
+    "(^|[[:space:]])ipv6\\.msftconnecttest\\.com([[:space:]]|$)",
+    "(^|[[:space:]])www\\.msftncsi\\.com([[:space:]]|$)",
+    "(^|[[:space:]])ipv6\\.msftncsi\\.com([[:space:]]|$)",
+    "github",
+    "(^|\\.|[[:space:]])fmhy\\.net([[:space:]]|$)",
+    "(^|\\.|[[:space:]])fmhy\\.lol([[:space:]]|$)"
+  ],
+  "illegal_chars": [
+    "xn--",
+    "[а-яА-Я]",
+    "\"",
+    "_"
+  ],
+  "whitelist": []
+}

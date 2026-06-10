@@ -144,20 +144,25 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                 f.write(d + "\n")
 
 
-def cleanup_domains(input_file: Path, output_file: Path, filters_dir: Path):
+def cleanup_domains(input_file: Path, output_file: Path, config_file: Path):
     """Filter domains with patterns and whitelists, converting them to Second Level Domains (SLDs)."""
     patterns = []
-    for file_name in os.listdir(filters_dir):
-        if file_name.endswith(".json"):
-            with open(filters_dir / file_name, encoding="utf-8") as f:
-                try:
-                    data = json.load(f)
-                    if isinstance(data, list):
-                        patterns.extend(data)
-                except Exception as e:
-                    console.print(
-                        f"[yellow]⚠ Error loading filter {file_name}: {e}[/yellow]"
-                    )
+    whitelist = set()
+
+    if config_file.exists():
+        with open(config_file, encoding="utf-8") as f:
+            try:
+                config_data = json.load(f)
+                patterns.extend(config_data.get("hosts_direct", []))
+                patterns.extend(config_data.get("illegal_chars", []))
+                for item in config_data.get("whitelist", []):
+                    item = item.strip()
+                    if item and not item.startswith("#"):
+                        whitelist.add(item.lower())
+            except Exception as e:
+                console.print(
+                    f"[yellow]⚠ Error loading config {config_file}: {e}[/yellow]"
+                )
 
     compiled_patterns = []
     for p in patterns:
@@ -166,15 +171,6 @@ def cleanup_domains(input_file: Path, output_file: Path, filters_dir: Path):
             compiled_patterns.append(re.compile(py_p))
         except re.error as e:
             console.print(f"[yellow]⚠ Invalid regex '{p}': {e}[/yellow]")
-
-    whitelist_file = filters_dir / "whitelist.txt"
-    whitelist = set()
-    if whitelist_file.exists():
-        with open(whitelist_file, encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith("#"):
-                    whitelist.add(line.lower())
 
     processed_domains = set()
 
