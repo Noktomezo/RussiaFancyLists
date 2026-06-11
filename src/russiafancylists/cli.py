@@ -26,6 +26,8 @@ from russiafancylists.config import (
     HOSTS_LIST_FOLDER,
     LIST_FOLDER,
     ROOT_DIR,
+    SERVICE_LIST_FOLDER,
+    SERVICE_SING_BOX_FOLDER,
     TEMP_FOLDER,
     WHITELIST_LIST_FOLDER,
 )
@@ -61,9 +63,13 @@ def setup_dirs(skip_download: bool = False):
                 if item.is_file():
                     if skip_download and item.resolve() in download_paths:
                         continue
+                    if "service" in item.parts or "service-sing-box" in item.parts:
+                        continue
                     with contextlib.suppress(Exception):
                         item.unlink()
                 elif item.is_dir():
+                    if item.name in ("service", "service-sing-box"):
+                        continue
                     safe_clear(item)
                     with contextlib.suppress(Exception):
                         item.rmdir()
@@ -82,6 +88,8 @@ def setup_dirs(skip_download: bool = False):
         GEOBLOCK_FOLDER,
         GEOBLOCK_SING_BOX_FOLDER,
         WHITELIST_LIST_FOLDER,
+        SERVICE_LIST_FOLDER,
+        SERVICE_SING_BOX_FOLDER,
     ]:
         folder.mkdir(parents=True, exist_ok=True)
 
@@ -270,6 +278,14 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     GEOBLOCK_FOLDER / "full-sld.lst",
                     GEOBLOCK_SING_BOX_FOLDER / "full-sld.json",
                     GEOBLOCK_SING_BOX_FOLDER / "full-sld.srs",
+                ),
+                # Service rulesets
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "source_ip_cidr",
+                    SERVICE_LIST_FOLDER / "everything-but-lan.lst",
+                    SERVICE_SING_BOX_FOLDER / "everything-but-lan.json",
+                    SERVICE_SING_BOX_FOLDER / "everything-but-lan.srs",
                 ),
             )
             status.update("[cyan]Updating README file size tables...")

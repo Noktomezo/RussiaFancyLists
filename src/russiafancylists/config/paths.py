@@ -13,3 +13,7 @@ GEOBLOCK_SING_BOX_FOLDER = LIST_FOLDER / "geoblock-sing-box"
 
 # Whitelist subfolders
 WHITELIST_LIST_FOLDER = LIST_FOLDER / "whitelist"
+
+# Service subfolders
+SERVICE_LIST_FOLDER = LIST_FOLDER / "service"
+SERVICE_SING_BOX_FOLDER = LIST_FOLDER / "service-sing-box"
