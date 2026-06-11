@@ -33,7 +33,7 @@ def generate_sing_box_ruleset(
             else:
                 rules_dict.setdefault(rule_key, []).append(line)
 
-    ruleset = {"version": 5, "rules": [rules_dict]}
+    ruleset = {"version": 3, "rules": [rules_dict]}
 
     json_output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(json_output_file, "w", encoding="utf-8") as f:
@@ -41,27 +41,7 @@ def generate_sing_box_ruleset(
 
     srs_output_file.parent.mkdir(parents=True, exist_ok=True)
     try:
-        # Upgrade JSON to the highest version supported by local sing-box binary
-        cmd_upgrade = ["sing-box", "rule-set", "upgrade", "-w", str(json_output_file)]
-        try:
-            subprocess.run(
-                cmd_upgrade,
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                timeout=TIMEOUT,
-            )
-        except subprocess.TimeoutExpired as te:
-            stderr_msg = (
-                te.stderr.decode(errors="replace").strip()
-                if te.stderr
-                else "No stderr captured"
-            )
-            raise RuntimeError(
-                f"sing-box command {cmd_upgrade} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}"
-            ) from te
-
-        # Compile upgraded JSON to binary .srs format
+        # Compile JSON to binary .srs format
         cmd_compile = [
             "sing-box",
             "rule-set",
