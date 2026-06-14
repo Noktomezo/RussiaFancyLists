@@ -18,6 +18,7 @@ ff02::2 ip6-allrouters
 157.240.205.174 instagram.com www.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 185.31.40.18 test.dns.malw.link
+45.95.233.23 game.mocogame.com
 213.24.64.175 lkfl2.nalog.ru
 213.24.64.181 lknpd.nalog.ru
 130.255.77.28 ntc.party
@@ -326,9 +327,9 @@ ff02::2 ip6-allrouters
 37.230.192.51 clashofclans.com
 45.155.204.190 clashofclans.com
 62.133.62.97 clashofclans.com game-assets.clashofclans.com gamea.clashofclans.com
-31.25.239.132 clashroyaleapp.com game.clashroyaleapp.com
-37.230.192.51 clashroyaleapp.com game.clashroyaleapp.com
-45.155.204.190 clashroyaleapp.com game.clashroyaleapp.com
+31.25.239.132 clashroyaleapp.com
+37.230.192.51 clashroyaleapp.com
+45.155.204.190 clashroyaleapp.com
 62.133.62.97 clashroyaleapp.com game-assets.clashroyaleapp.com game.clashroyaleapp.com
 103.27.157.38 claude.ai
 31.25.239.132 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
@@ -946,10 +947,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 mixcloud.com
 45.155.204.190 mixcloud.com
 62.133.62.97 mixcloud.com
-31.25.239.132 game.mocogame.com
-37.230.192.51 game.mocogame.com
-45.155.204.190 game.mocogame.com
-62.133.62.97 game.mocogame.com
 31.25.239.132 mongodb.com
 37.230.192.51 mongodb.com
 45.155.204.190 mongodb.com
