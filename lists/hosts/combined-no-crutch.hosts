@@ -100,10 +100,10 @@ ff02::2 ip6-allrouters
 45.155.204.190 ansys.com
 62.133.62.97 ansys.com
 103.27.157.38 api.anthropic.com auth.anthropic.com console.anthropic.com
-31.25.239.132 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-37.230.192.51 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-45.155.204.190 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-62.133.62.97 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+31.25.239.132 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+37.230.192.51 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+45.155.204.190 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+62.133.62.97 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
 31.25.239.132 support.anydesk.com
 37.230.192.51 support.anydesk.com
 45.155.204.190 support.anydesk.com
@@ -199,9 +199,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 ai-chat.bsg.brave.com
 45.155.204.190 ai-chat.bsg.brave.com
 62.133.62.97 ai-chat.bsg.brave.com
-31.25.239.132 brawlstarsgame.com
-37.230.192.51 brawlstarsgame.com
-45.155.204.190 brawlstarsgame.com
+103.27.157.38 game-assets.brawlstarsgame.com
+31.25.239.132 brawlstarsgame.com game-assets.brawlstarsgame.com
+37.230.192.51 brawlstarsgame.com game-assets.brawlstarsgame.com
+45.155.204.190 brawlstarsgame.com game-assets.brawlstarsgame.com
 62.133.62.97 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
 103.27.157.38 access.broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
 31.25.239.132 access.broadcom.com broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
@@ -270,10 +271,10 @@ ff02::2 ip6-allrouters
 45.155.204.190 chaos.com
 62.133.62.97 chaos.com
 103.27.157.38 ab.chatgpt.com chatgpt.com operator.chatgpt.com webrtc.chatgpt.com
-31.25.239.132 ab.chatgpt.com chat.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
-37.230.192.51 ab.chatgpt.com chat.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
-45.155.204.190 ab.chatgpt.com chat.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
-62.133.62.97 ab.chatgpt.com chat.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
+31.25.239.132 ab.chatgpt.com api.chatgpt.com chat.com chatgpt-async-webps-prod-centralus-0.chatgpt.com chatgpt-async-webps-prod-centralus-1.chatgpt.com chatgpt-async-webps-prod-centralus-2.chatgpt.com chatgpt-async-webps-prod-centralus-3.chatgpt.com chatgpt-async-webps-prod-centralus-4.chatgpt.com chatgpt-async-webps-prod-centralus-5.chatgpt.com chatgpt-async-webps-prod-eastus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-0.chatgpt.com chatgpt-async-webps-prod-eastus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-1.chatgpt.com chatgpt-async-webps-prod-eastus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-2.chatgpt.com chatgpt-async-webps-prod-eastus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-3.chatgpt.com chatgpt-async-webps-prod-eastus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-4.chatgpt.com chatgpt-async-webps-prod-eastus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-5.chatgpt.com chatgpt-async-webps-prod-southcentralus-0.chatgpt.com chatgpt-async-webps-prod-southcentralus-1.chatgpt.com chatgpt-async-webps-prod-southcentralus-2.chatgpt.com chatgpt-async-webps-prod-southcentralus-3.chatgpt.com chatgpt-async-webps-prod-southcentralus-4.chatgpt.com chatgpt-async-webps-prod-southcentralus-5.chatgpt.com chatgpt-async-webps-prod-westus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-0.chatgpt.com chatgpt-async-webps-prod-westus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-1.chatgpt.com chatgpt-async-webps-prod-westus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-2.chatgpt.com chatgpt-async-webps-prod-westus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-3.chatgpt.com chatgpt-async-webps-prod-westus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-4.chatgpt.com chatgpt-async-webps-prod-westus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-5.chatgpt.com chatgpt-async-webps-staging-eastus-0.chatgpt.com chatgpt-async-webps-staging-southcentralus-0.chatgpt.com chatgpt.com edge.chatgpt.com gov-demo.chatgpt.com hooks-staging.chatgpt.com ogimg.chatgpt.com operator.chatgpt.com privacy-pass-issuer.api.chatgpt.com realtime.chatgpt.com search.chatgpt.com sora.chatgpt.com webrtc-staging.chatgpt.com webrtc.chatgpt.com ws.chatgpt.com www.chatgpt.com
+37.230.192.51 ab.chatgpt.com api.chatgpt.com chat.com chatgpt-async-webps-prod-centralus-0.chatgpt.com chatgpt-async-webps-prod-centralus-1.chatgpt.com chatgpt-async-webps-prod-centralus-2.chatgpt.com chatgpt-async-webps-prod-centralus-3.chatgpt.com chatgpt-async-webps-prod-centralus-4.chatgpt.com chatgpt-async-webps-prod-centralus-5.chatgpt.com chatgpt-async-webps-prod-eastus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-0.chatgpt.com chatgpt-async-webps-prod-eastus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-1.chatgpt.com chatgpt-async-webps-prod-eastus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-2.chatgpt.com chatgpt-async-webps-prod-eastus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-3.chatgpt.com chatgpt-async-webps-prod-eastus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-4.chatgpt.com chatgpt-async-webps-prod-eastus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-5.chatgpt.com chatgpt-async-webps-prod-southcentralus-0.chatgpt.com chatgpt-async-webps-prod-southcentralus-1.chatgpt.com chatgpt-async-webps-prod-southcentralus-2.chatgpt.com chatgpt-async-webps-prod-southcentralus-3.chatgpt.com chatgpt-async-webps-prod-southcentralus-4.chatgpt.com chatgpt-async-webps-prod-southcentralus-5.chatgpt.com chatgpt-async-webps-prod-westus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-0.chatgpt.com chatgpt-async-webps-prod-westus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-1.chatgpt.com chatgpt-async-webps-prod-westus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-2.chatgpt.com chatgpt-async-webps-prod-westus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-3.chatgpt.com chatgpt-async-webps-prod-westus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-4.chatgpt.com chatgpt-async-webps-prod-westus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-5.chatgpt.com chatgpt-async-webps-staging-eastus-0.chatgpt.com chatgpt-async-webps-staging-southcentralus-0.chatgpt.com chatgpt.com edge.chatgpt.com gov-demo.chatgpt.com hooks-staging.chatgpt.com ogimg.chatgpt.com operator.chatgpt.com privacy-pass-issuer.api.chatgpt.com realtime.chatgpt.com search.chatgpt.com sora.chatgpt.com webrtc-staging.chatgpt.com webrtc.chatgpt.com ws.chatgpt.com www.chatgpt.com
+45.155.204.190 ab.chatgpt.com api.chatgpt.com chat.com chatgpt-async-webps-prod-centralus-0.chatgpt.com chatgpt-async-webps-prod-centralus-1.chatgpt.com chatgpt-async-webps-prod-centralus-2.chatgpt.com chatgpt-async-webps-prod-centralus-3.chatgpt.com chatgpt-async-webps-prod-centralus-4.chatgpt.com chatgpt-async-webps-prod-centralus-5.chatgpt.com chatgpt-async-webps-prod-eastus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-0.chatgpt.com chatgpt-async-webps-prod-eastus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-1.chatgpt.com chatgpt-async-webps-prod-eastus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-2.chatgpt.com chatgpt-async-webps-prod-eastus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-3.chatgpt.com chatgpt-async-webps-prod-eastus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-4.chatgpt.com chatgpt-async-webps-prod-eastus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-5.chatgpt.com chatgpt-async-webps-prod-southcentralus-0.chatgpt.com chatgpt-async-webps-prod-southcentralus-1.chatgpt.com chatgpt-async-webps-prod-southcentralus-2.chatgpt.com chatgpt-async-webps-prod-southcentralus-3.chatgpt.com chatgpt-async-webps-prod-southcentralus-4.chatgpt.com chatgpt-async-webps-prod-southcentralus-5.chatgpt.com chatgpt-async-webps-prod-westus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-0.chatgpt.com chatgpt-async-webps-prod-westus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-1.chatgpt.com chatgpt-async-webps-prod-westus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-2.chatgpt.com chatgpt-async-webps-prod-westus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-3.chatgpt.com chatgpt-async-webps-prod-westus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-4.chatgpt.com chatgpt-async-webps-prod-westus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-5.chatgpt.com chatgpt-async-webps-staging-eastus-0.chatgpt.com chatgpt-async-webps-staging-southcentralus-0.chatgpt.com chatgpt.com edge.chatgpt.com gov-demo.chatgpt.com hooks-staging.chatgpt.com ogimg.chatgpt.com operator.chatgpt.com privacy-pass-issuer.api.chatgpt.com realtime.chatgpt.com search.chatgpt.com sora.chatgpt.com webrtc-staging.chatgpt.com webrtc.chatgpt.com ws.chatgpt.com www.chatgpt.com
+62.133.62.97 ab.chatgpt.com api.chatgpt.com chat.com chatgpt-async-webps-prod-centralus-0.chatgpt.com chatgpt-async-webps-prod-centralus-1.chatgpt.com chatgpt-async-webps-prod-centralus-2.chatgpt.com chatgpt-async-webps-prod-centralus-3.chatgpt.com chatgpt-async-webps-prod-centralus-4.chatgpt.com chatgpt-async-webps-prod-centralus-5.chatgpt.com chatgpt-async-webps-prod-eastus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-0.chatgpt.com chatgpt-async-webps-prod-eastus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-1.chatgpt.com chatgpt-async-webps-prod-eastus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-2.chatgpt.com chatgpt-async-webps-prod-eastus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-3.chatgpt.com chatgpt-async-webps-prod-eastus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-4.chatgpt.com chatgpt-async-webps-prod-eastus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-eastus-5.chatgpt.com chatgpt-async-webps-prod-southcentralus-0.chatgpt.com chatgpt-async-webps-prod-southcentralus-1.chatgpt.com chatgpt-async-webps-prod-southcentralus-2.chatgpt.com chatgpt-async-webps-prod-southcentralus-3.chatgpt.com chatgpt-async-webps-prod-southcentralus-4.chatgpt.com chatgpt-async-webps-prod-southcentralus-5.chatgpt.com chatgpt-async-webps-prod-westus-0-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-0.chatgpt.com chatgpt-async-webps-prod-westus-1-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-1.chatgpt.com chatgpt-async-webps-prod-westus-2-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-2.chatgpt.com chatgpt-async-webps-prod-westus-3-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-3.chatgpt.com chatgpt-async-webps-prod-westus-4-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-4.chatgpt.com chatgpt-async-webps-prod-westus-5-9e29c0310a29a59b.chatgpt.com chatgpt-async-webps-prod-westus-5.chatgpt.com chatgpt-async-webps-staging-eastus-0.chatgpt.com chatgpt-async-webps-staging-southcentralus-0.chatgpt.com chatgpt.com edge.chatgpt.com gov-demo.chatgpt.com hooks-staging.chatgpt.com ogimg.chatgpt.com operator.chatgpt.com privacy-pass-issuer.api.chatgpt.com realtime.chatgpt.com search.chatgpt.com sora.chatgpt.com webrtc-staging.chatgpt.com webrtc.chatgpt.com ws.chatgpt.com www.chatgpt.com
 31.25.239.132 assets-configurator.chess.com chess.com www.chess.com
 37.230.192.51 assets-configurator.chess.com chess.com www.chess.com
 45.155.204.190 assets-configurator.chess.com chess.com www.chess.com
@@ -294,19 +295,21 @@ ff02::2 ip6-allrouters
 37.230.192.51 clamav.net
 45.155.204.190 clamav.net
 62.133.62.97 clamav.net
-31.25.239.132 clashofclans.com
-37.230.192.51 clashofclans.com
-45.155.204.190 clashofclans.com
+103.27.157.38 game-assets.clashofclans.com
+31.25.239.132 clashofclans.com game-assets.clashofclans.com
+37.230.192.51 clashofclans.com game-assets.clashofclans.com
+45.155.204.190 clashofclans.com game-assets.clashofclans.com
 62.133.62.97 clashofclans.com game-assets.clashofclans.com gamea.clashofclans.com
-31.25.239.132 clashroyaleapp.com
-37.230.192.51 clashroyaleapp.com
-45.155.204.190 clashroyaleapp.com
+103.27.157.38 game-assets.clashroyaleapp.com
+31.25.239.132 clashroyaleapp.com game-assets.clashroyaleapp.com game.clashroyaleapp.com
+37.230.192.51 clashroyaleapp.com game-assets.clashroyaleapp.com game.clashroyaleapp.com
+45.155.204.190 clashroyaleapp.com game-assets.clashroyaleapp.com game.clashroyaleapp.com
 62.133.62.97 clashroyaleapp.com game-assets.clashroyaleapp.com game.clashroyaleapp.com
 103.27.157.38 claude.ai
-31.25.239.132 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
-37.230.192.51 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
-45.155.204.190 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
-62.133.62.97 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
+31.25.239.132 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
+37.230.192.51 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
+45.155.204.190 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
+62.133.62.97 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com claudemcpclient.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com www.claudemcpclient.com
 31.25.239.132 clevelandclinic.org
 37.230.192.51 clevelandclinic.org
 45.155.204.190 clevelandclinic.org
@@ -467,10 +470,14 @@ ff02::2 ip6-allrouters
 37.230.192.51 f1.com
 45.155.204.190 f1.com
 62.133.62.97 f1.com
-31.25.239.132 fast.com
-37.230.192.51 fast.com
-45.155.204.190 fast.com
-62.133.62.97 fast.com
+31.25.239.132 fast.com lastfm.freetls.fastly.net
+37.230.192.51 fast.com lastfm.freetls.fastly.net
+45.155.204.190 fast.com lastfm.freetls.fastly.net
+62.133.62.97 fast.com lastfm.freetls.fastly.net
+31.25.239.132 scontent-hel3-1.xx.fbcdn.net
+37.230.192.51 scontent-hel3-1.xx.fbcdn.net
+45.155.204.190 scontent-hel3-1.xx.fbcdn.net
+62.133.62.97 scontent-hel3-1.xx.fbcdn.net
 31.25.239.132 filebin.net
 37.230.192.51 filebin.net
 45.155.204.190 filebin.net
@@ -724,10 +731,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 indeed.com
 45.155.204.190 indeed.com
 62.133.62.97 indeed.com
-31.25.239.132 b.i.instagram.com help.instagram.com
-37.230.192.51 b.i.instagram.com help.instagram.com
-45.155.204.190 b.i.instagram.com help.instagram.com
-62.133.62.97 b.i.instagram.com help.instagram.com
 103.27.157.38 www.intel.com www.intel.de
 31.25.239.132 intel.com intel.de intel.nl www.intel.com www.intel.de
 37.230.192.51 intel.com intel.de intel.nl www.intel.com www.intel.de
@@ -795,10 +798,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 langdock.com
 45.155.204.190 langdock.com
 62.133.62.97 langdock.com
-31.25.239.132 last.fm
-37.230.192.51 last.fm
-45.155.204.190 last.fm
-62.133.62.97 last.fm
+31.25.239.132 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
+37.230.192.51 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
+45.155.204.190 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
+62.133.62.97 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
 31.25.239.132 ldoceonline.com
 37.230.192.51 ldoceonline.com
 45.155.204.190 ldoceonline.com
@@ -918,6 +921,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 mixcloud.com
 45.155.204.190 mixcloud.com
 62.133.62.97 mixcloud.com
+31.25.239.132 game.mocogame.com
+37.230.192.51 game.mocogame.com
+45.155.204.190 game.mocogame.com
+62.133.62.97 game.mocogame.com
 31.25.239.132 mongodb.com
 37.230.192.51 mongodb.com
 45.155.204.190 mongodb.com
@@ -1113,10 +1120,10 @@ ff02::2 ip6-allrouters
 45.155.204.190 opal.google
 62.133.62.97 opal.google
 103.27.157.38 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com
-31.25.239.132 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
-37.230.192.51 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
-45.155.204.190 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
-62.133.62.97 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
+31.25.239.132 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com openai.fund openai.org platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
+37.230.192.51 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com openai.fund openai.org platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
+45.155.204.190 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com openai.fund openai.org platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
+62.133.62.97 android.chat.openai.com api.openai.com arena.openai.com auth.openai.com auth0.openai.com beta.api.openai.com beta.openai.com blog.openai.com cdn.openai.com cdn.platform.openai.com chat.openai.com community.openai.com contest.openai.com debate-game.openai.com developers.openai.com discuss.openai.com gym.openai.com help.openai.com ios.chat.openai.com jukebox.openai.com labs.openai.com microscope.openai.com openai.com openai.fund openai.org platform.api.openai.com platform.openai.com spinningup.openai.com tcr9i.chat.openai.com universe.openai.com videos.openai.com www.openai.com
 31.25.239.132 openh264.org
 37.230.192.51 openh264.org
 45.155.204.190 openh264.org
@@ -1141,10 +1148,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 pandasecurity.com
 45.155.204.190 pandasecurity.com
 62.133.62.97 pandasecurity.com
-31.25.239.132 parallels.cn parallels.com parallels.net parallelsaccess.com
-37.230.192.51 parallels.cn parallels.com parallels.net parallelsaccess.com
-45.155.204.190 parallels.cn parallels.com parallels.net parallelsaccess.com
-62.133.62.97 parallels.cn parallels.com parallels.net parallelsaccess.com
+31.25.239.132 parallels.cn parallels.com parallels.net parallelsaccess.com platform.parallel.ai
+37.230.192.51 parallels.cn parallels.com parallels.net parallelsaccess.com platform.parallel.ai
+45.155.204.190 parallels.cn parallels.com parallels.net parallelsaccess.com platform.parallel.ai
+62.133.62.97 parallels.cn parallels.com parallels.net parallelsaccess.com platform.parallel.ai
 31.25.239.132 paritydeals.com
 37.230.192.51 paritydeals.com
 45.155.204.190 paritydeals.com
@@ -1406,10 +1413,10 @@ ff02::2 ip6-allrouters
 45.155.204.190 spitfireaudio.com
 62.133.62.97 spitfireaudio.com
 103.27.157.38 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com gew1-spclient.spotify.com login.app.spotify.com login5.spotify.com open.spotify.com spclient.wg.spotify.com www.spotify.com xpui.app.spotify.com
-31.25.239.132 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
-37.230.192.51 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
-45.155.204.190 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
-62.133.62.97 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
+31.25.239.132 accounts.spotify.com aet.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
+37.230.192.51 accounts.spotify.com aet.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
+45.155.204.190 accounts.spotify.com aet.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
+62.133.62.97 accounts.spotify.com aet.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
 31.25.239.132 game.squadbustersgame.com squadbustersgame.com
 37.230.192.51 game.squadbustersgame.com squadbustersgame.com
 45.155.204.190 game.squadbustersgame.com squadbustersgame.com
@@ -1427,9 +1434,10 @@ ff02::2 ip6-allrouters
 37.230.192.51 streamable.com
 45.155.204.190 streamable.com
 62.133.62.97 streamable.com
-31.25.239.132 supercell.com
-37.230.192.51 supercell.com
-45.155.204.190 supercell.com
+103.27.157.38 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
+31.25.239.132 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com supercell.com
+37.230.192.51 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com supercell.com
+45.155.204.190 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com supercell.com
 62.133.62.97 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com supercell.com
 31.25.239.132 surveymonkey.com
 37.230.192.51 surveymonkey.com

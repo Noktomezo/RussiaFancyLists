@@ -43,7 +43,7 @@
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->157.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->882.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->554.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->554.2 KB<!-- SIZE_END -->
       </td>
       <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
     </tr>
@@ -90,7 +90,7 @@
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/full.lst -->29.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/full.lst -->32.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
       <td>Домены зарубежных сервисов, ограничивающих доступ для пользователей с российскими IP-адресами (геоблокировки/санкции).</td>
@@ -104,9 +104,9 @@
         • <a href="./lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->46.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.json -->49.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->10.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные правила маршрутизации геоблокировок доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
@@ -141,14 +141,14 @@
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 28.7 KB<br>
-        • 35.5 KB<br>
-        • 3.8 KB<br>
+        • 31.3 KB<br>
+        • 38.1 KB<br>
+        • 4.1 KB<br>
         • 11.0 KB<br>
-        • 28.2 KB<br>
-        • 35.0 KB<br>
-        • 116.9 KB<br>
-        • 123.7 KB
+        • 30.7 KB<br>
+        • 37.6 KB<br>
+        • 128.0 KB<br>
+        • 134.9 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>

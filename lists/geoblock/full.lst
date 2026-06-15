@@ -54,7 +54,11 @@ ansync.deezer.com
 ansys.com
 anthropic.com
 anthropic.qualtrics.com
+ap-gae2.spotify.com
 ap-gew1.spotify.com
+ap-gew4.spotify.com
+ap-guc3.spotify.com
+ap-gue1.spotify.com
 ap-help.api.jetbrains.com
 api-free.deepl.com
 api-global.squareup.com
@@ -64,6 +68,7 @@ api-test.sandbox-resellers.jetbrains.com
 api-websub.deezer.com
 api.anthropic.com
 api.cdnlibs.org
+api.chatgpt.com
 api.claude.ai
 api.claude.com
 api.console.anthropic.com
@@ -110,6 +115,7 @@ assessment.nc.naukri.com
 assessments.naukri.com
 assessments.nc.naukri.com
 assets-configurator.chess.com
+assets-proxy.anthropic.com
 assets.grok.com
 assets.heroku.com
 assets.staging.assessment.nc.naukri.com
@@ -130,6 +136,7 @@ autoconfig.api.jetbrains.com
 autodesk.com
 autodiscover.api.jetbrains.com
 autodiscover.csm.naukri.com
+autodiscover.last.fm
 autodiscover.login.recruit.naukri.com
 autodiscover.naukimg.com
 autodiscover.naukri.com
@@ -209,12 +216,52 @@ cdw.com
 chainreactioncycles.com
 chaos.com
 charts-images.scdn.co
+chat-e2ee-mini.c10r.facebook.com
+chat-e2ee-mini.facebook.com
 chat.com
 chat.openai.com
 chat.openai.com.cdn.cloudflare.net
 chatbot.naukri.com
 chatclient-mobile.naukri.com
 chatclient.naukri.com
+chatgpt-async-webps-prod-centralus-0.chatgpt.com
+chatgpt-async-webps-prod-centralus-1.chatgpt.com
+chatgpt-async-webps-prod-centralus-2.chatgpt.com
+chatgpt-async-webps-prod-centralus-3.chatgpt.com
+chatgpt-async-webps-prod-centralus-4.chatgpt.com
+chatgpt-async-webps-prod-centralus-5.chatgpt.com
+chatgpt-async-webps-prod-eastus-0-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-eastus-0.chatgpt.com
+chatgpt-async-webps-prod-eastus-1-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-eastus-1.chatgpt.com
+chatgpt-async-webps-prod-eastus-2-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-eastus-2.chatgpt.com
+chatgpt-async-webps-prod-eastus-3-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-eastus-3.chatgpt.com
+chatgpt-async-webps-prod-eastus-4-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-eastus-4.chatgpt.com
+chatgpt-async-webps-prod-eastus-5-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-eastus-5.chatgpt.com
+chatgpt-async-webps-prod-southcentralus-0.chatgpt.com
+chatgpt-async-webps-prod-southcentralus-1.chatgpt.com
+chatgpt-async-webps-prod-southcentralus-2.chatgpt.com
+chatgpt-async-webps-prod-southcentralus-3.chatgpt.com
+chatgpt-async-webps-prod-southcentralus-4.chatgpt.com
+chatgpt-async-webps-prod-southcentralus-5.chatgpt.com
+chatgpt-async-webps-prod-westus-0-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-westus-0.chatgpt.com
+chatgpt-async-webps-prod-westus-1-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-westus-1.chatgpt.com
+chatgpt-async-webps-prod-westus-2-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-westus-2.chatgpt.com
+chatgpt-async-webps-prod-westus-3-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-westus-3.chatgpt.com
+chatgpt-async-webps-prod-westus-4-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-westus-4.chatgpt.com
+chatgpt-async-webps-prod-westus-5-9e29c0310a29a59b.chatgpt.com
+chatgpt-async-webps-prod-westus-5.chatgpt.com
+chatgpt-async-webps-staging-eastus-0.chatgpt.com
+chatgpt-async-webps-staging-southcentralus-0.chatgpt.com
 chatgpt.com
 checkout.www.deepl.com
 chess.com
@@ -350,6 +397,7 @@ download-cdn.jetbrains.com
 download.jetbrains.com
 download.teamviewer.com
 download3.omnissa.com
+downloads.claude.ai
 downloads.intercomcdn.com
 downloads.marketplace.jetbrains.com
 drp-auth.deezer.com
@@ -370,6 +418,7 @@ edge-chat.instagram.com
 edge-web-gew1.dual-gslb.spotify.com
 edge-web-gue1.dual-gslb.spotify.com
 edge-web.dual-gslb.spotify.com
+edge.chatgpt.com
 edgeservices.bing.com
 editorx.com
 element.jetbrains.space
@@ -398,7 +447,6 @@ f1.com
 facebook.com
 fast.com
 fb.com
-fbcdn.net
 fbsbx.com
 feeds.naukri.com
 fflms.naukri.com
@@ -669,6 +717,7 @@ glpals.com
 gofund.me
 gofundme.com
 gonift.com
+gov-demo.chatgpt.com
 gpsonextra.net
 gpt3-openai.com
 gpu-monkey.com
@@ -714,6 +763,7 @@ home-connect.com
 home.by.me
 home.deepl.com
 homepod.deezer.com
+hooks-staging.chatgpt.com
 hostinger.com
 hotels.com
 housebrand.com
@@ -749,6 +799,7 @@ index-cdn.jetbrains.com
 inference.codeium.com
 insights.naukri.com
 insightsapi.naukri.com
+instagram.c10r.facebook.com
 instagram.com
 install.launcher.omniverse.nvidia.com
 int.api.jetbrains.com
@@ -778,6 +829,7 @@ jetbrains.com
 jetbrains.space
 jetpeople.jetbrains.com
 jf.x.ai
+jira.last.fm
 jobfeeds.naukri.com
 jobs.deepl.com
 jobs.deezer.com
@@ -811,6 +863,7 @@ labs.openai.com
 lambdalabs.com
 langdock.com
 last.fm
+lastfm.freetls.fastly.net
 ldoceonline.com
 learning.naukri.com
 legalshield.com
@@ -988,6 +1041,7 @@ oauth.fls.jetbrains.com
 oauth2-proxy-api.api.jetbrains.com
 ocstore.com
 octopus.do
+ogimg.chatgpt.com
 old-lemmy.fmhy.net
 old.fmhy.net
 old.lemmy.fmhy.net
@@ -1004,6 +1058,8 @@ opal.withgoogle.com
 open-exp.spotifycdn.com
 open.spotify.com
 openai.com
+openai.fund
+openai.org
 openh264.org
 openrouter.ai
 operator.chatgpt.com
@@ -1053,6 +1109,7 @@ platform.claude.ai
 platform.claude.com
 platform.deezer.com
 platform.openai.com
+platform.parallel.ai
 plugins.jetbrains.com
 plugshare.com
 plumbers.deezer.com
@@ -1070,6 +1127,7 @@ preview.deezer.com
 preview.reve.art
 primark.com
 primevideo.com
+privacy-pass-issuer.api.chatgpt.com
 private-user-images.githubusercontent.com
 proactivebackend-pa.googleapis.com
 production-openaicom-storage.azureedge.net
@@ -1094,6 +1152,7 @@ qwant.com
 raw.githubusercontent.com
 rdxfootmark.naukri.com
 reactflow.dev
+realtime.chatgpt.com
 recraft.ai
 recruit.naukri.com
 recruiter.naukri.com
@@ -1137,7 +1196,9 @@ rutor.info
 rutor.is
 s-cdn.anthropic.com
 s.deepl.com
+s.last.fm
 s.linear.app
+saa.last.fm
 sales.jetbrains.com
 salesforce-experience.com
 salesforce-hub.com
@@ -1159,8 +1220,10 @@ sdmntprpolandcentral.oaiusercontent.com
 sdmntprukwest.oaiusercontent.com
 sdxcentral.com
 se.com
+search.chatgpt.com
 searx.fmhy.net
 seconddinnertech.com
+secure.last.fm
 security.id.supercell.com
 seed-mix-image.spotifycdn.com
 seektables.scdn.co
@@ -1175,6 +1238,7 @@ shaker.deezer.com
 shield.deepl.com
 shinyhardware.co.uk
 shop.gameloft.com
+shop.last.fm
 shop.strava.com
 signaler-pa.clients6.google.com
 singlekey-id.com
@@ -1246,6 +1310,7 @@ stgmtstjs.naukri.com
 stgmtstmnj.naukri.com
 stgmtstwb.naukri.com
 stitch.withgoogle.com
+store.last.fm
 store.strava.com
 store.supercell.com
 stories.strava.com
@@ -1269,6 +1334,7 @@ support.broadcom.com
 support.deepl.com
 support.deezer.com
 support.jetbrains.com
+support.last.fm
 support.strava.com
 support.xerox.com
 surveymonkey.com
@@ -1412,6 +1478,7 @@ web.telegram.org
 webchannel-alkalimakersuite-pa.clients6.google.com
 webhooks.naukri.com
 webnames.ca
+webrtc-staging.chatgpt.com
 webrtc.chatgpt.com
 webtracker.naukri.com
 webviews.deezer.com
@@ -1424,6 +1491,7 @@ whoogle.fmhy.net
 widget-content.spotify.com
 widget.deezer.com
 widgetapp.stream
+wiki.last.fm
 wikidot.com
 win1910.ipv6.microsoft.com
 windsurf-stable.codeium.com
@@ -1432,6 +1500,7 @@ windsurf.com
 wise.com
 wpengine.com
 write-free.www.deepl.com
+ws.chatgpt.com
 ws.deezer.com
 wtg.csm.naukri.com
 wund.com
@@ -1461,7 +1530,6 @@ www.echo.naukri.com
 www.elevenlabs.io
 www.elgato.com
 www.facebook.com
-www.fbcdn.net
 www.fmhy.lol
 www.fmhy.net
 www.framer.com
@@ -1473,6 +1541,7 @@ www.intel.com
 www.intel.de
 www.jetbrains.com
 www.jetbrains.space
+www.last.fm
 www.learning.naukri.com
 www.lib.rus.ec
 www.make.com
