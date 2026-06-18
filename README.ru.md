@@ -79,7 +79,7 @@
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->930.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->123.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->286.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->38.9 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
     </tr>
@@ -144,7 +144,7 @@
         • 31.7 KB<br>
         • 38.5 KB<br>
         • 4.1 KB<br>
-        • 11.0 KB<br>
+        • 10.9 KB<br>
         • 31.1 KB<br>
         • 37.9 KB<br>
         • 129.6 KB<br>
