@@ -42,7 +42,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->158.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->880.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->880.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->556.3 KB<!-- SIZE_END -->
       </td>
       <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
@@ -111,7 +111,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.17 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->193.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->193.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->761.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->156.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->218.9 KB<!-- SIZE_END --><br>
@@ -196,11 +196,11 @@
         • 31.7 KB<br>
         • 38.5 KB<br>
         • 4.1 KB<br>
-        • 11.0 KB<br>
+        • 10.9 KB<br>
         • 31.1 KB<br>
         • 37.9 KB<br>
-        • 129.5 KB<br>
-        • 136.3 KB
+        • 129.6 KB<br>
+        • 136.4 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>
