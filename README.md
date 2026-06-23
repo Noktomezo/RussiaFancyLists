@@ -211,10 +211,11 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!TIP]
-> **🔄 Client-Side Failover:** The `combined.hosts` file maps every domain to **all** active SNI proxy IPs. This creates automatic client-side fallback/failover: if any of the proxy servers are currently unavailable (❤️), your browser will automatically route through the remaining active servers (note: at least one proxy provider must be active in the status block below for connectivity to work). This is the most robust and recommended option for hosts-based proxying!
-
-> [!NOTE]
-> **🩹 What is a "Crutch"?:** Standard hosts files contain a `# Crutch` section next to `# Geoblock`. While `# Geoblock` maps domains to a public SNI proxy (intended only for geoblocked domains), `# Crutch` provides workarounds for bypassing local blocklists. A crutch either maps a domain to an unblocked IP address from its subnet (to bypass local censorship directly) or routes it to a specialized SNI proxy dedicated only to that specific domain. Files ending with `-no-crutch.hosts` completely omit this section.
+> **💡 Hosts File Options:**
+> - **`combined.hosts`**: Includes both geoblocks (distributed across all active SNI proxies for automatic failover) and crutches. Recommended.
+> - **`-no-crutch.hosts`**: Excludes the `# Crutch` section. Useful if you route all other traffic through a VPN.
+> - **`only-crutch.hosts`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.
+> - **🩹 What is a "Crutch"?:** A workaround mapping a domain directly to its unblocked CDN/edge IP (e.g. GitHub) or a domain-specific proxy to bypass local censorship directly, bypassing general SNI proxies.
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
