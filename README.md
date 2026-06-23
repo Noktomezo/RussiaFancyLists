@@ -211,10 +211,10 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!TIP]
-> **💡 Hosts File Options:**
-> 🔄 **`combined.hosts`**: Includes both geoblocks (distributed across all active SNI proxies for automatic failover) and crutches (recommended).
-> 🩹 **What is a "Crutch"?:** A workaround mapping a domain directly to its unblocked CDN/edge IP (e.g. GitHub) or a domain-specific proxy to bypass local censorship directly, bypassing general SNI proxies.
-> 🌐 **`-no-crutch.hosts`**: Excludes the `# Crutch` section. Useful if you route all other traffic through a VPN.
+> **💡 Hosts File Options:**<br>
+> 🔄 **`combined.hosts`**: Includes both geoblocks (distributed across all active SNI proxies for automatic failover) and crutches (recommended).<br>
+> 🩹 **What is a "Crutch"?:** A workaround mapping a domain directly to its unblocked CDN/edge IP (e.g. GitHub) or a domain-specific proxy to bypass local censorship directly, bypassing general SNI proxies.<br>
+> 🌐 **`-no-crutch.hosts`**: Excludes the `# Crutch` section. Useful if you route all other traffic through a VPN.<br>
 > ⚡ **`only-crutch.hosts`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.
 
 ## ⚡ SNI-Proxy Status
