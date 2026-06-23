@@ -120,7 +120,7 @@
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>mihomo</code> (YAML и MRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
     </tr>
     <tr>
-      <td><b>Геоблокировки (Blacklist)</b></td>
+      <td><b>Геоблокировки</b></td>
       <td>
         • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>

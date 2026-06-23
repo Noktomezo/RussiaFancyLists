@@ -120,7 +120,7 @@ Generated artifacts are organized as follows:
       <td>Optimized IP-CIDR rulesets for <code>mihomo</code> (YAML and compiled binary <code>.mrs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
     </tr>
     <tr>
-      <td><b>Geoblock (Blacklist)</b></td>
+      <td><b>Geoblock</b></td>
       <td>
         • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
