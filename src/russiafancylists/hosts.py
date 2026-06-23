@@ -219,7 +219,7 @@ def get_source_info(file_path: Path):
     return top_ips, ip_domains
 
 
-async def check_ip_active(ip: str, timeout: float = 2.0) -> bool:
+async def check_ip_active(ip: str, timeout: float = 5.0) -> bool:
     """Check TCP connectivity to an IP on ports 443 and 80 in parallel with a timeout."""
     # Loopback addresses are always active
     if ip in ("127.0.0.1", "::1", "localhost", "ip6-localhost"):
@@ -443,11 +443,7 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
 
     malw_ips = []
     for ip in proxy_candidates:
-        if (
-            ip in provider_ip_domains.get("malw", {})
-            and ip not in geohide_ips
-            and ip not in mafioznik_ips
-        ):
+        if ip in provider_ip_domains.get("malw", {}) and ip not in geohide_ips:
             malw_ips.append(ip)
 
     if not malw_ips:
