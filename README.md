@@ -194,13 +194,13 @@ Generated artifacts are organized as follows:
       <td>
 <!-- HOSTS_SIZES_START -->
         • 32.0 KB<br>
-        • 39.0 KB<br>
+        • 39.2 KB<br>
         • 4.1 KB<br>
-        • 11.2 KB<br>
+        • 11.4 KB<br>
         • 31.7 KB<br>
-        • 38.6 KB<br>
+        • 38.8 KB<br>
         • 158.6 KB<br>
-        • 165.5 KB
+        • 165.7 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies (specifically for geoblocked domains) and custom direct IP mappings (crutches) for bypassing local blocklists. All files include standard local loopback headers.</td>

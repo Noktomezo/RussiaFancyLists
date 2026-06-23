@@ -507,6 +507,22 @@ async def generate_aligned_hosts(
                 f"Warning: Failed to parse zapret-manager-parsed.lst as hosts source: {e}"
             )
 
+    # 4. Use dynamic custom/direct IP mappings (Crutches)
+    provider_proxy_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
+
+    global_custom_candidates = {}
+    for ip_domains in (
+        malw_ip_domains,
+        mafioznik_ip_domains,
+        geohide_ip_domains,
+        zapret_ip_domains,
+    ):
+        for ip, domains in ip_domains.items():
+            if ip not in provider_proxy_ips:
+                for dom in domains:
+                    if ip not in global_custom_candidates.setdefault(dom, []):
+                        global_custom_candidates[dom].append(ip)
+
     ips_list = sorted(list(set(malw_ips + mafioznik_ips + geohide_ips)))
     if not ips_list:
         ips_list = ["127.0.0.1"]
@@ -526,7 +542,7 @@ async def generate_aligned_hosts(
                     if p.search(dom):
                         is_blacklisted = True
                         break
-                if is_blacklisted:
+                if is_blacklisted and dom not in global_custom_candidates:
                     continue
 
                 # Skip connectivity checks
@@ -553,22 +569,6 @@ async def generate_aligned_hosts(
 
     # Sort for deterministic output
     geoblock_domains = sorted(list(set(geoblock_domains)))
-
-    # 4. Use dynamic custom/direct IP mappings (Crutches)
-    provider_proxy_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
-
-    global_custom_candidates = {}
-    for ip_domains in (
-        malw_ip_domains,
-        mafioznik_ip_domains,
-        geohide_ip_domains,
-        zapret_ip_domains,
-    ):
-        for ip, domains in ip_domains.items():
-            if ip not in provider_proxy_ips:
-                for dom in domains:
-                    if ip not in global_custom_candidates.setdefault(dom, []):
-                        global_custom_candidates[dom].append(ip)
 
     # Extract allowed standard geoblock domains (all domains from provider hosts files plus non-hosts sources)
     allowed_domains = set()
