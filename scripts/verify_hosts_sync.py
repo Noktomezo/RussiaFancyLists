@@ -71,6 +71,7 @@ def main():
             "combined-no-crutch.hosts",
             "mafioznik.hosts",
             "mafioznik-no-crutch.hosts",
+            "only-crutch.hosts",
         ):
             continue
         if "-no-crutch" in f.name:
@@ -142,6 +143,28 @@ def main():
             print(
                 "mafioznik-no-crutch.hosts is a valid subset of combined-no-crutch.hosts."
             )
+
+    print("\n--- Verifying Only-Crutch Hosts File ---")
+    only_crutch_path = hosts_dir / "only-crutch.hosts"
+    if only_crutch_path.exists():
+        oc_domains = parse_domains_from_hosts(only_crutch_path)
+        print(f"{only_crutch_path.name} has {len(oc_domains)} unique domains.")
+
+        # Verify that combined_domains is exactly oc_domains | combined_nc_domains
+        expected_combined = oc_domains | combined_nc_domains
+        diff1 = combined_domains - expected_combined
+        diff2 = expected_combined - combined_domains
+        if diff1 or diff2:
+            print(
+                "Error: combined.hosts does not match union of only-crutch and combined-no-crutch!"
+            )
+            if diff1:
+                print(f"  Only in combined.hosts (first 5): {sorted(list(diff1))[:5]}")
+            if diff2:
+                print(f"  Only in union (first 5): {sorted(list(diff2))[:5]}")
+            mismatches += 1
+        else:
+            print("only-crutch + combined-no-crutch matches combined.hosts perfectly.")
 
     if mismatches > 0:
         print("\nError: Domains mismatch detected across hosts files.")

@@ -891,6 +891,21 @@ async def generate_aligned_hosts(
                 dom_list = " ".join(sorted(list(combined_geoblock_nc[(ip, brand)])))
                 f.write(f"{ip} {dom_list}\n")
 
+    # Write only-crutch combined file
+    output_only_crutch = output_combined.parent / "only-crutch.hosts"
+    with open(output_only_crutch, "w", encoding="utf-8") as f:
+        f.write(LOOPBACK_HEADER)
+        if combined_direct:
+            f.write("# Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+
+    # Rewrite geoblock_file to exclude crutch domains
+    geoblock_domains_no_crutch = [d for d in geoblock_domains if d not in global_custom]
+    with open(geoblock_file, "w", encoding="utf-8") as f:
+        f.write("\n".join(geoblock_domains_no_crutch) + "\n")
+
 
 def parse_zapret_sh(input_sh: Path, output_lst: Path):
     """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
