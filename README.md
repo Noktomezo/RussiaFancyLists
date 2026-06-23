@@ -213,7 +213,7 @@ Generated artifacts are organized as follows:
 > [!TIP]
 > **💡 Hosts File Options:**<br>
 > 🔄 **`combined.hosts`**: Includes both geoblocks (distributed across all active SNI proxies for automatic failover) and crutches (recommended).<br>
-> 🩹 **What is a "Crutch"?:** A workaround mapping a domain directly to its unblocked CDN/edge IP (e.g. GitHub) or a domain-specific proxy to bypass local censorship directly, bypassing general SNI proxies.<br>
+> 🩹 **What is a "Crutch"?:** A workaround mapping a domain directly to an unblocked IP in its subnet (e.g., CDN/edge servers for GitHub) to bypass local censorship directly, bypassing general SNI proxies.<br>
 > 🌐 **`-no-crutch.hosts`**: Excludes the `# Crutch` section. Useful if you route all other traffic through a VPN.<br>
 > ⚡ **`only-crutch.hosts`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.
 
@@ -241,7 +241,10 @@ Generated artifacts are organized as follows:
 💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts) — public SNI proxy endpoints from GeoHide<br>
 💜 [ItDogInfo's Geoblock Domains](https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst) — domain blocklists by itdog.info<br>
 💜 [Zapret-Manager Shell Script](https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh) — parsed variables for various restricted services<br>
-💜 [CDN IP Ranges](https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt) — IP address ranges of global CDNs
+💜 [CDN IP Ranges](https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt) — IP address ranges of global CDNs<br>
+💜 [dnsx](https://github.com/projectdiscovery/dnsx) — DNS resolution and probing tool by ProjectDiscovery (stored in `thirdparty/dnsx`)<br>
+💜 [sing-box](https://github.com/SagerNet/sing-box) — universal proxy platform core by SagerNet (stored in `thirdparty/sing-box`)<br>
+💜 [mihomo](https://github.com/MetaCubeX/mihomo) — Clash core successor by MetaCubeX (stored in `thirdparty/mihomo`)
 
 
 &nbsp;

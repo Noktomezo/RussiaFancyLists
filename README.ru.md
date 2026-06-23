@@ -213,7 +213,7 @@
 > [!TIP]
 > **💡 Варианты hosts-файлов:**<br>
 > 🔄 **`combined.hosts`**: Содержит как геоблокировки (распределенные по всем активным SNI-прокси для отказоустойчивости), так и костыли (рекомендуемый).<br>
-> 🩹 **Что такое "Костыль" (Crutch)?:** Решение, сопоставляющее домен напрямую с его незаблокированным IP-адресом (например, GitHub) или выделенным прокси для прямого обхода локальной цензуры без использования общих SNI-прокси.<br>
+> 🩹 **Что такое "Костыль" (Crutch)?:** Решение, сопоставляющее домен напрямую с незаблокированным IP-адресом в его подсети (например, CDN/edge-серверы GitHub) для прямого обхода локальной цензуры без использования общих SNI-прокси.<br>
 > 🌐 **`-no-crutch.hosts`**: Исключает секцию костылей (`# Crutch`). Удобно, если весь остальной трафик у вас идет через VPN.<br>
 > ⚡ **`only-crutch.hosts`**: Содержит **только** прямые маппинги (костыли). Удобно, если геоблоки у вас идут через VPN, но вы хотите напрямую обходить локальные блокировки для отдельных доменов.
 
@@ -241,7 +241,10 @@
 💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts) — адреса публичных SNI-прокси от GeoHide<br>
 💜 [ItDogInfo's Geoblock Domains](https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst) — список доменов геоблока от itdog.info<br>
 💜 [Zapret-Manager Shell Script](https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh) — переменные различных заблокированных сервисов<br>
-💜 [CDN IP Ranges](https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt) — диапазоны IP-адресов глобальных CDN
+💜 [CDN IP Ranges](https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt) — диапазоны IP-адресов глобальных CDN<br>
+💜 [dnsx](https://github.com/projectdiscovery/dnsx) — утилита для быстрого DNS-разрешения и зондирования от ProjectDiscovery (хранится в `thirdparty/dnsx`)<br>
+💜 [sing-box](https://github.com/SagerNet/sing-box) — универсальное ядро прокси от SagerNet (хранится в `thirdparty/sing-box`)<br>
+💜 [mihomo](https://github.com/MetaCubeX/mihomo) — ядро прокси-клиента (преемник Clash) от MetaCubeX (хранится в `thirdparty/mihomo`)
 
 
 &nbsp;

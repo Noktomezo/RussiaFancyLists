@@ -48,7 +48,7 @@ This file contains global rules, workflow requirements, and architectural guidel
 ### 2. The `# Crutch` Section
 - The header comment for custom/direct IP mappings must be exactly `# Crutch` (with no Russian translations or extra suffixes).
 - The crutch section in all standard hosts files must be **identical** across all providers (sharing the global `global_custom` mapping).
-- **Definition of Crutch**: A crutch maps a domain to a custom, direct IP (e.g. bypassing local censorship or routing specifically to a target SNI proxy).
+- **Definition of Crutch**: A crutch maps a domain directly to an unblocked IP address in its subnet (e.g., bypassing local censorship).
 
 ### 3. No-Crutch Hosts Files
 - In the `-no-crutch.hosts` files (including `combined-no-crutch.hosts`), all crutch/direct domains (e.g., `facebook.com`, `api.fitbit.com`) must be **completely cut out/removed**.
