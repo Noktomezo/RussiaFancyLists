@@ -1,11 +1,13 @@
 import asyncio
+import contextlib
 import glob
 import random
 import re
 from collections import Counter
 from pathlib import Path
 
-from russiafancylists.config import HOSTS_DIRECT, PROVIDER_IPS
+from russiafancylists.config import HOSTS_DIRECT
+from russiafancylists.ruleset import find_binary
 
 LOOPBACK_HEADER = (
     "# Loopback\n"
@@ -242,6 +244,231 @@ async def check_ip_active(ip: str, timeout: float = 2.0) -> bool:
     return active
 
 
+def _get_sld_name(dom: str) -> str:
+    """Extract the base brand name/SLD from a domain."""
+    dom = dom.lower().strip()
+    parts = dom.split(".")
+    if len(parts) < 2:
+        return dom
+    brand = parts[-2]
+    if len(parts) >= 3:
+        penultimate = parts[-2]
+        tld = parts[-1]
+        if penultimate in (
+            "co",
+            "com",
+            "org",
+            "net",
+            "gov",
+            "edu",
+            "mil",
+        ) and len(tld) in (2, 3):
+            brand = parts[-3]
+    return brand
+
+
+def parse_geohide_comment_ips(file_path: Path) -> list[str]:
+    """Parse official GeoHide proxy IPs from comments in the hosts file."""
+    ips = []
+    if not file_path.exists():
+        return ips
+    try:
+        with open(file_path, encoding="utf-8", errors="ignore") as f:
+            lines = f.readlines()
+        for idx, line in enumerate(lines):
+            if (
+                "Только эти серверы принадлежат GeoHide DNS:" in line
+                or "belong to GeoHide DNS:" in line
+            ):
+                for sub_line in lines[idx + 1 :]:
+                    sub_line = sub_line.strip()
+                    if not sub_line.startswith("#"):
+                        break
+                    # Extract IP address
+                    match = re.search(r"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})", sub_line)
+                    if match:
+                        ips.append(match.group(1))
+                break
+    except Exception as e:
+        print(f"Warning: Failed to parse GeoHide official IPs from comments: {e}")
+    return ips
+
+
+async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
+    """Detects proxy IPs for each provider (malw, mafioznik, geohide) dynamically using dnsx & SLD heuristics."""
+    import re
+    import subprocess
+
+    providers = ["malw", "mafioznik", "geohide"]
+    provider_files = {
+        "malw": hosts_temp_dir / "malw-hosts.lst",
+        "mafioznik": hosts_temp_dir / "mafioznik-hosts.lst",
+        "geohide": hosts_temp_dir / "geohide-hosts.lst",
+    }
+
+    # 1. Parse all hosts files and collect domains, mapped IPs, and build IP -> SLDs mapping
+    provider_ip_domains = {}
+    ip_to_slds = {}
+    all_domains = set()
+
+    for prov in providers:
+        file_path = provider_files[prov]
+        if file_path.exists():
+            try:
+                _, ip_domains = get_source_info(file_path)
+                provider_ip_domains[prov] = ip_domains
+                for ip, domains in ip_domains.items():
+                    for dom in domains:
+                        all_domains.add(dom)
+                        sld = _get_sld_name(dom)
+                        ip_to_slds.setdefault(ip, set()).add(sld)
+            except Exception as e:
+                print(f"Warning: Failed to parse {file_path.name} as hosts source: {e}")
+
+    zapret_path = hosts_temp_dir / "zapret-manager-parsed.lst"
+    if zapret_path.exists():
+        try:
+            _, zapret_ip_domains = get_source_info(zapret_path)
+            for ip, domains in zapret_ip_domains.items():
+                for dom in domains:
+                    all_domains.add(dom)
+                    sld = _get_sld_name(dom)
+                    ip_to_slds.setdefault(ip, set()).add(sld)
+        except Exception as e:
+            print(f"Warning: Failed to parse {zapret_path.name} as hosts source: {e}")
+
+    # 2. Resolve all domains using dnsx
+    resolved_ips = {}  # domain -> set of resolved IPs
+    if all_domains:
+        temp_domains_file = hosts_temp_dir / "domains_to_resolve.txt"
+        with open(temp_domains_file, "w", encoding="utf-8") as f:
+            f.write("\n".join(sorted(list(all_domains))) + "\n")
+
+        dnsx_bin = find_binary("dnsx")
+        cmd = [
+            dnsx_bin,
+            "-silent",
+            "-duc",
+            "-nc",
+            "-rl",
+            "200",
+            "-a",
+            "-resp",
+            "-r",
+            "doh:https://1.1.1.1/dns-query",
+            "-l",
+            str(temp_domains_file),
+            "-stream",
+        ]
+        try:
+            proc = await asyncio.create_subprocess_exec(
+                *cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            )
+            stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=90.0)
+
+            for line in stdout.decode("utf-8", errors="ignore").splitlines():
+                match = re.match(r"^(\S+)\s+\[A\]\s+\[(\S+)\]", line.strip())
+                if match:
+                    dom = match.group(1).lower().strip()
+                    ip = match.group(2).strip()
+                    resolved_ips.setdefault(dom, set()).add(ip)
+        except Exception as e:
+            print(f"Warning: dnsx resolution failed: {e}")
+
+        if temp_domains_file.exists():
+            with contextlib.suppress(Exception):
+                temp_domains_file.unlink()
+
+    # 3. Identify proxy candidates based on distinct SLD count & dnsx verification
+    proxy_candidates = set()
+    for ip, slds in ip_to_slds.items():
+        # A general proxy IP must map to multiple distinct base domains (SLDs)
+        if len(slds) >= 4:
+            # Verify if this IP is actually just a crutch for all its mapped domains.
+            # If for every mapped domain, the IP matches the resolved IP, it's a crutch.
+            mapped_domains = []
+            for prov in providers:
+                mapped_domains.extend(
+                    list(provider_ip_domains.get(prov, {}).get(ip, []))
+                )
+
+            resolved_and_matching = 0
+            resolved_count = 0
+            for dom in mapped_domains:
+                if dom in resolved_ips:
+                    resolved_count += 1
+                    if ip in resolved_ips[dom]:
+                        resolved_and_matching += 1
+
+            if resolved_count > 0 and resolved_and_matching == resolved_count:
+                continue
+
+            proxy_candidates.add(ip)
+
+    # 4. Assign proxy IPs to their actual providers
+    geohide_official = parse_geohide_comment_ips(provider_files["geohide"])
+
+    # Ensure any official GeoHide IP found in candidates is assigned to GeoHide
+    geohide_ips = [ip for ip in geohide_official if ip in ip_to_slds]
+    if not geohide_ips:
+        geohide_ips = [
+            ip
+            for ip in proxy_candidates
+            if ip in provider_ip_domains.get("geohide", {})
+            and ip not in provider_ip_domains.get("mafioznik", {})
+            and ip not in provider_ip_domains.get("malw", {})
+        ]
+        if not geohide_ips:
+            geohide_ips = sorted(
+                [
+                    ip
+                    for ip in proxy_candidates
+                    if ip in provider_ip_domains.get("geohide", {})
+                ],
+                key=lambda x: len(ip_to_slds[x]),
+                reverse=True,
+            )[:1]
+
+    mafioznik_ips = [
+        ip for ip in proxy_candidates if ip in provider_ip_domains.get("mafioznik", {})
+    ]
+    if not mafioznik_ips:
+        sorted_maf = sorted(
+            provider_ip_domains.get("mafioznik", {}).keys(),
+            key=lambda x: len(provider_ip_domains["mafioznik"][x]),
+            reverse=True,
+        )
+        if sorted_maf:
+            mafioznik_ips = [sorted_maf[0]]
+
+    malw_ips = []
+    for ip in proxy_candidates:
+        if (
+            ip in provider_ip_domains.get("malw", {})
+            and ip not in geohide_ips
+            and ip not in mafioznik_ips
+        ):
+            malw_ips.append(ip)
+
+    if not malw_ips:
+        sorted_malw = sorted(
+            provider_ip_domains.get("malw", {}).keys(),
+            key=lambda x: len(provider_ip_domains["malw"][x]),
+            reverse=True,
+        )
+        if sorted_malw:
+            malw_ips = [sorted_malw[0]]
+
+    detected_proxy_ips = {
+        "malw": sorted(list(set(malw_ips))),
+        "mafioznik": sorted(list(set(mafioznik_ips))),
+        "geohide": sorted(list(set(geohide_ips))),
+    }
+
+    print(f"Detected proxy IPs: {detected_proxy_ips}")
+    return detected_proxy_ips
+
+
 async def generate_aligned_hosts(
     geoblock_file: Path,
     hosts_temp_dir: Path,
@@ -263,13 +490,15 @@ async def generate_aligned_hosts(
         py_p = p.replace("[[:space:]]", r"\s")
         blacklist_patterns.append(re.compile(py_p))
 
-    # 2. Get source info (most frequent IPs and original domains)
+    # 2. Dynamically detect proxy IPs and get source info (original domains)
+    detected_proxy_ips = await detect_provider_proxy_ips(hosts_temp_dir)
+    malw_ips = detected_proxy_ips["malw"]
+    mafioznik_ips = detected_proxy_ips["mafioznik"]
+    geohide_ips = detected_proxy_ips["geohide"]
+
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
     _, geohide_ip_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
-    malw_ips = PROVIDER_IPS["malw"]
-    mafioznik_ips = PROVIDER_IPS["mafioznik"]
-    geohide_ips = PROVIDER_IPS["geohide"]
 
     # Parse zapret-manager-parsed.lst as an IP source
     zapret_ip_domains = {}

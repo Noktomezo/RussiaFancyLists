@@ -3,8 +3,6 @@ import re
 import time
 from pathlib import Path
 
-from russiafancylists.config import PROVIDER_IPS
-
 
 async def test_ip_latency(
     ip: str, port: int = 443, timeout: float = 3.0
@@ -25,13 +23,38 @@ async def test_ip_latency(
 # Raw measured TCP latency formatting is used directly now
 
 
+def parse_proxy_ips_from_hosts(file_path: Path) -> list[str]:
+    """Parse proxy IPs listed under the # Geoblock section of a hosts file."""
+    ips = set()
+    if not file_path.exists():
+        return []
+    in_geoblock = False
+    with open(file_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            if line == "# Geoblock":
+                in_geoblock = True
+                continue
+            if line.startswith("#"):
+                in_geoblock = False
+                continue
+            if in_geoblock:
+                cols = line.split()
+                if cols:
+                    ips.add(cols[0])
+    return sorted(list(ips))
+
+
 async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Measure latencies and update status blocks in README.md and README.ru.md."""
-    # 1. Retrieve current proxy IPs
+    # 1. Retrieve current proxy IPs dynamically from the generated hosts files
+    hosts_dir = root_dir / "lists" / "hosts"
     provider_ips = {
-        "Malw": PROVIDER_IPS["malw"],
-        "GeoHide": PROVIDER_IPS["geohide"],
-        "Mafioznik": PROVIDER_IPS["mafioznik"],
+        "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
+        "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
+        "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
     }
 
     # 2. Measure latencies concurrently

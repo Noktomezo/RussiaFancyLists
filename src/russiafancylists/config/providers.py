@@ -4,12 +4,6 @@ from russiafancylists.config.paths import (
     WHITELIST_LIST_FOLDER,
 )
 
-PROVIDER_IPS = {
-    "malw": ["62.133.62.97"],
-    "geohide": ["45.155.204.190", "37.230.192.51", "31.25.239.132"],
-    "mafioznik": ["103.27.157.38"],
-}
-
 DOWNLOADS = {
     # Domains
     "antifilter_domains": (
