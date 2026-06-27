@@ -50,7 +50,7 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-        git add lists/ README.md README.ru.md
+        git add -A
         git commit -m "chore: automated list update $(date +'%Y-%m-%d')
 
         Updated blocklists with latest restricted domains and IPs.
