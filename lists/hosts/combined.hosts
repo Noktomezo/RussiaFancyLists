@@ -26,7 +26,6 @@ ff02::2 ip6-allrouters
 213.24.64.181 lknpd.nalog.ru
 130.255.77.28 ntc.party
 52.223.13.41 tracker.openbittorrent.com
-185.246.223.127 patreon.com www.patreon.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 172.64.33.155 d.rutor.is
 173.245.58.219 d.rutor.info rutor.info
@@ -273,10 +272,10 @@ ff02::2 ip6-allrouters
 45.155.204.190 ai-chat.bsg.brave.com
 62.133.62.97 ai-chat.bsg.brave.com
 103.27.157.38 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
-31.25.239.132 brawlstarsgame.com game-assets.brawlstarsgame.com
-37.230.192.51 brawlstarsgame.com game-assets.brawlstarsgame.com
-45.155.204.190 brawlstarsgame.com game-assets.brawlstarsgame.com
-62.133.62.97 brawlstarsgame.com game-assets.brawlstarsgame.com
+31.25.239.132 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
+37.230.192.51 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
+45.155.204.190 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
+62.133.62.97 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
 103.27.157.38 access.broadcom.com broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
 31.25.239.132 access.broadcom.com broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
 37.230.192.51 access.broadcom.com broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
@@ -1442,11 +1441,11 @@ ff02::2 ip6-allrouters
 37.230.192.51 builds.parsec.app public.parsec.app
 45.155.204.190 builds.parsec.app public.parsec.app
 62.133.62.97 builds.parsec.app public.parsec.app
-103.27.157.38 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreonusercontent.com
-31.25.239.132 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreonusercontent.com
-37.230.192.51 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreonusercontent.com
-45.155.204.190 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreonusercontent.com
-62.133.62.97 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreonusercontent.com
+103.27.157.38 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreon.com patreonusercontent.com www.patreon.com
+31.25.239.132 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreon.com patreonusercontent.com www.patreon.com
+37.230.192.51 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreon.com patreonusercontent.com www.patreon.com
+45.155.204.190 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreon.com patreonusercontent.com www.patreon.com
+62.133.62.97 c10.patreonusercontent.com c13.patreon.com c5.patreon.com patreon.com patreonusercontent.com www.patreon.com
 103.27.157.38 paywithmoon.com
 31.25.239.132 paywithmoon.com
 37.230.192.51 paywithmoon.com
