@@ -117,7 +117,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.18 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->193.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->193.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->761.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->156.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.4 KB<!-- SIZE_END --><br>
