@@ -47,7 +47,7 @@
         • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->884.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->557.9 KB<!-- SIZE_END -->
       </td>
@@ -98,10 +98,10 @@
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.43 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->169.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->934.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->935.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->124.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->288.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->288.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.3 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
     </tr>
@@ -118,10 +118,10 @@
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.17 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->763.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->156.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->763.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->156.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.3 KB<!-- SIZE_END -->
       </td>
       <td>Оптимизированные IP-CIDR правила маршрутизации для <code>mihomo</code> (YAML и MRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
     </tr>
@@ -147,7 +147,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
@@ -163,7 +163,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->33.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
       </td>
@@ -206,9 +206,9 @@
         • 11.1 KB<br>
         • 31.3 KB<br>
         • 38.3 KB<br>
-        • 157.1 KB<br>
-        • 7.1 KB<br>
-        • 164.1 KB
+        • 157.0 KB<br>
+        • 7.2 KB<br>
+        • 164.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>

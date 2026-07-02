@@ -47,7 +47,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->884.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->557.9 KB<!-- SIZE_END -->
       </td>
@@ -98,10 +98,10 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.43 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->169.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->934.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->935.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->124.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->288.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->288.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.3 KB<!-- SIZE_END -->
       </td>
       <td>Optimized IP-CIDR rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
     </tr>
@@ -118,10 +118,10 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.17 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->763.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->156.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->763.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->156.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.3 KB<!-- SIZE_END -->
       </td>
       <td>Optimized IP-CIDR rulesets for <code>mihomo</code> (YAML and compiled binary <code>.mrs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
     </tr>
@@ -147,7 +147,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
@@ -163,7 +163,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->33.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
       </td>
@@ -206,9 +206,9 @@ Generated artifacts are organized as follows:
         • 11.1 KB<br>
         • 31.3 KB<br>
         • 38.3 KB<br>
-        • 157.1 KB<br>
-        • 7.1 KB<br>
-        • 164.1 KB
+        • 157.0 KB<br>
+        • 7.2 KB<br>
+        • 164.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies (specifically for geoblocked domains) and custom direct IP mappings (crutches) for bypassing local blocklists. All files include standard local loopback headers.</td>
