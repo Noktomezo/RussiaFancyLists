@@ -146,7 +146,7 @@
         • <a href="./lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
@@ -206,9 +206,9 @@
         • 11.1 KB<br>
         • 31.3 KB<br>
         • 38.3 KB<br>
-        • 157.1 KB<br>
-        • 7.1 KB<br>
-        • 164.1 KB
+        • 157.0 KB<br>
+        • 7.2 KB<br>
+        • 164.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>

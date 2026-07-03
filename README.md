@@ -146,7 +146,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
@@ -206,9 +206,9 @@ Generated artifacts are organized as follows:
         • 11.1 KB<br>
         • 31.3 KB<br>
         • 38.3 KB<br>
-        • 157.1 KB<br>
-        • 7.1 KB<br>
-        • 164.1 KB
+        • 157.0 KB<br>
+        • 7.2 KB<br>
+        • 164.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies (specifically for geoblocked domains) and custom direct IP mappings (crutches) for bypassing local blocklists. All files include standard local loopback headers.</td>
