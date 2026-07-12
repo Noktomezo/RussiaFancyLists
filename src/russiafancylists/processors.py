@@ -2,6 +2,7 @@ import glob
 import ipaddress
 import os
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -35,6 +36,36 @@ def is_private_ip(ip_str: str) -> bool:
             except ValueError:
                 pass
     return False
+
+
+def run_mapcidr(ips: list[str]) -> list[str]:
+    """Run mapcidr to aggregate a list of IPs/CIDRs."""
+    if not ips:
+        return []
+
+    from russiafancylists.ruleset import find_binary
+
+    mapcidr_bin = find_binary("mapcidr")
+    input_data = "\n".join(ips)
+
+    try:
+        res = subprocess.run(
+            [mapcidr_bin, "-aggregate", "-silent"],
+            input=input_data,
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=60,
+        )
+        output_ips = []
+        for line in res.stdout.splitlines():
+            line = line.strip()
+            if line:
+                output_ips.append(line)
+        return output_ips
+    except subprocess.CalledProcessError as e:
+        stderr_msg = e.stderr.strip() if e.stderr else "No stderr captured"
+        raise RuntimeError(f"mapcidr execution failed: {stderr_msg}") from e
 
 
 def clean_and_validate_domain(d: str) -> list[str]:
@@ -107,15 +138,15 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                             net = ipaddress.ip_network(line + "/32")
                         else:
                             net = ipaddress.ip_network(line)
-                        networks.append(net)
+                        networks.append(str(net))
                     except ValueError:
                         pass
-        # Collapse CIDRs using python native library
-        collapsed = ipaddress.collapse_addresses(networks)
+        # Collapse CIDRs using mapcidr
+        collapsed = run_mapcidr(networks)
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
             for net in collapsed:
-                f.write(str(net) + "\n")
+                f.write(net + "\n")
     else:
         # Domains merging (robustly handling both hosts format with IP prefixes and plain domain lists)
         domains = set()
@@ -216,11 +247,11 @@ def merge_cdn_and_full_ipset(cdn_file: Path, full_file: Path, output_file: Path)
                             net = ipaddress.ip_network(line + "/32")
                         else:
                             net = ipaddress.ip_network(line)
-                        networks.append(net)
+                        networks.append(str(net))
                     except ValueError:
                         pass
-    collapsed = ipaddress.collapse_addresses(networks)
+    collapsed = run_mapcidr(networks)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
         for net in collapsed:
-            f.write(str(net) + "\n")
+            f.write(net + "\n")
