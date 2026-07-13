@@ -17,14 +17,14 @@
 
 Сгенерированные списки организованы следующим образом:
 
-<table>
+<table width="100%">
   <thead>
     <tr>
-      <th width="10%" align="center"><b>Категория</b></th>
-      <th width="22%" align="center"><b>Вариант</b></th>
-      <th width="23%" align="center"><b>Тип</b></th>
-      <th width="31%" align="center"><b>Файлы</b></th>
-      <th width="14%" align="center"><b>Размер</b></th>
+      <th width="14%" align="center"><b>Категория</b></th>
+      <th width="13%" align="center"><b>Вариант</b></th>
+      <th width="13%" align="center"><b>Тип</b></th>
+      <th width="38%" align="center"><b>Файлы</b></th>
+      <th width="22%" align="center"><b>Размер</b></th>
     </tr>
   </thead>
   <tbody>
