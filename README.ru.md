@@ -129,10 +129,12 @@
       <td rowspan="2"><b>Текст</b></td>
       <td><b>Домены</b></td>
       <td>
-        • <a href="./lists/geoblock/domains/full.lst"><code>full.lst</code></a>
+        • <a href="./lists/geoblock/domains/full.lst"><code>full.lst</code></a><br>
+        • <a href="./lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->26.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->26.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->7.0 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -141,7 +143,7 @@
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->21.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->21.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -149,11 +151,15 @@
       <td><b>Домены</b></td>
       <td>
         • <a href="./lists/geoblock-sing-box/domains/full.json"><code>full.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/domains/full.srs"><code>full.srs</code></a>
+        • <a href="./lists/geoblock-sing-box/domains/full.srs"><code>full.srs</code></a><br>
+        • <a href="./lists/geoblock-sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
+        • <a href="./lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->40.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->12.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -163,8 +169,8 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->34.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -172,11 +178,15 @@
       <td><b>Домены</b></td>
       <td>
         • <a href="./lists/geoblock-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/domains/full.mrs"><code>full.mrs</code></a>
+        • <a href="./lists/geoblock-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
+        • <a href="./lists/geoblock-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
+        • <a href="./lists/geoblock-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->10.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -186,7 +196,7 @@
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->28.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.1 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -285,15 +295,15 @@
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 32.0 KB<br>
-        • 39.2 KB<br>
+        • 31.9 KB<br>
+        • 39.0 KB<br>
         • 4.1 KB<br>
         • 11.4 KB<br>
         • 31.7 KB<br>
         • 38.8 KB<br>
-        • 158.6 KB<br>
+        • 126.5 KB<br>
         • 7.2 KB<br>
-        • 165.7 KB
+        • 133.6 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>
@@ -310,7 +320,7 @@
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
 - **Malw**: 💚💚
-- **GeoHide**: 💚💚💚
+- **GeoHide**: 💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]

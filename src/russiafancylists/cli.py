@@ -208,7 +208,12 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full.lst",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full-and-cdn.lst",
                 ),
-                # Geoblock IPs
+                # Geoblock lists
+                asyncio.to_thread(
+                    cleanup_domains,
+                    GEOBLOCK_FOLDER / "domains" / "full.lst",
+                    GEOBLOCK_FOLDER / "domains" / "full-sld.lst",
+                ),
                 asyncio.to_thread(
                     resolve_domains_to_ipset,
                     GEOBLOCK_FOLDER / "domains" / "full.lst",
@@ -276,6 +281,13 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     GEOBLOCK_FOLDER / "domains" / "full.lst",
                     GEOBLOCK_SING_BOX_FOLDER / "domains" / "full.json",
                     GEOBLOCK_SING_BOX_FOLDER / "domains" / "full.srs",
+                ),
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "domain_suffix",
+                    GEOBLOCK_FOLDER / "domains" / "full-sld.lst",
+                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full-sld.json",
+                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full-sld.srs",
                 ),
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
@@ -349,6 +361,13 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     GEOBLOCK_FOLDER / "domains" / "full.lst",
                     GEOBLOCK_MIHOMO_FOLDER / "domains" / "full.yaml",
                     GEOBLOCK_MIHOMO_FOLDER / "domains" / "full.mrs",
+                ),
+                asyncio.to_thread(
+                    generate_mihomo_ruleset,
+                    "domain_suffix",
+                    GEOBLOCK_FOLDER / "domains" / "full-sld.lst",
+                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full-sld.yaml",
+                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full-sld.mrs",
                 ),
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
