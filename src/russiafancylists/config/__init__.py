@@ -11,6 +11,8 @@ from russiafancylists.config.paths import (
     ROOT_DIR,
     TEMP_FOLDER,
     WHITELIST_LIST_FOLDER,
+    WHITELIST_MIHOMO_FOLDER,
+    WHITELIST_SING_BOX_FOLDER,
 )
 from russiafancylists.config.providers import DOWNLOADS
 
@@ -26,6 +28,8 @@ __all__ = [
     "GEOBLOCK_MIHOMO_FOLDER",
     "GEOBLOCK_SING_BOX_FOLDER",
     "WHITELIST_LIST_FOLDER",
+    "WHITELIST_MIHOMO_FOLDER",
+    "WHITELIST_SING_BOX_FOLDER",
     "DOWNLOADS",
     "HOSTS_DIRECT",
     "ILLEGAL_CHARS",

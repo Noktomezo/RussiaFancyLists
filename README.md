@@ -34,8 +34,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/domains/full.lst -->26.92 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->19.27 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/domains/full.lst -->28.36 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->20.39 MB<!-- SIZE_END -->
       </td>
       <td>Curated domain blocklists in raw format and optimized second-level domains (SLD).</td>
     </tr>
@@ -48,8 +48,8 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->926.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->577.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->982.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->613.3 KB<!-- SIZE_END -->
       </td>
       <td>IP address ranges: CDN ranges, blocked IPs, and unified blocked IPs including CDNs.</td>
     </tr>
@@ -62,9 +62,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->43.11 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->44.55 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->8.70 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->31.62 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->32.75 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->6.63 MB<!-- SIZE_END -->
       </td>
       <td>Optimized domain rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side) in raw and SLD formats.</td>
@@ -78,9 +78,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->35.55 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->36.99 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->8.20 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->26.01 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->27.13 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.11 MB<!-- SIZE_END -->
       </td>
       <td>Optimized domain rulesets for <code>mihomo</code> (YAML and compiled binary <code>.mrs</code> side-by-side) in raw and SLD formats.</td>
@@ -96,11 +96,11 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.50 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.56 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->967.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->1003.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->289.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->299.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.4 KB<!-- SIZE_END -->
       </td>
       <td>Optimized IP-CIDR rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
@@ -116,11 +116,11 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-mihomo/ipsets/cdn.mrs"><code>cdn.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.23 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.29 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->201.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->790.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->825.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->245.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.5 KB<!-- SIZE_END -->
       </td>
       <td>Optimized IP-CIDR rulesets for <code>mihomo</code> (YAML and compiled binary <code>.mrs</code> side-by-side), split into blocked IPs, unified blocked IPs with CDNs, and standalone CDN ranges.</td>
@@ -128,46 +128,46 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>Geoblock</b></td>
       <td>
-        • <a href="./lists/geoblock/full.lst"><code>full.lst</code></a><br>
-        • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
+        • <a href="./lists/geoblock/domains/full.lst"><code>domains/full.lst</code></a><br>
+        • <a href="./lists/geoblock/ipsets/full.lst"><code>ipsets/full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/full.lst -->25.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock/full-sld.lst -->6.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->26.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.0 KB<!-- SIZE_END -->
       </td>
-      <td>Domains of foreign services restricting access from Russian IP addresses (geoblocked/sanctioned services).</td>
+      <td>Domains of foreign services restricting access from Russian IP addresses and their resolved, aggregated IP ranges.</td>
     </tr>
     <tr>
       <td><b>Geoblock Sing-Box</b></td>
       <td>
-        • <a href="./lists/geoblock-sing-box/full.json"><code>full.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/full.srs"><code>full.srs</code></a><br>
-        • <a href="./lists/geoblock-sing-box/full-sld.json"><code>full-sld.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
+        • <a href="./lists/geoblock-sing-box/domains/full.json"><code>domains/full.json</code></a><br>
+        • <a href="./lists/geoblock-sing-box/domains/full.srs"><code>domains/full.srs</code></a><br>
+        • <a href="./lists/geoblock-sing-box/ipsets/full.json"><code>ipsets/full.json</code></a><br>
+        • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>ipsets/full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->41.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
       </td>
-      <td>Optimized geoblock domain rulesets for <code>sing-box</code> (JSON and compiled binary <code>.srs</code> side-by-side) in raw and SLD formats.</td>
+      <td>Geoblock domain and IP-CIDR rulesets for <code>sing-box</code> in JSON and compiled binary SRS formats.</td>
     </tr>
     <tr>
       <td><b>Geoblock Mihomo</b></td>
       <td>
-        • <a href="./lists/geoblock-mihomo/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/full.mrs"><code>full.mrs</code></a><br>
-        • <a href="./lists/geoblock-mihomo/full-sld.yaml"><code>full-sld.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/full-sld.mrs"><code>full-sld.mrs</code></a>
+        • <a href="./lists/geoblock-mihomo/domains/full.yaml"><code>domains/full.yaml</code></a><br>
+        • <a href="./lists/geoblock-mihomo/domains/full.mrs"><code>domains/full.mrs</code></a><br>
+        • <a href="./lists/geoblock-mihomo/ipsets/full.yaml"><code>ipsets/full.yaml</code></a><br>
+        • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>ipsets/full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->33.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->9.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.2 KB<!-- SIZE_END -->
       </td>
-      <td>Optimized geoblock domain rulesets for <code>mihomo</code> (YAML and compiled binary <code>.mrs</code> side-by-side) in raw and SLD formats.</td>
+      <td>Geoblock domain and IP-CIDR rulesets for <code>mihomo</code> in YAML and compiled binary MRS formats.</td>
     </tr>
     <tr>
       <td><b>Whitelist</b></td>
@@ -182,6 +182,46 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/whitelist/cidr.lst -->459.4 KB<!-- SIZE_END -->
       </td>
       <td>Universal community-compiled lists of allowed domains (SNI), IPs, and CIDR subnets accessible during whitelist lockdowns by Russian mobile carriers. Essential for SNI spoofing and whitelisted hostings.</td>
+    </tr>
+    <tr>
+      <td><b>Whitelist Sing-Box</b></td>
+      <td>
+        • <a href="./lists/whitelist-sing-box/domains.json"><code>domains.json</code></a><br>
+        • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a><br>
+        • <a href="./lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a><br>
+        • <a href="./lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
+        • <a href="./lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a><br>
+        • <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END -->
+      </td>
+      <td>Whitelist domain, IP, and CIDR rulesets for <code>sing-box</code> in JSON and compiled binary SRS formats.</td>
+    </tr>
+    <tr>
+      <td><b>Whitelist Mihomo</b></td>
+      <td>
+        • <a href="./lists/whitelist-mihomo/domains.yaml"><code>domains.yaml</code></a><br>
+        • <a href="./lists/whitelist-mihomo/domains.mrs"><code>domains.mrs</code></a><br>
+        • <a href="./lists/whitelist-mihomo/ipset.yaml"><code>ipset.yaml</code></a><br>
+        • <a href="./lists/whitelist-mihomo/ipset.mrs"><code>ipset.mrs</code></a><br>
+        • <a href="./lists/whitelist-mihomo/cidr.yaml"><code>cidr.yaml</code></a><br>
+        • <a href="./lists/whitelist-mihomo/cidr.mrs"><code>cidr.mrs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->21.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/domains.mrs -->3.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/ipset.yaml -->3.03 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/ipset.mrs -->155.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/cidr.yaml -->666.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/cidr.mrs -->86.2 KB<!-- SIZE_END -->
+      </td>
+      <td>Whitelist domain, IP, and CIDR rulesets for <code>mihomo</code> in YAML and compiled binary MRS formats.</td>
     </tr>
     <tr>
       <td><b>Hosts (SNI Proxy)</b></td>
@@ -200,15 +240,15 @@ Generated artifacts are organized as follows:
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 31.7 KB<br>
-        • 38.7 KB<br>
+        • 32.2 KB<br>
+        • 39.1 KB<br>
         • 4.1 KB<br>
-        • 11.1 KB<br>
-        • 31.3 KB<br>
-        • 38.3 KB<br>
-        • 157.1 KB<br>
-        • 7.1 KB<br>
-        • 164.1 KB
+        • 11.2 KB<br>
+        • 31.9 KB<br>
+        • 38.8 KB<br>
+        • 159.4 KB<br>
+        • 7.0 KB<br>
+        • 166.3 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Hosts-format mappings routing blocked domains through free public SNI proxies (specifically for geoblocked domains) and custom direct IP mappings (crutches) for bypassing local blocklists. All files include standard local loopback headers.</td>

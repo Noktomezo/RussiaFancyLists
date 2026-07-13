@@ -15,3 +15,5 @@ GEOBLOCK_MIHOMO_FOLDER = LIST_FOLDER / "geoblock-mihomo"
 
 # Whitelist subfolders
 WHITELIST_LIST_FOLDER = LIST_FOLDER / "whitelist"
+WHITELIST_SING_BOX_FOLDER = LIST_FOLDER / "whitelist-sing-box"
+WHITELIST_MIHOMO_FOLDER = LIST_FOLDER / "whitelist-mihomo"

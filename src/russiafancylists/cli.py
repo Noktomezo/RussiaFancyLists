@@ -30,6 +30,8 @@ from russiafancylists.config import (
     ROOT_DIR,
     TEMP_FOLDER,
     WHITELIST_LIST_FOLDER,
+    WHITELIST_MIHOMO_FOLDER,
+    WHITELIST_SING_BOX_FOLDER,
 )
 from russiafancylists.downloader import run_downloads
 from russiafancylists.hosts import (
@@ -40,6 +42,7 @@ from russiafancylists.processors import (
     cleanup_domains,
     merge_cdn_and_full_ipset,
     merge_lists,
+    resolve_domains_to_ipset,
 )
 from russiafancylists.ruleset import generate_mihomo_ruleset, generate_sing_box_ruleset
 from russiafancylists.status import (
@@ -83,10 +86,15 @@ def setup_dirs(skip_download: bool = False):
         BLACKLIST_MIHOMO_FOLDER / "domains",
         BLACKLIST_MIHOMO_FOLDER / "ipsets",
         HOSTS_LIST_FOLDER,
-        GEOBLOCK_FOLDER,
-        GEOBLOCK_SING_BOX_FOLDER,
-        GEOBLOCK_MIHOMO_FOLDER,
+        GEOBLOCK_FOLDER / "domains",
+        GEOBLOCK_FOLDER / "ipsets",
+        GEOBLOCK_SING_BOX_FOLDER / "domains",
+        GEOBLOCK_SING_BOX_FOLDER / "ipsets",
+        GEOBLOCK_MIHOMO_FOLDER / "domains",
+        GEOBLOCK_MIHOMO_FOLDER / "ipsets",
         WHITELIST_LIST_FOLDER,
+        WHITELIST_SING_BOX_FOLDER,
+        WHITELIST_MIHOMO_FOLDER,
     ]:
         folder.mkdir(parents=True, exist_ok=True)
 
@@ -160,7 +168,7 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 asyncio.to_thread(
                     merge_lists,
                     TEMP_FOLDER / "hosts",
-                    GEOBLOCK_FOLDER / "full.lst",
+                    GEOBLOCK_FOLDER / "domains" / "full.lst",
                     file_pattern="*.lst",
                 ),
             )
@@ -170,7 +178,7 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
 
             # 2. Build aligned hosts files from the completed full geoblock list
             await generate_aligned_hosts(
-                GEOBLOCK_FOLDER / "full.lst",
+                GEOBLOCK_FOLDER / "domains" / "full.lst",
                 TEMP_FOLDER / "hosts",
                 HOSTS_LIST_FOLDER / "combined.hosts",
                 HOSTS_LIST_FOLDER / "malw.hosts",
@@ -200,11 +208,11 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full.lst",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full-and-cdn.lst",
                 ),
-                # Geoblock lists
+                # Geoblock IPs
                 asyncio.to_thread(
-                    cleanup_domains,
-                    GEOBLOCK_FOLDER / "full.lst",
-                    GEOBLOCK_FOLDER / "full-sld.lst",
+                    resolve_domains_to_ipset,
+                    GEOBLOCK_FOLDER / "domains" / "full.lst",
+                    GEOBLOCK_FOLDER / "ipsets" / "full.lst",
                 ),
             )
             status.update(
@@ -242,21 +250,21 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 ),
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
-                    "source_ip_cidr",
+                    "ip_cidr",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full.lst",
                     BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full.json",
                     BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full.srs",
                 ),
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
-                    "source_ip_cidr",
+                    "ip_cidr",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full-and-cdn.lst",
                     BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full-and-cdn.json",
                     BLACKLIST_SING_BOX_FOLDER / "ipsets" / "full-and-cdn.srs",
                 ),
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
-                    "source_ip_cidr",
+                    "ip_cidr",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst",
                     BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.json",
                     BLACKLIST_SING_BOX_FOLDER / "ipsets" / "cdn.srs",
@@ -265,16 +273,38 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
                     "domain",
-                    GEOBLOCK_FOLDER / "full.lst",
-                    GEOBLOCK_SING_BOX_FOLDER / "full.json",
-                    GEOBLOCK_SING_BOX_FOLDER / "full.srs",
+                    GEOBLOCK_FOLDER / "domains" / "full.lst",
+                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full.json",
+                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full.srs",
                 ),
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
-                    "domain_suffix",
-                    GEOBLOCK_FOLDER / "full-sld.lst",
-                    GEOBLOCK_SING_BOX_FOLDER / "full-sld.json",
-                    GEOBLOCK_SING_BOX_FOLDER / "full-sld.srs",
+                    "ip_cidr",
+                    GEOBLOCK_FOLDER / "ipsets" / "full.lst",
+                    GEOBLOCK_SING_BOX_FOLDER / "ipsets" / "full.json",
+                    GEOBLOCK_SING_BOX_FOLDER / "ipsets" / "full.srs",
+                ),
+                # Whitelist rulesets (sing-box)
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "domain",
+                    WHITELIST_LIST_FOLDER / "domains.lst",
+                    WHITELIST_SING_BOX_FOLDER / "domains.json",
+                    WHITELIST_SING_BOX_FOLDER / "domains.srs",
+                ),
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "ip_cidr",
+                    WHITELIST_LIST_FOLDER / "ipset.lst",
+                    WHITELIST_SING_BOX_FOLDER / "ipset.json",
+                    WHITELIST_SING_BOX_FOLDER / "ipset.srs",
+                ),
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "ip_cidr",
+                    WHITELIST_LIST_FOLDER / "cidr.lst",
+                    WHITELIST_SING_BOX_FOLDER / "cidr.json",
+                    WHITELIST_SING_BOX_FOLDER / "cidr.srs",
                 ),
                 # Blacklist rulesets (Mihomo)
                 asyncio.to_thread(
@@ -293,21 +323,21 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 ),
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
-                    "source_ip_cidr",
+                    "ip_cidr",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full.lst",
                     BLACKLIST_MIHOMO_FOLDER / "ipsets" / "full.yaml",
                     BLACKLIST_MIHOMO_FOLDER / "ipsets" / "full.mrs",
                 ),
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
-                    "source_ip_cidr",
+                    "ip_cidr",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "full-and-cdn.lst",
                     BLACKLIST_MIHOMO_FOLDER / "ipsets" / "full-and-cdn.yaml",
                     BLACKLIST_MIHOMO_FOLDER / "ipsets" / "full-and-cdn.mrs",
                 ),
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
-                    "source_ip_cidr",
+                    "ip_cidr",
                     BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst",
                     BLACKLIST_MIHOMO_FOLDER / "ipsets" / "cdn.yaml",
                     BLACKLIST_MIHOMO_FOLDER / "ipsets" / "cdn.mrs",
@@ -316,16 +346,38 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
                     "domain",
-                    GEOBLOCK_FOLDER / "full.lst",
-                    GEOBLOCK_MIHOMO_FOLDER / "full.yaml",
-                    GEOBLOCK_MIHOMO_FOLDER / "full.mrs",
+                    GEOBLOCK_FOLDER / "domains" / "full.lst",
+                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full.yaml",
+                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full.mrs",
                 ),
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
-                    "domain_suffix",
-                    GEOBLOCK_FOLDER / "full-sld.lst",
-                    GEOBLOCK_MIHOMO_FOLDER / "full-sld.yaml",
-                    GEOBLOCK_MIHOMO_FOLDER / "full-sld.mrs",
+                    "ip_cidr",
+                    GEOBLOCK_FOLDER / "ipsets" / "full.lst",
+                    GEOBLOCK_MIHOMO_FOLDER / "ipsets" / "full.yaml",
+                    GEOBLOCK_MIHOMO_FOLDER / "ipsets" / "full.mrs",
+                ),
+                # Whitelist rulesets (Mihomo)
+                asyncio.to_thread(
+                    generate_mihomo_ruleset,
+                    "domain",
+                    WHITELIST_LIST_FOLDER / "domains.lst",
+                    WHITELIST_MIHOMO_FOLDER / "domains.yaml",
+                    WHITELIST_MIHOMO_FOLDER / "domains.mrs",
+                ),
+                asyncio.to_thread(
+                    generate_mihomo_ruleset,
+                    "ip_cidr",
+                    WHITELIST_LIST_FOLDER / "ipset.lst",
+                    WHITELIST_MIHOMO_FOLDER / "ipset.yaml",
+                    WHITELIST_MIHOMO_FOLDER / "ipset.mrs",
+                ),
+                asyncio.to_thread(
+                    generate_mihomo_ruleset,
+                    "ip_cidr",
+                    WHITELIST_LIST_FOLDER / "cidr.lst",
+                    WHITELIST_MIHOMO_FOLDER / "cidr.yaml",
+                    WHITELIST_MIHOMO_FOLDER / "cidr.mrs",
                 ),
             )
             status.update("[cyan]Updating README file size tables...")

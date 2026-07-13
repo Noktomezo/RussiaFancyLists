@@ -117,7 +117,7 @@ def generate_mihomo_ruleset(
     # Map rule_key to Mihomo behavior
     if rule_key in ("domain", "domain_suffix"):
         behavior = "domain"
-    elif rule_key == "source_ip_cidr":
+    elif rule_key == "ip_cidr":
         behavior = "ipcidr"
     else:
         raise ValueError(f"Unsupported rule key for mihomo: {rule_key}")
@@ -131,6 +131,8 @@ def generate_mihomo_ruleset(
             if behavior == "domain":
                 # Remove leading dots if any
                 line = re.sub(r"^\.", "", line)
+            elif "/" not in line:
+                line += "/128" if ":" in line else "/32"
             items.append(line)
 
     # 1. Output YAML ruleset

@@ -68,6 +68,62 @@ def run_mapcidr(ips: list[str]) -> list[str]:
         raise RuntimeError(f"mapcidr execution failed: {stderr_msg}") from e
 
 
+def resolve_domains_to_ipset(input_file: Path, output_file: Path):
+    """Resolve domain A records with dnsx and aggregate them with mapcidr."""
+    from russiafancylists.ruleset import find_binary
+
+    cmd = [
+        find_binary("dnsx"),
+        "-silent",
+        "-duc",
+        "-nc",
+        "-rl",
+        "200",
+        "-a",
+        "-resp",
+        "-r",
+        "doh:https://1.1.1.1/dns-query",
+        "-l",
+        str(input_file),
+        "-stream",
+    ]
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=120,
+        )
+    except subprocess.TimeoutExpired as e:
+        raise RuntimeError("dnsx resolution timed out after 120 seconds") from e
+    except subprocess.CalledProcessError as e:
+        stderr = e.stderr.strip() if e.stderr else "No stderr captured"
+        raise RuntimeError(f"dnsx resolution failed: {stderr}") from e
+
+    ips = set()
+    for line in result.stdout.splitlines():
+        _, marker, response = line.partition("[A]")
+        if not marker:
+            continue
+        for value in re.findall(
+            r"(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])", response
+        ):
+            try:
+                ip = ipaddress.ip_address(value)
+            except ValueError:
+                continue
+            if ip.version == 4 and ip.is_global:
+                ips.add(str(ip))
+
+    collapsed = run_mapcidr(sorted(ips))
+    if not collapsed:
+        raise RuntimeError(f"dnsx did not resolve any IPv4 addresses from {input_file}")
+
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_file.write_text("\n".join(collapsed) + "\n", encoding="utf-8")
+
+
 def clean_and_validate_domain(d: str) -> list[str]:
     """Clean and validate domain entries."""
     # 1. Decode percent-encoded sequences
