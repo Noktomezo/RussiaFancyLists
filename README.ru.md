@@ -20,11 +20,11 @@
 <table width="100%">
   <thead>
     <tr>
-      <th width="14%" align="center"><b>Категория</b></th>
-      <th width="13%" align="center"><b>Вариант</b></th>
-      <th width="13%" align="center"><b>Тип</b></th>
-      <th width="38%" align="center"><b>Файлы</b></th>
-      <th width="22%" align="center"><b>Размер</b></th>
+      <th width="120" align="center"><b>Категория</b></th>
+      <th width="110" align="center"><b>Вариант</b></th>
+      <th width="100" align="center"><b>Тип</b></th>
+      <th width="450" align="center"><b>Файлы</b></th>
+      <th width="220" align="center"><b>Размер</b></th>
     </tr>
   </thead>
   <tbody>

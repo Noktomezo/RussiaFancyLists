@@ -20,11 +20,11 @@ Generated artifacts are organized as follows:
 <table width="100%">
   <thead>
     <tr>
-      <th width="14%" align="center"><b>Category</b></th>
-      <th width="13%" align="center"><b>Variant</b></th>
-      <th width="13%" align="center"><b>Type</b></th>
-      <th width="38%" align="center"><b>Files</b></th>
-      <th width="22%" align="center"><b>Size</b></th>
+      <th width="120" align="center"><b>Category</b></th>
+      <th width="110" align="center"><b>Variant</b></th>
+      <th width="100" align="center"><b>Type</b></th>
+      <th width="450" align="center"><b>Files</b></th>
+      <th width="220" align="center"><b>Size</b></th>
     </tr>
   </thead>
   <tbody>
