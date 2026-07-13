@@ -20,15 +20,19 @@
 <table>
   <thead>
     <tr>
-      <th width="12%" align="center"><b>Компонент</b></th>
-      <th width="41.5%" align="center"><b>Формат / Вариант</b></th>
-      <th width="15%" align="center"><b>Размер</b></th>
-      <th width="31.5%" align="center"><b>Описание</b></th>
+      <th width="10%" align="center"><b>Категория</b></th>
+      <th width="9%" align="center"><b>Вариант</b></th>
+      <th width="10%" align="center"><b>Тип</b></th>
+      <th width="31%" align="center"><b>Файлы</b></th>
+      <th width="14%" align="center"><b>Размер</b></th>
+      <th width="26%" align="center"><b>Описание</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b>Домены (Blacklist)</b></td>
+      <td rowspan="6"><b>Чёрный список</b></td>
+      <td rowspan="2"><b>Текст</b></td>
+      <td><b>Домены</b></td>
       <td>
         • <a href="./lists/blacklist/domains/full.lst"><code>full.lst</code></a><br>
         • <a href="./lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
@@ -37,24 +41,24 @@
         • <!-- SIZE:lists/blacklist/domains/full.lst -->28.36 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->20.39 MB<!-- SIZE_END -->
       </td>
-      <td>Курируемые списки доменов в исходном формате и оптимизированные домены второго уровня (SLD).</td>
+      <td rowspan="2">Обычные списки заблокированных доменов и IP-CIDR.</td>
     </tr>
     <tr>
-      <td><b>IP-адреса (Blacklist)</b></td>
+      <td><b>IP-сети</b></td>
       <td>
-        • <a href="./lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a><br>
         • <a href="./lists/blacklist/ipsets/full.lst"><code>full.lst</code></a><br>
-        • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a>
+        • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a><br>
+        • <a href="./lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->982.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->613.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->613.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.6 KB<!-- SIZE_END -->
       </td>
-      <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
     </tr>
     <tr>
-      <td><b>Правила Sing-Box (Blacklist-Домены)</b></td>
+      <td rowspan="2"><b>sing-box</b></td>
+      <td><b>Домены</b></td>
       <td>
         • <a href="./lists/blacklist-sing-box/domains/full.json"><code>full.json</code></a><br>
         • <a href="./lists/blacklist-sing-box/domains/full.srs"><code>full.srs</code></a><br>
@@ -67,26 +71,10 @@
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->32.75 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->6.63 MB<!-- SIZE_END -->
       </td>
-      <td>Оптимизированные правила маршрутизации заблокированных доменов для <code>sing-box</code> (JSON и скомпилированные бинарные SRS-файлы).</td>
+      <td rowspan="2">Исходные JSON и скомпилированные правила SRS.</td>
     </tr>
     <tr>
-      <td><b>Правила Mihomo (Blacklist-Домены)</b></td>
-      <td>
-        • <a href="./lists/blacklist-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
-        • <a href="./lists/blacklist-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
-      </td>
-      <td>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->36.99 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->8.20 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->27.13 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.11 MB<!-- SIZE_END -->
-      </td>
-      <td>Оптимизированные правила маршрутизации заблокированных доменов для <code>mihomo</code> (YAML и скомпилированные бинарные MRS-файлы).</td>
-    </tr>
-    <tr>
-      <td><b>Правила Sing-Box (Blacklist-IP)</b></td>
+      <td><b>IP-сети</b></td>
       <td>
         • <a href="./lists/blacklist-sing-box/ipsets/full.json"><code>full.json</code></a><br>
         • <a href="./lists/blacklist-sing-box/ipsets/full.srs"><code>full.srs</code></a><br>
@@ -103,10 +91,26 @@
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->299.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.4 KB<!-- SIZE_END -->
       </td>
-      <td>Оптимизированные IP-CIDR правила маршрутизации для <code>sing-box</code> (JSON и SRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
     </tr>
     <tr>
-      <td><b>Правила Mihomo (Blacklist-IP)</b></td>
+      <td rowspan="2"><b>Mihomo</b></td>
+      <td><b>Домены</b></td>
+      <td>
+        • <a href="./lists/blacklist-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="./lists/blacklist-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
+        • <a href="./lists/blacklist-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
+        • <a href="./lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->36.99 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->8.20 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->27.13 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.11 MB<!-- SIZE_END -->
+      </td>
+      <td rowspan="2">Исходные YAML и скомпилированные правила MRS.</td>
+    </tr>
+    <tr>
+      <td><b>IP-сети</b></td>
       <td>
         • <a href="./lists/blacklist-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
         • <a href="./lists/blacklist-mihomo/ipsets/full.mrs"><code>full.mrs</code></a><br>
@@ -123,108 +127,159 @@
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->245.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.5 KB<!-- SIZE_END -->
       </td>
-      <td>Оптимизированные IP-CIDR правила маршрутизации для <code>mihomo</code> (YAML и MRS), разделенные на заблокированные IP, блокировки с CDN-сетями и отдельные CDN-сети.</td>
     </tr>
     <tr>
-      <td><b>Геоблокировки</b></td>
+      <td rowspan="6"><b>Геоблокировки</b></td>
+      <td rowspan="2"><b>Текст</b></td>
+      <td><b>Домены</b></td>
       <td>
-        • <a href="./lists/geoblock/domains/full.lst"><code>domains/full.lst</code></a><br>
-        • <a href="./lists/geoblock/ipsets/full.lst"><code>ipsets/full.lst</code></a>
+        • <a href="./lists/geoblock/domains/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->26.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->26.6 KB<!-- SIZE_END -->
       </td>
-      <td>Домены зарубежных сервисов, ограничивающих доступ из РФ, и полученные через DNS агрегированные диапазоны их IP-адресов.</td>
+      <td rowspan="2">Домены геоблокировок и полученные через DNS агрегированные диапазоны IP.</td>
     </tr>
     <tr>
-      <td><b>Правила Sing-Box (Geoblock)</b></td>
+      <td><b>IP-сети</b></td>
       <td>
-        • <a href="./lists/geoblock-sing-box/domains/full.json"><code>domains/full.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/domains/full.srs"><code>domains/full.srs</code></a><br>
-        • <a href="./lists/geoblock-sing-box/ipsets/full.json"><code>ipsets/full.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>ipsets/full.srs</code></a>
+        • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->41.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->21.3 KB<!-- SIZE_END -->
       </td>
-      <td>Правила геоблокировок по доменам и IP-CIDR для <code>sing-box</code> в форматах JSON и скомпилированном бинарном SRS.</td>
     </tr>
     <tr>
-      <td><b>Правила Mihomo (Geoblock)</b></td>
+      <td rowspan="2"><b>sing-box</b></td>
+      <td><b>Домены</b></td>
       <td>
-        • <a href="./lists/geoblock-mihomo/domains/full.yaml"><code>domains/full.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/domains/full.mrs"><code>domains/full.mrs</code></a><br>
-        • <a href="./lists/geoblock-mihomo/ipsets/full.yaml"><code>ipsets/full.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>ipsets/full.mrs</code></a>
+        • <a href="./lists/geoblock-sing-box/domains/full.json"><code>full.json</code></a><br>
+        • <a href="./lists/geoblock-sing-box/domains/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->40.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.5 KB<!-- SIZE_END -->
       </td>
-      <td>Правила геоблокировок по доменам и IP-CIDR для <code>mihomo</code> в форматах YAML и скомпилированном бинарном MRS.</td>
+      <td rowspan="2">Исходные JSON и скомпилированные правила SRS.</td>
     </tr>
     <tr>
-      <td><b>Белый список (Whitelist)</b></td>
+      <td><b>IP-сети</b></td>
       <td>
-        • <a href="./lists/whitelist/domains.lst"><code>domains.lst</code></a><br>
+        • <a href="./lists/geoblock-sing-box/ipsets/full.json"><code>full.json</code></a><br>
+        • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->34.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.5 KB<!-- SIZE_END -->
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2"><b>Mihomo</b></td>
+      <td><b>Домены</b></td>
+      <td>
+        • <a href="./lists/geoblock-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="./lists/geoblock-mihomo/domains/full.mrs"><code>full.mrs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END -->
+      </td>
+      <td rowspan="2">Исходные YAML и скомпилированные правила MRS.</td>
+    </tr>
+    <tr>
+      <td><b>IP-сети</b></td>
+      <td>
+        • <a href="./lists/geoblock-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->28.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.1 KB<!-- SIZE_END -->
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="6"><b>Белый список</b></td>
+      <td rowspan="2"><b>Текст</b></td>
+      <td><b>Домены</b></td>
+      <td>
+        • <a href="./lists/whitelist/domains.lst"><code>domains.lst</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/whitelist/domains.lst -->15.3 KB<!-- SIZE_END -->
+      </td>
+      <td rowspan="2">Общественные домены и IP-сети, доступные при ограничениях по белым спискам.</td>
+    </tr>
+    <tr>
+      <td><b>IP-сети</b></td>
+      <td>
         • <a href="./lists/whitelist/ipset.lst"><code>ipset.lst</code></a><br>
         • <a href="./lists/whitelist/cidr.lst"><code>cidr.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist/domains.lst -->15.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist/ipset.lst -->1.68 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist/cidr.lst -->459.4 KB<!-- SIZE_END -->
       </td>
-      <td>Общественные списки разрешенных доменов (SNI), IP и CIDR-подсетей, доступных во время белых списков мобильных операторов РФ. Используются для SNI-спуфинга и белых хостингов.</td>
     </tr>
     <tr>
-      <td><b>Правила Sing-Box (Whitelist)</b></td>
+      <td rowspan="2"><b>sing-box</b></td>
+      <td><b>Домены</b></td>
       <td>
         • <a href="./lists/whitelist-sing-box/domains.json"><code>domains.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a><br>
+        • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END -->
+      </td>
+      <td rowspan="2">Исходные JSON и скомпилированные правила SRS.</td>
+    </tr>
+    <tr>
+      <td><b>IP-сети</b></td>
+      <td>
         • <a href="./lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a><br>
         • <a href="./lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
         • <a href="./lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a><br>
         • <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END -->
       </td>
-      <td>Whitelist-правила доменов, IP-адресов и CIDR-подсетей для <code>sing-box</code> в форматах JSON и скомпилированном бинарном SRS.</td>
     </tr>
     <tr>
-      <td><b>Правила Mihomo (Whitelist)</b></td>
+      <td rowspan="2"><b>Mihomo</b></td>
+      <td><b>Домены</b></td>
       <td>
         • <a href="./lists/whitelist-mihomo/domains.yaml"><code>domains.yaml</code></a><br>
-        • <a href="./lists/whitelist-mihomo/domains.mrs"><code>domains.mrs</code></a><br>
+        • <a href="./lists/whitelist-mihomo/domains.mrs"><code>domains.mrs</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->21.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/domains.mrs -->3.8 KB<!-- SIZE_END -->
+      </td>
+      <td rowspan="2">Исходные YAML и скомпилированные правила MRS.</td>
+    </tr>
+    <tr>
+      <td><b>IP-сети</b></td>
+      <td>
         • <a href="./lists/whitelist-mihomo/ipset.yaml"><code>ipset.yaml</code></a><br>
         • <a href="./lists/whitelist-mihomo/ipset.mrs"><code>ipset.mrs</code></a><br>
         • <a href="./lists/whitelist-mihomo/cidr.yaml"><code>cidr.yaml</code></a><br>
         • <a href="./lists/whitelist-mihomo/cidr.mrs"><code>cidr.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->21.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-mihomo/domains.mrs -->3.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/ipset.yaml -->3.03 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/ipset.mrs -->155.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/cidr.yaml -->666.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/cidr.mrs -->86.2 KB<!-- SIZE_END -->
       </td>
-      <td>Whitelist-правила доменов, IP-адресов и CIDR-подсетей для <code>mihomo</code> в форматах YAML и скомпилированном бинарном MRS.</td>
     </tr>
     <tr>
-      <td><b>Хосты (SNI-прокси)</b></td>
+      <td rowspan="1"><b>Hosts</b></td>
+      <td rowspan="1"><b>Hosts</b></td>
+      <td><b>Сопоставления</b></td>
       <td>
 <!-- HOSTS_LINKS_START -->
         • <a href="./lists/hosts/geohide-no-crutch.hosts"><code>geohide-no-crutch.hosts</code></a><br>
@@ -240,18 +295,18 @@
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 32.2 KB<br>
-        • 39.1 KB<br>
+        • 32.0 KB<br>
+        • 39.2 KB<br>
         • 4.1 KB<br>
-        • 11.2 KB<br>
-        • 31.9 KB<br>
+        • 11.4 KB<br>
+        • 31.7 KB<br>
         • 38.8 KB<br>
-        • 159.4 KB<br>
-        • 7.0 KB<br>
-        • 166.3 KB
+        • 158.6 KB<br>
+        • 7.2 KB<br>
+        • 165.7 KB
 <!-- HOSTS_SIZES_END -->
       </td>
-      <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>
+      <td rowspan="1">Сопоставления SNI-прокси и прямых IP-адресов. Варианты описаны ниже.</td>
     </tr>
   </tbody>
 </table>
