@@ -48,8 +48,8 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->169.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->929.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->580.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->926.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->577.9 KB<!-- SIZE_END -->
       </td>
       <td>Диапазоны IP-адресов: CDN-сети, заблокированные IP и объединенный список блокировок с CDN-сетями.</td>
     </tr>
@@ -96,10 +96,10 @@
         • <a href="./lists/blacklist-sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.51 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->971.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->128.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.50 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->967.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->289.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->39.4 KB<!-- SIZE_END -->
       </td>
@@ -116,10 +116,10 @@
         • <a href="./lists/blacklist-mihomo/ipsets/cdn.mrs"><code>cdn.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.24 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->202.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->793.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->161.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.23 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->201.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->790.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->52.5 KB<!-- SIZE_END -->
       </td>
@@ -132,7 +132,7 @@
         • <a href="./lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/full.lst -->25.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/full.lst -->25.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
       <td>Домены зарубежных сервисов, ограничивающих доступ для пользователей с российскими IP-адресами (геоблокировки/санкции).</td>
@@ -147,7 +147,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-sing-box/full.json -->39.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
@@ -163,7 +163,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->33.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->9.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
       </td>
@@ -203,12 +203,12 @@
         • 31.7 KB<br>
         • 38.7 KB<br>
         • 4.1 KB<br>
-        • 11.2 KB<br>
+        • 11.1 KB<br>
         • 31.3 KB<br>
         • 38.3 KB<br>
-        • 156.9 KB<br>
-        • 7.2 KB<br>
-        • 163.9 KB
+        • 157.1 KB<br>
+        • 7.1 KB<br>
+        • 164.1 KB
 <!-- HOSTS_SIZES_END -->
       </td>
       <td>Сопоставления в формате hosts для маршрутизации заблокированных доменов через бесплатные публичные SNI-прокси (только для доменов геоблока) и кастомные прямые IP-адреса (костыли) для обхода локальных блокировок. Все файлы включают стандартный локальный loopback-заголовок.</td>
