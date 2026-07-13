@@ -21,11 +21,10 @@ Generated artifacts are organized as follows:
   <thead>
     <tr>
       <th width="10%" align="center"><b>Category</b></th>
-      <th width="9%" align="center"><b>Variant</b></th>
-      <th width="10%" align="center"><b>Type</b></th>
+      <th width="22%" align="center"><b>Variant</b></th>
+      <th width="23%" align="center"><b>Type</b></th>
       <th width="31%" align="center"><b>Files</b></th>
       <th width="14%" align="center"><b>Size</b></th>
-      <th width="26%" align="center"><b>Description</b></th>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +40,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/blacklist/domains/full.lst -->28.36 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->20.39 MB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">Plain blocked-domain and IP-CIDR lists.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -71,7 +69,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->32.75 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->6.63 MB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">JSON sources and compiled SRS rule-sets.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -107,7 +104,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->27.13 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.11 MB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">YAML sources and compiled MRS rule-sets.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -138,7 +134,6 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/geoblock/domains/full.lst -->26.6 KB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">Geoblocked domains and their resolved, aggregated IP ranges.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -160,7 +155,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->40.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.5 KB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">JSON sources and compiled SRS rule-sets.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -184,7 +178,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">YAML sources and compiled MRS rule-sets.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -207,7 +200,6 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/whitelist/domains.lst -->15.3 KB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">Community-maintained domains and IP ranges available during mobile whitelist restrictions.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -231,7 +223,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">JSON sources and compiled SRS rule-sets.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -259,7 +250,6 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->21.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/domains.mrs -->3.8 KB<!-- SIZE_END -->
       </td>
-      <td rowspan="2">YAML sources and compiled MRS rule-sets.</td>
     </tr>
     <tr>
       <td><b>IP sets</b></td>
@@ -306,7 +296,6 @@ Generated artifacts are organized as follows:
         • 165.7 KB
 <!-- HOSTS_SIZES_END -->
       </td>
-      <td rowspan="1">SNI-proxy and direct-IP host mappings. See the options below.</td>
     </tr>
   </tbody>
 </table>
