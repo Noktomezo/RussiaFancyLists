@@ -169,8 +169,8 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->42.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->42.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -320,7 +320,7 @@
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
 - **Malw**: 💚💚
-- **GeoHide**: 💚💚💚
+- **GeoHide**: ❤️💚💚
 - **Mafioznik**: ❤️
 
 > [!NOTE]
