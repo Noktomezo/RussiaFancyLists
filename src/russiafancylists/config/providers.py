@@ -1,5 +1,4 @@
 from russiafancylists.config.paths import (
-    BLACKLIST_LIST_FOLDER,
     TEMP_FOLDER,
     WHITELIST_LIST_FOLDER,
 )
@@ -68,11 +67,16 @@ DOWNLOADS = {
         TEMP_FOLDER / "zapret-manager.sh",
         "Zapret-Manager shell script",
     ),
-    # CDN IP Ranges (direct to blacklist folder)
+    # CDN IP Ranges (merged in Stage 2)
     "cdn_ip_ranges": (
         "https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt",
-        BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst",
-        "CDN IP Ranges",
+        TEMP_FOLDER / "cdn" / "cdn-base.lst",
+        "CDN IP Ranges Base",
+    ),
+    "cdn_ip_ranges_extra": (
+        "https://raw.githubusercontent.com/mansourjabin/cdn-ip-database/refs/heads/main/data/cdn.lst",
+        TEMP_FOLDER / "cdn" / "cdn-extra.lst",
+        "CDN IP Ranges Extra",
     ),
     # Whitelist Sources (direct to whitelist folder)
     "whitelist_cidr": (

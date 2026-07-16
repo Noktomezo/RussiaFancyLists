@@ -79,6 +79,7 @@ def setup_dirs(skip_download: bool = False):
         TEMP_FOLDER / "domains",
         TEMP_FOLDER / "ipsets",
         TEMP_FOLDER / "hosts",
+        TEMP_FOLDER / "cdn",
         BLACKLIST_LIST_FOLDER / "domains",
         BLACKLIST_LIST_FOLDER / "ipsets",
         BLACKLIST_SING_BOX_FOLDER / "domains",
@@ -170,6 +171,11 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     TEMP_FOLDER / "hosts",
                     GEOBLOCK_FOLDER / "domains" / "full.lst",
                     file_pattern="*.lst",
+                ),
+                asyncio.to_thread(
+                    merge_lists,
+                    TEMP_FOLDER / "cdn",
+                    BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst",
                 ),
             )
             status.update(
