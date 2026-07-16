@@ -37,8 +37,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/domains/full.lst -->28.51 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->20.47 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/domains/full.lst -->27.06 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->19.34 MB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -49,9 +49,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->985.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->610.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->184.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->929.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->575.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->173.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -64,9 +64,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->44.78 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->43.33 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->8.74 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->32.88 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->31.75 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->6.66 MB<!-- SIZE_END -->
       </td>
     </tr>
@@ -81,11 +81,11 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.56 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.51 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->996.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->960.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->303.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->292.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->40.8 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -99,9 +99,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->37.18 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->35.74 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->8.24 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->27.24 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->26.11 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.12 MB<!-- SIZE_END -->
       </td>
     </tr>
@@ -116,11 +116,11 @@ Generated artifacts are organized as follows:
         • <a href="./lists/blacklist-mihomo/ipsets/cdn.mrs"><code>cdn.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.29 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.24 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->202.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->820.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->785.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->248.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->238.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.3 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -133,8 +133,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->26.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->7.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->21.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -156,9 +156,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->40.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->12.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->39.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -169,8 +169,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->41.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -183,9 +183,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->10.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->33.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -196,8 +196,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -230,7 +230,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/domains.json -->25.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/domains.srs -->3.7 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -243,9 +243,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.16 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/ipset.srs -->212.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->813.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-sing-box/cidr.json -->784.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-sing-box/cidr.srs -->73.0 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -257,7 +257,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/whitelist-mihomo/domains.mrs"><code>domains.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->21.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->20.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/domains.mrs -->3.8 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -270,9 +270,9 @@ Generated artifacts are organized as follows:
         • <a href="./lists/whitelist-mihomo/cidr.mrs"><code>cidr.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/whitelist-mihomo/ipset.yaml -->3.03 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/ipset.yaml -->2.89 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/ipset.mrs -->155.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/whitelist-mihomo/cidr.yaml -->666.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/whitelist-mihomo/cidr.yaml -->636.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/whitelist-mihomo/cidr.mrs -->86.2 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -295,15 +295,15 @@ Generated artifacts are organized as follows:
       </td>
       <td>
 <!-- HOSTS_SIZES_START -->
-        • 32.0 KB<br>
-        • 39.3 KB<br>
-        • 4.1 KB<br>
-        • 11.5 KB<br>
         • 31.7 KB<br>
-        • 38.9 KB<br>
-        • 158.6 KB<br>
-        • 7.3 KB<br>
-        • 165.8 KB
+        • 38.8 KB<br>
+        • 4.1 KB<br>
+        • 11.2 KB<br>
+        • 31.3 KB<br>
+        • 38.4 KB<br>
+        • 157.1 KB<br>
+        • 7.2 KB<br>
+        • 164.2 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>
