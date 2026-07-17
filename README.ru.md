@@ -49,9 +49,9 @@
         • <a href="./lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->929.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->575.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->173.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->928.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->574.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->172.3 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -82,11 +82,11 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.51 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->960.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->292.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->40.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->959.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->290.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->40.7 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -116,12 +116,12 @@
         • <a href="./lists/blacklist-mihomo/ipsets/cdn.mrs"><code>cdn.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.24 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.23 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->202.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->785.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->238.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->784.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->237.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -133,7 +133,7 @@
         • <a href="./lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -143,7 +143,7 @@
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->25.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -157,7 +157,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->39.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.srs -->3.6 KB<!-- SIZE_END -->
       </td>
@@ -169,8 +169,8 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->41.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->41.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.2 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -184,7 +184,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->33.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->9.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->3.3 KB<!-- SIZE_END -->
       </td>
@@ -196,8 +196,8 @@
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->34.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -298,12 +298,12 @@
         • 31.7 KB<br>
         • 38.8 KB<br>
         • 4.1 KB<br>
-        • 11.3 KB<br>
+        • 11.2 KB<br>
         • 31.3 KB<br>
         • 38.4 KB<br>
-        • 156.9 KB<br>
-        • 7.3 KB<br>
-        • 164.0 KB
+        • 157.1 KB<br>
+        • 7.2 KB<br>
+        • 164.2 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>
