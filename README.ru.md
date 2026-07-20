@@ -85,7 +85,7 @@
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->961.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->290.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->290.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->40.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -119,7 +119,7 @@
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.24 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->202.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->785.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->236.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.0 KB<!-- SIZE_END -->
       </td>
@@ -143,7 +143,7 @@
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.9 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->40.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->41.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -196,7 +196,7 @@
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.5 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -296,14 +296,14 @@
       <td>
 <!-- HOSTS_SIZES_START -->
         • 31.7 KB<br>
-        • 38.9 KB<br>
+        • 38.8 KB<br>
         • 4.1 KB<br>
         • 11.3 KB<br>
         • 31.3 KB<br>
         • 38.4 KB<br>
-        • 125.5 KB<br>
+        • 156.9 KB<br>
         • 7.3 KB<br>
-        • 132.7 KB
+        • 164.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>
@@ -320,7 +320,7 @@
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
 - **Malw**: 💚💚
-- **GeoHide**: 💚💚
+- **GeoHide**: 💚💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]
