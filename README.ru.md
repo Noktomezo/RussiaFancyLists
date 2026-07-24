@@ -143,7 +143,7 @@
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->23.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->23.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
