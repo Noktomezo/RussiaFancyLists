@@ -143,7 +143,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->20.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->23.3 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->33.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->38.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.9 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -183,8 +183,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->30.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->8.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->30.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->8.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->9.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->3.2 KB<!-- SIZE_END -->
       </td>
@@ -196,8 +196,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->27.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->31.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -296,14 +296,14 @@ Generated artifacts are organized as follows:
       <td>
 <!-- HOSTS_SIZES_START -->
         • 30.0 KB<br>
-        • 39.0 KB<br>
+        • 38.9 KB<br>
         • 2.1 KB<br>
-        • 11.8 KB<br>
+        • 11.7 KB<br>
         • 30.0 KB<br>
         • 38.9 KB<br>
-        • 147.2 KB<br>
-        • 9.1 KB<br>
-        • 156.2 KB
+        • 176.6 KB<br>
+        • 9.0 KB<br>
+        • 185.5 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>
@@ -320,7 +320,7 @@ Generated artifacts are organized as follows:
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
 - **Malw**: 💚💚💚
-- **GeoHide**: 💚💚
+- **GeoHide**: 💚💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]
