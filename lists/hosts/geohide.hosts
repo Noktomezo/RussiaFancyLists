@@ -45,6 +45,8 @@ ff02::2 ip6-allrouters
 130.255.77.28 ntc.party
 52.223.13.41 tracker.openbittorrent.com
 95.182.120.241 o.pki.goog
+172.67.139.108 r6s.com
+54.155.2.87 rainbow6.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 172.64.33.155 d.rutor.is
 173.245.58.219 d.rutor.info rutor.info
@@ -57,6 +59,7 @@ ff02::2 ip6-allrouters
 149.154.167.220 tg.dev
 95.182.120.241 usher.ttvnw.net
 95.182.120.241 gql.twitch.tv
+52.222.149.31 ubisoft.com
 95.182.120.241 marketplace.windsurf.com windsurf.com
 95.182.120.241 aitestkitchen.withgoogle.com stitch.withgoogle.com
 95.182.120.241 xboxdesignlab.xbox.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
@@ -441,44 +444,46 @@ ff02::2 ip6-allrouters
 37.230.192.51 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com tutanota.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
 45.155.204.190 typing.com
 31.25.239.132 uaudio.com
-37.230.192.51 uizard.io
-45.155.204.190 unscreen.com
-31.25.239.132 upwork.com
-37.230.192.51 vagrantcloud.com
-45.155.204.190 veeam.com
-31.25.239.132 verificationacademy.com
-37.230.192.51 vmware.com
-45.155.204.190 volkswagen-classic-parts.com
-31.25.239.132 v.vrv.co
-37.230.192.51 vyos.io
-45.155.204.190 w-x.co
-31.25.239.132 walmart.com
-37.230.192.51 watchguard.com
-45.155.204.190 watermarkremover.io
-31.25.239.132 wbagora.com
-37.230.192.51 wbgames.com
-45.155.204.190 wdfiles.com
-31.25.239.132 upsx.weather.com weather.com
-37.230.192.51 cdn.web-platform.io
-45.155.204.190 webnames.ca
-31.25.239.132 weebly.com
-37.230.192.51 wetransfer.com
-45.155.204.190 widgetapp.stream
-31.25.239.132 wikidot.com
-37.230.192.51 wise.com
-45.155.204.190 opal.withgoogle.com
-31.25.239.132 miracleptr.wordpress.com
-37.230.192.51 api.workos.com
-45.155.204.190 wpengine.com
-31.25.239.132 wund.com wunderground.com
-37.230.192.51 wxug.com
-45.155.204.190 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x-minus.pro x.ai
-31.25.239.132 support.xerox.com www.xerox.com xerox.com
-37.230.192.51 xiaomi.eu
-45.155.204.190 xrite.com
-31.25.239.132 xtracloud.net
-37.230.192.51 yeggi.com
-45.155.204.190 youtrack.cloud
-31.25.239.132 zapier.com
-37.230.192.51 zedge.net
-45.155.204.190 zerossl.com
+37.230.192.51 public-ubiservices.ubi.com public-ws-ubiservices.ubi.com static3.cdn.ubi.com ubi.com ubiservices.cdn.ubi.com
+45.155.204.190 connect.ubisoft.com uplay.ubisoft.com
+31.25.239.132 uizard.io
+37.230.192.51 unscreen.com
+45.155.204.190 upwork.com
+31.25.239.132 vagrantcloud.com
+37.230.192.51 veeam.com
+45.155.204.190 verificationacademy.com
+31.25.239.132 vmware.com
+37.230.192.51 volkswagen-classic-parts.com
+45.155.204.190 v.vrv.co
+31.25.239.132 vyos.io
+37.230.192.51 w-x.co
+45.155.204.190 walmart.com
+31.25.239.132 watchguard.com
+37.230.192.51 watermarkremover.io
+45.155.204.190 wbagora.com
+31.25.239.132 wbgames.com
+37.230.192.51 wdfiles.com
+45.155.204.190 upsx.weather.com weather.com
+31.25.239.132 cdn.web-platform.io
+37.230.192.51 webnames.ca
+45.155.204.190 weebly.com
+31.25.239.132 wetransfer.com
+37.230.192.51 widgetapp.stream
+45.155.204.190 wikidot.com
+31.25.239.132 wise.com
+37.230.192.51 opal.withgoogle.com
+45.155.204.190 miracleptr.wordpress.com
+31.25.239.132 api.workos.com
+37.230.192.51 wpengine.com
+45.155.204.190 wund.com wunderground.com
+31.25.239.132 wxug.com
+37.230.192.51 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x-minus.pro x.ai
+45.155.204.190 support.xerox.com www.xerox.com xerox.com
+31.25.239.132 xiaomi.eu
+37.230.192.51 xrite.com
+45.155.204.190 xtracloud.net
+31.25.239.132 yeggi.com
+37.230.192.51 youtrack.cloud
+45.155.204.190 zapier.com
+31.25.239.132 zedge.net
+37.230.192.51 zerossl.com
