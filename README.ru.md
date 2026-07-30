@@ -133,7 +133,7 @@
         • <a href="./lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->23.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->23.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->6.4 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -156,7 +156,7 @@
         • <a href="./lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->36.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->36.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->8.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->11.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.srs -->3.5 KB<!-- SIZE_END -->
@@ -169,7 +169,7 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->38.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->38.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.8 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -301,9 +301,9 @@
         • 12.0 KB<br>
         • 29.7 KB<br>
         • 38.9 KB<br>
-        • 146.6 KB<br>
+        • 146.8 KB<br>
         • 9.3 KB<br>
-        • 155.9 KB
+        • 156.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>

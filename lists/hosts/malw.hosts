@@ -63,7 +63,6 @@ ff02::2 ip6-allrouters
 2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
-99.83.188.134 public-ubiservices.ubi.com
 52.222.149.31 ubisoft.com
 95.182.120.241 marketplace.windsurf.com windsurf.com
 95.182.120.241 aitestkitchen.withgoogle.com stitch.withgoogle.com
@@ -449,45 +448,46 @@ ff02::2 ip6-allrouters
 103.27.157.38 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com tutanota.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
 62.133.62.97 typing.com
 103.27.157.38 uaudio.com
-62.133.62.97 connect.ubisoft.com uplay.ubisoft.com
-103.27.157.38 uizard.io
-62.133.62.97 unscreen.com
-103.27.157.38 upwork.com
-62.133.62.97 vagrantcloud.com
-103.27.157.38 veeam.com
-62.133.62.97 verificationacademy.com
-103.27.157.38 vmware.com
-62.133.62.97 volkswagen-classic-parts.com
-103.27.157.38 v.vrv.co
-62.133.62.97 vyos.io
-103.27.157.38 w-x.co
-62.133.62.97 walmart.com
-103.27.157.38 watchguard.com
-62.133.62.97 watermarkremover.io
-103.27.157.38 wbagora.com
-62.133.62.97 wbgames.com
-103.27.157.38 wdfiles.com
-62.133.62.97 upsx.weather.com weather.com
-103.27.157.38 cdn.web-platform.io
-62.133.62.97 webnames.ca
-103.27.157.38 weebly.com
-62.133.62.97 wetransfer.com
-103.27.157.38 widgetapp.stream
-62.133.62.97 wikidot.com
-103.27.157.38 wise.com
-62.133.62.97 opal.withgoogle.com
-103.27.157.38 miracleptr.wordpress.com
-62.133.62.97 api.workos.com
-103.27.157.38 wpengine.com
-62.133.62.97 wund.com wunderground.com
-103.27.157.38 wxug.com
-62.133.62.97 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x-minus.pro x.ai
-103.27.157.38 support.xerox.com www.xerox.com xerox.com
-62.133.62.97 xiaomi.eu
-103.27.157.38 xrite.com
-62.133.62.97 xtracloud.net
-103.27.157.38 yeggi.com
-62.133.62.97 youtrack.cloud
-103.27.157.38 zapier.com
-62.133.62.97 zedge.net
-103.27.157.38 zerossl.com
+62.133.62.97 public-ubiservices.ubi.com
+103.27.157.38 connect.ubisoft.com uplay.ubisoft.com
+62.133.62.97 uizard.io
+103.27.157.38 unscreen.com
+62.133.62.97 upwork.com
+103.27.157.38 vagrantcloud.com
+62.133.62.97 veeam.com
+103.27.157.38 verificationacademy.com
+62.133.62.97 vmware.com
+103.27.157.38 volkswagen-classic-parts.com
+62.133.62.97 v.vrv.co
+103.27.157.38 vyos.io
+62.133.62.97 w-x.co
+103.27.157.38 walmart.com
+62.133.62.97 watchguard.com
+103.27.157.38 watermarkremover.io
+62.133.62.97 wbagora.com
+103.27.157.38 wbgames.com
+62.133.62.97 wdfiles.com
+103.27.157.38 upsx.weather.com weather.com
+62.133.62.97 cdn.web-platform.io
+103.27.157.38 webnames.ca
+62.133.62.97 weebly.com
+103.27.157.38 wetransfer.com
+62.133.62.97 widgetapp.stream
+103.27.157.38 wikidot.com
+62.133.62.97 wise.com
+103.27.157.38 opal.withgoogle.com
+62.133.62.97 miracleptr.wordpress.com
+103.27.157.38 api.workos.com
+62.133.62.97 wpengine.com
+103.27.157.38 wund.com wunderground.com
+62.133.62.97 wxug.com
+103.27.157.38 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x-minus.pro x.ai
+62.133.62.97 support.xerox.com www.xerox.com xerox.com
+103.27.157.38 xiaomi.eu
+62.133.62.97 xrite.com
+103.27.157.38 xtracloud.net
+62.133.62.97 yeggi.com
+103.27.157.38 youtrack.cloud
+62.133.62.97 zapier.com
+103.27.157.38 zedge.net
+62.133.62.97 zerossl.com
