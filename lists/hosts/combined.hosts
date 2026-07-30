@@ -39,6 +39,8 @@ ff02::2 ip6-allrouters
 95.182.120.241 api.manus.im manus.im
 95.182.120.241 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
 95.182.120.241 copilot.microsoft.com
+213.24.64.175 lkfl2.nalog.ru
+213.24.64.181 lknpd.nalog.ru
 95.182.120.241 notebooklm.google
 130.255.77.28 ntc.party
 52.223.13.41 tracker.openbittorrent.com
@@ -61,7 +63,6 @@ ff02::2 ip6-allrouters
 2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
-99.83.188.134 public-ubiservices.ubi.com
 52.222.149.31 ubisoft.com
 95.182.120.241 marketplace.windsurf.com windsurf.com
 95.182.120.241 aitestkitchen.withgoogle.com stitch.withgoogle.com
@@ -1213,11 +1214,6 @@ ff02::2 ip6-allrouters
 37.230.192.51 myqrcode.com
 45.155.204.190 myqrcode.com
 62.133.62.97 myqrcode.com
-103.27.157.38 lkfl2.nalog.ru lknpd.nalog.ru
-31.25.239.132 lkfl2.nalog.ru lknpd.nalog.ru
-37.230.192.51 lkfl2.nalog.ru lknpd.nalog.ru
-45.155.204.190 lkfl2.nalog.ru lknpd.nalog.ru
-62.133.62.97 lkfl2.nalog.ru lknpd.nalog.ru
 103.27.157.38 arabicstatic.naukimg.com autodiscover.naukimg.com bms.naukimg.com css.naukimg.com img.naukimg.com js.naukimg.com np.naukimg.com p.naukimg.com static.naukimg.com suggest.naukimg.com suggestlg.naukimg.com www.naukimg.com
 31.25.239.132 arabicstatic.naukimg.com autodiscover.naukimg.com bms.naukimg.com css.naukimg.com img.naukimg.com js.naukimg.com np.naukimg.com p.naukimg.com static.naukimg.com suggest.naukimg.com suggestlg.naukimg.com www.naukimg.com
 37.230.192.51 arabicstatic.naukimg.com autodiscover.naukimg.com bms.naukimg.com css.naukimg.com img.naukimg.com js.naukimg.com np.naukimg.com p.naukimg.com static.naukimg.com suggest.naukimg.com suggestlg.naukimg.com www.naukimg.com
@@ -1968,6 +1964,11 @@ ff02::2 ip6-allrouters
 37.230.192.51 uaudio.com
 45.155.204.190 uaudio.com
 62.133.62.97 uaudio.com
+103.27.157.38 public-ubiservices.ubi.com
+31.25.239.132 public-ubiservices.ubi.com
+37.230.192.51 public-ubiservices.ubi.com
+45.155.204.190 public-ubiservices.ubi.com
+62.133.62.97 public-ubiservices.ubi.com
 103.27.157.38 connect.ubisoft.com uplay.ubisoft.com
 31.25.239.132 connect.ubisoft.com uplay.ubisoft.com
 37.230.192.51 connect.ubisoft.com uplay.ubisoft.com
