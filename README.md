@@ -51,7 +51,7 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->933.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->578.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->174.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->174.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.24 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->202.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->789.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->789.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->161.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->239.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.5 KB<!-- SIZE_END -->
@@ -143,7 +143,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->23.7 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->37.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->39.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.9 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -196,8 +196,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->30.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->32.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
