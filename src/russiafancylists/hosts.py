@@ -219,6 +219,9 @@ def get_source_info(file_path: Path):
     return top_ips, ip_domains
 
 
+IP_CHECK_SEMAPHORE = asyncio.Semaphore(15)
+
+
 async def check_ip_active(ip: str, timeout: float = 5.0) -> bool:
     """Check TCP connectivity to an IP on ports 443 and 80 in parallel with a timeout."""
     # Loopback addresses are always active
@@ -226,14 +229,19 @@ async def check_ip_active(ip: str, timeout: float = 5.0) -> bool:
         return True
 
     async def try_connect(port: int) -> bool:
-        try:
-            reader, writer = await asyncio.wait_for(
-                asyncio.open_connection(ip, port), timeout=timeout
-            )
-            writer.close()
-            await writer.wait_closed()
-            return True
-        except Exception:
+        async with IP_CHECK_SEMAPHORE:
+            for attempt in range(2):
+                try:
+                    reader, writer = await asyncio.wait_for(
+                        asyncio.open_connection(ip, port), timeout=timeout
+                    )
+                    writer.close()
+                    with contextlib.suppress(Exception):
+                        await writer.wait_closed()
+                    return True
+                except Exception:
+                    if attempt == 0:
+                        await asyncio.sleep(0.3)
             return False
 
     results = await asyncio.gather(
@@ -384,13 +392,15 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
     for ip, slds in ip_to_slds.items():
         # A general proxy IP must map to multiple distinct base domains (SLDs)
         if len(slds) >= 4:
-            # Verify if this IP is actually just a crutch for all its mapped domains.
-            # If for every mapped domain, the IP matches the resolved IP, it's a crutch.
+            # Verify if this IP is actually just a crutch for its mapped domains.
+            # If for mapped domains, the IP matches resolved IP, it's a crutch.
             mapped_domains = []
             for prov in providers:
                 mapped_domains.extend(
                     list(provider_ip_domains.get(prov, {}).get(ip, []))
                 )
+            if zapret_path.exists():
+                mapped_domains.extend(list(zapret_ip_domains.get(ip, [])))
 
             resolved_and_matching = 0
             resolved_count = 0
@@ -400,7 +410,7 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
                     if ip in resolved_ips[dom]:
                         resolved_and_matching += 1
 
-            if resolved_count > 0 and resolved_and_matching == resolved_count:
+            if resolved_count > 0 and resolved_and_matching > 0:
                 continue
 
             proxy_candidates.add(ip)
@@ -441,10 +451,12 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
         if sorted_maf:
             mafioznik_ips = [sorted_maf[0]]
 
-    malw_ips = []
-    for ip in proxy_candidates:
-        if ip in provider_ip_domains.get("malw", {}) and ip not in geohide_ips:
-            malw_ips.append(ip)
+    # Any remaining proxy candidate (e.g. from Zapret-Manager or general sources) is assigned to malw_ips
+    malw_ips = [
+        ip
+        for ip in proxy_candidates
+        if ip not in geohide_ips and ip not in mafioznik_ips
+    ]
 
     if not malw_ips:
         sorted_malw = sorted(
