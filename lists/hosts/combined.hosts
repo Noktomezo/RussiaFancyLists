@@ -14,7 +14,6 @@ ff02::2 ip6-allrouters
 57.144.244.34 z-p42-chat-e2ee-ig.facebook.com
 57.144.244.8 chat-e2ee-mini.facebook.com
 57.144.244.1 fb.com
-31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 140.82.114.3 github.com
@@ -45,9 +44,7 @@ ff02::2 ip6-allrouters
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
-18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
-54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 103.27.157.38 4pda.to 4pda.ws
@@ -590,12 +587,12 @@ ff02::2 ip6-allrouters
 62.133.62.97 chat.openai.com.cdn.cloudflare.net
 95.182.120.241 chat.openai.com.cdn.cloudflare.net
 103.27.157.38 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
-185.246.223.127 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-31.25.239.132 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-37.230.192.51 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-45.155.204.190 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-62.133.62.97 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-95.182.120.241 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
+185.246.223.127 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+31.25.239.132 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+37.230.192.51 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+45.155.204.190 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+62.133.62.97 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+95.182.120.241 codeium.com codeiumdata.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
 103.27.157.38 coingate.com
 185.246.223.127 coingate.com
 31.25.239.132 coingate.com
@@ -841,6 +838,13 @@ ff02::2 ip6-allrouters
 45.155.204.190 fast.com lastfm.freetls.fastly.net
 62.133.62.97 fast.com lastfm.freetls.fastly.net
 95.182.120.241 fast.com lastfm.freetls.fastly.net
+103.27.157.38 scontent-hel3-1.xx.fbcdn.net
+185.246.223.127 scontent-hel3-1.xx.fbcdn.net
+31.25.239.132 scontent-hel3-1.xx.fbcdn.net
+37.230.192.51 scontent-hel3-1.xx.fbcdn.net
+45.155.204.190 scontent-hel3-1.xx.fbcdn.net
+62.133.62.97 scontent-hel3-1.xx.fbcdn.net
+95.182.120.241 scontent-hel3-1.xx.fbcdn.net
 103.27.157.38 filebin.net
 185.246.223.127 filebin.net
 31.25.239.132 filebin.net
@@ -2480,12 +2484,12 @@ ff02::2 ip6-allrouters
 62.133.62.97 accounts.spotify.com aet.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
 95.182.120.241 accounts.spotify.com aet.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com edge-web.dual-gslb.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com heads-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com login.app.spotify.com login5.spotify.com mrkt.spotifycdn.com open-exp.spotifycdn.com open.spotify.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spclient.wg.spotify.com spotify.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com widget-content.spotify.com www.spotify.com xpui.app.spotify.com
 103.27.157.38 game.squadbustersgame.com squadbustersgame.com
-185.246.223.127 squadbustersgame.com
-31.25.239.132 squadbustersgame.com
-37.230.192.51 squadbustersgame.com
-45.155.204.190 squadbustersgame.com
-62.133.62.97 squadbustersgame.com
-95.182.120.241 squadbustersgame.com
+185.246.223.127 game.squadbustersgame.com squadbustersgame.com
+31.25.239.132 game.squadbustersgame.com squadbustersgame.com
+37.230.192.51 game.squadbustersgame.com squadbustersgame.com
+45.155.204.190 game.squadbustersgame.com squadbustersgame.com
+62.133.62.97 game.squadbustersgame.com squadbustersgame.com
+95.182.120.241 game.squadbustersgame.com squadbustersgame.com
 103.27.157.38 api-global.squareup.com api.squareup.com squareup.com
 185.246.223.127 api-global.squareup.com api.squareup.com squareup.com
 31.25.239.132 api-global.squareup.com api.squareup.com squareup.com
@@ -2766,6 +2770,13 @@ ff02::2 ip6-allrouters
 45.155.204.190 uaudio.com
 62.133.62.97 uaudio.com
 95.182.120.241 uaudio.com
+103.27.157.38 connect.ubisoft.com uplay.ubisoft.com
+185.246.223.127 connect.ubisoft.com uplay.ubisoft.com
+31.25.239.132 connect.ubisoft.com uplay.ubisoft.com
+37.230.192.51 connect.ubisoft.com uplay.ubisoft.com
+45.155.204.190 connect.ubisoft.com uplay.ubisoft.com
+62.133.62.97 connect.ubisoft.com uplay.ubisoft.com
+95.182.120.241 connect.ubisoft.com uplay.ubisoft.com
 103.27.157.38 uizard.io
 185.246.223.127 uizard.io
 31.25.239.132 uizard.io

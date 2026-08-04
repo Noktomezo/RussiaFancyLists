@@ -14,7 +14,6 @@ ff02::2 ip6-allrouters
 57.144.244.34 z-p42-chat-e2ee-ig.facebook.com
 57.144.244.8 chat-e2ee-mini.facebook.com
 57.144.244.1 fb.com
-31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 140.82.114.3 github.com
@@ -45,9 +44,7 @@ ff02::2 ip6-allrouters
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
-18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
-54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 95.182.120.241 4pda.to 4pda.ws
@@ -163,6 +160,7 @@ ff02::2 ip6-allrouters
 95.182.120.241 extremetech.com
 95.182.120.241 f1.com
 95.182.120.241 fast.com lastfm.freetls.fastly.net
+95.182.120.241 scontent-hel3-1.xx.fbcdn.net
 95.182.120.241 filebin.net
 95.182.120.241 api.fitbit.com
 95.182.120.241 fivetran.com
@@ -438,6 +436,7 @@ ff02::2 ip6-allrouters
 95.182.120.241 gql.twitch.tv
 95.182.120.241 typing.com
 95.182.120.241 uaudio.com
+95.182.120.241 connect.ubisoft.com uplay.ubisoft.com
 95.182.120.241 uizard.io
 95.182.120.241 unscreen.com
 95.182.120.241 upwork.com
