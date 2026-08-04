@@ -143,7 +143,7 @@
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->36.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -196,7 +196,7 @@
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.2 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -276,43 +276,61 @@
         • <!-- SIZE:lists/whitelist-mihomo/cidr.mrs -->86.2 KB<!-- SIZE_END -->
       </td>
     </tr>
+  </tbody>
+</table>
+
+## 🖥️ Файлы Hosts
+
+Готовые файлы `hosts` для обхода блокировок и маршрутизации через прокси:
+
+<!-- HOSTS_TABLE_START -->
+<table>
+  <thead>
     <tr>
-      <td rowspan="1"><b>Hosts</b></td>
-      <td rowspan="1"><b>Hosts</b></td>
-      <td><b>Сопоставления</b></td>
-      <td>
-<!-- HOSTS_LINKS_START -->
-        • <a href="./lists/hosts/geohide-no-crutch.hosts"><code>geohide-no-crutch.hosts</code></a><br>
-        • <a href="./lists/hosts/geohide.hosts"><code>geohide.hosts</code></a><br>
-        • <a href="./lists/hosts/mafioznik-no-crutch.hosts"><code>mafioznik-no-crutch.hosts</code></a><br>
-        • <a href="./lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a><br>
-        • <a href="./lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a><br>
-        • <a href="./lists/hosts/malw.hosts"><code>malw.hosts</code></a><br>
-        • <a href="./lists/hosts/stressozz-no-crutch.hosts"><code>stressozz-no-crutch.hosts</code></a><br>
-        • <a href="./lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a><br>
-        • <a href="./lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a><br>
-        • <a href="./lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a><br>
-        • <a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a>
-<!-- HOSTS_LINKS_END -->
-      </td>
-      <td>
-<!-- HOSTS_SIZES_START -->
-        • 32.1 KB<br>
-        • 39.5 KB<br>
-        • 4.1 KB<br>
-        • 11.7 KB<br>
-        • 32.1 KB<br>
-        • 39.6 KB<br>
-        • 32.3 KB<br>
-        • 39.8 KB<br>
-        • 223.5 KB<br>
-        • 7.6 KB<br>
-        • 231.0 KB
-<!-- HOSTS_SIZES_END -->
-      </td>
+      <th>Файл</th>
+      <th>Размер</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>
+      <td><!-- SIZE:lists/hosts/combined.hosts -->231.0 KB<!-- SIZE_END --></td>
+      <td><b>Рекомендуется:</b> Единый список (Геоблок + Костыли)</td>
+    </tr>
+    <tr>
+      <td><a href="./lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>
+      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->223.5 KB<!-- SIZE_END --></td>
+      <td>Единый список без прямых IP-костылей (для пользователей VPN)</td>
+    </tr>
+    <tr>
+      <td><a href="./lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>
+      <td><!-- SIZE:lists/hosts/only-crutch.hosts -->7.6 KB<!-- SIZE_END --></td>
+      <td>Только прямые IP-костыли</td>
+    </tr>
+    <tr>
+      <td><a href="./lists/hosts/geohide.hosts"><code>geohide.hosts</code></a> / <a href="./lists/hosts/geohide-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><!-- SIZE:lists/hosts/geohide.hosts -->39.5 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->32.1 KB<!-- SIZE_END --></td>
+      <td>SNI-прокси GeoHide DNS</td>
+    </tr>
+    <tr>
+      <td><a href="./lists/hosts/malw.hosts"><code>malw.hosts</code></a> / <a href="./lists/hosts/malw-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><!-- SIZE:lists/hosts/malw.hosts -->39.6 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->32.1 KB<!-- SIZE_END --></td>
+      <td>SNI-прокси ImMALWARE DNS</td>
+    </tr>
+    <tr>
+      <td><a href="./lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a> / <a href="./lists/hosts/mafioznik-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><!-- SIZE:lists/hosts/mafioznik.hosts -->11.7 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END --></td>
+      <td>SNI-прокси Mafioznik DNS</td>
+    </tr>
+    <tr>
+      <td><a href="./lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a> / <a href="./lists/hosts/stressozz-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><!-- SIZE:lists/hosts/stressozz.hosts -->39.8 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->32.3 KB<!-- SIZE_END --></td>
+      <td>SNI-прокси StressOzz Zapret-Manager</td>
     </tr>
   </tbody>
 </table>
+<!-- HOSTS_TABLE_END -->
 
 > [!TIP]
 > **💡 Варианты hosts-файлов:**<br>

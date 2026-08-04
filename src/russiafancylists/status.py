@@ -109,67 +109,121 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
 
 
 async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
-    """Dynamically update the lists/hosts links and sizes in README files based on actual files in lists/hosts."""
-    # Find all .hosts files in lists/hosts
-    files = sorted([f.name for f in hosts_dir.glob("*.hosts") if f.is_file()])
-    # Put combined-no-crutch.hosts, only-crutch.hosts, and combined.hosts at the end
-    if "combined-no-crutch.hosts" in files:
-        files.remove("combined-no-crutch.hosts")
-        files.append("combined-no-crutch.hosts")
-    if "only-crutch.hosts" in files:
-        files.remove("only-crutch.hosts")
-        files.append("only-crutch.hosts")
-    if "combined.hosts" in files:
-        files.remove("combined.hosts")
-        files.append("combined.hosts")
+    """Dynamically build and update the Hosts Files table in README.md and README.ru.md."""
+    if not hosts_dir.exists():
+        return
 
-    links_lines = []
-    sizes_lines = []
+    provider_defs = [
+        ("geohide", "GeoHide DNS proxy endpoints", "SNI-прокси GeoHide DNS"),
+        ("malw", "ImMALWARE DNS proxy endpoints", "SNI-прокси ImMALWARE DNS"),
+        ("mafioznik", "Mafioznik DNS proxy endpoints", "SNI-прокси Mafioznik DNS"),
+        (
+            "stressozz",
+            "StressOzz Zapret-Manager proxy endpoints",
+            "SNI-прокси StressOzz Zapret-Manager",
+        ),
+    ]
 
-    for f in files:
-        links_lines.append(
-            f'        • <a href="./lists/hosts/{f}"><code>{f}</code></a>'
+    def build_table(lang: str) -> str:
+        is_ru = lang == "ru"
+        headers = (
+            ("Файл", "Размер", "Описание") if is_ru else ("File", "Size", "Description")
         )
 
-        file_path = hosts_dir / f
-        if file_path.exists():
-            size = file_path.stat().st_size
-            if size >= 1024 * 1024:
-                size_str = f"{size / (1024 * 1024):.2f} MB"
-            elif size >= 1024:
-                size_str = f"{size / 1024:.1f} KB"
-            else:
-                size_str = f"{size} B"
-        else:
-            size_str = "unknown"
-        sizes_lines.append(f"        • {size_str}")
+        rows = []
 
-    links_block = "<br>\n".join(links_lines)
-    sizes_block = "<br>\n".join(sizes_lines)
+        # 1. combined.hosts
+        if (hosts_dir / "combined.hosts").exists():
+            desc = (
+                "<b>Рекомендуется:</b> Единый список (Геоблок + Костыли)"
+                if is_ru
+                else "<b>Recommended:</b> Full unified list (Geoblocks + Crutches)"
+            )
+            rows.append(
+                "    <tr>\n"
+                '      <td><a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>\n'
+                "      <td><!-- SIZE:lists/hosts/combined.hosts -->unknown<!-- SIZE_END --></td>\n"
+                f"      <td>{desc}</td>\n"
+                "    </tr>"
+            )
 
-    # Update both READMEs
-    for filename in ("README.md", "README.ru.md"):
+        # 2. combined-no-crutch.hosts
+        if (hosts_dir / "combined-no-crutch.hosts").exists():
+            desc = (
+                "Единый список без прямых IP-костылей (для пользователей VPN)"
+                if is_ru
+                else "Unified list without direct IP crutches (for VPN users)"
+            )
+            rows.append(
+                "    <tr>\n"
+                '      <td><a href="./lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>\n'
+                "      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->unknown<!-- SIZE_END --></td>\n"
+                f"      <td>{desc}</td>\n"
+                "    </tr>"
+            )
+
+        # 3. only-crutch.hosts
+        if (hosts_dir / "only-crutch.hosts").exists():
+            desc = (
+                "Только прямые IP-костыли"
+                if is_ru
+                else "Only direct IP crutch mappings"
+            )
+            rows.append(
+                "    <tr>\n"
+                '      <td><a href="./lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>\n'
+                "      <td><!-- SIZE:lists/hosts/only-crutch.hosts -->unknown<!-- SIZE_END --></td>\n"
+                f"      <td>{desc}</td>\n"
+                "    </tr>"
+            )
+
+        # 4. Providers
+        for key, en_desc, ru_desc in provider_defs:
+            h_std = hosts_dir / f"{key}.hosts"
+            h_nc = hosts_dir / f"{key}-no-crutch.hosts"
+            if h_std.exists():
+                links = (
+                    f'<a href="./lists/hosts/{key}.hosts"><code>{key}.hosts</code></a>'
+                )
+                sizes = f"<!-- SIZE:lists/hosts/{key}.hosts -->unknown<!-- SIZE_END -->"
+                if h_nc.exists():
+                    links += f' / <a href="./lists/hosts/{key}-no-crutch.hosts"><code>no-crutch</code></a>'
+                    sizes += f" / <!-- SIZE:lists/hosts/{key}-no-crutch.hosts -->unknown<!-- SIZE_END -->"
+                desc = ru_desc if is_ru else en_desc
+                rows.append(
+                    "    <tr>\n"
+                    f"      <td>{links}</td>\n"
+                    f"      <td>{sizes}</td>\n"
+                    f"      <td>{desc}</td>\n"
+                    "    </tr>"
+                )
+
+        table_html = (
+            "<table>\n"
+            "  <thead>\n"
+            "    <tr>\n"
+            f"      <th>{headers[0]}</th>\n"
+            f"      <th>{headers[1]}</th>\n"
+            f"      <th>{headers[2]}</th>\n"
+            "    </tr>\n"
+            "  </thead>\n"
+            "  <tbody>\n" + "\n".join(rows) + "\n  </tbody>\n"
+            "</table>"
+        )
+        return table_html
+
+    for filename, lang in (("README.md", "en"), ("README.ru.md", "ru")):
         path = root_dir / filename
         if path.exists():
             content = path.read_text(encoding="utf-8")
-
-            # Update links
-            content = re.sub(
-                r"<!-- HOSTS_LINKS_START -->.*?<!-- HOSTS_LINKS_END -->",
-                f"<!-- HOSTS_LINKS_START -->\n{links_block}\n<!-- HOSTS_LINKS_END -->",
+            table_str = build_table(lang)
+            new_content = re.sub(
+                r"<!-- HOSTS_TABLE_START -->.*?<!-- HOSTS_TABLE_END -->",
+                f"<!-- HOSTS_TABLE_START -->\n{table_str}\n<!-- HOSTS_TABLE_END -->",
                 content,
                 flags=re.DOTALL,
             )
-
-            # Update sizes
-            content = re.sub(
-                r"<!-- HOSTS_SIZES_START -->.*?<!-- HOSTS_SIZES_END -->",
-                f"<!-- HOSTS_SIZES_START -->\n{sizes_block}\n<!-- HOSTS_SIZES_END -->",
-                content,
-                flags=re.DOTALL,
-            )
-
-            path.write_text(content, encoding="utf-8")
+            path.write_text(new_content, encoding="utf-8")
 
 
 async def update_readme_sizes(root_dir: Path):
