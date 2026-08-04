@@ -143,7 +143,7 @@
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->21.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->36.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -196,8 +196,8 @@
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->30.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -288,6 +288,8 @@
         • <a href="./lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a><br>
         • <a href="./lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a><br>
         • <a href="./lists/hosts/malw.hosts"><code>malw.hosts</code></a><br>
+        • <a href="./lists/hosts/stressozz-no-crutch.hosts"><code>stressozz-no-crutch.hosts</code></a><br>
+        • <a href="./lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a><br>
         • <a href="./lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a><br>
         • <a href="./lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a><br>
         • <a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a>
@@ -299,11 +301,13 @@
         • 39.5 KB<br>
         • 4.1 KB<br>
         • 11.7 KB<br>
-        • 32.2 KB<br>
-        • 39.7 KB<br>
-        • 195.8 KB<br>
+        • 32.3 KB<br>
+        • 39.8 KB<br>
+        • 32.1 KB<br>
+        • 39.6 KB<br>
+        • 223.5 KB<br>
         • 7.6 KB<br>
-        • 203.2 KB
+        • 231.0 KB
 <!-- HOSTS_SIZES_END -->
       </td>
     </tr>
@@ -319,12 +323,13 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-- **Malw**: 💚💚💚
+- **Malw**: 💚
 - **GeoHide**: 💚💚💚
 - **Mafioznik**: 💚
+- **StressOzz**: 💚💚💚💚💚
 
 > [!NOTE]
-> Каждое сердечко обозначает доступность конкретного IP-адреса прокси-сервера (💚 - активен, ❤️ - недоступен).
+> Каждое сердечко обозначает доступный IP-адрес прокси-сервера (💚).
 <!-- STATUS_END -->
 
 ## 🔗 Источники

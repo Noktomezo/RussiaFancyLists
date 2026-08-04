@@ -48,59 +48,38 @@ def parse_proxy_ips_from_hosts(file_path: Path) -> list[str]:
 
 
 async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
-    """Measure latencies and update status blocks in README.md and README.ru.md."""
+    """Update status blocks in README.md and README.ru.md with active proxy IPs for each provider."""
     # 1. Retrieve current proxy IPs dynamically from the generated hosts files
     hosts_dir = root_dir / "lists" / "hosts"
     provider_ips = {
         "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
         "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
         "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
+        "StressOzz": parse_proxy_ips_from_hosts(hosts_dir / "stressozz.hosts"),
     }
 
-    # 2. Measure latencies concurrently
-    flat_targets = []
-    for provider, ips in provider_ips.items():
-        for ip in ips:
-            flat_targets.append((provider, ip))
-
-    tasks = [test_ip_latency(ip) for _, ip in flat_targets]
-    latencies = await asyncio.gather(*tasks)
-
-    # 3. Group results by provider
-    provider_results = {p: [] for p in provider_ips}
-    for (provider, _ip), latency in zip(flat_targets, latencies, strict=False):
-        provider_results[provider].append(latency)
-
-    # 4. Format status strings
+    # 2. Format status strings (render 💚 for each found proxy IP, skip if provider has 0 IPs)
     status_en = []
     status_ru = []
-    for provider in ("Malw", "GeoHide", "Mafioznik"):
-        hearts = []
-        for latency in provider_results[provider]:
-            if latency is None:
-                hearts.append("❤️")
-            else:
-                hearts.append("💚")
-        if not hearts:
-            hearts.append("❤️")
-        heart_str = "".join(hearts)
+    for provider in ("Malw", "GeoHide", "Mafioznik", "StressOzz"):
+        ips = provider_ips.get(provider, [])
+        if not ips:
+            continue
+        heart_str = "💚" * len(ips)
         status_en.append(f"- **{provider}**: {heart_str}")
         status_ru.append(f"- **{provider}**: {heart_str}")
 
     en_block = (
         "\n".join(status_en)
         + "\n\n"
-        + (
-            "> [!NOTE]\n"
-            "> Each heart represents the availability of a distinct proxy server IP (💚 - active, ❤️ - offline)."
-        )
+        + ("> [!NOTE]\n> Each heart represents a distinct active proxy server IP (💚).")
     )
     ru_block = (
         "\n".join(status_ru)
         + "\n\n"
         + (
             "> [!NOTE]\n"
-            "> Каждое сердечко обозначает доступность конкретного IP-адреса прокси-сервера (💚 - активен, ❤️ - недоступен)."
+            "> Каждое сердечко обозначает доступный IP-адрес прокси-сервера (💚)."
         )
     )
 
