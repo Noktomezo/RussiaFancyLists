@@ -452,12 +452,10 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
         if sorted_maf:
             mafioznik_ips = [sorted_maf[0]]
 
-    stressozz_ips = [ip for ip in proxy_candidates if ip in zapret_ip_domains]
-
     malw_ips = [
         ip
         for ip in proxy_candidates
-        if ip not in geohide_ips and ip not in mafioznik_ips and ip not in stressozz_ips
+        if ip in provider_ip_domains.get("malw", {}) and ip not in geohide_ips
     ]
 
     if not malw_ips:
@@ -468,6 +466,15 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
         )
         if sorted_malw:
             malw_ips = [sorted_malw[0]]
+
+    stressozz_ips = [
+        ip
+        for ip in proxy_candidates
+        if ip in zapret_ip_domains
+        and ip not in geohide_ips
+        and ip not in mafioznik_ips
+        and ip not in malw_ips
+    ]
 
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),

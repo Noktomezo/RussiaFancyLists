@@ -143,7 +143,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->21.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.0 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->35.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -196,8 +196,8 @@ Generated artifacts are organized as follows:
         • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.2 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -301,10 +301,10 @@ Generated artifacts are organized as follows:
         • 39.5 KB<br>
         • 4.1 KB<br>
         • 11.7 KB<br>
-        • 32.3 KB<br>
-        • 39.8 KB<br>
         • 32.1 KB<br>
         • 39.6 KB<br>
+        • 32.3 KB<br>
+        • 39.8 KB<br>
         • 223.5 KB<br>
         • 7.6 KB<br>
         • 231.0 KB
@@ -323,10 +323,10 @@ Generated artifacts are organized as follows:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-- **Malw**: 💚
+- **Malw**: 💚💚💚
 - **GeoHide**: 💚💚💚
 - **Mafioznik**: 💚
-- **StressOzz**: 💚💚💚💚💚
+- **StressOzz**: 💚
 
 > [!NOTE]
 > Each heart represents a distinct active proxy server IP (💚).
