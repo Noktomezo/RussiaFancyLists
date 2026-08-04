@@ -50,7 +50,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->893.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->565.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->565.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->175.4 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -83,9 +83,9 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.45 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->171.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->944.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->944.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->125.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->296.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->296.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->41.4 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -120,8 +120,8 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->772.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->159.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->241.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->241.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.7 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->40.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->41.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.1 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -196,8 +196,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
