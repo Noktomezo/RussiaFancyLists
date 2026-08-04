@@ -141,7 +141,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             )
             rows.append(
                 "    <tr>\n"
-                '      <td><a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>\n'
+                '      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>\n'
                 "      <td><!-- SIZE:lists/hosts/combined.hosts -->unknown<!-- SIZE_END --></td>\n"
                 f"      <td>{desc}</td>\n"
                 "    </tr>"
@@ -156,7 +156,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             )
             rows.append(
                 "    <tr>\n"
-                '      <td><a href="./lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>\n'
+                '      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>\n'
                 "      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->unknown<!-- SIZE_END --></td>\n"
                 f"      <td>{desc}</td>\n"
                 "    </tr>"
@@ -171,7 +171,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             )
             rows.append(
                 "    <tr>\n"
-                '      <td><a href="./lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>\n'
+                '      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>\n'
                 "      <td><!-- SIZE:lists/hosts/only-crutch.hosts -->unknown<!-- SIZE_END --></td>\n"
                 f"      <td>{desc}</td>\n"
                 "    </tr>"
@@ -182,12 +182,10 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             h_std = hosts_dir / f"{key}.hosts"
             h_nc = hosts_dir / f"{key}-no-crutch.hosts"
             if h_std.exists():
-                links = (
-                    f'<a href="./lists/hosts/{key}.hosts"><code>{key}.hosts</code></a>'
-                )
+                links = f'<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}.hosts"><code>{key}.hosts</code></a>'
                 sizes = f"<!-- SIZE:lists/hosts/{key}.hosts -->unknown<!-- SIZE_END -->"
                 if h_nc.exists():
-                    links += f' / <a href="./lists/hosts/{key}-no-crutch.hosts"><code>no-crutch</code></a>'
+                    links += f' / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}-no-crutch.hosts"><code>no-crutch</code></a>'
                     sizes += f" / <!-- SIZE:lists/hosts/{key}-no-crutch.hosts -->unknown<!-- SIZE_END -->"
                 desc = ru_desc if is_ru else en_desc
                 rows.append(

@@ -33,8 +33,8 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>Text</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/blacklist/domains/full.lst"><code>full.lst</code></a><br>
-        • <a href="./lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full.lst"><code>full.lst</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/domains/full.lst -->28.99 MB<!-- SIZE_END --><br>
@@ -44,9 +44,9 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/blacklist/ipsets/full.lst"><code>full.lst</code></a><br>
-        • <a href="./lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a><br>
-        • <a href="./lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst"><code>full.lst</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full-and-cdn.lst"><code>full-and-cdn.lst</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->947.6 KB<!-- SIZE_END --><br>
@@ -58,10 +58,10 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>sing-box</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/blacklist-sing-box/domains/full.json"><code>full.json</code></a><br>
-        • <a href="./lists/blacklist-sing-box/domains/full.srs"><code>full.srs</code></a><br>
-        • <a href="./lists/blacklist-sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
-        • <a href="./lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/domains/full.json"><code>full.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/domains/full.srs"><code>full.srs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->45.50 MB<!-- SIZE_END --><br>
@@ -73,12 +73,12 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/blacklist-sing-box/ipsets/full.json"><code>full.json</code></a><br>
-        • <a href="./lists/blacklist-sing-box/ipsets/full.srs"><code>full.srs</code></a><br>
-        • <a href="./lists/blacklist-sing-box/ipsets/full-and-cdn.json"><code>full-and-cdn.json</code></a><br>
-        • <a href="./lists/blacklist-sing-box/ipsets/full-and-cdn.srs"><code>full-and-cdn.srs</code></a><br>
-        • <a href="./lists/blacklist-sing-box/ipsets/cdn.json"><code>cdn.json</code></a><br>
-        • <a href="./lists/blacklist-sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/full.json"><code>full.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/full.srs"><code>full.srs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/full-and-cdn.json"><code>full-and-cdn.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/full-and-cdn.srs"><code>full-and-cdn.srs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/cdn.json"><code>cdn.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.50 MB<!-- SIZE_END --><br>
@@ -93,10 +93,10 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>Mihomo</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/blacklist-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
-        • <a href="./lists/blacklist-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->37.80 MB<!-- SIZE_END --><br>
@@ -108,12 +108,12 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/blacklist-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/ipsets/full.mrs"><code>full.mrs</code></a><br>
-        • <a href="./lists/blacklist-mihomo/ipsets/full-and-cdn.yaml"><code>full-and-cdn.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/ipsets/full-and-cdn.mrs"><code>full-and-cdn.mrs</code></a><br>
-        • <a href="./lists/blacklist-mihomo/ipsets/cdn.yaml"><code>cdn.yaml</code></a><br>
-        • <a href="./lists/blacklist-mihomo/ipsets/cdn.mrs"><code>cdn.mrs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/ipsets/full.mrs"><code>full.mrs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/ipsets/full-and-cdn.yaml"><code>full-and-cdn.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/ipsets/full-and-cdn.mrs"><code>full-and-cdn.mrs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/ipsets/cdn.yaml"><code>cdn.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/ipsets/cdn.mrs"><code>cdn.mrs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.24 MB<!-- SIZE_END --><br>
@@ -129,8 +129,8 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>Text</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/geoblock/domains/full.lst"><code>full.lst</code></a><br>
-        • <a href="./lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/domains/full.lst"><code>full.lst</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/geoblock/domains/full.lst -->26.7 KB<!-- SIZE_END --><br>
@@ -140,20 +140,20 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->22.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
       <td rowspan="2"><b>sing-box</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/geoblock-sing-box/domains/full.json"><code>full.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/domains/full.srs"><code>full.srs</code></a><br>
-        • <a href="./lists/geoblock-sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full.json"><code>full.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full.srs"><code>full.srs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full-sld.json"><code>full-sld.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->41.0 KB<!-- SIZE_END --><br>
@@ -165,11 +165,11 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/geoblock-sing-box/ipsets/full.json"><code>full.json</code></a><br>
-        • <a href="./lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.json"><code>full.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->36.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->36.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -177,10 +177,10 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>Mihomo</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/geoblock-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
-        • <a href="./lists/geoblock-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/domains/full.mrs"><code>full.mrs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/domains/full-sld.yaml"><code>full-sld.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->34.4 KB<!-- SIZE_END --><br>
@@ -192,11 +192,11 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/geoblock-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="./lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->29.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->30.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.2 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -205,7 +205,7 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>Text</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/whitelist/domains.lst"><code>domains.lst</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist/domains.lst"><code>domains.lst</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/whitelist/domains.lst -->15.3 KB<!-- SIZE_END -->
@@ -214,8 +214,8 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/whitelist/ipset.lst"><code>ipset.lst</code></a><br>
-        • <a href="./lists/whitelist/cidr.lst"><code>cidr.lst</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist/ipset.lst"><code>ipset.lst</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist/cidr.lst"><code>cidr.lst</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/whitelist/ipset.lst -->1.68 MB<!-- SIZE_END --><br>
@@ -226,8 +226,8 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>sing-box</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/whitelist-sing-box/domains.json"><code>domains.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-sing-box/domains.json"><code>domains.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-sing-box/domains.srs"><code>domains.srs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/whitelist-sing-box/domains.json -->26.1 KB<!-- SIZE_END --><br>
@@ -237,10 +237,10 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
-        • <a href="./lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a><br>
-        • <a href="./lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-sing-box/ipset.json"><code>ipset.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-sing-box/ipset.srs"><code>ipset.srs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-sing-box/cidr.json"><code>cidr.json</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-sing-box/cidr.srs"><code>cidr.srs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/whitelist-sing-box/ipset.json -->3.30 MB<!-- SIZE_END --><br>
@@ -253,8 +253,8 @@ Generated artifacts are organized as follows:
       <td rowspan="2"><b>Mihomo</b></td>
       <td><b>Domains</b></td>
       <td>
-        • <a href="./lists/whitelist-mihomo/domains.yaml"><code>domains.yaml</code></a><br>
-        • <a href="./lists/whitelist-mihomo/domains.mrs"><code>domains.mrs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-mihomo/domains.yaml"><code>domains.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-mihomo/domains.mrs"><code>domains.mrs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/whitelist-mihomo/domains.yaml -->21.5 KB<!-- SIZE_END --><br>
@@ -264,10 +264,10 @@ Generated artifacts are organized as follows:
     <tr>
       <td><b>IP sets</b></td>
       <td>
-        • <a href="./lists/whitelist-mihomo/ipset.yaml"><code>ipset.yaml</code></a><br>
-        • <a href="./lists/whitelist-mihomo/ipset.mrs"><code>ipset.mrs</code></a><br>
-        • <a href="./lists/whitelist-mihomo/cidr.yaml"><code>cidr.yaml</code></a><br>
-        • <a href="./lists/whitelist-mihomo/cidr.mrs"><code>cidr.mrs</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-mihomo/ipset.yaml"><code>ipset.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-mihomo/ipset.mrs"><code>ipset.mrs</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-mihomo/cidr.yaml"><code>cidr.yaml</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/whitelist-mihomo/cidr.mrs"><code>cidr.mrs</code></a>
       </td>
       <td>
         • <!-- SIZE:lists/whitelist-mihomo/ipset.yaml -->3.03 MB<!-- SIZE_END --><br>
@@ -294,37 +294,37 @@ Direct hosts file mappings for domain unblocking and proxy routing:
   </thead>
   <tbody>
     <tr>
-      <td><a href="./lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>
       <td><!-- SIZE:lists/hosts/combined.hosts -->231.0 KB<!-- SIZE_END --></td>
       <td><b>Recommended:</b> Full unified list (Geoblocks + Crutches)</td>
     </tr>
     <tr>
-      <td><a href="./lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>
       <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->223.5 KB<!-- SIZE_END --></td>
       <td>Unified list without direct IP crutches (for VPN users)</td>
     </tr>
     <tr>
-      <td><a href="./lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>
       <td><!-- SIZE:lists/hosts/only-crutch.hosts -->7.6 KB<!-- SIZE_END --></td>
       <td>Only direct IP crutch mappings</td>
     </tr>
     <tr>
-      <td><a href="./lists/hosts/geohide.hosts"><code>geohide.hosts</code></a> / <a href="./lists/hosts/geohide-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide.hosts"><code>geohide.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.hosts"><code>no-crutch</code></a></td>
       <td><!-- SIZE:lists/hosts/geohide.hosts -->39.5 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->32.1 KB<!-- SIZE_END --></td>
       <td>GeoHide DNS proxy endpoints</td>
     </tr>
     <tr>
-      <td><a href="./lists/hosts/malw.hosts"><code>malw.hosts</code></a> / <a href="./lists/hosts/malw-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw.hosts"><code>malw.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>no-crutch</code></a></td>
       <td><!-- SIZE:lists/hosts/malw.hosts -->39.6 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->32.1 KB<!-- SIZE_END --></td>
       <td>ImMALWARE DNS proxy endpoints</td>
     </tr>
     <tr>
-      <td><a href="./lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a> / <a href="./lists/hosts/mafioznik-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>no-crutch</code></a></td>
       <td><!-- SIZE:lists/hosts/mafioznik.hosts -->11.7 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END --></td>
       <td>Mafioznik DNS proxy endpoints</td>
     </tr>
     <tr>
-      <td><a href="./lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a> / <a href="./lists/hosts/stressozz-no-crutch.hosts"><code>no-crutch</code></a></td>
+      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz-no-crutch.hosts"><code>no-crutch</code></a></td>
       <td><!-- SIZE:lists/hosts/stressozz.hosts -->39.8 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->32.3 KB<!-- SIZE_END --></td>
       <td>StressOzz Zapret-Manager proxy endpoints</td>
     </tr>
