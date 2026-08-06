@@ -26,8 +26,6 @@ ff02::2 ip6-allrouters
 157.240.205.174 instagram.com www.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 185.31.40.18 test.dns.malw.link
-213.24.64.175 lkfl2.nalog.ru
-213.24.64.181 lknpd.nalog.ru
 130.255.77.28 ntc.party
 52.223.13.41 tracker.openbittorrent.com
 172.67.139.108 r6s.com
@@ -37,6 +35,7 @@ ff02::2 ip6-allrouters
 173.245.58.219 d.rutor.info rutor.info
 173.245.59.219 rutor.is
 149.154.167.220 t.me
+216.24.57.3 tapeop.dev www.tapeop.dev
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 149.154.167.220 telesco.pe
 149.154.167.220 tg.dev
@@ -45,7 +44,6 @@ ff02::2 ip6-allrouters
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
-52.222.149.31 ubisoft.com
 
 # Geoblock
 103.27.157.38 azwindows.ipv6.microsoft.com.akadns.net www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
