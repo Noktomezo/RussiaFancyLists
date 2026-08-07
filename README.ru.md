@@ -50,8 +50,8 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->893.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->565.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->175.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->565.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->175.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -85,8 +85,8 @@
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->171.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->945.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->125.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->296.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->41.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->296.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->41.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -118,9 +118,9 @@
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.19 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->772.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->772.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->159.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->241.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->241.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.8 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -133,7 +133,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -143,7 +143,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->26.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->26.9 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -156,7 +156,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->39.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->39.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->9.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->12.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.srs -->3.6 KB<!-- SIZE_END -->
@@ -169,8 +169,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->43.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->44.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -196,8 +196,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->35.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->36.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -295,37 +295,37 @@
   <tbody>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>
-      <td><!-- SIZE:lists/hosts/combined.hosts -->228.9 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/combined.hosts -->229.1 KB<!-- SIZE_END --></td>
       <td><b>Рекомендуется:</b> Единый список (Геоблок + Костыли)</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>
-      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->221.5 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->221.8 KB<!-- SIZE_END --></td>
       <td>Единый список без прямых IP-костылей (для пользователей VPN)</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>
-      <td><!-- SIZE:lists/hosts/only-crutch.hosts -->7.5 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/only-crutch.hosts -->7.4 KB<!-- SIZE_END --></td>
       <td>Только прямые IP-костыли</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide.hosts"><code>geohide.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.hosts"><code>no-crutch</code></a></td>
-      <td><!-- SIZE:lists/hosts/geohide.hosts -->39.1 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->31.7 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/geohide.hosts -->39.1 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->31.8 KB<!-- SIZE_END --></td>
       <td>SNI-прокси GeoHide DNS</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw.hosts"><code>malw.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>no-crutch</code></a></td>
-      <td><!-- SIZE:lists/hosts/malw.hosts -->39.1 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->31.7 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/malw.hosts -->39.1 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->31.8 KB<!-- SIZE_END --></td>
       <td>SNI-прокси ImMALWARE DNS</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik.hosts"><code>mafioznik.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>no-crutch</code></a></td>
-      <td><!-- SIZE:lists/hosts/mafioznik.hosts -->11.5 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/mafioznik.hosts -->11.4 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END --></td>
       <td>SNI-прокси Mafioznik DNS</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz-no-crutch.hosts"><code>no-crutch</code></a></td>
-      <td><!-- SIZE:lists/hosts/stressozz.hosts -->39.4 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->32.0 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/stressozz.hosts -->39.4 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->32.1 KB<!-- SIZE_END --></td>
       <td>SNI-прокси StressOzz Zapret-Manager</td>
     </tr>
   </tbody>
