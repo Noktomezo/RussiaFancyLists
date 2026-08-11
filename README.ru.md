@@ -143,7 +143,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->26.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->40.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->43.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.3 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -196,8 +196,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->35.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -295,12 +295,12 @@
   <tbody>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>
-      <td><!-- SIZE:lists/hosts/combined.hosts -->229.0 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/combined.hosts -->197.6 KB<!-- SIZE_END --></td>
       <td><b>Рекомендуется:</b> Единый список (Геоблок + Костыли)</td>
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>
-      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->221.7 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->190.2 KB<!-- SIZE_END --></td>
       <td>Единый список без прямых IP-костылей (для пользователей VPN)</td>
     </tr>
     <tr>
@@ -310,7 +310,7 @@
     </tr>
     <tr>
       <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide.hosts"><code>geohide.hosts</code></a> / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.hosts"><code>no-crutch</code></a></td>
-      <td><!-- SIZE:lists/hosts/geohide.hosts -->39.1 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->31.8 KB<!-- SIZE_END --></td>
+      <td><!-- SIZE:lists/hosts/geohide.hosts -->39.2 KB<!-- SIZE_END --> / <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->31.8 KB<!-- SIZE_END --></td>
       <td>SNI-прокси GeoHide DNS</td>
     </tr>
     <tr>
@@ -342,7 +342,7 @@
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
 - **Malw**: 💚💚💚
-- **GeoHide**: 💚💚💚
+- **GeoHide**: 💚💚
 - **Mafioznik**: 💚
 - **StressOzz**: 💚
 
