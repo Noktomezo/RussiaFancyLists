@@ -114,11 +114,27 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         return
 
     provider_defs = [
-        ("geohide", "GeoHide DNS proxy endpoints", "SNI-прокси GeoHide DNS"),
-        ("malw", "ImMALWARE DNS proxy endpoints", "SNI-прокси ImMALWARE DNS"),
-        ("mafioznik", "Mafioznik DNS proxy endpoints", "SNI-прокси Mafioznik DNS"),
+        (
+            "geohide",
+            "GeoHide",
+            "GeoHide DNS proxy endpoints",
+            "SNI-прокси GeoHide DNS",
+        ),
+        (
+            "malw",
+            "ImMALWARE",
+            "ImMALWARE DNS proxy endpoints",
+            "SNI-прокси ImMALWARE DNS",
+        ),
+        (
+            "mafioznik",
+            "Mafioznik",
+            "Mafioznik DNS proxy endpoints",
+            "SNI-прокси Mafioznik DNS",
+        ),
         (
             "stressozz",
+            "StressOzz",
             "StressOzz Zapret-Manager proxy endpoints",
             "SNI-прокси StressOzz Zapret-Manager",
         ),
@@ -127,13 +143,18 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     def build_table(lang: str) -> str:
         is_ru = lang == "ru"
         headers = (
-            ("Файл", "Размер", "Описание") if is_ru else ("File", "Size", "Description")
+            ("Название", "Hosts (.hosts)", "AdGuard Home (.txt)", "Описание")
+            if is_ru
+            else ("Name", "Hosts (.hosts)", "AdGuard Home (.txt)", "Description")
         )
 
         rows = []
 
-        # 1. combined.hosts
+        # 1. combined
         if (hosts_dir / "combined.hosts").exists():
+            name = "<b>Combined</b>"
+            hosts_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a><br><!-- SIZE:lists/hosts/combined.hosts -->unknown<!-- SIZE_END -->'
+            adg_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.adguard.txt"><code>combined.adguard.txt</code></a><br><!-- SIZE:lists/hosts/combined.adguard.txt -->unknown<!-- SIZE_END -->'
             desc = (
                 "<b>Рекомендуется:</b> Единый список (Геоблок + Костыли)"
                 if is_ru
@@ -141,14 +162,22 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             )
             rows.append(
                 "    <tr>\n"
-                '      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a></td>\n'
-                "      <td><!-- SIZE:lists/hosts/combined.hosts -->unknown<!-- SIZE_END --></td>\n"
+                f"      <td>{name}</td>\n"
+                f"      <td>{hosts_cell}</td>\n"
+                f"      <td>{adg_cell}</td>\n"
                 f"      <td>{desc}</td>\n"
                 "    </tr>"
             )
 
-        # 2. combined-no-crutch.hosts
+        # 2. combined-no-crutch
         if (hosts_dir / "combined-no-crutch.hosts").exists():
+            name = (
+                "<b>Combined (Без костылей)</b>"
+                if is_ru
+                else "<b>Combined (No-Crutch)</b>"
+            )
+            hosts_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a><br><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->unknown<!-- SIZE_END -->'
+            adg_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a><br><!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->unknown<!-- SIZE_END -->'
             desc = (
                 "Единый список без прямых IP-костылей (для пользователей VPN)"
                 if is_ru
@@ -156,14 +185,18 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             )
             rows.append(
                 "    <tr>\n"
-                '      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a></td>\n'
-                "      <td><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->unknown<!-- SIZE_END --></td>\n"
+                f"      <td>{name}</td>\n"
+                f"      <td>{hosts_cell}</td>\n"
+                f"      <td>{adg_cell}</td>\n"
                 f"      <td>{desc}</td>\n"
                 "    </tr>"
             )
 
-        # 3. only-crutch.hosts
+        # 3. only-crutch
         if (hosts_dir / "only-crutch.hosts").exists():
+            name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
+            hosts_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a><br><!-- SIZE:lists/hosts/only-crutch.hosts -->unknown<!-- SIZE_END -->'
+            adg_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.adguard.txt"><code>only-crutch.adguard.txt</code></a><br><!-- SIZE:lists/hosts/only-crutch.adguard.txt -->unknown<!-- SIZE_END -->'
             desc = (
                 "Только прямые IP-костыли"
                 if is_ru
@@ -171,27 +204,35 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             )
             rows.append(
                 "    <tr>\n"
-                '      <td><a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a></td>\n'
-                "      <td><!-- SIZE:lists/hosts/only-crutch.hosts -->unknown<!-- SIZE_END --></td>\n"
+                f"      <td>{name}</td>\n"
+                f"      <td>{hosts_cell}</td>\n"
+                f"      <td>{adg_cell}</td>\n"
                 f"      <td>{desc}</td>\n"
                 "    </tr>"
             )
 
         # 4. Providers
-        for key, en_desc, ru_desc in provider_defs:
+        for key, display_name, en_desc, ru_desc in provider_defs:
             h_std = hosts_dir / f"{key}.hosts"
             h_nc = hosts_dir / f"{key}-no-crutch.hosts"
+            a_nc = hosts_dir / f"{key}-no-crutch.adguard.txt"
             if h_std.exists():
-                links = f'<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}.hosts"><code>{key}.hosts</code></a>'
-                sizes = f"<!-- SIZE:lists/hosts/{key}.hosts -->unknown<!-- SIZE_END -->"
+                name = f"<b>{display_name}</b>"
+
+                hosts_links = f'<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}.hosts"><code>{key}.hosts</code></a> <!-- SIZE:lists/hosts/{key}.hosts -->unknown<!-- SIZE_END -->'
                 if h_nc.exists():
-                    links += f' / <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}-no-crutch.hosts"><code>no-crutch</code></a>'
-                    sizes += f" / <!-- SIZE:lists/hosts/{key}-no-crutch.hosts -->unknown<!-- SIZE_END -->"
+                    hosts_links += f'<br>• <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}-no-crutch.hosts"><code>no-crutch</code></a> <!-- SIZE:lists/hosts/{key}-no-crutch.hosts -->unknown<!-- SIZE_END -->'
+
+                adg_links = f'<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}.adguard.txt"><code>{key}.adguard.txt</code></a> <!-- SIZE:lists/hosts/{key}.adguard.txt -->unknown<!-- SIZE_END -->'
+                if a_nc.exists():
+                    adg_links += f'<br>• <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}-no-crutch.adguard.txt"><code>no-crutch</code></a> <!-- SIZE:lists/hosts/{key}-no-crutch.adguard.txt -->unknown<!-- SIZE_END -->'
+
                 desc = ru_desc if is_ru else en_desc
                 rows.append(
                     "    <tr>\n"
-                    f"      <td>{links}</td>\n"
-                    f"      <td>{sizes}</td>\n"
+                    f"      <td>{name}</td>\n"
+                    f"      <td>{hosts_links}</td>\n"
+                    f"      <td>{adg_links}</td>\n"
                     f"      <td>{desc}</td>\n"
                     "    </tr>"
                 )
@@ -203,6 +244,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             f"      <th>{headers[0]}</th>\n"
             f"      <th>{headers[1]}</th>\n"
             f"      <th>{headers[2]}</th>\n"
+            f"      <th>{headers[3]}</th>\n"
             "    </tr>\n"
             "  </thead>\n"
             "  <tbody>\n" + "\n".join(rows) + "\n  </tbody>\n"

@@ -32,6 +32,20 @@ def parse_domains_from_hosts(file_path: Path) -> set[str]:
     return domains
 
 
+def parse_domains_from_adguard(file_path: Path) -> set[str]:
+    """Parse domain names from an AdGuard Home DNS rewrite rules file."""
+    domains = set()
+    with open(file_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("!") or line.startswith("#"):
+                continue
+            m = re.match(r"^\|\|([^^]+)\^\$dnsrewrite=", line)
+            if m:
+                domains.add(m.group(1).lower().strip())
+    return domains
+
+
 def main():
     root_dir = Path(__file__).parent.parent
     hosts_dir = root_dir / "lists" / "hosts"
@@ -166,11 +180,40 @@ def main():
         else:
             print("only-crutch + combined-no-crutch matches combined.hosts perfectly.")
 
+    print("\n--- Verifying AdGuard Home Files Parity ---")
+    adg_files = list(hosts_dir.glob("*.adguard.txt"))
+    print(f"Found {len(adg_files)} AdGuard Home files.")
+    for adg_path in sorted(adg_files, key=lambda x: x.name):
+        base_name = adg_path.name.replace(".adguard.txt", ".hosts")
+        hosts_peer = hosts_dir / base_name
+        if not hosts_peer.exists():
+            print(f"Error: AdGuard file {adg_path.name} has no peer {base_name}")
+            mismatches += 1
+            continue
+
+        adg_domains = parse_domains_from_adguard(adg_path)
+        hosts_domains = parse_domains_from_hosts(hosts_peer)
+        print(
+            f"{adg_path.name} has {len(adg_domains)} domains (peer {base_name}: {len(hosts_domains)})."
+        )
+
+        diff1 = adg_domains - hosts_domains
+        diff2 = hosts_domains - adg_domains
+        if diff1 or diff2:
+            print(f"Mismatch between {adg_path.name} and {base_name}:")
+            if diff1:
+                print(f"  Only in {adg_path.name} (first 5): {sorted(list(diff1))[:5]}")
+            if diff2:
+                print(f"  Only in {base_name} (first 5): {sorted(list(diff2))[:5]}")
+            mismatches += 1
+
     if mismatches > 0:
-        print("\nError: Domains mismatch detected across hosts files.")
+        print("\nError: Domains mismatch detected across hosts/adguard files.")
         sys.exit(1)
 
-    print("\nVerification successful: all hosts families have perfect domain parity!")
+    print(
+        "\nVerification successful: all hosts and AdGuard Home families have perfect domain parity!"
+    )
     sys.exit(0)
 
 

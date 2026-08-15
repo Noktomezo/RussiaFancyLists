@@ -799,6 +799,49 @@ async def generate_aligned_hosts(
                 if v_path.exists():
                     v_path.unlink()
 
+        # Standard AdGuard Home file
+        adg_output = base_output.parent / f"{base_output.stem}.adguard.txt"
+        with open(adg_output, "w", encoding="utf-8") as f:
+            f.write(
+                f"! Title: RussiaFancyLists - {base_output.stem.capitalize()} (AdGuard Home)\n"
+            )
+            f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+            if direct_groups:
+                f.write("! Crutch\n")
+                for ip_key, brand in sorted(
+                    direct_groups.keys(), key=lambda x: (x[1], x[0])
+                ):
+                    for d in sorted(direct_groups[(ip_key, brand)]):
+                        f.write(f"||{d}^$dnsrewrite={ip_key}\n")
+                f.write("\n")
+
+            if geoblock_groups:
+                f.write("! Geoblock\n")
+                for ip_key, brand in sorted(
+                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
+                ):
+                    for d in sorted(geoblock_groups[(ip_key, brand)]):
+                        f.write(f"||{d}^$dnsrewrite={ip_key}\n")
+
+        # No-crutch AdGuard Home file
+        adg_no_crutch_output = (
+            base_output.parent / f"{base_output.stem}-no-crutch.adguard.txt"
+        )
+        with open(adg_no_crutch_output, "w", encoding="utf-8") as f:
+            f.write(
+                f"! Title: RussiaFancyLists - {base_output.stem.capitalize()} No-Crutch (AdGuard Home)\n"
+            )
+            f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+            if geoblock_groups:
+                f.write("! Geoblock\n")
+                for ip_key, brand in sorted(
+                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
+                ):
+                    for d in sorted(geoblock_groups[(ip_key, brand)]):
+                        f.write(f"||{d}^$dnsrewrite={ip_key}\n")
+
         return [(direct_groups, geoblock_groups)]
 
     # Build a unified global custom mapping from active custom IPs
@@ -935,6 +978,27 @@ async def generate_aligned_hosts(
                 dom_list = " ".join(sorted(list(combined_geoblock[(ip, brand)])))
                 f.write(f"{ip} {dom_list}\n")
 
+    # Standard combined AdGuard Home file
+    output_combined_adg = output_combined.parent / "combined.adguard.txt"
+    with open(output_combined_adg, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Combined (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+        if combined_direct:
+            f.write("! Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                for d in sorted(list(combined_direct[(ip, brand)])):
+                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+            f.write("\n")
+
+        if combined_geoblock:
+            f.write("! Geoblock\n")
+            for ip, brand in sorted(
+                combined_geoblock.keys(), key=lambda x: (x[1], x[0])
+            ):
+                for d in sorted(list(combined_geoblock[(ip, brand)])):
+                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+
     # No-crutch combined file
     output_combined_nc = output_combined.parent / (
         output_combined.stem + "-no-crutch" + output_combined.suffix
@@ -949,6 +1013,20 @@ async def generate_aligned_hosts(
                 dom_list = " ".join(sorted(list(combined_geoblock_nc[(ip, brand)])))
                 f.write(f"{ip} {dom_list}\n")
 
+    # No-crutch combined AdGuard Home file
+    output_combined_nc_adg = output_combined.parent / "combined-no-crutch.adguard.txt"
+    with open(output_combined_nc_adg, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Combined No-Crutch (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+        if combined_geoblock_nc:
+            f.write("! Geoblock\n")
+            for ip, brand in sorted(
+                combined_geoblock_nc.keys(), key=lambda x: (x[1], x[0])
+            ):
+                for d in sorted(list(combined_geoblock_nc[(ip, brand)])):
+                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+
     # Write only-crutch combined file
     output_only_crutch = output_combined.parent / "only-crutch.hosts"
     with open(output_only_crutch, "w", encoding="utf-8") as f:
@@ -958,6 +1036,18 @@ async def generate_aligned_hosts(
             for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
                 dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
                 f.write(f"{ip} {dom_list}\n")
+
+    # Write only-crutch AdGuard Home file
+    output_only_crutch_adg = output_combined.parent / "only-crutch.adguard.txt"
+    with open(output_only_crutch_adg, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Only Crutch (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+        if combined_direct:
+            f.write("! Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                for d in sorted(list(combined_direct[(ip, brand)])):
+                    f.write(f"||{d}^$dnsrewrite={ip}\n")
 
     # Rewrite geoblock_file to exclude crutch domains
     geoblock_domains_no_crutch = [d for d in geoblock_domains if d not in global_custom]
