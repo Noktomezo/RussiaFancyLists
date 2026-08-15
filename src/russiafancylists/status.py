@@ -143,111 +143,107 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     def build_table(lang: str) -> str:
         is_ru = lang == "ru"
         headers = (
-            ("Название", "Hosts (.hosts)", "AdGuard Home (.txt)", "Описание")
+            ("Формат", "Назначение", "Файлы", "Размер", "Описание")
             if is_ru
-            else ("Name", "Hosts (.hosts)", "AdGuard Home (.txt)", "Description")
+            else ("Variant", "Target", "Files", "Size", "Description")
         )
 
-        rows = []
+        variants = [
+            ("Hosts", ".hosts"),
+            ("AdGuard Home", ".adguard.txt"),
+        ]
 
-        # 1. combined
-        if (hosts_dir / "combined.hosts").exists():
-            name = "<b>Combined</b>"
-            hosts_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a><br><!-- SIZE:lists/hosts/combined.hosts -->unknown<!-- SIZE_END -->'
-            adg_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.adguard.txt"><code>combined.adguard.txt</code></a><br><!-- SIZE:lists/hosts/combined.adguard.txt -->unknown<!-- SIZE_END -->'
-            desc = (
-                "<b>Рекомендуется:</b> Единый список (Геоблок + Костыли)"
-                if is_ru
-                else "<b>Recommended:</b> Full unified list (Geoblocks + Crutches)"
-            )
-            rows.append(
-                "    <tr>\n"
-                f"      <td>{name}</td>\n"
-                f"      <td>{hosts_cell}</td>\n"
-                f"      <td>{adg_cell}</td>\n"
-                f"      <td>{desc}</td>\n"
-                "    </tr>"
-            )
+        all_rows = []
 
-        # 2. combined-no-crutch
-        if (hosts_dir / "combined-no-crutch.hosts").exists():
-            name = (
-                "<b>Combined (Без костылей)</b>"
-                if is_ru
-                else "<b>Combined (No-Crutch)</b>"
-            )
-            hosts_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a><br><!-- SIZE:lists/hosts/combined-no-crutch.hosts -->unknown<!-- SIZE_END -->'
-            adg_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a><br><!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->unknown<!-- SIZE_END -->'
-            desc = (
-                "Единый список без прямых IP-костылей (для пользователей VPN)"
-                if is_ru
-                else "Unified list without direct IP crutches (for VPN users)"
-            )
-            rows.append(
-                "    <tr>\n"
-                f"      <td>{name}</td>\n"
-                f"      <td>{hosts_cell}</td>\n"
-                f"      <td>{adg_cell}</td>\n"
-                f"      <td>{desc}</td>\n"
-                "    </tr>"
-            )
+        for variant_label, ext in variants:
+            items = []
 
-        # 3. only-crutch
-        if (hosts_dir / "only-crutch.hosts").exists():
-            name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
-            hosts_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a><br><!-- SIZE:lists/hosts/only-crutch.hosts -->unknown<!-- SIZE_END -->'
-            adg_cell = '<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.adguard.txt"><code>only-crutch.adguard.txt</code></a><br><!-- SIZE:lists/hosts/only-crutch.adguard.txt -->unknown<!-- SIZE_END -->'
-            desc = (
-                "Только прямые IP-костыли"
-                if is_ru
-                else "Only direct IP crutch mappings"
-            )
-            rows.append(
-                "    <tr>\n"
-                f"      <td>{name}</td>\n"
-                f"      <td>{hosts_cell}</td>\n"
-                f"      <td>{adg_cell}</td>\n"
-                f"      <td>{desc}</td>\n"
-                "    </tr>"
-            )
+            # 1. Combined
+            std_comb = hosts_dir / f"combined{ext}"
+            nc_comb = hosts_dir / f"combined-no-crutch{ext}"
+            if std_comb.exists():
+                files = [f"combined{ext}"]
+                sizes = [
+                    f"<!-- SIZE:lists/hosts/combined{ext} -->unknown<!-- SIZE_END -->"
+                ]
+                if nc_comb.exists():
+                    files.append(f"combined-no-crutch{ext}")
+                    sizes.append(
+                        f"<!-- SIZE:lists/hosts/combined-no-crutch{ext} -->unknown<!-- SIZE_END -->"
+                    )
+                desc = (
+                    "<b>Рекомендуется:</b> Единый список (с костылями / без)"
+                    if is_ru
+                    else "<b>Recommended:</b> Full unified list (with / without crutches)"
+                )
+                items.append(("<b>Combined</b>", files, sizes, desc))
 
-        # 4. Providers
-        for key, display_name, en_desc, ru_desc in provider_defs:
-            h_std = hosts_dir / f"{key}.hosts"
-            h_nc = hosts_dir / f"{key}-no-crutch.hosts"
-            a_nc = hosts_dir / f"{key}-no-crutch.adguard.txt"
-            if h_std.exists():
-                name = f"<b>{display_name}</b>"
+            # 2. Only Crutch
+            oc = hosts_dir / f"only-crutch{ext}"
+            if oc.exists():
+                files = [f"only-crutch{ext}"]
+                sizes = [
+                    f"<!-- SIZE:lists/hosts/only-crutch{ext} -->unknown<!-- SIZE_END -->"
+                ]
+                desc = (
+                    "Только прямые IP-костыли"
+                    if is_ru
+                    else "Only direct IP crutch mappings"
+                )
+                name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
+                items.append((name, files, sizes, desc))
 
-                hosts_links = f'<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}.hosts"><code>{key}.hosts</code></a> <!-- SIZE:lists/hosts/{key}.hosts -->unknown<!-- SIZE_END -->'
-                if h_nc.exists():
-                    hosts_links += f'<br>• <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}-no-crutch.hosts"><code>no-crutch</code></a> <!-- SIZE:lists/hosts/{key}-no-crutch.hosts -->unknown<!-- SIZE_END -->'
+            # 3. Providers
+            for key, display_name, en_desc, ru_desc in provider_defs:
+                p_std = hosts_dir / f"{key}{ext}"
+                p_nc = hosts_dir / f"{key}-no-crutch{ext}"
+                if p_std.exists():
+                    files = [f"{key}{ext}"]
+                    sizes = [
+                        f"<!-- SIZE:lists/hosts/{key}{ext} -->unknown<!-- SIZE_END -->"
+                    ]
+                    if p_nc.exists():
+                        files.append(f"{key}-no-crutch{ext}")
+                        sizes.append(
+                            f"<!-- SIZE:lists/hosts/{key}-no-crutch{ext} -->unknown<!-- SIZE_END -->"
+                        )
+                    desc = ru_desc if is_ru else en_desc
+                    items.append((f"<b>{display_name}</b>", files, sizes, desc))
 
-                adg_links = f'<a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}.adguard.txt"><code>{key}.adguard.txt</code></a> <!-- SIZE:lists/hosts/{key}.adguard.txt -->unknown<!-- SIZE_END -->'
-                if a_nc.exists():
-                    adg_links += f'<br>• <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{key}-no-crutch.adguard.txt"><code>no-crutch</code></a> <!-- SIZE:lists/hosts/{key}-no-crutch.adguard.txt -->unknown<!-- SIZE_END -->'
+            rowspan = len(items)
+            for idx, (name, files_list, sizes_list, desc) in enumerate(items):
+                file_links = "<br>\n".join(
+                    f'        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{f}"><code>{f}</code></a>'
+                    for f in files_list
+                )
+                size_labels = "<br>\n".join(f"        • {s}" for s in sizes_list)
 
-                desc = ru_desc if is_ru else en_desc
-                rows.append(
-                    "    <tr>\n"
+                row_html = "    <tr>\n"
+                if idx == 0:
+                    row_html += (
+                        f'      <td rowspan="{rowspan}"><b>{variant_label}</b></td>\n'
+                    )
+                row_html += (
                     f"      <td>{name}</td>\n"
-                    f"      <td>{hosts_links}</td>\n"
-                    f"      <td>{adg_links}</td>\n"
+                    f"      <td>\n{file_links}\n      </td>\n"
+                    f"      <td>\n{size_labels}\n      </td>\n"
                     f"      <td>{desc}</td>\n"
                     "    </tr>"
                 )
+                all_rows.append(row_html)
 
         table_html = (
-            "<table>\n"
+            '<table width="100%">\n'
             "  <thead>\n"
             "    <tr>\n"
-            f"      <th>{headers[0]}</th>\n"
-            f"      <th>{headers[1]}</th>\n"
-            f"      <th>{headers[2]}</th>\n"
-            f"      <th>{headers[3]}</th>\n"
+            f'      <th width="120" align="center"><b>{headers[0]}</b></th>\n'
+            f'      <th width="130" align="center"><b>{headers[1]}</b></th>\n'
+            f'      <th width="370" align="center"><b>{headers[2]}</b></th>\n'
+            f'      <th width="150" align="center"><b>{headers[3]}</b></th>\n'
+            f'      <th width="230" align="center"><b>{headers[4]}</b></th>\n'
             "    </tr>\n"
             "  </thead>\n"
-            "  <tbody>\n" + "\n".join(rows) + "\n  </tbody>\n"
+            "  <tbody>\n" + "\n".join(all_rows) + "\n  </tbody>\n"
             "</table>"
         )
         return table_html
