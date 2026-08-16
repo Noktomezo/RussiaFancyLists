@@ -212,7 +212,6 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -635,6 +634,7 @@
 ||f1.com^$dnsrewrite=95.182.120.241
 ||fast.com^$dnsrewrite=95.182.120.241
 ||lastfm.freetls.fastly.net^$dnsrewrite=95.182.120.241
+||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=95.182.120.241
 ||filebin.net^$dnsrewrite=95.182.120.241
 ||api.fitbit.com^$dnsrewrite=95.182.120.241
 ||fivetran.com^$dnsrewrite=95.182.120.241
