@@ -133,7 +133,7 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/domains/full.lst -->25.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock/domains/full-sld.lst -->6.5 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -143,7 +143,7 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->23.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->24.7 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->38.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->3.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->41.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->4.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -196,8 +196,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->31.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->33.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->3.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -303,8 +303,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->229.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->221.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->229.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->222.0 KB<!-- SIZE_END -->
       </td>
       <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
     </tr>
@@ -314,7 +314,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/only-crutch.hosts -->7.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/only-crutch.hosts -->7.4 KB<!-- SIZE_END -->
       </td>
       <td>Only direct IP crutch mappings</td>
     </tr>
@@ -349,7 +349,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>mafioznik-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.hosts -->11.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.hosts -->11.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END -->
       </td>
       <td>Mafioznik DNS proxy endpoints</td>
@@ -362,7 +362,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
       </td>
       <td>
         • <!-- SIZE:lists/hosts/stressozz.hosts -->39.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->32.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->32.1 KB<!-- SIZE_END -->
       </td>
       <td>StressOzz Zapret-Manager proxy endpoints</td>
     </tr>
@@ -374,8 +374,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->450.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->436.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->451.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->436.8 KB<!-- SIZE_END -->
       </td>
       <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
     </tr>
@@ -385,7 +385,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.adguard.txt"><code>only-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/only-crutch.adguard.txt -->14.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/only-crutch.adguard.txt -->14.7 KB<!-- SIZE_END -->
       </td>
       <td>Only direct IP crutch mappings</td>
     </tr>
@@ -396,8 +396,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->77.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->62.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->77.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->62.5 KB<!-- SIZE_END -->
       </td>
       <td>GeoHide DNS proxy endpoints</td>
     </tr>
@@ -408,8 +408,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->77.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->62.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->76.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->62.2 KB<!-- SIZE_END -->
       </td>
       <td>ImMALWARE DNS proxy endpoints</td>
     </tr>
@@ -420,7 +420,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.adguard.txt"><code>mafioznik-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->22.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->22.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.adguard.txt -->7.6 KB<!-- SIZE_END -->
       </td>
       <td>Mafioznik DNS proxy endpoints</td>
@@ -433,7 +433,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
       </td>
       <td>
         • <!-- SIZE:lists/hosts/stressozz.adguard.txt -->77.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/stressozz-no-crutch.adguard.txt -->63.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/stressozz-no-crutch.adguard.txt -->63.3 KB<!-- SIZE_END -->
       </td>
       <td>StressOzz Zapret-Manager proxy endpoints</td>
     </tr>
