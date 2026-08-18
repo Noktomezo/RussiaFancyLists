@@ -2,8 +2,6 @@
 ! Homepage: https://github.com/Noktomezo/RussiaFancyLists
 
 ! Crutch
-||scontent-hel3-1.cdninstagram.com^$dnsrewrite=31.13.66.63
-||scontent.cdninstagram.com^$dnsrewrite=31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=57.144.244.192
 ||finland10000.discord.media^$dnsrewrite=104.25.158.178
 ||finland10001.discord.media^$dnsrewrite=104.25.158.178
@@ -384,6 +382,8 @@
 ||capacitorjs.com^$dnsrewrite=95.182.120.241
 ||carrefouruae.com^$dnsrewrite=95.182.120.241
 ||cats.com^$dnsrewrite=95.182.120.241
+||scontent-hel3-1.cdninstagram.com^$dnsrewrite=95.182.120.241
+||scontent.cdninstagram.com^$dnsrewrite=95.182.120.241
 ||api.cdnlibs.org^$dnsrewrite=95.182.120.241
 ||cdromance.org^$dnsrewrite=95.182.120.241
 ||cdw.com^$dnsrewrite=95.182.120.241
