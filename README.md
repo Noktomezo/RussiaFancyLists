@@ -314,6 +314,13 @@ Generated artifacts are organized as follows:
   </tbody>
 </table>
 
+> [!TIP]
+> **💡 Rule Category Overview:**<br>
+> 🚫 **`Blacklist`**: Domains and IP subnets blocked in Russia by regulators (accuracy ~99.9%). Since certain dynamic CDN ranges are not always listed in official registries, they are provided separately (`cdn`) and as a combined bundle (`full-and-cdn`).<br>
+> 🌍 **`Geoblock`**: Foreign services that restrict access from Russian IP addresses. Unlike state registries, there is no single source of truth, so this list is actively maintained and verified by the community.<br>
+> ⚪ **`Whitelist`**: Essential services and subnets that remain reachable during mobile internet restrictions / whitelist-only operational modes.<br>
+> ⚡ **`Service (prefer-direct)`**: Services with aggressive anti-DDoS / WAF / bot protection mechanisms that drop obfuscated traffic (Zapret, ByeDPI, GoodbyeDPI) or block well-known VPN ASNs (e.g. Cloudflare WARP), returning rate limits or HTTP 403 Forbidden. Recommended for direct routing rules (`DIRECT`) when tunneling or obfuscating default traffic.
+
 ## 🖥️ Hosts Files
 
 Direct hosts file mappings for domain unblocking and proxy routing:
