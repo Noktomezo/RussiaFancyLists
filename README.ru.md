@@ -314,8 +314,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->307.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->299.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->263.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->256.6 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -385,8 +385,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->602.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->587.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->517.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->502.5 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
