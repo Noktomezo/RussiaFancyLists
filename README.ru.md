@@ -125,8 +125,8 @@
       </td>
     </tr>
     <tr>
-      <td rowspan="6"><b>Геоблокировки</b></td>
-      <td rowspan="2"><b>Текст</b></td>
+      <td rowspan="3"><b>Геоблокировки</b></td>
+      <td><b>Текст</b></td>
       <td><b>Домены</b></td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/domains/full.lst"><code>full.lst</code></a><br>
@@ -138,16 +138,7 @@
       </td>
     </tr>
     <tr>
-      <td><b>IP-сети</b></td>
-      <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/ipsets/full.lst"><code>full.lst</code></a>
-      </td>
-      <td>
-        • <!-- SIZE:lists/geoblock/ipsets/full.lst -->34.3 KB<!-- SIZE_END -->
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="2"><b>sing-box</b></td>
+      <td><b>sing-box</b></td>
       <td><b>Домены</b></td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full.json"><code>full.json</code></a><br>
@@ -163,18 +154,7 @@
       </td>
     </tr>
     <tr>
-      <td><b>IP-сети</b></td>
-      <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.json"><code>full.json</code></a><br>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/ipsets/full.srs"><code>full.srs</code></a>
-      </td>
-      <td>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.json -->55.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/ipsets/full.srs -->5.3 KB<!-- SIZE_END -->
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="2"><b>Mihomo</b></td>
+      <td><b>Mihomo</b></td>
       <td><b>Домены</b></td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/domains/full.yaml"><code>full.yaml</code></a><br>
@@ -187,17 +167,6 @@
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->12.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->19.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->6.0 KB<!-- SIZE_END -->
-      </td>
-    </tr>
-    <tr>
-      <td><b>IP-сети</b></td>
-      <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.yaml"><code>full.yaml</code></a><br>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/ipsets/full.mrs"><code>full.mrs</code></a>
-      </td>
-      <td>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.yaml -->45.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/ipsets/full.mrs -->4.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
