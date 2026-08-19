@@ -62,6 +62,11 @@ DOWNLOADS = {
         TEMP_FOLDER / "hosts" / "itdoginfo-geoblock.lst",
         "ItDogInfo's geoblock domains",
     ),
+    "dartraiden_hosts": (
+        "https://raw.githubusercontent.com/dartraiden/no-russia-hosts/refs/heads/master/hosts.txt",
+        TEMP_FOLDER / "hosts" / "dartraiden-geoblock.lst",
+        "Dartraiden's no-russia hosts",
+    ),
     "zapret_manager_sh": (
         "https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh",
         TEMP_FOLDER / "zapret-manager.sh",

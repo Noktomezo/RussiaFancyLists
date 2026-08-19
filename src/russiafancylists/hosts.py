@@ -608,17 +608,18 @@ async def generate_aligned_hosts(
     for _, doms in zapret_ip_domains.items():
         allowed_domains.update(doms)
 
-    # Load domains from non-hosts sources (like itdoginfo-geoblock.lst which has no IP mappings)
-    itdog_path = hosts_temp_dir / "itdoginfo-geoblock.lst"
-    if itdog_path.exists():
-        with open(itdog_path, encoding="utf-8", errors="ignore") as f:
-            for line in f:
-                line = re.sub(r"#.*", "", line).strip()
-                if not line:
-                    continue
-                dom = line.lower().strip()
-                if dom:
-                    allowed_domains.add(dom)
+    # Load domains from non-hosts sources (like itdoginfo-geoblock.lst and dartraiden-geoblock.lst which have no IP mappings)
+    for extra_name in ("itdoginfo-geoblock.lst", "dartraiden-geoblock.lst"):
+        extra_path = hosts_temp_dir / extra_name
+        if extra_path.exists():
+            with open(extra_path, encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = re.sub(r"#.*", "", line).strip()
+                    if not line:
+                        continue
+                    dom = line.lower().strip()
+                    if dom:
+                        allowed_domains.add(dom)
 
     # Filter geoblock_domains to only keep those allowed
     geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
