@@ -232,8 +232,6 @@
 ||graph.instagram.com^$dnsrewrite=57.144.244.192
 ||i.instagram.com^$dnsrewrite=57.144.244.192
 ||test.dns.malw.link^$dnsrewrite=185.31.40.18
-||lkfl2.nalog.ru^$dnsrewrite=213.24.64.175
-||lknpd.nalog.ru^$dnsrewrite=213.24.64.181
 ||ntc.party^$dnsrewrite=130.255.77.28
 ||tracker.openbittorrent.com^$dnsrewrite=52.223.13.41
 ||r6s.com^$dnsrewrite=172.67.139.108
@@ -960,6 +958,8 @@
 ||myjetbrains.com^$dnsrewrite=95.182.120.241
 ||myparallels.com^$dnsrewrite=95.182.120.241
 ||myqrcode.com^$dnsrewrite=95.182.120.241
+||lkfl2.nalog.ru^$dnsrewrite=95.182.120.241
+||lknpd.nalog.ru^$dnsrewrite=95.182.120.241
 ||arabicstatic.naukimg.com^$dnsrewrite=95.182.120.241
 ||autodiscover.naukimg.com^$dnsrewrite=95.182.120.241
 ||bms.naukimg.com^$dnsrewrite=95.182.120.241
