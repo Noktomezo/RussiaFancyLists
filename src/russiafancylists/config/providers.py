@@ -94,4 +94,10 @@ DOWNLOADS = {
         WHITELIST_LIST_FOLDER / "ipset.lst",
         "Whitelist IPSet list",
     ),
+    # Service Sources (direct/exclude list)
+    "service_prefer_direct": (
+        "https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/zapret-hosts-user-exclude.txt",
+        TEMP_FOLDER / "service" / "zapret-hosts-user-exclude.txt",
+        "Zapret-Manager exclude list",
+    ),
 }

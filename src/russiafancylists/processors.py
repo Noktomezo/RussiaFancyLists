@@ -1,3 +1,4 @@
+import contextlib
 import glob
 import ipaddress
 import os
@@ -311,3 +312,29 @@ def merge_cdn_and_full_ipset(cdn_file: Path, full_file: Path, output_file: Path)
     with open(output_file, "w", encoding="utf-8") as f:
         for net in collapsed:
             f.write(net + "\n")
+
+
+def process_service_domains(input_file: Path, output_file: Path):
+    """Clean, filter comments, decode IDN to punycode, and sort domain suffixes for service lists."""
+    if not input_file.exists():
+        return
+
+    domains = set()
+    with open(input_file, encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            # Strip comments and outer whitespace
+            line = line.split("#")[0].strip().lower()
+            if not line:
+                continue
+            # Remove leading dots
+            line = re.sub(r"^\.+", "", line)
+            # Encode non-ASCII (IDN) to ASCII punycode if needed
+            with contextlib.suppress(Exception):
+                line = line.encode("idna").decode("ascii")
+            if line:
+                domains.add(line)
+
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_file, "w", encoding="utf-8") as f:
+        for d in sorted(domains):
+            f.write(d + "\n")

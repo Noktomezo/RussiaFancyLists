@@ -212,6 +212,7 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
+||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -232,9 +233,12 @@
 ||graph.instagram.com^$dnsrewrite=57.144.244.192
 ||i.instagram.com^$dnsrewrite=57.144.244.192
 ||test.dns.malw.link^$dnsrewrite=185.31.40.18
+||lkfl2.nalog.ru^$dnsrewrite=213.24.64.175
+||lknpd.nalog.ru^$dnsrewrite=213.24.64.181
 ||ntc.party^$dnsrewrite=130.255.77.28
 ||tracker.openbittorrent.com^$dnsrewrite=52.223.13.41
 ||r6s.com^$dnsrewrite=172.67.139.108
+||rainbow6.com^$dnsrewrite=54.155.2.87
 ||lib.rus.ec^$dnsrewrite=185.39.18.98
 ||www.lib.rus.ec^$dnsrewrite=185.39.18.98
 ||d.rutor.is^$dnsrewrite=172.64.33.155
@@ -278,4 +282,6 @@
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
 ||ubi.com^$dnsrewrite=52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
+||connect.ubisoft.com^$dnsrewrite=18.209.141.203
 ||ubisoft.com^$dnsrewrite=52.222.149.31
+||uplay.ubisoft.com^$dnsrewrite=54.76.54.196

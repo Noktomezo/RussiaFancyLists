@@ -212,6 +212,7 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
+||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -232,9 +233,12 @@
 ||graph.instagram.com^$dnsrewrite=57.144.244.192
 ||i.instagram.com^$dnsrewrite=57.144.244.192
 ||test.dns.malw.link^$dnsrewrite=185.31.40.18
+||lkfl2.nalog.ru^$dnsrewrite=213.24.64.175
+||lknpd.nalog.ru^$dnsrewrite=213.24.64.181
 ||ntc.party^$dnsrewrite=130.255.77.28
 ||tracker.openbittorrent.com^$dnsrewrite=52.223.13.41
 ||r6s.com^$dnsrewrite=172.67.139.108
+||rainbow6.com^$dnsrewrite=54.155.2.87
 ||lib.rus.ec^$dnsrewrite=185.39.18.98
 ||www.lib.rus.ec^$dnsrewrite=185.39.18.98
 ||d.rutor.is^$dnsrewrite=172.64.33.155
@@ -278,7 +282,9 @@
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
 ||ubi.com^$dnsrewrite=52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
+||connect.ubisoft.com^$dnsrewrite=18.209.141.203
 ||ubisoft.com^$dnsrewrite=52.222.149.31
+||uplay.ubisoft.com^$dnsrewrite=54.76.54.196
 
 ! Geoblock
 ||4pda.to^$dnsrewrite=103.27.157.38
@@ -1620,7 +1626,6 @@
 ||unleash.codeium.com^$dnsrewrite=185.246.223.127
 ||web-backend.codeium.com^$dnsrewrite=185.246.223.127
 ||windsurf-stable.codeium.com^$dnsrewrite=185.246.223.127
-||windsurf-telemetry.codeium.com^$dnsrewrite=185.246.223.127
 ||codeium.com^$dnsrewrite=31.25.239.132
 ||codeiumdata.com^$dnsrewrite=31.25.239.132
 ||inference.codeium.com^$dnsrewrite=31.25.239.132
@@ -1628,7 +1633,6 @@
 ||unleash.codeium.com^$dnsrewrite=31.25.239.132
 ||web-backend.codeium.com^$dnsrewrite=31.25.239.132
 ||windsurf-stable.codeium.com^$dnsrewrite=31.25.239.132
-||windsurf-telemetry.codeium.com^$dnsrewrite=31.25.239.132
 ||codeium.com^$dnsrewrite=37.230.192.51
 ||codeiumdata.com^$dnsrewrite=37.230.192.51
 ||inference.codeium.com^$dnsrewrite=37.230.192.51
@@ -1636,7 +1640,6 @@
 ||unleash.codeium.com^$dnsrewrite=37.230.192.51
 ||web-backend.codeium.com^$dnsrewrite=37.230.192.51
 ||windsurf-stable.codeium.com^$dnsrewrite=37.230.192.51
-||windsurf-telemetry.codeium.com^$dnsrewrite=37.230.192.51
 ||codeium.com^$dnsrewrite=45.155.204.190
 ||codeiumdata.com^$dnsrewrite=45.155.204.190
 ||inference.codeium.com^$dnsrewrite=45.155.204.190
@@ -1644,7 +1647,6 @@
 ||unleash.codeium.com^$dnsrewrite=45.155.204.190
 ||web-backend.codeium.com^$dnsrewrite=45.155.204.190
 ||windsurf-stable.codeium.com^$dnsrewrite=45.155.204.190
-||windsurf-telemetry.codeium.com^$dnsrewrite=45.155.204.190
 ||codeium.com^$dnsrewrite=62.133.62.97
 ||codeiumdata.com^$dnsrewrite=62.133.62.97
 ||inference.codeium.com^$dnsrewrite=62.133.62.97
@@ -1652,7 +1654,6 @@
 ||unleash.codeium.com^$dnsrewrite=62.133.62.97
 ||web-backend.codeium.com^$dnsrewrite=62.133.62.97
 ||windsurf-stable.codeium.com^$dnsrewrite=62.133.62.97
-||windsurf-telemetry.codeium.com^$dnsrewrite=62.133.62.97
 ||codeium.com^$dnsrewrite=95.182.120.241
 ||codeiumdata.com^$dnsrewrite=95.182.120.241
 ||inference.codeium.com^$dnsrewrite=95.182.120.241
@@ -1660,7 +1661,6 @@
 ||unleash.codeium.com^$dnsrewrite=95.182.120.241
 ||web-backend.codeium.com^$dnsrewrite=95.182.120.241
 ||windsurf-stable.codeium.com^$dnsrewrite=95.182.120.241
-||windsurf-telemetry.codeium.com^$dnsrewrite=95.182.120.241
 ||coingate.com^$dnsrewrite=103.27.157.38
 ||coingate.com^$dnsrewrite=185.246.223.127
 ||coingate.com^$dnsrewrite=31.25.239.132
@@ -2732,13 +2732,6 @@
 ||lastfm.freetls.fastly.net^$dnsrewrite=62.133.62.97
 ||fast.com^$dnsrewrite=95.182.120.241
 ||lastfm.freetls.fastly.net^$dnsrewrite=95.182.120.241
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=103.27.157.38
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=185.246.223.127
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.25.239.132
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=37.230.192.51
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=45.155.204.190
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=62.133.62.97
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=95.182.120.241
 ||filebin.net^$dnsrewrite=103.27.157.38
 ||filebin.net^$dnsrewrite=185.246.223.127
 ||filebin.net^$dnsrewrite=31.25.239.132
@@ -5014,20 +5007,6 @@
 ||myqrcode.com^$dnsrewrite=45.155.204.190
 ||myqrcode.com^$dnsrewrite=62.133.62.97
 ||myqrcode.com^$dnsrewrite=95.182.120.241
-||lkfl2.nalog.ru^$dnsrewrite=103.27.157.38
-||lknpd.nalog.ru^$dnsrewrite=103.27.157.38
-||lkfl2.nalog.ru^$dnsrewrite=185.246.223.127
-||lknpd.nalog.ru^$dnsrewrite=185.246.223.127
-||lkfl2.nalog.ru^$dnsrewrite=31.25.239.132
-||lknpd.nalog.ru^$dnsrewrite=31.25.239.132
-||lkfl2.nalog.ru^$dnsrewrite=37.230.192.51
-||lknpd.nalog.ru^$dnsrewrite=37.230.192.51
-||lkfl2.nalog.ru^$dnsrewrite=45.155.204.190
-||lknpd.nalog.ru^$dnsrewrite=45.155.204.190
-||lkfl2.nalog.ru^$dnsrewrite=62.133.62.97
-||lknpd.nalog.ru^$dnsrewrite=62.133.62.97
-||lkfl2.nalog.ru^$dnsrewrite=95.182.120.241
-||lknpd.nalog.ru^$dnsrewrite=95.182.120.241
 ||arabicstatic.naukimg.com^$dnsrewrite=103.27.157.38
 ||autodiscover.naukimg.com^$dnsrewrite=103.27.157.38
 ||bms.naukimg.com^$dnsrewrite=103.27.157.38
@@ -7408,13 +7387,6 @@
 ||www.qwant.com^$dnsrewrite=62.133.62.97
 ||qwant.com^$dnsrewrite=95.182.120.241
 ||www.qwant.com^$dnsrewrite=95.182.120.241
-||rainbow6.com^$dnsrewrite=103.27.157.38
-||rainbow6.com^$dnsrewrite=185.246.223.127
-||rainbow6.com^$dnsrewrite=31.25.239.132
-||rainbow6.com^$dnsrewrite=37.230.192.51
-||rainbow6.com^$dnsrewrite=45.155.204.190
-||rainbow6.com^$dnsrewrite=62.133.62.97
-||rainbow6.com^$dnsrewrite=95.182.120.241
 ||reactflow.dev^$dnsrewrite=103.27.157.38
 ||reactflow.dev^$dnsrewrite=185.246.223.127
 ||reactflow.dev^$dnsrewrite=31.25.239.132
@@ -8131,17 +8103,11 @@
 ||xpui.app.spotify.com^$dnsrewrite=95.182.120.241
 ||game.squadbustersgame.com^$dnsrewrite=103.27.157.38
 ||squadbustersgame.com^$dnsrewrite=103.27.157.38
-||game.squadbustersgame.com^$dnsrewrite=185.246.223.127
 ||squadbustersgame.com^$dnsrewrite=185.246.223.127
-||game.squadbustersgame.com^$dnsrewrite=31.25.239.132
 ||squadbustersgame.com^$dnsrewrite=31.25.239.132
-||game.squadbustersgame.com^$dnsrewrite=37.230.192.51
 ||squadbustersgame.com^$dnsrewrite=37.230.192.51
-||game.squadbustersgame.com^$dnsrewrite=45.155.204.190
 ||squadbustersgame.com^$dnsrewrite=45.155.204.190
-||game.squadbustersgame.com^$dnsrewrite=62.133.62.97
 ||squadbustersgame.com^$dnsrewrite=62.133.62.97
-||game.squadbustersgame.com^$dnsrewrite=95.182.120.241
 ||squadbustersgame.com^$dnsrewrite=95.182.120.241
 ||api-global.squareup.com^$dnsrewrite=103.27.157.38
 ||api.squareup.com^$dnsrewrite=103.27.157.38
@@ -9018,20 +8984,6 @@
 ||uaudio.com^$dnsrewrite=45.155.204.190
 ||uaudio.com^$dnsrewrite=62.133.62.97
 ||uaudio.com^$dnsrewrite=95.182.120.241
-||connect.ubisoft.com^$dnsrewrite=103.27.157.38
-||uplay.ubisoft.com^$dnsrewrite=103.27.157.38
-||connect.ubisoft.com^$dnsrewrite=185.246.223.127
-||uplay.ubisoft.com^$dnsrewrite=185.246.223.127
-||connect.ubisoft.com^$dnsrewrite=31.25.239.132
-||uplay.ubisoft.com^$dnsrewrite=31.25.239.132
-||connect.ubisoft.com^$dnsrewrite=37.230.192.51
-||uplay.ubisoft.com^$dnsrewrite=37.230.192.51
-||connect.ubisoft.com^$dnsrewrite=45.155.204.190
-||uplay.ubisoft.com^$dnsrewrite=45.155.204.190
-||connect.ubisoft.com^$dnsrewrite=62.133.62.97
-||uplay.ubisoft.com^$dnsrewrite=62.133.62.97
-||connect.ubisoft.com^$dnsrewrite=95.182.120.241
-||uplay.ubisoft.com^$dnsrewrite=95.182.120.241
 ||uizard.io^$dnsrewrite=103.27.157.38
 ||uizard.io^$dnsrewrite=185.246.223.127
 ||uizard.io^$dnsrewrite=31.25.239.132

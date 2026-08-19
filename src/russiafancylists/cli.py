@@ -2,7 +2,6 @@ import asyncio
 import contextlib
 import shutil
 import sys
-from pathlib import Path
 
 from rich.console import Console
 from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
@@ -16,8 +15,6 @@ if hasattr(sys.stderr, "reconfigure"):
     with contextlib.suppress(Exception):
         sys.stderr.reconfigure(encoding="utf-8")
 
-import contextlib
-
 from russiafancylists.config import (
     BLACKLIST_LIST_FOLDER,
     BLACKLIST_MIHOMO_FOLDER,
@@ -28,6 +25,9 @@ from russiafancylists.config import (
     HOSTS_LIST_FOLDER,
     LIST_FOLDER,
     ROOT_DIR,
+    SERVICE_LIST_FOLDER,
+    SERVICE_MIHOMO_FOLDER,
+    SERVICE_SING_BOX_FOLDER,
     TEMP_FOLDER,
     WHITELIST_LIST_FOLDER,
     WHITELIST_MIHOMO_FOLDER,
@@ -42,6 +42,7 @@ from russiafancylists.processors import (
     cleanup_domains,
     merge_cdn_and_full_ipset,
     merge_lists,
+    process_service_domains,
     resolve_domains_to_ipset,
 )
 from russiafancylists.ruleset import generate_mihomo_ruleset, generate_sing_box_ruleset
@@ -59,27 +60,41 @@ def setup_dirs(skip_download: bool = False):
     if LIST_FOLDER.exists():
         from russiafancylists.config import DOWNLOADS
 
-        download_paths = {Path(p).resolve() for _, p, _ in DOWNLOADS.values()}
+        # Find direct output files defined in DOWNLOADS that should not be deleted during skip-download mode
+        download_targets = {
+            target_path.resolve() for _, target_path, _ in DOWNLOADS.values()
+        }
 
-        def safe_clear(path: Path):
-            for item in path.iterdir():
-                if item.is_file():
-                    if skip_download and item.resolve() in download_paths:
-                        continue
-                    with contextlib.suppress(Exception):
-                        item.unlink()
-                elif item.is_dir():
-                    safe_clear(item)
-                    with contextlib.suppress(Exception):
-                        item.rmdir()
+        # Clear existing files and directories
+        for item in LIST_FOLDER.iterdir():
+            if skip_download and item.resolve() in download_targets:
+                continue
+            try:
+                if item.is_dir():
+                    # For directories containing downloaded source files (like whitelist/), preserve them when skip_download
+                    if skip_download and any(
+                        p.resolve() in download_targets for p in item.rglob("*")
+                    ):
+                        for sub_item in item.iterdir():
+                            if sub_item.resolve() not in download_targets:
+                                if sub_item.is_dir():
+                                    shutil.rmtree(sub_item, ignore_errors=True)
+                                else:
+                                    sub_item.unlink(missing_ok=True)
+                    else:
+                        shutil.rmtree(item, ignore_errors=True)
+                else:
+                    item.unlink(missing_ok=True)
+            except Exception:
+                pass
 
-        safe_clear(LIST_FOLDER)
-
+    # Ensure all directories exist
     for folder in [
         TEMP_FOLDER / "domains",
         TEMP_FOLDER / "ipsets",
         TEMP_FOLDER / "hosts",
         TEMP_FOLDER / "cdn",
+        TEMP_FOLDER / "service",
         BLACKLIST_LIST_FOLDER / "domains",
         BLACKLIST_LIST_FOLDER / "ipsets",
         BLACKLIST_SING_BOX_FOLDER / "domains",
@@ -96,6 +111,9 @@ def setup_dirs(skip_download: bool = False):
         WHITELIST_LIST_FOLDER,
         WHITELIST_SING_BOX_FOLDER,
         WHITELIST_MIHOMO_FOLDER,
+        SERVICE_LIST_FOLDER,
+        SERVICE_SING_BOX_FOLDER,
+        SERVICE_MIHOMO_FOLDER,
     ]:
         folder.mkdir(parents=True, exist_ok=True)
 
@@ -122,7 +140,7 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
             progress = Progress(
                 SpinnerColumn(),
                 TextColumn("[progress.description]{task.description}"),
-                BarColumn(bar_width=30),
+                BarColumn(),
                 TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
                 console=console,
             )
@@ -226,6 +244,12 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     GEOBLOCK_FOLDER / "domains" / "full.lst",
                     GEOBLOCK_FOLDER / "ipsets" / "full.lst",
                 ),
+                # Service lists
+                asyncio.to_thread(
+                    process_service_domains,
+                    TEMP_FOLDER / "service" / "zapret-hosts-user-exclude.txt",
+                    SERVICE_LIST_FOLDER / "prefer-direct.lst",
+                ),
             )
             status.update(
                 "[cyan]Measuring SNI proxy latencies and updating README status..."
@@ -325,6 +349,14 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     WHITELIST_SING_BOX_FOLDER / "cidr.json",
                     WHITELIST_SING_BOX_FOLDER / "cidr.srs",
                 ),
+                # Service rulesets (sing-box)
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "domain_suffix",
+                    SERVICE_LIST_FOLDER / "prefer-direct.lst",
+                    SERVICE_SING_BOX_FOLDER / "prefer-direct.json",
+                    SERVICE_SING_BOX_FOLDER / "prefer-direct.srs",
+                ),
                 # Blacklist rulesets (Mihomo)
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
@@ -404,6 +436,14 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     WHITELIST_LIST_FOLDER / "cidr.lst",
                     WHITELIST_MIHOMO_FOLDER / "cidr.yaml",
                     WHITELIST_MIHOMO_FOLDER / "cidr.mrs",
+                ),
+                # Service rulesets (Mihomo)
+                asyncio.to_thread(
+                    generate_mihomo_ruleset,
+                    "domain_suffix",
+                    SERVICE_LIST_FOLDER / "prefer-direct.lst",
+                    SERVICE_MIHOMO_FOLDER / "prefer-direct.yaml",
+                    SERVICE_MIHOMO_FOLDER / "prefer-direct.mrs",
                 ),
             )
             status.update("[cyan]Updating README file size tables...")
