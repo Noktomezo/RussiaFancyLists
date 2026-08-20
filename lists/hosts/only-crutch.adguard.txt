@@ -2,6 +2,9 @@
 ! Homepage: https://github.com/Noktomezo/RussiaFancyLists
 
 ! Crutch
+||audio4-ak-spotify-com.akamaized.net^$dnsrewrite=2.16.168.44
+||audio-ak-spotify-com.akamaized.net^$dnsrewrite=23.36.163.34
+||heads-ak-spotify-com.akamaized.net^$dnsrewrite=23.48.23.145
 ||scontent-hel3-1.cdninstagram.com^$dnsrewrite=31.13.66.63
 ||scontent.cdninstagram.com^$dnsrewrite=31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=57.144.244.192
@@ -242,6 +245,19 @@
 ||d.rutor.info^$dnsrewrite=173.245.58.219
 ||rutor.info^$dnsrewrite=173.245.58.219
 ||rutor.is^$dnsrewrite=173.245.59.219
+||accounts.scdn.co^$dnsrewrite=199.232.210.248
+||av.scdn.co^$dnsrewrite=199.232.210.248
+||daily-mix.scdn.co^$dnsrewrite=199.232.210.248
+||encore.scdn.co^$dnsrewrite=199.232.210.248
+||i.scdn.co^$dnsrewrite=199.232.210.248
+||image-cdn-fa.scdn.co^$dnsrewrite=199.232.210.248
+||line-up.scdn.co^$dnsrewrite=199.232.210.248
+||lineup-images.scdn.co^$dnsrewrite=199.232.210.248
+||mosaic.scdn.co^$dnsrewrite=199.232.210.248
+||scdn.co^$dnsrewrite=199.232.210.248
+||seafoam.scdn.co^$dnsrewrite=199.232.210.248
+||www-growth.scdn.co^$dnsrewrite=199.232.210.248
+||www.scdn.co^$dnsrewrite=199.232.210.248
 ||t.me^$dnsrewrite=149.154.167.220
 ||tapeop.dev^$dnsrewrite=216.24.57.3
 ||www.tapeop.dev^$dnsrewrite=216.24.57.3

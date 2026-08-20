@@ -17,8 +17,8 @@ academy.jetbrains.com
 access.broadcom.com
 account.deezer.com
 account.jetbrains.com
+account.spotify.com
 accounts.autodesk.com
-accounts.scdn.co
 accounts.spotify.com
 accounts.supercell.com
 accounts.x.ai
@@ -65,6 +65,7 @@ amazon.fls.jetbrains.com
 amd.com
 amplitude.com
 analog.com
+analytics.spotify.com
 andrevi.ch
 android.chat.openai.com
 angryemailtranslator.com
@@ -81,6 +82,8 @@ ap-gew4.spotify.com
 ap-guc3.spotify.com
 ap-gue1.spotify.com
 ap-help.api.jetbrains.com
+ap-sto3.spotify.com
+ap.spotify.com
 api-free.deepl.com
 api-global.squareup.com
 api-partner.spotify.com
@@ -148,6 +151,7 @@ auth.anthropic.com
 auth.deepl.com
 auth.deezer.com
 auth.openai.com
+auth.spotify.com
 auth.tidal.com
 auth0.openai.com
 autoconfig.api.jetbrains.com
@@ -332,6 +336,8 @@ clearance.deepl.com
 clevelandclinic.org
 clickup.com
 client-api.linear.app
+client.spotify.com
+clienttoken.spotify.com
 clip.opus.pro
 cloudconfig.jetbrains.com
 cloudfront.pkg-cdn.jetbrains.space
@@ -366,6 +372,7 @@ configr.jetbrains.com
 confluence.jetbrains.com
 connect.deezer.com
 connect.ngrok-agent.com
+connect.spotify.com
 connect.ubisoft.com
 consent.badoo.com
 console.anthropic.com
@@ -374,6 +381,7 @@ constellation.linear.app
 contabo.com
 content-a.strava.com
 content-management-files.canva.com
+content.spotify.com
 contentcdn.naukri.com
 contest.nc.naukri.com
 contest.openai.com
@@ -386,6 +394,7 @@ corsair.com
 coursera.com
 cps.naukri.com
 cpu-monkey.com
+crashdump.spotify.com
 creators.deezer.com
 creatorsupport.deezer.com
 credly.com
@@ -425,6 +434,8 @@ daz3d.com
 dc.jetbrains.space
 dd.tidal.com
 dds.dell.com
+dealer-wg.spotify.com
+dealer.spotify.com
 debate-game.openai.com
 deepl.com
 deepmind.com
@@ -443,6 +454,7 @@ designer.microsoft.com
 designerapp.officeapps.live.com
 designify.com
 desipro.de
+desktop.spotify.com
 dev-gcast.deezer.com
 dev.strava.com
 devart.com
@@ -523,7 +535,6 @@ elgiganten.se
 email.strava.com
 email1.strava.com
 employee-guides.jetbrains.com
-encore.scdn.co
 eneba.com
 engagor.com
 engineering.naukri.com
@@ -538,6 +549,7 @@ eu-west-1.api.x.ai
 eu.posthog.com
 eu1.ecdn2.badoocdn.com
 exchanger.bits.media
+exp.wg.spotify.com
 expandrive.com
 experimentation-grpc.deepl.com
 experimentation.deepl.com
@@ -605,6 +617,7 @@ futurelearn.com
 fxnetworks.com
 g2a.com
 g711.org
+gae2-spclient.spotify.com
 gambody.com
 game-assets.brawlstarsgame.com
 game-assets.clashofclans.com
@@ -621,6 +634,7 @@ gamestop.com
 gaming.amazon.com
 gateway.pinata.cloud
 gcast.deezer.com
+gce.spotify.com
 geforcenow.com
 geller-pa.googleapis.com
 gemini.google
@@ -633,6 +647,7 @@ geolocation.onetrust.com
 geospy.ai
 getoutline.com
 getsafeonline.org
+gew1-dealer.g2.spotify.com
 gew1-dealer.spotify.com
 gew1-spclient.spotify.com
 gfn.am
@@ -644,6 +659,7 @@ glpals.com
 gmplib.org
 gmu.edu
 gmv.com
+gnl-spclient.spotify.com
 gofund.me
 gofundme.com
 gonift.com
@@ -669,6 +685,10 @@ groq.com
 groupon.com
 grouponcdn.com
 gtm.deepl.com
+guc3-dealer.g2.spotify.com
+guc3-spclient.spotify.com
+gue1-dealer.g2.spotify.com
+gue1-spclient.spotify.com
 guide.master-zdchint.mau.jetbrains.com
 guide.staging-zdchint.mau.jetbrains.com
 guidedhacking.com
@@ -687,6 +707,7 @@ hbomax.com
 hc-ping.com
 hchk.io
 heads-fa-tls13.spotifycdn.com
+heads4-fa-tls13.spotifycdn.com
 healthline.com
 hello.jetbrains.com
 help.elevenlabs.io
@@ -716,7 +737,6 @@ hybrid-analysis.com
 hyundainews.com
 i-lo.scdn.co
 i.dell.com
-i.scdn.co
 iaai.com
 ibm.com
 icd10data.com
@@ -727,6 +747,7 @@ iherb.com
 ij-perf.jetbrains.com
 ikea.com
 image-cdn-fa.spotifycdn.com
+image-upload.spotify.com
 image.tmdb.org
 imagecache365.com
 images.deezer.com
@@ -987,10 +1008,13 @@ livekit.grok.com
 llamameta.net
 lms.naukri.com
 local.api.jetbrains.com
+log.spotify.com
+logger.spotify.com
 login-wall.deepl.com
 login.app.spotify.com
 login.naukri.com
 login.recruit.naukri.com
+login.spotify.com
 login.tidal.com
 login.x.ai
 login5.spotify.com
@@ -1054,6 +1078,7 @@ meta.com
 metacrawler.com
 metademolab.com
 metopera.org
+metrics.spotify.com
 metro.strava.com
 mi.strava.com
 michaelkors.global
@@ -1204,8 +1229,6 @@ onshape.com
 opal.google
 opal.google.com
 opal.withgoogle.com
-open-exp.spotifycdn.com
-open.spotify.com
 openai.com
 openai.fund
 openai.org
@@ -1271,6 +1294,8 @@ pimeyes.com
 pingdom.com
 pipe.deezer.com
 pixabay.com
+pixel-static.spotify.com
+pixel.spotify.com
 pkg-cdn.jetbrains.space
 pkg.eu-1.jetbrains.space
 pkgs.tailscale.com
@@ -1484,6 +1509,7 @@ sora.chatgpt.com
 sora.com
 space-cdn.jetbrains.space
 spacelift.io
+spclient.spotify.com
 spclient.wg.spotify.com
 spiceworks.com
 spinningup.openai.com
@@ -1733,6 +1759,7 @@ wdfiles.com
 we.tl
 weather.com
 web-backend.codeium.com
+web-partner.spotify.com
 web-sdk-assets.spotifycdn.com
 web.archive.org
 webchannel-alkalimakersuite-pa.clients6.google.com
@@ -1772,7 +1799,6 @@ ws.deezer.com
 wtg.csm.naukri.com
 wund.com
 wunderground.com
-www-growth.scdn.co
 www.amd.com
 www.anthropic.com
 www.autodesk.com
