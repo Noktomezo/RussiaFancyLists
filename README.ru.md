@@ -164,7 +164,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->43.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->12.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->12.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->18.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->6.1 KB<!-- SIZE_END -->
       </td>
@@ -314,8 +314,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->264.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->256.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->307.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->299.9 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -337,7 +337,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/geohide.hosts -->50.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->43.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->42.9 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси GeoHide DNS</td>
     </tr>
@@ -349,7 +349,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/malw.hosts -->50.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->43.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->42.9 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси ImMALWARE DNS</td>
     </tr>
@@ -360,7 +360,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>mafioznik-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.hosts -->11.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.hosts -->11.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси Mafioznik DNS</td>
@@ -373,7 +373,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/stressozz.hosts -->50.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->43.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->43.4 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси StressOzz Zapret-Manager</td>
     </tr>
@@ -385,8 +385,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->517.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->503.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->602.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->587.4 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -407,7 +407,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->98.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->98.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->84.0 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси GeoHide DNS</td>
@@ -420,7 +420,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/malw.adguard.txt -->98.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->84.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->83.9 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси ImMALWARE DNS</td>
     </tr>
@@ -431,7 +431,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.adguard.txt"><code>mafioznik-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->22.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->22.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.adguard.txt -->7.6 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси Mafioznik DNS</td>
@@ -444,7 +444,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/stressozz.adguard.txt -->99.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/stressozz-no-crutch.adguard.txt -->85.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/stressozz-no-crutch.adguard.txt -->85.1 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси StressOzz Zapret-Manager</td>
     </tr>
