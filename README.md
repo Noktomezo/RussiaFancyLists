@@ -314,8 +314,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->311.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->304.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->267.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->260.2 KB<!-- SIZE_END -->
       </td>
       <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
     </tr>
@@ -385,8 +385,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->612.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->596.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->525.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->510.5 KB<!-- SIZE_END -->
       </td>
       <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
     </tr>
