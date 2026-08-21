@@ -42,11 +42,6 @@ ff02::2 ip6-allrouters
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 149.154.167.220 telesco.pe
 149.154.167.220 tg.dev
-2.23.89.244 ubiservices.cdn.ubi.com
-2.23.89.92 static3.cdn.ubi.com
-3.33.249.140 public-ws-ubiservices.ubi.com
-52.6.7.14 ubi.com
-99.83.188.134 public-ubiservices.ubi.com
 52.222.149.31 ubisoft.com
 
 # Geoblock
@@ -738,6 +733,7 @@ ff02::2 ip6-allrouters
 95.182.120.241 gql.twitch.tv
 95.182.120.241 typing.com
 95.182.120.241 uaudio.com
+95.182.120.241 public-ubiservices.ubi.com public-ws-ubiservices.ubi.com static3.cdn.ubi.com ubi.com ubiservices.cdn.ubi.com
 95.182.120.241 connect.ubisoft.com uplay.ubisoft.com
 95.182.120.241 ubnt.com
 95.182.120.241 uizard.io

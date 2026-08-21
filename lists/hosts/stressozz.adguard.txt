@@ -290,11 +290,6 @@
 ||zws5.web.telegram.org^$dnsrewrite=149.154.167.220
 ||telesco.pe^$dnsrewrite=149.154.167.220
 ||tg.dev^$dnsrewrite=149.154.167.220
-||ubiservices.cdn.ubi.com^$dnsrewrite=2.23.89.244
-||static3.cdn.ubi.com^$dnsrewrite=2.23.89.92
-||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
-||ubi.com^$dnsrewrite=52.6.7.14
-||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
 ||ubisoft.com^$dnsrewrite=52.222.149.31
 
 ! Geoblock
@@ -2080,6 +2075,11 @@
 ||gql.twitch.tv^$dnsrewrite=95.182.120.241
 ||typing.com^$dnsrewrite=95.182.120.241
 ||uaudio.com^$dnsrewrite=95.182.120.241
+||public-ubiservices.ubi.com^$dnsrewrite=95.182.120.241
+||public-ws-ubiservices.ubi.com^$dnsrewrite=95.182.120.241
+||static3.cdn.ubi.com^$dnsrewrite=95.182.120.241
+||ubi.com^$dnsrewrite=95.182.120.241
+||ubiservices.cdn.ubi.com^$dnsrewrite=95.182.120.241
 ||connect.ubisoft.com^$dnsrewrite=95.182.120.241
 ||uplay.ubisoft.com^$dnsrewrite=95.182.120.241
 ||ubnt.com^$dnsrewrite=95.182.120.241

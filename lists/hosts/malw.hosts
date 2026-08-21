@@ -42,11 +42,6 @@ ff02::2 ip6-allrouters
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 149.154.167.220 telesco.pe
 149.154.167.220 tg.dev
-2.23.89.244 ubiservices.cdn.ubi.com
-2.23.89.92 static3.cdn.ubi.com
-3.33.249.140 public-ws-ubiservices.ubi.com
-52.6.7.14 ubi.com
-99.83.188.134 public-ubiservices.ubi.com
 52.222.149.31 ubisoft.com
 
 # Geoblock
@@ -738,81 +733,82 @@ ff02::2 ip6-allrouters
 185.246.223.127 gql.twitch.tv
 62.133.62.97 typing.com
 103.27.157.38 uaudio.com
-185.246.223.127 connect.ubisoft.com uplay.ubisoft.com
-62.133.62.97 ubnt.com
-103.27.157.38 uizard.io
-185.246.223.127 ultimaker.com
-62.133.62.97 ultraedit.com
-103.27.157.38 undress.cc
-185.246.223.127 unscreen.com
-62.133.62.97 unsplash.com
-103.27.157.38 upv.es
-185.246.223.127 upwork.com
-62.133.62.97 vagrantcloud.com
-103.27.157.38 vaio.com
-185.246.223.127 vans.com vans.de vans.fr vans.it vans.nl vans.se
-62.133.62.97 vectorworks.net
-103.27.157.38 veeam.com
-185.246.223.127 verificationacademy.com
-62.133.62.97 veritas.com
-103.27.157.38 viperatech.com
-185.246.223.127 vmware.com
-62.133.62.97 volet.com
-103.27.157.38 volkswagen-classic-parts.com
-185.246.223.127 vpnunlimited.com
-62.133.62.97 v.vrv.co
-103.27.157.38 vyos.io
-185.246.223.127 w-x.co
-62.133.62.97 wakanim.tv
-103.27.157.38 walletconnect.com
-185.246.223.127 walmart.com
-62.133.62.97 watchguard.com
-103.27.157.38 watermarkremover.io
-185.246.223.127 wbagora.com
-62.133.62.97 wbgames.com
-103.27.157.38 wdfiles.com
-185.246.223.127 we.tl
-62.133.62.97 upsx.weather.com weather.com
-103.27.157.38 cdn.web-platform.io
-185.246.223.127 webex.com
-62.133.62.97 webnames.ca
-103.27.157.38 webscraper.io
-185.246.223.127 weebly.com
-62.133.62.97 wellfound.com
-103.27.157.38 wetransfer.com
-185.246.223.127 widgetapp.stream
-62.133.62.97 wikidot.com
-103.27.157.38 windguru.cz
-185.246.223.127 windriver.com
-62.133.62.97 marketplace.windsurf.com windsurf.com
-103.27.157.38 wise.com
-185.246.223.127 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
-62.133.62.97 wk.cz
-103.27.157.38 wonderclub.com
-185.246.223.127 miracleptr.wordpress.com
-62.133.62.97 api.workos.com
-103.27.157.38 wpengine.com
-185.246.223.127 wrs.com
-62.133.62.97 wund.com wunderground.com
-103.27.157.38 wxug.com
-185.246.223.127 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x-minus.pro x.ai
-62.133.62.97 xbox.com xboxdesignlab.xbox.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
-103.27.157.38 xdaforums.com
-185.246.223.127 xenserver.com
-62.133.62.97 support.xerox.com www.xerox.com xerox.com
-103.27.157.38 xfantazy.com
-185.246.223.127 xiaomi.eu
-62.133.62.97 xmg.gg
-103.27.157.38 xrite.com
-185.246.223.127 xtracloud.net
-62.133.62.97 yeggi.com
-103.27.157.38 yithemes.com
-185.246.223.127 yourdictionary.com
-62.133.62.97 youtrack.cloud
-103.27.157.38 zapier.com
-185.246.223.127 zedge.net
-62.133.62.97 zerossl.com
-103.27.157.38 zetalliance.org
-185.246.223.127 zf.com
-62.133.62.97 zomato.com
-103.27.157.38 zoosk.com
+185.246.223.127 public-ubiservices.ubi.com public-ws-ubiservices.ubi.com static3.cdn.ubi.com ubi.com ubiservices.cdn.ubi.com
+62.133.62.97 connect.ubisoft.com uplay.ubisoft.com
+103.27.157.38 ubnt.com
+185.246.223.127 uizard.io
+62.133.62.97 ultimaker.com
+103.27.157.38 ultraedit.com
+185.246.223.127 undress.cc
+62.133.62.97 unscreen.com
+103.27.157.38 unsplash.com
+185.246.223.127 upv.es
+62.133.62.97 upwork.com
+103.27.157.38 vagrantcloud.com
+185.246.223.127 vaio.com
+62.133.62.97 vans.com vans.de vans.fr vans.it vans.nl vans.se
+103.27.157.38 vectorworks.net
+185.246.223.127 veeam.com
+62.133.62.97 verificationacademy.com
+103.27.157.38 veritas.com
+185.246.223.127 viperatech.com
+62.133.62.97 vmware.com
+103.27.157.38 volet.com
+185.246.223.127 volkswagen-classic-parts.com
+62.133.62.97 vpnunlimited.com
+103.27.157.38 v.vrv.co
+185.246.223.127 vyos.io
+62.133.62.97 w-x.co
+103.27.157.38 wakanim.tv
+185.246.223.127 walletconnect.com
+62.133.62.97 walmart.com
+103.27.157.38 watchguard.com
+185.246.223.127 watermarkremover.io
+62.133.62.97 wbagora.com
+103.27.157.38 wbgames.com
+185.246.223.127 wdfiles.com
+62.133.62.97 we.tl
+103.27.157.38 upsx.weather.com weather.com
+185.246.223.127 cdn.web-platform.io
+62.133.62.97 webex.com
+103.27.157.38 webnames.ca
+185.246.223.127 webscraper.io
+62.133.62.97 weebly.com
+103.27.157.38 wellfound.com
+185.246.223.127 wetransfer.com
+62.133.62.97 widgetapp.stream
+103.27.157.38 wikidot.com
+185.246.223.127 windguru.cz
+62.133.62.97 windriver.com
+103.27.157.38 marketplace.windsurf.com windsurf.com
+185.246.223.127 wise.com
+62.133.62.97 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
+103.27.157.38 wk.cz
+185.246.223.127 wonderclub.com
+62.133.62.97 miracleptr.wordpress.com
+103.27.157.38 api.workos.com
+185.246.223.127 wpengine.com
+62.133.62.97 wrs.com
+103.27.157.38 wund.com wunderground.com
+185.246.223.127 wxug.com
+62.133.62.97 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x-minus.pro x.ai
+103.27.157.38 xbox.com xboxdesignlab.xbox.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
+185.246.223.127 xdaforums.com
+62.133.62.97 xenserver.com
+103.27.157.38 support.xerox.com www.xerox.com xerox.com
+185.246.223.127 xfantazy.com
+62.133.62.97 xiaomi.eu
+103.27.157.38 xmg.gg
+185.246.223.127 xrite.com
+62.133.62.97 xtracloud.net
+103.27.157.38 yeggi.com
+185.246.223.127 yithemes.com
+62.133.62.97 yourdictionary.com
+103.27.157.38 youtrack.cloud
+185.246.223.127 zapier.com
+62.133.62.97 zedge.net
+103.27.157.38 zerossl.com
+185.246.223.127 zetalliance.org
+62.133.62.97 zf.com
+103.27.157.38 zomato.com
+185.246.223.127 zoosk.com
