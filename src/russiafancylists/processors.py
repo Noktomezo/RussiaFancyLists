@@ -423,20 +423,107 @@ def get_sld_tld(dom: str) -> str:
     return ".".join(parts[-2:])
 
 
-def expand_geoblock_subdomains(geoblock_file: Path, temp_folder: Path):
-    """Discovers and verifies active subdomains for all geoblock root domains using subfaster."""
+def _get_brand_name(dom: str) -> str:
+    """Extract the base brand name/SLD from a domain."""
+    dom = dom.lower().strip()
+    parts = dom.split(".")
+    if len(parts) < 2:
+        return dom
+    brand = parts[-2]
+    if len(parts) >= 3:
+        penultimate = parts[-2]
+        tld = parts[-1]
+        if penultimate in (
+            "co",
+            "com",
+            "org",
+            "net",
+            "gov",
+            "edu",
+            "mil",
+        ) and len(tld) in (2, 3):
+            brand = parts[-3]
+    return brand
+
+
+def pick_primary_domain(doms: set[str]) -> str:
+    """Pick the primary domain for a brand (e.g. .com over regional ccTLDs)."""
+    for ext in [".com", ".org", ".net", ".io", ".ai", ".to", ".so"]:
+        for d in sorted(doms):
+            if d.endswith(ext):
+                return d
+    return sorted(list(doms), key=lambda x: (len(x), x))[0]
+
+
+class CrtRateLimitError(Exception):
+    """Raised when crt.name returns HTTP 429 Too Many Requests."""
+
+    pass
+
+
+def fetch_crt_name_subdomains(apex: str) -> list[str]:
+    """Query https://crt.name/v1/search?apex={apex} for subdomains in pure Python."""
+    import json
+    import urllib.error
+    import urllib.request
+
+    url = f"https://crt.name/v1/search?apex={apex}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            raw = resp.read().decode("utf-8", errors="ignore")
+            data = json.loads(raw)
+            subs = set()
+            if isinstance(data, list):
+                for item in data:
+                    if isinstance(item, str):
+                        subs.add(item.lower().strip())
+                    elif isinstance(item, dict):
+                        for k in ("subdomain", "name_value", "common_name", "domain"):
+                            if k in item and item[k]:
+                                subs.add(str(item[k]).lower().strip())
+            elif isinstance(data, dict):
+                for v in data.get("subdomains", []):
+                    subs.add(str(v).lower().strip())
+            return sorted(list(subs))
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            raise CrtRateLimitError(f"crt.name rate limit reached on {apex}") from e
+        return []
+    except Exception:
+        return []
+
+
+def expand_geoblock_subdomains(
+    geoblock_file: Path,
+    temp_folder: Path,
+    cache_file: Path | None = None,
+    skip_recon: bool = False,
+):
+    """Discovers subdomains for geoblock root domains via https://crt.name.
+    Groups by brand (Variant 1), queries primary domains, projects prefixes across sibling TLDs,
+    and persists results with instant checkpointing and rate limit handling.
+    """
     if not geoblock_file.exists():
         return
 
+    import json
+    import threading
     import time
 
     from rich.table import Table
 
-    from russiafancylists.ruleset import find_binary
+    from russiafancylists.config import SUBDOMAINS_CACHE_FILE
 
-    subfaster_bin = find_binary("subfaster")
+    if cache_file is None:
+        cache_file = SUBDOMAINS_CACHE_FILE
 
-    # 1. Extract raw domains and root domains
+    # 1. Extract raw domains and map to brands & TLDs
     raw_domains = set()
     with open(geoblock_file, encoding="utf-8", errors="ignore") as f:
         for line in f:
@@ -449,100 +536,202 @@ def expand_geoblock_subdomains(geoblock_file: Path, temp_folder: Path):
                 if re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
                     raw_domains.add(d)
 
-    root_domains = sorted(list({get_sld_tld(d) for d in raw_domains}))
-    if not root_domains:
+    if not raw_domains:
         return
 
-    # 2. Dynamic RAM worker pool
+    # Group by brand
+    brand_to_tlds: dict[str, set[str]] = {}
+    for d in raw_domains:
+        st = get_sld_tld(d)
+        brand = _get_brand_name(d)
+        brand_to_tlds.setdefault(brand, set()).add(st)
+
+    brand_to_primary = {
+        b: pick_primary_domain(tlds) for b, tlds in brand_to_tlds.items()
+    }
+    primary_domains = sorted(list(set(brand_to_primary.values())))
+
+    # 2. Load existing persistent cache
+    cached_domains: dict[str, list[str]] = {}
+    if cache_file.exists():
+        try:
+            data = json.loads(cache_file.read_text(encoding="utf-8"))
+            if isinstance(data, dict) and "domains" in data:
+                cached_domains = data["domains"]
+            elif isinstance(data, dict):
+                cached_domains = data
+        except Exception:
+            cached_domains = {}
+
+    cache_lock = threading.Lock()
+
+    def save_cache_to_disk():
+        with cache_lock:
+            cache_file.parent.mkdir(parents=True, exist_ok=True)
+            payload = {
+                "version": 1,
+                "domains": dict(sorted(cached_domains.items())),
+            }
+            cache_file.write_text(
+                json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+    # Determine pending queries
+    if skip_recon:
+        pending_domains = []
+    else:
+        pending_domains = [
+            d
+            for d in primary_domains
+            if d not in cached_domains or not cached_domains[d]
+        ]
+
+    # 3. Dynamic RAM worker pool (for concurrent HTTP queries)
     avail_bytes = get_available_ram_bytes()
     avail_gb = avail_bytes / (1024**3)
-    workers = calculate_optimal_workers()
+    workers = min(calculate_optimal_workers(), 50)
 
     console.print(
-        f"  [cyan]* RAM available:[/] [bold]{avail_gb:.2f} GB[/] (50% budget) "
+        f"  [cyan]* RAM available:[/] [bold]{avail_gb:.2f} GB[/] "
         f"-> [bold green]{workers} parallel workers[/]"
     )
     console.print(
         f"  [cyan]* Geoblock input:[/] [bold]{len(raw_domains):,}[/] domains "
-        f"-> [bold]{len(root_domains):,}[/] unique root SLDs"
+        f"-> [bold]{len(brand_to_tlds):,}[/] brands ([bold]{len(primary_domains):,}[/] primary TLDs)"
     )
+    if skip_recon:
+        console.print(
+            f"  [cyan]* Recon mode:[/] [bold green]Cache only (skip-recon)[/] "
+            f"([bold]{len(cached_domains):,}[/] cached entries used)"
+        )
+    else:
+        console.print(
+            f"  [cyan]* Cache status:[/] [bold green]{len(primary_domains) - len(pending_domains):,}[/] cached "
+            f"-> [bold yellow]{len(pending_domains):,}[/] pending queries"
+        )
 
-    def process_sld(sld: str) -> tuple[str, list[str]]:
+    rate_limit_encountered = threading.Event()
+    rate_limit_domain = ""
+
+    def process_apex(apex: str) -> tuple[str, list[str]]:
+        nonlocal rate_limit_domain
+        if rate_limit_encountered.is_set():
+            return apex, [apex]
+
         try:
-            sub_res = subprocess.run(
-                [
-                    str(subfaster_bin),
-                    "-d",
-                    sld,
-                    "-active",
-                ],
-                capture_output=True,
-                text=True,
-                timeout=30,
-            )
+            candidates = fetch_crt_name_subdomains(apex)
             subs = set()
-            if sub_res.stdout:
-                for line in sub_res.stdout.splitlines():
-                    d = line.strip().lower()
-                    if d and re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
-                        subs.add(d)
-            subs.add(sld)
-            return sld, sorted(list(subs))
+            for sub in candidates:
+                d = sub.lower().strip()
+                if d and re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                    subs.add(d)
+            subs.add(apex)
+            return apex, sorted(list(subs))
+        except CrtRateLimitError:
+            rate_limit_encountered.set()
+            rate_limit_domain = apex
+            return apex, [apex]
         except Exception:
-            return sld, [sld]
+            return apex, [apex]
 
     t0 = time.perf_counter()
-    results = {}
-    done = 0
+    processed_count = 0
 
-    from rich.progress import (
-        BarColumn,
-        MofNCompleteColumn,
-        Progress,
-        SpinnerColumn,
-        TextColumn,
-        TimeElapsedColumn,
-    )
-
-    progress = Progress(
-        SpinnerColumn(),
-        TextColumn("[progress.description]{task.description}"),
-        BarColumn(),
-        MofNCompleteColumn(),
-        TimeElapsedColumn(),
-        console=console,
-    )
-
-    with progress:
-        task_id = progress.add_task(
-            "[cyan]Subfaster discovery & active DNS probe...", total=len(root_domains)
+    if pending_domains:
+        from rich.progress import (
+            BarColumn,
+            MofNCompleteColumn,
+            Progress,
+            SpinnerColumn,
+            TextColumn,
+            TimeElapsedColumn,
         )
-        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-            future_to_sld = {
-                executor.submit(process_sld, sld): sld for sld in root_domains
-            }
-            for future in concurrent.futures.as_completed(future_to_sld):
-                sld = future_to_sld[future]
-                try:
-                    _, subs = future.result()
-                except Exception:
-                    subs = [sld]
-                results[sld] = subs
-                done += 1
-                progress.advance(task_id, 1)
+
+        progress = Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            MofNCompleteColumn(),
+            TimeElapsedColumn(),
+            console=console,
+        )
+
+        with progress:
+            task_id = progress.add_task(
+                "[cyan]Querying crt.name & verifying active DNS...",
+                total=len(pending_domains),
+            )
+            with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+                future_to_apex = {
+                    executor.submit(process_apex, apex): apex
+                    for apex in pending_domains
+                }
+                for future in concurrent.futures.as_completed(future_to_apex):
+                    apex = future_to_apex[future]
+                    try:
+                        _, subs = future.result()
+                    except Exception:
+                        subs = [apex]
+
+                    if not rate_limit_encountered.is_set():
+                        with cache_lock:
+                            cached_domains[apex] = subs
+                    processed_count += 1
+                    if processed_count % 25 == 0:
+                        save_cache_to_disk()
+                    progress.advance(task_id, 1)
+
+                    if rate_limit_encountered.is_set():
+                        for f in future_to_apex:
+                            f.cancel()
+                        break
+
+        # Save final cache
+        save_cache_to_disk()
 
     dt = time.perf_counter() - t0
 
-    # 3. Merge discovered active subdomains with raw domains and save back
-    all_discovered = {d for subs in results.values() for d in subs}
+    if rate_limit_encountered.is_set():
+        console.print(
+            f"  [yellow]! Rate limit reached on {rate_limit_domain}. Saved progress and using cached data.[/yellow]"
+        )
+
+    # 4. Project discovered subdomains from primary domains across all sibling TLDs (Variant 1)
+    all_discovered = set()
+    projected_count = 0
+
+    for brand, sibling_tlds in brand_to_tlds.items():
+        prim = brand_to_primary[brand]
+        prim_subs = cached_domains.get(prim, [prim])
+
+        # Extract prefixes from primary domain subdomains
+        prefixes = set()
+        for s in prim_subs:
+            all_discovered.add(s)
+            if s.endswith("." + prim):
+                pfx = s[: -(len(prim) + 1)]
+                if pfx:
+                    prefixes.add(pfx)
+
+        # Project across all sibling TLDs
+        for sib in sibling_tlds:
+            all_discovered.add(sib)
+            if sib != prim and prefixes:
+                for pfx in prefixes:
+                    projected_dom = f"{pfx}.{sib}"
+                    all_discovered.add(projected_dom)
+                    projected_count += 1
+
+    # 5. Merge discovered + projected with raw domains
     final_domains = sorted(list(all_discovered | raw_domains))
     new_subdomains_count = len(final_domains) - len(raw_domains)
 
     geoblock_file.write_text("\n".join(final_domains) + "\n", encoding="utf-8")
 
-    # 4. Fancy summary table
+    # 6. Fancy summary table
     table = Table(
-        title="[bold green]Subdomain Discovery Summary[/bold green]",
+        title="[bold green]Subdomain Discovery Summary (crt.name)[/bold green]",
         show_header=True,
         header_style="bold cyan",
     )
@@ -550,9 +739,13 @@ def expand_geoblock_subdomains(geoblock_file: Path, temp_folder: Path):
     table.add_column("Count", justify="right", style="bold")
 
     table.add_row("Original merged domains", f"{len(raw_domains):,}")
-    table.add_row("Root SLD domains queried", f"{len(root_domains):,}")
+    table.add_row("Total unique brand SLDs", f"{len(brand_to_tlds):,}")
+    table.add_row("Primary domains queried/cached", f"{len(primary_domains):,}")
+    table.add_row("Newly queried domains", f"{processed_count:,}")
+    table.add_row("Projected sibling TLD subdomains", f"{projected_count:,}")
     table.add_row("New active subdomains added", f"+{new_subdomains_count:,}")
     table.add_row("Total geoblock domains (with roots)", f"{len(final_domains):,}")
-    table.add_row("Discovery duration", f"{dt:.2f}s ({dt / 60:.1f} min)")
+    table.add_row("Cache file entries", f"{len(cached_domains):,}")
+    table.add_row("Execution duration", f"{dt:.2f}s ({dt / 60:.1f} min)")
 
     console.print(table)

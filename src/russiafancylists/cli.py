@@ -124,7 +124,11 @@ def cleanup():
         shutil.rmtree(TEMP_FOLDER)
 
 
-async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
+async def run_pipeline(
+    skip_download: bool = False,
+    keep_temp: bool = False,
+    skip_recon: bool = False,
+):
     """Run all steps of the update pipeline concurrently, matching original Bash parallelism."""
     try:
         setup_dirs(skip_download=skip_download)
@@ -198,12 +202,13 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
 
         # 2. Discover and verify active subdomains for geoblock list
         console.print(
-            "[bold cyan]> Expanding geoblock subdomains with Subfaster...[/bold cyan]"
+            "[bold cyan]> Expanding geoblock subdomains with crt.name...[/bold cyan]"
         )
         await asyncio.to_thread(
             expand_geoblock_subdomains,
             GEOBLOCK_FOLDER / "domains" / "full.lst",
             TEMP_FOLDER,
+            skip_recon=skip_recon,
         )
 
         with Status(
@@ -469,10 +474,19 @@ def main():
     parser.add_argument(
         "--keep-temp", action="store_true", help="Keep the temp directory after running"
     )
+    parser.add_argument(
+        "--skip-recon",
+        action="store_true",
+        help="Skip external crt.name subdomain recon and use persistent cache only",
+    )
     args = parser.parse_args()
 
     asyncio.run(
-        run_pipeline(skip_download=args.skip_download, keep_temp=args.keep_temp)
+        run_pipeline(
+            skip_download=args.skip_download,
+            keep_temp=args.keep_temp,
+            skip_recon=args.skip_recon,
+        )
     )
 
 

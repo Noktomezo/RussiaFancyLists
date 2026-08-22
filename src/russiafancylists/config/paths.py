@@ -22,3 +22,7 @@ WHITELIST_MIHOMO_FOLDER = LIST_FOLDER / "whitelist-mihomo"
 SERVICE_LIST_FOLDER = LIST_FOLDER / "service"
 SERVICE_SING_BOX_FOLDER = LIST_FOLDER / "service-sing-box"
 SERVICE_MIHOMO_FOLDER = LIST_FOLDER / "service-mihomo"
+
+# Data folder for persistent caches
+DATA_FOLDER = ROOT_DIR / "data"
+SUBDOMAINS_CACHE_FILE = DATA_FOLDER / "subdomains_cache.json"
