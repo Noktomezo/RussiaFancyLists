@@ -1,9 +1,11 @@
+import concurrent.futures
 import contextlib
 import glob
 import ipaddress
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -338,3 +340,219 @@ def process_service_domains(input_file: Path, output_file: Path):
     with open(output_file, "w", encoding="utf-8") as f:
         for d in sorted(domains):
             f.write(d + "\n")
+
+
+def get_available_ram_bytes() -> int:
+    """Cross-platform zero-dependency available RAM detector.
+    Works on Windows, Linux (including GitHub Actions CI), and macOS.
+    """
+    # 1. Linux / GitHub Actions runner (/proc/meminfo)
+    if sys.platform.startswith("linux"):
+        try:
+            with open("/proc/meminfo", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("MemAvailable:"):
+                        return int(line.split()[1]) * 1024
+        except Exception:
+            pass
+        try:
+            return os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_AVPHYS_PAGES")
+        except Exception:
+            pass
+
+    # 2. Windows (WinAPI GlobalMemoryStatusEx)
+    elif sys.platform == "win32":
+        try:
+            import ctypes
+
+            class MEMORYSTATUSEX(ctypes.Structure):
+                _fields_ = [
+                    ("dwLength", ctypes.c_ulong),
+                    ("dwMemoryLoad", ctypes.c_ulong),
+                    ("ullTotalPhys", ctypes.c_ulonglong),
+                    ("ullAvailPhys", ctypes.c_ulonglong),
+                    ("ullTotalPageFile", ctypes.c_ulonglong),
+                    ("ullAvailPageFile", ctypes.c_ulonglong),
+                    ("ullTotalVirtual", ctypes.c_ulonglong),
+                    ("ullAvailVirtual", ctypes.c_ulonglong),
+                    ("sullAvailExtendedVirtual", ctypes.c_ulonglong),
+                ]
+
+            stat = MEMORYSTATUSEX()
+            stat.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
+            if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(stat)):
+                return int(stat.ullAvailPhys)
+        except Exception:
+            pass
+
+    # 3. macOS / POSIX fallback
+    try:
+        return os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_AVPHYS_PAGES")
+    except Exception:
+        pass
+
+    # Safe fallback (4 GB)
+    return 4 * 1024 * 1024 * 1024
+
+
+def calculate_optimal_workers(memory_ratio: float = 0.5, proc_mb: int = 35) -> int:
+    """Calculate optimal concurrency workers based on available RAM."""
+    avail_bytes = get_available_ram_bytes()
+    budget_bytes = avail_bytes * memory_ratio
+    proc_bytes = proc_mb * 1024 * 1024
+    return max(10, min(int(budget_bytes // proc_bytes), 250))
+
+
+def get_sld_tld(dom: str) -> str:
+    """Extract SLD.TLD from domain."""
+    parts = dom.split(".")
+    if len(parts) <= 2:
+        return dom
+    penultimate = parts[-2]
+    tld = parts[-1]
+    if penultimate in (
+        "co",
+        "com",
+        "org",
+        "net",
+        "gov",
+        "edu",
+        "mil",
+    ) and len(tld) in (2, 3):
+        return ".".join(parts[-3:])
+    return ".".join(parts[-2:])
+
+
+def expand_geoblock_subdomains(geoblock_file: Path, temp_folder: Path):
+    """Discovers and verifies active subdomains for all geoblock root domains using subfaster."""
+    if not geoblock_file.exists():
+        return
+
+    import time
+
+    from rich.table import Table
+
+    from russiafancylists.ruleset import find_binary
+
+    subfaster_bin = find_binary("subfaster")
+
+    # 1. Extract raw domains and root domains
+    raw_domains = set()
+    with open(geoblock_file, encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            line = re.sub(r"#.*", "", line).strip()
+            if not line:
+                continue
+            cols = line.split()
+            for d in cols[1:] if len(cols) > 1 else cols:
+                d = d.lower().strip()
+                if re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                    raw_domains.add(d)
+
+    root_domains = sorted(list({get_sld_tld(d) for d in raw_domains}))
+    if not root_domains:
+        return
+
+    # 2. Dynamic RAM worker pool
+    avail_bytes = get_available_ram_bytes()
+    avail_gb = avail_bytes / (1024**3)
+    workers = calculate_optimal_workers()
+
+    console.print(
+        f"  [cyan]* RAM available:[/] [bold]{avail_gb:.2f} GB[/] (50% budget) "
+        f"-> [bold green]{workers} parallel workers[/]"
+    )
+    console.print(
+        f"  [cyan]* Geoblock input:[/] [bold]{len(raw_domains):,}[/] domains "
+        f"-> [bold]{len(root_domains):,}[/] unique root SLDs"
+    )
+
+    def process_sld(sld: str) -> tuple[str, list[str]]:
+        try:
+            sub_res = subprocess.run(
+                [
+                    str(subfaster_bin),
+                    "-d",
+                    sld,
+                    "-active",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            subs = set()
+            if sub_res.stdout:
+                for line in sub_res.stdout.splitlines():
+                    d = line.strip().lower()
+                    if d and re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                        subs.add(d)
+            subs.add(sld)
+            return sld, sorted(list(subs))
+        except Exception:
+            return sld, [sld]
+
+    t0 = time.perf_counter()
+    results = {}
+    done = 0
+
+    from rich.progress import (
+        BarColumn,
+        MofNCompleteColumn,
+        Progress,
+        SpinnerColumn,
+        TextColumn,
+        TimeElapsedColumn,
+    )
+
+    progress = Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        MofNCompleteColumn(),
+        TimeElapsedColumn(),
+        console=console,
+    )
+
+    with progress:
+        task_id = progress.add_task(
+            "[cyan]Subfaster discovery & active DNS probe...", total=len(root_domains)
+        )
+        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+            future_to_sld = {
+                executor.submit(process_sld, sld): sld for sld in root_domains
+            }
+            for future in concurrent.futures.as_completed(future_to_sld):
+                sld = future_to_sld[future]
+                try:
+                    _, subs = future.result()
+                except Exception:
+                    subs = [sld]
+                results[sld] = subs
+                done += 1
+                progress.advance(task_id, 1)
+
+    dt = time.perf_counter() - t0
+
+    # 3. Merge discovered active subdomains with raw domains and save back
+    all_discovered = {d for subs in results.values() for d in subs}
+    final_domains = sorted(list(all_discovered | raw_domains))
+    new_subdomains_count = len(final_domains) - len(raw_domains)
+
+    geoblock_file.write_text("\n".join(final_domains) + "\n", encoding="utf-8")
+
+    # 4. Fancy summary table
+    table = Table(
+        title="[bold green]Subdomain Discovery Summary[/bold green]",
+        show_header=True,
+        header_style="bold cyan",
+    )
+    table.add_column("Metric", style="dim")
+    table.add_column("Count", justify="right", style="bold")
+
+    table.add_row("Original merged domains", f"{len(raw_domains):,}")
+    table.add_row("Root SLD domains queried", f"{len(root_domains):,}")
+    table.add_row("New active subdomains added", f"+{new_subdomains_count:,}")
+    table.add_row("Total geoblock domains (with roots)", f"{len(final_domains):,}")
+    table.add_row("Discovery duration", f"{dt:.2f}s ({dt / 60:.1f} min)")
+
+    console.print(table)

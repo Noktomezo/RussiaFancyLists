@@ -215,6 +215,7 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
+||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -239,6 +240,7 @@
 ||ntc.party^$dnsrewrite=130.255.77.28
 ||tracker.openbittorrent.com^$dnsrewrite=52.223.13.41
 ||r6s.com^$dnsrewrite=172.67.139.108
+||rainbow6.com^$dnsrewrite=54.155.2.87
 ||lib.rus.ec^$dnsrewrite=185.39.18.98
 ||www.lib.rus.ec^$dnsrewrite=185.39.18.98
 ||d.rutor.is^$dnsrewrite=172.64.33.155
@@ -290,7 +292,14 @@
 ||zws5.web.telegram.org^$dnsrewrite=149.154.167.220
 ||telesco.pe^$dnsrewrite=149.154.167.220
 ||tg.dev^$dnsrewrite=149.154.167.220
+||ubiservices.cdn.ubi.com^$dnsrewrite=2.23.89.244
+||static3.cdn.ubi.com^$dnsrewrite=2.23.89.92
+||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
+||ubi.com^$dnsrewrite=52.6.7.14
+||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
+||connect.ubisoft.com^$dnsrewrite=18.209.141.203
 ||ubisoft.com^$dnsrewrite=52.222.149.31
+||uplay.ubisoft.com^$dnsrewrite=54.76.54.196
 
 ! Geoblock
 ||2407.pl^$dnsrewrite=95.182.120.241
@@ -762,7 +771,6 @@
 ||fastflux.ai^$dnsrewrite=95.182.120.241
 ||fastspring.com^$dnsrewrite=95.182.120.241
 ||lastfm.freetls.fastly.net^$dnsrewrite=95.182.120.241
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=95.182.120.241
 ||fedex.com^$dnsrewrite=95.182.120.241
 ||fiercepc.co.uk^$dnsrewrite=95.182.120.241
 ||filebin.net^$dnsrewrite=95.182.120.241
@@ -1734,7 +1742,6 @@
 ||qwant.com^$dnsrewrite=95.182.120.241
 ||www.qwant.com^$dnsrewrite=95.182.120.241
 ||radarr.video^$dnsrewrite=95.182.120.241
-||rainbow6.com^$dnsrewrite=95.182.120.241
 ||ratatype.com^$dnsrewrite=95.182.120.241
 ||raycast-releases.com^$dnsrewrite=95.182.120.241
 ||raycast.com^$dnsrewrite=95.182.120.241
@@ -2075,13 +2082,6 @@
 ||gql.twitch.tv^$dnsrewrite=95.182.120.241
 ||typing.com^$dnsrewrite=95.182.120.241
 ||uaudio.com^$dnsrewrite=95.182.120.241
-||public-ubiservices.ubi.com^$dnsrewrite=95.182.120.241
-||public-ws-ubiservices.ubi.com^$dnsrewrite=95.182.120.241
-||static3.cdn.ubi.com^$dnsrewrite=95.182.120.241
-||ubi.com^$dnsrewrite=95.182.120.241
-||ubiservices.cdn.ubi.com^$dnsrewrite=95.182.120.241
-||connect.ubisoft.com^$dnsrewrite=95.182.120.241
-||uplay.ubisoft.com^$dnsrewrite=95.182.120.241
 ||ubnt.com^$dnsrewrite=95.182.120.241
 ||uizard.io^$dnsrewrite=95.182.120.241
 ||ultimaker.com^$dnsrewrite=95.182.120.241

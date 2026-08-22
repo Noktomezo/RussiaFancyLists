@@ -40,6 +40,7 @@ from russiafancylists.hosts import (
 )
 from russiafancylists.processors import (
     cleanup_domains,
+    expand_geoblock_subdomains,
     merge_cdn_and_full_ipset,
     merge_lists,
     process_service_domains,
@@ -148,7 +149,9 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
             )
 
         # --- Stage 2: Merging ---
-        console.print("\n[bold purple]Stage 2: Merging lists...[/bold purple]")
+        console.print(
+            "\n[bold purple]Stage 2: Merging lists & Subdomain Recon...[/bold purple]"
+        )
         with Status(
             "[cyan]Parsing shell scripts and merging domains...", console=console
         ) as status:
@@ -192,11 +195,22 @@ async def run_pipeline(skip_download: bool = False, keep_temp: bool = False):
                     BLACKLIST_LIST_FOLDER / "ipsets" / "cdn.lst",
                 ),
             )
-            status.update(
-                "[cyan]Building aligned hosts files from full geoblock list..."
-            )
 
-            # 2. Build aligned hosts files from the completed full geoblock list
+        # 2. Discover and verify active subdomains for geoblock list
+        console.print(
+            "[bold cyan]> Expanding geoblock subdomains with Subfaster...[/bold cyan]"
+        )
+        await asyncio.to_thread(
+            expand_geoblock_subdomains,
+            GEOBLOCK_FOLDER / "domains" / "full.lst",
+            TEMP_FOLDER,
+        )
+
+        with Status(
+            "[cyan]Building aligned hosts files from full geoblock list...",
+            console=console,
+        ) as status:
+            # 3. Build aligned hosts files from the completed full geoblock list
             await generate_aligned_hosts(
                 GEOBLOCK_FOLDER / "domains" / "full.lst",
                 TEMP_FOLDER / "hosts",
