@@ -147,7 +147,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->53.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/domains/full.json -->53.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full.srs -->13.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.json -->23.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/domains/full-sld.srs -->6.6 KB<!-- SIZE_END -->
@@ -166,7 +166,7 @@
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.yaml -->43.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full.mrs -->12.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.yaml -->18.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->6.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/domains/full-sld.mrs -->6.0 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -314,8 +314,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->267.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->260.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->267.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->260.3 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -373,8 +373,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->526.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->510.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->525.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->510.6 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -395,7 +395,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->100.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->101.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->85.8 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси GeoHide DNS</td>
@@ -407,8 +407,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->100.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->85.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->100.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->85.4 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси ImMALWARE DNS</td>
     </tr>
