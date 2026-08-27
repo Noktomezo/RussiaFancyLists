@@ -43,7 +43,6 @@ ff02::2 ip6-allrouters
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 149.154.167.220 telesco.pe
 149.154.167.220 tg.dev
-52.222.149.31 ubisoft.com
 
 # Geoblock
 103.27.157.38 2407.pl
@@ -4174,12 +4173,12 @@ ff02::2 ip6-allrouters
 37.230.192.51 ubi.com
 45.155.204.190 ubi.com
 62.133.62.97 ubi.com
-103.27.157.38 connect.ubisoft.com uplay.ubisoft.com
-185.246.223.127 connect.ubisoft.com uplay.ubisoft.com
-31.25.239.132 connect.ubisoft.com uplay.ubisoft.com
-37.230.192.51 connect.ubisoft.com uplay.ubisoft.com
-45.155.204.190 connect.ubisoft.com uplay.ubisoft.com
-62.133.62.97 connect.ubisoft.com uplay.ubisoft.com
+103.27.157.38 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+185.246.223.127 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+31.25.239.132 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+37.230.192.51 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+45.155.204.190 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+62.133.62.97 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
 103.27.157.38 ubnt.com
 185.246.223.127 ubnt.com
 31.25.239.132 ubnt.com

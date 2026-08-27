@@ -291,7 +291,6 @@
 ||zws5.web.telegram.org^$dnsrewrite=149.154.167.220
 ||telesco.pe^$dnsrewrite=149.154.167.220
 ||tg.dev^$dnsrewrite=149.154.167.220
-||ubisoft.com^$dnsrewrite=52.222.149.31
 
 ! Geoblock
 ||2407.pl^$dnsrewrite=31.25.239.132
@@ -2081,6 +2080,7 @@
 ||ubi.com^$dnsrewrite=31.25.239.132
 ||ubiservices.cdn.ubi.com^$dnsrewrite=31.25.239.132
 ||connect.ubisoft.com^$dnsrewrite=37.230.192.51
+||ubisoft.com^$dnsrewrite=37.230.192.51
 ||uplay.ubisoft.com^$dnsrewrite=37.230.192.51
 ||ubnt.com^$dnsrewrite=45.155.204.190
 ||uizard.io^$dnsrewrite=31.25.239.132
