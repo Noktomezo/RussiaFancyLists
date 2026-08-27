@@ -27,7 +27,7 @@ jobs:
 
     - name: Run update script
       run: |
-        uv run russiafancylists --skip-recon
+        uv run russiafancylists
 
     - name: Verify hosts lists sync
       run: |

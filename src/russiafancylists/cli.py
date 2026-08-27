@@ -40,7 +40,6 @@ from russiafancylists.hosts import (
 )
 from russiafancylists.processors import (
     cleanup_domains,
-    expand_geoblock_subdomains,
     merge_cdn_and_full_ipset,
     merge_lists,
     process_service_domains,
@@ -127,8 +126,6 @@ def cleanup():
 async def run_pipeline(
     skip_download: bool = False,
     keep_temp: bool = False,
-    skip_recon: bool = False,
-    force_recon: bool = False,
 ):
     """Run all steps of the update pipeline concurrently, matching original Bash parallelism."""
     try:
@@ -154,9 +151,7 @@ async def run_pipeline(
             )
 
         # --- Stage 2: Merging ---
-        console.print(
-            "\n[bold purple]Stage 2: Merging lists & Subdomain Recon...[/bold purple]"
-        )
+        console.print("\n[bold purple]Stage 2: Merging lists...[/bold purple]")
         with Status(
             "[cyan]Parsing shell scripts and merging domains...", console=console
         ) as status:
@@ -201,23 +196,11 @@ async def run_pipeline(
                 ),
             )
 
-        # 2. Discover and verify active subdomains for geoblock list
-        console.print(
-            "[bold cyan]> Expanding geoblock subdomains with crt.name...[/bold cyan]"
-        )
-        await asyncio.to_thread(
-            expand_geoblock_subdomains,
-            GEOBLOCK_FOLDER / "domains" / "full.lst",
-            TEMP_FOLDER,
-            skip_recon=skip_recon,
-            force_recon=force_recon,
-        )
-
         with Status(
             "[cyan]Building aligned hosts files from full geoblock list...",
             console=console,
         ) as status:
-            # 3. Build aligned hosts files from the completed full geoblock list
+            # 2. Build aligned hosts files from the completed full geoblock list
             await generate_aligned_hosts(
                 GEOBLOCK_FOLDER / "domains" / "full.lst",
                 TEMP_FOLDER / "hosts",
@@ -476,24 +459,12 @@ def main():
     parser.add_argument(
         "--keep-temp", action="store_true", help="Keep the temp directory after running"
     )
-    parser.add_argument(
-        "--skip-recon",
-        action="store_true",
-        help="Skip external crt.name subdomain recon and use persistent cache only",
-    )
-    parser.add_argument(
-        "--force-recon",
-        action="store_true",
-        help="Force re-querying all domains from crt.name regardless of cache",
-    )
     args = parser.parse_args()
 
     asyncio.run(
         run_pipeline(
             skip_download=args.skip_download,
             keep_temp=args.keep_temp,
-            skip_recon=args.skip_recon,
-            force_recon=args.force_recon,
         )
     )
 

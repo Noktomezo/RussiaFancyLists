@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 from russiafancylists.config import HOSTS_DIRECT
+from russiafancylists.processors import clean_and_validate_domain
 from russiafancylists.ruleset import find_binary
 
 LOOPBACK_HEADER = (
@@ -609,20 +610,38 @@ async def generate_aligned_hosts(
         allowed_domains.update(doms)
 
     # Load domains from non-hosts sources (like itdoginfo-geoblock.lst and dartraiden-geoblock.lst which have no IP mappings)
+    domain_pattern = re.compile(
+        r"([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}"
+    )
     for extra_name in ("itdoginfo-geoblock.lst", "dartraiden-geoblock.lst"):
         extra_path = hosts_temp_dir / extra_name
         if extra_path.exists():
             with open(extra_path, encoding="utf-8", errors="ignore") as f:
                 for line in f:
+                    if extra_name == "dartraiden-geoblock.lst":
+                        for match in domain_pattern.finditer(line):
+                            d = match.group(0).lower().rstrip(".")
+                            if not d.endswith(
+                                (
+                                    ".php",
+                                    ".html",
+                                    ".txt",
+                                    ".json",
+                                    ".png",
+                                    ".jpg",
+                                    ".md",
+                                )
+                            ):
+                                for cleaned in clean_and_validate_domain(d):
+                                    allowed_domains.add(cleaned.lower().strip())
+
                     line = re.sub(r"#.*", "", line).strip()
                     if not line:
                         continue
                     dom = line.lower().strip()
                     if dom:
-                        allowed_domains.add(dom)
-
-    # Ensure all domains from the compiled geoblock file are included in allowed_domains
-    allowed_domains.update(geoblock_domains)
+                        for cleaned in clean_and_validate_domain(dom):
+                            allowed_domains.add(cleaned.lower().strip())
 
     # Filter geoblock_domains to only keep those allowed
     geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
