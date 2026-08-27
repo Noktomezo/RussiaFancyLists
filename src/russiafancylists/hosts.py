@@ -621,6 +621,9 @@ async def generate_aligned_hosts(
                     if dom:
                         allowed_domains.add(dom)
 
+    # Ensure all domains from the compiled geoblock file are included in allowed_domains
+    allowed_domains.update(geoblock_domains)
+
     # Filter geoblock_domains to only keep those allowed
     geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
 
@@ -638,22 +641,10 @@ async def generate_aligned_hosts(
             brand = brand.split("-")[0]
         return brand
 
-    raw_brands = {get_raw_brand(d) for d in geoblock_domains}
-
-    # Resolve base brands by matching prefixes
-    resolved_brands = {}
-    for dom in geoblock_domains:
-        brand = get_raw_brand(dom)
-        for known in sorted(list(raw_brands), key=len):
-            if brand != known and brand.startswith(known) and len(known) >= 4:
-                brand = known
-                break
-        resolved_brands[dom] = brand
-
-    # Pre-group domains by brand
+    # Group domains by brand
     brand_domains = {}
     for dom in geoblock_domains:
-        brand = resolved_brands[dom]
+        brand = get_raw_brand(dom)
         brand_domains.setdefault(brand, []).append(dom)
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel

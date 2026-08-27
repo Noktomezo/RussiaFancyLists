@@ -26,7 +26,7 @@ jobs:
 
     - name: Run update script with subdomain recon
       run: |
-        uv run russiafancylists
+        uv run russiafancylists --force-recon
 
     - name: Verify hosts lists sync
       run: |

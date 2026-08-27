@@ -128,6 +128,7 @@ async def run_pipeline(
     skip_download: bool = False,
     keep_temp: bool = False,
     skip_recon: bool = False,
+    force_recon: bool = False,
 ):
     """Run all steps of the update pipeline concurrently, matching original Bash parallelism."""
     try:
@@ -209,6 +210,7 @@ async def run_pipeline(
             GEOBLOCK_FOLDER / "domains" / "full.lst",
             TEMP_FOLDER,
             skip_recon=skip_recon,
+            force_recon=force_recon,
         )
 
         with Status(
@@ -479,6 +481,11 @@ def main():
         action="store_true",
         help="Skip external crt.name subdomain recon and use persistent cache only",
     )
+    parser.add_argument(
+        "--force-recon",
+        action="store_true",
+        help="Force re-querying all domains from crt.name regardless of cache",
+    )
     args = parser.parse_args()
 
     asyncio.run(
@@ -486,6 +493,7 @@ def main():
             skip_download=args.skip_download,
             keep_temp=args.keep_temp,
             skip_recon=args.skip_recon,
+            force_recon=args.force_recon,
         )
     )
 

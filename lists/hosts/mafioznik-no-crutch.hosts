@@ -6,7 +6,8 @@ ff02::2 ip6-allrouters
 
 # Geoblock
 103.27.157.38 azwindows.ipv6.microsoft.com.akadns.net www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
-103.27.157.38 a1961.g2.akamai.net a1968.i6g1.akamai.net e13678.dscb.akamaiedge.net
+103.27.157.38 a1961.g2.akamai.net a1968.i6g1.akamai.net
+103.27.157.38 e13678.dscb.akamaiedge.net
 103.27.157.38 api.anthropic.com auth.anthropic.com console.anthropic.com
 103.27.157.38 web.archive.org
 103.27.157.38 cdn.auth0.com
@@ -20,14 +21,16 @@ ff02::2 ip6-allrouters
 103.27.157.38 claude.ai
 103.27.157.38 api-free.deepl.com auth.deepl.com backend.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 103.27.157.38 deezer.com payment.deezer.com www.deezer.com
-103.27.157.38 afcs.dellcdn.com dds.dell.com i.dell.com nexus.dell.com www.dell.com
+103.27.157.38 dds.dell.com i.dell.com nexus.dell.com www.dell.com
+103.27.157.38 afcs.dellcdn.com
 103.27.157.38 www.dyson.com www.dyson.fr
 103.27.157.38 dzcdn.net
 103.27.157.38 www.microsoft.com-c-3.edgekey.net
 103.27.157.38 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 103.27.157.38 elevenreader.io
 103.27.157.38 api.fitbit.com
-103.27.157.38 aisandbox-pa.googleapis.com aistudio.google.com alkalimakersuite-pa.clients6.google.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbit.google.com fitbitvestibuleshim-pa.googleapis.com gemini.google.com generativelanguage.googleapis.com jules.google.com notebooklm.google.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com webchannel-alkalimakersuite-pa.clients6.google.com
+103.27.157.38 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+103.27.157.38 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 103.27.157.38 assets.grok.com grok.com
 103.27.157.38 guilded.gg www.guilded.gg
 103.27.157.38 api.imgur.com

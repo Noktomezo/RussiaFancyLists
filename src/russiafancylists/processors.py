@@ -477,19 +477,40 @@ def fetch_crt_name_subdomains(apex: str) -> list[str]:
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
             raw = resp.read().decode("utf-8", errors="ignore")
-            data = json.loads(raw)
             subs = set()
-            if isinstance(data, list):
-                for item in data:
-                    if isinstance(item, str):
-                        subs.add(item.lower().strip())
-                    elif isinstance(item, dict):
-                        for k in ("subdomain", "name_value", "common_name", "domain"):
-                            if k in item and item[k]:
-                                subs.add(str(item[k]).lower().strip())
-            elif isinstance(data, dict):
-                for v in data.get("subdomains", []):
-                    subs.add(str(v).lower().strip())
+            # Try parsing as JSON first if applicable
+            try:
+                data = json.loads(raw)
+                if isinstance(data, list):
+                    for item in data:
+                        if isinstance(item, str):
+                            d = item.lower().strip()
+                            if re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                                subs.add(d)
+                        elif isinstance(item, dict):
+                            for k in (
+                                "subdomain",
+                                "name_value",
+                                "common_name",
+                                "domain",
+                            ):
+                                if k in item and item[k]:
+                                    d = str(item[k]).lower().strip()
+                                    if re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                                        subs.add(d)
+                elif isinstance(data, dict):
+                    for v in data.get("subdomains", []):
+                        d = str(v).lower().strip()
+                        if re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                            subs.add(d)
+            except Exception:
+                # Standard crt.name plain-text format (newline-delimited)
+                for line in raw.splitlines():
+                    d = line.strip().lower()
+                    if d and re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", d):
+                        subs.add(d)
+
+            subs.add(apex)
             return sorted(list(subs))
     except urllib.error.HTTPError as e:
         if e.code == 429:
@@ -499,11 +520,58 @@ def fetch_crt_name_subdomains(apex: str) -> list[str]:
         return []
 
 
+def clean_subdomains_list(subs: list[str], max_other: int = 150) -> list[str]:
+    """Filter out noisy UUIDs, long hashes, deep subdomains, and prioritize functional subdomains."""
+    priority_kw = (
+        "www",
+        "api",
+        "auth",
+        "login",
+        "app",
+        "download",
+        "support",
+        "cdn",
+        "account",
+        "status",
+        "dev",
+        "docs",
+        "mail",
+        "portal",
+        "community",
+        "forum",
+        "billing",
+        "help",
+        "static",
+        "media",
+        "assets",
+    )
+    clean = set()
+    for s in subs:
+        parts = s.split(".")
+        if len(parts) > 5:
+            continue
+        if any(
+            re.match(r"^[0-9a-f]{16,}$", p)
+            or re.match(
+                r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                p,
+            )
+            for p in parts
+        ):
+            continue
+        clean.add(s)
+
+    priority_subs = [s for s in clean if any(s.startswith(kw) for kw in priority_kw)]
+    other_subs = sorted(list(clean - set(priority_subs)), key=lambda x: (len(x), x))
+    return sorted(list(set(priority_subs + other_subs[:max_other])))
+
+
 def expand_geoblock_subdomains(
     geoblock_file: Path,
     temp_folder: Path,
     cache_file: Path | None = None,
     skip_recon: bool = False,
+    force_recon: bool = False,
 ):
     """Discovers subdomains for geoblock root domains via https://crt.name.
     Groups by brand (Variant 1), queries primary domains, projects prefixes across sibling TLDs,
@@ -580,21 +648,20 @@ def expand_geoblock_subdomains(
     # Determine pending queries
     if skip_recon:
         pending_domains = []
+    elif force_recon:
+        pending_domains = primary_domains
     else:
         pending_domains = [
             d
             for d in primary_domains
-            if d not in cached_domains or not cached_domains[d]
+            if d not in cached_domains or len(cached_domains[d]) <= 1
         ]
 
-    # 3. Dynamic RAM worker pool (for concurrent HTTP queries)
-    avail_bytes = get_available_ram_bytes()
-    avail_gb = avail_bytes / (1024**3)
-    workers = min(calculate_optimal_workers(), 50)
+    # 3. Controlled worker pool (for gentle HTTP queries to avoid burst rate-limiting)
+    workers = min(15, calculate_optimal_workers())
 
     console.print(
-        f"  [cyan]* RAM available:[/] [bold]{avail_gb:.2f} GB[/] "
-        f"-> [bold green]{workers} parallel workers[/]"
+        f"  [cyan]* Recon concurrency:[/] [bold green]{workers} parallel workers[/]"
     )
     console.print(
         f"  [cyan]* Geoblock input:[/] [bold]{len(raw_domains):,}[/] domains "
@@ -604,6 +671,10 @@ def expand_geoblock_subdomains(
         console.print(
             f"  [cyan]* Recon mode:[/] [bold green]Cache only (skip-recon)[/] "
             f"([bold]{len(cached_domains):,}[/] cached entries used)"
+        )
+    elif force_recon:
+        console.print(
+            f"  [cyan]* Recon mode:[/] [bold yellow]Force recon (refreshing all {len(primary_domains):,} domains)[/]"
         )
     else:
         console.print(
@@ -698,12 +769,35 @@ def expand_geoblock_subdomains(
         )
 
     # 4. Project discovered subdomains from primary domains across all sibling TLDs (Variant 1)
+    priority_kw = (
+        "www",
+        "api",
+        "auth",
+        "login",
+        "app",
+        "download",
+        "support",
+        "cdn",
+        "account",
+        "status",
+        "dev",
+        "docs",
+        "mail",
+        "portal",
+        "community",
+        "forum",
+        "billing",
+        "help",
+        "static",
+        "media",
+        "assets",
+    )
     all_discovered = set()
     projected_count = 0
 
     for brand, sibling_tlds in brand_to_tlds.items():
         prim = brand_to_primary[brand]
-        prim_subs = cached_domains.get(prim, [prim])
+        prim_subs = clean_subdomains_list(cached_domains.get(prim, [prim]))
 
         # Extract prefixes from primary domain subdomains
         prefixes = set()
@@ -714,11 +808,16 @@ def expand_geoblock_subdomains(
                 if pfx:
                     prefixes.add(pfx)
 
-        # Project across all sibling TLDs
+        # Project top / priority prefixes across sibling TLDs
+        project_prefixes = [
+            p
+            for p in prefixes
+            if any(p.startswith(kw) for kw in priority_kw) or len(p) <= 10
+        ][:25]
         for sib in sibling_tlds:
             all_discovered.add(sib)
-            if sib != prim and prefixes:
-                for pfx in prefixes:
+            if sib != prim and project_prefixes:
+                for pfx in project_prefixes:
                     projected_dom = f"{pfx}.{sib}"
                     all_discovered.add(projected_dom)
                     projected_count += 1
