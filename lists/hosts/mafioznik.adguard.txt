@@ -9,7 +9,6 @@
 ||scontent.cdninstagram.com^$dnsrewrite=31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=57.144.244.192
 ||gamea.clashofclans.com^$dnsrewrite=193.23.209.189
-||windsurf-telemetry.codeium.com^$dnsrewrite=144.31.14.104
 ||finland10000.discord.media^$dnsrewrite=104.25.158.178
 ||finland10001.discord.media^$dnsrewrite=104.25.158.178
 ||finland10002.discord.media^$dnsrewrite=104.25.158.178
@@ -217,7 +216,6 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -267,7 +265,6 @@
 ||audio-cf.spotifycdn.com^$dnsrewrite=162.159.141.124
 ||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=162.159.141.124
 ||open-exp.spotifycdn.com^$dnsrewrite=162.159.141.124
-||game.squadbustersgame.com^$dnsrewrite=108.61.167.26
 ||t.me^$dnsrewrite=149.154.167.220
 ||tapeop.dev^$dnsrewrite=216.24.57.3
 ||www.tapeop.dev^$dnsrewrite=216.24.57.3
@@ -303,11 +300,7 @@
 ||ubiservices.cdn.ubi.com^$dnsrewrite=2.23.89.244
 ||static3.cdn.ubi.com^$dnsrewrite=2.23.89.92
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
-||ubi.com^$dnsrewrite=52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
-||connect.ubisoft.com^$dnsrewrite=18.209.141.203
-||ubisoft.com^$dnsrewrite=52.222.149.31
-||uplay.ubisoft.com^$dnsrewrite=54.76.54.196
 
 ! Geoblock
 ||azwindows.ipv6.microsoft.com.akadns.net^$dnsrewrite=103.27.157.38

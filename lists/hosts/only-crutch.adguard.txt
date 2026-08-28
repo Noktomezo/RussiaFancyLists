@@ -215,7 +215,6 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
-||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -292,11 +291,3 @@
 ||zws5.web.telegram.org^$dnsrewrite=149.154.167.220
 ||telesco.pe^$dnsrewrite=149.154.167.220
 ||tg.dev^$dnsrewrite=149.154.167.220
-||ubiservices.cdn.ubi.com^$dnsrewrite=2.23.89.244
-||static3.cdn.ubi.com^$dnsrewrite=2.23.89.92
-||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
-||ubi.com^$dnsrewrite=52.6.7.14
-||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
-||connect.ubisoft.com^$dnsrewrite=18.209.141.203
-||ubisoft.com^$dnsrewrite=52.222.149.31
-||uplay.ubisoft.com^$dnsrewrite=54.76.54.196

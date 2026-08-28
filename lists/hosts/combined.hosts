@@ -17,7 +17,6 @@ ff02::2 ip6-allrouters
 57.144.244.34 z-p42-chat-e2ee-ig.facebook.com
 57.144.244.8 chat-e2ee-mini.facebook.com
 57.144.244.1 fb.com
-31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 140.82.114.3 github.com
@@ -44,14 +43,6 @@ ff02::2 ip6-allrouters
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 149.154.167.220 telesco.pe
 149.154.167.220 tg.dev
-2.23.89.244 ubiservices.cdn.ubi.com
-2.23.89.92 static3.cdn.ubi.com
-3.33.249.140 public-ws-ubiservices.ubi.com
-52.6.7.14 ubi.com
-99.83.188.134 public-ubiservices.ubi.com
-18.209.141.203 connect.ubisoft.com
-52.222.149.31 ubisoft.com
-54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 103.27.157.38 2407.pl
@@ -889,11 +880,11 @@ ff02::2 ip6-allrouters
 45.155.204.190 codebrowser.dev
 62.133.62.97 codebrowser.dev
 103.27.157.38 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
-185.246.223.127 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-31.25.239.132 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-37.230.192.51 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-45.155.204.190 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-62.133.62.97 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
+185.246.223.127 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+31.25.239.132 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+37.230.192.51 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+45.155.204.190 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+62.133.62.97 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
 103.27.157.38 codeiumdata.com
 185.246.223.127 codeiumdata.com
 31.25.239.132 codeiumdata.com
@@ -1392,6 +1383,12 @@ ff02::2 ip6-allrouters
 37.230.192.51 fastspring.com sites.fastspring.com store.fastspring.com
 45.155.204.190 fastspring.com sites.fastspring.com store.fastspring.com
 62.133.62.97 fastspring.com sites.fastspring.com store.fastspring.com
+103.27.157.38 scontent-hel3-1.xx.fbcdn.net
+185.246.223.127 scontent-hel3-1.xx.fbcdn.net
+31.25.239.132 scontent-hel3-1.xx.fbcdn.net
+37.230.192.51 scontent-hel3-1.xx.fbcdn.net
+45.155.204.190 scontent-hel3-1.xx.fbcdn.net
+62.133.62.97 scontent-hel3-1.xx.fbcdn.net
 103.27.157.38 fedex.com
 185.246.223.127 fedex.com
 31.25.239.132 fedex.com
@@ -4063,11 +4060,11 @@ ff02::2 ip6-allrouters
 45.155.204.190 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 62.133.62.97 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 103.27.157.38 game.squadbustersgame.com squadbustersgame.com
-185.246.223.127 squadbustersgame.com
-31.25.239.132 squadbustersgame.com
-37.230.192.51 squadbustersgame.com
-45.155.204.190 squadbustersgame.com
-62.133.62.97 squadbustersgame.com
+185.246.223.127 game.squadbustersgame.com squadbustersgame.com
+31.25.239.132 game.squadbustersgame.com squadbustersgame.com
+37.230.192.51 game.squadbustersgame.com squadbustersgame.com
+45.155.204.190 game.squadbustersgame.com squadbustersgame.com
+62.133.62.97 game.squadbustersgame.com squadbustersgame.com
 103.27.157.38 square.com
 185.246.223.127 square.com
 31.25.239.132 square.com
@@ -4518,12 +4515,18 @@ ff02::2 ip6-allrouters
 37.230.192.51 uaudio.com
 45.155.204.190 uaudio.com
 62.133.62.97 uaudio.com
-103.27.157.38 store.ubi.com
-185.246.223.127 store.ubi.com
-31.25.239.132 store.ubi.com
-37.230.192.51 store.ubi.com
-45.155.204.190 store.ubi.com
-62.133.62.97 store.ubi.com
+103.27.157.38 public-ubiservices.ubi.com public-ws-ubiservices.ubi.com static3.cdn.ubi.com store.ubi.com ubi.com ubiservices.cdn.ubi.com
+185.246.223.127 store.ubi.com ubi.com
+31.25.239.132 store.ubi.com ubi.com
+37.230.192.51 store.ubi.com ubi.com
+45.155.204.190 store.ubi.com ubi.com
+62.133.62.97 store.ubi.com ubi.com
+103.27.157.38 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+185.246.223.127 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+31.25.239.132 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+37.230.192.51 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+45.155.204.190 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
+62.133.62.97 connect.ubisoft.com ubisoft.com uplay.ubisoft.com
 103.27.157.38 fw-download.ubnt.com ubnt.com
 185.246.223.127 fw-download.ubnt.com ubnt.com
 31.25.239.132 fw-download.ubnt.com ubnt.com
