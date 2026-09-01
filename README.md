@@ -50,8 +50,8 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->895.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->571.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->175.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->571.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->175.3 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -83,9 +83,9 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.45 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->171.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->954.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->954.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->295.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->295.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->41.3 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -118,10 +118,10 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.19 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->780.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->780.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->240.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->241.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->54.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -314,8 +314,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->333.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->325.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->288.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->280.4 KB<!-- SIZE_END -->
       </td>
       <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
     </tr>
@@ -348,8 +348,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.hosts -->54.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->46.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.hosts -->55.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->47.2 KB<!-- SIZE_END -->
       </td>
       <td>ImMALWARE DNS proxy endpoints</td>
     </tr>
@@ -373,8 +373,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->650.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->634.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->562.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->546.6 KB<!-- SIZE_END -->
       </td>
       <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
     </tr>
@@ -407,8 +407,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->107.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->91.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->107.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->92.2 KB<!-- SIZE_END -->
       </td>
       <td>ImMALWARE DNS proxy endpoints</td>
     </tr>
@@ -438,7 +438,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
 
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
-- **Malw**: 💚💚💚💚
+- **Malw**: 💚💚💚
 - **GeoHide**: 💚💚💚
 - **Mafioznik**: 💚
 
