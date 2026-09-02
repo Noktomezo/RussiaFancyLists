@@ -49,7 +49,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->895.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->895.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->571.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->175.3 KB<!-- SIZE_END -->
       </td>
@@ -117,7 +117,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.19 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->195.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->780.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->160.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->241.0 KB<!-- SIZE_END --><br>
