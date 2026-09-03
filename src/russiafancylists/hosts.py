@@ -1,11 +1,9 @@
 import asyncio
 import contextlib
+import ipaddress
 import re
-import socket
 from collections import Counter
 from pathlib import Path
-
-import httpx
 
 from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.processors import clean_and_validate_domain
@@ -17,6 +15,77 @@ LOOPBACK_HEADER = (
     "ff02::1 ip6-allnodes\n"
     "ff02::2 ip6-allrouters\n\n"
 )
+
+# Known service/CDN subnets that are direct crutches, never general SNI proxies
+KNOWN_CRUTCH_SUBNETS = [
+    ipaddress.ip_network("149.154.160.0/20"),  # Telegram Messenger Inc.
+    ipaddress.ip_network("91.108.4.0/22"),  # Telegram Messenger Inc.
+    ipaddress.ip_network("91.108.56.0/22"),  # Telegram Messenger Inc.
+    ipaddress.ip_network("91.108.8.0/22"),  # Telegram Messenger Inc.
+    ipaddress.ip_network("157.240.0.0/16"),  # Meta Platforms (Facebook / Instagram)
+    ipaddress.ip_network("31.13.64.0/18"),  # Meta Platforms
+    ipaddress.ip_network("57.144.0.0/14"),  # Meta Platforms
+    ipaddress.ip_network("199.232.0.0/16"),  # Fastly CDN
+    ipaddress.ip_network("151.101.0.0/16"),  # Fastly CDN
+    ipaddress.ip_network("146.75.0.0/16"),  # Fastly CDN
+    ipaddress.ip_network("104.16.0.0/12"),  # Cloudflare CDN
+    ipaddress.ip_network("172.64.0.0/13"),  # Cloudflare CDN
+    ipaddress.ip_network("173.245.48.0/20"),  # Cloudflare CDN
+    ipaddress.ip_network("23.32.0.0/11"),  # Akamai Technologies
+    ipaddress.ip_network("2.16.0.0/13"),  # Akamai Technologies
+    ipaddress.ip_network("2.23.0.0/16"),  # Akamai Technologies
+    ipaddress.ip_network("23.48.0.0/14"),  # Akamai Technologies
+]
+
+
+def is_known_crutch_ip(ip_str: str) -> bool:
+    """Check if an IP belongs to known service/CDN subnets (e.g. Telegram, Meta, Fastly)."""
+    try:
+        addr = ipaddress.ip_address(ip_str)
+        return any(addr in net for net in KNOWN_CRUTCH_SUBNETS)
+    except ValueError:
+        return False
+
+
+def normalize_brand_name(dom: str) -> str:
+    """Extract normalized brand name, grouping related domains of the same entity."""
+    dom = dom.lower().strip()
+    if any(k in dom for k in ("telegram", "t.me", "tg.dev", "telesco.pe")):
+        return "telegram"
+    if any(
+        k in dom
+        for k in ("facebook", "fb.com", "fbsbx", "fbcdn", "instagram", "cdninstagram")
+    ):
+        return "meta"
+    if any(k in dom for k in ("spotify", "scdn.co", "spotifycdn")):
+        return "spotify"
+    if any(k in dom for k in ("twitter", "t.co", "x.com", "twimg")):
+        return "twitter"
+    if any(k in dom for k in ("google", "youtube", "ytimg", "ggpht", "googlevideo")):
+        return "google"
+    if any(k in dom for k in ("discord", "discordapp", "discordstatus")):
+        return "discord"
+    if any(k in dom for k in ("ubisoft", "ubi.com", "uplay")):
+        return "ubisoft"
+
+    parts = dom.split(".")
+    if len(parts) < 2:
+        return dom
+    brand = parts[-2]
+    if len(parts) >= 3:
+        penultimate = parts[-2]
+        tld = parts[-1]
+        if penultimate in (
+            "co",
+            "com",
+            "org",
+            "net",
+            "gov",
+            "edu",
+            "mil",
+        ) and len(tld) in (2, 3):
+            brand = parts[-3]
+    return brand
 
 
 def get_source_info(file_path: Path):
@@ -161,177 +230,52 @@ def parse_geohide_comment_ips(file_path: Path) -> list[str]:
 
 
 async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
-    """Detects proxy IPs for each provider (malw, mafioznik, geohide, stressozz) dynamically using DoH & SLD heuristics."""
-    providers = ["malw", "mafioznik", "geohide"]
+    """Strictly detects Smart DNS proxy IPs for each provider (malw, mafioznik, geohide).
+    Strictly differentiates Smart DNS proxy servers from direct service crutches.
+    """
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
         "mafioznik": hosts_temp_dir / "mafioznik-hosts.lst",
         "geohide": hosts_temp_dir / "geohide-hosts.lst",
     }
 
-    # 1. Parse all hosts files and collect domains, mapped IPs, and build IP -> SLDs mapping
-    provider_ip_domains = {}
-    ip_to_slds = {}
-
-    for prov in providers:
-        file_path = provider_files[prov]
-        if file_path.exists():
-            try:
-                _, ip_domains = get_source_info(file_path)
-                provider_ip_domains[prov] = ip_domains
-                for ip, domains in ip_domains.items():
-                    for dom in domains:
-                        sld = _get_sld_name(dom)
-                        ip_to_slds.setdefault(ip, set()).add(sld)
-            except Exception as e:
-                print(f"Warning: Failed to parse {file_path.name} as hosts source: {e}")
-
-    zapret_ip_domains = {}
-    zapret_path = hosts_temp_dir / "zapret-manager-parsed.lst"
-    if zapret_path.exists():
-        try:
-            _, zapret_ip_domains = get_source_info(zapret_path)
-            for ip, domains in zapret_ip_domains.items():
-                for dom in domains:
-                    sld = _get_sld_name(dom)
-                    ip_to_slds.setdefault(ip, set()).add(sld)
-        except Exception as e:
-            print(f"Warning: Failed to parse {zapret_path.name} as hosts source: {e}")
-
-    # 2. Filter raw candidates with >= 4 distinct SLDs
-    raw_candidates = [ip for ip, slds in ip_to_slds.items() if len(slds) >= 4]
-
-    # Collect sample domains to verify for each candidate IP (up to 5 per IP)
-    domains_to_verify = set()
-    ip_sample_domains = {}
-    for ip in raw_candidates:
-        mapped = []
-        for prov in providers:
-            mapped.extend(list(provider_ip_domains.get(prov, {}).get(ip, [])))
-        if zapret_path.exists():
-            mapped.extend(list(zapret_ip_domains.get(ip, [])))
-        sample = sorted(list(set(mapped)))[:5]
-        ip_sample_domains[ip] = sample
-        domains_to_verify.update(sample)
-
-    # 3. Resolve sample domains via Cloudflare DoH (with getaddrinfo fallback)
-    resolved_ips = {}
-    if domains_to_verify:
-        async with httpx.AsyncClient(timeout=3.0) as client:
-
-            async def resolve_doh(domain: str) -> tuple[str, set[str]]:
-                try:
-                    resp = await client.get(
-                        "https://1.1.1.1/dns-query",
-                        params={"name": domain, "type": "A"},
-                        headers={"accept": "application/dns-json"},
-                    )
-                    if resp.status_code == 200:
-                        ips = {
-                            ans["data"].strip()
-                            for ans in resp.json().get("Answer", [])
-                            if ans.get("type") == 1
-                        }
-                        return domain, ips
-                except Exception:
-                    pass
-                # Fallback to local getaddrinfo
-                try:
-                    loop = asyncio.get_running_loop()
-                    res = await loop.getaddrinfo(domain, None, family=socket.AF_INET)
-                    return domain, {item[4][0] for item in res}
-                except Exception:
-                    return domain, set()
-
-            results = await asyncio.gather(
-                *(resolve_doh(dom) for dom in domains_to_verify),
-                return_exceptions=True,
-            )
-            for res in results:
-                if isinstance(res, tuple) and len(res) == 2:
-                    dom, ips = res
-                    if ips:
-                        resolved_ips[dom] = ips
-
-    # 4. Identify proxy candidates
-    proxy_candidates = set()
-    for ip in raw_candidates:
-        matched = False
-        for dom in ip_sample_domains.get(ip, []):
-            if ip in resolved_ips.get(dom, set()):
-                matched = True
-                break
-        if not matched:
-            proxy_candidates.add(ip)
-
-    # 4. Assign proxy IPs to their actual providers
+    # 1. GeoHide: Authoritative extraction from official file comments
     geohide_official = parse_geohide_comment_ips(provider_files["geohide"])
+    geohide_ips = (
+        geohide_official
+        if geohide_official
+        else ["45.155.204.190", "37.230.192.51", "31.25.239.132"]
+    )
 
-    # Ensure any official GeoHide IP found in candidates is assigned to GeoHide
-    geohide_ips = [ip for ip in geohide_official if ip in ip_to_slds]
-    if not geohide_ips:
-        geohide_ips = [
-            ip
-            for ip in proxy_candidates
-            if ip in provider_ip_domains.get("geohide", {})
-            and ip not in provider_ip_domains.get("mafioznik", {})
-            and ip not in provider_ip_domains.get("malw", {})
-        ]
-        if not geohide_ips:
-            geohide_ips = sorted(
-                [
-                    ip
-                    for ip in proxy_candidates
-                    if ip in provider_ip_domains.get("geohide", {})
-                ],
-                key=lambda x: len(ip_to_slds[x]),
-                reverse=True,
-            )[:1]
+    # 2. Mafioznik: Freedom proxy
+    maf_top_ips, _ = get_source_info(provider_files["mafioznik"])
+    mafioznik_ips = maf_top_ips[:1] if maf_top_ips else ["103.27.157.38"]
 
-    mafioznik_ips = [
-        ip for ip in proxy_candidates if ip in provider_ip_domains.get("mafioznik", {})
-    ]
-    if not mafioznik_ips:
-        sorted_maf = sorted(
-            provider_ip_domains.get("mafioznik", {}).keys(),
-            key=lambda x: len(provider_ip_domains["mafioznik"][x]),
-            reverse=True,
-        )
-        if sorted_maf:
-            mafioznik_ips = [sorted_maf[0]]
-
-    malw_ips = [
-        ip
-        for ip in proxy_candidates
-        if ip in provider_ip_domains.get("malw", {}) and ip not in geohide_ips
-    ]
-
-    if not malw_ips:
-        sorted_malw = sorted(
-            provider_ip_domains.get("malw", {}).keys(),
-            key=lambda x: len(provider_ip_domains["malw"][x]),
-            reverse=True,
-        )
-        if sorted_malw:
-            malw_ips = [sorted_malw[0]]
-
-    stressozz_ips = [
-        ip
-        for ip in proxy_candidates
-        if ip in zapret_ip_domains
-        and ip not in geohide_ips
-        and ip not in mafioznik_ips
-        and ip not in malw_ips
-    ]
+    # 3. ImMALWARE (malw): Strict detection of open SNI proxy servers
+    malw_ips = []
+    if provider_files["malw"].exists():
+        _, malw_ip_domains = get_source_info(provider_files["malw"])
+        for ip, domains in malw_ip_domains.items():
+            # A proxy IP cannot belong to known service/CDN subnets (e.g. Telegram, Meta, Fastly)
+            if is_known_crutch_ip(ip):
+                continue
+            # Must map to at least 5 domains and at least 3 distinct normalized brands
+            distinct_brands = {normalize_brand_name(d) for d in domains}
+            if (
+                len(domains) >= 5
+                and len(distinct_brands) >= 3
+                or ip in mafioznik_ips
+                or ip in geohide_ips
+            ):
+                malw_ips.append(ip)
 
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),
         "mafioznik": sorted(list(set(mafioznik_ips))),
         "geohide": sorted(list(set(geohide_ips))),
-        "stressozz": sorted(list(set(stressozz_ips))),
     }
 
-    print(f"Detected proxy IPs: {detected_proxy_ips}")
+    print(f"Strictly detected proxy IPs: {detected_proxy_ips}")
     return detected_proxy_ips
 
 
@@ -342,13 +286,11 @@ async def generate_aligned_hosts(
     output_malw: Path,
     output_mafioznik: Path,
     output_geohide: Path,
-    output_stressozz: Path = None,
 ):
     """Compile domains from geoblock list into identical hosts lists with original IPs.
     - malw.lst: all geoblock domains mapped to malw's most frequent IP.
     - mafioznik.lst: all geoblock domains mapped to mafioznik's most frequent IP.
     - geohide.lst: all geoblock domains mapped to geohide's most frequent IP.
-    - stressozz.lst: all geoblock domains mapped to stressozz's most frequent IP.
     - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice.
     """
 
@@ -363,7 +305,6 @@ async def generate_aligned_hosts(
     malw_ips = detected_proxy_ips["malw"]
     mafioznik_ips = detected_proxy_ips["mafioznik"]
     geohide_ips = detected_proxy_ips["geohide"]
-    stressozz_ips = detected_proxy_ips.get("stressozz", [])
 
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
@@ -381,9 +322,7 @@ async def generate_aligned_hosts(
             )
 
     # 4. Use dynamic custom/direct IP mappings (Crutches)
-    provider_proxy_ips = (
-        set(malw_ips) | set(mafioznik_ips) | set(geohide_ips) | set(stressozz_ips)
-    )
+    provider_proxy_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
 
     global_custom_candidates = {}
     for ip_domains in (
@@ -515,9 +454,7 @@ async def generate_aligned_hosts(
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
-    unique_primary_ips = (
-        set(malw_ips) | set(mafioznik_ips) | set(geohide_ips) | set(stressozz_ips)
-    )
+    unique_primary_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
     all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
 
     print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
@@ -595,25 +532,6 @@ async def generate_aligned_hosts(
         direct_groups, geoblock_groups = get_provider_groups(
             ips_to_use, custom_mappings, allowed_set
         )
-
-        # Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
-        geoblock_domains = set()
-        for doms in geoblock_groups.values():
-            geoblock_domains.update(doms)
-        keys_to_move = []
-        for ip_key, brand in direct_groups:
-            if any(
-                d == g or d.endswith("." + g)
-                for d in direct_groups[(ip_key, brand)]
-                for g in geoblock_domains
-            ):
-                keys_to_move.append((ip_key, brand))
-        for ip_key, brand in keys_to_move:
-            doms = direct_groups.pop((ip_key, brand))
-            brand_keys = [k for k in geoblock_groups if k[1] == brand]
-            target_key = brand_keys[0] if brand_keys else (ips_to_use[0], brand)
-            geoblock_groups.setdefault(target_key, []).extend(doms)
-            geoblock_groups[target_key] = sorted(list(set(geoblock_groups[target_key])))
 
         # Standard hosts file (with crutches)
         with open(base_output, "w", encoding="utf-8") as f:
@@ -711,19 +629,12 @@ async def generate_aligned_hosts(
         mafioznik_allowed,
     )
     geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
-    stressozz_res = (
-        write_provider_hosts(output_stressozz, stressozz_ips, global_custom)
-        if output_stressozz
-        else [({}, {})]
-    )
-
     # Merge custom direct mappings (crutches) from all providers
     combined_direct = {}
     for direct_groups, _ in (
         malw_res[0],
         mafioznik_res[0],
         geohide_res[0],
-        stressozz_res[0],
     ):
         for (ip, brand), doms in direct_groups.items():
             for d in doms:
@@ -735,7 +646,6 @@ async def generate_aligned_hosts(
         ("malw", malw_ips, False),
         ("geohide", geohide_ips, False),
         ("mafioznik", mafioznik_ips, True),
-        ("stressozz", stressozz_ips, False),
     ]
 
     for _name, prov_ips, is_maf in provider_cfgs:
@@ -759,26 +669,7 @@ async def generate_aligned_hosts(
                             filtered_doms
                         )
 
-    # 8. Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
-    combined_geoblock_domains = set()
-    for doms in combined_geoblock.values():
-        combined_geoblock_domains.update(doms)
-
-    combined_keys_to_move = []
-    for ip, brand in combined_direct:
-        if any(
-            d == g or d.endswith("." + g)
-            for d in combined_direct[(ip, brand)]
-            for g in combined_geoblock_domains
-        ):
-            combined_keys_to_move.append((ip, brand))
-    for ip, brand in combined_keys_to_move:
-        doms = combined_direct.pop((ip, brand))
-        brand_keys = [k for k in combined_geoblock if k[1] == brand]
-        target_key = brand_keys[0] if brand_keys else ("127.0.0.1", brand)
-        combined_geoblock.setdefault(target_key, set()).update(doms)
-
-    # Copy to combined_geoblock_nc after conflict resolution
+    # Copy to combined_geoblock_nc (crutches remain strictly in combined_direct)
     combined_geoblock_nc = {k: set(v) for k, v in combined_geoblock.items()}
 
     output_combined.parent.mkdir(parents=True, exist_ok=True)
