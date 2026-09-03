@@ -101,9 +101,9 @@ def setup_dirs(skip_download: bool = False):
         BLACKLIST_MIHOMO_FOLDER / "domains",
         BLACKLIST_MIHOMO_FOLDER / "ipsets",
         HOSTS_LIST_FOLDER,
-        GEOBLOCK_FOLDER / "domains",
-        GEOBLOCK_SING_BOX_FOLDER / "domains",
-        GEOBLOCK_MIHOMO_FOLDER / "domains",
+        GEOBLOCK_FOLDER,
+        GEOBLOCK_SING_BOX_FOLDER,
+        GEOBLOCK_MIHOMO_FOLDER,
         WHITELIST_LIST_FOLDER,
         WHITELIST_SING_BOX_FOLDER,
         WHITELIST_MIHOMO_FOLDER,
@@ -186,7 +186,7 @@ async def run_pipeline(
                 asyncio.to_thread(
                     merge_lists,
                     TEMP_FOLDER / "hosts",
-                    GEOBLOCK_FOLDER / "domains" / "full.lst",
+                    GEOBLOCK_FOLDER / "full.lst",
                     file_pattern="*.lst",
                 ),
                 asyncio.to_thread(
@@ -202,7 +202,7 @@ async def run_pipeline(
         ) as status:
             # 2. Build aligned hosts files from the completed full geoblock list
             await generate_aligned_hosts(
-                GEOBLOCK_FOLDER / "domains" / "full.lst",
+                GEOBLOCK_FOLDER / "full.lst",
                 TEMP_FOLDER / "hosts",
                 HOSTS_LIST_FOLDER / "combined.hosts",
                 HOSTS_LIST_FOLDER / "malw.hosts",
@@ -236,8 +236,8 @@ async def run_pipeline(
                 # Geoblock lists
                 asyncio.to_thread(
                     cleanup_domains,
-                    GEOBLOCK_FOLDER / "domains" / "full.lst",
-                    GEOBLOCK_FOLDER / "domains" / "full-sld.lst",
+                    GEOBLOCK_FOLDER / "full.lst",
+                    GEOBLOCK_FOLDER / "full-sld.lst",
                 ),
                 # Service lists
                 asyncio.to_thread(
@@ -304,16 +304,16 @@ async def run_pipeline(
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
                     "domain",
-                    GEOBLOCK_FOLDER / "domains" / "full.lst",
-                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full.json",
-                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full.srs",
+                    GEOBLOCK_FOLDER / "full.lst",
+                    GEOBLOCK_SING_BOX_FOLDER / "full.json",
+                    GEOBLOCK_SING_BOX_FOLDER / "full.srs",
                 ),
                 asyncio.to_thread(
                     generate_sing_box_ruleset,
                     "domain_suffix",
-                    GEOBLOCK_FOLDER / "domains" / "full-sld.lst",
-                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full-sld.json",
-                    GEOBLOCK_SING_BOX_FOLDER / "domains" / "full-sld.srs",
+                    GEOBLOCK_FOLDER / "full-sld.lst",
+                    GEOBLOCK_SING_BOX_FOLDER / "full-sld.json",
+                    GEOBLOCK_SING_BOX_FOLDER / "full-sld.srs",
                 ),
                 # Whitelist rulesets (sing-box)
                 asyncio.to_thread(
@@ -385,16 +385,16 @@ async def run_pipeline(
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
                     "domain",
-                    GEOBLOCK_FOLDER / "domains" / "full.lst",
-                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full.yaml",
-                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full.mrs",
+                    GEOBLOCK_FOLDER / "full.lst",
+                    GEOBLOCK_MIHOMO_FOLDER / "full.yaml",
+                    GEOBLOCK_MIHOMO_FOLDER / "full.mrs",
                 ),
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
                     "domain_suffix",
-                    GEOBLOCK_FOLDER / "domains" / "full-sld.lst",
-                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full-sld.yaml",
-                    GEOBLOCK_MIHOMO_FOLDER / "domains" / "full-sld.mrs",
+                    GEOBLOCK_FOLDER / "full-sld.lst",
+                    GEOBLOCK_MIHOMO_FOLDER / "full-sld.yaml",
+                    GEOBLOCK_MIHOMO_FOLDER / "full-sld.mrs",
                 ),
                 # Whitelist rulesets (Mihomo)
                 asyncio.to_thread(

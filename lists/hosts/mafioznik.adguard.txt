@@ -5,12 +5,13 @@
 ||audio4-ak-spotify-com.akamaized.net^$dnsrewrite=2.16.168.44
 ||audio-ak-spotify-com.akamaized.net^$dnsrewrite=23.36.163.34
 ||heads-ak-spotify-com.akamaized.net^$dnsrewrite=23.48.23.145
-||game.brawlstarsgame.com^$dnsrewrite=80.253.249.40
+||game.brawlstarsgame.com^$dnsrewrite=185.246.223.127
 ||www.canva.com^$dnsrewrite=103.137.248.179
 ||scontent-hel3-1.cdninstagram.com^$dnsrewrite=31.13.66.63
 ||scontent.cdninstagram.com^$dnsrewrite=31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=57.144.244.192
 ||gamea.clashofclans.com^$dnsrewrite=193.23.209.189
+||windsurf-telemetry.codeium.com^$dnsrewrite=144.31.14.104
 ||finland10000.discord.media^$dnsrewrite=104.25.158.178
 ||finland10001.discord.media^$dnsrewrite=104.25.158.178
 ||finland10002.discord.media^$dnsrewrite=104.25.158.178
@@ -218,6 +219,7 @@
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=57.144.244.34
 ||chat-e2ee-mini.facebook.com^$dnsrewrite=57.144.244.8
 ||fb.com^$dnsrewrite=57.144.244.1
+||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=57.144.244.128
 ||fbsbx.com^$dnsrewrite=57.144.244.1
@@ -247,6 +249,8 @@
 ||graph.instagram.com^$dnsrewrite=57.144.244.192
 ||i.instagram.com^$dnsrewrite=57.144.244.192
 ||test.dns.malw.link^$dnsrewrite=185.31.40.18
+||lkfl2.nalog.ru^$dnsrewrite=213.24.64.175
+||lknpd.nalog.ru^$dnsrewrite=213.24.64.181
 ||ntc.party^$dnsrewrite=130.255.77.28
 ||tracker.openbittorrent.com^$dnsrewrite=52.223.13.41
 ||r6s.com^$dnsrewrite=172.67.139.108
@@ -274,6 +278,7 @@
 ||audio-cf.spotifycdn.com^$dnsrewrite=162.159.141.124
 ||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=162.159.141.124
 ||open-exp.spotifycdn.com^$dnsrewrite=162.159.141.124
+||game.squadbustersgame.com^$dnsrewrite=108.61.167.26
 ||t.me^$dnsrewrite=149.154.167.220
 ||tapeop.dev^$dnsrewrite=216.24.57.3
 ||www.tapeop.dev^$dnsrewrite=216.24.57.3
@@ -309,8 +314,11 @@
 ||ubiservices.cdn.ubi.com^$dnsrewrite=2.23.89.244
 ||static3.cdn.ubi.com^$dnsrewrite=2.23.89.92
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=3.33.249.140
+||ubi.com^$dnsrewrite=52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=99.83.188.134
+||connect.ubisoft.com^$dnsrewrite=18.209.141.203
 ||ubisoft.com^$dnsrewrite=52.222.149.31
+||uplay.ubisoft.com^$dnsrewrite=54.76.54.196
 
 ! Geoblock
 ||azwindows.ipv6.microsoft.com.akadns.net^$dnsrewrite=103.27.157.38
