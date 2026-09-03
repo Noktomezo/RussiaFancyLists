@@ -3,8 +3,6 @@ import glob
 import ipaddress
 import os
 import re
-import subprocess
-import sys
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -40,90 +38,34 @@ def is_private_ip(ip_str: str) -> bool:
     return False
 
 
-def run_mapcidr(ips: list[str]) -> list[str]:
-    """Run mapcidr to aggregate a list of IPs/CIDRs."""
+def collapse_ip_networks(ips: list[str]) -> list[str]:
+    """Collapse and aggregate IP addresses and CIDRs using standard library ipaddress."""
     if not ips:
         return []
 
-    from russiafancylists.ruleset import find_binary
-
-    mapcidr_bin = find_binary("mapcidr")
-    input_data = "\n".join(ips)
-
-    try:
-        res = subprocess.run(
-            [mapcidr_bin, "-aggregate", "-silent"],
-            input=input_data,
-            capture_output=True,
-            text=True,
-            check=True,
-            timeout=60,
-        )
-        output_ips = []
-        for line in res.stdout.splitlines():
-            line = line.strip()
-            if line:
-                output_ips.append(line)
-        return output_ips
-    except subprocess.CalledProcessError as e:
-        stderr_msg = e.stderr.strip() if e.stderr else "No stderr captured"
-        raise RuntimeError(f"mapcidr execution failed: {stderr_msg}") from e
-
-
-def resolve_domains_to_ipset(input_file: Path, output_file: Path):
-    """Resolve domain A records with dnsx and aggregate them with mapcidr."""
-    from russiafancylists.ruleset import find_binary
-
-    cmd = [
-        find_binary("dnsx"),
-        "-silent",
-        "-duc",
-        "-nc",
-        "-rl",
-        "200",
-        "-a",
-        "-resp",
-        "-r",
-        "doh:https://1.1.1.1/dns-query",
-        "-l",
-        str(input_file),
-        "-stream",
-    ]
-    try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            check=True,
-            timeout=120,
-        )
-    except subprocess.TimeoutExpired as e:
-        raise RuntimeError("dnsx resolution timed out after 120 seconds") from e
-    except subprocess.CalledProcessError as e:
-        stderr = e.stderr.strip() if e.stderr else "No stderr captured"
-        raise RuntimeError(f"dnsx resolution failed: {stderr}") from e
-
-    ips = set()
-    for line in result.stdout.splitlines():
-        _, marker, response = line.partition("[A]")
-        if not marker:
+    v4 = []
+    v6 = []
+    for line in ips:
+        line = line.strip()
+        if not line or line.startswith("#"):
             continue
-        for value in re.findall(
-            r"(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])", response
-        ):
-            try:
-                ip = ipaddress.ip_address(value)
-            except ValueError:
-                continue
-            if ip.version == 4 and ip.is_global:
-                ips.add(str(ip))
+        try:
+            if "/" not in line:
+                net = ipaddress.ip_network(
+                    line + ("/128" if ":" in line else "/32"), strict=False
+                )
+            else:
+                net = ipaddress.ip_network(line, strict=False)
+            if net.version == 4:
+                v4.append(net)
+            else:
+                v6.append(net)
+        except ValueError:
+            continue
 
-    collapsed = run_mapcidr(sorted(ips))
-    if not collapsed:
-        raise RuntimeError(f"dnsx did not resolve any IPv4 addresses from {input_file}")
-
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    output_file.write_text("\n".join(collapsed) + "\n", encoding="utf-8")
+    collapsed_v4 = ipaddress.collapse_addresses(v4)
+    collapsed_v6 = ipaddress.collapse_addresses(v6)
+    return [str(net) for net in collapsed_v4] + [str(net) for net in collapsed_v6]
 
 
 def clean_and_validate_domain(d: str) -> list[str]:
@@ -199,8 +141,8 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                         networks.append(str(net))
                     except ValueError:
                         pass
-        # Collapse CIDRs using mapcidr
-        collapsed = run_mapcidr(networks)
+        # Collapse CIDRs using native ipaddress
+        collapsed = collapse_ip_networks(networks)
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
             for net in collapsed:
@@ -330,7 +272,7 @@ def merge_cdn_and_full_ipset(cdn_file: Path, full_file: Path, output_file: Path)
                         networks.append(str(net))
                     except ValueError:
                         pass
-    collapsed = run_mapcidr(networks)
+    collapsed = collapse_ip_networks(networks)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
         for net in collapsed:
@@ -361,116 +303,3 @@ def process_service_domains(input_file: Path, output_file: Path):
     with open(output_file, "w", encoding="utf-8") as f:
         for d in sorted(domains):
             f.write(d + "\n")
-
-
-def get_available_ram_bytes() -> int:
-    """Cross-platform zero-dependency available RAM detector.
-    Works on Windows, Linux (including GitHub Actions CI), and macOS.
-    """
-    # 1. Linux / GitHub Actions runner (/proc/meminfo)
-    if sys.platform.startswith("linux"):
-        try:
-            with open("/proc/meminfo", encoding="utf-8") as f:
-                for line in f:
-                    if line.startswith("MemAvailable:"):
-                        return int(line.split()[1]) * 1024
-        except Exception:
-            pass
-        try:
-            return os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_AVPHYS_PAGES")
-        except Exception:
-            pass
-
-    # 2. Windows (WinAPI GlobalMemoryStatusEx)
-    elif sys.platform == "win32":
-        try:
-            import ctypes
-
-            class MEMORYSTATUSEX(ctypes.Structure):
-                _fields_ = [
-                    ("dwLength", ctypes.c_ulong),
-                    ("dwMemoryLoad", ctypes.c_ulong),
-                    ("ullTotalPhys", ctypes.c_ulonglong),
-                    ("ullAvailPhys", ctypes.c_ulonglong),
-                    ("ullTotalPageFile", ctypes.c_ulonglong),
-                    ("ullAvailPageFile", ctypes.c_ulonglong),
-                    ("ullTotalVirtual", ctypes.c_ulonglong),
-                    ("ullAvailVirtual", ctypes.c_ulonglong),
-                    ("sullAvailExtendedVirtual", ctypes.c_ulonglong),
-                ]
-
-            stat = MEMORYSTATUSEX()
-            stat.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
-            if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(stat)):
-                return int(stat.ullAvailPhys)
-        except Exception:
-            pass
-
-    # 3. macOS / POSIX fallback
-    try:
-        return os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_AVPHYS_PAGES")
-    except Exception:
-        pass
-
-    # Safe fallback (4 GB)
-    return 4 * 1024 * 1024 * 1024
-
-
-def calculate_optimal_workers(memory_ratio: float = 0.5, proc_mb: int = 35) -> int:
-    """Calculate optimal concurrency workers based on available RAM."""
-    avail_bytes = get_available_ram_bytes()
-    budget_bytes = avail_bytes * memory_ratio
-    proc_bytes = proc_mb * 1024 * 1024
-    return max(10, min(int(budget_bytes // proc_bytes), 250))
-
-
-def get_sld_tld(dom: str) -> str:
-    """Extract SLD.TLD from domain."""
-    parts = dom.split(".")
-    if len(parts) <= 2:
-        return dom
-    penultimate = parts[-2]
-    tld = parts[-1]
-    if penultimate in (
-        "co",
-        "com",
-        "org",
-        "net",
-        "gov",
-        "edu",
-        "mil",
-    ) and len(tld) in (2, 3):
-        return ".".join(parts[-3:])
-    return ".".join(parts[-2:])
-
-
-def _get_brand_name(dom: str) -> str:
-    """Extract the base brand name/SLD from a domain."""
-    dom = dom.lower().strip()
-    parts = dom.split(".")
-    if len(parts) < 2:
-        return dom
-    brand = parts[-2]
-    if len(parts) >= 3:
-        penultimate = parts[-2]
-        tld = parts[-1]
-        if penultimate in (
-            "co",
-            "com",
-            "org",
-            "net",
-            "gov",
-            "edu",
-            "mil",
-        ) and len(tld) in (2, 3):
-            brand = parts[-3]
-    return brand
-
-
-def pick_primary_domain(doms: set[str]) -> str:
-    """Pick the primary domain for a brand (e.g. .com over regional ccTLDs)."""
-    for ext in [".com", ".org", ".net", ".io", ".ai", ".to", ".so"]:
-        for d in sorted(doms):
-            if d.endswith(ext):
-                return d
-    return sorted(list(doms), key=lambda x: (len(x), x))[0]

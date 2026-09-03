@@ -39,7 +39,7 @@ async def download_file(
                 progress.update(task_id, total=total_bytes or None, completed=0)
 
                 with open(output_path, "wb") as f:
-                    async for chunk in response.aiter_bytes(chunk_size=8192):
+                    async for chunk in response.aiter_bytes(chunk_size=65536):
                         f.write(chunk)
                         progress.update(task_id, advance=len(chunk))
 
@@ -73,7 +73,7 @@ async def download_file(
 
 async def run_downloads(progress: Progress):
     """Orchestrate all parallel downloads using the specified Rich progress bar."""
-    limits = httpx.Limits(max_keepalive_connections=5, max_connections=10)
+    limits = httpx.Limits(max_keepalive_connections=25, max_connections=25)
     async with httpx.AsyncClient(limits=limits, verify=False) as client:
         tasks = []
         for _name, (url, path, desc) in DOWNLOADS.items():

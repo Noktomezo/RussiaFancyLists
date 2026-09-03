@@ -133,8 +133,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/full.lst -->36.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock/full-sld.lst -->13.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/full.lst -->37.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/full-sld.lst -->13.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -147,10 +147,10 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->58.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->13.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->24.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->6.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-sing-box/full.json -->59.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->14.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->24.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->6.7 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -163,10 +163,10 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->48.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->13.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->19.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->6.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->49.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->13.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->19.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->6.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -307,15 +307,15 @@
   </thead>
   <tbody>
     <tr>
-      <td rowspan="5"><b>Hosts</b></td>
+      <td rowspan="6"><b>Hosts</b></td>
       <td><b>Combined</b></td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->338.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->330.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->295.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->288.9 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -325,7 +325,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/only-crutch.hosts -->8.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/only-crutch.hosts -->7.1 KB<!-- SIZE_END -->
       </td>
       <td>Только прямые IP-костыли</td>
     </tr>
@@ -337,7 +337,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/geohide.hosts -->55.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->47.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->48.6 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси GeoHide DNS</td>
     </tr>
@@ -348,8 +348,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.hosts -->55.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->47.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.hosts -->55.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->48.3 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси ImMALWARE DNS</td>
     </tr>
@@ -360,21 +360,33 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>mafioznik-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.hosts -->12.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.hosts -->11.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси Mafioznik DNS</td>
     </tr>
     <tr>
-      <td rowspan="5"><b>AdGuard Home</b></td>
+      <td><b>StressOzz</b></td>
+      <td>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz.hosts"><code>stressozz.hosts</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz-no-crutch.hosts"><code>stressozz-no-crutch.hosts</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/hosts/stressozz.hosts -->56.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/stressozz-no-crutch.hosts -->49.9 KB<!-- SIZE_END -->
+      </td>
+      <td>SNI-прокси StressOzz Zapret-Manager</td>
+    </tr>
+    <tr>
+      <td rowspan="6"><b>AdGuard Home</b></td>
       <td><b>Combined</b></td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.adguard.txt"><code>combined.adguard.txt</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->662.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->646.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->579.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->565.5 KB<!-- SIZE_END -->
       </td>
       <td><b>Рекомендуется:</b> Единый список (с костылями / без)</td>
     </tr>
@@ -384,7 +396,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.adguard.txt"><code>only-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/only-crutch.adguard.txt -->16.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/only-crutch.adguard.txt -->14.3 KB<!-- SIZE_END -->
       </td>
       <td>Только прямые IP-костыли</td>
     </tr>
@@ -395,8 +407,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->109.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->92.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->109.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->95.1 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси GeoHide DNS</td>
     </tr>
@@ -407,8 +419,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->108.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->92.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->108.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->94.3 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси ImMALWARE DNS</td>
     </tr>
@@ -419,10 +431,22 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.adguard.txt"><code>mafioznik-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->24.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->22.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.adguard.txt -->7.7 KB<!-- SIZE_END -->
       </td>
       <td>SNI-прокси Mafioznik DNS</td>
+    </tr>
+    <tr>
+      <td><b>StressOzz</b></td>
+      <td>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz.adguard.txt"><code>stressozz.adguard.txt</code></a><br>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/stressozz-no-crutch.adguard.txt"><code>stressozz-no-crutch.adguard.txt</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/hosts/stressozz.adguard.txt -->112.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/stressozz-no-crutch.adguard.txt -->98.5 KB<!-- SIZE_END -->
+      </td>
+      <td>SNI-прокси StressOzz Zapret-Manager</td>
     </tr>
   </tbody>
 </table>
@@ -438,9 +462,10 @@
 
 ## ⚡ Статус SNI-прокси
 <!-- STATUS_START -->
-- **Malw**: 💚💚💚💚
+- **Malw**: 💚💚💚
 - **GeoHide**: 💚💚💚
 - **Mafioznik**: 💚
+- **StressOzz**: 💚
 
 > [!NOTE]
 > Каждое сердечко обозначает доступный IP-адрес прокси-сервера (💚).
@@ -464,7 +489,6 @@
 💜 [Исключения Zapret-Manager](https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/zapret-hosts-user-exclude.txt) — список доменов-исключений от Zapret-Manager<br>
 💜 [CDN IP Ranges](https://raw.githubusercontent.com/123jjck/cdn-ip-ranges/refs/heads/main/all/all_plain_ipv4.txt) — диапазоны IP-адресов глобальных CDN<br>
 💜 [CDN IP Database](https://raw.githubusercontent.com/mansourjabin/cdn-ip-database/refs/heads/main/data/cdn.lst) — база IP-адресов глобальных CDN<br>
-💜 [dnsx](https://github.com/projectdiscovery/dnsx) — утилита для быстрого DNS-разрешения и зондирования от ProjectDiscovery (хранится в `thirdparty/dnsx`)<br>
 💜 [sing-box](https://github.com/SagerNet/sing-box) — универсальное ядро прокси от SagerNet (хранится в `thirdparty/sing-box`)<br>
 💜 [mihomo](https://github.com/MetaCubeX/mihomo) — ядро прокси-клиента (преемник Clash) от MetaCubeX (хранится в `thirdparty/mihomo`)
 

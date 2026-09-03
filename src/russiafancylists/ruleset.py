@@ -136,14 +136,11 @@ def generate_mihomo_ruleset(
             items.append(line)
 
     # 1. Output YAML ruleset
-    yaml_lines = ["payload:"]
-    for item in items:
-        # Wrap in single quotes to escape any special characters like * or +
-        yaml_lines.append(f"  - '{item}'")
-
     yaml_output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(yaml_output_file, "w", encoding="utf-8") as f:
-        f.write("\n".join(yaml_lines) + "\n")
+        f.write("payload:\n")
+        for item in items:
+            f.write(f"  - '{item}'\n")
 
     # 2. Compile to .mrs format
     mrs_output_file.parent.mkdir(parents=True, exist_ok=True)

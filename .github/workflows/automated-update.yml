@@ -19,6 +19,7 @@ jobs:
       with:
         # Allow pushing back to the repository
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 1
 
     - name: Set up uv
       uses: astral-sh/setup-uv@v5

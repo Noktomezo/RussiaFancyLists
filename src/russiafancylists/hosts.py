@@ -1,14 +1,14 @@
 import asyncio
 import contextlib
-import glob
-import random
 import re
+import socket
 from collections import Counter
 from pathlib import Path
 
+import httpx
+
 from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.processors import clean_and_validate_domain
-from russiafancylists.ruleset import find_binary
 
 LOOPBACK_HEADER = (
     "# Loopback\n"
@@ -17,152 +17,6 @@ LOOPBACK_HEADER = (
     "ff02::1 ip6-allnodes\n"
     "ff02::2 ip6-allrouters\n\n"
 )
-
-
-def merge_hosts(
-    input_dir: Path,
-    output_file: Path,
-    file_pattern: str = "*.lst",
-    use_original_ips: bool = False,
-):
-    """Compile domains into hosts.
-    - If use_original_ips is True (individual list): all domains are mapped to the single most frequent target IP from that file, grouped by root SLD.
-    - If use_original_ips is False (consolidated list): domains are randomly mapped to the most frequent target IP from each source file, grouped by root SLD.
-    """
-    blacklist_patterns = []
-    for p in HOSTS_DIRECT:
-        py_p = p.replace("[[:space:]]", r"\s")
-        blacklist_patterns.append(re.compile(py_p))
-
-    seen_domains = set()
-    groups = {}
-
-    # Track the most frequent IP from each file
-    most_frequent_ips = []
-
-    lst_files = glob.glob(str(input_dir / file_pattern))
-    for file_path in sorted(lst_files):
-        file_ips = Counter()
-        file_domains = []
-
-        with open(file_path, encoding="utf-8", errors="ignore") as f:
-            for line in f:
-                line = re.sub(r"#.*", "", line).strip()
-                if not line:
-                    continue
-
-                is_blacklisted = False
-                for p in blacklist_patterns:
-                    if p.search(line):
-                        is_blacklisted = True
-                        break
-                if is_blacklisted:
-                    continue
-
-                cols = line.split()
-                if not cols:
-                    continue
-
-                # Skip loopback, multicast, and standard blocking addresses
-                if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::"):
-                    continue
-
-                # Detect target IP address (IPv4 or IPv6)
-                is_ipv4 = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", cols[0])
-                is_ipv6 = re.match(r"^[0-9a-fA-F:]+$", cols[0])
-
-                if is_ipv4 or is_ipv6:
-                    if len(cols) < 2:
-                        continue
-                    ip = cols[0]
-                    file_ips[ip] += len(cols[1:])
-                    domains_to_process = cols[1:]
-                else:
-                    domains_to_process = cols
-
-                for dom in domains_to_process:
-                    dom = dom.lower().strip()
-
-                    # Filter out internet connectivity check domains (which do not work well with SNI proxies)
-                    if any(
-                        k in dom
-                        for k in (
-                            "msftconnecttest",
-                            "msftncsi",
-                            "captive.apple",
-                            "connectivitycheck",
-                            "detectportal",
-                        )
-                    ):
-                        continue
-
-                    if not re.match(r"^([a-z0-9-]+\.)+[a-z]{2,}$", dom):
-                        continue
-
-                    parts = dom.split(".")
-                    if len(parts) < 2:
-                        continue
-
-                    # Extract the base brand name to group international variants (e.g. intel.com and intel.de -> intel)
-                    brand = parts[-2]
-                    if len(parts) >= 3:
-                        penultimate = parts[-2]
-                        tld = parts[-1]
-                        if penultimate in (
-                            "co",
-                            "com",
-                            "org",
-                            "net",
-                            "gov",
-                            "edu",
-                            "mil",
-                        ) and len(tld) in (2, 3):
-                            brand = parts[-3]
-
-                    if dom not in seen_domains:
-                        seen_domains.add(dom)
-                        file_domains.append((dom, brand))
-
-        # Determine the most frequent IP of this file (fallback to 127.0.0.1 if none found)
-        most_common_ip = "127.0.0.1"
-        if file_ips:
-            most_common_ip, _ = file_ips.most_common(1)[0]
-            most_frequent_ips.append(most_common_ip)
-
-        # Group domains
-        for dom, brand in file_domains:
-            if use_original_ips:
-                # All domains in this file map to its most frequent target IP
-                groups.setdefault((most_common_ip, brand), []).append(dom)
-            else:
-                groups.setdefault(brand, []).append(dom)
-
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "w", encoding="utf-8") as f:
-        if use_original_ips:
-            # Sort by target IP, then by brand name
-            for ip, brand in sorted(groups.keys(), key=lambda x: (x[0], x[1])):
-                dom_list = " ".join(groups[(ip, brand)])
-                f.write(f"{ip} {dom_list}\n")
-        else:
-            # Pick from the most frequent IPs list
-            ips_list = sorted(list(set(most_frequent_ips)))
-            if not ips_list:
-                ips_list = ["127.0.0.1"]
-            for brand in sorted(groups.keys()):
-                random_ip = random.choice(ips_list)
-                dom_list = " ".join(groups[brand])
-                f.write(f"{random_ip} {dom_list}\n")
-
-
-def add_localhost(input_file: Path, output_file: Path):
-    """Prepend local loopback hosts mappings to output file."""
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(LOOPBACK_HEADER)
-
-        with open(input_file, encoding="utf-8") as inf:
-            f.write(inf.read())
 
 
 def get_source_info(file_path: Path):
@@ -220,35 +74,38 @@ def get_source_info(file_path: Path):
     return top_ips, ip_domains
 
 
-IP_CHECK_SEMAPHORE = asyncio.Semaphore(15)
+IP_CHECK_SEMAPHORE = asyncio.Semaphore(30)
 
 
-async def check_ip_active(ip: str, timeout: float = 5.0) -> bool:
-    """Check TCP connectivity to an IP on ports 443 and 80 in parallel with a timeout."""
+async def check_ip_active(ip: str, timeout: float = 2.5) -> bool:
+    """Check TCP connectivity to an IP on ports 443 and 80 in parallel."""
     # Loopback addresses are always active
     if ip in ("127.0.0.1", "::1", "localhost", "ip6-localhost"):
         return True
 
-    async def try_connect(port: int) -> bool:
+    async def try_port(port: int) -> bool:
         async with IP_CHECK_SEMAPHORE:
-            for attempt in range(2):
-                try:
-                    reader, writer = await asyncio.wait_for(
-                        asyncio.open_connection(ip, port), timeout=timeout
-                    )
-                    writer.close()
-                    with contextlib.suppress(Exception):
-                        await writer.wait_closed()
-                    return True
-                except Exception:
-                    if attempt == 0:
-                        await asyncio.sleep(0.3)
-            return False
+            try:
+                reader, writer = await asyncio.wait_for(
+                    asyncio.open_connection(ip, port), timeout=timeout
+                )
+                writer.close()
+                with contextlib.suppress(Exception):
+                    await writer.wait_closed()
+                return True
+            except Exception:
+                return False
 
-    results = await asyncio.gather(
-        try_connect(443), try_connect(80), return_exceptions=True
-    )
-    active = any(isinstance(r, bool) and r for r in results)
+    tasks = [asyncio.create_task(try_port(443)), asyncio.create_task(try_port(80))]
+    active = False
+    for fut in asyncio.as_completed(tasks):
+        res = await fut
+        if res:
+            active = True
+            for t in tasks:
+                t.cancel()
+            break
+
     print(f"IP connectivity check: {ip} is {'ACTIVE' if active else 'OFFLINE'}")
     return active
 
@@ -304,10 +161,7 @@ def parse_geohide_comment_ips(file_path: Path) -> list[str]:
 
 
 async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
-    """Detects proxy IPs for each provider (malw, mafioznik, geohide, stressozz) dynamically using dnsx & SLD heuristics."""
-    import re
-    import subprocess
-
+    """Detects proxy IPs for each provider (malw, mafioznik, geohide, stressozz) dynamically using DoH & SLD heuristics."""
     providers = ["malw", "mafioznik", "geohide"]
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
@@ -318,7 +172,6 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
     # 1. Parse all hosts files and collect domains, mapped IPs, and build IP -> SLDs mapping
     provider_ip_domains = {}
     ip_to_slds = {}
-    all_domains = set()
 
     for prov in providers:
         file_path = provider_files[prov]
@@ -328,7 +181,6 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
                 provider_ip_domains[prov] = ip_domains
                 for ip, domains in ip_domains.items():
                     for dom in domains:
-                        all_domains.add(dom)
                         sld = _get_sld_name(dom)
                         ip_to_slds.setdefault(ip, set()).add(sld)
             except Exception as e:
@@ -341,80 +193,75 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
             _, zapret_ip_domains = get_source_info(zapret_path)
             for ip, domains in zapret_ip_domains.items():
                 for dom in domains:
-                    all_domains.add(dom)
                     sld = _get_sld_name(dom)
                     ip_to_slds.setdefault(ip, set()).add(sld)
         except Exception as e:
             print(f"Warning: Failed to parse {zapret_path.name} as hosts source: {e}")
 
-    # 2. Resolve all domains using dnsx
-    resolved_ips = {}  # domain -> set of resolved IPs
-    if all_domains:
-        temp_domains_file = hosts_temp_dir / "domains_to_resolve.txt"
-        with open(temp_domains_file, "w", encoding="utf-8") as f:
-            f.write("\n".join(sorted(list(all_domains))) + "\n")
+    # 2. Filter raw candidates with >= 4 distinct SLDs
+    raw_candidates = [ip for ip, slds in ip_to_slds.items() if len(slds) >= 4]
 
-        dnsx_bin = find_binary("dnsx")
-        cmd = [
-            dnsx_bin,
-            "-silent",
-            "-duc",
-            "-nc",
-            "-rl",
-            "200",
-            "-a",
-            "-resp",
-            "-r",
-            "doh:https://1.1.1.1/dns-query",
-            "-l",
-            str(temp_domains_file),
-            "-stream",
-        ]
-        try:
-            proc = await asyncio.create_subprocess_exec(
-                *cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    # Collect sample domains to verify for each candidate IP (up to 5 per IP)
+    domains_to_verify = set()
+    ip_sample_domains = {}
+    for ip in raw_candidates:
+        mapped = []
+        for prov in providers:
+            mapped.extend(list(provider_ip_domains.get(prov, {}).get(ip, [])))
+        if zapret_path.exists():
+            mapped.extend(list(zapret_ip_domains.get(ip, [])))
+        sample = sorted(list(set(mapped)))[:5]
+        ip_sample_domains[ip] = sample
+        domains_to_verify.update(sample)
+
+    # 3. Resolve sample domains via Cloudflare DoH (with getaddrinfo fallback)
+    resolved_ips = {}
+    if domains_to_verify:
+        async with httpx.AsyncClient(timeout=3.0) as client:
+
+            async def resolve_doh(domain: str) -> tuple[str, set[str]]:
+                try:
+                    resp = await client.get(
+                        "https://1.1.1.1/dns-query",
+                        params={"name": domain, "type": "A"},
+                        headers={"accept": "application/dns-json"},
+                    )
+                    if resp.status_code == 200:
+                        ips = {
+                            ans["data"].strip()
+                            for ans in resp.json().get("Answer", [])
+                            if ans.get("type") == 1
+                        }
+                        return domain, ips
+                except Exception:
+                    pass
+                # Fallback to local getaddrinfo
+                try:
+                    loop = asyncio.get_running_loop()
+                    res = await loop.getaddrinfo(domain, None, family=socket.AF_INET)
+                    return domain, {item[4][0] for item in res}
+                except Exception:
+                    return domain, set()
+
+            results = await asyncio.gather(
+                *(resolve_doh(dom) for dom in domains_to_verify),
+                return_exceptions=True,
             )
-            stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=90.0)
+            for res in results:
+                if isinstance(res, tuple) and len(res) == 2:
+                    dom, ips = res
+                    if ips:
+                        resolved_ips[dom] = ips
 
-            for line in stdout.decode("utf-8", errors="ignore").splitlines():
-                match = re.match(r"^(\S+)\s+\[A\]\s+\[(\S+)\]", line.strip())
-                if match:
-                    dom = match.group(1).lower().strip()
-                    ip = match.group(2).strip()
-                    resolved_ips.setdefault(dom, set()).add(ip)
-        except Exception as e:
-            print(f"Warning: dnsx resolution failed: {e}")
-
-        if temp_domains_file.exists():
-            with contextlib.suppress(Exception):
-                temp_domains_file.unlink()
-
-    # 3. Identify proxy candidates based on distinct SLD count & dnsx verification
+    # 4. Identify proxy candidates
     proxy_candidates = set()
-    for ip, slds in ip_to_slds.items():
-        # A general proxy IP must map to multiple distinct base domains (SLDs)
-        if len(slds) >= 4:
-            # Verify if this IP is actually just a crutch for its mapped domains.
-            # If for mapped domains, the IP matches resolved IP, it's a crutch.
-            mapped_domains = []
-            for prov in providers:
-                mapped_domains.extend(
-                    list(provider_ip_domains.get(prov, {}).get(ip, []))
-                )
-            if zapret_path.exists():
-                mapped_domains.extend(list(zapret_ip_domains.get(ip, [])))
-
-            resolved_and_matching = 0
-            resolved_count = 0
-            for dom in mapped_domains:
-                if dom in resolved_ips:
-                    resolved_count += 1
-                    if ip in resolved_ips[dom]:
-                        resolved_and_matching += 1
-
-            if resolved_count > 0 and resolved_and_matching > 0:
-                continue
-
+    for ip in raw_candidates:
+        matched = False
+        for dom in ip_sample_domains.get(ip, []):
+            if ip in resolved_ips.get(dom, set()):
+                matched = True
+                break
+        if not matched:
             proxy_candidates.add(ip)
 
     # 4. Assign proxy IPs to their actual providers
@@ -800,16 +647,6 @@ async def generate_aligned_hosts(
                     dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
                     f.write(f"{ip_key} {dom_list}\n")
 
-        # Clean up any legacy -v1, -v2, etc. files in the output directory
-        for idx in range(1, 10):
-            for v_nc in (False, True):
-                nc_suffix = "-no-crutch" if v_nc else ""
-                v_path = base_output.parent / (
-                    base_output.stem + f"-v{idx}" + nc_suffix + suffix
-                )
-                if v_path.exists():
-                    v_path.unlink()
-
         # Standard AdGuard Home file
         adg_output = base_output.parent / f"{base_output.stem}.adguard.txt"
         with open(adg_output, "w", encoding="utf-8") as f:
@@ -894,57 +731,33 @@ async def generate_aligned_hosts(
 
     # For combined_geoblock: every domain maps to ALL active proxy IPs of active providers
     combined_geoblock = {}
-    malw_active_ips = [ip for ip in malw_ips if ip in active_ips]
-    mw_ips_to_use = malw_active_ips if malw_active_ips else malw_ips
-    geohide_active_ips = [ip for ip in geohide_ips if ip in active_ips]
-    gh_ips_to_use = geohide_active_ips if geohide_active_ips else geohide_ips
-    mafioznik_active_ips = [ip for ip in mafioznik_ips if ip in active_ips]
-    m_ips_to_use = mafioznik_active_ips if mafioznik_active_ips else mafioznik_ips
-    stressozz_active_ips = [ip for ip in stressozz_ips if ip in active_ips]
-    sz_ips_to_use = stressozz_active_ips if stressozz_active_ips else stressozz_ips
+    provider_cfgs = [
+        ("malw", malw_ips, False),
+        ("geohide", geohide_ips, False),
+        ("mafioznik", mafioznik_ips, True),
+        ("stressozz", stressozz_ips, False),
+    ]
 
-    use_malw = len(malw_active_ips) > 0 or not active_ips
-    use_geohide = len(geohide_active_ips) > 0 or not active_ips
-    use_mafioznik = len(mafioznik_active_ips) > 0 or not active_ips
-    use_stressozz = len(stressozz_active_ips) > 0 or not active_ips
+    for _name, prov_ips, is_maf in provider_cfgs:
+        active_prov_ips = [ip for ip in prov_ips if ip in active_ips]
+        ips_to_use = active_prov_ips if active_prov_ips else prov_ips
+        should_use = len(active_prov_ips) > 0 or not active_ips
 
-    if use_malw and malw_ips:
-        for ip in mw_ips_to_use:
-            for brand, doms in brand_domains.items():
-                filtered_doms = [d for d in doms if d not in global_custom]
-                if filtered_doms:
-                    combined_geoblock.setdefault((ip, brand), set()).update(
-                        filtered_doms
-                    )
-
-    if use_geohide and geohide_ips:
-        for ip in gh_ips_to_use:
-            for brand, doms in brand_domains.items():
-                filtered_doms = [d for d in doms if d not in global_custom]
-                if filtered_doms:
-                    combined_geoblock.setdefault((ip, brand), set()).update(
-                        filtered_doms
-                    )
-
-    if use_mafioznik and mafioznik_ips:
-        for ip in m_ips_to_use:
-            for brand, doms in brand_domains.items():
-                filtered_doms = [
-                    d for d in doms if d in mafioznik_allowed and d not in global_custom
-                ]
-                if filtered_doms:
-                    combined_geoblock.setdefault((ip, brand), set()).update(
-                        filtered_doms
-                    )
-
-    if use_stressozz and stressozz_ips:
-        for ip in sz_ips_to_use:
-            for brand, doms in brand_domains.items():
-                filtered_doms = [d for d in doms if d not in global_custom]
-                if filtered_doms:
-                    combined_geoblock.setdefault((ip, brand), set()).update(
-                        filtered_doms
-                    )
+        if should_use and prov_ips:
+            for ip in ips_to_use:
+                for brand, doms in brand_domains.items():
+                    if is_maf:
+                        filtered_doms = [
+                            d
+                            for d in doms
+                            if d in mafioznik_allowed and d not in global_custom
+                        ]
+                    else:
+                        filtered_doms = [d for d in doms if d not in global_custom]
+                    if filtered_doms:
+                        combined_geoblock.setdefault((ip, brand), set()).update(
+                            filtered_doms
+                        )
 
     # 8. Resolve conflicts: move direct domains that match geoblock domains (exact or subdomain) to geoblock
     combined_geoblock_domains = set()
