@@ -109,9 +109,9 @@ api.deepl.com
 api.deezer.com
 api.elevenlabs.io
 api.fitbit.com
-api.github.com
 api.home-connect.cn
 api.imgur.com
+api.instagram.com
 api.jetbrains.ai
 api.manus.im
 api.openai.com
@@ -164,8 +164,11 @@ assistant-s3-pa.googleapis.com
 atlassian.com
 att.com
 atwiki.jp
+audio-ak-spotify-com.akamaized.net
+audio-cf.spotifycdn.com
 audio-fa-tls13.spotifycdn.com
 audio-fa.scdn.co
+audio4-fa-tls13.spotifycdn.com
 augmentcode.com
 auth.anthropic.com
 auth.deepl.com
@@ -296,8 +299,6 @@ cesium.com
 chainreactioncycles.com
 chaos.com
 charts-images.scdn.co
-chat-e2ee-mini.c10r.facebook.com
-chat-e2ee-mini.facebook.com
 chat.com
 chat.groq.com
 chat.openai.com
@@ -574,6 +575,7 @@ easyjet.com
 echo.naukri.com
 ecs.office.com
 edelivery.windriver.com
+edge-chat.instagram.com
 edge-web-gew1.dual-gslb.spotify.com
 edge-web-gue1.dual-gslb.spotify.com
 edge-web.dual-gslb.spotify.com
@@ -740,6 +742,7 @@ gpu-monkey.com
 gql.twitch.tv
 grafana.com
 grammarly.com
+graph.instagram.com
 graphql.strava.com
 graylog.org
 grazie.ai
@@ -803,6 +806,7 @@ hybrid-analysis.com
 hyundainews.com
 i-lo.scdn.co
 i.dell.com
+i.instagram.com
 i1.api.augmentcode.com
 iaai.com
 ibm.com
@@ -839,6 +843,7 @@ insanelymac.com
 insideevs.com
 insights.naukri.com
 insightsapi.naukri.com
+instagram.c10r.facebook.com
 install.launcher.omniverse.nvidia.com
 int.api.jetbrains.com
 intel.ac
@@ -1314,6 +1319,7 @@ onshape.com
 opal.google
 opal.google.com
 opal.withgoogle.com
+open-exp.spotifycdn.com
 openai.com
 openai.fund
 openai.org
@@ -1523,8 +1529,6 @@ schaeffler.com
 schenker-tech.de
 schneider-electric.com
 scim.strava.com
-scontent-hel3-1.cdninstagram.com
-scontent.cdninstagram.com
 screamingfrog.co.uk
 sdmntpritalynorth.oaiusercontent.com
 sdmntprnortheu.oaiusercontent.com
@@ -1638,12 +1642,12 @@ stalker2.com
 static-assets-1.truthsocial.com
 static.app
 static.canva.com
+static.cdninstagram.com
 static.deepl.com
 static.linear.app
 static.naukimg.com
 static.naukri.com
 static.staging.assessment.nc.naukri.com
-static3.cdn.ubi.com
 statsig.anthropic.com
 status.anthropic.com
 status.strava.com
@@ -1757,6 +1761,7 @@ toolbox.app
 tools.cisco.com
 torrenteditor.com
 trace.wrs.com
+tracker.openbittorrent.com
 trae-api-sg.mchost.guru
 trae.ai
 trailblazer.me
@@ -1780,7 +1785,6 @@ tvn24.pl
 typeahead.grok.com
 typing.com
 uaudio.com
-ubiservices.cdn.ubi.com
 ubnt.com
 uizard.io
 ultimaker.com
@@ -1919,7 +1923,6 @@ www.autodesk.com
 www.badoo.com
 www.blog.strava.com
 www.business.strava.com
-www.canva.com
 www.chatgpt.com
 www.chess.com
 www.claude.ai

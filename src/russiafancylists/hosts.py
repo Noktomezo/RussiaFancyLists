@@ -54,19 +54,81 @@ def normalize_brand_name(dom: str) -> str:
         return "telegram"
     if any(
         k in dom
-        for k in ("facebook", "fb.com", "fbsbx", "fbcdn", "instagram", "cdninstagram")
+        for k in (
+            "facebook",
+            "fb.com",
+            "fbsbx",
+            "fbcdn",
+            "instagram",
+            "cdninstagram",
+            "whatsapp",
+        )
     ):
         return "meta"
+    if any(
+        k in dom
+        for k in (
+            "google",
+            "googleapis",
+            "gstatic",
+            "youtube",
+            "ytimg",
+            "ggpht",
+            "googlevideo",
+        )
+    ):
+        return "google"
     if any(k in dom for k in ("spotify", "scdn.co", "spotifycdn")):
         return "spotify"
+    if any(
+        k in dom
+        for k in (
+            "github",
+            "githubusercontent",
+            "githubassets",
+            "ghcr.io",
+        )
+    ):
+        return "github"
+    if any(
+        k in dom
+        for k in (
+            "openai",
+            "chatgpt",
+            "oaistatic",
+            "oaiusercontent",
+        )
+    ):
+        return "openai"
+    if any(
+        k in dom
+        for k in (
+            "microsoft",
+            "msftconnecttest",
+            "msftncsi",
+            "office",
+            "live.com",
+        )
+    ):
+        return "microsoft"
     if any(k in dom for k in ("twitter", "t.co", "x.com", "twimg")):
         return "twitter"
-    if any(k in dom for k in ("google", "youtube", "ytimg", "ggpht", "googlevideo")):
-        return "google"
     if any(k in dom for k in ("discord", "discordapp", "discordstatus")):
         return "discord"
     if any(k in dom for k in ("ubisoft", "ubi.com", "uplay")):
         return "ubisoft"
+    if any(
+        k in dom
+        for k in (
+            "supercell",
+            "clashroyaleapp",
+            "clashofclans",
+            "brawlstarsgame",
+            "squadbustersgame",
+            "mocogame",
+        )
+    ):
+        return "supercell"
 
     parts = dom.split(".")
     if len(parts) < 2:
@@ -86,6 +148,32 @@ def normalize_brand_name(dom: str) -> str:
         ) and len(tld) in (2, 3):
             brand = parts[-3]
     return brand
+
+
+def classify_ip_role(ip: str, domains: list[str], declared_proxies: set[str]) -> str:
+    """Classify an IP as SMART_PROXY, DIRECT_CRUTCH, or UNKNOWN based on provenance,
+    infrastructure subnets, and brand diversity.
+    """
+    # 1. Tier 1: Authoritative declared proxy endpoints
+    if ip in declared_proxies:
+        return "SMART_PROXY"
+
+    # 2. Tier 2: Official service/CDN infrastructure subnets
+    if is_known_crutch_ip(ip):
+        return "DIRECT_CRUTCH"
+
+    # 3. Tier 3: Brand diversity heuristic
+    distinct_brands = {normalize_brand_name(d) for d in domains}
+
+    # An IP serving >= 3 distinct brands is an SNI proxy (even if undeclared in comments)
+    if len(distinct_brands) >= 3 and len(domains) >= 5:
+        return "SMART_PROXY"
+
+    # An IP serving 1-2 brands is a single-service direct crutch mapping
+    if len(distinct_brands) <= 2:
+        return "DIRECT_CRUTCH"
+
+    return "UNKNOWN"
 
 
 def get_source_info(file_path: Path):
@@ -321,7 +409,7 @@ async def generate_aligned_hosts(
                 f"Warning: Failed to parse zapret-manager-parsed.lst as hosts source: {e}"
             )
 
-    # 4. Use dynamic custom/direct IP mappings (Crutches)
+    # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
     provider_proxy_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
 
     global_custom_candidates = {}
@@ -332,10 +420,13 @@ async def generate_aligned_hosts(
         zapret_ip_domains,
     ):
         for ip, domains in ip_domains.items():
-            if ip not in provider_proxy_ips:
+            role = classify_ip_role(ip, domains, provider_proxy_ips)
+            if role == "DIRECT_CRUTCH":
                 for dom in domains:
                     if ip not in global_custom_candidates.setdefault(dom, []):
                         global_custom_candidates[dom].append(ip)
+            elif role == "SMART_PROXY":
+                provider_proxy_ips.add(ip)
 
     ips_list = sorted(list(set(malw_ips + mafioznik_ips + geohide_ips)))
     if not ips_list:
