@@ -33,7 +33,6 @@
 ||a1968.i6g1.akamai.net^$dnsrewrite=149.154.167.220
 ||e13678.dscb.akamaiedge.net^$dnsrewrite=149.154.167.220
 ||a-vrv.akamaized.net^$dnsrewrite=149.154.167.220
-||audio4-ak-spotify-com.akamaized.net^$dnsrewrite=149.154.167.220
 ||akc.org^$dnsrewrite=149.154.167.220
 ||alberta.ca^$dnsrewrite=149.154.167.220
 ||algolia.com^$dnsrewrite=149.154.167.220
@@ -499,7 +498,6 @@
 ||expandrive.com^$dnsrewrite=149.154.167.220
 ||extremetech.com^$dnsrewrite=149.154.167.220
 ||f1.com^$dnsrewrite=149.154.167.220
-||chat-e2ee-mini.c10r.facebook.com^$dnsrewrite=149.154.167.220
 ||familysearch.org^$dnsrewrite=149.154.167.220
 ||fanatical.com^$dnsrewrite=149.154.167.220
 ||fansub.com.br^$dnsrewrite=149.154.167.220
@@ -510,8 +508,6 @@
 ||sites.fastspring.com^$dnsrewrite=149.154.167.220
 ||store.fastspring.com^$dnsrewrite=149.154.167.220
 ||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=149.154.167.220
-||scontent.xx.fbcdn.net^$dnsrewrite=149.154.167.220
-||static.xx.fbcdn.net^$dnsrewrite=149.154.167.220
 ||fedex.com^$dnsrewrite=149.154.167.220
 ||fiercepc.co.uk^$dnsrewrite=149.154.167.220
 ||filebin.net^$dnsrewrite=149.154.167.220
@@ -1128,8 +1124,6 @@
 ||myqrcode.com^$dnsrewrite=149.154.167.220
 ||myrotvorets.center^$dnsrewrite=149.154.167.220
 ||nab.com.au^$dnsrewrite=149.154.167.220
-||lkfl2.nalog.ru^$dnsrewrite=149.154.167.220
-||lknpd.nalog.ru^$dnsrewrite=149.154.167.220
 ||arabicstatic.naukimg.com^$dnsrewrite=149.154.167.220
 ||autodiscover.naukimg.com^$dnsrewrite=149.154.167.220
 ||bms.naukimg.com^$dnsrewrite=149.154.167.220
@@ -1433,7 +1427,6 @@
 ||universe.openai.com^$dnsrewrite=149.154.167.220
 ||videos.openai.com^$dnsrewrite=149.154.167.220
 ||www.openai.com^$dnsrewrite=149.154.167.220
-||tracker.openbittorrent.com^$dnsrewrite=149.154.167.220
 ||openculture.com^$dnsrewrite=149.154.167.220
 ||ciscobinary.openh264.org^$dnsrewrite=149.154.167.220
 ||openh264.org^$dnsrewrite=149.154.167.220
@@ -1534,7 +1527,6 @@
 ||qwant.com^$dnsrewrite=149.154.167.220
 ||www.qwant.com^$dnsrewrite=149.154.167.220
 ||radarr.video^$dnsrewrite=149.154.167.220
-||rainbow6.com^$dnsrewrite=149.154.167.220
 ||ratatype.com^$dnsrewrite=149.154.167.220
 ||raycast-releases.com^$dnsrewrite=149.154.167.220
 ||raycast.com^$dnsrewrite=149.154.167.220
@@ -1796,8 +1788,6 @@
 ||pkgs.tailscale.com^$dnsrewrite=149.154.167.220
 ||tailscale.com^$dnsrewrite=149.154.167.220
 ||talosintelligence.com^$dnsrewrite=149.154.167.220
-||tapeop.dev^$dnsrewrite=149.154.167.220
-||www.tapeop.dev^$dnsrewrite=149.154.167.220
 ||target.com^$dnsrewrite=149.154.167.220
 ||te.com^$dnsrewrite=149.154.167.220
 ||community.teamviewer.com^$dnsrewrite=149.154.167.220
@@ -1926,10 +1916,13 @@
 ||gql.twitch.tv^$dnsrewrite=149.154.167.220
 ||typing.com^$dnsrewrite=149.154.167.220
 ||uaudio.com^$dnsrewrite=149.154.167.220
+||public-ubiservices.ubi.com^$dnsrewrite=149.154.167.220
+||public-ws-ubiservices.ubi.com^$dnsrewrite=149.154.167.220
 ||static3.cdn.ubi.com^$dnsrewrite=149.154.167.220
 ||store.ubi.com^$dnsrewrite=149.154.167.220
+||ubi.com^$dnsrewrite=149.154.167.220
+||ubiservices.cdn.ubi.com^$dnsrewrite=149.154.167.220
 ||connect.ubisoft.com^$dnsrewrite=149.154.167.220
-||ubisoft.com^$dnsrewrite=149.154.167.220
 ||uplay.ubisoft.com^$dnsrewrite=149.154.167.220
 ||fw-download.ubnt.com^$dnsrewrite=149.154.167.220
 ||ubnt.com^$dnsrewrite=149.154.167.220
