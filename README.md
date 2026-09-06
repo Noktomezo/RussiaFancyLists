@@ -51,7 +51,7 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->896.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->572.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->176.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->176.9 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -83,9 +83,9 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.46 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->172.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->957.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->298.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->957.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->127.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->298.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->41.7 KB<!-- SIZE_END -->
       </td>
     </tr>
