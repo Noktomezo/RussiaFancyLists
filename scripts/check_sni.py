@@ -4,8 +4,6 @@ import ssl
 import sys
 from pathlib import Path
 
-from russiafancylists.config import PROVIDER_IPS
-
 # Try importing rich for nice styling, fallback to normal prints if not available
 try:
     from rich.console import Console
@@ -23,15 +21,13 @@ except ImportError:
 
     console = MockConsole()
 
-PROVIDER_NAME_MAP = {
-    "malw": "Malw",
-    "geohide": "GeoHide",
-    "mafioznik": "Mafioznik",
+PROVIDER_PROXIES = {
+    "GeoHide": ["45.155.204.190", "37.230.192.51", "31.25.239.132"],
+    "Malw": ["193.233.112.67", "193.233.112.68", "62.133.62.97"],
 }
 
 DEFAULT_PROXIES = {}
-for provider, ips in PROVIDER_IPS.items():
-    name = PROVIDER_NAME_MAP.get(provider, provider.capitalize())
+for name, ips in PROVIDER_PROXIES.items():
     for idx, ip in enumerate(ips):
         suffix = f" v{idx + 1}" if len(ips) > 1 else ""
         DEFAULT_PROXIES[ip] = f"{name}{suffix}"

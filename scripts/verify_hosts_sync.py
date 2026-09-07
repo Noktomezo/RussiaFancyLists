@@ -83,8 +83,6 @@ def main():
         if f.name in (
             "combined.hosts",
             "combined-no-crutch.hosts",
-            "mafioznik.hosts",
-            "mafioznik-no-crutch.hosts",
             "only-crutch.hosts",
         ):
             continue
@@ -94,6 +92,17 @@ def main():
             standard_files.append(f)
 
     mismatches = 0
+
+    # Ensure obsolete mafioznik hosts files are not present
+    for obsolete in (
+        "mafioznik.hosts",
+        "mafioznik-no-crutch.hosts",
+        "mafioznik.adguard.txt",
+        "mafioznik-no-crutch.adguard.txt",
+    ):
+        if (hosts_dir / obsolete).exists():
+            print(f"Error: Obsolete file {obsolete} should not exist in {hosts_dir}")
+            mismatches += 1
 
     print("\n--- Verifying Standard Hosts Files (with Crutches) ---")
     for p_path in sorted(standard_files, key=lambda x: x.name):
@@ -128,35 +137,6 @@ def main():
                     f"  Only in combined-no-crutch.hosts (first 5): {sorted(list(diff2))[:5]}"
                 )
             mismatches += 1
-
-    print("\n--- Verifying Mafioznik Hosts Files (Subset Check) ---")
-    mafioznik_path = hosts_dir / "mafioznik.hosts"
-    if mafioznik_path.exists():
-        m_domains = parse_domains_from_hosts(mafioznik_path)
-        print(f"{mafioznik_path.name} has {len(m_domains)} unique domains.")
-        extra = m_domains - combined_domains
-        if extra:
-            print(
-                f"Error: mafioznik.hosts contains domains not in combined.hosts (first 5): {sorted(list(extra))[:5]}"
-            )
-            mismatches += 1
-        else:
-            print("mafioznik.hosts is a valid subset of combined.hosts.")
-
-    mafioznik_nc_path = hosts_dir / "mafioznik-no-crutch.hosts"
-    if mafioznik_nc_path.exists():
-        m_nc_domains = parse_domains_from_hosts(mafioznik_nc_path)
-        print(f"{mafioznik_nc_path.name} has {len(m_nc_domains)} unique domains.")
-        extra_nc = m_nc_domains - combined_nc_domains
-        if extra_nc:
-            print(
-                f"Error: mafioznik-no-crutch.hosts contains domains not in combined-no-crutch.hosts (first 5): {sorted(list(extra_nc))[:5]}"
-            )
-            mismatches += 1
-        else:
-            print(
-                "mafioznik-no-crutch.hosts is a valid subset of combined-no-crutch.hosts."
-            )
 
     print("\n--- Verifying Only-Crutch Hosts File ---")
     only_crutch_path = hosts_dir / "only-crutch.hosts"

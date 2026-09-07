@@ -324,12 +324,11 @@ def parse_geohide_comment_ips(file_path: Path) -> list[str]:
 
 
 async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
-    """Strictly detects Smart DNS proxy IPs for each provider (malw, mafioznik, geohide).
+    """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide).
     Strictly differentiates Smart DNS proxy servers from direct service crutches.
     """
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
-        "mafioznik": hosts_temp_dir / "mafioznik-hosts.lst",
         "geohide": hosts_temp_dir / "geohide-hosts.lst",
     }
 
@@ -341,11 +340,7 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
         else ["45.155.204.190", "37.230.192.51", "31.25.239.132"]
     )
 
-    # 2. Mafioznik: Freedom proxy
-    maf_top_ips, _ = get_source_info(provider_files["mafioznik"])
-    mafioznik_ips = maf_top_ips[:1] if maf_top_ips else ["103.27.157.38"]
-
-    # 3. ImMALWARE (malw): Strict detection of open SNI proxy servers
+    # 2. ImMALWARE (malw): Strict detection of open SNI proxy servers
     malw_ips = []
     if provider_files["malw"].exists():
         _, malw_ip_domains = get_source_info(provider_files["malw"])
@@ -355,17 +350,11 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
                 continue
             # Must map to at least 5 domains and at least 3 distinct normalized brands
             distinct_brands = {normalize_brand_name(d) for d in domains}
-            if (
-                len(domains) >= 5
-                and len(distinct_brands) >= 3
-                or ip in mafioznik_ips
-                or ip in geohide_ips
-            ):
+            if len(domains) >= 5 and len(distinct_brands) >= 3 or ip in geohide_ips:
                 malw_ips.append(ip)
 
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),
-        "mafioznik": sorted(list(set(mafioznik_ips))),
         "geohide": sorted(list(set(geohide_ips))),
     }
 
@@ -378,12 +367,10 @@ async def generate_aligned_hosts(
     hosts_temp_dir: Path,
     output_combined: Path,
     output_malw: Path,
-    output_mafioznik: Path,
     output_geohide: Path,
 ):
     """Compile domains from geoblock list into identical hosts lists with original IPs.
     - malw.lst: all geoblock domains mapped to malw's most frequent IP.
-    - mafioznik.lst: all geoblock domains mapped to mafioznik's most frequent IP.
     - geohide.lst: all geoblock domains mapped to geohide's most frequent IP.
     - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice.
     """
@@ -397,7 +384,6 @@ async def generate_aligned_hosts(
     # 2. Dynamically detect proxy IPs and get source info (original domains)
     detected_proxy_ips = await detect_provider_proxy_ips(hosts_temp_dir)
     malw_ips = detected_proxy_ips["malw"]
-    mafioznik_ips = detected_proxy_ips["mafioznik"]
     geohide_ips = detected_proxy_ips["geohide"]
 
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
@@ -416,12 +402,11 @@ async def generate_aligned_hosts(
             )
 
     # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
-    provider_proxy_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
+    provider_proxy_ips = set(malw_ips) | set(geohide_ips)
 
     global_custom_candidates = {}
     for ip_domains in (
         malw_ip_domains,
-        mafioznik_ip_domains,
         geohide_ip_domains,
         zapret_ip_domains,
     ):
@@ -434,7 +419,7 @@ async def generate_aligned_hosts(
             elif role == "SMART_PROXY":
                 provider_proxy_ips.add(ip)
 
-    ips_list = sorted(list(set(malw_ips + mafioznik_ips + geohide_ips)))
+    ips_list = sorted(list(set(malw_ips + geohide_ips)))
     if not ips_list:
         ips_list = ["127.0.0.1"]
 
@@ -551,7 +536,7 @@ async def generate_aligned_hosts(
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
-    unique_primary_ips = set(malw_ips) | set(mafioznik_ips) | set(geohide_ips)
+    unique_primary_ips = set(malw_ips) | set(geohide_ips)
     all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
 
     print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
@@ -714,23 +699,13 @@ async def generate_aligned_hosts(
         if active_candidates:
             global_custom[d] = active_candidates[-1]
 
-    # Build sets of domains allowed by Mafioznik to implement fallback routing for restricted SNI proxies
-    mafioznik_allowed = {d for doms in mafioznik_ip_domains.values() for d in doms}
-
     # Write all individual files using the global settings (making the Crutch section identical everywhere)
     malw_res = write_provider_hosts(output_malw, malw_ips, global_custom)
-    mafioznik_res = write_provider_hosts(
-        output_mafioznik,
-        mafioznik_ips,
-        global_custom,
-        mafioznik_allowed,
-    )
     geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
     # Merge custom direct mappings (crutches) from all providers
     combined_direct = {}
     for direct_groups, _ in (
         malw_res[0],
-        mafioznik_res[0],
         geohide_res[0],
     ):
         for (ip, brand), doms in direct_groups.items():
@@ -740,12 +715,11 @@ async def generate_aligned_hosts(
     # For combined_geoblock: every domain maps to ALL active proxy IPs of active providers
     combined_geoblock = {}
     provider_cfgs = [
-        ("malw", malw_ips, False),
-        ("geohide", geohide_ips, False),
-        ("mafioznik", mafioznik_ips, True),
+        ("malw", malw_ips),
+        ("geohide", geohide_ips),
     ]
 
-    for _name, prov_ips, is_maf in provider_cfgs:
+    for _name, prov_ips in provider_cfgs:
         active_prov_ips = [ip for ip in prov_ips if ip in active_ips]
         ips_to_use = active_prov_ips if active_prov_ips else prov_ips
         should_use = len(active_prov_ips) > 0 or not active_ips
@@ -753,14 +727,7 @@ async def generate_aligned_hosts(
         if should_use and prov_ips:
             for ip in ips_to_use:
                 for brand, doms in brand_domains.items():
-                    if is_maf:
-                        filtered_doms = [
-                            d
-                            for d in doms
-                            if d in mafioznik_allowed and d not in global_custom
-                        ]
-                    else:
-                        filtered_doms = [d for d in doms if d not in global_custom]
+                    filtered_doms = [d for d in doms if d not in global_custom]
                     if filtered_doms:
                         combined_geoblock.setdefault((ip, brand), set()).update(
                             filtered_doms

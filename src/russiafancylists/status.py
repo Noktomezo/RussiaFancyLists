@@ -54,13 +54,12 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     provider_ips = {
         "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
         "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
-        "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
     }
 
     # 2. Format status strings (render 💚 for each found proxy IP, skip if provider has 0 IPs)
     status_en = []
     status_ru = []
-    for provider in ("Malw", "GeoHide", "Mafioznik"):
+    for provider in ("Malw", "GeoHide"):
         ips = provider_ips.get(provider, [])
         if not ips:
             continue
@@ -124,12 +123,6 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             "ImMALWARE",
             "ImMALWARE DNS proxy endpoints",
             "SNI-прокси ImMALWARE DNS",
-        ),
-        (
-            "mafioznik",
-            "Mafioznik",
-            "Mafioznik DNS proxy endpoints",
-            "SNI-прокси Mafioznik DNS",
         ),
     ]
 

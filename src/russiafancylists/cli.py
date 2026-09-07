@@ -206,7 +206,6 @@ async def run_pipeline(
                 TEMP_FOLDER / "hosts",
                 HOSTS_LIST_FOLDER / "combined.hosts",
                 HOSTS_LIST_FOLDER / "malw.hosts",
-                HOSTS_LIST_FOLDER / "mafioznik.hosts",
                 HOSTS_LIST_FOLDER / "geohide.hosts",
             )
             status.update(
