@@ -107,9 +107,9 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         readme_ru_path.write_text(new_content, encoding="utf-8")
 
 
-def count_domains_in_hosts(file_path: Path) -> int:
-    """Parse unique non-loopback domains from hosts or adguard file."""
-    if not file_path.exists():
+def count_geoblock_domains(file_path: Path, geoblock_set: set[str]) -> int:
+    """Parse unique domains matching the geoblock list from hosts or adguard file."""
+    if not file_path.exists() or not geoblock_set:
         return 0
     domains = set()
     with open(file_path, encoding="utf-8") as f:
@@ -134,7 +134,7 @@ def count_domains_in_hosts(file_path: Path) -> int:
                 continue
             for dom in cols[1:]:
                 domains.add(dom.lower().strip())
-    return len(domains)
+    return len(domains & geoblock_set)
 
 
 async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
@@ -143,16 +143,15 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         return
 
     geoblock_file = root_dir / "lists" / "geoblock" / "full.lst"
-    total_geoblocks = 0
+    geoblock_domains = set()
     if geoblock_file.exists():
         with open(geoblock_file, encoding="utf-8") as gf:
-            total_geoblocks = sum(
-                1 for line in gf if line.strip() and not line.startswith("#")
-            )
-
-    only_crutch_file = hosts_dir / "only-crutch.hosts"
-    total_crutches = count_domains_in_hosts(only_crutch_file)
-    total_all = total_geoblocks + total_crutches
+            geoblock_domains = {
+                line.strip().lower()
+                for line in gf
+                if line.strip() and not line.startswith("#")
+            }
+    total_geoblocks = len(geoblock_domains)
 
     provider_defs = [
         ("geohide", "GeoHide"),
@@ -160,12 +159,11 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         ("mafioznik", "Mafioznik"),
     ]
 
-    def format_coverage(count: int, is_nc: bool) -> str:
-        denom = total_geoblocks if is_nc else total_all
-        if denom == 0:
-            return f"{count}"
-        pct = (count / denom) * 100
-        return f"{count}/{denom} ({pct:.1f}%)"
+    def format_coverage(count: int) -> str:
+        if total_geoblocks == 0 or count == 0:
+            return "—"
+        pct = (count / total_geoblocks) * 100
+        return f"{count}/{total_geoblocks} ({pct:.1f}%)"
 
     def build_table(lang: str) -> str:
         is_ru = lang == "ru"
@@ -194,7 +192,9 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     f"<!-- SIZE:lists/hosts/smart{ext} -->unknown<!-- SIZE_END -->"
                 ]
                 coverages = [
-                    format_coverage(count_domains_in_hosts(std_smart), is_nc=False)
+                    format_coverage(
+                        count_geoblock_domains(std_smart, geoblock_domains)
+                    )
                 ]
                 if nc_smart.exists():
                     files.append(f"smart-no-crutch{ext}")
@@ -202,7 +202,9 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/smart-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
                     coverages.append(
-                        format_coverage(count_domains_in_hosts(nc_smart), is_nc=True)
+                        format_coverage(
+                            count_geoblock_domains(nc_smart, geoblock_domains)
+                        )
                     )
                 name = (
                     "<b>Smart</b> (Рекомендуется)"
@@ -221,7 +223,9 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/{key}{ext} -->unknown<!-- SIZE_END -->"
                     ]
                     coverages = [
-                        format_coverage(count_domains_in_hosts(p_std), is_nc=False)
+                        format_coverage(
+                            count_geoblock_domains(p_std, geoblock_domains)
+                        )
                     ]
                     if p_nc.exists():
                         files.append(f"{key}-no-crutch{ext}")
@@ -229,7 +233,9 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                             f"<!-- SIZE:lists/hosts/{key}-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                         )
                         coverages.append(
-                            format_coverage(count_domains_in_hosts(p_nc), is_nc=True)
+                            format_coverage(
+                                count_geoblock_domains(p_nc, geoblock_domains)
+                            )
                         )
                     items.append((f"<b>{display_name}</b>", files, sizes, coverages))
 
@@ -240,7 +246,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                 sizes = [
                     f"<!-- SIZE:lists/hosts/only-crutch{ext} -->unknown<!-- SIZE_END -->"
                 ]
-                coverages = [format_coverage(count_domains_in_hosts(oc), is_nc=False)]
+                coverages = ["—"]
                 name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
                 items.append((name, files, sizes, coverages))
 
