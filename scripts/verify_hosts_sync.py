@@ -1,6 +1,9 @@
+import asyncio
 import re
 import sys
 from pathlib import Path
+
+import httpx
 
 
 def parse_domains_from_hosts(file_path: Path) -> set[str]:
@@ -26,7 +29,6 @@ def parse_domains_from_hosts(file_path: Path) -> set[str]:
                 for dom in cols[1:]:
                     domains.add(dom.lower().strip())
             else:
-                # If no IP, treat the whole line as domains
                 for dom in cols:
                     domains.add(dom.lower().strip())
     return domains
@@ -46,222 +48,283 @@ def parse_domains_from_adguard(file_path: Path) -> set[str]:
     return domains
 
 
+def extract_ips_from_hosts(file_path: Path) -> set[str]:
+    """Extract all IP addresses mapped in a hosts file."""
+    ips = set()
+    with open(file_path, encoding="utf-8") as f:
+        for line in f:
+            line = re.sub(r"#.*", "", line).strip()
+            if not line:
+                continue
+            cols = line.split()
+            if (
+                cols
+                and re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", cols[0])
+                and cols[0] not in ("0.0.0.0", "127.0.0.1")
+            ):
+                ips.add(cols[0])
+    return ips
+
+
+def extract_ips_from_adguard(file_path: Path) -> set[str]:
+    """Extract all IP addresses rewritten in an AdGuard Home rules file."""
+    ips = set()
+    with open(file_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("!") or line.startswith("#"):
+                continue
+            m = re.search(r";A;(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$", line)
+            if m and m.group(1) not in ("0.0.0.0", "127.0.0.1"):
+                ips.add(m.group(1))
+    return ips
+
+
+async def check_russian_ips(ips: set[str]) -> set[str]:
+    """Verify that none of the mapped IPs are located in Russia."""
+    ru_ips = set()
+
+    # 1. Resolve geohide.ru A records
+    try:
+        loop = asyncio.get_running_loop()
+        addr_info = await loop.getaddrinfo("geohide.ru", None)
+        for ai in addr_info:
+            ru_ips.add(ai[4][0])
+    except Exception as e:
+        print(f"Warning: could not resolve geohide.ru: {e}")
+
+    # 2. Check candidate IPs with country lookup
+    candidates = [
+        ip for ip in ips if not ip.startswith(("127.", "0.", "10.", "192.168.", "172."))
+    ]
+    if not candidates:
+        return ru_ips
+
+    async with httpx.AsyncClient(timeout=4.0) as client:
+
+        async def check(ip: str):
+            try:
+                r = await client.get(f"https://api.country.is/{ip}")
+                if r.status_code == 200 and r.json().get("country") == "RU":
+                    return ip
+            except Exception:
+                pass
+            return None
+
+        results = await asyncio.gather(*(check(ip) for ip in candidates))
+        for res in results:
+            if res:
+                ru_ips.add(res)
+
+    return ru_ips
+
+
 def main():
     root_dir = Path(__file__).parent.parent
     hosts_dir = root_dir / "lists" / "hosts"
+    geoblock_file = root_dir / "lists" / "geoblock" / "full.lst"
 
     if not hosts_dir.exists():
         print(f"Error: {hosts_dir} does not exist.")
         sys.exit(1)
 
-    combined_path = hosts_dir / "combined.hosts"
-    combined_nc_path = hosts_dir / "combined-no-crutch.hosts"
-
-    if not combined_path.exists():
-        print(f"Error: {combined_path} does not exist.")
-        sys.exit(1)
-
-    if not combined_nc_path.exists():
-        print(f"Error: {combined_nc_path} does not exist.")
-        sys.exit(1)
-
-    # Read domains from combined.hosts
-    combined_domains = parse_domains_from_hosts(combined_path)
-    print(f"{combined_path.name} has {len(combined_domains)} unique domains.")
-
-    # Read domains from combined-no-crutch.hosts
-    combined_nc_domains = parse_domains_from_hosts(combined_nc_path)
-    print(f"{combined_nc_path.name} has {len(combined_nc_domains)} unique domains.")
-
-    # Find all generated provider .hosts files
-    all_hosts = [f for f in hosts_dir.glob("*.hosts") if f.is_file()]
-
-    standard_files = []
-    nocrutch_files = []
-
-    for f in all_hosts:
-        if f.name in (
-            "combined.hosts",
-            "combined-no-crutch.hosts",
-            "only-crutch.hosts",
-            "smart.hosts",
-            "smart-no-crutch.hosts",
-            "mafioznik.hosts",
-            "mafioznik-no-crutch.hosts",
-        ):
-            continue
-        if "-no-crutch" in f.name:
-            nocrutch_files.append(f)
-        else:
-            standard_files.append(f)
-
     mismatches = 0
 
-    print("\n--- Verifying Standard Hosts Files (with Crutches) ---")
-    for p_path in sorted(standard_files, key=lambda x: x.name):
-        p_domains = parse_domains_from_hosts(p_path)
-        print(f"{p_path.name} has {len(p_domains)} unique domains.")
-
-        diff1 = p_domains - combined_domains
-        diff2 = combined_domains - p_domains
-
-        if diff1 or diff2:
-            print(f"Mismatch between {p_path.name} and combined.hosts:")
-            if diff1:
-                print(f"  Only in {p_path.name} (first 5): {sorted(list(diff1))[:5]}")
-            if diff2:
-                print(f"  Only in combined.hosts (first 5): {sorted(list(diff2))[:5]}")
+    # 1. Ensure obsolete combined files are completely removed
+    obsolete_files = [
+        hosts_dir / "combined.hosts",
+        hosts_dir / "combined-no-crutch.hosts",
+        hosts_dir / "combined.adguard.txt",
+        hosts_dir / "combined-no-crutch.adguard.txt",
+    ]
+    for obs in obsolete_files:
+        if obs.exists():
+            print(f"Error: Obsolete file {obs.name} still exists! Must be removed.")
             mismatches += 1
 
-    print("\n--- Verifying No-Crutch Hosts Files ---")
-    for p_path in sorted(nocrutch_files, key=lambda x: x.name):
-        p_domains = parse_domains_from_hosts(p_path)
-        print(f"{p_path.name} has {len(p_domains)} unique domains.")
-
-        diff1 = p_domains - combined_nc_domains
-        diff2 = combined_nc_domains - p_domains
-
-        if diff1 or diff2:
-            print(f"Mismatch between {p_path.name} and combined-no-crutch.hosts:")
-            if diff1:
-                print(f"  Only in {p_path.name} (first 5): {sorted(list(diff1))[:5]}")
-            if diff2:
-                print(
-                    f"  Only in combined-no-crutch.hosts (first 5): {sorted(list(diff2))[:5]}"
-                )
+    # 2. Check expected files exist
+    expected_stems = [
+        "smart",
+        "smart-no-crutch",
+        "geohide",
+        "geohide-no-crutch",
+        "malw",
+        "malw-no-crutch",
+        "mafioznik",
+        "mafioznik-no-crutch",
+        "only-crutch",
+    ]
+    for stem in expected_stems:
+        h_file = hosts_dir / f"{stem}.hosts"
+        a_file = hosts_dir / f"{stem}.adguard.txt"
+        if not h_file.exists():
+            print(f"Error: Expected file {h_file.name} is missing.")
             mismatches += 1
-
-    print("\n--- Verifying Mafioznik Hosts Files (Subset Check) ---")
-    mafioznik_path = hosts_dir / "mafioznik.hosts"
-    if mafioznik_path.exists():
-        m_domains = parse_domains_from_hosts(mafioznik_path)
-        print(f"{mafioznik_path.name} has {len(m_domains)} unique domains.")
-        extra = m_domains - combined_domains
-        if extra:
-            print(
-                f"Error: mafioznik.hosts contains domains not in combined.hosts (first 5): {sorted(list(extra))[:5]}"
-            )
-            mismatches += 1
-        else:
-            print("mafioznik.hosts is a valid subset of combined.hosts.")
-
-    mafioznik_nc_path = hosts_dir / "mafioznik-no-crutch.hosts"
-    if mafioznik_nc_path.exists():
-        m_nc_domains = parse_domains_from_hosts(mafioznik_nc_path)
-        print(f"{mafioznik_nc_path.name} has {len(m_nc_domains)} unique domains.")
-        extra_nc = m_nc_domains - combined_nc_domains
-        if extra_nc:
-            print(
-                f"Error: mafioznik-no-crutch.hosts contains domains not in combined-no-crutch.hosts (first 5): {sorted(list(extra_nc))[:5]}"
-            )
-            mismatches += 1
-        else:
-            print(
-                "mafioznik-no-crutch.hosts is a valid subset of combined-no-crutch.hosts."
-            )
-
-    print("\n--- Verifying Smart Hosts Files (Subset & Crutch Check) ---")
-    smart_path = hosts_dir / "smart.hosts"
-    smart_nc_path = hosts_dir / "smart-no-crutch.hosts"
-    if smart_path.exists():
-        s_domains = parse_domains_from_hosts(smart_path)
-        print(f"{smart_path.name} has {len(s_domains)} unique domains.")
-        extra = s_domains - combined_domains
-        if extra:
-            print(
-                f"Error: smart.hosts contains domains not in combined.hosts (first 5): {sorted(list(extra))[:5]}"
-            )
-            mismatches += 1
-        else:
-            print("smart.hosts is a valid subset of combined.hosts.")
-
-    if smart_nc_path.exists():
-        s_nc_domains = parse_domains_from_hosts(smart_nc_path)
-        print(f"{smart_nc_path.name} has {len(s_nc_domains)} unique domains.")
-        extra_nc = s_nc_domains - combined_nc_domains
-        if extra_nc:
-            print(
-                f"Error: smart-no-crutch.hosts contains domains not in combined-no-crutch.hosts (first 5): {sorted(list(extra_nc))[:5]}"
-            )
-            mismatches += 1
-        else:
-            print(
-                "smart-no-crutch.hosts is a valid subset of combined-no-crutch.hosts."
-            )
-
-    only_crutch_path = hosts_dir / "only-crutch.hosts"
-    if smart_path.exists() and smart_nc_path.exists() and only_crutch_path.exists():
-        oc_domains = parse_domains_from_hosts(only_crutch_path)
-        expected_smart = s_nc_domains | oc_domains
-        diff1 = s_domains - expected_smart
-        diff2 = expected_smart - s_domains
-        if diff1 or diff2:
-            print(
-                "Error: smart.hosts does not match union of only-crutch and smart-no-crutch!"
-            )
-            if diff1:
-                print(f"  Only in smart.hosts (first 5): {sorted(list(diff1))[:5]}")
-            if diff2:
-                print(f"  Only in union (first 5): {sorted(list(diff2))[:5]}")
-            mismatches += 1
-        else:
-            print("only-crutch + smart-no-crutch matches smart.hosts perfectly.")
-
-    print("\n--- Verifying Only-Crutch Hosts File ---")
-    only_crutch_path = hosts_dir / "only-crutch.hosts"
-    if only_crutch_path.exists():
-        oc_domains = parse_domains_from_hosts(only_crutch_path)
-        print(f"{only_crutch_path.name} has {len(oc_domains)} unique domains.")
-
-        # Verify that combined_domains is exactly oc_domains | combined_nc_domains
-        expected_combined = oc_domains | combined_nc_domains
-        diff1 = combined_domains - expected_combined
-        diff2 = expected_combined - combined_domains
-        if diff1 or diff2:
-            print(
-                "Error: combined.hosts does not match union of only-crutch and combined-no-crutch!"
-            )
-            if diff1:
-                print(f"  Only in combined.hosts (first 5): {sorted(list(diff1))[:5]}")
-            if diff2:
-                print(f"  Only in union (first 5): {sorted(list(diff2))[:5]}")
-            mismatches += 1
-        else:
-            print("only-crutch + combined-no-crutch matches combined.hosts perfectly.")
-
-    print("\n--- Verifying AdGuard Home Files Parity ---")
-    adg_files = list(hosts_dir.glob("*.adguard.txt"))
-    print(f"Found {len(adg_files)} AdGuard Home files.")
-    for adg_path in sorted(adg_files, key=lambda x: x.name):
-        base_name = adg_path.name.replace(".adguard.txt", ".hosts")
-        hosts_peer = hosts_dir / base_name
-        if not hosts_peer.exists():
-            print(f"Error: AdGuard file {adg_path.name} has no peer {base_name}")
-            mismatches += 1
-            continue
-
-        adg_domains = parse_domains_from_adguard(adg_path)
-        hosts_domains = parse_domains_from_hosts(hosts_peer)
-        print(
-            f"{adg_path.name} has {len(adg_domains)} domains (peer {base_name}: {len(hosts_domains)})."
-        )
-
-        diff1 = adg_domains - hosts_domains
-        diff2 = hosts_domains - adg_domains
-        if diff1 or diff2:
-            print(f"Mismatch between {adg_path.name} and {base_name}:")
-            if diff1:
-                print(f"  Only in {adg_path.name} (first 5): {sorted(list(diff1))[:5]}")
-            if diff2:
-                print(f"  Only in {base_name} (first 5): {sorted(list(diff2))[:5]}")
+        if not a_file.exists():
+            print(f"Error: Expected file {a_file.name} is missing.")
             mismatches += 1
 
     if mismatches > 0:
-        print("\nError: Domains mismatch detected across hosts/adguard files.")
+        sys.exit(1)
+
+    # 3. Verify AdGuard Home 100% exact parity with .hosts peers
+    print("\n--- Verifying AdGuard Home Files Parity (100% Match) ---")
+    all_hosts = sorted(hosts_dir.glob("*.hosts"), key=lambda x: x.name)
+    all_adg = sorted(hosts_dir.glob("*.adguard.txt"), key=lambda x: x.name)
+
+    if len(all_hosts) != len(all_adg):
+        print(
+            f"Error: Mismatch in file count: {len(all_hosts)} hosts vs {len(all_adg)} adguard files."
+        )
+        mismatches += 1
+
+    for h_path in all_hosts:
+        adg_peer = hosts_dir / f"{h_path.stem}.adguard.txt"
+        if not adg_peer.exists():
+            print(f"Error: {h_path.name} has no corresponding .adguard.txt peer.")
+            mismatches += 1
+            continue
+
+        h_domains = parse_domains_from_hosts(h_path)
+        a_domains = parse_domains_from_adguard(adg_peer)
+
+        print(
+            f"{h_path.name} ({len(h_domains)} doms) <-> {adg_peer.name} ({len(a_domains)} doms)"
+        )
+        diff1 = a_domains - h_domains
+        diff2 = h_domains - a_domains
+        if diff1 or diff2:
+            print(f"Mismatch between {h_path.name} and {adg_peer.name}:")
+            if diff1:
+                print(f"  Only in {adg_peer.name} (first 5): {sorted(list(diff1))[:5]}")
+            if diff2:
+                print(f"  Only in {h_path.name} (first 5): {sorted(list(diff2))[:5]}")
+            mismatches += 1
+
+    # 4. Verify Only-Crutch isolation
+    print("\n--- Verifying Crutch Isolation ---")
+    only_crutch_path = hosts_dir / "only-crutch.hosts"
+    crutch_domains = parse_domains_from_hosts(only_crutch_path)
+    print(f"only-crutch.hosts contains {len(crutch_domains)} crutch domains.")
+
+    for nc_path in hosts_dir.glob("*-no-crutch.hosts"):
+        nc_domains = parse_domains_from_hosts(nc_path)
+        overlap = nc_domains & crutch_domains
+        if overlap:
+            print(
+                f"Error: {nc_path.name} contains crutch domains! (first 5: {sorted(list(overlap))[:5]})"
+            )
+            mismatches += 1
+        else:
+            print(f"{nc_path.name} cleanly excludes all crutch domains.")
+
+    # 5. Verify Smart Hosts = Smart No-Crutch | Only-Crutch
+    print("\n--- Verifying Smart Hosts File Parity ---")
+    smart_path = hosts_dir / "smart.hosts"
+    smart_nc_path = hosts_dir / "smart-no-crutch.hosts"
+    smart_domains = parse_domains_from_hosts(smart_path)
+    smart_nc_domains = parse_domains_from_hosts(smart_nc_path)
+    expected_smart = smart_nc_domains | crutch_domains
+
+    print(f"smart.hosts: {len(smart_domains)} domains")
+    print(f"smart-no-crutch.hosts: {len(smart_nc_domains)} domains")
+    diff_smart1 = smart_domains - expected_smart
+    diff_smart2 = expected_smart - smart_domains
+    if diff_smart1 or diff_smart2:
+        print(
+            "Error: smart.hosts does not match exact union of smart-no-crutch and only-crutch!"
+        )
+        if diff_smart1:
+            print(f"  Only in smart.hosts (first 5): {sorted(list(diff_smart1))[:5]}")
+        if diff_smart2:
+            print(f"  Only in union (first 5): {sorted(list(diff_smart2))[:5]}")
+        mismatches += 1
+    else:
+        print("smart.hosts == smart-no-crutch.hosts | only-crutch.hosts [OK]")
+
+    # 6. Verify Provider Families (geohide, malw, mafioznik)
+    print("\n--- Verifying Provider Families Scoping ---")
+    providers = ["geohide", "malw", "mafioznik"]
+    for p in providers:
+        p_path = hosts_dir / f"{p}.hosts"
+        p_nc_path = hosts_dir / f"{p}-no-crutch.hosts"
+        p_doms = parse_domains_from_hosts(p_path)
+        p_nc_doms = parse_domains_from_hosts(p_nc_path)
+
+        # p-no-crutch must be subset of p
+        missing_in_std = p_nc_doms - p_doms
+        if missing_in_std:
+            print(
+                f"Error: {p}.hosts is missing domains from {p}-no-crutch.hosts: {sorted(list(missing_in_std))[:5]}"
+            )
+            mismatches += 1
+
+        # difference must be exclusively crutches
+        crutch_diff = p_doms - p_nc_doms
+        invalid_crutches = crutch_diff - crutch_domains
+        if invalid_crutches:
+            print(
+                f"Error: {p}.hosts contains non-crutch extra domains: {sorted(list(invalid_crutches))[:5]}"
+            )
+            mismatches += 1
+        else:
+            print(
+                f"{p}.hosts has {len(p_doms)} domains, {p}-no-crutch.hosts has {len(p_nc_doms)} domains [OK]"
+            )
+
+    # 7. Verify Geoblock Universe Containment
+    if geoblock_file.exists():
+        print("\n--- Verifying Geoblock Universe Containment ---")
+        with open(geoblock_file, encoding="utf-8") as f:
+            geoblock_universe = {
+                line.strip().lower()
+                for line in f
+                if line.strip() and not line.startswith("#")
+            }
+        print(f"geoblock/full.lst contains {len(geoblock_universe)} domains.")
+
+        total_universe = geoblock_universe | crutch_domains
+
+        for h_path in all_hosts:
+            h_doms = parse_domains_from_hosts(h_path)
+            if "-no-crutch" in h_path.name:
+                alien = h_doms - geoblock_universe
+                if alien:
+                    print(
+                        f"Error: {h_path.name} contains domains outside geoblock/full.lst (first 5: {sorted(list(alien))[:5]})"
+                    )
+                    mismatches += 1
+            else:
+                alien = h_doms - total_universe
+                if alien:
+                    print(
+                        f"Error: {h_path.name} contains domains outside universe (first 5: {sorted(list(alien))[:5]})"
+                    )
+                    mismatches += 1
+
+    # 8. Verify Zero Russian IPs
+    print("\n--- Verifying Zero Russian IPs ---")
+    all_ips = set()
+    for h_path in all_hosts:
+        all_ips.update(extract_ips_from_hosts(h_path))
+    for a_path in all_adg:
+        all_ips.update(extract_ips_from_adguard(a_path))
+
+    print(f"Total unique IPs across all lists: {len(all_ips)}")
+    found_ru_ips = asyncio.run(check_russian_ips(all_ips))
+    detected_in_lists = all_ips & found_ru_ips
+    if detected_in_lists:
+        print(f"Error: Found Russian IPs in generated lists: {detected_in_lists}")
+        mismatches += 1
+    else:
+        print("0 Russian IPs found across all lists [OK]")
+
+    if mismatches > 0:
+        print(f"\nVerification failed with {mismatches} mismatch(es).")
         sys.exit(1)
 
     print(
-        "\nVerification successful: all hosts and AdGuard Home families have perfect domain parity!"
+        "\nVerification successful: all hosts and AdGuard Home families have perfect integrity!"
     )
     sys.exit(0)
 

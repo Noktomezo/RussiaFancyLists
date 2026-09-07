@@ -48,8 +48,6 @@
 ||graph.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||i.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||test.dns.malw.link^$dnsrewrite=NOERROR;A;185.31.40.18
-||lkfl2.nalog.ru^$dnsrewrite=NOERROR;A;213.24.64.175
-||lknpd.nalog.ru^$dnsrewrite=NOERROR;A;213.24.64.181
 ||ntc.party^$dnsrewrite=NOERROR;A;130.255.77.28
 ||tracker.openbittorrent.com^$dnsrewrite=NOERROR;A;52.223.13.41
 ||r6s.com^$dnsrewrite=NOERROR;A;172.67.139.108
@@ -59,6 +57,19 @@
 ||www.lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||d.rutor.info^$dnsrewrite=NOERROR;A;173.245.58.219
 ||rutor.info^$dnsrewrite=NOERROR;A;173.245.58.219
+||accounts.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||av.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||daily-mix.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||encore.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||i.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||image-cdn-fa.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||line-up.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||lineup-images.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||mosaic.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||seafoam.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||www-growth.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||www.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||open.spotify.com^$dnsrewrite=NOERROR;A;35.186.224.24
 ||audio-cf.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
@@ -101,5 +112,6 @@
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;3.33.249.140
 ||ubi.com^$dnsrewrite=NOERROR;A;52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;99.83.188.134
+||connect.ubisoft.com^$dnsrewrite=NOERROR;A;18.209.141.203
 ||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
 ||uplay.ubisoft.com^$dnsrewrite=NOERROR;A;54.76.54.196

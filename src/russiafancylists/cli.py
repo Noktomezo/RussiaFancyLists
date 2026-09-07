@@ -129,6 +129,25 @@ async def run_pipeline(
 ):
     """Run all steps of the update pipeline concurrently, matching original Bash parallelism."""
     try:
+        # Silence harmless Windows ProactorEventLoop ConnectionResetError (WinError 10054)
+        if sys.platform == "win32":
+            loop = asyncio.get_running_loop()
+            orig_handler = loop.get_exception_handler()
+
+            def silence_winerror_10054(_loop, context):
+                exc = context.get("exception")
+                if (
+                    isinstance(exc, ConnectionResetError)
+                    and getattr(exc, "winerror", None) == 10054
+                ):
+                    return
+                if orig_handler:
+                    orig_handler(_loop, context)
+                else:
+                    _loop.default_exception_handler(context)
+
+            loop.set_exception_handler(silence_winerror_10054)
+
         setup_dirs(skip_download=skip_download)
 
         # --- Stage 1: Async Downloads ---
@@ -204,7 +223,6 @@ async def run_pipeline(
             await generate_aligned_hosts(
                 GEOBLOCK_FOLDER / "full.lst",
                 TEMP_FOLDER / "hosts",
-                HOSTS_LIST_FOLDER / "combined.hosts",
                 HOSTS_LIST_FOLDER / "malw.hosts",
                 HOSTS_LIST_FOLDER / "geohide.hosts",
                 HOSTS_LIST_FOLDER / "mafioznik.hosts",

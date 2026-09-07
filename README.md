@@ -133,8 +133,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock/full.lst -->40.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock/full-sld.lst -->14.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/geoblock/full.lst -->40.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock/full-sld.lst -->14.5 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -147,8 +147,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->65.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->15.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.json -->64.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->15.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->26.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->7.1 KB<!-- SIZE_END -->
       </td>
@@ -163,8 +163,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-mihomo/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->53.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->14.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->53.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->14.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->21.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->6.6 KB<!-- SIZE_END -->
       </td>
@@ -299,47 +299,28 @@ Direct hosts file mappings for domain unblocking and proxy routing:
   <thead>
     <tr>
       <th width="120" align="center"><b>Variant</b></th>
-      <th width="130" align="center"><b>Target</b></th>
+      <th width="140" align="center"><b>Target</b></th>
       <th width="370" align="center"><b>Files</b></th>
       <th width="150" align="center"><b>Size</b></th>
-      <th width="230" align="center"><b>Description</b></th>
+      <th width="220" align="center"><b>Geoblock Coverage</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td rowspan="6"><b>Hosts</b></td>
-      <td><b>Combined</b></td>
-      <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a><br>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
-      </td>
-      <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->475.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->472.8 KB<!-- SIZE_END -->
-      </td>
-      <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
-    </tr>
-    <tr>
-      <td><b>Smart</b></td>
+      <td rowspan="5"><b>Hosts</b></td>
+      <td><b>Smart</b> (Recommended)</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart.hosts"><code>smart.hosts</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->42.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->39.8 KB<!-- SIZE_END -->
-      </td>
-      <td><b>Smart:</b> SNI handshake verified (with / without crutches)</td>
-    </tr>
-    <tr>
-      <td><b>Only Crutch</b></td>
-      <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a>
+        • <!-- SIZE:lists/hosts/smart.hosts -->45.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->42.7 KB<!-- SIZE_END -->
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/only-crutch.hosts -->3.0 KB<!-- SIZE_END -->
+        • 553/2348 (23.6%)<br>
+        • 440/2235 (19.7%)
       </td>
-      <td>Only direct IP crutch mappings</td>
     </tr>
     <tr>
       <td><b>GeoHide</b></td>
@@ -348,10 +329,13 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.hosts"><code>geohide-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.hosts -->55.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->52.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.hosts -->30.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->27.2 KB<!-- SIZE_END -->
       </td>
-      <td>GeoHide DNS proxy endpoints</td>
+      <td>
+        • 1275/2348 (54.3%)<br>
+        • 1162/2235 (52.0%)
+      </td>
     </tr>
     <tr>
       <td><b>ImMALWARE</b></td>
@@ -360,10 +344,13 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.hosts -->53.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->51.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.hosts -->7.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->4.4 KB<!-- SIZE_END -->
       </td>
-      <td>ImMALWARE DNS proxy endpoints</td>
+      <td>
+        • 290/2348 (12.4%)<br>
+        • 177/2235 (7.9%)
+      </td>
     </tr>
     <tr>
       <td><b>Mafioznik</b></td>
@@ -372,45 +359,41 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>mafioznik-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.hosts -->7.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.hosts -->7.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.1 KB<!-- SIZE_END -->
       </td>
-      <td>Mafioznik DNS proxy endpoints</td>
+      <td>
+        • 269/2348 (11.5%)<br>
+        • 156/2235 (7.0%)
+      </td>
     </tr>
     <tr>
-      <td rowspan="6"><b>AdGuard Home</b></td>
-      <td><b>Combined</b></td>
+      <td><b>Only Crutch</b></td>
       <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.adguard.txt"><code>combined.adguard.txt</code></a><br>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.hosts"><code>only-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->1.11 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->1.11 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/only-crutch.hosts -->3.1 KB<!-- SIZE_END -->
       </td>
-      <td><b>Recommended:</b> Full unified list (with / without crutches)</td>
+      <td>
+        • 113/2348 (4.8%)
+      </td>
     </tr>
     <tr>
-      <td><b>Smart</b></td>
+      <td rowspan="5"><b>AdGuard Home</b></td>
+      <td><b>Smart</b> (Recommended)</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart.adguard.txt"><code>smart.adguard.txt</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->91.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->85.5 KB<!-- SIZE_END -->
-      </td>
-      <td><b>Smart:</b> SNI handshake verified (with / without crutches)</td>
-    </tr>
-    <tr>
-      <td><b>Only Crutch</b></td>
-      <td>
-        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.adguard.txt"><code>only-crutch.adguard.txt</code></a>
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->98.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->91.6 KB<!-- SIZE_END -->
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/only-crutch.adguard.txt -->6.1 KB<!-- SIZE_END -->
+        • 553/2348 (23.6%)<br>
+        • 440/2235 (19.7%)
       </td>
-      <td>Only direct IP crutch mappings</td>
     </tr>
     <tr>
       <td><b>GeoHide</b></td>
@@ -419,10 +402,13 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->131.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->125.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->75.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->68.4 KB<!-- SIZE_END -->
       </td>
-      <td>GeoHide DNS proxy endpoints</td>
+      <td>
+        • 1275/2348 (54.3%)<br>
+        • 1162/2235 (52.0%)
+      </td>
     </tr>
     <tr>
       <td><b>ImMALWARE</b></td>
@@ -431,10 +417,13 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->128.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->122.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->16.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->10.2 KB<!-- SIZE_END -->
       </td>
-      <td>ImMALWARE DNS proxy endpoints</td>
+      <td>
+        • 290/2348 (12.4%)<br>
+        • 177/2235 (7.9%)
+      </td>
     </tr>
     <tr>
       <td><b>Mafioznik</b></td>
@@ -443,10 +432,25 @@ Direct hosts file mappings for domain unblocking and proxy routing:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.adguard.txt"><code>mafioznik-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->15.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->15.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.adguard.txt -->9.2 KB<!-- SIZE_END -->
       </td>
-      <td>Mafioznik DNS proxy endpoints</td>
+      <td>
+        • 269/2348 (11.5%)<br>
+        • 156/2235 (7.0%)
+      </td>
+    </tr>
+    <tr>
+      <td><b>Only Crutch</b></td>
+      <td>
+        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/only-crutch.adguard.txt"><code>only-crutch.adguard.txt</code></a>
+      </td>
+      <td>
+        • <!-- SIZE:lists/hosts/only-crutch.adguard.txt -->6.8 KB<!-- SIZE_END -->
+      </td>
+      <td>
+        • 113/2348 (4.8%)
+      </td>
     </tr>
   </tbody>
 </table>
@@ -454,9 +458,8 @@ Direct hosts file mappings for domain unblocking and proxy routing:
 
 > [!TIP]
 > **💡 Hosts & AdGuard Home Options:**<br>
-> 🔄 **`combined.hosts` / `combined.adguard.txt`**: Includes both geoblocks (distributed across all active SNI proxies for automatic failover) and crutches (recommended).<br>
+> 🧠 **`smart`**: Actively probed via TLS SNI handshakes. Contains only verified working `[IP - domain]` pairs across all providers, preventing broken routes for domains unsupported by proxies (recommended).<br>
 > 🩹 **What is a "Crutch"?:** A workaround mapping a domain directly to an unblocked IP in its subnet (e.g., CDN/edge servers for GitHub) to bypass local censorship directly, bypassing general SNI proxies.<br>
-> 🧠 **`smart`**: Actively probed via TLS SNI handshakes. Contains only verified working `[IP - domain]` pairs, preventing broken routes for domains unsupported by proxies.<br>
 > 🌐 **`-no-crutch`**: Excludes the `# Crutch` section. Useful if you route all other traffic through a VPN.<br>
 > ⚡ **`only-crutch`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.<br>
 > 🛡️ **AdGuard Home Format (`.adguard.txt`)**: Compatible with AdGuard Home Custom Filtering Rules using `||domain^$dnsrewrite=NOERROR;A;IP` syntax.
@@ -464,7 +467,7 @@ Direct hosts file mappings for domain unblocking and proxy routing:
 ## ⚡ SNI-Proxy Status
 <!-- STATUS_START -->
 - **Malw**: 💚
-- **GeoHide**: 💚💚💚💚💚💚💚💚
+- **GeoHide**: 💚💚💚💚💚💚💚💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]

@@ -31,8 +31,6 @@ ff02::2 ip6-allrouters
 157.240.245.174 b.i.instagram.com help.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 185.31.40.18 test.dns.malw.link
-213.24.64.175 lkfl2.nalog.ru
-213.24.64.181 lknpd.nalog.ru
 130.255.77.28 ntc.party
 52.223.13.41 tracker.openbittorrent.com
 172.67.139.108 r6s.com
@@ -40,6 +38,7 @@ ff02::2 ip6-allrouters
 65.8.158.112 tr.rbxcdn.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 173.245.58.219 d.rutor.info rutor.info
+199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
 35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
 34.201.48.129 game.squadbustersgame.com
@@ -53,6 +52,7 @@ ff02::2 ip6-allrouters
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
+18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
 54.76.54.196 uplay.ubisoft.com
 
@@ -101,7 +101,6 @@ ff02::2 ip6-allrouters
 103.27.157.38 builds.parsec.app
 103.27.157.38 o.pki.goog
 103.27.157.38 eu.posthog.com us.posthog.com
-103.27.157.38 encore.scdn.co
 103.27.157.38 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com gew1-spclient.spotify.com login.app.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com xpui.app.spotify.com
 103.27.157.38 api-global.squareup.com api.squareup.com
 103.27.157.38 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com

@@ -37,23 +37,23 @@ This file contains global rules, workflow requirements, and architectural guidel
 
 ### 1. Separate Hosts Families
 - The generated hosts files are organized into the following families:
-  1. **Standard Hosts Files (with Crutches)**: `combined.hosts`, `malw.hosts`, `geohide.hosts`.
-  2. **No-Crutch Hosts Files**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-no-crutch.hosts`.
-  3. **Mafioznik Hosts Files**: `mafioznik.hosts`, `mafioznik-no-crutch.hosts` (dedicated provider subset).
-  4. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (actively SNI-probed subset of `combined.hosts`, keeping only validated working `[IP - domain]` pairs).
-  5. **Only-Crutch Hosts File**: `only-crutch.hosts` (direct service IP mappings).
-- **Parity Rules**:
-  - All standard hosts files (`malw.hosts`, `geohide.hosts`) must contain **exactly identical domains** and match `combined.hosts`.
-  - All no-crutch hosts files (`malw-no-crutch.hosts`, `geohide-no-crutch.hosts`) must contain **exactly identical domains** and match `combined-no-crutch.hosts`.
-  - `mafioznik.hosts` and `smart.hosts` must be valid subsets of `combined.hosts`.
+  1. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (multi-provider solution, actively SNI-probed across all non-RU proxy endpoints, keeping only validated working `[IP - domain]` pairs).
+  2. **Dedicated Provider Files (with Crutches)**: `geohide.hosts`, `malw.hosts`, `mafioznik.hosts` (strictly scoped to each provider's source domains).
+  3. **No-Crutch Provider Files**: `geohide-no-crutch.hosts`, `malw-no-crutch.hosts`, `mafioznik-no-crutch.hosts` (each provider's source domains with crutches excluded).
+  4. **Only-Crutch Hosts File**: `only-crutch.hosts` (direct service IP mappings).
+- **Parity & Consistency Rules**:
   - Every `.hosts` file must have a corresponding `.adguard.txt` file with **100% exact domain parity**.
+  - `smart.hosts` domain set must equal the exact union of `smart-no-crutch.hosts` and `only-crutch.hosts`.
+  - For each provider file with crutches, its no-crutch counterpart must be a subset whose difference contains only crutches.
+  - All domains across all hosts files must be valid subsets of `lists/geoblock/full.lst` ∪ `only-crutch.hosts`.
+  - No Russian IP addresses are permitted anywhere in `.hosts` or `.adguard.txt` files.
   - The verification script `verify_hosts_sync.py` checks these rules accordingly.
 
 ### 2. The `# Crutch` Section
 - The header comment for custom/direct IP mappings must be exactly `# Crutch` (with no Russian translations or extra suffixes).
-- The crutch section in all standard hosts files must be **identical** across all providers (sharing the global `global_custom` mapping).
+- The crutch section in standard hosts files must use the global `global_custom` mapping.
 - **Definition of Crutch**: A crutch maps a domain directly to an unblocked IP address in its subnet (e.g., bypassing local censorship).
 
 ### 3. No-Crutch Hosts Files
-- In the `-no-crutch.hosts` files (including `combined-no-crutch.hosts`), all crutch/direct domains (e.g., `facebook.com`, `api.fitbit.com`) must be **completely cut out/removed**.
+- In all `-no-crutch.hosts` (and `-no-crutch.adguard.txt`) files, all crutch/direct domains (e.g., `facebook.com`, `api.fitbit.com`) must be **completely cut out/removed**.
 - *Rationale*: These files are tailored for users who route all non-geoblocked traffic through a VPN, making crutch entries redundant or undesirable.

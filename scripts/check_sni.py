@@ -115,12 +115,11 @@ async def main():
 
     domain = sys.argv[1].lower().strip()
 
-    # Try to load all unique proxy IPs from combined.hosts
-    hosts_path = Path("lists/hosts/combined.hosts")
+    # Try to load all unique proxy IPs from generated hosts files
     proxies = dict(DEFAULT_PROXIES)
-
-    if hosts_path.exists():
-        with open(hosts_path, encoding="utf-8") as f:
+    hosts_files = list(Path("lists/hosts").glob("*.hosts"))
+    for h_path in hosts_files:
+        with open(h_path, encoding="utf-8") as f:
             for line in f:
                 line = re.sub(r"#.*", "", line).strip()
                 cols = line.split()

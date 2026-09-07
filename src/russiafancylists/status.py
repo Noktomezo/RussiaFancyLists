@@ -107,38 +107,72 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         readme_ru_path.write_text(new_content, encoding="utf-8")
 
 
+def count_domains_in_hosts(file_path: Path) -> int:
+    """Parse unique non-loopback domains from hosts or adguard file."""
+    if not file_path.exists():
+        return 0
+    domains = set()
+    with open(file_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith(("#", "!")):
+                continue
+            m = re.match(r"^\|\|([^^]+)\^\$dnsrewrite=", line)
+            if m:
+                domains.add(m.group(1).lower().strip())
+                continue
+            line_no_comment = re.sub(r"#.*", "", line).strip()
+            cols = line_no_comment.split()
+            if not cols or cols[0] in (
+                "0.0.0.0",
+                "127.0.0.1",
+                "::1",
+                "::",
+                "ff02::1",
+                "ff02::2",
+            ):
+                continue
+            for dom in cols[1:]:
+                domains.add(dom.lower().strip())
+    return len(domains)
+
+
 async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     """Dynamically build and update the Hosts Files table in README.md and README.ru.md."""
     if not hosts_dir.exists():
         return
 
+    geoblock_file = root_dir / "lists" / "geoblock" / "full.lst"
+    total_geoblocks = 0
+    if geoblock_file.exists():
+        with open(geoblock_file, encoding="utf-8") as gf:
+            total_geoblocks = sum(
+                1 for line in gf if line.strip() and not line.startswith("#")
+            )
+
+    only_crutch_file = hosts_dir / "only-crutch.hosts"
+    total_crutches = count_domains_in_hosts(only_crutch_file)
+    total_all = total_geoblocks + total_crutches
+
     provider_defs = [
-        (
-            "geohide",
-            "GeoHide",
-            "GeoHide DNS proxy endpoints",
-            "SNI-прокси GeoHide DNS",
-        ),
-        (
-            "malw",
-            "ImMALWARE",
-            "ImMALWARE DNS proxy endpoints",
-            "SNI-прокси ImMALWARE DNS",
-        ),
-        (
-            "mafioznik",
-            "Mafioznik",
-            "Mafioznik DNS proxy endpoints",
-            "SNI-прокси Mafioznik DNS",
-        ),
+        ("geohide", "GeoHide"),
+        ("malw", "ImMALWARE"),
+        ("mafioznik", "Mafioznik"),
     ]
+
+    def format_coverage(count: int, is_nc: bool) -> str:
+        denom = total_geoblocks if is_nc else total_all
+        if denom == 0:
+            return f"{count}"
+        pct = (count / denom) * 100
+        return f"{count}/{denom} ({pct:.1f}%)"
 
     def build_table(lang: str) -> str:
         is_ru = lang == "ru"
         headers = (
-            ("Формат", "Назначение", "Файлы", "Размер", "Описание")
+            ("Формат", "Назначение", "Файлы", "Размер", "Покрытие геоблоков")
             if is_ru
-            else ("Variant", "Target", "Files", "Size", "Description")
+            else ("Variant", "Target", "Files", "Size", "Geoblock Coverage")
         )
 
         variants = [
@@ -151,27 +185,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         for variant_label, ext in variants:
             items = []
 
-            # 1. Combined
-            std_comb = hosts_dir / f"combined{ext}"
-            nc_comb = hosts_dir / f"combined-no-crutch{ext}"
-            if std_comb.exists():
-                files = [f"combined{ext}"]
-                sizes = [
-                    f"<!-- SIZE:lists/hosts/combined{ext} -->unknown<!-- SIZE_END -->"
-                ]
-                if nc_comb.exists():
-                    files.append(f"combined-no-crutch{ext}")
-                    sizes.append(
-                        f"<!-- SIZE:lists/hosts/combined-no-crutch{ext} -->unknown<!-- SIZE_END -->"
-                    )
-                desc = (
-                    "<b>Рекомендуется:</b> Единый список (с костылями / без)"
-                    if is_ru
-                    else "<b>Recommended:</b> Full unified list (with / without crutches)"
-                )
-                items.append(("<b>Combined</b>", files, sizes, desc))
-
-            # 2. Smart
+            # 1. Smart
             std_smart = hosts_dir / f"smart{ext}"
             nc_smart = hosts_dir / f"smart-no-crutch{ext}"
             if std_smart.exists():
@@ -179,35 +193,26 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                 sizes = [
                     f"<!-- SIZE:lists/hosts/smart{ext} -->unknown<!-- SIZE_END -->"
                 ]
+                coverages = [
+                    format_coverage(count_domains_in_hosts(std_smart), is_nc=False)
+                ]
                 if nc_smart.exists():
                     files.append(f"smart-no-crutch{ext}")
                     sizes.append(
                         f"<!-- SIZE:lists/hosts/smart-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
-                desc = (
-                    "<b>Smart:</b> Проверенные SNI-хендшейком (с костылями / без)"
+                    coverages.append(
+                        format_coverage(count_domains_in_hosts(nc_smart), is_nc=True)
+                    )
+                name = (
+                    "<b>Smart</b> (Рекомендуется)"
                     if is_ru
-                    else "<b>Smart:</b> SNI handshake verified (with / without crutches)"
+                    else "<b>Smart</b> (Recommended)"
                 )
-                items.append(("<b>Smart</b>", files, sizes, desc))
+                items.append((name, files, sizes, coverages))
 
-            # 2. Only Crutch
-            oc = hosts_dir / f"only-crutch{ext}"
-            if oc.exists():
-                files = [f"only-crutch{ext}"]
-                sizes = [
-                    f"<!-- SIZE:lists/hosts/only-crutch{ext} -->unknown<!-- SIZE_END -->"
-                ]
-                desc = (
-                    "Только прямые IP-костыли"
-                    if is_ru
-                    else "Only direct IP crutch mappings"
-                )
-                name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
-                items.append((name, files, sizes, desc))
-
-            # 3. Providers
-            for key, display_name, en_desc, ru_desc in provider_defs:
+            # 2. Providers
+            for key, display_name in provider_defs:
                 p_std = hosts_dir / f"{key}{ext}"
                 p_nc = hosts_dir / f"{key}-no-crutch{ext}"
                 if p_std.exists():
@@ -215,21 +220,38 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     sizes = [
                         f"<!-- SIZE:lists/hosts/{key}{ext} -->unknown<!-- SIZE_END -->"
                     ]
+                    coverages = [
+                        format_coverage(count_domains_in_hosts(p_std), is_nc=False)
+                    ]
                     if p_nc.exists():
                         files.append(f"{key}-no-crutch{ext}")
                         sizes.append(
                             f"<!-- SIZE:lists/hosts/{key}-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                         )
-                    desc = ru_desc if is_ru else en_desc
-                    items.append((f"<b>{display_name}</b>", files, sizes, desc))
+                        coverages.append(
+                            format_coverage(count_domains_in_hosts(p_nc), is_nc=True)
+                        )
+                    items.append((f"<b>{display_name}</b>", files, sizes, coverages))
+
+            # 3. Only Crutch
+            oc = hosts_dir / f"only-crutch{ext}"
+            if oc.exists():
+                files = [f"only-crutch{ext}"]
+                sizes = [
+                    f"<!-- SIZE:lists/hosts/only-crutch{ext} -->unknown<!-- SIZE_END -->"
+                ]
+                coverages = [format_coverage(count_domains_in_hosts(oc), is_nc=False)]
+                name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
+                items.append((name, files, sizes, coverages))
 
             rowspan = len(items)
-            for idx, (name, files_list, sizes_list, desc) in enumerate(items):
+            for idx, (name, files_list, sizes_list, coverages_list) in enumerate(items):
                 file_links = "<br>\n".join(
                     f'        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{f}"><code>{f}</code></a>'
                     for f in files_list
                 )
                 size_labels = "<br>\n".join(f"        • {s}" for s in sizes_list)
+                cov_labels = "<br>\n".join(f"        • {c}" for c in coverages_list)
 
                 row_html = "    <tr>\n"
                 if idx == 0:
@@ -240,7 +262,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     f"      <td>{name}</td>\n"
                     f"      <td>\n{file_links}\n      </td>\n"
                     f"      <td>\n{size_labels}\n      </td>\n"
-                    f"      <td>{desc}</td>\n"
+                    f"      <td>\n{cov_labels}\n      </td>\n"
                     "    </tr>"
                 )
                 all_rows.append(row_html)
@@ -250,10 +272,10 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             "  <thead>\n"
             "    <tr>\n"
             f'      <th width="120" align="center"><b>{headers[0]}</b></th>\n'
-            f'      <th width="130" align="center"><b>{headers[1]}</b></th>\n'
+            f'      <th width="140" align="center"><b>{headers[1]}</b></th>\n'
             f'      <th width="370" align="center"><b>{headers[2]}</b></th>\n'
             f'      <th width="150" align="center"><b>{headers[3]}</b></th>\n'
-            f'      <th width="230" align="center"><b>{headers[4]}</b></th>\n'
+            f'      <th width="220" align="center"><b>{headers[4]}</b></th>\n'
             "    </tr>\n"
             "  </thead>\n"
             "  <tbody>\n" + "\n".join(all_rows) + "\n  </tbody>\n"
