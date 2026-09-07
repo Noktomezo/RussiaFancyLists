@@ -290,9 +290,9 @@ Generated artifacts are organized as follows:
 > ⚪ **`Whitelist`**: Essential services and subnets that remain reachable during mobile internet restrictions / whitelist-only operational modes.<br>
 > ⚡ **`Service (prefer-direct)`**: Services with aggressive anti-DDoS / WAF / bot protection mechanisms that drop obfuscated traffic (Zapret, ByeDPI, GoodbyeDPI) or block well-known VPN ASNs (e.g. Cloudflare WARP), returning rate limits or HTTP 403 Forbidden. Recommended for direct routing rules (`DIRECT`) when tunneling or obfuscating default traffic.
 
-## 🖥️ Hosts Files
+## 🌐 Free & Reliable Geoblock Bypass
 
-Direct hosts file mappings for domain unblocking and proxy routing:
+Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local censorship:
 
 <!-- HOSTS_TABLE_START -->
 <table width="100%">
