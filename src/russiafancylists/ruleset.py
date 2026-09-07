@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-TIMEOUT = 30
+TIMEOUT = 300
 
 
 def find_binary(tool_name: str) -> str:

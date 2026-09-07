@@ -192,9 +192,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     f"<!-- SIZE:lists/hosts/smart{ext} -->unknown<!-- SIZE_END -->"
                 ]
                 coverages = [
-                    format_coverage(
-                        count_geoblock_domains(std_smart, geoblock_domains)
-                    )
+                    format_coverage(count_geoblock_domains(std_smart, geoblock_domains))
                 ]
                 if nc_smart.exists():
                     files.append(f"smart-no-crutch{ext}")
@@ -223,9 +221,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/{key}{ext} -->unknown<!-- SIZE_END -->"
                     ]
                     coverages = [
-                        format_coverage(
-                            count_geoblock_domains(p_std, geoblock_domains)
-                        )
+                        format_coverage(count_geoblock_domains(p_std, geoblock_domains))
                     ]
                     if p_nc.exists():
                         files.append(f"{key}-no-crutch{ext}")
