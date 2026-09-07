@@ -6,6 +6,8 @@ import ssl
 from collections import Counter
 from pathlib import Path
 
+import httpx
+
 from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.processors import clean_and_validate_domain
 
@@ -157,10 +159,18 @@ def normalize_brand_name(dom: str) -> str:
     return brand
 
 
-def classify_ip_role(ip: str, domains: list[str], declared_proxies: set[str]) -> str:
+def classify_ip_role(
+    ip: str,
+    domains: list[str],
+    declared_proxies: set[str],
+    ru_ips: set[str] | None = None,
+) -> str:
     """Classify an IP as SMART_PROXY, DIRECT_CRUTCH, or UNKNOWN based on provenance,
     infrastructure subnets, and brand diversity.
     """
+    if ru_ips and ip in ru_ips:
+        return "UNKNOWN"
+
     # 1. Tier 1: Authoritative declared proxy endpoints
     if ip in declared_proxies:
         return "SMART_PROXY"
@@ -343,9 +353,82 @@ def _get_sld_name(dom: str) -> str:
     return brand
 
 
-async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
+async def get_ru_ip_set(candidate_ips: list[str]) -> set[str]:
+    """Dynamically discover Russian IP addresses to exclude them from proxy pools and crutches
+    using DNS discovery of geohide.ru and lightweight, non-rate-limited GeoIP services.
+    """
+    ru_ips: set[str] = set()
+
+    # 1. Directly resolve geohide.ru A records (all are Russian Smart DNS servers)
+    try:
+        loop = asyncio.get_running_loop()
+        addr_info = await loop.getaddrinfo("geohide.ru", None)
+        for ai in addr_info:
+            ru_ips.add(ai[4][0])
+    except Exception as e:
+        print(f"Warning: Failed to resolve geohide.ru: {e}")
+
+    # 2. Check remaining candidate proxy IPs using GeoIP
+    ips_to_check = [
+        ip
+        for ip in set(candidate_ips)
+        if ip not in ru_ips
+        and not ip.startswith(("127.", "0.", "10.", "192.168.", "172."))
+        and ":" not in ip
+    ]
+    if not ips_to_check:
+        return ru_ips
+
+    sem = asyncio.Semaphore(5)
+
+    async def check_single_ip(client: httpx.AsyncClient, ip: str) -> tuple[str, str]:
+        async with sem:
+            # Primary: api.country.is
+            try:
+                r = await client.get(f"https://api.country.is/{ip}", timeout=2.5)
+                if r.status_code == 200:
+                    return ip, r.json().get("country", "")
+            except Exception:
+                pass
+
+            # Fallback 1: get.geojs.io
+            try:
+                r = await client.get(
+                    f"https://get.geojs.io/v1/ip/country.json?ip={ip}", timeout=2.5
+                )
+                if r.status_code == 200:
+                    data = r.json()
+                    if isinstance(data, list) and data:
+                        return ip, data[0].get("country", "")
+            except Exception:
+                pass
+
+            return ip, ""
+
+    try:
+        async with httpx.AsyncClient(timeout=8.0) as client:
+            results = await asyncio.gather(
+                *(check_single_ip(client, ip) for ip in ips_to_check)
+            )
+            for ip, cc in results:
+                if cc == "RU":
+                    ru_ips.add(ip)
+    except Exception as e:
+        print(f"Warning: Failed GeoIP check: {e}")
+
+    if ru_ips:
+        print(
+            f"Dynamically detected Russian proxy IPs to exclude ({len(ru_ips)}): {sorted(list(ru_ips))}"
+        )
+    return ru_ips
+
+
+async def detect_provider_proxy_ips(
+    hosts_temp_dir: Path,
+) -> tuple[dict[str, list[str]], set[str]]:
     """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide, mafioznik).
-    Strictly differentiates Smart DNS proxy servers from direct service crutches.
+    Strictly differentiates Smart DNS proxy servers from direct service crutches,
+    and dynamically detects and excludes any Russian proxy IPs across all providers.
     """
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
@@ -385,8 +468,15 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
     if provider_files["mafioznik"].exists():
         top_ips, _ = get_source_info(provider_files["mafioznik"])
         mafioznik_ips = [ip for ip in top_ips if not is_known_crutch_ip(ip)]
-        if not mafioznik_ips:
-            mafioznik_ips = ["103.27.157.38"]
+
+    # Dynamic Russian IP detection across candidate proxy IPs
+    candidates_to_check = set(geohide_ips + malw_ips + mafioznik_ips)
+    ru_ips = await get_ru_ip_set(list(candidates_to_check))
+
+    # Exclude Russian IPs from all provider proxy lists
+    geohide_ips = [ip for ip in geohide_ips if ip not in ru_ips]
+    malw_ips = [ip for ip in malw_ips if ip not in ru_ips]
+    mafioznik_ips = [ip for ip in mafioznik_ips if ip not in ru_ips]
 
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),
@@ -394,8 +484,8 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
         "mafioznik": sorted(list(set(mafioznik_ips))),
     }
 
-    print(f"Strictly detected proxy IPs: {detected_proxy_ips}")
-    return detected_proxy_ips
+    print(f"Strictly detected proxy IPs (non-RU): {detected_proxy_ips}")
+    return detected_proxy_ips, ru_ips
 
 
 async def generate_aligned_hosts(
@@ -421,12 +511,7 @@ async def generate_aligned_hosts(
         py_p = p.replace("[[:space:]]", r"\s")
         blacklist_patterns.append(re.compile(py_p))
 
-    # 2. Dynamically detect proxy IPs and get source info (original domains)
-    detected_proxy_ips = await detect_provider_proxy_ips(hosts_temp_dir)
-    malw_ips = detected_proxy_ips["malw"]
-    geohide_ips = detected_proxy_ips["geohide"]
-    mafioznik_ips = detected_proxy_ips["mafioznik"]
-
+    # 2. Extract source info (original domains and candidate IPs)
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
     geohide_ip_domains = {}
@@ -448,6 +533,11 @@ async def generate_aligned_hosts(
                 f"Warning: Failed to parse zapret-manager-parsed.lst as hosts source: {e}"
             )
 
+    detected_proxy_ips, ru_ips = await detect_provider_proxy_ips(hosts_temp_dir)
+    malw_ips = detected_proxy_ips["malw"]
+    geohide_ips = detected_proxy_ips["geohide"]
+    mafioznik_ips = detected_proxy_ips["mafioznik"]
+
     # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
     provider_proxy_ips = set(malw_ips) | set(geohide_ips) | set(mafioznik_ips)
 
@@ -459,7 +549,9 @@ async def generate_aligned_hosts(
         zapret_ip_domains,
     ):
         for ip, domains in ip_domains.items():
-            role = classify_ip_role(ip, domains, provider_proxy_ips)
+            if ip in ru_ips:
+                continue
+            role = classify_ip_role(ip, domains, provider_proxy_ips, ru_ips)
             if role == "DIRECT_CRUTCH":
                 for dom in domains:
                     if ip not in global_custom_candidates.setdefault(dom, []):
