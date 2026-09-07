@@ -314,12 +314,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->212.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->210.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->211.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->208.5 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1022/2244 (45.5%)<br>
-        • 1022/2244 (45.5%)
+        • 1021/2244 (45.5%)<br>
+        • 1021/2244 (45.5%)
       </td>
     </tr>
     <tr>
@@ -387,12 +387,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->530.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->524.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->526.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->520.0 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1022/2244 (45.5%)<br>
-        • 1022/2244 (45.5%)
+        • 1021/2244 (45.5%)<br>
+        • 1021/2244 (45.5%)
       </td>
     </tr>
     <tr>
