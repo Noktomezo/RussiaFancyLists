@@ -464,14 +464,14 @@ Direct hosts file mappings for domain unblocking and proxy routing:
 > ⚡ **`only-crutch`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.<br>
 > 🛡️ **AdGuard Home Format (`.adguard.txt`)**: Compatible with AdGuard Home Custom Filtering Rules using `||domain^$dnsrewrite=NOERROR;A;IP` syntax.
 
-## ⚡ SNI-Proxy Status
+## ⚡ Smart DNS Status
 <!-- STATUS_START -->
 - **Malw**: 💚
 - **GeoHide**: 💚💚💚💚💚💚💚💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]
-> Each heart represents a distinct active proxy server IP (💚).
+> Each heart represents a distinct active Smart DNS proxy IP (💚).
 <!-- STATUS_END -->
 
 ## 🔗 Sources
@@ -483,9 +483,9 @@ Direct hosts file mappings for domain unblocking and proxy routing:
 💜 [Antifilter Community IPSet](https://community.antifilter.download/list/community.lst) — community-managed blocked IP subnets<br>
 💜 [Antifilter Extra IPSet](https://antifilter.download/list/ipresolve.lst) — resolved IPs of blocked services<br>
 💜 [Re:filter IPSet](https://github.com/1andrevich/Re-filter-lists/raw/refs/heads/main/ipsum.lst) — compiled IP subnet blocklists<br>
-💜 [ImMALWARE's Hosts](https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts) — public SNI proxy endpoints from ImMALWARE<br>
-💜 [Mafioznik's Hosts](https://freedom.mafioznik.xyz/file/hosts) — public SNI proxy endpoints from Mafioznik<br>
-💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts) — public SNI proxy endpoints from GeoHide<br>
+💜 [ImMALWARE's Hosts](https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts) — public Smart DNS endpoints from ImMALWARE<br>
+💜 [Mafioznik's Hosts](https://freedom.mafioznik.xyz/file/hosts) — public Smart DNS endpoints from Mafioznik<br>
+💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts) — public Smart DNS endpoints from GeoHide<br>
 💜 [ItDogInfo's Geoblock Domains](https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst) — domain blocklists by itdog.info<br>
 💜 [Dartraiden's No-Russia Hosts](https://raw.githubusercontent.com/dartraiden/no-russia-hosts/refs/heads/master/hosts.txt) — domain list of services geoblocking Russia<br>
 💜 [Zapret-Manager Shell Script](https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh) — parsed variables for various restricted services<br>

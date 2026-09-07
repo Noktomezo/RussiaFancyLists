@@ -265,7 +265,7 @@ async def run_pipeline(
                 ),
             )
             status.update(
-                "[cyan]Measuring SNI proxy latencies and updating README status..."
+                "[cyan]Measuring Smart DNS proxy latencies and updating README status..."
             )
             await update_readme_status(TEMP_FOLDER / "hosts", ROOT_DIR)
             status.update("[cyan]Updating README hosts links tables...")

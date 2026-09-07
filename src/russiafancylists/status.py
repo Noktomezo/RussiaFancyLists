@@ -71,14 +71,14 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     en_block = (
         "\n".join(status_en)
         + "\n\n"
-        + ("> [!NOTE]\n> Each heart represents a distinct active proxy server IP (💚).")
+        + ("> [!NOTE]\n> Each heart represents a distinct active Smart DNS proxy IP (💚).")
     )
     ru_block = (
         "\n".join(status_ru)
         + "\n\n"
         + (
             "> [!NOTE]\n"
-            "> Каждое сердечко обозначает доступный IP-адрес прокси-сервера (💚)."
+            "> Каждое сердечко обозначает доступный IP-адрес сервера Smart DNS (💚)."
         )
     )
 

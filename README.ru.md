@@ -464,14 +464,14 @@
 > ⚡ **`only-crutch`**: Содержит **только** прямые маппинги (костыли). Удобно, если геоблок идет через VPN, но вы хотите напрямую обходить локальные блокировки для отдельных доменов.<br>
 > 🛡️ **Формат AdGuard Home (`.adguard.txt`)**: Правила для пользовательских правил / переопределений DNS в AdGuard Home синтаксиса `||домен^$dnsrewrite=NOERROR;A;IP`.
 
-## ⚡ Статус SNI-прокси
+## ⚡ Статус Smart DNS
 <!-- STATUS_START -->
 - **Malw**: 💚
 - **GeoHide**: 💚💚💚💚💚💚💚💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]
-> Каждое сердечко обозначает доступный IP-адрес прокси-сервера (💚).
+> Каждое сердечко обозначает доступный IP-адрес сервера Smart DNS (💚).
 <!-- STATUS_END -->
 
 ## 🔗 Источники
@@ -483,9 +483,9 @@
 💜 [Antifilter Community IPSet](https://community.antifilter.download/list/community.lst) — общественный список заблокированных подсетей IP<br>
 💜 [Antifilter Extra IPSet](https://antifilter.download/list/ipresolve.lst) — разрешенные IP-адреса заблокированных ресурсов<br>
 💜 [Re:filter IPSet](https://github.com/1andrevich/Re-filter-lists/raw/refs/heads/main/ipsum.lst) — компиляция подсетей IP отечественных списков<br>
-💜 [ImMALWARE's Hosts](https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts) — адреса публичных SNI-прокси от ImMALWARE<br>
-💜 [Mafioznik's Hosts](https://freedom.mafioznik.xyz/file/hosts) — адреса публичных SNI-прокси от Mafioznik<br>
-💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts) — адреса публичных SNI-прокси от GeoHide<br>
+💜 [ImMALWARE's Hosts](https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts) — адреса публичных Smart DNS серверов от ImMALWARE<br>
+💜 [Mafioznik's Hosts](https://freedom.mafioznik.xyz/file/hosts) — адреса публичных Smart DNS серверов от Mafioznik<br>
+💜 [GeoHide's Hosts](https://raw.githubusercontent.com/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts) — адреса публичных Smart DNS серверов от GeoHide<br>
 💜 [ItDogInfo's Geoblock Domains](https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst) — список доменов геоблока от itdog.info<br>
 💜 [Службы с геоблокировками от Dartraiden](https://raw.githubusercontent.com/dartraiden/no-russia-hosts/refs/heads/master/hosts.txt) — список доменов сервисов, блокирующих РФ<br>
 💜 [Zapret-Manager Shell Script](https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh) — переменные различных заблокированных сервисов<br>
