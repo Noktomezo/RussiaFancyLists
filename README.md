@@ -464,6 +464,17 @@ Direct hosts file mappings for domain unblocking and proxy routing:
 > ⚡ **`only-crutch`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.<br>
 > 🛡️ **AdGuard Home Format (`.adguard.txt`)**: Compatible with AdGuard Home Custom Filtering Rules using `||domain^$dnsrewrite=NOERROR;A;IP` syntax.
 
+> [!NOTE]
+> **🌍 Need 100% Full Geoblock Coverage?**<br>
+> Hosts files and Smart DNS proxies can only route domains explicitly supported by upstream proxy servers. For full geoblock coverage, you can try:
+> 1. **Free Cloudflare WARP Relay**: [@warp_generator_bot](https://t.me/warp_generator_bot) by *llimonix* routes traffic via a foreign relay (`User -> Foreign Server -> WARP in that country -> Internet`).<br>
+>    *Caveat*: Requires binding your public IP in the bot's cabinet. If your router reboots or your ISP changes your IP, you will need to re-bind it.
+> 2. **Hunting Foreign WARP Nodes with Warpscout**: Scan for endpoints where your traffic egresses outside Russia using [warpscout](https://github.com/vernette/warpscout):
+>    ```bash
+>    warpscout.exe scan -p awg -jc 4 -jmin 10 -jmax 50 -i1 "<r 2><b 0x858000010001000000000669636c6f756403636f6d0000010001c00c000100010000105a00044d583737>"
+>    ```
+>    Ensure that the scanned endpoint has a non-`RU` country in the `SEEN AS` column (e.g., `FI`, `SE`, `DE`).
+
 ## ⚡ Smart DNS Status
 <!-- STATUS_START -->
 - **Malw**: 💚
