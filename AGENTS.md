@@ -36,12 +36,17 @@ This file contains global rules, workflow requirements, and architectural guidel
 ## 📐 Hosts Architecture & Parity Constraints
 
 ### 1. Separate Hosts Families
-- The generated hosts files are split into two distinct families:
+- The generated hosts files are organized into the following families:
   1. **Standard Hosts Files (with Crutches)**: `combined.hosts`, `malw.hosts`, `geohide.hosts`.
   2. **No-Crutch Hosts Files**: `combined-no-crutch.hosts`, `malw-no-crutch.hosts`, `geohide-no-crutch.hosts`.
+  3. **Mafioznik Hosts Files**: `mafioznik.hosts`, `mafioznik-no-crutch.hosts` (dedicated provider subset).
+  4. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (actively SNI-probed subset of `combined.hosts`, keeping only validated working `[IP - domain]` pairs).
+  5. **Only-Crutch Hosts File**: `only-crutch.hosts` (direct service IP mappings).
 - **Parity Rules**:
-  - All standard hosts files must contain **exactly identical domains** and match `combined.hosts`.
-  - All no-crutch hosts files must contain **exactly identical domains** and match `combined-no-crutch.hosts`.
+  - All standard hosts files (`malw.hosts`, `geohide.hosts`) must contain **exactly identical domains** and match `combined.hosts`.
+  - All no-crutch hosts files (`malw-no-crutch.hosts`, `geohide-no-crutch.hosts`) must contain **exactly identical domains** and match `combined-no-crutch.hosts`.
+  - `mafioznik.hosts` and `smart.hosts` must be valid subsets of `combined.hosts`.
+  - Every `.hosts` file must have a corresponding `.adguard.txt` file with **100% exact domain parity**.
   - The verification script `verify_hosts_sync.py` checks these rules accordingly.
 
 ### 2. The `# Crutch` Section

@@ -22,6 +22,7 @@ except ImportError:
     console = MockConsole()
 
 PROVIDER_PROXIES = {
+    "Mafioznik": ["103.27.157.38"],
     "GeoHide": ["45.155.204.190", "37.230.192.51", "31.25.239.132"],
     "Malw": ["193.233.112.67", "193.233.112.68", "62.133.62.97"],
 }

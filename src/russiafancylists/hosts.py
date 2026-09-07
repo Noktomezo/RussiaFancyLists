@@ -2,6 +2,7 @@ import asyncio
 import contextlib
 import ipaddress
 import re
+import ssl
 from collections import Counter
 from pathlib import Path
 
@@ -273,6 +274,52 @@ async def check_ip_active(ip: str, timeout: float = 2.5) -> bool:
     return active
 
 
+SNI_PROBE_SEMAPHORE = asyncio.Semaphore(200)
+
+
+async def probe_sni_domains(
+    domains: list[str],
+    proxy_ips: list[str],
+    timeout: float = 1.5,
+) -> dict[str, list[str]]:
+    """Probes TLS SNI handshake on port 443 across proxy IPs for candidate domains.
+    Returns a dict: {domain: [working_ip_1, working_ip_2, ...]}
+    """
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+
+    async def test_domain_ip(dom: str, ip: str) -> tuple[str, str, bool]:
+        async with SNI_PROBE_SEMAPHORE:
+            try:
+                reader, writer = await asyncio.wait_for(
+                    asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
+                    timeout=timeout,
+                )
+                writer.close()
+                with contextlib.suppress(Exception):
+                    await writer.wait_closed()
+                return dom, ip, True
+            except Exception:
+                return dom, ip, False
+
+    tasks = [test_domain_ip(dom, ip) for dom in domains for ip in proxy_ips]
+    print(
+        f"Starting SNI probe for {len(domains)} domains against {len(proxy_ips)} proxy IPs ({len(tasks)} checks)..."
+    )
+    results = await asyncio.gather(*tasks)
+
+    working_map: dict[str, list[str]] = {}
+    for dom, ip, ok in results:
+        if ok:
+            working_map.setdefault(dom, []).append(ip)
+
+    print(
+        f"SNI probe completed: {len(working_map)} / {len(domains)} domains successfully validated on at least one proxy IP."
+    )
+    return working_map
+
+
 def _get_sld_name(dom: str) -> str:
     """Extract the base brand name/SLD from a domain."""
     dom = dom.lower().strip()
@@ -324,12 +371,13 @@ def parse_geohide_comment_ips(file_path: Path) -> list[str]:
 
 
 async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
-    """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide).
+    """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide, mafioznik).
     Strictly differentiates Smart DNS proxy servers from direct service crutches.
     """
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
         "geohide": hosts_temp_dir / "geohide-hosts.lst",
+        "mafioznik": hosts_temp_dir / "mafioznik-hosts.lst",
     }
 
     # 1. GeoHide: Authoritative extraction from official file comments
@@ -353,9 +401,18 @@ async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]
             if len(domains) >= 5 and len(distinct_brands) >= 3 or ip in geohide_ips:
                 malw_ips.append(ip)
 
+    # 3. Mafioznik: Strict detection of proxy IP
+    mafioznik_ips = []
+    if provider_files["mafioznik"].exists():
+        top_ips, _ = get_source_info(provider_files["mafioznik"])
+        mafioznik_ips = [ip for ip in top_ips if not is_known_crutch_ip(ip)]
+        if not mafioznik_ips:
+            mafioznik_ips = ["103.27.157.38"]
+
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),
         "geohide": sorted(list(set(geohide_ips))),
+        "mafioznik": sorted(list(set(mafioznik_ips))),
     }
 
     print(f"Strictly detected proxy IPs: {detected_proxy_ips}")
@@ -368,11 +425,15 @@ async def generate_aligned_hosts(
     output_combined: Path,
     output_malw: Path,
     output_geohide: Path,
+    output_mafioznik: Path,
+    output_smart: Path,
 ):
     """Compile domains from geoblock list into identical hosts lists with original IPs.
     - malw.lst: all geoblock domains mapped to malw's most frequent IP.
     - geohide.lst: all geoblock domains mapped to geohide's most frequent IP.
+    - mafioznik.lst: all geoblock domains mapped to mafioznik's proxy IP.
     - combined.lst: all geoblock domains mapped to their original IP if known, or a stable IP choice.
+    - smart.lst: only SNI-verified [domain, IP] pairs.
     """
 
     # 1. Load blacklist patterns
@@ -385,6 +446,7 @@ async def generate_aligned_hosts(
     detected_proxy_ips = await detect_provider_proxy_ips(hosts_temp_dir)
     malw_ips = detected_proxy_ips["malw"]
     geohide_ips = detected_proxy_ips["geohide"]
+    mafioznik_ips = detected_proxy_ips["mafioznik"]
 
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
@@ -402,12 +464,13 @@ async def generate_aligned_hosts(
             )
 
     # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
-    provider_proxy_ips = set(malw_ips) | set(geohide_ips)
+    provider_proxy_ips = set(malw_ips) | set(geohide_ips) | set(mafioznik_ips)
 
     global_custom_candidates = {}
     for ip_domains in (
         malw_ip_domains,
         geohide_ip_domains,
+        mafioznik_ip_domains,
         zapret_ip_domains,
     ):
         for ip, domains in ip_domains.items():
@@ -419,7 +482,7 @@ async def generate_aligned_hosts(
             elif role == "SMART_PROXY":
                 provider_proxy_ips.add(ip)
 
-    ips_list = sorted(list(set(malw_ips + geohide_ips)))
+    ips_list = sorted(list(set(malw_ips + geohide_ips + mafioznik_ips)))
     if not ips_list:
         ips_list = ["127.0.0.1"]
 
@@ -536,7 +599,7 @@ async def generate_aligned_hosts(
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
-    unique_primary_ips = set(malw_ips) | set(geohide_ips)
+    unique_primary_ips = set(malw_ips) | set(geohide_ips) | set(mafioznik_ips)
     all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
 
     print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
@@ -702,24 +765,35 @@ async def generate_aligned_hosts(
     # Write all individual files using the global settings (making the Crutch section identical everywhere)
     malw_res = write_provider_hosts(output_malw, malw_ips, global_custom)
     geohide_res = write_provider_hosts(output_geohide, geohide_ips, global_custom)
+    mafioznik_allowed = (
+        mafioznik_ip_domains.get(mafioznik_ips[0], set()) if mafioznik_ips else set()
+    )
+    mafioznik_res = write_provider_hosts(
+        output_mafioznik,
+        mafioznik_ips,
+        global_custom,
+        allowed_set=mafioznik_allowed,
+    )
     # Merge custom direct mappings (crutches) from all providers
     combined_direct = {}
     for direct_groups, _ in (
         malw_res[0],
         geohide_res[0],
+        mafioznik_res[0],
     ):
         for (ip, brand), doms in direct_groups.items():
             for d in doms:
                 combined_direct.setdefault((ip, brand), set()).add(d)
 
-    # For combined_geoblock: every domain maps to ALL active proxy IPs of active providers
+    # For combined_geoblock: every domain maps to active proxy IPs
     combined_geoblock = {}
     provider_cfgs = [
-        ("malw", malw_ips),
-        ("geohide", geohide_ips),
+        ("malw", malw_ips, False),
+        ("geohide", geohide_ips, False),
+        ("mafioznik", mafioznik_ips, True),
     ]
 
-    for _name, prov_ips in provider_cfgs:
+    for _name, prov_ips, is_maf in provider_cfgs:
         active_prov_ips = [ip for ip in prov_ips if ip in active_ips]
         ips_to_use = active_prov_ips if active_prov_ips else prov_ips
         should_use = len(active_prov_ips) > 0 or not active_ips
@@ -727,7 +801,14 @@ async def generate_aligned_hosts(
         if should_use and prov_ips:
             for ip in ips_to_use:
                 for brand, doms in brand_domains.items():
-                    filtered_doms = [d for d in doms if d not in global_custom]
+                    if is_maf:
+                        filtered_doms = [
+                            d
+                            for d in doms
+                            if d in mafioznik_allowed and d not in global_custom
+                        ]
+                    else:
+                        filtered_doms = [d for d in doms if d not in global_custom]
                     if filtered_doms:
                         combined_geoblock.setdefault((ip, brand), set()).update(
                             filtered_doms
@@ -826,6 +907,85 @@ async def generate_aligned_hosts(
             f.write("! Crutch\n")
             for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
                 for d in sorted(list(combined_direct[(ip, brand)])):
+                    f.write(format_adguard_dnsrewrite(d, ip))
+
+    # 7. Generate Smart hosts files using active SNI handshake probing
+    candidate_smart_domains = [d for d in geoblock_domains if d not in global_custom]
+    active_smart_proxy_ips = [
+        ip for ip in (malw_ips + geohide_ips + mafioznik_ips) if ip in active_ips
+    ]
+    if not active_smart_proxy_ips:
+        active_smart_proxy_ips = sorted(
+            list(set(malw_ips + geohide_ips + mafioznik_ips))
+        )
+
+    probe_results = await probe_sni_domains(
+        candidate_smart_domains, active_smart_proxy_ips
+    )
+
+    smart_geoblock = {}
+    for dom, working_ips in probe_results.items():
+        brand = get_raw_brand(dom)
+        for ip in working_ips:
+            smart_geoblock.setdefault((ip, brand), set()).add(dom)
+
+    output_smart.parent.mkdir(parents=True, exist_ok=True)
+    smart_nc_path = (
+        output_smart.parent / f"{output_smart.stem}-no-crutch{output_smart.suffix}"
+    )
+    smart_adg_path = output_smart.parent / f"{output_smart.stem}.adguard.txt"
+    smart_nc_adg_path = (
+        output_smart.parent / f"{output_smart.stem}-no-crutch.adguard.txt"
+    )
+
+    # Standard smart file (with crutches)
+    with open(output_smart, "w", encoding="utf-8") as f:
+        f.write(LOOPBACK_HEADER)
+        if combined_direct:
+            f.write("# Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+            f.write("\n")
+        if smart_geoblock:
+            f.write("# Geoblock\n")
+            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(smart_geoblock[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+
+    # Standard smart AdGuard Home file
+    with open(smart_adg_path, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Smart (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+        if combined_direct:
+            f.write("! Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                for d in sorted(list(combined_direct[(ip, brand)])):
+                    f.write(format_adguard_dnsrewrite(d, ip))
+            f.write("\n")
+        if smart_geoblock:
+            f.write("! Geoblock\n")
+            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
+                for d in sorted(list(smart_geoblock[(ip, brand)])):
+                    f.write(format_adguard_dnsrewrite(d, ip))
+
+    # No-crutch smart file
+    with open(smart_nc_path, "w", encoding="utf-8") as f:
+        f.write(LOOPBACK_HEADER)
+        if smart_geoblock:
+            f.write("# Geoblock\n")
+            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(smart_geoblock[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+
+    # No-crutch smart AdGuard Home file
+    with open(smart_nc_adg_path, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Smart No-Crutch (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+        if smart_geoblock:
+            f.write("! Geoblock\n")
+            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
+                for d in sorted(list(smart_geoblock[(ip, brand)])):
                     f.write(format_adguard_dnsrewrite(d, ip))
 
     # Rewrite geoblock_file to exclude crutch domains

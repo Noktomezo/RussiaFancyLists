@@ -54,12 +54,13 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     provider_ips = {
         "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
         "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
+        "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
     }
 
     # 2. Format status strings (render 💚 for each found proxy IP, skip if provider has 0 IPs)
     status_en = []
     status_ru = []
-    for provider in ("Malw", "GeoHide"):
+    for provider in ("Malw", "GeoHide", "Mafioznik"):
         ips = provider_ips.get(provider, [])
         if not ips:
             continue
@@ -124,6 +125,12 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             "ImMALWARE DNS proxy endpoints",
             "SNI-прокси ImMALWARE DNS",
         ),
+        (
+            "mafioznik",
+            "Mafioznik",
+            "Mafioznik DNS proxy endpoints",
+            "SNI-прокси Mafioznik DNS",
+        ),
     ]
 
     def build_table(lang: str) -> str:
@@ -163,6 +170,26 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     else "<b>Recommended:</b> Full unified list (with / without crutches)"
                 )
                 items.append(("<b>Combined</b>", files, sizes, desc))
+
+            # 2. Smart
+            std_smart = hosts_dir / f"smart{ext}"
+            nc_smart = hosts_dir / f"smart-no-crutch{ext}"
+            if std_smart.exists():
+                files = [f"smart{ext}"]
+                sizes = [
+                    f"<!-- SIZE:lists/hosts/smart{ext} -->unknown<!-- SIZE_END -->"
+                ]
+                if nc_smart.exists():
+                    files.append(f"smart-no-crutch{ext}")
+                    sizes.append(
+                        f"<!-- SIZE:lists/hosts/smart-no-crutch{ext} -->unknown<!-- SIZE_END -->"
+                    )
+                desc = (
+                    "<b>Smart:</b> Проверенные SNI-хендшейком (с костылями / без)"
+                    if is_ru
+                    else "<b>Smart:</b> SNI handshake verified (with / without crutches)"
+                )
+                items.append(("<b>Smart</b>", files, sizes, desc))
 
             # 2. Only Crutch
             oc = hosts_dir / f"only-crutch{ext}"

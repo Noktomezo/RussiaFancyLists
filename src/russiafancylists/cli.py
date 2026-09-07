@@ -207,6 +207,8 @@ async def run_pipeline(
                 HOSTS_LIST_FOLDER / "combined.hosts",
                 HOSTS_LIST_FOLDER / "malw.hosts",
                 HOSTS_LIST_FOLDER / "geohide.hosts",
+                HOSTS_LIST_FOLDER / "mafioznik.hosts",
+                HOSTS_LIST_FOLDER / "smart.hosts",
             )
             status.update(
                 "[green]✓ Domains, IPSets, Geoblocks, and aligned Hosts compiled successfully[/green]"

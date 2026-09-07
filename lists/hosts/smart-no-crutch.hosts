@@ -1,0 +1,100 @@
+# Loopback
+127.0.0.1 localhost
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# Geoblock
+103.27.157.38 4pda.to
+103.27.157.38 console.anthropic.com
+31.25.239.132 anthropic.com
+103.27.157.38 app.augmentcode.com augmentcode.com
+193.233.112.68 cdn.auth0.com
+37.230.192.51 bestbuy.com
+103.27.157.38 edgeservices.bing.com
+193.233.112.68 rewards.bing.com
+37.230.192.51 buf.build
+31.25.239.132 buymeacoffee.com
+103.27.157.38 content-management-files.canva.com
+37.230.192.51 content-management-files.canva.com
+193.233.112.67 chatgpt-async-webps-prod-southcentralus-1.chatgpt.com
+193.233.112.68 chatgpt-async-webps-prod-southcentralus-5.chatgpt.com chatgpt-async-webps-prod-westus-1.chatgpt.com
+37.230.192.51 ab.chatgpt.com chatgpt-async-webps-prod-southcentralus-2.chatgpt.com chatgpt-async-webps-prod-southcentralus-4.chatgpt.com ws.chatgpt.com
+193.233.112.67 windsurf-stable.codeium.com
+103.27.157.38 auth.deepl.com ott.deepl.com write-free.www.deepl.com
+193.233.112.68 login-wall.deepl.com ott.deepl.com
+31.25.239.132 auth.deepl.com login-wall.deepl.com
+103.27.157.38 affiliate.deezer.com ansync.deezer.com dalida.deezer.com gcast.deezer.com mydeezerstory.deezer.com mydeezeryear.deezer.com preprod-preview.deezer.com preview.deezer.com tv2.deezer.com vdp.deezer.com
+193.233.112.68 dev-gcast.deezer.com vdp.deezer.com
+31.25.239.132 ansync.deezer.com
+37.230.192.51 mydeezeryear.deezer.com vdp.deezer.com
+103.27.157.38 afcs.dellcdn.com
+193.233.112.68 afcs.dellcdn.com
+37.230.192.51 designify.com
+103.27.157.38 elevenreader.io
+31.25.239.132 generativeai.google
+103.27.157.38 genspark.ai
+103.27.157.38 jules.google.com
+193.233.112.68 bard.google.com
+31.25.239.132 gemini.google.com
+37.230.192.51 bard.google.com jules.google.com waa-pa.clients6.google.com
+103.27.157.38 generativelanguage.googleapis.com
+37.230.192.51 daily-cloudcode-pa.googleapis.com
+103.27.157.38 www.grok.com
+193.233.112.67 livekit.grok.com
+37.230.192.51 www.grok.com
+193.233.112.68 www.guilded.gg
+103.27.157.38 www.intel.com
+193.233.112.68 intel.com
+103.27.157.38 download.jetbrains.com
+193.233.112.67 download.jetbrains.com skyscanner.fls.jetbrains.com www.jetbrains.space
+193.233.112.68 dotcover-support.jetbrains.com
+31.25.239.132 dotnet-ea.services.jetbrains.com dotpeek-support.jetbrains.com
+37.230.192.51 cloudfront.pkg-cdn.jetbrains.space download.jetbrains.com
+31.25.239.132 jules.google
+193.233.112.68 kaleido.ai
+31.25.239.132 kaleido.ai
+193.233.112.68 store.last.fm
+37.230.192.51 secure.last.fm
+31.25.239.132 constellation.linear.app
+193.233.112.68 designerapp.officeapps.live.com
+193.233.112.68 make.com
+37.230.192.51 make.com
+193.233.112.68 manus.im
+193.233.112.68 api16-normal-alisg.mchost.guru
+37.230.192.51 api16-normal-alisg.mchost.guru
+193.233.112.67 designer.microsoft.com
+31.25.239.132 designer.microsoft.com
+103.27.157.38 cloud.mongodb.com
+37.230.192.51 cloud.mongodb.com
+193.233.112.67 aeronube.csm.naukri.com
+193.233.112.68 demologin.resdex.naukri.com w5.naukri.com
+31.25.239.132 enterprise.naukri.com maestrorecruiter.naukri.com mailtracking.naukri.com naukri.com response.naukri.com resume.naukri.com
+103.27.157.38 notion.so
+103.27.157.38 cdn.oaistatic.com
+193.233.112.68 cdn.oaistatic.com
+103.27.157.38 sdmntprnortheu.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+103.27.157.38 cdn.openai.com cdn.platform.openai.com help.openai.com
+193.233.112.68 cloud.oracle.com
+103.27.157.38 builds.parsec.app
+103.27.157.38 o.pki.goog
+37.230.192.51 audio-fa.scdn.co
+37.230.192.51 singlekey-id.com
+193.233.112.68 3dwarehouse.sketchup.com
+103.27.157.38 sora.com
+103.27.157.38 edge-web-gew1.dual-gslb.spotify.com edge-web-gue1.dual-gslb.spotify.com spclient.wg.spotify.com
+193.233.112.67 edge-web-gue1.dual-gslb.spotify.com log.spotify.com
+103.27.157.38 business.strava.com content-a.strava.com graphql.strava.com shop.strava.com support.strava.com tiles.strava.com
+193.233.112.68 business.strava.com
+103.27.157.38 cdn.id.supercell.com
+193.233.112.67 security.id.supercell.com
+193.233.112.68 security.id.supercell.com
+37.230.192.51 ti.com
+103.27.157.38 images.tidal.com resources.tidal.com
+103.27.157.38 gql.twitch.tv
+31.25.239.132 cdn.web-platform.io
+31.25.239.132 windsurf.com
+103.27.157.38 api.x.ai console.x.ai grok.x.ai imgen.x.ai x.ai
+193.233.112.68 x.ai
+31.25.239.132 grok.x.com
+103.27.157.38 xgpuweb.gssv-play-prod.xboxlive.com
