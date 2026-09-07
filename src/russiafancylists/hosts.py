@@ -47,6 +47,12 @@ def is_known_crutch_ip(ip_str: str) -> bool:
         return False
 
 
+def format_adguard_dnsrewrite(domain: str, ip: str) -> str:
+    """Format an AdGuard Home DNS rewrite rule using full syntax ($dnsrewrite=NOERROR;TYPE;VALUE)."""
+    record_type = "AAAA" if ":" in ip else "A"
+    return f"||{domain}^$dnsrewrite=NOERROR;{record_type};{ip}\n"
+
+
 def normalize_brand_name(dom: str) -> str:
     """Extract normalized brand name, grouping related domains of the same entity."""
     dom = dom.lower().strip()
@@ -670,7 +676,7 @@ async def generate_aligned_hosts(
                     direct_groups.keys(), key=lambda x: (x[1], x[0])
                 ):
                     for d in sorted(direct_groups[(ip_key, brand)]):
-                        f.write(f"||{d}^$dnsrewrite={ip_key}\n")
+                        f.write(format_adguard_dnsrewrite(d, ip_key))
                 f.write("\n")
 
             if geoblock_groups:
@@ -679,7 +685,7 @@ async def generate_aligned_hosts(
                     geoblock_groups.keys(), key=lambda x: (x[1], x[0])
                 ):
                     for d in sorted(geoblock_groups[(ip_key, brand)]):
-                        f.write(f"||{d}^$dnsrewrite={ip_key}\n")
+                        f.write(format_adguard_dnsrewrite(d, ip_key))
 
         # No-crutch AdGuard Home file
         adg_no_crutch_output = (
@@ -697,7 +703,7 @@ async def generate_aligned_hosts(
                     geoblock_groups.keys(), key=lambda x: (x[1], x[0])
                 ):
                     for d in sorted(geoblock_groups[(ip_key, brand)]):
-                        f.write(f"||{d}^$dnsrewrite={ip_key}\n")
+                        f.write(format_adguard_dnsrewrite(d, ip_key))
 
         return [(direct_groups, geoblock_groups)]
 
@@ -794,7 +800,7 @@ async def generate_aligned_hosts(
             f.write("! Crutch\n")
             for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
                 for d in sorted(list(combined_direct[(ip, brand)])):
-                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+                    f.write(format_adguard_dnsrewrite(d, ip))
             f.write("\n")
 
         if combined_geoblock:
@@ -803,7 +809,7 @@ async def generate_aligned_hosts(
                 combined_geoblock.keys(), key=lambda x: (x[1], x[0])
             ):
                 for d in sorted(list(combined_geoblock[(ip, brand)])):
-                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+                    f.write(format_adguard_dnsrewrite(d, ip))
 
     # No-crutch combined file
     output_combined_nc = output_combined.parent / (
@@ -831,7 +837,7 @@ async def generate_aligned_hosts(
                 combined_geoblock_nc.keys(), key=lambda x: (x[1], x[0])
             ):
                 for d in sorted(list(combined_geoblock_nc[(ip, brand)])):
-                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+                    f.write(format_adguard_dnsrewrite(d, ip))
 
     # Write only-crutch combined file
     output_only_crutch = output_combined.parent / "only-crutch.hosts"
@@ -853,7 +859,7 @@ async def generate_aligned_hosts(
             f.write("! Crutch\n")
             for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
                 for d in sorted(list(combined_direct[(ip, brand)])):
-                    f.write(f"||{d}^$dnsrewrite={ip}\n")
+                    f.write(format_adguard_dnsrewrite(d, ip))
 
     # Rewrite geoblock_file to exclude crutch domains
     geoblock_domains_no_crutch = [d for d in geoblock_domains if d not in global_custom]
