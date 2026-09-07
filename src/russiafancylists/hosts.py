@@ -343,50 +343,29 @@ def _get_sld_name(dom: str) -> str:
     return brand
 
 
-def parse_geohide_comment_ips(file_path: Path) -> list[str]:
-    """Parse official GeoHide proxy IPs from comments in the hosts file."""
-    ips = []
-    if not file_path.exists():
-        return ips
-    try:
-        with open(file_path, encoding="utf-8", errors="ignore") as f:
-            lines = f.readlines()
-        for idx, line in enumerate(lines):
-            if (
-                "Только эти серверы принадлежат GeoHide DNS:" in line
-                or "belong to GeoHide DNS:" in line
-            ):
-                for sub_line in lines[idx + 1 :]:
-                    sub_line = sub_line.strip()
-                    if not sub_line.startswith("#"):
-                        break
-                    # Extract IP address
-                    match = re.search(r"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})", sub_line)
-                    if match:
-                        ips.append(match.group(1))
-                break
-    except Exception as e:
-        print(f"Warning: Failed to parse GeoHide official IPs from comments: {e}")
-    return ips
-
-
 async def detect_provider_proxy_ips(hosts_temp_dir: Path) -> dict[str, list[str]]:
     """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide, mafioznik).
     Strictly differentiates Smart DNS proxy servers from direct service crutches.
     """
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
-        "geohide": hosts_temp_dir / "geohide-hosts.lst",
         "mafioznik": hosts_temp_dir / "mafioznik-hosts.lst",
     }
 
-    # 1. GeoHide: Authoritative extraction from official file comments
-    geohide_official = parse_geohide_comment_ips(provider_files["geohide"])
-    geohide_ips = (
-        geohide_official
-        if geohide_official
-        else ["45.155.204.190", "37.230.192.51", "31.25.239.132"]
-    )
+    # 1. GeoHide: Dynamic extraction of EU & US proxy IPs directly from official hosts files
+    geohide_ips = []
+    geohide_candidate_files = [
+        hosts_temp_dir / "geohide-eu-hosts.lst",
+        hosts_temp_dir / "geohide-us-hosts.lst",
+    ]
+    for g_path in geohide_candidate_files:
+        if g_path.exists():
+            _, g_ip_domains = get_source_info(g_path)
+            for ip, domains in g_ip_domains.items():
+                if is_known_crutch_ip(ip):
+                    continue
+                if len(domains) >= 10:
+                    geohide_ips.append(ip)
 
     # 2. ImMALWARE (malw): Strict detection of open SNI proxy servers
     malw_ips = []
@@ -450,7 +429,13 @@ async def generate_aligned_hosts(
 
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
-    _, geohide_ip_domains = get_source_info(hosts_temp_dir / "geohide-hosts.lst")
+    geohide_ip_domains = {}
+    for g_name in ("geohide-eu-hosts.lst", "geohide-us-hosts.lst"):
+        g_path = hosts_temp_dir / g_name
+        if g_path.exists():
+            _, ip_doms = get_source_info(g_path)
+            for ip, doms in ip_doms.items():
+                geohide_ip_domains.setdefault(ip, set()).update(doms)
 
     # Parse zapret-manager-parsed.lst as an IP source
     zapret_ip_domains = {}
