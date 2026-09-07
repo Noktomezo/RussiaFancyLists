@@ -54,12 +54,12 @@ ff02::2 ip6-allrouters
 143.20.64.192 assets-configurator.chess.com chess.com www.chess.com
 192.255.159.240 cici.com www.cici.com
 192.255.159.241 game-assets.clashofclans.com
-192.3.233.253 game-assets.clashroyaleapp.com
+192.3.233.253 game-assets.clashroyaleapp.com game.clashroyaleapp.com
 2.27.118.34 api.claude.ai api.claude.com claude.ai claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
 217.60.245.219 claudemcpclient.com www.claudemcpclient.com
 217.60.245.233 clickup.com www.clickup.com
 31.25.239.132 res.cloudinary.com
-107.175.76.134 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
+107.175.76.134 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
 143.20.64.192 codeiumdata.com
 192.255.159.240 images.contentstack.io
 192.255.159.241 coreweave.com www.coreweave.com
@@ -209,53 +209,54 @@ ff02::2 ip6-allrouters
 192.255.159.241 slack.com www.slack.com
 192.3.233.253 slackb.com www.slackb.com
 2.27.118.34 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com spotify.com www.spotify.com
-217.60.245.219 api-global.squareup.com api.squareup.com squareup.com www.squareup.com
-217.60.245.233 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
-31.25.239.132 api.stumbleguys.com matchmaking.stumbleguys.com
-107.175.76.134 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-143.20.64.192 superpharm.eu superpharm.pl www.superpharm.eu www.superpharm.pl
-192.255.159.240 tableau.com www.tableau.com
-192.255.159.241 controlplane.tailscale.com
-192.3.233.253 dl.teamviewer.com download.teamviewer.com
-2.27.118.34 ti.com www.ti.com
-217.60.245.219 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
-217.60.245.233 api-sg-central.trae.ai api.trae.ai
-31.25.239.132 ncsi-geo.trafficmanager.net ncsiv6-geo.trafficmanager.net
-107.175.76.134 tria.ge www.tria.ge
-143.20.64.192 id.trimble.com sketchup.trimble.com trimble.com www.trimble.com
-192.255.159.240 trueachievements.com www.trueachievements.com
-192.255.159.241 consent.trustarc.com
-192.3.233.253 static-assets-1.truthsocial.com truthsocial.com
-2.27.118.34 usher.ttvnw.net
-217.60.245.219 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
-217.60.245.233 tutanota.com
-31.25.239.132 gql.twitch.tv
-107.175.76.134 uainvest.com.ua www.uainvest.com.ua
-143.20.64.192 ultimaker.com www.ultimaker.com
-192.255.159.240 unscreen.com www.unscreen.com
-192.255.159.241 vipvera.com www.vipvera.com
-192.3.233.253 w-x.co
-2.27.118.34 wbagora.com www.wbagora.com
-217.60.245.219 wbgames.com www.wbgames.com
-217.60.245.233 upsx.weather.com weather.com
-31.25.239.132 cdn.web-platform.io
-107.175.76.134 weborama.nl www.weborama.nl
-143.20.64.192 whimsical.com www.whimsical.com
-192.255.159.240 windguru.cz www.windguru.cz
-192.255.159.241 openaipublic.blob.core.windows.net
-192.3.233.253 marketplace.windsurf.com windsurf.com
-2.27.118.34 wise.com www.wise.com
-217.60.245.219 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
-217.60.245.233 api.workos.com
-31.25.239.132 wund.com
-107.175.76.134 wunderground.com
-143.20.64.192 wxug.com
-192.255.159.240 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x.ai
-192.255.159.241 xboxdesignlab.xbox.com
-192.3.233.253 auth.xboxlive.com gssv-play-prod.xboxlive.com titlestorage.xboxlive.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
-2.27.118.34 www.xerox.com xerox.com
-217.60.245.219 www.xiaomi.eu xiaomi.eu
-217.60.245.233 www.yeggi.com yeggi.com
-31.25.239.132 www.yupp.ai yupp.ai
-107.175.76.134 www.zapier-deployment.com www.zapier.com zapier-deployment.com zapier.com
-143.20.64.192 app.zerossl.com
+217.60.245.219 game.squadbustersgame.com
+217.60.245.233 api-global.squareup.com api.squareup.com squareup.com www.squareup.com
+31.25.239.132 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+107.175.76.134 api.stumbleguys.com matchmaking.stumbleguys.com
+143.20.64.192 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
+192.255.159.240 superpharm.eu superpharm.pl www.superpharm.eu www.superpharm.pl
+192.255.159.241 tableau.com www.tableau.com
+192.3.233.253 controlplane.tailscale.com
+2.27.118.34 dl.teamviewer.com download.teamviewer.com
+217.60.245.219 ti.com www.ti.com
+217.60.245.233 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
+31.25.239.132 api-sg-central.trae.ai api.trae.ai
+107.175.76.134 ncsi-geo.trafficmanager.net ncsiv6-geo.trafficmanager.net
+143.20.64.192 tria.ge www.tria.ge
+192.255.159.240 id.trimble.com sketchup.trimble.com trimble.com www.trimble.com
+192.255.159.241 trueachievements.com www.trueachievements.com
+192.3.233.253 consent.trustarc.com
+2.27.118.34 static-assets-1.truthsocial.com truthsocial.com
+217.60.245.219 usher.ttvnw.net
+217.60.245.233 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
+31.25.239.132 tutanota.com
+107.175.76.134 gql.twitch.tv
+143.20.64.192 uainvest.com.ua www.uainvest.com.ua
+192.255.159.240 ultimaker.com www.ultimaker.com
+192.255.159.241 unscreen.com www.unscreen.com
+192.3.233.253 vipvera.com www.vipvera.com
+2.27.118.34 w-x.co
+217.60.245.219 wbagora.com www.wbagora.com
+217.60.245.233 wbgames.com www.wbgames.com
+31.25.239.132 upsx.weather.com weather.com
+107.175.76.134 cdn.web-platform.io
+143.20.64.192 weborama.nl www.weborama.nl
+192.255.159.240 whimsical.com www.whimsical.com
+192.255.159.241 windguru.cz www.windguru.cz
+192.3.233.253 openaipublic.blob.core.windows.net
+2.27.118.34 marketplace.windsurf.com windsurf.com
+217.60.245.219 wise.com www.wise.com
+217.60.245.233 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
+31.25.239.132 api.workos.com
+107.175.76.134 wund.com
+143.20.64.192 wunderground.com
+192.255.159.240 wxug.com
+192.255.159.241 accounts.x.ai api.x.ai assets.x.ai console.x.ai data.x.ai deferred-chat.x.ai docs.x.ai eu-west-1.api.x.ai grok.x.ai grok.x.com imgen.x.ai jf.x.ai login.x.ai status.x.ai transcription.grok-v2.x.ai trust.x.ai us-east-1.api.x.ai us-east-4-raw.api.x.ai us-south-1-pltr.api.x.ai us-west-1-raw.api.x.ai us-west-1.api.x.ai www.x.ai x.ai
+192.3.233.253 xboxdesignlab.xbox.com
+2.27.118.34 auth.xboxlive.com gssv-play-prod.xboxlive.com titlestorage.xboxlive.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
+217.60.245.219 www.xerox.com xerox.com
+217.60.245.233 www.xiaomi.eu xiaomi.eu
+31.25.239.132 www.yeggi.com yeggi.com
+107.175.76.134 www.yupp.ai yupp.ai
+143.20.64.192 www.zapier-deployment.com www.zapier.com zapier-deployment.com zapier.com
+192.255.159.240 app.zerossl.com

@@ -21,6 +21,7 @@
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||a.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||platform.claude.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -30,6 +31,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -66,6 +68,7 @@
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||elevenreader.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.elgato.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||framer.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -86,6 +89,8 @@
 ||grok.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||guidedhacking.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.imgur.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||b.i.instagram.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||help.instagram.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.intel.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -145,6 +150,7 @@
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;62.133.62.97

@@ -14,9 +14,9 @@ ff02::2 ip6-allrouters
 62.133.62.97 content-management-files.canva.com static.canva.com
 62.133.62.97 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 62.133.62.97 game-assets.clashofclans.com
-62.133.62.97 game-assets.clashroyaleapp.com
+62.133.62.97 game-assets.clashroyaleapp.com game.clashroyaleapp.com
 62.133.62.97 a.claude.ai claude.ai platform.claude.com
-62.133.62.97 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
+62.133.62.97 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
 62.133.62.97 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 62.133.62.97 deezer.com payment.deezer.com www.deezer.com
 62.133.62.97 www.dell.com
@@ -24,6 +24,7 @@ ff02::2 ip6-allrouters
 62.133.62.97 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 62.133.62.97 elevenreader.io
 62.133.62.97 www.elgato.com
+62.133.62.97 z-p42-chat-e2ee-ig.facebook.com
 62.133.62.97 api.fitbit.com
 62.133.62.97 framer.com
 62.133.62.97 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
@@ -31,6 +32,7 @@ ff02::2 ip6-allrouters
 62.133.62.97 assets.grok.com grok.com
 62.133.62.97 guidedhacking.com
 62.133.62.97 api.imgur.com
+62.133.62.97 b.i.instagram.com help.instagram.com
 62.133.62.97 www.intel.com
 62.133.62.97 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
 62.133.62.97 labs.google
@@ -51,6 +53,7 @@ ff02::2 ip6-allrouters
 62.133.62.97 frontend-api-v3.pump.fun images.pump.fun pump.fun swap-api.pump.fun
 62.133.62.97 www.qwant.com
 62.133.62.97 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com
+62.133.62.97 game.squadbustersgame.com
 62.133.62.97 api-global.squareup.com api.squareup.com
 62.133.62.97 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
 62.133.62.97 controlplane.tailscale.com
