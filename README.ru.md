@@ -314,12 +314,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->177.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->174.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->200.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->197.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1019/2244 (45.4%)<br>
-        • 1019/2244 (45.4%)
+        • 1022/2244 (45.5%)<br>
+        • 1022/2244 (45.5%)
       </td>
     </tr>
     <tr>
@@ -330,7 +330,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/geohide.hosts -->29.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->27.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->27.0 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1165/2244 (51.9%)<br>
@@ -387,12 +387,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->437.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->431.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->496.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->490.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1019/2244 (45.4%)<br>
-        • 1019/2244 (45.4%)
+        • 1022/2244 (45.5%)<br>
+        • 1022/2244 (45.5%)
       </td>
     </tr>
     <tr>
@@ -402,8 +402,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->73.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->67.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->73.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->67.4 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1165/2244 (51.9%)<br>
@@ -478,7 +478,7 @@
 ## ⚡ Статус Smart DNS
 <!-- STATUS_START -->
 - **Malw**: 💚
-- **GeoHide**: 💚💚💚💚💚💚💚💚
+- **GeoHide**: 💚💚💚💚💚💚💚💚💚
 - **Mafioznik**: 💚
 
 > [!NOTE]
