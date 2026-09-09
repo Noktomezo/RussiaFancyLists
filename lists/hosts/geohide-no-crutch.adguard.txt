@@ -193,7 +193,6 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
-||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||codeiumdata.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||images.contentstack.io^$dnsrewrite=NOERROR;A;192.255.159.240
 ||coreweave.com^$dnsrewrite=NOERROR;A;192.255.159.241
@@ -210,8 +209,10 @@
 ||api5.cursor.sh^$dnsrewrite=NOERROR;A;217.60.245.233
 ||authenticate.cursor.sh^$dnsrewrite=NOERROR;A;217.60.245.233
 ||authenticator.cursor.sh^$dnsrewrite=NOERROR;A;217.60.245.233
+||cursor.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||downloads.cursor.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||repo42.cursor.sh^$dnsrewrite=NOERROR;A;217.60.245.233
+||www.cursor.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||marketplace.cursorapi.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||api.deepl.com^$dnsrewrite=NOERROR;A;107.175.76.134
