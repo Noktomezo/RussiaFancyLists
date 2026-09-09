@@ -5,12 +5,13 @@
 ||audio4-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;2.16.168.44
 ||audio-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.36.163.34
 ||heads-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.48.23.145
-||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;80.253.249.40
+||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;87.58.204.29
 ||www.canva.com^$dnsrewrite=NOERROR;A;103.137.248.179
 ||scontent-hel3-1.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
 ||scontent.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
-||gamea.clashofclans.com^$dnsrewrite=NOERROR;A;193.23.209.189
+||gamea.clashofclans.com^$dnsrewrite=NOERROR;A;87.58.204.29
+||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;87.58.204.29
 ||updates.discord.com^$dnsrewrite=NOERROR;A;162.159.135.232
 ||facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||www.facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
@@ -68,6 +69,7 @@
 ||audio-cf.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||open-exp.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
+||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;87.58.204.29
 ||t.me^$dnsrewrite=NOERROR;A;149.154.167.220
 ||tapeop.dev^$dnsrewrite=NOERROR;A;216.24.57.3
 ||www.tapeop.dev^$dnsrewrite=NOERROR;A;216.24.57.3
@@ -127,7 +129,6 @@
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||a.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||platform.claude.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -256,7 +257,6 @@
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;62.133.62.97
