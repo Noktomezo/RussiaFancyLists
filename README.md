@@ -147,8 +147,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock-sing-box/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/geoblock-sing-box/full.json -->63.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->15.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.json -->63.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-sing-box/full.srs -->15.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.json -->25.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-sing-box/full-sld.srs -->7.2 KB<!-- SIZE_END -->
       </td>
@@ -164,7 +164,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/geoblock-mihomo/full.yaml -->52.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->15.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/geoblock-mihomo/full.mrs -->14.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.yaml -->20.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/geoblock-mihomo/full-sld.mrs -->6.6 KB<!-- SIZE_END -->
       </td>
@@ -314,12 +314,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->220.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->217.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->211.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->208.3 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1058/2277 (46.5%)<br>
-        • 1058/2277 (46.5%)
+        • 1056/2278 (46.4%)<br>
+        • 1056/2278 (46.4%)
       </td>
     </tr>
     <tr>
@@ -333,8 +333,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->27.6 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1199/2277 (52.7%)<br>
-        • 1199/2277 (52.7%)
+        • 1199/2278 (52.6%)<br>
+        • 1199/2278 (52.6%)
       </td>
     </tr>
     <tr>
@@ -348,8 +348,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->4.5 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 181/2277 (7.9%)<br>
-        • 181/2277 (7.9%)
+        • 181/2278 (7.9%)<br>
+        • 181/2278 (7.9%)
       </td>
     </tr>
     <tr>
@@ -359,12 +359,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.hosts"><code>mafioznik-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.hosts -->6.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.hosts -->6.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.hosts -->4.0 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 156/2277 (6.9%)<br>
-        • 156/2277 (6.9%)
+        • 156/2278 (6.8%)<br>
+        • 156/2278 (6.8%)
       </td>
     </tr>
     <tr>
@@ -387,12 +387,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->551.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->545.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->522.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->516.5 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1058/2277 (46.5%)<br>
-        • 1058/2277 (46.5%)
+        • 1056/2278 (46.4%)<br>
+        • 1056/2278 (46.4%)
       </td>
     </tr>
     <tr>
@@ -406,8 +406,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->69.7 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1199/2277 (52.7%)<br>
-        • 1199/2277 (52.7%)
+        • 1199/2278 (52.6%)<br>
+        • 1199/2278 (52.6%)
       </td>
     </tr>
     <tr>
@@ -417,12 +417,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->16.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->16.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->10.2 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 181/2277 (7.9%)<br>
-        • 181/2277 (7.9%)
+        • 181/2278 (7.9%)<br>
+        • 181/2278 (7.9%)
       </td>
     </tr>
     <tr>
@@ -432,12 +432,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/mafioznik-no-crutch.adguard.txt"><code>mafioznik-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->15.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/mafioznik.adguard.txt -->15.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/mafioznik-no-crutch.adguard.txt -->9.0 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 156/2277 (6.9%)<br>
-        • 156/2277 (6.9%)
+        • 156/2278 (6.8%)<br>
+        • 156/2278 (6.8%)
       </td>
     </tr>
     <tr>
