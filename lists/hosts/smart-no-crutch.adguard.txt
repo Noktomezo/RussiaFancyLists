@@ -18,7 +18,6 @@
 ||www.37signals.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||37signals.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.37signals.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||37signals.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.37signals.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||4pda.to^$dnsrewrite=NOERROR;A;103.27.157.38
 ||aave.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -770,7 +769,6 @@
 ||camelai.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||stream.camelai.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.camelai.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||camelai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||stream.camelai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.camelai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||canva.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -856,6 +854,7 @@
 ||api.cdnlibs.org^$dnsrewrite=NOERROR;A;2.27.118.34
 ||api.cdnlibs.org^$dnsrewrite=NOERROR;A;217.60.245.219
 ||api.cdnlibs.org^$dnsrewrite=NOERROR;A;217.60.245.233
+||api.cdnlibs.org^$dnsrewrite=NOERROR;A;31.25.239.132
 ||api.cerebras.ai^$dnsrewrite=NOERROR;A;107.175.76.134
 ||cerebras.ai^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.cerebras.ai^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -1044,6 +1043,7 @@
 ||cici.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.cici.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||cici.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.cici.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -1404,7 +1404,6 @@
 ||api3.cursor.sh^$dnsrewrite=NOERROR;A;31.25.239.132
 ||api4.cursor.sh^$dnsrewrite=NOERROR;A;31.25.239.132
 ||authenticate.cursor.sh^$dnsrewrite=NOERROR;A;31.25.239.132
-||authenticator.cursor.sh^$dnsrewrite=NOERROR;A;31.25.239.132
 ||cursor-cdn.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||downloads.cursor.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||repo42.cursor.sh^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -1819,7 +1818,6 @@
 ||www.dell.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||dds.dell.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||dell.com^$dnsrewrite=NOERROR;A;143.20.64.192
-||dl.dell.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||i.dell.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||nexus.dell.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||www.dell.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -1861,6 +1859,7 @@
 ||www.dell.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||dds.dell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||dell.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||dl.dell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||i.dell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||nexus.dell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.dell.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -1891,6 +1890,7 @@
 ||deniko.xyz^$dnsrewrite=NOERROR;A;2.27.118.34
 ||deniko.xyz^$dnsrewrite=NOERROR;A;217.60.245.219
 ||deniko.xyz^$dnsrewrite=NOERROR;A;217.60.245.233
+||deniko.xyz^$dnsrewrite=NOERROR;A;31.25.239.132
 ||designify.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.designify.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||designify.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -1943,6 +1943,7 @@
 ||www.digikeyassets.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||digikeyassets.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.digikeyassets.com^$dnsrewrite=NOERROR;A;217.60.245.233
+||digikeyassets.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.digikeyassets.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||dtm8.dinamicagenerale.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||dtm8.dinamicagenerale.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -2208,7 +2209,6 @@
 ||enscape3d.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||enscape3d.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||enscape3d.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||enscape3d.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||store.epicgames.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||store.epicgames.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||store.epicgames.com^$dnsrewrite=NOERROR;A;192.255.159.240
@@ -2712,6 +2712,7 @@
 ||people-pa.clients6.google.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||signaler-pa.clients6.google.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||suggestqueries.google.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||waa-pa.clients6.google.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -2824,15 +2825,15 @@
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||appcatalyst.pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||daily-cloudcode-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||developerprofiles-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||geller-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||notebook-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||notebooklm-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||assets.grok.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||grok.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -3070,10 +3071,13 @@
 ||www.intel.se^$dnsrewrite=NOERROR;A;217.60.245.233
 ||intel.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||intel.com.au^$dnsrewrite=NOERROR;A;31.25.239.132
+||intel.com.tr^$dnsrewrite=NOERROR;A;31.25.239.132
+||intel.com.tw^$dnsrewrite=NOERROR;A;31.25.239.132
 ||intel.de^$dnsrewrite=NOERROR;A;31.25.239.132
 ||intel.se^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.intel.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.intel.de^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.intel.se^$dnsrewrite=NOERROR;A;31.25.239.132
 ||iperf3serverlist.net^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.iperf3serverlist.net^$dnsrewrite=NOERROR;A;107.175.76.134
 ||iperf3serverlist.net^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -3288,6 +3292,7 @@
 ||store.last.fm^$dnsrewrite=NOERROR;A;217.60.245.233
 ||support.last.fm^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.last.fm^$dnsrewrite=NOERROR;A;217.60.245.233
+||last.fm^$dnsrewrite=NOERROR;A;31.25.239.132
 ||s.last.fm^$dnsrewrite=NOERROR;A;31.25.239.132
 ||saa.last.fm^$dnsrewrite=NOERROR;A;31.25.239.132
 ||secure.last.fm^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -3380,6 +3385,7 @@
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
 ||linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
+||public.linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
 ||s.linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
 ||static.linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
 ||uploads.linear.app^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -3400,7 +3406,6 @@
 ||www.linguee.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||linguee.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.linguee.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||linguee.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.linguee.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||m3u.in^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.m3u.in^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -3493,7 +3498,6 @@
 ||makita.com.kh^$dnsrewrite=NOERROR;A;192.255.159.240
 ||makita.com.tw^$dnsrewrite=NOERROR;A;192.255.159.240
 ||makita.sk^$dnsrewrite=NOERROR;A;192.255.159.240
-||makita.ua^$dnsrewrite=NOERROR;A;192.255.159.240
 ||www.makita.ca^$dnsrewrite=NOERROR;A;192.255.159.240
 ||www.makita.cl^$dnsrewrite=NOERROR;A;192.255.159.240
 ||www.makita.co.nz^$dnsrewrite=NOERROR;A;192.255.159.240
@@ -3586,9 +3590,9 @@
 ||makita.ua^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.makita.ca^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.makita.cl^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.makita.co.nz^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.makita.com.au^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.makita.com.tw^$dnsrewrite=NOERROR;A;31.25.239.132
-||www.makita.sk^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.makita.ua^$dnsrewrite=NOERROR;A;31.25.239.132
 ||makitalatinamerica.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.makitalatinamerica.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -3634,7 +3638,6 @@
 ||www.malwarebytes.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||downloads.malwarebytes.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||malwarebytes.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||www.malwarebytes.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||api.manus.im^$dnsrewrite=NOERROR;A;103.27.157.38
 ||manus.im^$dnsrewrite=NOERROR;A;103.27.157.38
 ||www.manus.im^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -3782,7 +3785,6 @@
 ||www.microcenter.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||microcenter.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.microcenter.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||microcenter.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.microcenter.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||microchip.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.microchip.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -3801,6 +3803,7 @@
 ||microchip.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.microchip.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||microchip.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.microchip.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -3819,7 +3822,6 @@
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||designer.microsoft.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||minicircuits.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.minicircuits.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||minicircuits.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -3846,7 +3848,6 @@
 ||dr.miromind.ai^$dnsrewrite=NOERROR;A;2.27.118.34
 ||dr.miromind.ai^$dnsrewrite=NOERROR;A;217.60.245.219
 ||dr.miromind.ai^$dnsrewrite=NOERROR;A;217.60.245.233
-||dr.miromind.ai^$dnsrewrite=NOERROR;A;31.25.239.132
 ||misterfpga.org^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.misterfpga.org^$dnsrewrite=NOERROR;A;107.175.76.134
 ||misterfpga.org^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -4014,7 +4015,6 @@
 ||myjetbrains.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.myjetbrains.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||myjetbrains.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||www.myjetbrains.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||n8n.cloud^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.n8n.cloud^$dnsrewrite=NOERROR;A;107.175.76.134
 ||n8n.cloud^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -4102,7 +4102,6 @@
 ||css.naukimg.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||img.naukimg.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||js.naukimg.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||np.naukimg.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||p.naukimg.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||static.naukimg.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||aeronube.csm.naukri.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -4659,6 +4658,7 @@
 ||apis.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||apply.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||assessment.nc.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
+||assessments.nc.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||assets.staging.assessment.nc.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||autodiscover.csm.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||blogs.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
@@ -4760,7 +4760,6 @@
 ||whitehat.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||wtg.csm.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||www.e-learning.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
-||www.echo.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||www.learning.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||www.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||www.resume.naukri.com^$dnsrewrite=NOERROR;A;2.27.118.34
@@ -5008,14 +5007,17 @@
 ||csm.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||csmmail.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||css.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||delivery.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||demologin.resdex.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||demoresdex.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||e-learning.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||echo.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||engineering.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||enterprise.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||fflms.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||files.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||filevalidation.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||fn-hackathon-ui.nc.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||freesearch.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||hiring.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||images.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5034,8 +5036,8 @@
 ||maestrorecruiter.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||mailersystem.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||mailtracking.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||media.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||mediacdn.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||mobile.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||my.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||naukrirecruiter.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5045,10 +5047,10 @@
 ||p.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||pg.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||posting.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||productupdates.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||pt.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||pulse.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||rdxfootmark.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||recruit.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||recruiterfaq.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||recruiters.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||recruitersurvey.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5056,7 +5058,7 @@
 ||referral.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||resbilling.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||resdex.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||response.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||resht.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||restservices.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||resume.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||rms.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5068,6 +5070,7 @@
 ||staging.onlinetest.nc.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||static.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||static.staging.assessment.nc.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||streamgenai.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||suggest.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||suggestor.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||taxonomy-suggest.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5078,6 +5081,7 @@
 ||w28.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||w4.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||w5.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||webhooks.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||whitehat.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||wtg.csm.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.e-learning.naukri.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5233,6 +5237,7 @@
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;217.60.245.233
+||developer.nvidia.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||oaistatic.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||www.oaistatic.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -5309,7 +5314,6 @@
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5480,6 +5484,7 @@
 ||api.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||auth.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||auth0.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||chat.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||developers.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||ios.chat.openai.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -6461,6 +6466,7 @@
 ||www.squareup.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||api.squareup.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||squareup.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.squareup.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||blog.strava.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||business.strava.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -6655,7 +6661,6 @@
 ||email.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||email1.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||links.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||metro.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||mi.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||promo.strava.com^$dnsrewrite=NOERROR;A;217.60.245.233
@@ -6681,10 +6686,10 @@
 ||links.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||metro.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||mi.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||promo.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||shop.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||status.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||store.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||stories.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||support.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||tiles.strava.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -6758,7 +6763,6 @@
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||security.id.supercell.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||store.supercell.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||superpharm.pl^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.superpharm.eu^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.superpharm.pl^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -6802,7 +6806,6 @@
 ||www.tableau.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||tableau.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.tableau.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||tableau.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.tableau.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||controlplane.tailscale.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||controlplane.tailscale.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -6848,6 +6851,7 @@
 ||ti.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.ti.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||ti.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.ti.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||api.tidal.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -7131,7 +7135,6 @@
 ||w4.api.test.tuta.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||w9.api.tuta.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.tuta.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||app.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||mta-sts.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||pay.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||status.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -7143,7 +7146,6 @@
 ||w14.api.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||w15.api.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||w16.api.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||w4.api.test.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||w9.api.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.tuta.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||gql.twitch.tv^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -7242,8 +7244,6 @@
 ||account.wbgames.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||wbgames.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.wbgames.com^$dnsrewrite=NOERROR;A;217.60.245.233
-||account.wbgames.com^$dnsrewrite=NOERROR;A;31.25.239.132
-||wbgames.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.wbgames.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||weather.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -7318,6 +7318,7 @@
 ||www.whimsical.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||whimsical.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.whimsical.com^$dnsrewrite=NOERROR;A;217.60.245.233
+||whimsical.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.whimsical.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||wikidot.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||windguru.cz^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -7456,6 +7457,7 @@
 ||wunderground.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.wunderground.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||wunderground.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.wunderground.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.wxug.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||wxug.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.wxug.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -7552,7 +7554,6 @@
 ||grok.x.ai^$dnsrewrite=NOERROR;A;31.25.239.132
 ||grok.x.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.x.ai^$dnsrewrite=NOERROR;A;31.25.239.132
-||x.ai^$dnsrewrite=NOERROR;A;31.25.239.132
 ||xboxdesignlab.xbox.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||xboxdesignlab.xbox.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||xboxdesignlab.xbox.com^$dnsrewrite=NOERROR;A;192.255.159.240
@@ -7564,6 +7565,7 @@
 ||xboxdesignlab.xbox.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||xgpuweb.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||xgpuwebf2p.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||auth.xboxlive.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||titlestorage.xboxlive.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -7658,6 +7660,7 @@
 ||www.support.xerox.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.xerox.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||xerox.com^$dnsrewrite=NOERROR;A;217.60.245.233
+||accountmanagement.services.xerox.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||support.xerox.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.support.xerox.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.xerox.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -7715,7 +7718,6 @@
 ||www.yupp.ai^$dnsrewrite=NOERROR;A;217.60.245.233
 ||yupp.ai^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.yupp.ai^$dnsrewrite=NOERROR;A;31.25.239.132
-||yupp.ai^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.zapier-deployment.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.zapier.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||zapier-deployment.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -7749,6 +7751,7 @@
 ||zapier-deployment.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||zapier.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.zapier-deployment.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||www.zapier.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||zapier-deployment.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||zapier.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||app.zerossl.com^$dnsrewrite=NOERROR;A;107.175.76.134
