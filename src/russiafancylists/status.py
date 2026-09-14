@@ -235,7 +235,35 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                 )
                 items.append((name, files, sizes, coverages))
 
-            # 2. Providers
+            # 2. Combined
+            std_comb = hosts_dir / f"combined{ext}"
+            nc_comb = hosts_dir / f"combined-no-crutch{ext}"
+            if std_comb.exists():
+                files = [f"combined{ext}"]
+                sizes = [
+                    f"<!-- SIZE:lists/hosts/combined{ext} -->unknown<!-- SIZE_END -->"
+                ]
+                coverages = [
+                    format_coverage(count_geoblock_domains(std_comb, geoblock_domains))
+                ]
+                if nc_comb.exists():
+                    files.append(f"combined-no-crutch{ext}")
+                    sizes.append(
+                        f"<!-- SIZE:lists/hosts/combined-no-crutch{ext} -->unknown<!-- SIZE_END -->"
+                    )
+                    coverages.append(
+                        format_coverage(
+                            count_geoblock_domains(nc_comb, geoblock_domains)
+                        )
+                    )
+                name = (
+                    "<b>Combined</b> (Менее надёжный: могут требоваться перезагрузки)"
+                    if is_ru
+                    else "<b>Combined</b> (Less reliable: may require reloads)"
+                )
+                items.append((name, files, sizes, coverages))
+
+            # 3. Providers
             for key, display_name in provider_defs:
                 p_std = hosts_dir / f"{key}{ext}"
                 p_nc = hosts_dir / f"{key}-no-crutch{ext}"

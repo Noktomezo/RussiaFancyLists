@@ -410,12 +410,14 @@ async def detect_provider_proxy_ips(
 async def generate_aligned_hosts(
     geoblock_file: Path,
     hosts_temp_dir: Path,
+    output_combined: Path,
     output_malw: Path,
     output_geohide: Path,
     output_mafioznik: Path,
     output_smart: Path,
 ):
-    """Compile domains into individual provider hosts lists and smart verified lists.
+    """Compile domains into individual provider hosts lists, smart verified lists, and combined lists.
+    - combined.hosts: all geoblock domains mapped across active provider proxy IPs.
     - malw.hosts: only domains from ImMALWARE source mapped to malw proxy IP.
     - geohide.hosts: only domains from GeoHide EU/US sources mapped to geohide proxy IPs.
     - mafioznik.hosts: only domains from Mafioznik source mapped to mafioznik proxy IP.
@@ -798,6 +800,110 @@ async def generate_aligned_hosts(
         for (ip, brand), doms in direct_groups.items():
             for d in doms:
                 combined_direct.setdefault((ip, brand), set()).add(d)
+
+    # For combined_geoblock: every domain maps to active proxy IPs of providers
+    combined_geoblock = {}
+    provider_cfgs = [
+        ("malw", malw_ips, False),
+        ("geohide", geohide_ips, False),
+        ("mafioznik", mafioznik_ips, True),
+    ]
+
+    for _name, prov_ips, is_maf in provider_cfgs:
+        active_prov_ips = [ip for ip in prov_ips if ip in active_ips]
+        ips_to_use = active_prov_ips if active_prov_ips else prov_ips
+        should_use = len(active_prov_ips) > 0 or not active_ips
+
+        if should_use and prov_ips:
+            for ip in ips_to_use:
+                for brand, doms in brand_domains.items():
+                    if is_maf:
+                        filtered_doms = [
+                            d
+                            for d in doms
+                            if d in mafioznik_allowed and d not in global_custom
+                        ]
+                    else:
+                        filtered_doms = [d for d in doms if d not in global_custom]
+                    if filtered_doms:
+                        combined_geoblock.setdefault((ip, brand), set()).update(
+                            filtered_doms
+                        )
+
+    # Copy to combined_geoblock_nc (crutches remain strictly in combined_direct)
+    combined_geoblock_nc = {k: set(v) for k, v in combined_geoblock.items()}
+
+    output_combined.parent.mkdir(parents=True, exist_ok=True)
+
+    # Standard combined file (with crutches)
+    with open(output_combined, "w", encoding="utf-8") as f:
+        f.write(LOOPBACK_HEADER)
+
+        if combined_direct:
+            f.write("# Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+            f.write("\n")
+
+        if combined_geoblock:
+            f.write("# Geoblock\n")
+            for ip, brand in sorted(
+                combined_geoblock.keys(), key=lambda x: (x[1], x[0])
+            ):
+                dom_list = " ".join(sorted(list(combined_geoblock[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+
+    # Standard combined AdGuard Home file
+    output_combined_adg = output_combined.parent / f"{output_combined.stem}.adguard.txt"
+    with open(output_combined_adg, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Combined (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+        if combined_direct:
+            f.write("! Crutch\n")
+            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
+                for d in sorted(list(combined_direct[(ip, brand)])):
+                    f.write(format_adguard_dnsrewrite(d, ip))
+            f.write("\n")
+
+        if combined_geoblock:
+            f.write("! Geoblock\n")
+            for ip, brand in sorted(
+                combined_geoblock.keys(), key=lambda x: (x[1], x[0])
+            ):
+                for d in sorted(list(combined_geoblock[(ip, brand)])):
+                    f.write(format_adguard_dnsrewrite(d, ip))
+
+    # No-crutch combined file
+    output_combined_nc = output_combined.parent / (
+        output_combined.stem + "-no-crutch" + output_combined.suffix
+    )
+    with open(output_combined_nc, "w", encoding="utf-8") as f:
+        f.write(LOOPBACK_HEADER)
+        if combined_geoblock_nc:
+            f.write("# Geoblock\n")
+            for ip, brand in sorted(
+                combined_geoblock_nc.keys(), key=lambda x: (x[1], x[0])
+            ):
+                dom_list = " ".join(sorted(list(combined_geoblock_nc[(ip, brand)])))
+                f.write(f"{ip} {dom_list}\n")
+
+    # No-crutch combined AdGuard Home file
+    output_combined_nc_adg = (
+        output_combined.parent / f"{output_combined.stem}-no-crutch.adguard.txt"
+    )
+    with open(output_combined_nc_adg, "w", encoding="utf-8") as f:
+        f.write("! Title: RussiaFancyLists - Combined No-Crutch (AdGuard Home)\n")
+        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
+
+        if combined_geoblock_nc:
+            f.write("! Geoblock\n")
+            for ip, brand in sorted(
+                combined_geoblock_nc.keys(), key=lambda x: (x[1], x[0])
+            ):
+                for d in sorted(list(combined_geoblock_nc[(ip, brand)])):
+                    f.write(format_adguard_dnsrewrite(d, ip))
 
     # Write only-crutch file
     output_only_crutch = output_smart.parent / "only-crutch.hosts"

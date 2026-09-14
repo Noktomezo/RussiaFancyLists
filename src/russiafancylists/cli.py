@@ -223,6 +223,7 @@ async def run_pipeline(
             await generate_aligned_hosts(
                 GEOBLOCK_FOLDER / "full.lst",
                 TEMP_FOLDER / "hosts",
+                HOSTS_LIST_FOLDER / "combined.hosts",
                 HOSTS_LIST_FOLDER / "malw.hosts",
                 HOSTS_LIST_FOLDER / "geohide.hosts",
                 HOSTS_LIST_FOLDER / "mafioznik.hosts",

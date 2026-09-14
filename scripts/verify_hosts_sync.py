@@ -88,22 +88,12 @@ def main():
 
     mismatches = 0
 
-    # 1. Ensure obsolete combined files are completely removed
-    obsolete_files = [
-        hosts_dir / "combined.hosts",
-        hosts_dir / "combined-no-crutch.hosts",
-        hosts_dir / "combined.adguard.txt",
-        hosts_dir / "combined-no-crutch.adguard.txt",
-    ]
-    for obs in obsolete_files:
-        if obs.exists():
-            print(f"Error: Obsolete file {obs.name} still exists! Must be removed.")
-            mismatches += 1
-
-    # 2. Check expected files exist
+    # 1. Check expected files exist
     expected_stems = [
         "smart",
         "smart-no-crutch",
+        "combined",
+        "combined-no-crutch",
         "geohide",
         "geohide-no-crutch",
         "malw",
@@ -200,7 +190,43 @@ def main():
     else:
         print("smart.hosts == smart-no-crutch.hosts | only-crutch.hosts [OK]")
 
-    # 6. Verify Provider Families (geohide, malw, mafioznik)
+    # 6. Verify Combined Hosts File Parity
+    print("\n--- Verifying Combined Hosts File Parity ---")
+    combined_path = hosts_dir / "combined.hosts"
+    combined_nc_path = hosts_dir / "combined-no-crutch.hosts"
+    combined_domains = parse_domains_from_hosts(combined_path)
+    combined_nc_domains = parse_domains_from_hosts(combined_nc_path)
+    expected_combined = combined_nc_domains | crutch_domains
+
+    print(f"combined.hosts: {len(combined_domains)} domains")
+    print(f"combined-no-crutch.hosts: {len(combined_nc_domains)} domains")
+    diff_comb1 = combined_domains - expected_combined
+    diff_comb2 = expected_combined - combined_domains
+    if diff_comb1 or diff_comb2:
+        print(
+            "Error: combined.hosts does not match exact union of combined-no-crutch and only-crutch!"
+        )
+        if diff_comb1:
+            print(f"  Only in combined.hosts (first 5): {sorted(list(diff_comb1))[:5]}")
+        if diff_comb2:
+            print(f"  Only in union (first 5): {sorted(list(diff_comb2))[:5]}")
+        mismatches += 1
+    else:
+        print("combined.hosts == combined-no-crutch.hosts | only-crutch.hosts [OK]")
+
+    # smart-no-crutch must be a subset of combined-no-crutch
+    smart_extra = smart_nc_domains - combined_nc_domains
+    if smart_extra:
+        print(
+            f"Error: smart-no-crutch.hosts contains domains not in combined-no-crutch.hosts: {sorted(list(smart_extra))[:5]}"
+        )
+        mismatches += 1
+    else:
+        print(
+            "smart-no-crutch.hosts is a valid subset of combined-no-crutch.hosts [OK]"
+        )
+
+    # 7. Verify Provider Families (geohide, malw, mafioznik)
     print("\n--- Verifying Provider Families Scoping ---")
     providers = ["geohide", "malw", "mafioznik"]
     for p in providers:
@@ -229,6 +255,14 @@ def main():
             print(
                 f"{p}.hosts has {len(p_doms)} domains, {p}-no-crutch.hosts has {len(p_nc_doms)} domains [OK]"
             )
+
+        # p-no-crutch must be subset of combined-no-crutch
+        p_extra = p_nc_doms - combined_nc_domains
+        if p_extra:
+            print(
+                f"Error: {p}-no-crutch.hosts contains domains not in combined-no-crutch.hosts: {sorted(list(p_extra))[:5]}"
+            )
+            mismatches += 1
 
     # 7. Verify Geoblock Universe Containment
     if geoblock_file.exists():
