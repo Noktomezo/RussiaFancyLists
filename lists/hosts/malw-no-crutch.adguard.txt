@@ -67,6 +67,7 @@
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||elevenreader.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.elgato.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||framer.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -87,6 +88,8 @@
 ||grok.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||guidedhacking.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.imgur.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||b.i.instagram.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||help.instagram.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.intel.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -144,9 +147,9 @@
 ||gew1-dealer.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||gew1-spclient.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||open.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;62.133.62.97
