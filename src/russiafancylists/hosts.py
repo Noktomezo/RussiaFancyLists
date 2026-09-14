@@ -804,13 +804,13 @@ async def generate_aligned_hosts(
     # For combined_geoblock: every domain maps to active proxy IPs of providers and Smart DNS
     combined_geoblock = {}
     provider_cfgs = [
-        ("malw", malw_ips, False),
-        ("geohide", geohide_ips, False),
-        ("mafioznik", mafioznik_ips, True),
-        ("doh", doh_ips, False),
+        ("malw", malw_ips),
+        ("geohide", geohide_ips),
+        ("mafioznik", mafioznik_ips),
+        ("doh", doh_ips),
     ]
 
-    for _name, prov_ips, is_maf in provider_cfgs:
+    for _name, prov_ips in provider_cfgs:
         active_prov_ips = [ip for ip in prov_ips if ip in active_ips]
         ips_to_use = active_prov_ips if active_prov_ips else prov_ips
         should_use = len(active_prov_ips) > 0 or not active_ips
@@ -818,14 +818,7 @@ async def generate_aligned_hosts(
         if should_use and prov_ips:
             for ip in ips_to_use:
                 for brand, doms in brand_domains.items():
-                    if is_maf:
-                        filtered_doms = [
-                            d
-                            for d in doms
-                            if d in mafioznik_allowed and d not in global_custom
-                        ]
-                    else:
-                        filtered_doms = [d for d in doms if d not in global_custom]
+                    filtered_doms = [d for d in doms if d not in global_custom]
                     if filtered_doms:
                         combined_geoblock.setdefault((ip, brand), set()).update(
                             filtered_doms

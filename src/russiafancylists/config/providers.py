@@ -129,7 +129,9 @@ SMART_DNS_DOH_SERVERS = {
 DOH_PROBE_DOMAINS = [
     "chatgpt.com",
     "openai.com",
+    "api.openai.com",
     "claude.ai",
+    "copilot.microsoft.com",
     "canva.com",
     "notion.so",
     "spotify.com",

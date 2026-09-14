@@ -84,7 +84,7 @@ async def query_doh_a_records(
                 "content-type": "application/dns-message",
                 "accept": "application/dns-message",
             },
-            timeout=4.0,
+            timeout=7.0,
         )
         if r.status_code == 200 and r.content:
             return parse_dns_wire_a_records(r.content)
@@ -97,7 +97,7 @@ async def query_doh_a_records(
         r = await client.get(
             f"{doh_url}?dns={b64}",
             headers={"accept": "application/dns-message"},
-            timeout=4.0,
+            timeout=7.0,
         )
         if r.status_code == 200 and r.content:
             return parse_dns_wire_a_records(r.content)
@@ -149,7 +149,7 @@ async def discover_doh_proxy_ips(
     async with httpx.AsyncClient(
         http2=True,
         verify=False,
-        timeout=5.0,
+        timeout=8.0,
         limits=httpx.Limits(max_connections=30, max_keepalive_connections=30),
     ) as client:
 
