@@ -118,9 +118,11 @@ SMART_DNS_DOH_SERVERS = {
     "astracat": "https://dns.astracat.network/dns-query",
     "xyz": "https://dns.yo1nk.app/dns-query",
     "dns_ai": "https://dns.dns-ai.ru/dns-query",
+    "xbox_dns": "https://xbox-dns.ru/dns-query",
     "malw": "https://dns.malw.link/dns-query",
     "geohide_eu": "https://eu.geohide.ru/dns-query",
     "geohide_us": "https://us.geohide.ru/dns-query",
+    "geohide_ru": "https://geohide.ru/dns-query",
 }
 
 # Canonical geoblocked domains used to probe DoH resolvers for proxy IPs

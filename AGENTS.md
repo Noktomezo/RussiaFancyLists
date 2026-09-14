@@ -37,7 +37,7 @@ This file contains global rules, workflow requirements, and architectural guidel
 
 ### 1. Separate Hosts Families
 - The generated hosts files are organized into the following families:
-  1. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (multi-provider solution, actively SNI-probed across all non-RU proxy endpoints, keeping only validated working `[IP - domain]` pairs).
+  1. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (multi-provider solution, actively SNI-probed across all available proxy endpoints, keeping only validated working `[IP - domain]` pairs).
   2. **Dedicated Provider Files (with Crutches)**: `geohide.hosts`, `malw.hosts`, `mafioznik.hosts` (strictly scoped to each provider's source domains).
   3. **No-Crutch Provider Files**: `geohide-no-crutch.hosts`, `malw-no-crutch.hosts`, `mafioznik-no-crutch.hosts` (each provider's source domains with crutches excluded).
   4. **Only-Crutch Hosts File**: `only-crutch.hosts` (direct service IP mappings).
@@ -46,7 +46,7 @@ This file contains global rules, workflow requirements, and architectural guidel
   - `smart.hosts` domain set must equal the exact union of `smart-no-crutch.hosts` and `only-crutch.hosts`.
   - For each provider file with crutches, its no-crutch counterpart must be a subset whose difference contains only crutches.
   - All domains across all hosts files must be valid subsets of `lists/geoblock/full.lst` ∪ `only-crutch.hosts`.
-  - No Russian IP addresses are permitted anywhere in `.hosts` or `.adguard.txt` files.
+  - Any proxy IP that actively connects and passes the domain TLS SNI probe is permitted regardless of GeoIP origin.
   - The verification script `verify_hosts_sync.py` checks these rules accordingly.
 
 ### 2. The `# Crutch` Section

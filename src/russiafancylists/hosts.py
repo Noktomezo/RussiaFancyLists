@@ -1,12 +1,11 @@
 import asyncio
 import contextlib
 import ipaddress
+import json
 import re
 import ssl
 from collections import Counter
 from pathlib import Path
-
-import httpx
 
 from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.doh import discover_doh_proxy_ips
@@ -164,14 +163,10 @@ def classify_ip_role(
     ip: str,
     domains: list[str],
     declared_proxies: set[str],
-    ru_ips: set[str] | None = None,
 ) -> str:
     """Classify an IP as SMART_PROXY, DIRECT_CRUTCH, or UNKNOWN based on provenance,
     infrastructure subnets, and brand diversity.
     """
-    if ru_ips and ip in ru_ips:
-        return "UNKNOWN"
-
     # 1. Tier 1: Authoritative declared proxy endpoints
     if ip in declared_proxies:
         return "SMART_PROXY"
@@ -354,82 +349,11 @@ def _get_sld_name(dom: str) -> str:
     return brand
 
 
-async def get_ru_ip_set(candidate_ips: list[str]) -> set[str]:
-    """Dynamically discover Russian IP addresses to exclude them from proxy pools and crutches
-    using DNS discovery of geohide.ru and lightweight, non-rate-limited GeoIP services.
-    """
-    ru_ips: set[str] = set()
-
-    # 1. Directly resolve geohide.ru A records (all are Russian Smart DNS servers)
-    try:
-        loop = asyncio.get_running_loop()
-        addr_info = await loop.getaddrinfo("geohide.ru", None)
-        for ai in addr_info:
-            ru_ips.add(ai[4][0])
-    except Exception as e:
-        print(f"Warning: Failed to resolve geohide.ru: {e}")
-
-    # 2. Check remaining candidate proxy IPs using GeoIP
-    ips_to_check = [
-        ip
-        for ip in set(candidate_ips)
-        if ip not in ru_ips
-        and not ip.startswith(("127.", "0.", "10.", "192.168.", "172."))
-        and ":" not in ip
-    ]
-    if not ips_to_check:
-        return ru_ips
-
-    sem = asyncio.Semaphore(15)
-
-    async def check_single_ip(client: httpx.AsyncClient, ip: str) -> tuple[str, str]:
-        async with sem:
-            # Primary: api.country.is
-            try:
-                r = await client.get(f"https://api.country.is/{ip}", timeout=2.5)
-                if r.status_code == 200:
-                    return ip, r.json().get("country", "")
-            except Exception:
-                pass
-
-            # Fallback 1: get.geojs.io
-            try:
-                r = await client.get(
-                    f"https://get.geojs.io/v1/ip/country.json?ip={ip}", timeout=2.5
-                )
-                if r.status_code == 200:
-                    data = r.json()
-                    if isinstance(data, list) and data:
-                        return ip, data[0].get("country", "")
-            except Exception:
-                pass
-
-            return ip, ""
-
-    try:
-        async with httpx.AsyncClient(timeout=6.0) as client:
-            results = await asyncio.gather(
-                *(check_single_ip(client, ip) for ip in ips_to_check)
-            )
-            for ip, cc in results:
-                if cc == "RU":
-                    ru_ips.add(ip)
-    except Exception as e:
-        print(f"Warning: Failed GeoIP check: {e}")
-
-    if ru_ips:
-        print(
-            f"Dynamically detected Russian proxy IPs to exclude ({len(ru_ips)}): {sorted(list(ru_ips))}"
-        )
-    return ru_ips
-
-
 async def detect_provider_proxy_ips(
     hosts_temp_dir: Path,
-) -> tuple[dict[str, list[str]], set[str]]:
-    """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide, mafioznik).
-    Strictly differentiates Smart DNS proxy servers from direct service crutches,
-    and dynamically detects and excludes any Russian proxy IPs across all providers.
+) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
+    """Strictly detects Smart DNS proxy IPs for each provider (malw, geohide, mafioznik, doh).
+    Strictly differentiates Smart DNS proxy servers from direct service crutches.
     """
     provider_files = {
         "malw": hosts_temp_dir / "malw-hosts.lst",
@@ -456,10 +380,8 @@ async def detect_provider_proxy_ips(
     if provider_files["malw"].exists():
         _, malw_ip_domains = get_source_info(provider_files["malw"])
         for ip, domains in malw_ip_domains.items():
-            # A proxy IP cannot belong to known service/CDN subnets (e.g. Telegram, Meta, Fastly)
             if is_known_crutch_ip(ip):
                 continue
-            # Must map to at least 5 domains and at least 3 distinct normalized brands
             distinct_brands = {normalize_brand_name(d) for d in domains}
             if len(domains) >= 5 and len(distinct_brands) >= 3 or ip in geohide_ips:
                 malw_ips.append(ip)
@@ -474,25 +396,15 @@ async def detect_provider_proxy_ips(
     doh_proxies = await discover_doh_proxy_ips()
     doh_ips = [ip for ips in doh_proxies.values() for ip in ips]
 
-    # Dynamic Russian IP detection across candidate proxy IPs
-    candidates_to_check = set(geohide_ips + malw_ips + mafioznik_ips + doh_ips)
-    ru_ips = await get_ru_ip_set(list(candidates_to_check))
-
-    # Exclude Russian IPs from all provider proxy lists
-    geohide_ips = [ip for ip in geohide_ips if ip not in ru_ips]
-    malw_ips = [ip for ip in malw_ips if ip not in ru_ips]
-    mafioznik_ips = [ip for ip in mafioznik_ips if ip not in ru_ips]
-    doh_clean_ips = [ip for ip in doh_ips if ip not in ru_ips]
-
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),
         "geohide": sorted(list(set(geohide_ips))),
         "mafioznik": sorted(list(set(mafioznik_ips))),
-        "doh": sorted(list(set(doh_clean_ips))),
+        "doh": sorted(list(set(doh_ips))),
     }
 
-    print(f"Strictly detected proxy IPs (non-RU): {detected_proxy_ips}")
-    return detected_proxy_ips, ru_ips
+    print(f"Strictly detected proxy IPs: {detected_proxy_ips}")
+    return detected_proxy_ips, doh_proxies
 
 
 async def generate_aligned_hosts(
@@ -539,21 +451,11 @@ async def generate_aligned_hosts(
                 f"Warning: Failed to parse zapret-manager-parsed.lst as hosts source: {e}"
             )
 
-    detected_proxy_ips, ru_ips = await detect_provider_proxy_ips(hosts_temp_dir)
+    detected_proxy_ips, doh_proxies = await detect_provider_proxy_ips(hosts_temp_dir)
     malw_ips = detected_proxy_ips["malw"]
     geohide_ips = detected_proxy_ips["geohide"]
     mafioznik_ips = detected_proxy_ips["mafioznik"]
     doh_ips = detected_proxy_ips.get("doh", [])
-
-    # Also detect and exclude any Russian IPs from crutch sources
-    all_source_ips = (
-        set(malw_ip_domains.keys())
-        | set(geohide_ip_domains.keys())
-        | set(mafioznik_ip_domains.keys())
-        | set(zapret_ip_domains.keys())
-    )
-    extra_ru_ips = await get_ru_ip_set(list(all_source_ips - ru_ips))
-    ru_ips.update(extra_ru_ips)
 
     # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
     provider_proxy_ips = (
@@ -568,9 +470,7 @@ async def generate_aligned_hosts(
         zapret_ip_domains,
     ):
         for ip, domains in ip_domains.items():
-            if ip in ru_ips:
-                continue
-            role = classify_ip_role(ip, domains, provider_proxy_ips, ru_ips)
+            role = classify_ip_role(ip, domains, provider_proxy_ips)
             if role == "DIRECT_CRUTCH":
                 for dom in domains:
                     if ip not in global_custom_candidates.setdefault(dom, []):
@@ -1001,6 +901,33 @@ async def generate_aligned_hosts(
     geoblock_domains_no_crutch = [d for d in geoblock_domains if d not in global_custom]
     with open(geoblock_file, "w", encoding="utf-8") as f:
         f.write("\n".join(geoblock_domains_no_crutch) + "\n")
+
+    # Save active provider IPs mapping for status updates in README
+    all_provider_map = {
+        "GeoHide": set(geohide_ips)
+        | set(doh_proxies.get("geohide_ru", []))
+        | set(doh_proxies.get("geohide_eu", []))
+        | set(doh_proxies.get("geohide_us", [])),
+        "Comss": set(doh_proxies.get("comss", [])),
+        "Xbox DNS": set(doh_proxies.get("xbox_dns", [])),
+        "dns-ai": set(doh_proxies.get("dns_ai", [])),
+        "AstraCat": set(doh_proxies.get("astracat", [])),
+        "XyZ": set(doh_proxies.get("xyz", [])),
+        "Malw": set(malw_ips) | set(doh_proxies.get("malw", [])),
+        "Mafioznik": set(mafioznik_ips),
+    }
+
+    active_in_smart = {ip for (ip, _) in smart_geoblock}
+    active_provider_ips = {}
+    for prov_name, prov_ips in all_provider_map.items():
+        working = sorted(list(prov_ips & (active_in_smart | active_ips)))
+        if working:
+            active_provider_ips[prov_name] = working
+
+    active_proxies_file = hosts_temp_dir / "active_provider_ips.json"
+    hosts_temp_dir.mkdir(parents=True, exist_ok=True)
+    with open(active_proxies_file, "w", encoding="utf-8") as f:
+        json.dump(active_provider_ips, f, indent=2)
 
 
 def parse_zapret_sh(input_sh: Path, output_lst: Path):

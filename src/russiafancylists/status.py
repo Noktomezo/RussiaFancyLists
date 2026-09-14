@@ -1,4 +1,5 @@
 import asyncio
+import json
 import re
 import time
 from pathlib import Path
@@ -49,18 +50,39 @@ def parse_proxy_ips_from_hosts(file_path: Path) -> list[str]:
 
 async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     """Update status blocks in README.md and README.ru.md with active proxy IPs for each provider."""
-    # 1. Retrieve current proxy IPs dynamically from the generated hosts files
-    hosts_dir = root_dir / "lists" / "hosts"
-    provider_ips = {
-        "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
-        "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
-        "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
-    }
+    # 1. Retrieve current proxy IPs dynamically from active_provider_ips.json (or fallback to hosts files)
+    active_proxies_file = hosts_temp_dir / "active_provider_ips.json"
+    provider_ips = {}
+    if active_proxies_file.exists():
+        try:
+            with open(active_proxies_file, encoding="utf-8") as f:
+                provider_ips = json.load(f)
+        except Exception as e:
+            print(f"Warning: Failed to load {active_proxies_file}: {e}")
+
+    if not provider_ips:
+        hosts_dir = root_dir / "lists" / "hosts"
+        provider_ips = {
+            "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
+            "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
+            "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
+        }
+
+    provider_order = [
+        "GeoHide",
+        "Comss",
+        "Xbox DNS",
+        "dns-ai",
+        "AstraCat",
+        "XyZ",
+        "Malw",
+        "Mafioznik",
+    ]
 
     # 2. Format status strings (render 💚 for each found proxy IP, skip if provider has 0 IPs)
     status_en = []
     status_ru = []
-    for provider in ("Malw", "GeoHide", "Mafioznik"):
+    for provider in provider_order:
         ips = provider_ips.get(provider, [])
         if not ips:
             continue

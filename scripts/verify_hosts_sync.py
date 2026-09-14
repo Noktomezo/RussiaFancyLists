@@ -1,9 +1,6 @@
-import asyncio
 import re
 import sys
 from pathlib import Path
-
-import httpx
 
 
 def parse_domains_from_hosts(file_path: Path) -> set[str]:
@@ -78,45 +75,6 @@ def extract_ips_from_adguard(file_path: Path) -> set[str]:
             if m and m.group(1) not in ("0.0.0.0", "127.0.0.1"):
                 ips.add(m.group(1))
     return ips
-
-
-async def check_russian_ips(ips: set[str]) -> set[str]:
-    """Verify that none of the mapped IPs are located in Russia."""
-    ru_ips = set()
-
-    # 1. Resolve geohide.ru A records
-    try:
-        loop = asyncio.get_running_loop()
-        addr_info = await loop.getaddrinfo("geohide.ru", None)
-        for ai in addr_info:
-            ru_ips.add(ai[4][0])
-    except Exception as e:
-        print(f"Warning: could not resolve geohide.ru: {e}")
-
-    # 2. Check candidate IPs with country lookup
-    candidates = [
-        ip for ip in ips if not ip.startswith(("127.", "0.", "10.", "192.168.", "172."))
-    ]
-    if not candidates:
-        return ru_ips
-
-    async with httpx.AsyncClient(timeout=4.0) as client:
-
-        async def check(ip: str):
-            try:
-                r = await client.get(f"https://api.country.is/{ip}")
-                if r.status_code == 200 and r.json().get("country") == "RU":
-                    return ip
-            except Exception:
-                pass
-            return None
-
-        results = await asyncio.gather(*(check(ip) for ip in candidates))
-        for res in results:
-            if res:
-                ru_ips.add(res)
-
-    return ru_ips
 
 
 def main():
@@ -302,22 +260,15 @@ def main():
                     )
                     mismatches += 1
 
-    # 8. Verify Zero Russian IPs
-    print("\n--- Verifying Zero Russian IPs ---")
+    # 8. Report Summary of Unique IPs
+    print("\n--- Summary of Unique IPs in Generated Files ---")
     all_ips = set()
     for h_path in all_hosts:
         all_ips.update(extract_ips_from_hosts(h_path))
     for a_path in all_adg:
         all_ips.update(extract_ips_from_adguard(a_path))
 
-    print(f"Total unique IPs across all lists: {len(all_ips)}")
-    found_ru_ips = asyncio.run(check_russian_ips(all_ips))
-    detected_in_lists = all_ips & found_ru_ips
-    if detected_in_lists:
-        print(f"Error: Found Russian IPs in generated lists: {detected_in_lists}")
-        mismatches += 1
-    else:
-        print("0 Russian IPs found across all lists [OK]")
+    print(f"Total unique active IPs across all lists: {len(all_ips)} [OK]")
 
     if mismatches > 0:
         print(f"\nVerification failed with {mismatches} mismatch(es).")
