@@ -8,25 +8,23 @@ ff02::2 ip6-allrouters
 2.16.168.44 audio4-ak-spotify-com.akamaized.net
 23.36.163.34 audio-ak-spotify-com.akamaized.net
 23.48.23.145 heads-ak-spotify-com.akamaized.net
-185.246.223.127 game.brawlstarsgame.com
+80.253.249.40 game.brawlstarsgame.com
 31.13.66.63 scontent-hel3-1.cdninstagram.com scontent.cdninstagram.com
 57.144.244.192 static.cdninstagram.com
-81.17.20.86 gamea.clashofclans.com
+193.23.209.189 gamea.clashofclans.com
 81.17.20.82 game.clashroyaleapp.com
 144.31.14.104 windsurf-telemetry.codeium.com
 162.159.135.232 updates.discord.com
-157.240.245.174 z-p42-chat-e2ee-ig.facebook.com
 57.144.244.1 facebook.com www.facebook.com
 57.144.244.1 fb.com
-31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 46.8.158.6 dnstest.geohide.ru
+140.82.114.3 github.com
 185.199.110.133 camo.githubassets.com
 185.199.110.154 github.githubassets.com
 146.75.22.132 avatars.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com avatars4.githubusercontent.com avatars5.githubusercontent.com camo.githubusercontent.com gist.githubusercontent.com objects.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com release-assets.githubusercontent.com
-157.240.245.174 b.i.instagram.com help.instagram.com
-157.240.9.174 instagram.com www.instagram.com
+157.240.205.174 instagram.com www.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 185.31.40.18 test.dns.malw.link
 213.24.64.175 lkfl2.nalog.ru
@@ -38,9 +36,9 @@ ff02::2 ip6-allrouters
 65.8.158.112 tr.rbxcdn.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 173.245.58.219 d.rutor.info rutor.info
+199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
 35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
-81.17.20.84 game.squadbustersgame.com
 149.154.167.220 t.me
 216.24.57.3 tapeop.dev www.tapeop.dev
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
@@ -51,9 +49,7 @@ ff02::2 ip6-allrouters
 3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
-18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
-54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 107.175.76.134 37signals.com www.37signals.com
@@ -250,17 +246,17 @@ ff02::2 ip6-allrouters
 192.255.159.240 app.reve.com preview.reve.art reve.art reve.com www.reve.art www.reve.com
 192.255.159.241 romsgames.net www.romsgames.net
 192.3.233.253 blogs.sap.com community.sap.com
-2.27.118.34 accounts.scdn.co encore.scdn.co scdn.co www-growth.scdn.co www.scdn.co
-217.60.245.219 scribd.com www.scribd.com
-217.60.245.233 scribdassets.com www.scribdassets.com
-31.25.239.132 se.com www.se.com
-107.175.76.134 securitytrails.com www.securitytrails.com
-143.20.64.192 prowlarr.servarr.com
-192.255.159.240 singlekey-id.com www.singlekey-id.com
-192.255.159.241 sketchup.com www.sketchup.com
-192.3.233.253 slack.com www.slack.com
-2.27.118.34 slackb.com www.slackb.com
-217.60.245.219 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com spotify.com www.spotify.com
+2.27.118.34 scribd.com www.scribd.com
+217.60.245.219 scribdassets.com www.scribdassets.com
+217.60.245.233 se.com www.se.com
+31.25.239.132 securitytrails.com www.securitytrails.com
+107.175.76.134 prowlarr.servarr.com
+143.20.64.192 singlekey-id.com www.singlekey-id.com
+192.255.159.240 sketchup.com www.sketchup.com
+192.255.159.241 slack.com www.slack.com
+192.3.233.253 slackb.com www.slackb.com
+2.27.118.34 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com spotify.com www.spotify.com
+217.60.245.219 game.squadbustersgame.com
 217.60.245.233 squareup.com www.squareup.com
 31.25.239.132 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
 107.175.76.134 api.stumbleguys.com matchmaking.stumbleguys.com
