@@ -801,12 +801,13 @@ async def generate_aligned_hosts(
             for d in doms:
                 combined_direct.setdefault((ip, brand), set()).add(d)
 
-    # For combined_geoblock: every domain maps to active proxy IPs of providers
+    # For combined_geoblock: every domain maps to active proxy IPs of providers and Smart DNS
     combined_geoblock = {}
     provider_cfgs = [
         ("malw", malw_ips, False),
         ("geohide", geohide_ips, False),
         ("mafioznik", mafioznik_ips, True),
+        ("doh", doh_ips, False),
     ]
 
     for _name, prov_ips, is_maf in provider_cfgs:
