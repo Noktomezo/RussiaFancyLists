@@ -9,6 +9,7 @@ from pathlib import Path
 import httpx
 
 from russiafancylists.config import HOSTS_DIRECT
+from russiafancylists.doh import discover_doh_proxy_ips
 from russiafancylists.processors import clean_and_validate_domain
 
 LOOPBACK_HEADER = (
@@ -469,19 +470,25 @@ async def detect_provider_proxy_ips(
         top_ips, _ = get_source_info(provider_files["mafioznik"])
         mafioznik_ips = [ip for ip in top_ips if not is_known_crutch_ip(ip)]
 
+    # 4. DoH: Dynamic extraction of proxy IPs from DoH endpoints
+    doh_proxies = await discover_doh_proxy_ips()
+    doh_ips = [ip for ips in doh_proxies.values() for ip in ips]
+
     # Dynamic Russian IP detection across candidate proxy IPs
-    candidates_to_check = set(geohide_ips + malw_ips + mafioznik_ips)
+    candidates_to_check = set(geohide_ips + malw_ips + mafioznik_ips + doh_ips)
     ru_ips = await get_ru_ip_set(list(candidates_to_check))
 
     # Exclude Russian IPs from all provider proxy lists
     geohide_ips = [ip for ip in geohide_ips if ip not in ru_ips]
     malw_ips = [ip for ip in malw_ips if ip not in ru_ips]
     mafioznik_ips = [ip for ip in mafioznik_ips if ip not in ru_ips]
+    doh_clean_ips = [ip for ip in doh_ips if ip not in ru_ips]
 
     detected_proxy_ips = {
         "malw": sorted(list(set(malw_ips))),
         "geohide": sorted(list(set(geohide_ips))),
         "mafioznik": sorted(list(set(mafioznik_ips))),
+        "doh": sorted(list(set(doh_clean_ips))),
     }
 
     print(f"Strictly detected proxy IPs (non-RU): {detected_proxy_ips}")
@@ -536,6 +543,7 @@ async def generate_aligned_hosts(
     malw_ips = detected_proxy_ips["malw"]
     geohide_ips = detected_proxy_ips["geohide"]
     mafioznik_ips = detected_proxy_ips["mafioznik"]
+    doh_ips = detected_proxy_ips.get("doh", [])
 
     # Also detect and exclude any Russian IPs from crutch sources
     all_source_ips = (
@@ -548,7 +556,9 @@ async def generate_aligned_hosts(
     ru_ips.update(extra_ru_ips)
 
     # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
-    provider_proxy_ips = set(malw_ips) | set(geohide_ips) | set(mafioznik_ips)
+    provider_proxy_ips = (
+        set(malw_ips) | set(geohide_ips) | set(mafioznik_ips) | set(doh_ips)
+    )
 
     global_custom_candidates = {}
     for ip_domains in (
@@ -685,7 +695,9 @@ async def generate_aligned_hosts(
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
-    unique_primary_ips = set(malw_ips) | set(geohide_ips) | set(mafioznik_ips)
+    unique_primary_ips = (
+        set(malw_ips) | set(geohide_ips) | set(mafioznik_ips) | set(doh_ips)
+    )
     all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
 
     print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
@@ -911,13 +923,10 @@ async def generate_aligned_hosts(
 
     # 7. Generate Smart hosts files using active SNI handshake probing
     candidate_smart_domains = [d for d in geoblock_domains if d not in global_custom]
-    active_smart_proxy_ips = [
-        ip for ip in (malw_ips + geohide_ips + mafioznik_ips) if ip in active_ips
-    ]
+    all_smart_candidate_ips = malw_ips + geohide_ips + mafioznik_ips + doh_ips
+    active_smart_proxy_ips = [ip for ip in all_smart_candidate_ips if ip in active_ips]
     if not active_smart_proxy_ips:
-        active_smart_proxy_ips = sorted(
-            list(set(malw_ips + geohide_ips + mafioznik_ips))
-        )
+        active_smart_proxy_ips = sorted(list(set(all_smart_candidate_ips)))
 
     probe_results = await probe_sni_domains(
         candidate_smart_domains, active_smart_proxy_ips

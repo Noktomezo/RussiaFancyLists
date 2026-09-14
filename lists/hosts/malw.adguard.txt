@@ -5,20 +5,22 @@
 ||audio4-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;2.16.168.44
 ||audio-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.36.163.34
 ||heads-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.48.23.145
-||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;80.253.249.40
-||www.canva.com^$dnsrewrite=NOERROR;A;103.137.248.179
+||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;185.246.223.127
 ||scontent-hel3-1.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
 ||scontent.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
-||gamea.clashofclans.com^$dnsrewrite=NOERROR;A;193.23.209.189
+||gamea.clashofclans.com^$dnsrewrite=NOERROR;A;81.17.20.86
+||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;81.17.20.82
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;144.31.14.104
 ||updates.discord.com^$dnsrewrite=NOERROR;A;162.159.135.232
+||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=NOERROR;A;157.240.245.174
 ||facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||www.facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||fb.com^$dnsrewrite=NOERROR;A;57.144.244.1
+||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=NOERROR;A;31.13.67.20
 ||scontent.xx.fbcdn.net^$dnsrewrite=NOERROR;A;57.144.244.128
 ||static.xx.fbcdn.net^$dnsrewrite=NOERROR;A;57.144.244.128
 ||fbsbx.com^$dnsrewrite=NOERROR;A;57.144.244.1
-||api.github.com^$dnsrewrite=NOERROR;A;103.137.248.179
 ||github.com^$dnsrewrite=NOERROR;A;140.82.114.3
 ||camo.githubassets.com^$dnsrewrite=NOERROR;A;185.199.110.133
 ||github.githubassets.com^$dnsrewrite=NOERROR;A;185.199.110.154
@@ -37,6 +39,8 @@
 ||release-assets.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
 ||instagram.com^$dnsrewrite=NOERROR;A;157.240.205.174
 ||www.instagram.com^$dnsrewrite=NOERROR;A;157.240.205.174
+||b.i.instagram.com^$dnsrewrite=NOERROR;A;157.240.245.174
+||help.instagram.com^$dnsrewrite=NOERROR;A;157.240.245.174
 ||api.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||edge-chat.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||graph.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
@@ -47,8 +51,6 @@
 ||r6s.com^$dnsrewrite=NOERROR;A;172.67.139.108
 ||rainbow6.com^$dnsrewrite=NOERROR;A;54.155.2.87
 ||tr.rbxcdn.com^$dnsrewrite=NOERROR;A;65.8.158.112
-||lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
-||www.lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||d.rutor.info^$dnsrewrite=NOERROR;A;173.245.58.219
 ||rutor.info^$dnsrewrite=NOERROR;A;173.245.58.219
 ||accounts.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
@@ -64,10 +66,10 @@
 ||seafoam.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||www-growth.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||www.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
-||open.spotify.com^$dnsrewrite=NOERROR;A;35.186.224.24
 ||audio-cf.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||open-exp.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
+||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;108.61.167.26
 ||t.me^$dnsrewrite=NOERROR;A;149.154.167.220
 ||tapeop.dev^$dnsrewrite=NOERROR;A;216.24.57.3
 ||www.tapeop.dev^$dnsrewrite=NOERROR;A;216.24.57.3
@@ -105,7 +107,9 @@
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;3.33.249.140
 ||ubi.com^$dnsrewrite=NOERROR;A;52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;99.83.188.134
+||connect.ubisoft.com^$dnsrewrite=NOERROR;A;18.209.141.203
 ||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
+||uplay.ubisoft.com^$dnsrewrite=NOERROR;A;54.76.54.196
 
 ! Geoblock
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -120,6 +124,7 @@
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||static.canva.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||www.canva.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -127,7 +132,6 @@
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||a.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||platform.claude.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -137,7 +141,6 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -174,7 +177,6 @@
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||elevenreader.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.elgato.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||framer.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -195,8 +197,6 @@
 ||grok.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||guidedhacking.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.imgur.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||b.i.instagram.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||help.instagram.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.intel.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -254,9 +254,9 @@
 ||gew1-dealer.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||gew1-spclient.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||open.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.squareup.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;62.133.62.97

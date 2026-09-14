@@ -20,6 +20,7 @@
 ||knowledge.broadcom.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||support.broadcom.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||www.canva.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||chatgpt.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -123,6 +124,7 @@
 ||gew1-spclient.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||login.app.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||open.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||www.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38

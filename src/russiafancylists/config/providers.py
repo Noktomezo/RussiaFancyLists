@@ -111,3 +111,28 @@ DOWNLOADS = {
         "Zapret-Manager exclude list",
     ),
 }
+
+# Smart DNS / DoH endpoints for harvesting SNI proxy IP addresses
+SMART_DNS_DOH_SERVERS = {
+    "comss": "https://dns.comss.one/dns-query",
+    "astracat": "https://dns.astracat.network/dns-query",
+    "xyz": "https://dns.yo1nk.app/dns-query",
+    "dns_ai": "https://dns.dns-ai.ru/dns-query",
+    "malw": "https://dns.malw.link/dns-query",
+    "geohide_eu": "https://eu.geohide.ru/dns-query",
+    "geohide_us": "https://us.geohide.ru/dns-query",
+}
+
+# Canonical geoblocked domains used to probe DoH resolvers for proxy IPs
+DOH_PROBE_DOMAINS = [
+    "chatgpt.com",
+    "openai.com",
+    "claude.ai",
+    "canva.com",
+    "notion.so",
+    "spotify.com",
+    "rutracker.org",
+    "dell.com",
+    "intel.com",
+    "medium.com",
+]
