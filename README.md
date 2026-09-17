@@ -308,7 +308,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
   <tbody>
     <tr>
       <td rowspan="6"><b>Hosts</b></td>
-      <td><b>Smart</b> (Recommended)</td>
+      <td><b>Smart</b> ❤️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart.hosts"><code>smart.hosts</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
@@ -323,7 +323,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
     </tr>
     <tr>
-      <td><b>Combined</b> (Less reliable: may require reloads)</td>
+      <td><b>Combined</b> ⚠️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
@@ -396,7 +396,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
     </tr>
     <tr>
       <td rowspan="6"><b>AdGuard Home</b></td>
-      <td><b>Smart</b> (Recommended)</td>
+      <td><b>Smart</b> ❤️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart.adguard.txt"><code>smart.adguard.txt</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
@@ -411,7 +411,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
     </tr>
     <tr>
-      <td><b>Combined</b> (Less reliable: may require reloads)</td>
+      <td><b>Combined</b> ⚠️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.adguard.txt"><code>combined.adguard.txt</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>

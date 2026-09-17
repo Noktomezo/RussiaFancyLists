@@ -211,11 +211,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/smart-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
                     coverages.append(get_coverage(nc_smart))
-                name = (
-                    "<b>Smart</b> (Рекомендуется)"
-                    if is_ru
-                    else "<b>Smart</b> (Recommended)"
-                )
+                name = "<b>Smart</b> ❤️"
                 items.append((name, files, sizes, coverages))
 
             # 2. Combined
@@ -233,11 +229,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/combined-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
                     coverages.append(get_coverage(nc_comb))
-                name = (
-                    "<b>Combined</b> (Менее надёжный: могут требоваться перезагрузки)"
-                    if is_ru
-                    else "<b>Combined</b> (Less reliable: may require reloads)"
-                )
+                name = "<b>Combined</b> ⚠️"
                 items.append((name, files, sizes, coverages))
 
             # 3. Providers
