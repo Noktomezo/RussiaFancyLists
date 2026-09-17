@@ -1,7 +1,6 @@
 import contextlib
 import json
 import os
-import re
 import shutil
 import subprocess
 import sys
@@ -40,30 +39,64 @@ def find_binary(tool_name: str) -> str:
     )
 
 
+def run_compiler_command(cmd: list[str], tool_name: str):
+    """Execute a ruleset compilation CLI command with error formatting and timeout handling."""
+    try:
+        subprocess.run(
+            cmd,
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            timeout=TIMEOUT,
+        )
+    except subprocess.TimeoutExpired as te:
+        stderr_msg = (
+            te.stderr.decode(errors="replace").strip()
+            if te.stderr
+            else "No stderr captured"
+        )
+        raise RuntimeError(
+            f"{tool_name} command {cmd} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}"
+        ) from te
+    except subprocess.CalledProcessError as e:
+        stderr_msg = (
+            e.stderr.decode(errors="replace").strip()
+            if e.stderr
+            else "No stderr captured"
+        )
+        raise RuntimeError(f"{tool_name} execution failed: {stderr_msg}") from e
+
+
 def generate_sing_box_ruleset(
     rule_key: str, input_file: Path, json_output_file: Path, srs_output_file: Path
 ):
     """Build ruleset JSON and compile it to binary .srs using sing-box CLI."""
     sing_box_bin = find_binary("sing-box")
 
-    rules_dict = {}
     with open(input_file, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
+        lines = [
+            line.strip()
+            for line in f
+            if line.strip() and not line.strip().startswith("#")
+        ]
 
-            if rule_key == "domain_suffix":
-                line = re.sub(r"^\.", "", line)
-                rules_dict.setdefault("domain_suffix", []).append(line)
-            elif rule_key == "domain":
-                # If domain is an SLD (exactly one dot), map as domain_suffix
-                if line.count(".") == 1:
-                    rules_dict.setdefault("domain_suffix", []).append(line)
-                else:
-                    rules_dict.setdefault("domain", []).append(line)
+    rules_dict = {}
+    if rule_key == "domain_suffix":
+        rules_dict["domain_suffix"] = [line.lstrip(".") for line in lines]
+    elif rule_key == "domain":
+        domain_list = []
+        suffix_list = []
+        for line in lines:
+            if line.count(".") == 1:
+                suffix_list.append(line)
             else:
-                rules_dict.setdefault(rule_key, []).append(line)
+                domain_list.append(line)
+        if suffix_list:
+            rules_dict["domain_suffix"] = suffix_list
+        if domain_list:
+            rules_dict["domain"] = domain_list
+    else:
+        rules_dict[rule_key] = lines
 
     ruleset = {"version": 3, "rules": [rules_dict]}
 
@@ -72,40 +105,15 @@ def generate_sing_box_ruleset(
         json.dump(ruleset, f, indent=2)
 
     srs_output_file.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        # Compile JSON to binary .srs format
-        cmd_compile = [
-            sing_box_bin,
-            "rule-set",
-            "compile",
-            "--output",
-            str(srs_output_file),
-            str(json_output_file),
-        ]
-        try:
-            subprocess.run(
-                cmd_compile,
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                timeout=TIMEOUT,
-            )
-        except subprocess.TimeoutExpired as te:
-            stderr_msg = (
-                te.stderr.decode(errors="replace").strip()
-                if te.stderr
-                else "No stderr captured"
-            )
-            raise RuntimeError(
-                f"sing-box command {cmd_compile} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}"
-            ) from te
-    except subprocess.CalledProcessError as e:
-        stderr_msg = (
-            e.stderr.decode(errors="replace").strip()
-            if e.stderr
-            else "No stderr captured"
-        )
-        raise RuntimeError(f"sing-box execution failed: {stderr_msg}") from e
+    cmd_compile = [
+        sing_box_bin,
+        "rule-set",
+        "compile",
+        "--output",
+        str(srs_output_file),
+        str(json_output_file),
+    ]
+    run_compiler_command(cmd_compile, "sing-box")
 
 
 def generate_mihomo_ruleset(
@@ -129,51 +137,25 @@ def generate_mihomo_ruleset(
             if not line or line.startswith("#"):
                 continue
             if behavior == "domain":
-                # Remove leading dots if any
-                line = re.sub(r"^\.", "", line)
+                items.append(line.lstrip("."))
             elif "/" not in line:
-                line += "/128" if ":" in line else "/32"
-            items.append(line)
+                items.append(line + ("/128" if ":" in line else "/32"))
+            else:
+                items.append(line)
 
     # 1. Output YAML ruleset
     yaml_output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(yaml_output_file, "w", encoding="utf-8") as f:
-        f.write("payload:\n")
-        for item in items:
-            f.write(f"  - '{item}'\n")
+        f.write("payload:\n" + "".join(f"  - '{item}'\n" for item in items))
 
     # 2. Compile to .mrs format
     mrs_output_file.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        cmd_compile = [
-            mihomo_bin,
-            "convert-ruleset",
-            behavior,
-            "yaml",
-            str(yaml_output_file),
-            str(mrs_output_file),
-        ]
-        try:
-            subprocess.run(
-                cmd_compile,
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                timeout=TIMEOUT,
-            )
-        except subprocess.TimeoutExpired as te:
-            stderr_msg = (
-                te.stderr.decode(errors="replace").strip()
-                if te.stderr
-                else "No stderr captured"
-            )
-            raise RuntimeError(
-                f"mihomo command {cmd_compile} timed out after {TIMEOUT} seconds. Stderr: {stderr_msg}"
-            ) from te
-    except subprocess.CalledProcessError as e:
-        stderr_msg = (
-            e.stderr.decode(errors="replace").strip()
-            if e.stderr
-            else "No stderr captured"
-        )
-        raise RuntimeError(f"mihomo execution failed: {stderr_msg}") from e
+    cmd_compile = [
+        mihomo_bin,
+        "convert-ruleset",
+        behavior,
+        "yaml",
+        str(yaml_output_file),
+        str(mrs_output_file),
+    ]
+    run_compiler_command(cmd_compile, "mihomo")

@@ -1,27 +1,8 @@
-import asyncio
 import json
 import re
-import time
 from pathlib import Path
 
-
-async def test_ip_latency(
-    ip: str, port: int = 443, timeout: float = 3.0
-) -> float | None:
-    """Measure TCP handshake latency to the target IP:port in seconds. Returns None if offline."""
-    start_time = time.perf_counter()
-    try:
-        reader, writer = await asyncio.wait_for(
-            asyncio.open_connection(ip, port), timeout=timeout
-        )
-        writer.close()
-        await writer.wait_closed()
-        return time.perf_counter() - start_time
-    except Exception:
-        return None
-
-
-# Raw measured TCP latency formatting is used directly now
+ADGUARD_REWRITE_PATTERN = re.compile(r"^\|\|([^^]+)\^\$dnsrewrite=")
 
 
 def parse_proxy_ips_from_hosts(file_path: Path) -> list[str]:
@@ -141,11 +122,11 @@ def count_geoblock_domains(file_path: Path, geoblock_set: set[str]) -> int:
             line = line.strip()
             if not line or line.startswith(("#", "!")):
                 continue
-            m = re.match(r"^\|\|([^^]+)\^\$dnsrewrite=", line)
+            m = ADGUARD_REWRITE_PATTERN.match(line)
             if m:
                 domains.add(m.group(1).lower().strip())
                 continue
-            line_no_comment = re.sub(r"#.*", "", line).strip()
+            line_no_comment = line.split("#", 1)[0].strip()
             cols = line_no_comment.split()
             if not cols or cols[0] in (
                 "0.0.0.0",
@@ -189,6 +170,15 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
         pct = (count / total_geoblocks) * 100
         return f"{count}/{total_geoblocks} ({pct:.1f}%)"
 
+    coverage_cache: dict[Path, str] = {}
+
+    def get_coverage(file_path: Path) -> str:
+        if file_path not in coverage_cache:
+            coverage_cache[file_path] = format_coverage(
+                count_geoblock_domains(file_path, geoblock_domains)
+            )
+        return coverage_cache[file_path]
+
     def build_table(lang: str) -> str:
         is_ru = lang == "ru"
         headers = (
@@ -215,19 +205,13 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                 sizes = [
                     f"<!-- SIZE:lists/hosts/smart{ext} -->unknown<!-- SIZE_END -->"
                 ]
-                coverages = [
-                    format_coverage(count_geoblock_domains(std_smart, geoblock_domains))
-                ]
+                coverages = [get_coverage(std_smart)]
                 if nc_smart.exists():
                     files.append(f"smart-no-crutch{ext}")
                     sizes.append(
                         f"<!-- SIZE:lists/hosts/smart-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
-                    coverages.append(
-                        format_coverage(
-                            count_geoblock_domains(nc_smart, geoblock_domains)
-                        )
-                    )
+                    coverages.append(get_coverage(nc_smart))
                 name = (
                     "<b>Smart</b> (Рекомендуется)"
                     if is_ru
@@ -243,19 +227,13 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                 sizes = [
                     f"<!-- SIZE:lists/hosts/combined{ext} -->unknown<!-- SIZE_END -->"
                 ]
-                coverages = [
-                    format_coverage(count_geoblock_domains(std_comb, geoblock_domains))
-                ]
+                coverages = [get_coverage(std_comb)]
                 if nc_comb.exists():
                     files.append(f"combined-no-crutch{ext}")
                     sizes.append(
                         f"<!-- SIZE:lists/hosts/combined-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
-                    coverages.append(
-                        format_coverage(
-                            count_geoblock_domains(nc_comb, geoblock_domains)
-                        )
-                    )
+                    coverages.append(get_coverage(nc_comb))
                 name = (
                     "<b>Combined</b> (Менее надёжный: могут требоваться перезагрузки)"
                     if is_ru
@@ -272,19 +250,13 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     sizes = [
                         f"<!-- SIZE:lists/hosts/{key}{ext} -->unknown<!-- SIZE_END -->"
                     ]
-                    coverages = [
-                        format_coverage(count_geoblock_domains(p_std, geoblock_domains))
-                    ]
+                    coverages = [get_coverage(p_std)]
                     if p_nc.exists():
                         files.append(f"{key}-no-crutch{ext}")
                         sizes.append(
                             f"<!-- SIZE:lists/hosts/{key}-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                         )
-                        coverages.append(
-                            format_coverage(
-                                count_geoblock_domains(p_nc, geoblock_domains)
-                            )
-                        )
+                        coverages.append(get_coverage(p_nc))
                     items.append((f"<b>{display_name}</b>", files, sizes, coverages))
 
             # 3. Only Crutch
@@ -353,7 +325,6 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
 
 async def update_readme_sizes(root_dir: Path):
     """Scan README files and dynamically update <!-- SIZE:path/to/file --> placeholders with actual file sizes."""
-    import re
 
     def format_size(size_bytes: int) -> str:
         if size_bytes >= 1024 * 1024:
@@ -362,23 +333,27 @@ async def update_readme_sizes(root_dir: Path):
             return f"{size_bytes / 1024:.1f} KB"
         return f"{size_bytes} B"
 
+    size_cache: dict[str, str] = {}
+
+    def get_file_size_str(file_rel_path: str) -> str:
+        if file_rel_path not in size_cache:
+            file_path = root_dir / file_rel_path
+            if file_path.exists():
+                size = file_path.stat().st_size
+                size_cache[file_rel_path] = format_size(size)
+            else:
+                size_cache[file_rel_path] = "unknown"
+        return size_cache[file_rel_path]
+
     for filename in ("README.md", "README.ru.md"):
         path = root_dir / filename
         if path.exists():
             content = path.read_text(encoding="utf-8")
-
-            # Replacement function for <!-- SIZE:path -->...<!-- SIZE_END -->
-            def repl(match):
-                file_rel_path = match.group(1)
-                file_path = root_dir / file_rel_path
-                if file_path.exists():
-                    size = file_path.stat().st_size
-                    size_str = format_size(size)
-                else:
-                    size_str = "unknown"
-                return f"<!-- SIZE:{file_rel_path} -->{size_str}<!-- SIZE_END -->"
-
             new_content = re.sub(
-                r"<!-- SIZE:([^\s>]+) -->.*?<!-- SIZE_END -->", repl, content
+                r"<!-- SIZE:([^\s>]+) -->.*?<!-- SIZE_END -->",
+                lambda m: (
+                    f"<!-- SIZE:{m.group(1)} -->{get_file_size_str(m.group(1))}<!-- SIZE_END -->"
+                ),
+                content,
             )
             path.write_text(new_content, encoding="utf-8")

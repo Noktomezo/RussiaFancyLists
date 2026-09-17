@@ -11,7 +11,13 @@ import httpx
 
 from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.doh import discover_doh_proxy_ips
-from russiafancylists.processors import clean_and_validate_domain
+from russiafancylists.processors import (
+    CLEANUP_EXTENSIONS,
+    DOMAIN_PATTERN,
+    IPV4_PATTERN,
+    IPV6_PATTERN,
+    clean_and_validate_domain,
+)
 
 LOOPBACK_HEADER = (
     "# Loopback\n"
@@ -56,6 +62,47 @@ def format_adguard_dnsrewrite(domain: str, ip: str) -> str:
     """Format an AdGuard Home DNS rewrite rule using full syntax ($dnsrewrite=NOERROR;TYPE;VALUE)."""
     record_type = "AAAA" if ":" in ip else "A"
     return f"||{domain}^$dnsrewrite=NOERROR;{record_type};{ip}\n"
+
+
+def write_hosts_file(output_path: Path, direct_groups: dict, geoblock_groups: dict):
+    """Write hosts file with # Crutch and # Geoblock sections atomically."""
+    lines = [LOOPBACK_HEADER]
+    if direct_groups:
+        lines.append("# Crutch\n")
+        for ip, brand in sorted(direct_groups.keys(), key=lambda x: (x[1], x[0])):
+            dom_list = " ".join(sorted(direct_groups[(ip, brand)]))
+            lines.append(f"{ip} {dom_list}\n")
+        lines.append("\n")
+    if geoblock_groups:
+        lines.append("# Geoblock\n")
+        for ip, brand in sorted(geoblock_groups.keys(), key=lambda x: (x[1], x[0])):
+            dom_list = " ".join(sorted(geoblock_groups[(ip, brand)]))
+            lines.append(f"{ip} {dom_list}\n")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("".join(lines), encoding="utf-8")
+
+
+def write_adguard_file(
+    output_path: Path, title: str, direct_groups: dict, geoblock_groups: dict
+):
+    """Write AdGuard Home file with ! Crutch and ! Geoblock sections atomically."""
+    lines = [
+        f"! Title: RussiaFancyLists - {title} (AdGuard Home)\n",
+        "! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n",
+    ]
+    if direct_groups:
+        lines.append("! Crutch\n")
+        for ip, brand in sorted(direct_groups.keys(), key=lambda x: (x[1], x[0])):
+            for d in sorted(direct_groups[(ip, brand)]):
+                lines.append(format_adguard_dnsrewrite(d, ip))
+        lines.append("\n")
+    if geoblock_groups:
+        lines.append("! Geoblock\n")
+        for ip, brand in sorted(geoblock_groups.keys(), key=lambda x: (x[1], x[0])):
+            for d in sorted(geoblock_groups[(ip, brand)]):
+                lines.append(format_adguard_dnsrewrite(d, ip))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("".join(lines), encoding="utf-8")
 
 
 def normalize_brand_name(dom: str) -> str:
@@ -210,7 +257,7 @@ def get_source_info(file_path: Path):
 
     with open(file_path, encoding="utf-8", errors="ignore") as f:
         for line in f:
-            line = re.sub(r"#.*", "", line).strip()
+            line = line.split("#", 1)[0].strip()
             if not line:
                 continue
             cols = line.split()
@@ -219,8 +266,8 @@ def get_source_info(file_path: Path):
             if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::", "ff02::1", "ff02::2"):
                 continue
 
-            is_ipv4 = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", cols[0])
-            is_ipv6 = re.match(r"^[0-9a-fA-F:]+$", cols[0])
+            is_ipv4 = IPV4_PATTERN.match(cols[0])
+            is_ipv6 = IPV6_PATTERN.match(cols[0])
 
             if is_ipv4 or is_ipv6:
                 if len(cols) < 2:
@@ -286,23 +333,77 @@ async def check_ip_active(ip: str, timeout: float = 2.5) -> bool:
     return active
 
 
-SNI_PROBE_SEMAPHORE = asyncio.Semaphore(200)
-
-
 async def probe_sni_domains(
     domains: list[str],
     proxy_ips: list[str],
-    timeout: float = 1.5,
+    domain_candidates: dict[str, list[str]] | None = None,
+    timeout: float = 0.8,
+    concurrency: int = 200,
+    max_per_ip_concurrency: int = 25,
+    max_working_per_domain: int = 2,
 ) -> dict[str, list[str]]:
-    """Probes TLS SNI handshake on port 443 across proxy IPs for candidate domains.
+    """Probes TLS SNI handshake on port 443 across candidate proxy IPs for domains
+    using a targeted provenance-first pool with per-IP rate limiting and early exit.
     Returns a dict: {domain: [working_ip_1, working_ip_2, ...]}
     """
+    if not domains:
+        return {}
+
+    if domain_candidates is None:
+        if not proxy_ips:
+            return {}
+        domain_candidates = {dom: list(proxy_ips) for dom in domains}
+
+    total_checks = sum(len(domain_candidates.get(d, [])) for d in domains)
+    print(
+        f"Starting targeted SNI probe for {len(domains)} domains across candidate proxy IPs ({total_checks} planned checks)..."
+    )
+
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
 
-    async def test_domain_ip(dom: str, ip: str) -> tuple[str, str, bool]:
-        async with SNI_PROBE_SEMAPHORE:
+    all_unique_ips = set(proxy_ips)
+    for ips in domain_candidates.values():
+        all_unique_ips.update(ips)
+
+    global_sem = asyncio.Semaphore(concurrency)
+    ip_semaphores = {
+        ip: asyncio.Semaphore(max_per_ip_concurrency) for ip in all_unique_ips
+    }
+
+    working_map: dict[str, list[str]] = {}
+    lock = asyncio.Lock()
+
+    loop = asyncio.get_running_loop()
+    original_handler = loop.get_exception_handler()
+
+    def silent_exception_handler(current_loop, context):
+        exc = context.get("exception")
+        if isinstance(
+            exc,
+            (
+                ConnectionResetError,
+                ConnectionAbortedError,
+                TimeoutError,
+                ssl.SSLError,
+                OSError,
+            ),
+        ):
+            return
+        if original_handler:
+            original_handler(current_loop, context)
+        else:
+            current_loop.default_exception_handler(context)
+
+    loop.set_exception_handler(silent_exception_handler)
+
+    async def test_single_pair(dom: str, ip: str) -> bool:
+        sem_ip = ip_semaphores.get(ip)
+        if not sem_ip:
+            sem_ip = asyncio.Semaphore(max_per_ip_concurrency)
+            ip_semaphores[ip] = sem_ip
+        async with global_sem, sem_ip:
             try:
                 reader, writer = await asyncio.wait_for(
                     asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
@@ -311,48 +412,38 @@ async def probe_sni_domains(
                 writer.close()
                 with contextlib.suppress(Exception):
                     await writer.wait_closed()
-                return dom, ip, True
+                return True
             except Exception:
-                return dom, ip, False
+                return False
 
-    tasks = [test_domain_ip(dom, ip) for dom in domains for ip in proxy_ips]
+    async def probe_single_domain(dom: str, candidates: list[str]):
+        working: list[str] = []
+        for ip in candidates:
+            if len(working) >= max_working_per_domain:
+                break
+            ok = await test_single_pair(dom, ip)
+            if ok:
+                working.append(ip)
+        if working:
+            async with lock:
+                working_map[dom] = working
+
+    try:
+        tasks = [
+            probe_single_domain(
+                d,
+                domain_candidates.get(d, proxy_ips) if domain_candidates else proxy_ips,
+            )
+            for d in domains
+        ]
+        await asyncio.gather(*tasks, return_exceptions=True)
+    finally:
+        loop.set_exception_handler(original_handler)
+
     print(
-        f"Starting SNI probe for {len(domains)} domains against {len(proxy_ips)} proxy IPs ({len(tasks)} checks)..."
-    )
-    results = await asyncio.gather(*tasks)
-
-    working_map: dict[str, list[str]] = {}
-    for dom, ip, ok in results:
-        if ok:
-            working_map.setdefault(dom, []).append(ip)
-
-    print(
-        f"SNI probe completed: {len(working_map)} / {len(domains)} domains successfully validated on at least one proxy IP."
+        f"Targeted SNI probe completed: {len(working_map)} / {len(domains)} domains actively validated on at least one proxy IP."
     )
     return working_map
-
-
-def _get_sld_name(dom: str) -> str:
-    """Extract the base brand name/SLD from a domain."""
-    dom = dom.lower().strip()
-    parts = dom.split(".")
-    if len(parts) < 2:
-        return dom
-    brand = parts[-2]
-    if len(parts) >= 3:
-        penultimate = parts[-2]
-        tld = parts[-1]
-        if penultimate in (
-            "co",
-            "com",
-            "org",
-            "net",
-            "gov",
-            "edu",
-            "mil",
-        ) and len(tld) in (2, 3):
-            brand = parts[-3]
-    return brand
 
 
 async def get_ru_ip_set(candidate_ips: list[str]) -> set[str]:
@@ -533,13 +624,12 @@ async def generate_aligned_hosts(
     # 2. Extract source info (original domains and candidate IPs)
     _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
     _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
+    _, geohide_eu_ip_domains = get_source_info(hosts_temp_dir / "geohide-eu-hosts.lst")
+    _, geohide_us_ip_domains = get_source_info(hosts_temp_dir / "geohide-us-hosts.lst")
     geohide_ip_domains = {}
-    for g_name in ("geohide-eu-hosts.lst", "geohide-us-hosts.lst"):
-        g_path = hosts_temp_dir / g_name
-        if g_path.exists():
-            _, ip_doms = get_source_info(g_path)
-            for ip, doms in ip_doms.items():
-                geohide_ip_domains.setdefault(ip, set()).update(doms)
+    for ip_doms in (geohide_eu_ip_domains, geohide_us_ip_domains):
+        for ip, doms in ip_doms.items():
+            geohide_ip_domains.setdefault(ip, set()).update(doms)
 
     # Parse zapret-manager-parsed.lst as an IP source
     zapret_ip_domains = {}
@@ -652,32 +742,19 @@ async def generate_aligned_hosts(
         allowed_domains.update(doms)
 
     # Load domains from non-hosts sources (like itdoginfo-geoblock.lst and dartraiden-geoblock.lst which have no IP mappings)
-    domain_pattern = re.compile(
-        r"([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}"
-    )
     for extra_name in ("itdoginfo-geoblock.lst", "dartraiden-geoblock.lst"):
         extra_path = hosts_temp_dir / extra_name
         if extra_path.exists():
             with open(extra_path, encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     if extra_name == "dartraiden-geoblock.lst":
-                        for match in domain_pattern.finditer(line):
+                        for match in DOMAIN_PATTERN.finditer(line):
                             d = match.group(0).lower().rstrip(".")
-                            if not d.endswith(
-                                (
-                                    ".php",
-                                    ".html",
-                                    ".txt",
-                                    ".json",
-                                    ".png",
-                                    ".jpg",
-                                    ".md",
-                                )
-                            ):
+                            if not d.endswith(CLEANUP_EXTENSIONS):
                                 for cleaned in clean_and_validate_domain(d):
                                     allowed_domains.add(cleaned.lower().strip())
 
-                    line = re.sub(r"#.*", "", line).strip()
+                    line = line.split("#", 1)[0].strip()
                     if not line:
                         continue
                     dom = line.lower().strip()
@@ -792,79 +869,27 @@ async def generate_aligned_hosts(
         )
 
         # Standard hosts file (with crutches)
-        with open(base_output, "w", encoding="utf-8") as f:
-            f.write(LOOPBACK_HEADER)
-
-            if direct_groups:
-                f.write("# Crutch\n")
-                for ip_key, brand in sorted(
-                    direct_groups.keys(), key=lambda x: (x[1], x[0])
-                ):
-                    dom_list = " ".join(sorted(direct_groups[(ip_key, brand)]))
-                    f.write(f"{ip_key} {dom_list}\n")
-                f.write("\n")
-
-            if geoblock_groups:
-                f.write("# Geoblock\n")
-                for ip_key, brand in sorted(
-                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                ):
-                    dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
-                    f.write(f"{ip_key} {dom_list}\n")
+        write_hosts_file(base_output, direct_groups, geoblock_groups)
 
         # No-crutch hosts file
-        with open(no_crutch_output, "w", encoding="utf-8") as f:
-            f.write(LOOPBACK_HEADER)
-            if geoblock_groups:
-                f.write("# Geoblock\n")
-                for ip_key, brand in sorted(
-                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                ):
-                    dom_list = " ".join(sorted(geoblock_groups[(ip_key, brand)]))
-                    f.write(f"{ip_key} {dom_list}\n")
+        write_hosts_file(no_crutch_output, {}, geoblock_groups)
 
         # Standard AdGuard Home file
         adg_output = base_output.parent / f"{base_output.stem}.adguard.txt"
-        with open(adg_output, "w", encoding="utf-8") as f:
-            f.write(
-                f"! Title: RussiaFancyLists - {base_output.stem.capitalize()} (AdGuard Home)\n"
-            )
-            f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-
-            if direct_groups:
-                f.write("! Crutch\n")
-                for ip_key, brand in sorted(
-                    direct_groups.keys(), key=lambda x: (x[1], x[0])
-                ):
-                    for d in sorted(direct_groups[(ip_key, brand)]):
-                        f.write(format_adguard_dnsrewrite(d, ip_key))
-                f.write("\n")
-
-            if geoblock_groups:
-                f.write("! Geoblock\n")
-                for ip_key, brand in sorted(
-                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                ):
-                    for d in sorted(geoblock_groups[(ip_key, brand)]):
-                        f.write(format_adguard_dnsrewrite(d, ip_key))
+        write_adguard_file(
+            adg_output, base_output.stem.capitalize(), direct_groups, geoblock_groups
+        )
 
         # No-crutch AdGuard Home file
         adg_no_crutch_output = (
             base_output.parent / f"{base_output.stem}-no-crutch.adguard.txt"
         )
-        with open(adg_no_crutch_output, "w", encoding="utf-8") as f:
-            f.write(
-                f"! Title: RussiaFancyLists - {base_output.stem.capitalize()} No-Crutch (AdGuard Home)\n"
-            )
-            f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-
-            if geoblock_groups:
-                f.write("! Geoblock\n")
-                for ip_key, brand in sorted(
-                    geoblock_groups.keys(), key=lambda x: (x[1], x[0])
-                ):
-                    for d in sorted(geoblock_groups[(ip_key, brand)]):
-                        f.write(format_adguard_dnsrewrite(d, ip_key))
+        write_adguard_file(
+            adg_no_crutch_output,
+            f"{base_output.stem.capitalize()} No-Crutch",
+            {},
+            geoblock_groups,
+        )
 
         return [(direct_groups, geoblock_groups)]
 
@@ -943,96 +968,38 @@ async def generate_aligned_hosts(
     output_combined.parent.mkdir(parents=True, exist_ok=True)
 
     # Standard combined file (with crutches)
-    with open(output_combined, "w", encoding="utf-8") as f:
-        f.write(LOOPBACK_HEADER)
-
-        if combined_direct:
-            f.write("# Crutch\n")
-            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
-                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
-            f.write("\n")
-
-        if combined_geoblock:
-            f.write("# Geoblock\n")
-            for ip, brand in sorted(
-                combined_geoblock.keys(), key=lambda x: (x[1], x[0])
-            ):
-                dom_list = " ".join(sorted(list(combined_geoblock[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
+    write_hosts_file(output_combined, combined_direct, combined_geoblock)
 
     # Standard combined AdGuard Home file
     output_combined_adg = output_combined.parent / f"{output_combined.stem}.adguard.txt"
-    with open(output_combined_adg, "w", encoding="utf-8") as f:
-        f.write("! Title: RussiaFancyLists - Combined (AdGuard Home)\n")
-        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-
-        if combined_direct:
-            f.write("! Crutch\n")
-            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
-                for d in sorted(list(combined_direct[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
-            f.write("\n")
-
-        if combined_geoblock:
-            f.write("! Geoblock\n")
-            for ip, brand in sorted(
-                combined_geoblock.keys(), key=lambda x: (x[1], x[0])
-            ):
-                for d in sorted(list(combined_geoblock[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
+    write_adguard_file(
+        output_combined_adg, "Combined", combined_direct, combined_geoblock
+    )
 
     # No-crutch combined file
     output_combined_nc = output_combined.parent / (
         output_combined.stem + "-no-crutch" + output_combined.suffix
     )
-    with open(output_combined_nc, "w", encoding="utf-8") as f:
-        f.write(LOOPBACK_HEADER)
-        if combined_geoblock_nc:
-            f.write("# Geoblock\n")
-            for ip, brand in sorted(
-                combined_geoblock_nc.keys(), key=lambda x: (x[1], x[0])
-            ):
-                dom_list = " ".join(sorted(list(combined_geoblock_nc[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
+    write_hosts_file(output_combined_nc, {}, combined_geoblock_nc)
 
     # No-crutch combined AdGuard Home file
     output_combined_nc_adg = (
         output_combined.parent / f"{output_combined.stem}-no-crutch.adguard.txt"
     )
-    with open(output_combined_nc_adg, "w", encoding="utf-8") as f:
-        f.write("! Title: RussiaFancyLists - Combined No-Crutch (AdGuard Home)\n")
-        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-
-        if combined_geoblock_nc:
-            f.write("! Geoblock\n")
-            for ip, brand in sorted(
-                combined_geoblock_nc.keys(), key=lambda x: (x[1], x[0])
-            ):
-                for d in sorted(list(combined_geoblock_nc[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
+    write_adguard_file(
+        output_combined_nc_adg,
+        "Combined No-Crutch",
+        {},
+        combined_geoblock_nc,
+    )
 
     # Write only-crutch file
     output_only_crutch = output_smart.parent / "only-crutch.hosts"
-    with open(output_only_crutch, "w", encoding="utf-8") as f:
-        f.write(LOOPBACK_HEADER)
-        if combined_direct:
-            f.write("# Crutch\n")
-            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
-                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
+    write_hosts_file(output_only_crutch, combined_direct, {})
 
     # Write only-crutch AdGuard Home file
     output_only_crutch_adg = output_smart.parent / "only-crutch.adguard.txt"
-    with open(output_only_crutch_adg, "w", encoding="utf-8") as f:
-        f.write("! Title: RussiaFancyLists - Only Crutch (AdGuard Home)\n")
-        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-
-        if combined_direct:
-            f.write("! Crutch\n")
-            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
-                for d in sorted(list(combined_direct[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
+    write_adguard_file(output_only_crutch_adg, "Only Crutch", combined_direct, {})
 
     # 7. Generate Smart hosts files using active SNI handshake probing
     candidate_smart_domains = [d for d in geoblock_domains if d not in global_custom]
@@ -1041,13 +1008,100 @@ async def generate_aligned_hosts(
     if not active_smart_proxy_ips:
         active_smart_proxy_ips = sorted(list(set(all_smart_candidate_ips)))
 
+    # Separate active IPs per provider and region
+    geohide_eu_ips = [
+        ip
+        for ip in geohide_eu_ip_domains
+        if ip not in ru_ips
+        and not is_known_crutch_ip(ip)
+        and len(geohide_eu_ip_domains[ip]) >= 10
+    ]
+    geohide_us_ips = [
+        ip
+        for ip in geohide_us_ip_domains
+        if ip not in ru_ips
+        and not is_known_crutch_ip(ip)
+        and len(geohide_us_ip_domains[ip]) >= 10
+    ]
+    active_geohide_eu = [
+        ip for ip in geohide_eu_ips if ip in active_ips
+    ] or geohide_eu_ips
+    active_geohide_us = [
+        ip for ip in geohide_us_ips if ip in active_ips
+    ] or geohide_us_ips
+    active_malw = [ip for ip in malw_ips if ip in active_ips] or malw_ips
+    active_mafioznik = [ip for ip in mafioznik_ips if ip in active_ips] or mafioznik_ips
+
+    geohide_brands = {normalize_brand_name(d) for d in geohide_allowed}
+    malw_brands = {normalize_brand_name(d) for d in malw_allowed}
+    mafioznik_brands = {normalize_brand_name(d) for d in mafioznik_allowed}
+
+    # Build targeted candidate proxy IPs per domain (provenance-first & balanced regional pairing)
+    domain_candidates: dict[str, list[str]] = {}
+    for idx, dom in enumerate(candidate_smart_domains):
+        b = normalize_brand_name(dom)
+        cands: list[str] = []
+        if dom in malw_allowed:
+            cands.extend(active_malw[:1])
+            if active_geohide_eu:
+                cands.append(active_geohide_eu[idx % len(active_geohide_eu)])
+        elif dom in mafioznik_allowed:
+            cands.extend(active_mafioznik[:1])
+            if active_geohide_eu:
+                cands.append(active_geohide_eu[idx % len(active_geohide_eu)])
+        elif dom in geohide_allowed or b in geohide_brands:
+            if active_geohide_eu:
+                cands.append(active_geohide_eu[idx % len(active_geohide_eu)])
+            if active_geohide_us:
+                cands.append(active_geohide_us[idx % len(active_geohide_us)])
+        elif b in malw_brands and active_malw:
+            cands.extend(active_malw[:1])
+            if active_geohide_eu:
+                cands.append(active_geohide_eu[idx % len(active_geohide_eu)])
+        elif b in mafioznik_brands and active_mafioznik:
+            cands.extend(active_mafioznik[:1])
+            if active_geohide_eu:
+                cands.append(active_geohide_eu[idx % len(active_geohide_eu)])
+        else:
+            # Generic unassociated domain: pair active EU and US endpoints
+            if active_geohide_eu:
+                cands.append(active_geohide_eu[idx % len(active_geohide_eu)])
+            if active_geohide_us:
+                cands.append(active_geohide_us[idx % len(active_geohide_us)])
+
+        if not cands:
+            cands = list(active_smart_proxy_ips[:2])
+
+        seen: set[str] = set()
+        domain_candidates[dom] = [
+            ip for ip in cands if not (ip in seen or seen.add(ip))
+        ][:2]
+
     probe_results = await probe_sni_domains(
-        candidate_smart_domains, active_smart_proxy_ips
+        candidate_smart_domains,
+        active_smart_proxy_ips,
+        domain_candidates=domain_candidates,
     )
 
+    # Build smart_geoblock with resilient fallback ensuring 2 working/authoritative IPs per domain
     smart_geoblock = {}
-    for dom, working_ips in probe_results.items():
+    for dom in candidate_smart_domains:
         brand = get_raw_brand(dom)
+        working_ips = list(probe_results.get(dom, []))
+        cands = domain_candidates.get(dom, [])
+        if not working_ips:
+            # Domain failed probe (TSPU RST injection or transient timeout).
+            # Fall back to the 2 curated candidate IPs for this domain.
+            working_ips = (
+                cands[:2] if len(cands) >= 2 else (cands or active_smart_proxy_ips[:2])
+            )
+        elif len(working_ips) < 2 and len(cands) > len(working_ips):
+            # Augment with redundant candidate IP for high availability
+            for c in cands:
+                if c not in working_ips:
+                    working_ips.append(c)
+                    if len(working_ips) >= 2:
+                        break
         for ip in working_ips:
             smart_geoblock.setdefault((ip, brand), set()).add(dom)
 
@@ -1061,54 +1115,16 @@ async def generate_aligned_hosts(
     )
 
     # Standard smart file (with crutches)
-    with open(output_smart, "w", encoding="utf-8") as f:
-        f.write(LOOPBACK_HEADER)
-        if combined_direct:
-            f.write("# Crutch\n")
-            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
-                dom_list = " ".join(sorted(list(combined_direct[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
-            f.write("\n")
-        if smart_geoblock:
-            f.write("# Geoblock\n")
-            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
-                dom_list = " ".join(sorted(list(smart_geoblock[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
+    write_hosts_file(output_smart, combined_direct, smart_geoblock)
 
     # Standard smart AdGuard Home file
-    with open(smart_adg_path, "w", encoding="utf-8") as f:
-        f.write("! Title: RussiaFancyLists - Smart (AdGuard Home)\n")
-        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-        if combined_direct:
-            f.write("! Crutch\n")
-            for ip, brand in sorted(combined_direct.keys(), key=lambda x: (x[1], x[0])):
-                for d in sorted(list(combined_direct[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
-            f.write("\n")
-        if smart_geoblock:
-            f.write("! Geoblock\n")
-            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
-                for d in sorted(list(smart_geoblock[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
+    write_adguard_file(smart_adg_path, "Smart", combined_direct, smart_geoblock)
 
     # No-crutch smart file
-    with open(smart_nc_path, "w", encoding="utf-8") as f:
-        f.write(LOOPBACK_HEADER)
-        if smart_geoblock:
-            f.write("# Geoblock\n")
-            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
-                dom_list = " ".join(sorted(list(smart_geoblock[(ip, brand)])))
-                f.write(f"{ip} {dom_list}\n")
+    write_hosts_file(smart_nc_path, {}, smart_geoblock)
 
     # No-crutch smart AdGuard Home file
-    with open(smart_nc_adg_path, "w", encoding="utf-8") as f:
-        f.write("! Title: RussiaFancyLists - Smart No-Crutch (AdGuard Home)\n")
-        f.write("! Homepage: https://github.com/Noktomezo/RussiaFancyLists\n\n")
-        if smart_geoblock:
-            f.write("! Geoblock\n")
-            for ip, brand in sorted(smart_geoblock.keys(), key=lambda x: (x[1], x[0])):
-                for d in sorted(list(smart_geoblock[(ip, brand)])):
-                    f.write(format_adguard_dnsrewrite(d, ip))
+    write_adguard_file(smart_nc_adg_path, "Smart No-Crutch", {}, smart_geoblock)
 
     # Rewrite geoblock_file to exclude crutch domains
     geoblock_domains_no_crutch = [d for d in geoblock_domains if d not in global_custom]
@@ -1145,8 +1161,6 @@ async def generate_aligned_hosts(
 
 def parse_zapret_sh(input_sh: Path, output_lst: Path):
     """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
-    import re
-
     if not input_sh.exists():
         raise FileNotFoundError(
             f"Zapret source file (input_sh) not found at '{input_sh}'. "
@@ -1165,32 +1179,33 @@ def parse_zapret_sh(input_sh: Path, output_lst: Path):
 
     for line in lines:
         # Strip comments and outer quotes/spaces
-        line = re.sub(r"#.*", "", line).strip("\"' ")
+        line = line.split("#", 1)[0].strip("\"' ")
+        if not line:
+            continue
 
         # Split by semicolon since bash separates commands with them
-        parts = line.split(";")
-        for part in parts:
+        for part in line.split(";"):
             cols = part.strip().split()
             if not cols:
                 continue
 
             # Clean quotes/braces from the first column (potential IP)
             first = cols[0].strip("\"'")
-            is_ipv4 = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", first)
-            is_ipv6 = re.match(r"^[0-9a-fA-F:]+$", first) and ":" in first
+            is_ipv4 = IPV4_PATTERN.match(first)
+            is_ipv6 = IPV6_PATTERN.match(first) and ":" in first
 
             if is_ipv4 or is_ipv6:
                 clean_domains = []
                 for d in cols[1:]:
                     d = d.strip("\"' ").lower()
                     # Clean trailing quotes/slashes/brackets
-                    d = re.sub(r"[\"\'\\/]*$", "", d)
+                    d = d.rstrip("\"'\\/")
                     if d and "." in d and "$" not in d:
                         clean_domains.append(d)
                 if clean_domains:
                     parsed_lines.append(f"{first} " + " ".join(clean_domains))
 
     output_lst.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_lst, "w", encoding="utf-8") as f:
-        for pl in parsed_lines:
-            f.write(pl + "\n")
+    output_lst.write_text(
+        "\n".join(parsed_lines) + "\n" if parsed_lines else "", encoding="utf-8"
+    )

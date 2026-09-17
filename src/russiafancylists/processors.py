@@ -12,16 +12,45 @@ from russiafancylists.config import HOSTS_DIRECT, ILLEGAL_CHARS, WHITELIST
 
 console = Console()
 
+CONTROL_CHARS_PATTERN = re.compile(r"[\x00-\x1f\x7f-\x9f]")
+INVALID_DOMAIN_CHARS = set(" \t\r\n\\/,;*?\"'")
+IP_CIDR_CHARS = set("0123456789abcdefABCDEF.:/\r\n")
+IPV4_PATTERN = re.compile(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$")
+IPV6_PATTERN = re.compile(r"^[0-9a-fA-F:]+$")
+DOMAIN_PATTERN = re.compile(
+    r"([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}"
+)
+CLEANUP_EXTENSIONS = (
+    ".php",
+    ".html",
+    ".txt",
+    ".json",
+    ".png",
+    ".jpg",
+    ".md",
+)
+WHITELIST_SET = {
+    item.strip().lower()
+    for item in WHITELIST
+    if item.strip() and not item.strip().startswith("#")
+}
+CLEANUP_PATTERNS = []
+for p in HOSTS_DIRECT + ILLEGAL_CHARS:
+    try:
+        py_p = p.replace("[[:space:]]", r"\s")
+        CLEANUP_PATTERNS.append(re.compile(py_p))
+    except re.error as e:
+        console.print(f"[yellow]⚠ Invalid regex '{p}': {e}[/yellow]")
+
 
 def is_ip_cidr(s: str) -> bool:
     """Check if string is a valid IP/CIDR representation."""
     s = s.strip()
-    return all(c in "0123456789./\r\n" for c in s) if s else False
+    return bool(s) and IP_CIDR_CHARS.issuperset(s)
 
 
 def is_private_ip(ip_str: str) -> bool:
-    r"""
-    Check if IP/CIDR is a private or loopback range as per bash logic:
+    r"""Check if IP/CIDR is a private or loopback range as per bash logic:
     ^(0\.|127\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.)
     """
     if ip_str.startswith(("0.", "127.", "10.", "192.168.")):
@@ -70,32 +99,28 @@ def collapse_ip_networks(ips: list[str]) -> list[str]:
 
 def clean_and_validate_domain(d: str) -> list[str]:
     """Clean and validate domain entries."""
-    # 1. Decode percent-encoded sequences
-    d = unquote(d)
+    # 1. Decode percent-encoded sequences only if present
+    if "%" in d:
+        d = unquote(d)
 
-    # 2. Strip or replace control characters (remove \v, \t, etc.)
-    d = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", d)
+    # 2. Strip control characters
+    d = CONTROL_CHARS_PATTERN.sub("", d)
 
     # 3. Split concatenated entries by comma
-    parts = d.split(",")
+    parts = d.split(",") if "," in d else [d]
     cleaned_parts = []
     for p in parts:
-        p = p.strip()
-        # Remove trailing and leading dots
-        p = p.strip(".")
-        if not p:
+        p = p.strip().strip(".")
+        if not p or "." not in p:
             continue
 
-        # 4. Skip bare TLDs or non-hostnames (e.g. com, net, ru, or anything without a dot)
+        # 4. Skip bare TLDs or non-hostnames
         domain_parts = p.split(".")
-        if len(domain_parts) < 2:
-            continue
-
-        if any(not part for part in domain_parts):
+        if len(domain_parts) < 2 or any(not part for part in domain_parts):
             continue
 
         # Ensure there are no spaces or obviously invalid chars
-        if any(c in p for c in " \t\r\n\\/,;*?\"'"):
+        if not INVALID_DOMAIN_CHARS.isdisjoint(p):
             continue
 
         cleaned_parts.append(p)
@@ -133,49 +158,29 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                     line = line.replace("\r", "").replace("\n", "")
                     if is_private_ip(line):
                         continue
-                    try:
-                        if "/" not in line:
-                            net = ipaddress.ip_network(line + "/32")
-                        else:
-                            net = ipaddress.ip_network(line)
-                        networks.append(str(net))
-                    except ValueError:
-                        pass
+                    networks.append(line)
         # Collapse CIDRs using native ipaddress
         collapsed = collapse_ip_networks(networks)
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
-            for net in collapsed:
-                f.write(net + "\n")
+            if collapsed:
+                f.write("\n".join(collapsed) + "\n")
     else:
         # Domains merging (robustly handling hosts format with IP prefixes, plain domain lists, and comment domains)
-        domain_pattern = re.compile(
-            r"([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}"
-        )
         domains = set()
         for file_path in lst_files:
             with open(file_path, encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     # Extract domain names from comments if present (e.g. # dashboard.algolia.com in no-russia-hosts)
                     if line.strip().startswith("#"):
-                        for match in domain_pattern.finditer(line):
+                        for match in DOMAIN_PATTERN.finditer(line):
                             d = match.group(0).lower().rstrip(".")
-                            if not d.endswith(
-                                (
-                                    ".php",
-                                    ".html",
-                                    ".txt",
-                                    ".json",
-                                    ".png",
-                                    ".jpg",
-                                    ".md",
-                                )
-                            ):
+                            if not d.endswith(CLEANUP_EXTENSIONS):
                                 for cleaned in clean_and_validate_domain(d):
                                     domains.add(cleaned.lower().strip())
                         continue
 
-                    line = re.sub(r"#.*", "", line).strip()
+                    line = line.split("#", 1)[0].strip()
                     if not line:
                         continue
                     cols = line.split()
@@ -185,8 +190,8 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
                     if cols[0] in ("0.0.0.0", "127.0.0.1", "::1", "::"):
                         continue
                     # Check if the first column is an IP address
-                    is_ipv4 = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", cols[0])
-                    is_ipv6 = re.match(r"^[0-9a-fA-F:]+$", cols[0])
+                    is_ipv4 = IPV4_PATTERN.match(cols[0])
+                    is_ipv6 = IPV6_PATTERN.match(cols[0])
                     domains_to_process = cols[1:] if is_ipv4 or is_ipv6 else cols
                     for d in domains_to_process:
                         for cleaned in clean_and_validate_domain(d):
@@ -194,27 +199,12 @@ def merge_lists(input_dir: Path, output_file: Path, file_pattern: str = "*.lst")
         sorted_domains = sorted(list(domains))
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w", encoding="utf-8") as f:
-            for d in sorted_domains:
-                f.write(d + "\n")
+            if sorted_domains:
+                f.write("\n".join(sorted_domains) + "\n")
 
 
 def cleanup_domains(input_file: Path, output_file: Path):
     """Filter domains with patterns and whitelists, converting them to Second Level Domains (SLDs)."""
-    patterns = HOSTS_DIRECT + ILLEGAL_CHARS
-    whitelist = {
-        item.strip().lower()
-        for item in WHITELIST
-        if item.strip() and not item.strip().startswith("#")
-    }
-
-    compiled_patterns = []
-    for p in patterns:
-        try:
-            py_p = p.replace("[[:space:]]", r"\s")
-            compiled_patterns.append(re.compile(py_p))
-        except re.error as e:
-            console.print(f"[yellow]⚠ Invalid regex '{p}': {e}[/yellow]")
-
     processed_domains = set()
 
     with open(input_file, encoding="utf-8", errors="ignore") as f:
@@ -223,11 +213,11 @@ def cleanup_domains(input_file: Path, output_file: Path):
             if not line or line.startswith("#"):
                 continue
 
-            if line in whitelist:
+            if line in WHITELIST_SET:
                 continue
 
             matched = False
-            for cp in compiled_patterns:
+            for cp in CLEANUP_PATTERNS:
                 if cp.search(line):
                     matched = True
                     break
@@ -236,7 +226,7 @@ def cleanup_domains(input_file: Path, output_file: Path):
 
             processed_domains.add(line)
 
-    all_domains = processed_domains.union(whitelist)
+    all_domains = processed_domains.union(WHITELIST_SET)
 
     final_domains = set()
     for domain in all_domains:
@@ -250,8 +240,8 @@ def cleanup_domains(input_file: Path, output_file: Path):
     sorted_domains = sorted(list(final_domains))
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
-        for d in sorted_domains:
-            f.write(d + "\n")
+        if sorted_domains:
+            f.write("\n".join(sorted_domains) + "\n")
 
 
 def merge_cdn_and_full_ipset(cdn_file: Path, full_file: Path, output_file: Path):
@@ -264,19 +254,12 @@ def merge_cdn_and_full_ipset(cdn_file: Path, full_file: Path, output_file: Path)
             for line in f:
                 line = line.strip()
                 if line and not line.startswith("#"):
-                    try:
-                        if "/" not in line:
-                            net = ipaddress.ip_network(line + "/32")
-                        else:
-                            net = ipaddress.ip_network(line)
-                        networks.append(str(net))
-                    except ValueError:
-                        pass
+                    networks.append(line)
     collapsed = collapse_ip_networks(networks)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
-        for net in collapsed:
-            f.write(net + "\n")
+        if collapsed:
+            f.write("\n".join(collapsed) + "\n")
 
 
 def process_service_domains(input_file: Path, output_file: Path):
@@ -288,11 +271,11 @@ def process_service_domains(input_file: Path, output_file: Path):
     with open(input_file, encoding="utf-8", errors="ignore") as f:
         for line in f:
             # Strip comments and outer whitespace
-            line = line.split("#")[0].strip().lower()
+            line = line.split("#", 1)[0].strip().lower()
             if not line:
                 continue
             # Remove leading dots
-            line = re.sub(r"^\.+", "", line)
+            line = line.lstrip(".")
             # Encode non-ASCII (IDN) to ASCII punycode if needed
             with contextlib.suppress(Exception):
                 line = line.encode("idna").decode("ascii")
@@ -301,5 +284,5 @@ def process_service_domains(input_file: Path, output_file: Path):
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
-        for d in sorted(domains):
-            f.write(d + "\n")
+        if domains:
+            f.write("\n".join(sorted(domains)) + "\n")

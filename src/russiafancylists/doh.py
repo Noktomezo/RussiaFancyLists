@@ -1,6 +1,7 @@
 import asyncio
 import base64
 import contextlib
+import functools
 import socket
 import struct
 from collections import defaultdict
@@ -10,6 +11,7 @@ import httpx
 from russiafancylists.config.providers import DOH_PROBE_DOMAINS, SMART_DNS_DOH_SERVERS
 
 
+@functools.lru_cache(maxsize=128)
 def build_dns_wire_query(domain: str) -> bytes:
     """Build a standard RFC 1035 DNS wireformat A-record query in pure Python."""
     header = struct.pack("!HHHHHH", 0x1234, 0x0100, 1, 0, 0, 0)
