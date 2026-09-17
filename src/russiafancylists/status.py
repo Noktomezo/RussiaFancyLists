@@ -167,8 +167,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
     def format_coverage(count: int) -> str:
         if total_geoblocks == 0 or count == 0:
             return "—"
-        pct = (count / total_geoblocks) * 100
-        return f"{count}/{total_geoblocks} ({pct:.1f}%)"
+        return f"{count}/{total_geoblocks}"
 
     coverage_cache: dict[Path, str] = {}
 
