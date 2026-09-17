@@ -49,7 +49,7 @@ This file contains global rules, workflow requirements, and architectural guidel
   - `combined-no-crutch.hosts` domain set must equal `lists/geoblock/full.lst`.
   - For each provider file with crutches, its no-crutch counterpart must be a subset whose difference contains only crutches.
   - All domains across all hosts files must be valid subsets of `lists/geoblock/full.lst` ∪ `only-crutch.hosts`.
-  - Any proxy IP that actively connects and passes the domain TLS SNI probe is permitted regardless of GeoIP origin.
+  - Russian proxy and crutch IPs are dynamically detected via GeoIP and strictly excluded from all hosts and proxy pools.
   - The verification script `verify_hosts_sync.py` checks these rules accordingly.
 
 ### 2. The `# Crutch` Section
