@@ -211,7 +211,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/smart-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
                     coverages.append(get_coverage(nc_smart))
-                name = "<b>Smart</b> ❤️"
+                name = "<b>Smart</b>&nbsp;❤️"
                 items.append((name, files, sizes, coverages))
 
             # 2. Combined
@@ -229,7 +229,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                         f"<!-- SIZE:lists/hosts/combined-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                     )
                     coverages.append(get_coverage(nc_comb))
-                name = "<b>Combined</b> ⚠️"
+                name = "<b>Combined</b>&nbsp;⚠️"
                 items.append((name, files, sizes, coverages))
 
             # 3. Providers
@@ -289,10 +289,10 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             "  <thead>\n"
             "    <tr>\n"
             f'      <th width="120" align="center"><b>{headers[0]}</b></th>\n'
-            f'      <th width="140" align="center"><b>{headers[1]}</b></th>\n'
+            f'      <th width="180" align="center"><b>{headers[1]}</b></th>\n'
             f'      <th width="370" align="center"><b>{headers[2]}</b></th>\n'
             f'      <th width="150" align="center"><b>{headers[3]}</b></th>\n'
-            f'      <th width="220" align="center"><b>{headers[4]}</b></th>\n'
+            f'      <th width="180" align="center"><b>{headers[4]}</b></th>\n'
             "    </tr>\n"
             "  </thead>\n"
             "  <tbody>\n" + "\n".join(all_rows) + "\n  </tbody>\n"

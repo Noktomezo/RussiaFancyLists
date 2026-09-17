@@ -299,16 +299,16 @@
   <thead>
     <tr>
       <th width="120" align="center"><b>Формат</b></th>
-      <th width="140" align="center"><b>Назначение</b></th>
+      <th width="180" align="center"><b>Назначение</b></th>
       <th width="370" align="center"><b>Файлы</b></th>
       <th width="150" align="center"><b>Размер</b></th>
-      <th width="220" align="center"><b>Покрытие геоблоков</b></th>
+      <th width="180" align="center"><b>Покрытие геоблоков</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="6"><b>Hosts</b></td>
-      <td><b>Smart</b> ❤️</td>
+      <td><b>Smart</b>&nbsp;❤️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart.hosts"><code>smart.hosts</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
@@ -323,7 +323,7 @@
       </td>
     </tr>
     <tr>
-      <td><b>Combined</b> ⚠️</td>
+      <td><b>Combined</b>&nbsp;⚠️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.hosts"><code>combined.hosts</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
@@ -396,7 +396,7 @@
     </tr>
     <tr>
       <td rowspan="6"><b>AdGuard Home</b></td>
-      <td><b>Smart</b> ❤️</td>
+      <td><b>Smart</b>&nbsp;❤️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart.adguard.txt"><code>smart.adguard.txt</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
@@ -411,7 +411,7 @@
       </td>
     </tr>
     <tr>
-      <td><b>Combined</b> ⚠️</td>
+      <td><b>Combined</b>&nbsp;⚠️</td>
       <td>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined.adguard.txt"><code>combined.adguard.txt</code></a><br>
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
