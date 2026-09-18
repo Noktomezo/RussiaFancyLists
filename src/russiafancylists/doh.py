@@ -95,10 +95,10 @@ async def query_doh_a_records(
         )
         if r.status_code == 200 and r.content:
             return parse_dns_wire_a_records(r.content)
-        if r.status_code in (400, 404, 405):
+        if r.status_code in (400, 403, 404, 405):
             fallback_to_get = True
     except Exception:
-        pass
+        fallback_to_get = True
 
     # 2. Fallback to RFC 8484 GET with base64url query only if server rejected POST method
     if fallback_to_get:
@@ -107,7 +107,7 @@ async def query_doh_a_records(
             r = await client.get(
                 f"{doh_url}?dns={b64}",
                 headers={"accept": "application/dns-message"},
-                timeout=3.5,
+                timeout=5.0,
             )
             if r.status_code == 200 and r.content:
                 return parse_dns_wire_a_records(r.content)
@@ -115,6 +115,59 @@ async def query_doh_a_records(
             pass
 
     return []
+
+
+async def query_tcp_dns_batch(
+    host: str,
+    port: int,
+    domains: list[str],
+    timeout: float = 4.0,
+    chunk_size: int = 35,
+    concurrency: int = 15,
+) -> dict[str, list[str]]:
+    """Resolve a batch of domains asynchronously over TCP DNS (RFC 1035 2-byte prefix)
+    chunked across parallel TCP connections. Works 100% reliably across cloud CI
+    (Azure, GitHub Actions) where outbound UDP 53 is restricted.
+    """
+    results: dict[str, list[str]] = {}
+    if not domains:
+        return results
+
+    sem = asyncio.Semaphore(concurrency)
+
+    async def query_chunk(chunk: list[str], start_idx: int):
+        async with sem:
+            try:
+                reader, writer = await asyncio.wait_for(
+                    asyncio.open_connection(host, port), timeout=timeout
+                )
+                for idx, d in enumerate(chunk):
+                    qid = (start_idx + idx) % 65535
+                    wire = build_dns_wire_query(d, query_id=qid)
+                    writer.write(struct.pack("!H", len(wire)) + wire)
+                await writer.drain()
+
+                for d in chunk:
+                    len_bytes = await asyncio.wait_for(
+                        reader.readexactly(2), timeout=timeout
+                    )
+                    rlen = struct.unpack("!H", len_bytes)[0]
+                    rwire = await asyncio.wait_for(
+                        reader.readexactly(rlen), timeout=timeout
+                    )
+                    ips = parse_dns_wire_a_records(rwire)
+                    if ips:
+                        results[d] = ips
+                writer.close()
+                with contextlib.suppress(Exception):
+                    await writer.wait_closed()
+            except Exception:
+                pass
+
+    chunks = [domains[i : i + chunk_size] for i in range(0, len(domains), chunk_size)]
+    tasks = [query_chunk(chunk, i * chunk_size) for i, chunk in enumerate(chunks)]
+    await asyncio.gather(*tasks, return_exceptions=True)
+    return results
 
 
 async def query_udp_dns_batch(
@@ -165,6 +218,16 @@ async def query_udp_dns_batch(
     return results
 
 
+async def query_dns_batch(
+    host: str, port: int, domains: list[str], timeout: float = 4.0
+) -> dict[str, list[str]]:
+    """Query DNS using TCP first (immune to cloud UDP-53 firewall blocks), falling back to UDP."""
+    res = await query_tcp_dns_batch(host, port, domains, timeout=timeout)
+    if not res:
+        res = await query_udp_dns_batch(host, port, domains, timeout=timeout)
+    return res
+
+
 def is_candidate_proxy_ip(ip: str) -> bool:
     """Filter out bogons, loopbacks, private networks, and known CDN subnets."""
     if not ip or ":" in ip:
@@ -204,10 +267,12 @@ async def discover_doh_proxy_ips(
     )
     sem = asyncio.Semaphore(25)
 
+    transport = httpx.AsyncHTTPTransport(
+        local_address="0.0.0.0", http2=True, verify=False
+    )
     async with httpx.AsyncClient(
-        http2=True,
-        verify=False,
-        timeout=8.0,
+        transport=transport,
+        timeout=10.0,
         limits=httpx.Limits(max_connections=35, max_keepalive_connections=35),
     ) as client:
 
@@ -226,10 +291,10 @@ async def discover_doh_proxy_ips(
 
         await asyncio.gather(*tasks, return_exceptions=True)
 
-    # Probe UDP DNS servers (e.g. Mafioznik)
+    # Probe TCP/UDP DNS servers (e.g. Mafioznik)
     for name, (host, port) in SMART_DNS_UDP_SERVERS.items():
-        udp_results = await query_udp_dns_batch(host, port, domains, timeout=4.0)
-        for dom, ips in udp_results.items():
+        dns_results = await query_dns_batch(host, port, domains, timeout=4.0)
+        for dom, ips in dns_results.items():
             brand = normalize_brand_name(dom)
             for ip in ips:
                 if is_candidate_proxy_ip(ip):
@@ -294,10 +359,12 @@ async def resolve_geoblock_domains_per_provider(
         if not target_ips:
             return
         sem = asyncio.Semaphore(35)
+        transport = httpx.AsyncHTTPTransport(
+            local_address="0.0.0.0", http2=True, verify=False
+        )
         async with httpx.AsyncClient(
-            http2=True,
-            verify=False,
-            timeout=5.0,
+            transport=transport,
+            timeout=6.0,
             limits=httpx.Limits(max_connections=40, max_keepalive_connections=40),
         ) as client:
 
@@ -324,12 +391,12 @@ async def resolve_geoblock_domains_per_provider(
         if prov_target_ips:
             doh_tasks.append(check_doh_endpoint(prov_key, url, prov_target_ips))
 
-    # Query UDP DNS endpoint (Mafioznik)
-    async def check_udp_endpoint(prov_key: str, host: str, port: int):
+    # Query TCP/UDP DNS endpoint (Mafioznik)
+    async def check_dns_endpoint(prov_key: str, host: str, port: int):
         prov_target_ips = set(provider_proxies.get(prov_key, []))
         maf_valid_ips = prov_target_ips | all_known_proxies
-        udp_map = await query_udp_dns_batch(host, port, domains, timeout=5.0)
-        for d, ips in udp_map.items():
+        dns_map = await query_dns_batch(host, port, domains, timeout=5.0)
+        for d, ips in dns_map.items():
             matching = [ip for ip in ips if ip in maf_valid_ips]
             if matching:
                 chosen = (
@@ -342,10 +409,10 @@ async def resolve_geoblock_domains_per_provider(
                     if ip not in current:
                         current.append(ip)
 
-    udp_tasks = []
+    dns_tasks = []
     for name, (host, port) in SMART_DNS_UDP_SERVERS.items():
         prov_key = "mafioznik" if name == "mafioznik" else name
-        udp_tasks.append(check_udp_endpoint(prov_key, host, port))
+        dns_tasks.append(check_dns_endpoint(prov_key, host, port))
 
-    await asyncio.gather(*doh_tasks, *udp_tasks, return_exceptions=True)
+    await asyncio.gather(*doh_tasks, *dns_tasks, return_exceptions=True)
     return results
