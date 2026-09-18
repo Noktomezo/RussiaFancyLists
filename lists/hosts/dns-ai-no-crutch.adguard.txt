@@ -1,3 +1,40 @@
 ! Title: RussiaFancyLists - dns-ai No-Crutch (AdGuard Home)
 ! Homepage: https://github.com/Noktomezo/RussiaFancyLists
 
+! Geoblock
+||api.anthropic.com^$dnsrewrite=NOERROR;A;178.253.16.219
+||ab.chatgpt.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||chatgpt.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||claude.ai^$dnsrewrite=NOERROR;A;62.60.230.61
+||platform.claude.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||www.claude.ai^$dnsrewrite=NOERROR;A;62.60.230.61
+||api2.cursor.sh^$dnsrewrite=NOERROR;A;93.170.123.208
+||api3.cursor.sh^$dnsrewrite=NOERROR;A;93.170.123.208
+||api4.cursor.sh^$dnsrewrite=NOERROR;A;93.170.123.208
+||repo42.cursor.sh^$dnsrewrite=NOERROR;A;93.170.123.208
+||us-only.gcpp.cursor.sh^$dnsrewrite=NOERROR;A;93.170.123.208
+||www.genspark.ai^$dnsrewrite=NOERROR;A;178.253.16.219
+||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||gemini.google.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||jules.google.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||notebook.google.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||notebooklm.google.com^$dnsrewrite=NOERROR;A;185.245.107.237
+||daily-cloudcode-pa.googleapis.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||grok.com^$dnsrewrite=NOERROR;A;93.170.123.208
+||labs.google^$dnsrewrite=NOERROR;A;178.253.16.219
+||api.manus.im^$dnsrewrite=NOERROR;A;185.245.107.237
+||manus.im^$dnsrewrite=NOERROR;A;185.245.107.237
+||www.manus.im^$dnsrewrite=NOERROR;A;185.245.107.237
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||android.chat.openai.com^$dnsrewrite=NOERROR;A;93.170.123.208
+||api.openai.com^$dnsrewrite=NOERROR;A;93.170.123.208
+||auth.openai.com^$dnsrewrite=NOERROR;A;93.170.123.208
+||cdn-1.strava.com^$dnsrewrite=NOERROR;A;178.253.16.219
+||graphql.strava.com^$dnsrewrite=NOERROR;A;178.253.16.219
+||strava.com^$dnsrewrite=NOERROR;A;178.253.16.219
+||www.strava.com^$dnsrewrite=NOERROR;A;178.253.16.219
+||usher.ttvnw.net^$dnsrewrite=NOERROR;A;185.245.107.237
+||gql.twitch.tv^$dnsrewrite=NOERROR;A;62.60.230.61

@@ -540,12 +540,6 @@ async def detect_provider_proxy_ips(
     # Dynamic Russian IP detection across candidate proxy IPs
     ru_ips = await get_ru_ip_set(all_raw_ips)
 
-    # Exclude Russian IPs from all provider proxy lists
-    clean_doh_proxies = {
-        name: [ip for ip in ips if ip not in ru_ips]
-        for name, ips in raw_proxies.items()
-    }
-
     # Map to canonical provider keys
     doh_to_canonical = {
         "comss": "comss",
@@ -569,7 +563,7 @@ async def detect_provider_proxy_ips(
         "mafioznik",
     ]
     detected_proxy_ips: dict[str, list[str]] = {p: [] for p in canonical_providers}
-    for k, ips in clean_doh_proxies.items():
+    for k, ips in raw_proxies.items():
         ck = doh_to_canonical.get(k)
         if ck:
             for ip in ips:
@@ -582,8 +576,8 @@ async def detect_provider_proxy_ips(
     )
     detected_proxy_ips["doh"] = all_clean_ips
 
-    print(f"Strictly detected proxy IPs via DoH/DNS (non-RU): {detected_proxy_ips}")
-    return detected_proxy_ips, clean_doh_proxies, ru_ips
+    print(f"Strictly detected proxy IPs via DoH/DNS: {detected_proxy_ips}")
+    return detected_proxy_ips, raw_proxies, ru_ips
 
 
 async def generate_aligned_hosts(
@@ -896,18 +890,22 @@ async def generate_aligned_hosts(
         prov_doms = provider_supported.get(p_key, {})
         write_provider_hosts(prov_path, display_name, prov_ips, prov_doms)
 
-    # 9. Build and write Combined hosts files (round-robin across active proxies)
+    # 9. Build and write Combined hosts files (round-robin across active non-RU proxies)
     combined_geoblock = {}
     all_smart_candidate_ips = detected_proxy_ips.get("doh", [])
-    all_active_proxies = (
-        [ip for ip in all_smart_candidate_ips if ip in active_ips]
-        or all_smart_candidate_ips
+    # Strictly exclude Russian IPs from Combined hosts round-robin pool
+    combined_non_ru_candidates = [
+        ip for ip in all_smart_candidate_ips if ip not in ru_ips
+    ]
+    combined_active_proxies = (
+        [ip for ip in combined_non_ru_candidates if ip in active_ips]
+        or combined_non_ru_candidates
         or ["127.0.0.1"]
     )
 
     for idx, dom in enumerate(candidate_smart_domains):
         brand = get_raw_brand(dom)
-        ip = all_active_proxies[idx % len(all_active_proxies)]
+        ip = combined_active_proxies[idx % len(combined_active_proxies)]
         combined_geoblock.setdefault((ip, brand), set()).add(dom)
 
     combined_geoblock_nc = {k: set(v) for k, v in combined_geoblock.items()}
@@ -947,8 +945,8 @@ async def generate_aligned_hosts(
         ip
         for prov in ("geohide", "comss", "malw")
         for ip in detected_proxy_ips.get(prov, [])
-        if ip in active_ips
-    ] or all_active_proxies
+        if ip in active_ips and ip not in ru_ips
+    ] or combined_active_proxies
 
     for idx, dom in enumerate(candidate_smart_domains):
         brand = get_raw_brand(dom)

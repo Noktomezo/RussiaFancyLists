@@ -24,6 +24,7 @@
 ||canva.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||static.canva.com^$dnsrewrite=NOERROR;A;109.120.137.190
+||www.canva.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||chatgpt.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;109.120.137.190
@@ -115,6 +116,7 @@
 ||www.framer.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||genspark.ai^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.genspark.ai^$dnsrewrite=NOERROR;A;109.120.137.190
+||api.github.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;109.120.137.190
