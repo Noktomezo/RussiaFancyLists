@@ -3,6 +3,7 @@ import base64
 import contextlib
 import functools
 import socket
+import ssl
 import struct
 from collections import defaultdict
 
@@ -11,7 +12,6 @@ import httpx
 from russiafancylists.config.providers import (
     DOH_PROBE_DOMAINS,
     SMART_DNS_DOH_SERVERS,
-    SMART_DNS_UDP_SERVERS,
 )
 
 
@@ -78,43 +78,65 @@ def parse_dns_wire_a_records(data: bytes) -> list[str]:
 async def query_doh_a_records(
     client: httpx.AsyncClient, doh_url: str, domain: str
 ) -> list[str]:
-    """Query a DoH endpoint for A records of a domain over HTTP/2 using POST or GET."""
+    """Query a DoH endpoint for A records of a domain over HTTP/2 using POST or GET.
+
+    Falls back between v.recipes accelerator and direct upstream if either fails.
+    """
     wire_query = build_dns_wire_query(domain)
 
-    # 1. Try RFC 8484 POST
-    fallback_to_get = False
-    try:
-        r = await client.post(
-            doh_url,
-            content=wire_query,
-            headers={
-                "content-type": "application/dns-message",
-                "accept": "application/dns-message",
-            },
-            timeout=3.5,
-        )
-        if r.status_code == 200 and r.content:
-            return parse_dns_wire_a_records(r.content)
-        if r.status_code in (400, 403, 404, 405):
-            fallback_to_get = True
-    except Exception:
-        fallback_to_get = True
-
-    # 2. Fallback to RFC 8484 GET with base64url query only if server rejected POST method
-    if fallback_to_get:
+    async def try_url(target_url: str) -> list[str]:
+        fallback_to_get = False
         try:
-            b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
-            r = await client.get(
-                f"{doh_url}?dns={b64}",
-                headers={"accept": "application/dns-message"},
-                timeout=5.0,
+            r = await client.post(
+                target_url,
+                content=wire_query,
+                headers={
+                    "content-type": "application/dns-message",
+                    "accept": "application/dns-message",
+                },
+                timeout=3.5,
             )
             if r.status_code == 200 and r.content:
-                return parse_dns_wire_a_records(r.content)
+                ips = parse_dns_wire_a_records(r.content)
+                if ips:
+                    return ips
+            if r.status_code in (400, 403, 404, 405, 500, 502, 503, 504):
+                fallback_to_get = True
         except Exception:
-            pass
+            fallback_to_get = True
 
-    return []
+        if fallback_to_get:
+            try:
+                b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
+                r = await client.get(
+                    f"{target_url}?dns={b64}",
+                    headers={"accept": "application/dns-message"},
+                    timeout=4.0,
+                )
+                if r.status_code == 200 and r.content:
+                    return parse_dns_wire_a_records(r.content)
+            except Exception:
+                pass
+        return []
+
+    # 1. Try specified primary URL
+    primary_ips = await try_url(doh_url)
+    if primary_ips:
+        return primary_ips
+
+    # 2. Resilient fallback: if accelerated via v.recipes, fallback to direct; if direct, fallback to v.recipes
+    if "dns-ai.ru" in doh_url:
+        return []
+
+    if "v.recipes" in doh_url:
+        fallback_url = doh_url.replace("https://v.recipes/dns/", "https://").replace(
+            "http://v.recipes/dns/", "http://"
+        )
+        return await try_url(fallback_url)
+    else:
+        clean = doh_url.replace("https://", "").replace("http://", "")
+        accel_url = f"https://v.recipes/dns/{clean}"
+        return await try_url(accel_url)
 
 
 async def query_tcp_dns_batch(
@@ -124,14 +146,21 @@ async def query_tcp_dns_batch(
     timeout: float = 4.0,
     chunk_size: int = 35,
     concurrency: int = 15,
+    server_hostname: str | None = None,
 ) -> dict[str, list[str]]:
     """Resolve a batch of domains asynchronously over TCP DNS (RFC 1035 2-byte prefix)
-    chunked across parallel TCP connections. Works 100% reliably across cloud CI
-    (Azure, GitHub Actions) where outbound UDP 53 is restricted.
+    or DoT (port 853 with TLS) chunked across parallel TCP connections. Works 100% reliably
+    across cloud CI (Azure, GitHub Actions) where outbound UDP 53 is restricted.
     """
     results: dict[str, list[str]] = {}
     if not domains:
         return results
+
+    ssl_ctx = None
+    if port == 853:
+        ssl_ctx = ssl.create_default_context()
+        ssl_ctx.check_hostname = False
+        ssl_ctx.verify_mode = ssl.CERT_NONE
 
     sem = asyncio.Semaphore(concurrency)
 
@@ -139,7 +168,15 @@ async def query_tcp_dns_batch(
         async with sem:
             try:
                 reader, writer = await asyncio.wait_for(
-                    asyncio.open_connection(host, port), timeout=timeout
+                    asyncio.open_connection(
+                        host,
+                        port,
+                        ssl=ssl_ctx,
+                        server_hostname=server_hostname or host
+                        if port == 853
+                        else None,
+                    ),
+                    timeout=timeout,
                 )
                 for idx, d in enumerate(chunk):
                     qid = (start_idx + idx) % 65535
@@ -291,27 +328,15 @@ async def discover_doh_proxy_ips(
 
         await asyncio.gather(*tasks, return_exceptions=True)
 
-    # Probe TCP/UDP DNS servers (e.g. Mafioznik)
-    for name, (host, port) in SMART_DNS_UDP_SERVERS.items():
-        dns_results = await query_dns_batch(host, port, domains, timeout=4.0)
-        for dom, ips in dns_results.items():
-            brand = normalize_brand_name(dom)
-            for ip in ips:
-                if is_candidate_proxy_ip(ip):
-                    resolver_ip_brands[name][ip].add(brand)
-
     confirmed_proxies: dict[str, list[str]] = {}
     for name, ip_map in resolver_ip_brands.items():
+        canonical_name = "dns-ai" if name in ("dns_ai", "dns-ai") else name
         prov_ips = [ip for ip, brands in ip_map.items() if len(brands) >= 2]
         if prov_ips:
-            confirmed_proxies[name] = sorted(prov_ips)
-
-    # Mafioznik dedicated server fallback
-    if "mafioznik" in SMART_DNS_UDP_SERVERS:
-        maf_host = SMART_DNS_UDP_SERVERS["mafioznik"][0]
-        if maf_host not in confirmed_proxies.get("mafioznik", []):
-            confirmed_proxies.setdefault("mafioznik", []).append(maf_host)
-            confirmed_proxies["mafioznik"] = sorted(confirmed_proxies["mafioznik"])
+            confirmed_proxies.setdefault(canonical_name, []).extend(prov_ips)
+            confirmed_proxies[canonical_name] = sorted(
+                list(set(confirmed_proxies[canonical_name]))
+            )
 
     total_unique = len({ip for ips in confirmed_proxies.values() for ip in ips})
     print(
@@ -324,7 +349,7 @@ async def resolve_geoblock_domains_per_provider(
     domains: list[str],
     provider_proxies: dict[str, list[str]],
 ) -> dict[str, dict[str, list[str]]]:
-    """Query each provider's DoH/DNS resolver for all geoblocked domains.
+    """Query each provider's DoH resolver for all geoblocked domains.
 
     Returns a mapping: {canonical_provider_key: {domain: [proxy_ips]}} containing only the
     domains that genuinely resolve to that provider's active Smart DNS proxy IPs.
@@ -340,7 +365,6 @@ async def resolve_geoblock_domains_per_provider(
         "mafioznik",
     ]
     results: dict[str, dict[str, list[str]]] = {p: {} for p in canonical_providers}
-    all_known_proxies = {ip for ips in provider_proxies.values() for ip in ips}
 
     # Map DoH endpoint names to canonical provider keys
     doh_to_canonical = {
@@ -348,11 +372,14 @@ async def resolve_geoblock_domains_per_provider(
         "astracat": "astracat",
         "xyz": "xyz",
         "dns_ai": "dns-ai",
+        "dns-ai": "dns-ai",
         "xbox_dns": "xbox-dns",
+        "xbox-dns": "xbox-dns",
         "malw": "malw",
         "geohide_eu": "geohide",
         "geohide_us": "geohide",
         "geohide_ru": "geohide",
+        "geohide": "geohide",
     }
 
     async def check_doh_endpoint(prov_key: str, doh_url: str, target_ips: set[str]):
@@ -391,28 +418,5 @@ async def resolve_geoblock_domains_per_provider(
         if prov_target_ips:
             doh_tasks.append(check_doh_endpoint(prov_key, url, prov_target_ips))
 
-    # Query TCP/UDP DNS endpoint (Mafioznik)
-    async def check_dns_endpoint(prov_key: str, host: str, port: int):
-        prov_target_ips = set(provider_proxies.get(prov_key, []))
-        maf_valid_ips = prov_target_ips | all_known_proxies
-        dns_map = await query_dns_batch(host, port, domains, timeout=5.0)
-        for d, ips in dns_map.items():
-            matching = [ip for ip in ips if ip in maf_valid_ips]
-            if matching:
-                chosen = (
-                    matching
-                    if any(ip in prov_target_ips for ip in matching)
-                    else list(prov_target_ips) or matching
-                )
-                current = results[prov_key].setdefault(d, [])
-                for ip in chosen:
-                    if ip not in current:
-                        current.append(ip)
-
-    dns_tasks = []
-    for name, (host, port) in SMART_DNS_UDP_SERVERS.items():
-        prov_key = "mafioznik" if name == "mafioznik" else name
-        dns_tasks.append(check_dns_endpoint(prov_key, host, port))
-
-    await asyncio.gather(*doh_tasks, *dns_tasks, return_exceptions=True)
+    await asyncio.gather(*doh_tasks, return_exceptions=True)
     return results

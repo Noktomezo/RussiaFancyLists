@@ -5,19 +5,18 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Crutch
-2.16.168.44 audio4-ak-spotify-com.akamaized.net
 23.36.163.34 audio-ak-spotify-com.akamaized.net
 23.48.23.145 heads-ak-spotify-com.akamaized.net
-80.253.249.40 game.brawlstarsgame.com
+185.246.223.127 game.brawlstarsgame.com
 103.137.248.179 www.canva.com
 31.13.66.63 scontent-hel3-1.cdninstagram.com scontent.cdninstagram.com
-57.144.244.192 static.cdninstagram.com
 193.23.209.189 gamea.clashofclans.com
 81.17.20.82 game.clashroyaleapp.com
 144.31.14.104 windsurf-telemetry.codeium.com
 162.159.135.232 updates.discord.com
 57.144.244.1 facebook.com www.facebook.com
 57.144.244.1 fb.com
+31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 103.137.248.179 api.github.com
@@ -26,60 +25,61 @@ ff02::2 ip6-allrouters
 185.199.110.154 github.githubassets.com
 146.75.22.132 avatars.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com avatars4.githubusercontent.com avatars5.githubusercontent.com camo.githubusercontent.com gist.githubusercontent.com objects.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com release-assets.githubusercontent.com
 157.240.205.174 instagram.com www.instagram.com
-57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 185.31.40.18 test.dns.malw.link
 130.255.77.28 ntc.party
 52.223.13.41 tracker.openbittorrent.com
 172.67.139.108 r6s.com
-65.8.158.112 tr.rbxcdn.com
+54.155.2.87 rainbow6.com
+65.8.158.45 tr.rbxcdn.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 173.245.58.219 d.rutor.info rutor.info
 199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
 35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
+81.17.20.84 game.squadbustersgame.com
 149.154.167.220 t.me
 216.24.57.3 tapeop.dev www.tapeop.dev
 149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
 149.154.167.220 telesco.pe
 149.154.167.220 tg.dev
 2.23.89.244 ubiservices.cdn.ubi.com
-2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
-52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
+18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
+54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 87.228.47.199 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-87.228.47.204 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
+87.228.47.199 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
 87.228.47.199 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com
-87.228.47.204 claudemcpclient.com www.claudemcpclient.com
+87.228.47.199 claudemcpclient.com www.claudemcpclient.com
 87.228.47.199 chat.openai.com.cdn.cloudflare.net
-87.228.47.204 backend-v2.crixet.com
+87.228.47.199 backend-v2.crixet.com
 87.228.47.199 api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh authenticate.cursor.sh authenticator.cursor.sh cursor-cdn.com cursor.com cursor.sh downloads.cursor.com repo42.cursor.sh us-asia.gcpp.cursor.sh us-eu.gcpp.cursor.sh us-only.gcpp.cursor.sh www.cursor-cdn.com www.cursor.com
-87.228.47.204 cursorapi.com marketplace.cursorapi.com
+87.228.47.199 cursorapi.com marketplace.cursorapi.com
 87.228.47.199 cursorvm.com www.cursorvm.com
-87.228.47.204 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+87.228.47.199 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 87.228.47.199 devexpress.com
-87.228.47.204 dyson.com dyson.de dyson.nl dyson.se www.dyson.com www.dyson.de www.dyson.fr www.dyson.se
+87.228.47.199 dyson.com dyson.de dyson.nl dyson.se www.dyson.com www.dyson.de www.dyson.fr www.dyson.se
 87.228.47.199 eneba.com www.eneba.com
-87.228.47.204 assets.grok.com grok.com
+87.228.47.199 assets.grok.com grok.com
 87.228.47.199 www.intel.com
-87.228.47.204 account.jetbrains.com api.jetbrains.ai download.jetbrains.com plugins.jetbrains.com
+87.228.47.199 account.jetbrains.com api.jetbrains.ai download.jetbrains.com plugins.jetbrains.com
 87.228.47.199 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.site notion.so www.notion.com www.notion.so
-87.228.47.204 files.oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+87.228.47.199 files.oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 87.228.47.199 onshape.com
-87.228.47.204 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+87.228.47.199 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
 87.228.47.199 download.parallels.com parallels.com
-87.228.47.204 eu.posthog.com posthog.com us.posthog.com
+87.228.47.199 eu.posthog.com posthog.com us.posthog.com
 87.228.47.199 promods.net www.promods.net
-87.228.47.204 sora.com
+87.228.47.199 sora.com
 87.228.47.199 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com clienttoken.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com spotify.com www.spotify.com
-87.228.47.204 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+87.228.47.199 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
 87.228.47.199 app.terraform.io terraform.io
-87.228.47.204 download.todesktop.com
+87.228.47.199 download.todesktop.com
 87.228.47.199 tria.ge www.tria.ge
-87.228.47.204 usher.ttvnw.net
+87.228.47.199 usher.ttvnw.net
 87.228.47.199 gql.twitch.tv
-87.228.47.204 weather.com
+87.228.47.199 weather.com
 87.228.47.199 accounts.x.ai console.x.ai
