@@ -45,6 +45,11 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         hosts_dir = root_dir / "lists" / "hosts"
         provider_ips = {
             "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
+            "Comss": parse_proxy_ips_from_hosts(hosts_dir / "comss.hosts"),
+            "Xbox DNS": parse_proxy_ips_from_hosts(hosts_dir / "xbox-dns.hosts"),
+            "dns-ai": parse_proxy_ips_from_hosts(hosts_dir / "dns-ai.hosts"),
+            "AstraCat": parse_proxy_ips_from_hosts(hosts_dir / "astracat.hosts"),
+            "XyZ": parse_proxy_ips_from_hosts(hosts_dir / "xyz.hosts"),
             "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
             "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
         }
@@ -160,6 +165,11 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
 
     provider_defs = [
         ("geohide", "GeoHide"),
+        ("comss", "Comss"),
+        ("xbox-dns", "Xbox DNS"),
+        ("dns-ai", "dns-ai"),
+        ("astracat", "AstraCat"),
+        ("xyz", "XyZ"),
         ("malw", "ImMALWARE"),
         ("mafioznik", "Mafioznik"),
     ]

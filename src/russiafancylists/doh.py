@@ -8,13 +8,17 @@ from collections import defaultdict
 
 import httpx
 
-from russiafancylists.config.providers import DOH_PROBE_DOMAINS, SMART_DNS_DOH_SERVERS
+from russiafancylists.config.providers import (
+    DOH_PROBE_DOMAINS,
+    SMART_DNS_DOH_SERVERS,
+    SMART_DNS_UDP_SERVERS,
+)
 
 
-@functools.lru_cache(maxsize=128)
-def build_dns_wire_query(domain: str) -> bytes:
+@functools.lru_cache(maxsize=4096)
+def build_dns_wire_query(domain: str, query_id: int = 0x1234) -> bytes:
     """Build a standard RFC 1035 DNS wireformat A-record query in pure Python."""
-    header = struct.pack("!HHHHHH", 0x1234, 0x0100, 1, 0, 0, 0)
+    header = struct.pack("!HHHHHH", query_id, 0x0100, 1, 0, 0, 0)
     qname = b""
     for part in domain.strip(".").split("."):
         enc = part.encode("ascii", errors="ignore")
@@ -78,6 +82,7 @@ async def query_doh_a_records(
     wire_query = build_dns_wire_query(domain)
 
     # 1. Try RFC 8484 POST
+    fallback_to_get = False
     try:
         r = await client.post(
             doh_url,
@@ -86,27 +91,78 @@ async def query_doh_a_records(
                 "content-type": "application/dns-message",
                 "accept": "application/dns-message",
             },
-            timeout=7.0,
+            timeout=3.5,
         )
         if r.status_code == 200 and r.content:
             return parse_dns_wire_a_records(r.content)
+        if r.status_code in (400, 404, 405):
+            fallback_to_get = True
     except Exception:
         pass
 
-    # 2. Fallback to RFC 8484 GET with base64url query
-    try:
-        b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
-        r = await client.get(
-            f"{doh_url}?dns={b64}",
-            headers={"accept": "application/dns-message"},
-            timeout=7.0,
-        )
-        if r.status_code == 200 and r.content:
-            return parse_dns_wire_a_records(r.content)
-    except Exception:
-        pass
+    # 2. Fallback to RFC 8484 GET with base64url query only if server rejected POST method
+    if fallback_to_get:
+        try:
+            b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
+            r = await client.get(
+                f"{doh_url}?dns={b64}",
+                headers={"accept": "application/dns-message"},
+                timeout=3.5,
+            )
+            if r.status_code == 200 and r.content:
+                return parse_dns_wire_a_records(r.content)
+        except Exception:
+            pass
 
     return []
+
+
+async def query_udp_dns_batch(
+    host: str, port: int, domains: list[str], timeout: float = 3.0
+) -> dict[str, list[str]]:
+    """Resolve a batch of domains asynchronously using UDP DNS transactions."""
+    loop = asyncio.get_running_loop()
+    results: dict[str, list[str]] = {}
+    if not domains:
+        return results
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.setblocking(False)
+
+    try:
+        # Send all queries with unique query IDs
+        domain_by_id = {}
+        for idx, dom in enumerate(domains):
+            qid = idx % 65535
+            domain_by_id[qid] = dom
+            wire = build_dns_wire_query(dom, query_id=qid)
+            s.sendto(wire, (host, port))
+
+        # Collect responses
+        pending = len(domain_by_id)
+        start_time = loop.time()
+        while pending > 0 and (loop.time() - start_time) < timeout:
+            remaining = timeout - (loop.time() - start_time)
+            if remaining <= 0:
+                break
+            try:
+                data = await asyncio.wait_for(
+                    loop.sock_recv(s, 2048), timeout=remaining
+                )
+                if len(data) >= 2:
+                    qid = struct.unpack("!H", data[:2])[0]
+                    if qid in domain_by_id:
+                        dom = domain_by_id.pop(qid)
+                        results[dom] = parse_dns_wire_a_records(data)
+                        pending -= 1
+            except (TimeoutError, OSError):
+                break
+    except Exception:
+        pass
+    finally:
+        s.close()
+
+    return results
 
 
 def is_candidate_proxy_ip(ip: str) -> bool:
@@ -133,7 +189,7 @@ async def discover_doh_proxy_ips(
     doh_servers: dict[str, str] | None = None,
     probe_domains: list[str] | None = None,
 ) -> dict[str, list[str]]:
-    """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH endpoints.
+    """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH and DNS endpoints.
 
     An IP is confirmed as a Smart DNS SNI proxy if it is returned for 2 or more
     distinct brands, eliminating direct origin IPs with 100% precision.
@@ -146,13 +202,13 @@ async def discover_doh_proxy_ips(
     resolver_ip_brands: dict[str, dict[str, set[str]]] = defaultdict(
         lambda: defaultdict(set)
     )
-    sem = asyncio.Semaphore(20)
+    sem = asyncio.Semaphore(25)
 
     async with httpx.AsyncClient(
         http2=True,
         verify=False,
         timeout=8.0,
-        limits=httpx.Limits(max_connections=30, max_keepalive_connections=30),
+        limits=httpx.Limits(max_connections=35, max_keepalive_connections=35),
     ) as client:
 
         async def probe_endpoint(name: str, url: str, domain: str):
@@ -170,14 +226,126 @@ async def discover_doh_proxy_ips(
 
         await asyncio.gather(*tasks, return_exceptions=True)
 
+    # Probe UDP DNS servers (e.g. Mafioznik)
+    for name, (host, port) in SMART_DNS_UDP_SERVERS.items():
+        udp_results = await query_udp_dns_batch(host, port, domains, timeout=4.0)
+        for dom, ips in udp_results.items():
+            brand = normalize_brand_name(dom)
+            for ip in ips:
+                if is_candidate_proxy_ip(ip):
+                    resolver_ip_brands[name][ip].add(brand)
+
     confirmed_proxies: dict[str, list[str]] = {}
     for name, ip_map in resolver_ip_brands.items():
         prov_ips = [ip for ip, brands in ip_map.items() if len(brands) >= 2]
         if prov_ips:
             confirmed_proxies[name] = sorted(prov_ips)
 
+    # Mafioznik dedicated server fallback
+    if "mafioznik" in SMART_DNS_UDP_SERVERS:
+        maf_host = SMART_DNS_UDP_SERVERS["mafioznik"][0]
+        if maf_host not in confirmed_proxies.get("mafioznik", []):
+            confirmed_proxies.setdefault("mafioznik", []).append(maf_host)
+            confirmed_proxies["mafioznik"] = sorted(confirmed_proxies["mafioznik"])
+
     total_unique = len({ip for ips in confirmed_proxies.values() for ip in ips})
     print(
-        f"Harvested {total_unique} verified multi-brand Smart DNS proxy IPs across {len(confirmed_proxies)} DoH providers."
+        f"Harvested {total_unique} verified multi-brand Smart DNS proxy IPs across {len(confirmed_proxies)} providers."
     )
     return confirmed_proxies
+
+
+async def resolve_geoblock_domains_per_provider(
+    domains: list[str],
+    provider_proxies: dict[str, list[str]],
+) -> dict[str, dict[str, list[str]]]:
+    """Query each provider's DoH/DNS resolver for all geoblocked domains.
+
+    Returns a mapping: {canonical_provider_key: {domain: [proxy_ips]}} containing only the
+    domains that genuinely resolve to that provider's active Smart DNS proxy IPs.
+    """
+    canonical_providers = [
+        "geohide",
+        "comss",
+        "xbox-dns",
+        "dns-ai",
+        "astracat",
+        "xyz",
+        "malw",
+        "mafioznik",
+    ]
+    results: dict[str, dict[str, list[str]]] = {p: {} for p in canonical_providers}
+    all_known_proxies = {ip for ips in provider_proxies.values() for ip in ips}
+
+    # Map DoH endpoint names to canonical provider keys
+    doh_to_canonical = {
+        "comss": "comss",
+        "astracat": "astracat",
+        "xyz": "xyz",
+        "dns_ai": "dns-ai",
+        "xbox_dns": "xbox-dns",
+        "malw": "malw",
+        "geohide_eu": "geohide",
+        "geohide_us": "geohide",
+        "geohide_ru": "geohide",
+    }
+
+    async def check_doh_endpoint(prov_key: str, doh_url: str, target_ips: set[str]):
+        if not target_ips:
+            return
+        sem = asyncio.Semaphore(35)
+        async with httpx.AsyncClient(
+            http2=True,
+            verify=False,
+            timeout=5.0,
+            limits=httpx.Limits(max_connections=40, max_keepalive_connections=40),
+        ) as client:
+
+            async def check_dom(d: str):
+                async with sem:
+                    ips = await query_doh_a_records(client, doh_url, d)
+                    matching = [ip for ip in ips if ip in target_ips]
+                    if matching:
+                        current = results[prov_key].setdefault(d, [])
+                        for ip in matching:
+                            if ip not in current:
+                                current.append(ip)
+
+            await asyncio.gather(
+                *(check_dom(d) for d in domains), return_exceptions=True
+            )
+
+    doh_tasks = []
+    for endpoint_name, url in SMART_DNS_DOH_SERVERS.items():
+        prov_key = doh_to_canonical.get(endpoint_name)
+        if not prov_key:
+            continue
+        prov_target_ips = set(provider_proxies.get(prov_key, []))
+        if prov_target_ips:
+            doh_tasks.append(check_doh_endpoint(prov_key, url, prov_target_ips))
+
+    # Query UDP DNS endpoint (Mafioznik)
+    async def check_udp_endpoint(prov_key: str, host: str, port: int):
+        prov_target_ips = set(provider_proxies.get(prov_key, []))
+        maf_valid_ips = prov_target_ips | all_known_proxies
+        udp_map = await query_udp_dns_batch(host, port, domains, timeout=5.0)
+        for d, ips in udp_map.items():
+            matching = [ip for ip in ips if ip in maf_valid_ips]
+            if matching:
+                chosen = (
+                    matching
+                    if any(ip in prov_target_ips for ip in matching)
+                    else list(prov_target_ips) or matching
+                )
+                current = results[prov_key].setdefault(d, [])
+                for ip in chosen:
+                    if ip not in current:
+                        current.append(ip)
+
+    udp_tasks = []
+    for name, (host, port) in SMART_DNS_UDP_SERVERS.items():
+        prov_key = "mafioznik" if name == "mafioznik" else name
+        udp_tasks.append(check_udp_endpoint(prov_key, host, port))
+
+    await asyncio.gather(*doh_tasks, *udp_tasks, return_exceptions=True)
+    return results

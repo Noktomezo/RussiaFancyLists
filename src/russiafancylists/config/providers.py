@@ -122,7 +122,14 @@ SMART_DNS_DOH_SERVERS = {
     "malw": "https://dns.malw.link/dns-query",
     "geohide_eu": "https://eu.geohide.ru/dns-query",
     "geohide_us": "https://us.geohide.ru/dns-query",
-    "geohide_ru": "https://geohide.ru/dns-query",
+}
+
+# Smart DNS DoT / UDP endpoints (e.g. for providers where DoH is disabled or non-compliant)
+SMART_DNS_DOT_SERVERS = {
+    "mafioznik": ("103.27.157.38", 853, "dns.mafioznik.xyz"),
+}
+SMART_DNS_UDP_SERVERS = {
+    "mafioznik": ("103.27.157.38", 53),
 }
 
 # Canonical geoblocked domains used to probe DoH resolvers for proxy IPs

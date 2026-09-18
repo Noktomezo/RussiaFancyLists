@@ -39,8 +39,8 @@ This file contains global rules, workflow requirements, and architectural guidel
 - The generated hosts files are organized into the following families:
   1. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (recommended multi-provider solution, actively SNI-probed across all available proxy endpoints, keeping only validated working `[IP - domain]` pairs).
   2. **Combined Hosts Files**: `combined.hosts`, `combined-no-crutch.hosts` (full unified geoblock list mapped across active proxy endpoints; round-robin mapping without per-domain SNI check, noted as less reliable).
-  3. **Dedicated Provider Files (with Crutches)**: `geohide.hosts`, `malw.hosts`, `mafioznik.hosts` (strictly scoped to each provider's source domains).
-  4. **No-Crutch Provider Files**: `geohide-no-crutch.hosts`, `malw-no-crutch.hosts`, `mafioznik-no-crutch.hosts` (each provider's source domains with crutches excluded).
+  3. **Dedicated Provider Files (with Crutches)**: `geohide.hosts`, `comss.hosts`, `xbox-dns.hosts`, `dns-ai.hosts`, `astracat.hosts`, `xyz.hosts`, `malw.hosts`, `mafioznik.hosts` (each provider's confirmed working geoblock domains).
+  4. **No-Crutch Provider Files**: `geohide-no-crutch.hosts`, `comss-no-crutch.hosts`, `xbox-dns-no-crutch.hosts`, `dns-ai-no-crutch.hosts`, `astracat-no-crutch.hosts`, `xyz-no-crutch.hosts`, `malw-no-crutch.hosts`, `mafioznik-no-crutch.hosts` (each provider's domains with crutches excluded).
   5. **Only-Crutch Hosts File**: `only-crutch.hosts` (direct service IP mappings).
 - **Parity & Consistency Rules**:
   - Every `.hosts` file must have a corresponding `.adguard.txt` file with **100% exact domain parity**.

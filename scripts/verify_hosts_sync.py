@@ -96,6 +96,16 @@ def main():
         "combined-no-crutch",
         "geohide",
         "geohide-no-crutch",
+        "comss",
+        "comss-no-crutch",
+        "xbox-dns",
+        "xbox-dns-no-crutch",
+        "dns-ai",
+        "dns-ai-no-crutch",
+        "astracat",
+        "astracat-no-crutch",
+        "xyz",
+        "xyz-no-crutch",
         "malw",
         "malw-no-crutch",
         "mafioznik",
@@ -228,7 +238,16 @@ def main():
 
     # 7. Verify Provider Families (geohide, malw, mafioznik)
     print("\n--- Verifying Provider Families Scoping ---")
-    providers = ["geohide", "malw", "mafioznik"]
+    providers = [
+        "geohide",
+        "comss",
+        "xbox-dns",
+        "dns-ai",
+        "astracat",
+        "xyz",
+        "malw",
+        "mafioznik",
+    ]
     for p in providers:
         p_path = hosts_dir / f"{p}.hosts"
         p_nc_path = hosts_dir / f"{p}-no-crutch.hosts"
