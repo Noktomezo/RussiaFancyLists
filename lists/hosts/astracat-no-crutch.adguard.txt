@@ -122,7 +122,6 @@
 ||platform.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||videos.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||tracker.openbittorrent.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;217.60.179.6
 ||patreon.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.patreon.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -133,6 +132,7 @@
 ||swap-api.pump.fun^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.qwant.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||sora.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||game.squadbustersgame.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||api.squareup.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;217.60.179.6

@@ -12,7 +12,7 @@ ff02::2 ip6-allrouters
 45.88.174.254 avira.com my.avira.com
 91.207.75.110 bitdefender.com
 95.81.102.30 ai-chat.bsg.brave.com
-95.81.98.64 access.broadcom.com broadcom.com knowledge.broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+95.81.98.64 access.broadcom.com broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
 45.88.174.254 content-management-files.canva.com static.canva.com
 91.207.75.110 api.cerebras.ai
 95.81.102.30 www.cgtrader.com
@@ -23,7 +23,7 @@ ff02::2 ip6-allrouters
 95.81.98.64 clickup.com www.clickup.com
 45.88.174.254 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com www.codeium.com
 91.207.75.110 www.crunchyroll.com
-95.81.102.30 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+95.81.102.30 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com
 95.81.98.64 app.deepsource.com deepsource.io
 45.88.174.254 ecosia.org www.ecosia.org
 91.207.75.110 elevenlabs.io
@@ -38,50 +38,52 @@ ff02::2 ip6-allrouters
 95.81.102.30 ghostrc.game.idtech.services
 95.81.98.64 www.intel.com
 45.88.174.254 api.app.prod.grazie.aws.intellij.net
-91.207.75.110 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
+91.207.75.110 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com
 95.81.102.30 labs.google
-95.81.98.64 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
-45.88.174.254 api.manus.im manus.im www.manus.im
-91.207.75.110 trae-api-sg.mchost.guru
-95.81.102.30 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
-95.81.98.64 login.norton.com norton.com
-45.88.174.254 notebook.google www.notebook.google
-91.207.75.110 notebooklm.google
-95.81.102.30 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
-95.81.98.64 cdn.oaistatic.com www.oaistatic.com
-45.88.174.254 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
-91.207.75.110 opal.google
-95.81.102.30 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
-95.81.98.64 ciscobinary.openh264.org
-45.88.174.254 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
-91.207.75.110 pandasecurity.com www.pandasecurity.com
-95.81.102.30 qwant.com www.qwant.com
-95.81.98.64 api.radarr.video radarr.video
-45.88.174.254 raycast.com releases.raycast.com
-91.207.75.110 recraft.ai
-95.81.102.30 app.reve.com preview.reve.art reve.art
-95.81.98.64 blogs.sap.com community.sap.com
-45.88.174.254 sentry.dev sentry.io
-91.207.75.110 radarr.servarr.com
-95.81.102.30 singlekey-id.com
-95.81.98.64 3dwarehouse.sketchup.com extensions.sketchup.com
-45.88.174.254 sophos.com
-91.207.75.110 sora.com
-95.81.102.30 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com
-95.81.98.64 api.themoviedb.org
-45.88.174.254 image.tmdb.org images.tmdb.org
-91.207.75.110 api.trae.ai trae.ai
-95.81.102.30 id.trimble.com
-95.81.98.64 usher.ttvnw.net
-45.88.174.254 gql.twitch.tv
-91.207.75.110 fw-download.ubnt.com
-95.81.102.30 docs.vmware.com vmware.com
-95.81.98.64 wbagora.com
-45.88.174.254 account.wbgames.com wbgames.com www.wbgames.com
-91.207.75.110 upsx.weather.com weather.com www.weather.com
-95.81.102.30 marketplace.windsurf.com
-95.81.98.64 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
-45.88.174.254 users.wix.com
-91.207.75.110 api.workos.com
-95.81.102.30 wunderground.com www.wunderground.com
-95.81.98.64 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
+95.81.98.64 lidarr.audio
+45.88.174.254 lightning.ai
+91.207.75.110 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
+95.81.102.30 api.manus.im manus.im www.manus.im
+95.81.98.64 trae-api-sg.mchost.guru
+45.88.174.254 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
+91.207.75.110 norton.com
+95.81.102.30 notebook.google www.notebook.google
+95.81.98.64 notebooklm.google
+45.88.174.254 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
+91.207.75.110 cdn.oaistatic.com www.oaistatic.com
+95.81.102.30 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+95.81.98.64 opal.google
+45.88.174.254 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+91.207.75.110 ciscobinary.openh264.org
+95.81.102.30 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
+95.81.98.64 pandasecurity.com www.pandasecurity.com
+45.88.174.254 qwant.com www.qwant.com
+91.207.75.110 api.radarr.video radarr.video
+95.81.102.30 raycast.com releases.raycast.com
+95.81.98.64 recraft.ai
+45.88.174.254 app.reve.com preview.reve.art reve.art
+91.207.75.110 blogs.sap.com community.sap.com
+95.81.102.30 sentry.dev sentry.io
+95.81.98.64 radarr.servarr.com
+45.88.174.254 singlekey-id.com
+91.207.75.110 3dwarehouse.sketchup.com extensions.sketchup.com
+95.81.102.30 sophos.com
+95.81.98.64 sora.com
+45.88.174.254 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+91.207.75.110 api.themoviedb.org
+95.81.102.30 image.tmdb.org images.tmdb.org
+95.81.98.64 api.trae.ai trae.ai
+45.88.174.254 id.trimble.com
+91.207.75.110 usher.ttvnw.net
+95.81.102.30 gql.twitch.tv
+95.81.98.64 fw-download.ubnt.com
+45.88.174.254 docs.vmware.com vmware.com
+91.207.75.110 wbagora.com
+95.81.102.30 account.wbgames.com wbgames.com www.wbgames.com
+95.81.98.64 upsx.weather.com weather.com www.weather.com
+45.88.174.254 marketplace.windsurf.com
+91.207.75.110 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
+95.81.102.30 users.wix.com
+95.81.98.64 api.workos.com
+45.88.174.254 wunderground.com www.wunderground.com
+91.207.75.110 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai

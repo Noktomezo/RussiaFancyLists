@@ -6,42 +6,48 @@ ff02::2 ip6-allrouters
 
 # Crutch
 2.16.168.44 audio4-ak-spotify-com.akamaized.net
+23.36.163.34 audio-ak-spotify-com.akamaized.net
 23.48.23.145 heads-ak-spotify-com.akamaized.net
-185.246.223.127 game.brawlstarsgame.com
+80.253.249.40 game.brawlstarsgame.com
 103.137.248.179 www.canva.com
 31.13.66.63 scontent-hel3-1.cdninstagram.com scontent.cdninstagram.com
 57.144.244.192 static.cdninstagram.com
-81.17.20.86 gamea.clashofclans.com
+193.23.209.189 gamea.clashofclans.com
 81.17.20.82 game.clashroyaleapp.com
 144.31.14.104 windsurf-telemetry.codeium.com
 162.159.135.232 updates.discord.com
-31.13.67.20 scontent-hel3-1.xx.fbcdn.net
+57.144.244.1 facebook.com www.facebook.com
+57.144.244.1 fb.com
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
+57.144.244.1 fbsbx.com
 103.137.248.179 api.github.com
 140.82.114.3 github.com
+185.199.110.133 camo.githubassets.com
 185.199.110.154 github.githubassets.com
 146.75.22.132 avatars.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com avatars4.githubusercontent.com avatars5.githubusercontent.com camo.githubusercontent.com gist.githubusercontent.com objects.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com release-assets.githubusercontent.com
 157.240.205.174 instagram.com www.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 185.31.40.18 test.dns.malw.link
 130.255.77.28 ntc.party
+52.223.13.41 tracker.openbittorrent.com
 172.67.139.108 r6s.com
-54.155.2.87 rainbow6.com
 65.8.158.112 tr.rbxcdn.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 173.245.58.219 d.rutor.info rutor.info
 199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
 35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
-81.17.20.84 game.squadbustersgame.com
+149.154.167.220 t.me
 216.24.57.3 tapeop.dev www.tapeop.dev
+149.154.167.220 api.telegram.org core.telegram.org flora.web.telegram.org kws1-1.web.telegram.org kws1.web.telegram.org kws2-1.web.telegram.org kws2.web.telegram.org kws4-1.web.telegram.org kws4.web.telegram.org kws5-1.web.telegram.org kws5.web.telegram.org pluto-1.web.telegram.org pluto.web.telegram.org td.telegram.org telegram.dog telegram.me telegram.org telegram.space venus.web.telegram.org web.telegram.org zws1-1.web.telegram.org zws1.web.telegram.org zws2-1.web.telegram.org zws2.web.telegram.org zws4-1.web.telegram.org zws5-1.web.telegram.org zws5.web.telegram.org
+149.154.167.220 telesco.pe
+149.154.167.220 tg.dev
 2.23.89.244 ubiservices.cdn.ubi.com
 2.23.89.92 static3.cdn.ubi.com
+3.33.249.140 public-ws-ubiservices.ubi.com
 52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
-18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
-54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 107.175.76.134 37signals.com www.37signals.com
@@ -52,70 +58,70 @@ ff02::2 ip6-allrouters
 2.27.118.34 analog.com www.analog.com
 217.60.245.219 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
 217.60.245.233 antigravity.google www.antigravity.google
-107.175.76.134 web.archive.org
-143.20.64.192 arduino.cc www.arduino.cc
-192.255.159.240 arkoselabs.com www.arkoselabs.com
-192.255.159.241 arrow.com www.arrow.com
-192.3.233.253 astockcdn.net www.astockcdn.net
-2.27.118.34 atlassian.com marketplace.atlassian.com www.atlassian.com
-217.60.245.219 ws.audioscrobbler.com
-217.60.245.233 accounts.autodesk.com autodesk.com autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.com www.autodesk.net
-107.175.76.134 avast.com avast.ru www.avast.com www.avast.ru
-143.20.64.192 aybest.xyz www.aybest.xyz
-192.255.159.240 badoo.app badoo.com consent.badoo.com www.badoo.com
-192.255.159.241 badoocdn.com eu1.ecdn2.badoocdn.com
-192.3.233.253 basecamp.com www.basecamp.com
-2.27.118.34 basecampapi.com www.basecampapi.com
-217.60.245.219 behance.net www.behance.net
-217.60.245.233 bestbuy.com streams.bestbuy.com www.bestbuy.com
-107.175.76.134 bike-components.de www.bike-components.de
-143.20.64.192 bike24.com www.bike24.com
-192.255.159.240 edgeservices.bing.com rewards.bing.com sydney.bing.com
-192.255.159.241 game.boombeachgame.com
-192.3.233.253 ai-chat.bsg.brave.com brave.com www.brave.com
-2.27.118.34 game-assets.brawlstarsgame.com
-217.60.245.219 access.broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
-217.60.245.233 buf.build www.buf.build
-107.175.76.134 bumble.com www.bumble.com
-143.20.64.192 buymeacoffee.com www.buymeacoffee.com
-192.255.159.240 camelai.com stream.camelai.com www.camelai.com
-192.255.159.241 canva-apps.com canva.com canva.dev content-management-files.canva.com static.canva.com www.canva-apps.com www.canva.dev
-192.3.233.253 capcut.com www.capcut.com
-2.27.118.34 api.cdnlibs.org
-217.60.245.219 api.cerebras.ai cerebras.ai www.cerebras.ai
-217.60.245.233 www.cgtrader.com
-107.175.76.134 accounts.chaos.com my.chaos.com ssooauth.chaos.com www.chaos.com
-143.20.64.192 ab.chatgpt.com chatgpt.com chatgpt.site operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com www.chatgpt.site
-192.255.159.240 assets-configurator.chess.com chess.com www.chess.com
-192.255.159.241 cici.com www.cici.com
-192.3.233.253 game-assets.clashofclans.com
-2.27.118.34 game-assets.clashroyaleapp.com
-217.60.245.219 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
-217.60.245.233 claudemcpclient.com www.claudemcpclient.com
-107.175.76.134 clickup.com www.clickup.com
-143.20.64.192 res.cloudinary.com
-192.255.159.240 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com www.codeium.com
-192.255.159.241 images.contentstack.io
-192.3.233.253 coreweave.com www.coreweave.com
-2.27.118.34 corsair.com www.corsair.com www3.corsair.com
-217.60.245.219 crunchyroll.com www.crunchyroll.com
-217.60.245.233 cummins.com www.cummins.com
-107.175.76.134 api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh authenticate.cursor.sh authenticator.cursor.sh cursor-cdn.com cursor.com downloads.cursor.com repo42.cursor.sh us-asia.gcpp.cursor.sh us-eu.gcpp.cursor.sh us-only.gcpp.cursor.sh www.cursor-cdn.com www.cursor.com
-143.20.64.192 marketplace.cursorapi.com
-192.255.159.240 cursorvm.com www.cursorvm.com
-192.255.159.241 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.app deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com www2.deepl.com
-192.3.233.253 deepmind.com deepmind.google
-2.27.118.34 deezer.com payment.deezer.com www.deezer.com
-217.60.245.219 dds.dell.com dell.com dl.dell.com i.dell.com nexus.dell.com www.dell.com
-217.60.245.233 afcs.dellcdn.com dellcdn.com www.dellcdn.com
-107.175.76.134 deniko.xyz www.deniko.xyz
-143.20.64.192 designify.com www.designify.com
-192.255.159.240 digikey.com www.digikey.com
-192.255.159.241 digikeyassets.com www.digikeyassets.com
-192.3.233.253 dtm8.dinamicagenerale.com
-2.27.118.34 dnsspeedtest.online www.dnsspeedtest.online
-217.60.245.219 dola.com www.dola.com
-217.60.245.233 dyson.com dyson.de dyson.se www.dyson.com www.dyson.de www.dyson.se
+31.25.239.132 web.archive.org
+107.175.76.134 arduino.cc www.arduino.cc
+143.20.64.192 arkoselabs.com www.arkoselabs.com
+192.255.159.240 arrow.com www.arrow.com
+192.255.159.241 astockcdn.net www.astockcdn.net
+192.3.233.253 atlassian.com marketplace.atlassian.com www.atlassian.com
+2.27.118.34 ws.audioscrobbler.com
+217.60.245.219 accounts.autodesk.com autodesk.com autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.com www.autodesk.net
+217.60.245.233 avast.com avast.ru www.avast.com www.avast.ru
+31.25.239.132 aybest.xyz www.aybest.xyz
+107.175.76.134 badoo.app badoo.com consent.badoo.com www.badoo.com
+143.20.64.192 badoocdn.com eu1.ecdn2.badoocdn.com
+192.255.159.240 basecamp.com www.basecamp.com
+192.255.159.241 basecampapi.com www.basecampapi.com
+192.3.233.253 behance.net www.behance.net
+2.27.118.34 bestbuy.com streams.bestbuy.com www.bestbuy.com
+217.60.245.219 bike-components.de www.bike-components.de
+217.60.245.233 bike24.com www.bike24.com
+31.25.239.132 edgeservices.bing.com rewards.bing.com sydney.bing.com
+107.175.76.134 game.boombeachgame.com
+143.20.64.192 ai-chat.bsg.brave.com brave.com www.brave.com
+192.255.159.240 game-assets.brawlstarsgame.com
+192.255.159.241 access.broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
+192.3.233.253 buf.build www.buf.build
+2.27.118.34 bumble.com www.bumble.com
+217.60.245.219 buymeacoffee.com www.buymeacoffee.com
+217.60.245.233 camelai.com stream.camelai.com www.camelai.com
+31.25.239.132 canva-apps.com canva.com canva.dev content-management-files.canva.com static.canva.com www.canva-apps.com www.canva.dev
+107.175.76.134 capcut.com www.capcut.com
+143.20.64.192 api.cdnlibs.org
+192.255.159.240 api.cerebras.ai cerebras.ai www.cerebras.ai
+192.255.159.241 www.cgtrader.com
+192.3.233.253 accounts.chaos.com my.chaos.com ssooauth.chaos.com www.chaos.com
+2.27.118.34 ab.chatgpt.com chatgpt.com chatgpt.site operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com www.chatgpt.site
+217.60.245.219 assets-configurator.chess.com chess.com www.chess.com
+217.60.245.233 cici.com www.cici.com
+31.25.239.132 game-assets.clashofclans.com
+107.175.76.134 game-assets.clashroyaleapp.com
+143.20.64.192 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
+192.255.159.240 claudemcpclient.com www.claudemcpclient.com
+192.255.159.241 clickup.com www.clickup.com
+192.3.233.253 res.cloudinary.com
+2.27.118.34 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com www.codeium.com
+217.60.245.219 images.contentstack.io
+217.60.245.233 coreweave.com www.coreweave.com
+31.25.239.132 corsair.com www.corsair.com www3.corsair.com
+107.175.76.134 crunchyroll.com www.crunchyroll.com
+143.20.64.192 cummins.com www.cummins.com
+192.255.159.240 api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh authenticate.cursor.sh authenticator.cursor.sh cursor-cdn.com cursor.com downloads.cursor.com repo42.cursor.sh us-asia.gcpp.cursor.sh us-eu.gcpp.cursor.sh us-only.gcpp.cursor.sh www.cursor-cdn.com www.cursor.com
+192.255.159.241 marketplace.cursorapi.com
+192.3.233.253 cursorvm.com www.cursorvm.com
+2.27.118.34 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.app deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com www2.deepl.com
+217.60.245.219 deepmind.com deepmind.google
+217.60.245.233 deezer.com payment.deezer.com www.deezer.com
+31.25.239.132 dds.dell.com dell.com dl.dell.com i.dell.com nexus.dell.com www.dell.com
+107.175.76.134 afcs.dellcdn.com dellcdn.com www.dellcdn.com
+143.20.64.192 deniko.xyz www.deniko.xyz
+192.255.159.240 designify.com www.designify.com
+192.255.159.241 digikey.com www.digikey.com
+192.3.233.253 digikeyassets.com www.digikeyassets.com
+2.27.118.34 dtm8.dinamicagenerale.com
+217.60.245.219 dnsspeedtest.online www.dnsspeedtest.online
+217.60.245.233 dola.com www.dola.com
+31.25.239.132 dyson.com dyson.de dyson.se www.dyson.com www.dyson.de www.dyson.se
 107.175.76.134 ecosia.org www.ecosia.org
 143.20.64.192 efsanetv.xyz www.efsanetv.xyz
 192.255.159.240 api.elevenlabs.io api.us.elevenlabs.io eleven-public-cdn.elevenlabs.io elevenlabs.io help.elevenlabs.io payload.elevenlabs.io try.elevenlabs.io www.elevenlabs.io
@@ -124,70 +130,70 @@ ff02::2 ip6-allrouters
 2.27.118.34 elgato.com www.elgato.com
 217.60.245.219 elmastvnet.xyz www.elmastvnet.xyz
 217.60.245.233 eneba.com www.eneba.com
-107.175.76.134 enscape3d.com
-143.20.64.192 f00.esfr.pl
-192.255.159.240 etsy.com www.etsy.com
-192.255.159.241 euro.com.pl www.euro.com.pl
-192.3.233.253 evike.com www.evike.com
-2.27.118.34 octanorm.expo.shop
-217.60.245.219 eyyo.xyz www.eyyo.xyz
-217.60.245.233 api.fitbit.com
-107.175.76.134 flow.google www.flow.google
-143.20.64.192 flowmusic.app www.flowmusic.app
-192.255.159.240 formula1.com www.formula1.com
-192.255.159.241 framer.com www.framer.com
-192.3.233.253 freakhosting.com www.freakhosting.com
-2.27.118.34 g2a.com www.g2a.com
-217.60.245.219 game8.co game8.co.jp game8.jp www.game8.co www.game8.co.jp www.game8.jp
-217.60.245.233 gamestop.com www.gamestop.com
-107.175.76.134 gemini.google
-143.20.64.192 generativeai.google
-192.255.159.240 genspark.ai www.genspark.ai
-192.255.159.241 dnstest.geohide.ru
-192.3.233.253 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev fitbit.google.com gemini.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-2.27.118.34 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
-217.60.245.219 assets.grok.com grok.com www.grok.com
-217.60.245.233 guidedhacking.com www.guidedhacking.com
-107.175.76.134 guilded.gg www.guilded.gg
-143.20.64.192 hapi.hentaicdn.org
-192.255.159.240 api.home-connect.com
-192.255.159.241 hume.ai www.hume.ai
-192.3.233.253 ikea.com www.ikea.com
-2.27.118.34 api.imgur.com
-217.60.245.219 indeed.com www.indeed.com
-217.60.245.233 intel.com intel.de intel.se www.intel.com www.intel.de www.intel.se
-107.175.76.134 iperf3serverlist.net www.iperf3serverlist.net
-143.20.64.192 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.com jetbrains.space plugins.jetbrains.com www.jetbrains.com www.jetbrains.space youtrack.jetbrains.com
-192.255.159.240 jules.google
-192.255.159.241 kaleido.ai www.kaleido.ai
-192.3.233.253 labs.google
-2.27.118.34 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
-217.60.245.219 lego.com www.lego.com
-217.60.245.233 client-api.linear.app constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app uploads.linear.app www.linear.app
-107.175.76.134 linguee.com www.linguee.com
-143.20.64.192 m3u.in www.m3u.in
-192.255.159.240 madmapper.com www.madmapper.com
-192.255.159.241 make.com www.make.com
-192.3.233.253 makita.ca makita.cl makita.co.nz makita.com.au makita.com.kh makita.com.tw makita.sk makita.ua www.makita.ca www.makita.cl www.makita.co.nz www.makita.com.au www.makita.com.tw www.makita.sk www.makita.ua
-2.27.118.34 makitalatinamerica.com www.makitalatinamerica.com
-217.60.245.219 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
-217.60.245.233 api.manus.im manus.im www.manus.im
-107.175.76.134 files.manuscdn.com
-143.20.64.192 manybooks.net www.manybooks.net
-192.255.159.240 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
-192.255.159.241 mediaexpert.pl www.mediaexpert.pl
-192.3.233.253 mediamarkt.pl www.mediamarkt.pl
-2.27.118.34 meta.ai www.meta.ai
-217.60.245.219 microcenter.com www.microcenter.com
-217.60.245.233 microchip.com www.microchip.com
-107.175.76.134 copilot.microsoft.com designer.microsoft.com
-143.20.64.192 minicircuits.com www.minicircuits.com
-192.255.159.240 dr.miromind.ai
-192.255.159.241 misterfpga.org www.misterfpga.org
-192.3.233.253 cms-images.mmst.eu
-2.27.118.34 game.mocogame.com
-217.60.245.219 img.modivo.cloud modivo.pl www.modivo.pl
-217.60.245.233 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
+31.25.239.132 enscape3d.com
+107.175.76.134 f00.esfr.pl
+143.20.64.192 etsy.com www.etsy.com
+192.255.159.240 euro.com.pl www.euro.com.pl
+192.255.159.241 evike.com www.evike.com
+192.3.233.253 octanorm.expo.shop
+2.27.118.34 eyyo.xyz www.eyyo.xyz
+217.60.245.219 api.fitbit.com
+217.60.245.233 flow.google www.flow.google
+31.25.239.132 flowmusic.app www.flowmusic.app
+107.175.76.134 formula1.com www.formula1.com
+143.20.64.192 framer.com www.framer.com
+192.255.159.240 freakhosting.com www.freakhosting.com
+192.255.159.241 g2a.com www.g2a.com
+192.3.233.253 game8.co game8.co.jp game8.jp www.game8.co www.game8.co.jp www.game8.jp
+2.27.118.34 gamestop.com www.gamestop.com
+217.60.245.219 gemini.google
+217.60.245.233 generativeai.google
+31.25.239.132 genspark.ai www.genspark.ai
+107.175.76.134 dnstest.geohide.ru
+143.20.64.192 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev fitbit.google.com gemini.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+192.255.159.240 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+192.255.159.241 assets.grok.com grok.com www.grok.com
+192.3.233.253 guidedhacking.com www.guidedhacking.com
+2.27.118.34 guilded.gg www.guilded.gg
+217.60.245.219 hapi.hentaicdn.org
+217.60.245.233 api.home-connect.com
+31.25.239.132 hume.ai www.hume.ai
+107.175.76.134 ikea.com www.ikea.com
+143.20.64.192 api.imgur.com
+192.255.159.240 indeed.com www.indeed.com
+192.255.159.241 intel.com intel.de intel.se www.intel.com www.intel.de www.intel.se
+192.3.233.253 iperf3serverlist.net www.iperf3serverlist.net
+2.27.118.34 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.com jetbrains.space plugins.jetbrains.com www.jetbrains.com www.jetbrains.space youtrack.jetbrains.com
+217.60.245.219 jules.google
+217.60.245.233 kaleido.ai www.kaleido.ai
+31.25.239.132 labs.google
+107.175.76.134 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
+143.20.64.192 lego.com www.lego.com
+192.255.159.240 client-api.linear.app constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app uploads.linear.app www.linear.app
+192.255.159.241 linguee.com www.linguee.com
+192.3.233.253 m3u.in www.m3u.in
+2.27.118.34 madmapper.com www.madmapper.com
+217.60.245.219 make.com www.make.com
+217.60.245.233 makita.ca makita.cl makita.co.nz makita.com.au makita.com.kh makita.com.tw makita.sk makita.ua www.makita.ca www.makita.cl www.makita.co.nz www.makita.com.au www.makita.com.tw www.makita.sk www.makita.ua
+31.25.239.132 makitalatinamerica.com www.makitalatinamerica.com
+107.175.76.134 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
+143.20.64.192 api.manus.im manus.im www.manus.im
+192.255.159.240 files.manuscdn.com
+192.255.159.241 manybooks.net www.manybooks.net
+192.3.233.253 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
+2.27.118.34 mediaexpert.pl www.mediaexpert.pl
+217.60.245.219 mediamarkt.pl www.mediamarkt.pl
+217.60.245.233 meta.ai www.meta.ai
+31.25.239.132 microcenter.com www.microcenter.com
+107.175.76.134 microchip.com www.microchip.com
+143.20.64.192 copilot.microsoft.com designer.microsoft.com
+192.255.159.240 minicircuits.com www.minicircuits.com
+192.255.159.241 dr.miromind.ai
+192.3.233.253 misterfpga.org www.misterfpga.org
+2.27.118.34 cms-images.mmst.eu
+217.60.245.219 game.mocogame.com
+217.60.245.233 img.modivo.cloud modivo.pl www.modivo.pl
+31.25.239.132 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
 107.175.76.134 monica.im www.monica.im
 143.20.64.192 mouser.com www.mouser.com
 192.255.159.240 myjetbrains.com www.myjetbrains.com
@@ -196,70 +202,70 @@ ff02::2 ip6-allrouters
 2.27.118.34 aeronube.csm.naukri.com apis.naukri.com apply.naukri.com applyintegration.naukri.com assessment.nc.naukri.com assessments.naukri.com assessments.nc.naukri.com assets.staging.assessment.nc.naukri.com autodiscover.csm.naukri.com autodiscover.login.recruit.naukri.com autodiscover.naukri.com autodiscover.rms.naukri.com avasin.naukri.com blogs.naukri.com careernavigator.naukri.com careers.naukri.com careersite.naukri.com careersite.secure.naukri.com careersitescdn.naukri.com ccs-service.naukri.com chatbot.naukri.com chatclient-mobile.naukri.com chatclient.naukri.com cm.naukri.com communication.naukri.com companies.naukri.com company.naukri.com contentcdn.naukri.com contest.nc.naukri.com corp.naukri.com cps.naukri.com csm.naukri.com csmmail.naukri.com css.naukri.com dashboard.naukri.com delivery.naukri.com demologin.resdex.naukri.com demoresdex.naukri.com e-learning.naukri.com eapps.naukri.com echo.naukri.com engineering.naukri.com enterprise.naukri.com feeds.naukri.com fflms.naukri.com files.naukri.com filestg.naukri.com filevalidation.naukri.com fn-hackathon-ui.nc.naukri.com freesearch.naukri.com hiring.naukri.com images.naukri.com img.naukri.com in.naukri.com insights.naukri.com insightsapi.naukri.com jatracking.naukri.com jobfeeds.naukri.com jobs.naukri.com jobsearch.naukri.com jpreports.naukri.com js.naukri.com learning.naukri.com lg.naukri.com lms.naukri.com login.naukri.com login.recruit.naukri.com logs.naukri.com lyncdiscover.naukri.com m.naukri.com m102.naukri.com m75.naukri.com m83.naukri.com m9.naukri.com m91.naukri.com maestrorecruiter.naukri.com mail.naukri.com mailersystem.naukri.com mailtracking.naukri.com media.naukri.com mediacdn.naukri.com messenger.naukri.com mobile.naukri.com mscanus.naukri.com my.naukri.com naukri.com naukriconfidential.naukri.com naukrihiringsuite.naukri.com naukrirecruiter.naukri.com nimg.naukri.com nmail-103-214-115-103.naukri.com nmail-103-214-115-125.naukri.com nmail-one03-two14-one15-one22.naukri.com nmail-one03-two14-one15-one24.naukri.com nmail-one03-two14-one15-one32.naukri.com nmail-one03-two14-one15-one33.naukri.com nmail-one03-two14-one15-one34.naukri.com nmail-one03-two14-one15-one38.naukri.com nmail-one03-two14-one15-one39.naukri.com nmail-one03-two14-one15-one93.naukri.com nmail-one03-two14-one15-one94.naukri.com nmail-one03-two14-one15-one95.naukri.com nmail-one03-two14-one15-one96.naukri.com nmail-one03-two14-one15-one97.naukri.com nmail-one03-two14-one15-two13.naukri.com nmail-one03-two14-one15-two14.naukri.com nmail-one03-two14-one15-two15.naukri.com nmail193.naukri.com nmail214.naukri.com noidacas01.naukri.com noinsight.naukri.com notifications.naukri.com onlinetest.nc.naukri.com p.naukri.com pg.naukri.com pop.naukri.com posting.naukri.com productupdates.naukri.com pt.naukri.com pulse.naukri.com rdxfootmark.naukri.com recruit.naukri.com recruiter.naukri.com recruiterfaq.naukri.com recruiters.naukri.com recruitersurvey.naukri.com recruiterzone.naukri.com referral.naukri.com resbilling.naukri.com resdex.base.naukri.com resdex.naukri.com resht.naukri.com resman.naukri.com response.naukri.com restservices.naukri.com resume.naukri.com resumepedia.naukri.com resumeservices.naukri.com rms.naukri.com rmsbulkupload.naukri.com rmsmail.naukri.com sip.naukri.com smtp.naukri.com staging.assessment.nc.naukri.com staging.contest.nc.naukri.com staging.fn-hackathon-ui.nc.naukri.com staging.onlinetest.nc.naukri.com static.naukri.com static.staging.assessment.nc.naukri.com stgmtstap.naukri.com stgmtstjs.naukri.com stgmtstmnj.naukri.com stgmtstwb.naukri.com stream.naukri.com streamgenai.naukri.com suggest-staging.naukri.com suggest.naukri.com suggestlg.naukri.com suggestor.naukri.com tableau.naukri.com target.naukri.com taxonomy-suggest.naukri.com trust.naukri.com verify.naukri.com vmscanus.naukri.com w.naukri.com w10.naukri.com w16.naukri.com w28.naukri.com w37.naukri.com w4.naukri.com w5.naukri.com webhooks.naukri.com webtracker.naukri.com whitehat.naukri.com wtg.csm.naukri.com www.e-learning.naukri.com www.echo.naukri.com www.learning.naukri.com www.naukri.com www.resume.naukri.com yahoo.naukri.com
 217.60.245.219 downloads.ndi.tv ndi.tv ndi.video www.ndi.tv www.ndi.video
 217.60.245.233 console.neon.tech
-107.175.76.134 netapp.com www.netapp.com
-143.20.64.192 notebook.google www.notebook.google
-192.255.159.240 notebooklm.google
-192.255.159.241 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
-192.3.233.253 developer.nvidia.com
-2.27.118.34 cdn.oaistatic.com oaistatic.com www.oaistatic.com
-217.60.245.219 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
-217.60.245.233 octanorm.com www.octanorm.com
-107.175.76.134 ecs.office.com
-143.20.64.192 geolocation.onetrust.com
-192.255.159.240 opal.google
-192.255.159.241 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
-192.3.233.253 opencode.ai www.opencode.ai
-2.27.118.34 ciscobinary.openh264.org
-217.60.245.219 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
-217.60.245.233 cloud.oracle.com oracle.com www.oracle.com
-107.175.76.134 padi.com www.padi.com
-143.20.64.192 pandasecurity.com www.pandasecurity.com
-192.255.159.240 panic.com www.panic.com
-192.255.159.241 platform.parallel.ai
-192.3.233.253 builds.parsec.app
-2.27.118.34 files-s2pb.pbsync.com
-217.60.245.219 pcmag.com www.pcmag.com
-217.60.245.233 pi.ai www.pi.ai
-107.175.76.134 o.pki.goog
-143.20.64.192 play.date www.play.date
-192.255.159.240 eu.posthog.com
-192.255.159.241 powertoolsuk.co.uk www.powertoolsuk.co.uk
-192.3.233.253 ppkas.com www.ppkas.com
-2.27.118.34 pr0gramm.com www.pr0gramm.com
-217.60.245.219 promods.net www.promods.net
-217.60.245.233 frontend-api-v3.pump.fun images.pump.fun pump.fun swap-api.pump.fun
-107.175.76.134 anthropic.qualtrics.com qualtrics.com www.qualtrics.com
-143.20.64.192 qwant.com www.qwant.com
-192.255.159.240 api.radarr.video
-192.255.159.241 remove.bg www.remove.bg
-192.3.233.253 app.reve.com preview.reve.art reve.art reve.com www.reve.art www.reve.com
-2.27.118.34 romsgames.net www.romsgames.net
-217.60.245.219 blogs.sap.com community.sap.com
-217.60.245.233 scribd.com www.scribd.com
-107.175.76.134 scribdassets.com www.scribdassets.com
-143.20.64.192 se.com www.se.com
-192.255.159.240 securitytrails.com www.securitytrails.com
-192.255.159.241 prowlarr.servarr.com
-192.3.233.253 singlekey-id.com www.singlekey-id.com
-2.27.118.34 3dwarehouse.sketchup.com extensions.sketchup.com sketchup.com www.sketchup.com
-217.60.245.219 slack.com www.slack.com
-217.60.245.233 slackb.com www.slackb.com
-107.175.76.134 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
-143.20.64.192 api-global.squareup.com api.squareup.com squareup.com www.squareup.com
-192.255.159.240 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
-192.255.159.241 api.stumbleguys.com matchmaking.stumbleguys.com
-192.3.233.253 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-2.27.118.34 superpharm.eu superpharm.pl www.superpharm.eu www.superpharm.pl
-217.60.245.219 tableau.com www.tableau.com
-217.60.245.233 controlplane.tailscale.com
-107.175.76.134 dl.teamviewer.com download.teamviewer.com
-143.20.64.192 ti.com www.ti.com
-192.255.159.240 download.todesktop.com
-192.255.159.241 api-sg-central.trae.ai api.trae.ai
-192.3.233.253 tria.ge www.tria.ge
-2.27.118.34 id.trimble.com sketchup.trimble.com trimble.com www.trimble.com
-217.60.245.219 trueachievements.com www.trueachievements.com
-217.60.245.233 consent.trustarc.com
+31.25.239.132 netapp.com www.netapp.com
+107.175.76.134 notebook.google www.notebook.google
+143.20.64.192 notebooklm.google
+192.255.159.240 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
+192.255.159.241 developer.nvidia.com
+192.3.233.253 cdn.oaistatic.com oaistatic.com www.oaistatic.com
+2.27.118.34 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+217.60.245.219 octanorm.com www.octanorm.com
+217.60.245.233 ecs.office.com
+31.25.239.132 geolocation.onetrust.com
+107.175.76.134 opal.google
+143.20.64.192 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+192.255.159.240 opencode.ai www.opencode.ai
+192.255.159.241 ciscobinary.openh264.org
+192.3.233.253 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
+2.27.118.34 cloud.oracle.com oracle.com www.oracle.com
+217.60.245.219 padi.com www.padi.com
+217.60.245.233 pandasecurity.com www.pandasecurity.com
+31.25.239.132 panic.com www.panic.com
+107.175.76.134 platform.parallel.ai
+143.20.64.192 builds.parsec.app
+192.255.159.240 files-s2pb.pbsync.com
+192.255.159.241 pcmag.com www.pcmag.com
+192.3.233.253 pi.ai www.pi.ai
+2.27.118.34 o.pki.goog
+217.60.245.219 play.date www.play.date
+217.60.245.233 eu.posthog.com
+31.25.239.132 powertoolsuk.co.uk www.powertoolsuk.co.uk
+107.175.76.134 ppkas.com www.ppkas.com
+143.20.64.192 pr0gramm.com www.pr0gramm.com
+192.255.159.240 promods.net www.promods.net
+192.255.159.241 frontend-api-v3.pump.fun images.pump.fun pump.fun swap-api.pump.fun
+192.3.233.253 anthropic.qualtrics.com qualtrics.com www.qualtrics.com
+2.27.118.34 qwant.com www.qwant.com
+217.60.245.219 api.radarr.video
+217.60.245.233 remove.bg www.remove.bg
+31.25.239.132 app.reve.com preview.reve.art reve.art reve.com www.reve.art www.reve.com
+107.175.76.134 romsgames.net www.romsgames.net
+143.20.64.192 blogs.sap.com community.sap.com
+192.255.159.240 scribd.com www.scribd.com
+192.255.159.241 scribdassets.com www.scribdassets.com
+192.3.233.253 se.com www.se.com
+2.27.118.34 securitytrails.com www.securitytrails.com
+217.60.245.219 prowlarr.servarr.com
+217.60.245.233 singlekey-id.com www.singlekey-id.com
+31.25.239.132 3dwarehouse.sketchup.com extensions.sketchup.com sketchup.com www.sketchup.com
+107.175.76.134 slack.com www.slack.com
+143.20.64.192 slackb.com www.slackb.com
+192.255.159.240 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+192.255.159.241 api-global.squareup.com api.squareup.com squareup.com www.squareup.com
+192.3.233.253 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+2.27.118.34 api.stumbleguys.com matchmaking.stumbleguys.com
+217.60.245.219 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
+217.60.245.233 superpharm.eu superpharm.pl www.superpharm.eu www.superpharm.pl
+31.25.239.132 tableau.com www.tableau.com
+107.175.76.134 controlplane.tailscale.com
+143.20.64.192 dl.teamviewer.com download.teamviewer.com
+192.255.159.240 ti.com www.ti.com
+192.255.159.241 download.todesktop.com
+192.3.233.253 api-sg-central.trae.ai api.trae.ai
+2.27.118.34 tria.ge www.tria.ge
+217.60.245.219 id.trimble.com sketchup.trimble.com trimble.com www.trimble.com
+217.60.245.233 trueachievements.com www.trueachievements.com
+31.25.239.132 consent.trustarc.com
 107.175.76.134 static-assets-1.truthsocial.com truthsocial.com www.truthsocial.com
 143.20.64.192 usher.ttvnw.net
 192.255.159.240 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
@@ -268,28 +274,28 @@ ff02::2 ip6-allrouters
 2.27.118.34 ultimaker.com www.ultimaker.com
 217.60.245.219 unscreen.com www.unscreen.com
 217.60.245.233 vipvera.com www.vipvera.com
-107.175.76.134 w-x.co www.w-x.co
-143.20.64.192 metallica-api.wbagora.com wbagora.com www.wbagora.com
-192.255.159.240 account.wbgames.com wbgames.com www.wbgames.com
-192.255.159.241 upsx.weather.com weather.com www.weather.com
-192.3.233.253 cdn.web-platform.io
-2.27.118.34 weborama.nl www.weborama.nl
-217.60.245.219 whimsical.com www.whimsical.com
-217.60.245.233 windguru.cz www.windguru.cz
-107.175.76.134 marketplace.windsurf.com windsurf.com
-143.20.64.192 wise.com www.wise.com
-192.255.159.240 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
-192.255.159.241 users.wix.com
-192.3.233.253 api.workos.com
-2.27.118.34 wund.com www.wund.com
-217.60.245.219 wunderground.com www.wunderground.com
-217.60.245.233 www.wxug.com wxug.com
-107.175.76.134 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai grok.x.com www.x.ai x.ai
-143.20.64.192 xboxdesignlab.xbox.com
-192.255.159.240 auth.xboxlive.com gssv-play-prod.xboxlive.com titlestorage.xboxlive.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
-192.255.159.241 accountmanagement.services.xerox.com support.xerox.com www.support.xerox.com www.xerox.com xerox.com
-192.3.233.253 www.xiaomi.eu xiaomi.eu
-2.27.118.34 www.yeggi.com yeggi.com
-217.60.245.219 www.yupp.ai yupp.ai
-217.60.245.233 www.zapier-deployment.com www.zapier.com zapier-deployment.com zapier.com
-107.175.76.134 app.zerossl.com
+31.25.239.132 w-x.co www.w-x.co
+107.175.76.134 metallica-api.wbagora.com wbagora.com www.wbagora.com
+143.20.64.192 account.wbgames.com wbgames.com www.wbgames.com
+192.255.159.240 upsx.weather.com weather.com www.weather.com
+192.255.159.241 cdn.web-platform.io
+192.3.233.253 weborama.nl www.weborama.nl
+2.27.118.34 whimsical.com www.whimsical.com
+217.60.245.219 windguru.cz www.windguru.cz
+217.60.245.233 marketplace.windsurf.com windsurf.com
+31.25.239.132 wise.com www.wise.com
+107.175.76.134 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
+143.20.64.192 users.wix.com
+192.255.159.240 api.workos.com
+192.255.159.241 wund.com www.wund.com
+192.3.233.253 wunderground.com www.wunderground.com
+2.27.118.34 www.wxug.com wxug.com
+217.60.245.219 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai grok.x.com www.x.ai x.ai
+217.60.245.233 xboxdesignlab.xbox.com
+31.25.239.132 auth.xboxlive.com gssv-play-prod.xboxlive.com titlestorage.xboxlive.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
+107.175.76.134 accountmanagement.services.xerox.com support.xerox.com www.support.xerox.com www.xerox.com xerox.com
+143.20.64.192 www.xiaomi.eu xiaomi.eu
+192.255.159.240 www.yeggi.com yeggi.com
+192.255.159.241 www.yupp.ai yupp.ai
+192.3.233.253 www.zapier-deployment.com www.zapier.com zapier-deployment.com zapier.com
+2.27.118.34 app.zerossl.com
