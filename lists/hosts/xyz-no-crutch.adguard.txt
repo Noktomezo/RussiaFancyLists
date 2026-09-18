@@ -50,7 +50,6 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
-||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||api.deepl.com^$dnsrewrite=NOERROR;A;109.120.137.190
@@ -225,19 +224,6 @@
 ||swap-api.pump.fun^$dnsrewrite=NOERROR;A;109.120.137.190
 ||qwant.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.qwant.com^$dnsrewrite=NOERROR;A;109.120.137.190
-||accounts.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||av.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||daily-mix.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||encore.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||i.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||image-cdn-fa.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||line-up.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||lineup-images.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||mosaic.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||seafoam.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||www-growth.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
-||www.scdn.co^$dnsrewrite=NOERROR;A;109.120.137.190
 ||account.spotify.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||accounts.spotify.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;109.120.137.190
