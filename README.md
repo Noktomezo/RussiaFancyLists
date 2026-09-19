@@ -37,8 +37,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/domains/full.lst -->30.13 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->20.75 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/domains/full.lst -->30.18 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->20.76 MB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -49,8 +49,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->915.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->592.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->917.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->592.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->178.2 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -64,9 +64,9 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->47.94 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->9.71 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->34.05 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->48.01 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->9.73 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->34.07 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->7.13 MB<!-- SIZE_END -->
       </td>
     </tr>
@@ -82,9 +82,9 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.49 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->989.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->133.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->177.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->990.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->133.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->300.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->42.2 KB<!-- SIZE_END -->
       </td>
@@ -99,9 +99,9 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->39.64 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->9.18 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->28.01 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->39.70 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->9.20 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->28.02 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.56 MB<!-- SIZE_END -->
       </td>
     </tr>
@@ -117,9 +117,9 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.22 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->204.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->808.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->169.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->204.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->809.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->169.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->244.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->55.6 KB<!-- SIZE_END -->
       </td>
@@ -314,8 +314,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->101.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->98.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->100.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->98.1 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2057/2057<br>
@@ -478,7 +478,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
       <td>
         • <!-- SIZE:lists/hosts/smart.adguard.txt -->225.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->218.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->219.0 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2057/2057<br>
