@@ -12,7 +12,6 @@
 ||static.cdninstagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||gamea.clashofclans.com^$dnsrewrite=NOERROR;A;193.23.209.189
 ||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;81.17.20.82
-||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;144.31.14.104
 ||updates.discord.com^$dnsrewrite=NOERROR;A;162.159.135.232
 ||facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||www.facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
@@ -5300,6 +5299,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||www.codeium.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
@@ -5307,6 +5307,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||www.codeium.com^$dnsrewrite=NOERROR;A;107.175.76.134
 ||codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
@@ -5314,6 +5315,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
@@ -5321,6 +5323,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||www.codeium.com^$dnsrewrite=NOERROR;A;143.20.64.192
 ||codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
@@ -5328,6 +5331,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
 ||www.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.240
 ||codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
@@ -5335,6 +5339,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
 ||www.codeium.com^$dnsrewrite=NOERROR;A;192.255.159.241
 ||codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
@@ -5342,6 +5347,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||www.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
@@ -5349,6 +5355,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||www.codeium.com^$dnsrewrite=NOERROR;A;2.27.118.34
 ||codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -5356,6 +5363,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.codeium.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
@@ -5363,6 +5371,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||www.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
@@ -5370,6 +5379,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||www.codeium.com^$dnsrewrite=NOERROR;A;217.60.245.233
 ||codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
@@ -5377,6 +5387,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||www.codeium.com^$dnsrewrite=NOERROR;A;31.25.239.132
 ||codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
@@ -5384,6 +5395,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
 ||www.codeium.com^$dnsrewrite=NOERROR;A;45.88.174.254
 ||codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -5391,6 +5403,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
@@ -5398,6 +5411,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
 ||www.codeium.com^$dnsrewrite=NOERROR;A;85.137.92.169
 ||codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
@@ -5405,6 +5419,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
 ||www.codeium.com^$dnsrewrite=NOERROR;A;91.207.75.110
 ||codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
 ||inference.codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
@@ -5412,6 +5427,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
 ||www.codeium.com^$dnsrewrite=NOERROR;A;95.81.102.30
 ||codeiumdata.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||codeiumdata.com^$dnsrewrite=NOERROR;A;107.175.76.134
