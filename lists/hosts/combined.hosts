@@ -44,7 +44,6 @@ ff02::2 ip6-allrouters
 2.23.89.244 ubiservices.cdn.ubi.com
 2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
-52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
 52.222.149.31 ubisoft.com
 
@@ -14108,23 +14107,23 @@ ff02::2 ip6-allrouters
 85.137.92.169 uaudio.com
 91.207.75.110 uaudio.com
 95.81.102.30 uaudio.com
-103.27.157.38 store.ubi.com
-107.175.76.134 store.ubi.com
-109.120.137.190 store.ubi.com
-143.20.64.192 store.ubi.com
-192.255.159.240 store.ubi.com
-192.255.159.241 store.ubi.com
-192.3.233.253 store.ubi.com
-2.27.118.34 store.ubi.com
-217.60.179.6 store.ubi.com
-217.60.245.219 store.ubi.com
-217.60.245.233 store.ubi.com
-31.25.239.132 store.ubi.com
-45.88.174.254 store.ubi.com
-62.133.62.97 store.ubi.com
-85.137.92.169 store.ubi.com
-91.207.75.110 store.ubi.com
-95.81.102.30 store.ubi.com
+103.27.157.38 store.ubi.com ubi.com
+107.175.76.134 store.ubi.com ubi.com
+109.120.137.190 store.ubi.com ubi.com
+143.20.64.192 store.ubi.com ubi.com
+192.255.159.240 store.ubi.com ubi.com
+192.255.159.241 store.ubi.com ubi.com
+192.3.233.253 store.ubi.com ubi.com
+2.27.118.34 store.ubi.com ubi.com
+217.60.179.6 store.ubi.com ubi.com
+217.60.245.219 store.ubi.com ubi.com
+217.60.245.233 store.ubi.com ubi.com
+31.25.239.132 store.ubi.com ubi.com
+45.88.174.254 store.ubi.com ubi.com
+62.133.62.97 store.ubi.com ubi.com
+85.137.92.169 store.ubi.com ubi.com
+91.207.75.110 store.ubi.com ubi.com
+95.81.102.30 store.ubi.com ubi.com
 103.27.157.38 connect.ubisoft.com uplay.ubisoft.com
 107.175.76.134 connect.ubisoft.com uplay.ubisoft.com
 109.120.137.190 connect.ubisoft.com uplay.ubisoft.com
