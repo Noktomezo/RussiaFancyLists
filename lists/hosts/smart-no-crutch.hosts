@@ -161,13 +161,14 @@ ff02::2 ip6-allrouters
 2.27.118.34 www.autocad.com
 31.25.239.132 www.autocad.com
 62.133.62.97 autocad.com
-107.175.76.134 accounts.autodesk.com autodesk.ae autodesk.com autodesk.net damassets.autodesk.net www.autodesk.net
+107.175.76.134 autodesk.ae autodesk.com autodesk.net damassets.autodesk.net www.autodesk.net
 132.243.119.73 www.autodesk.ae www.autodesk.be
 143.20.64.192 autodesk.ae autodesk.be
-192.255.159.240 accounts.autodesk.com autodesk.be www.autodesk.com
+192.255.159.240 autodesk.be www.autodesk.com
 192.255.159.241 autodesk.com autodesk.eu dl.appstreaming.autodesk.com efulfillment.autodesk.com
 192.3.233.253 autodesk.eu autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.com www.autodesk.net
-31.25.239.132 www.autodesk.ae
+2.27.118.34 accounts.autodesk.com
+31.25.239.132 accounts.autodesk.com www.autodesk.ae
 45.88.174.254 www.autodesk.be
 91.207.75.110 www.autodesk.eu
 95.81.102.30 www.autodesk.eu
@@ -363,12 +364,12 @@ ff02::2 ip6-allrouters
 192.255.159.241 www.cgtrader.com
 192.3.233.253 chainreactioncycles.com
 2.27.118.34 chainreactioncycles.com
-107.175.76.134 accounts.chaos.com my.chaos.com try.chaos.com www.chaos.com
+107.175.76.134 my.chaos.com try.chaos.com www.chaos.com
 143.20.64.192 try.chaos.com
-192.255.159.240 accounts.chaos.com forums.chaos.com ssooauth.chaos.com
+192.255.159.240 forums.chaos.com ssooauth.chaos.com
 192.255.159.241 forums.chaos.com my.chaos.com ssooauth.chaos.com www.chaos.com
-2.27.118.34 chaos.com
-31.25.239.132 chaos.com
+2.27.118.34 accounts.chaos.com chaos.com
+31.25.239.132 accounts.chaos.com chaos.com
 132.243.119.73 chat.com
 31.25.239.132 chat.com
 143.20.64.192 chatfuel.com
@@ -1284,11 +1285,12 @@ ff02::2 ip6-allrouters
 192.3.233.253 modivo.pl
 132.243.119.73 moneypuck.com
 31.25.239.132 moneypuck.com
-107.175.76.134 account.mongodb.com cloud.mongodb.com
+107.175.76.134 cloud.mongodb.com
+143.20.64.192 account.mongodb.com
 192.255.159.240 mongodb.com webassets.mongodb.com www.mongodb.com
 192.255.159.241 api.blue.mongodb.com cloud.mongodb.com www.mongodb.com
-192.3.233.253 account.mongodb.com api.blue.mongodb.com mongodb.com webassets.mongodb.com
-2.27.118.34 evs.blue.mongodb.co
+192.3.233.253 api.blue.mongodb.com mongodb.com webassets.mongodb.com
+2.27.118.34 account.mongodb.com evs.blue.mongodb.co
 31.25.239.132 evs.blue.mongodb.co
 45.88.174.254 mongodb.net
 91.207.75.110 mongodb.net
@@ -1910,10 +1912,12 @@ ff02::2 ip6-allrouters
 192.255.159.241 splunk.com
 192.255.159.241 splunkcloud.com
 192.3.233.253 splunkcloud.com
-107.175.76.134 accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com client.spotify.com connect.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com exp.wg.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com image-upload.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com
+107.175.76.134 aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com client.spotify.com connect.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com exp.wg.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com image-upload.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com
 192.255.159.240 account.spotify.com ap-gae2.spotify.com ap-sto3.spotify.com api-partner.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com edge-web.dual-gslb.spotify.com gce.spotify.com log.spotify.com metrics.spotify.com spclient.spotify.com xpui.app.spotify.com
-192.255.159.241 accounts.spotify.com analytics.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api.spotify.com appresolve.spotify.com clienttoken.spotify.com content.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com pixel.spotify.com
+192.255.159.241 analytics.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api.spotify.com appresolve.spotify.com clienttoken.spotify.com content.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com pixel.spotify.com
 192.3.233.253 account.spotify.com aet.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com gae2-spclient.spotify.com gew1-dealer.g2.spotify.com gew1-spclient.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+2.27.118.34 accounts.spotify.com
+31.25.239.132 accounts.spotify.com
 109.120.137.190 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 132.243.119.73 spotifycdn.net
 31.25.239.132 spotifycdn.net
@@ -1958,10 +1962,11 @@ ff02::2 ip6-allrouters
 192.3.233.253 summerana.com
 2.27.118.34 summerana.com
 107.175.76.134 cdn.id.supercell.com
-192.255.159.240 accounts.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-192.255.159.241 accounts.supercell.com cdn.id.supercell.com
+143.20.64.192 accounts.supercell.com
+192.255.159.240 clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
+192.255.159.241 cdn.id.supercell.com
 192.3.233.253 clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-2.27.118.34 supercell.com
+2.27.118.34 accounts.supercell.com supercell.com
 31.25.239.132 supercell.com
 192.255.159.240 www.superpharm.pl
 192.255.159.241 superpharm.eu superpharm.pl www.superpharm.eu
@@ -2304,9 +2309,10 @@ ff02::2 ip6-allrouters
 192.255.159.241 xenserver.com
 192.3.233.253 xenserver.com
 107.175.76.134 support.xerox.com www.support.xerox.com
-192.255.159.240 accountmanagement.services.xerox.com support.xerox.com www.xerox.com xerox.com
+192.255.159.240 support.xerox.com www.xerox.com xerox.com
 192.255.159.241 www.support.xerox.com www.xerox.com xerox.com
-192.3.233.253 accountmanagement.services.xerox.com
+2.27.118.34 accountmanagement.services.xerox.com
+31.25.239.132 accountmanagement.services.xerox.com
 2.27.118.34 xfantazy.com
 31.25.239.132 xfantazy.com
 107.175.76.134 xiaomi.eu
