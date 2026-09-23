@@ -105,7 +105,6 @@
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;3.33.249.140
 ||ubi.com^$dnsrewrite=NOERROR;A;52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;99.83.188.134
-||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
 
 ! Geoblock
 ||37signals.com^$dnsrewrite=NOERROR;A;107.175.76.134
