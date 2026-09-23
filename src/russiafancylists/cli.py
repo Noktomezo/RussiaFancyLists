@@ -264,6 +264,11 @@ async def run_pipeline(
                     TEMP_FOLDER / "service" / "zapret-hosts-user-exclude.txt",
                     SERVICE_LIST_FOLDER / "prefer-direct.lst",
                 ),
+                asyncio.to_thread(
+                    process_service_domains,
+                    TEMP_FOLDER / "service" / "domains-ech.lst",
+                    SERVICE_LIST_FOLDER / "direct-with-ech.lst",
+                ),
             )
             status.update(
                 "[cyan]Measuring Smart DNS proxy latencies and updating README status..."
@@ -364,6 +369,13 @@ async def run_pipeline(
                     SERVICE_SING_BOX_FOLDER / "prefer-direct.json",
                     SERVICE_SING_BOX_FOLDER / "prefer-direct.srs",
                 ),
+                asyncio.to_thread(
+                    generate_sing_box_ruleset,
+                    "domain_suffix",
+                    SERVICE_LIST_FOLDER / "direct-with-ech.lst",
+                    SERVICE_SING_BOX_FOLDER / "direct-with-ech.json",
+                    SERVICE_SING_BOX_FOLDER / "direct-with-ech.srs",
+                ),
                 # Blacklist rulesets (Mihomo)
                 asyncio.to_thread(
                     generate_mihomo_ruleset,
@@ -444,6 +456,13 @@ async def run_pipeline(
                     SERVICE_LIST_FOLDER / "prefer-direct.lst",
                     SERVICE_MIHOMO_FOLDER / "prefer-direct.yaml",
                     SERVICE_MIHOMO_FOLDER / "prefer-direct.mrs",
+                ),
+                asyncio.to_thread(
+                    generate_mihomo_ruleset,
+                    "domain_suffix",
+                    SERVICE_LIST_FOLDER / "direct-with-ech.lst",
+                    SERVICE_MIHOMO_FOLDER / "direct-with-ech.yaml",
+                    SERVICE_MIHOMO_FOLDER / "direct-with-ech.mrs",
                 ),
             )
             status.update("[cyan]Updating README file size tables...")

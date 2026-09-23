@@ -4,3 +4,19 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
+# Geoblock
+178.253.16.219 api.anthropic.com
+185.245.107.237 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
+62.60.230.61 claude.ai platform.claude.com www.claude.ai
+178.253.16.219 api2.cursor.sh api3.cursor.sh api4.cursor.sh repo42.cursor.sh us-only.gcpp.cursor.sh
+185.245.107.237 www.genspark.ai
+62.60.230.61 ai.google.dev aistudio.google.com alkalimakersuite-pa.clients6.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com
+178.253.16.219 aisandbox-pa.googleapis.com daily-cloudcode-pa.googleapis.com generativelanguage.googleapis.com robinfrontend-pa.googleapis.com
+185.245.107.237 grok.com
+62.60.230.61 labs.google
+178.253.16.219 api.manus.im manus.im www.manus.im
+185.245.107.237 copilot.microsoft.com
+62.60.230.61 android.chat.openai.com api.openai.com auth.openai.com
+178.253.16.219 cdn-1.strava.com graphql.strava.com strava.com www.strava.com
+185.245.107.237 usher.ttvnw.net
+62.60.230.61 gql.twitch.tv

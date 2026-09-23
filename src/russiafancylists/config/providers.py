@@ -110,6 +110,11 @@ DOWNLOADS = {
         TEMP_FOLDER / "service" / "zapret-hosts-user-exclude.txt",
         "Zapret-Manager exclude list",
     ),
+    "service_direct_with_ech": (
+        "https://github.com/Akiyamov/singbox-ech-list/releases/latest/download/domains_ech.lst",
+        TEMP_FOLDER / "service" / "domains-ech.lst",
+        "Singbox ECH domain list",
+    ),
 }
 
 # Smart DNS / DoH endpoints for harvesting SNI proxy IP addresses
