@@ -105,6 +105,7 @@
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;3.33.249.140
 ||ubi.com^$dnsrewrite=NOERROR;A;52.6.7.14
 ||public-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;99.83.188.134
+||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
 
 ! Geoblock
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -170,6 +171,7 @@
 ||elevenreader.io^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.elgato.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||z-p42-chat-e2ee-ig.facebook.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||api.fitbit.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||framer.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;217.60.179.6
