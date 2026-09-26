@@ -50,8 +50,8 @@
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->919.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->654.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->170.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->596.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->179.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -83,10 +83,10 @@
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.49 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->178.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->1.07 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->144.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->287.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->40.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->997.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->134.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->302.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->42.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -118,10 +118,10 @@
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.22 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->205.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->892.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->180.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->234.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->53.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->815.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->169.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->246.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->56.0 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -254,7 +254,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/service/direct-with-ech.lst"><code>direct-with-ech.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/service/prefer-direct.lst -->7.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service/prefer-direct.lst -->7.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service/direct-with-ech.lst -->241.8 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -284,8 +284,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/service-mihomo/direct-with-ech.mrs"><code>direct-with-ech.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->10.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-mihomo/prefer-direct.mrs -->3.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->10.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-mihomo/prefer-direct.mrs -->3.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->335.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->104.3 KB<!-- SIZE_END -->
       </td>
@@ -326,8 +326,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->102.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->100.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->103.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->101.2 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2057/2057<br>
@@ -341,8 +341,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->682.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->680.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->729.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->726.8 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2057/2057<br>
@@ -371,7 +371,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.hosts"><code>comss-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.hosts -->9.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss.hosts -->9.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->6.4 KB<!-- SIZE_END -->
       </td>
       <td>
@@ -489,8 +489,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->225.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->218.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->225.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->219.0 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2057/2057<br>
@@ -504,8 +504,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->1.61 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->1.61 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->1.72 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->1.72 MB<!-- SIZE_END -->
       </td>
       <td>
         • 2057/2057<br>
@@ -534,8 +534,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->21.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->15.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->22.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->16.0 KB<!-- SIZE_END -->
       </td>
       <td>
         • 284/2057<br>
@@ -671,7 +671,7 @@
 ## ⚡ Статус Smart DNS
 <!-- STATUS_START -->
 - **GeoHide**: 💚💚💚💚💚💚💚💚💚
-- **Comss**: 💚💚
+- **Comss**: 💚💚💚
 - **Xbox DNS**: 💚💚
 - **AstraCat**: 💚
 - **XyZ**: 💚
