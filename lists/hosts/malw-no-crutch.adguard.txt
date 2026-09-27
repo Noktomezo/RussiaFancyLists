@@ -32,7 +32,6 @@
 ||www.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||a.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.claude.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -51,6 +50,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.codeium.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
