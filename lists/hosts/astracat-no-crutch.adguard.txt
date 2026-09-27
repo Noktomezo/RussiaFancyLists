@@ -10,6 +10,7 @@
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||static.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
