@@ -99,7 +99,7 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->40.23 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->40.24 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->9.32 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->28.25 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.61 MB<!-- SIZE_END -->
@@ -255,7 +255,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/service/prefer-direct.lst -->7.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service/direct-with-ech.lst -->241.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service/direct-with-ech.lst -->241.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -270,8 +270,8 @@
       <td>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.json -->13.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.srs -->4.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->414.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->104.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->413.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->104.8 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -286,7 +286,7 @@
       <td>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->10.6 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.mrs -->3.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->335.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->335.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->104.2 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -326,8 +326,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->103.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->100.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->101.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->98.7 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2066/2066<br>
@@ -357,11 +357,11 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/geohide.hosts -->24.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->21.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->21.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1016/2066<br>
-        • 1016/2066
+        • 1018/2066<br>
+        • 1018/2066
       </td>
     </tr>
     <tr>
@@ -489,8 +489,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->224.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->218.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->226.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->220.4 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2066/2066<br>
@@ -523,8 +523,8 @@
         • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->56.6 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1016/2066<br>
-        • 1016/2066
+        • 1018/2066<br>
+        • 1018/2066
       </td>
     </tr>
     <tr>
