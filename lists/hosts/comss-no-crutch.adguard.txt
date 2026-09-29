@@ -126,6 +126,7 @@
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;89.150.59.128
 ||assets.grok.com^$dnsrewrite=NOERROR;A;45.88.174.254
 ||grok.com^$dnsrewrite=NOERROR;A;45.88.174.254
+||api.groq.com^$dnsrewrite=NOERROR;A;89.150.59.128
 ||chat.groq.com^$dnsrewrite=NOERROR;A;89.150.59.128
 ||console.groq.com^$dnsrewrite=NOERROR;A;89.150.59.128
 ||groq.com^$dnsrewrite=NOERROR;A;89.150.59.128
