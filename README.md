@@ -284,7 +284,7 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/service-mihomo/direct-with-ech.mrs"><code>direct-with-ech.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->10.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->10.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.mrs -->3.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->340.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->105.4 KB<!-- SIZE_END -->
@@ -326,8 +326,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->101.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->99.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->104.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->101.9 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2068/2068<br>
@@ -489,8 +489,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->227.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->221.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->226.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->220.8 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2068/2068<br>
