@@ -18,9 +18,10 @@ ff02::2 ip6-allrouters
 31.25.239.132 6pm.com
 31.25.239.132 8chan.moe
 45.88.174.254 8chan.moe
-107.175.76.134 aave.com www.aave.com
-192.255.159.240 aave.com
+107.175.76.134 www.aave.com
+143.20.64.192 aave.com
 192.3.233.253 www.aave.com
+31.25.239.132 aave.com
 107.175.76.134 new.abb.com
 62.133.62.97 new.abb.com
 217.60.245.219 abercrombie.com
@@ -36,15 +37,17 @@ ff02::2 ip6-allrouters
 62.133.62.97 adam-audio.com
 107.175.76.134 adidas.com
 143.20.64.192 adidas.com
-143.20.64.192 adobe.com
+143.20.64.192 adobe.com adobe.io
 192.255.159.240 adobe.com www.adobe.io
-192.255.159.241 adobe.io adobe.net
-192.3.233.253 adobe.io adobe.net www.adobe.io
+192.255.159.241 adobe.net
+192.3.233.253 adobe.net www.adobe.io
+217.60.245.233 adobe.io
 192.3.233.253 adtran.com
 217.60.245.219 adtran.com
-192.255.159.240 affinity.studio
-192.255.159.241 affinity.studio www.affinity.studio
+143.20.64.192 affinity.studio
+192.255.159.241 www.affinity.studio
 192.3.233.253 www.affinity.studio
+217.60.245.233 affinity.studio
 107.175.76.134 agar.io
 143.20.64.192 agar.io
 143.20.64.192 ahrefs.com
@@ -91,14 +94,17 @@ ff02::2 ip6-allrouters
 217.60.245.219 notion-emojis.s3-us-west-2.amazonaws.com
 217.60.245.233 notion-emojis.s3-us-west-2.amazonaws.com
 107.175.76.134 login.amd.com
+143.20.64.192 amd.com
 192.255.159.240 www.amd.com
-192.255.159.241 amd.com www.amd.com
-192.3.233.253 amd.com login.amd.com
+192.255.159.241 www.amd.com
+192.3.233.253 login.amd.com
+217.60.245.233 amd.com
 192.255.159.241 amplitude.com
 192.3.233.253 amplitude.com
-107.175.76.134 analog.com www.analog.com
+107.175.76.134 www.analog.com
+143.20.64.192 analog.com
 192.255.159.240 www.analog.com
-192.255.159.241 analog.com
+217.60.245.219 analog.com
 217.60.245.233 andrevi.ch
 31.25.239.132 andrevi.ch
 45.88.174.254 angryemailtranslator.com
@@ -111,10 +117,14 @@ ff02::2 ip6-allrouters
 62.133.62.97 ansible.com
 107.175.76.134 ansys.com
 143.20.64.192 ansys.com
-107.175.76.134 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com console.anthropic.com statsig.anthropic.com support.anthropic.com
-192.255.159.240 a-api.anthropic.com anthropic.com api.console.anthropic.com assets-proxy.anthropic.com statsig.anthropic.com
+107.175.76.134 a-api.anthropic.com a-cdn.anthropic.com anthropic.com auth.anthropic.com console.anthropic.com statsig.anthropic.com support.anthropic.com
+143.20.64.192 api.anthropic.com
+192.255.159.240 a-api.anthropic.com anthropic.com assets-proxy.anthropic.com statsig.anthropic.com
 192.255.159.241 a-cdn.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com status.anthropic.com www.anthropic.com
-192.3.233.253 api.anthropic.com assets-proxy.anthropic.com s-cdn.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+192.3.233.253 assets-proxy.anthropic.com s-cdn.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+217.60.245.219 api.console.anthropic.com
+217.60.245.233 api.anthropic.com
+31.25.239.132 api.console.anthropic.com
 107.175.76.134 antigravity.google
 192.255.159.240 www.antigravity.google
 192.255.159.241 antigravity.google
@@ -276,9 +286,10 @@ ff02::2 ip6-allrouters
 143.20.64.192 bradyid.com
 192.255.159.240 bradyid.com
 107.175.76.134 brave.com www.brave.com
-192.255.159.240 ai-chat.bsg.brave.com www.brave.com
+143.20.64.192 ai-chat.bsg.brave.com
+192.255.159.240 www.brave.com
 192.255.159.241 brave.com
-192.3.233.253 ai-chat.bsg.brave.com
+217.60.245.219 ai-chat.bsg.brave.com
 192.255.159.240 game-assets.brawlstarsgame.com
 192.255.159.241 brawlstarsgame.com
 192.3.233.253 brawlstarsgame.com game-assets.brawlstarsgame.com
@@ -338,18 +349,19 @@ ff02::2 ip6-allrouters
 192.255.159.241 carrefouruae.com
 192.3.233.253 cats.com
 217.60.245.219 cats.com
-192.255.159.241 api.cdnlibs.org
-192.3.233.253 api.cdnlibs.org
+217.60.245.233 api.cdnlibs.org
+31.25.239.132 api.cdnlibs.org
 143.20.64.192 cdromance.org
 192.255.159.240 cdromance.org
 192.255.159.240 cdw.com
 192.255.159.241 cdw.com
 192.255.159.241 census.gov
 192.3.233.253 census.gov
-107.175.76.134 api.cerebras.ai
-192.255.159.240 api.cerebras.ai cerebras.ai
+192.255.159.240 cerebras.ai
 192.255.159.241 cerebras.ai www.cerebras.ai
 192.3.233.253 www.cerebras.ai
+217.60.245.219 api.cerebras.ai
+31.25.239.132 api.cerebras.ai
 217.60.245.219 certifytheweb.com
 217.60.245.233 certifytheweb.com
 217.60.245.233 cesium.com
@@ -373,9 +385,11 @@ ff02::2 ip6-allrouters
 217.60.245.219 chatfuel.com
 217.60.245.233 chatfuel.com
 107.175.76.134 operator.chatgpt.com sora.chatgpt.com www.chatgpt.com www.chatgpt.site
-192.255.159.240 ab.chatgpt.com chatgpt.site sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.site
-192.255.159.241 ab.chatgpt.com chatgpt.com www.chatgpt.com
+192.255.159.240 chatgpt.site sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.site
+192.255.159.241 chatgpt.com www.chatgpt.com
 192.3.233.253 chatgpt.com chatgpt.site operator.chatgpt.com webrtc.chatgpt.com
+217.60.245.219 ab.chatgpt.com
+217.60.245.233 ab.chatgpt.com
 107.175.76.134 assets-configurator.chess.com chess.com www.chess.com
 192.255.159.240 chess.com
 192.255.159.241 assets-configurator.chess.com
@@ -406,14 +420,16 @@ ff02::2 ip6-allrouters
 192.255.159.240 game-assets.clashofclans.com
 31.25.239.132 clashofclans.com
 45.88.174.254 clashofclans.com
-107.175.76.134 game-assets.clashroyaleapp.com
-192.3.233.253 game-assets.clashroyaleapp.com
+143.20.64.192 game-assets.clashroyaleapp.com
+217.60.245.233 game-assets.clashroyaleapp.com
 62.133.62.97 clashroyaleapp.com
 89.150.59.128 clashroyaleapp.com
-107.175.76.134 a.claude.ai api.claude.ai api.claude.com claude.ai platform.claude.ai www.claude.com
+107.175.76.134 api.claude.ai api.claude.com claude.ai platform.claude.ai www.claude.com
+143.20.64.192 a.claude.ai
 192.255.159.240 api.claude.com claude.com platform.claude.com www.claude.ai
 192.255.159.241 claude.ai downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
-192.3.233.253 a.claude.ai api.claude.ai claude.com downloads.claude.ai
+192.3.233.253 api.claude.ai claude.com downloads.claude.ai
+217.60.245.219 a.claude.ai
 107.175.76.134 www.claudemcpclient.com
 192.255.159.240 claudemcpclient.com
 192.255.159.241 www.claudemcpclient.com
@@ -516,10 +532,14 @@ ff02::2 ip6-allrouters
 143.20.64.192 dating.com
 143.20.64.192 daz3d.com
 192.255.159.240 daz3d.com
-107.175.76.134 api.deepl.com clearance.deepl.com deepl.app developers.deepl.com experimentation-grpc.deepl.com home.deepl.com internal.deepl.com ita-free.app.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com www.deepl.app
-192.255.159.240 api-free.deepl.com auth.deepl.com checkout.www.deepl.com community-auth.deepl.com deepl.app dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation.deepl.com gtm.deepl.com hs.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com support.deepl.com w.deepl.com www.deepl.com www2.deepl.com
-192.255.159.241 api-free.deepl.com api.deepl.com backend.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation.deepl.com home.deepl.com hs.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com sl.deepl.com static.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com
-192.3.233.253 auth.deepl.com backend.deepl.com checkout.www.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com experimentation-grpc.deepl.com gtm.deepl.com internal.deepl.com ita-free.app.deepl.com jobs.deepl.com login-wall.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com write-free.www.deepl.com www2.deepl.com
+107.175.76.134 clearance.deepl.com deepl.app developers.deepl.com experimentation-grpc.deepl.com home.deepl.com internal.deepl.com ita-free.app.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com www.deepl.app
+143.20.64.192 api.deepl.com
+192.255.159.240 api-free.deepl.com checkout.www.deepl.com community-auth.deepl.com deepl.app dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation.deepl.com gtm.deepl.com hs.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com support.deepl.com w.deepl.com www.deepl.com www2.deepl.com
+192.255.159.241 api-free.deepl.com backend.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation.deepl.com home.deepl.com hs.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com sl.deepl.com static.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com
+192.3.233.253 backend.deepl.com checkout.www.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com experimentation-grpc.deepl.com gtm.deepl.com internal.deepl.com ita-free.app.deepl.com jobs.deepl.com login-wall.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com write-free.www.deepl.com www2.deepl.com
+217.60.245.219 api.deepl.com
+217.60.245.233 auth.deepl.com
+31.25.239.132 auth.deepl.com
 107.175.76.134 deepmind.com
 192.255.159.240 deepmind.com deepmind.google
 192.3.233.253 deepmind.google
@@ -535,9 +555,10 @@ ff02::2 ip6-allrouters
 192.255.159.240 dds.dell.com i.dell.com www.dell.com
 192.255.159.241 dds.dell.com dl.dell.com nexus.dell.com www.dell.com
 192.3.233.253 dell.com dl.dell.com i.dell.com nexus.dell.com
-107.175.76.134 afcs.dellcdn.com dellcdn.com www.dellcdn.com
-192.255.159.241 afcs.dellcdn.com
+107.175.76.134 dellcdn.com www.dellcdn.com
 192.3.233.253 dellcdn.com www.dellcdn.com
+217.60.245.219 afcs.dellcdn.com
+31.25.239.132 afcs.dellcdn.com
 192.3.233.253 www.delltechnologies.com
 217.60.245.219 delltechnologies.com www.delltechnologies.com
 217.60.245.233 delltechnologies.com
@@ -631,10 +652,13 @@ ff02::2 ip6-allrouters
 89.150.59.128 artifacts.elastic.co
 192.3.233.253 element14.com
 217.60.245.219 element14.com
-107.175.76.134 api.us.elevenlabs.io try.elevenlabs.io www.elevenlabs.io
-192.255.159.240 api.elevenlabs.io eleven-public-cdn.elevenlabs.io elevenlabs.io payload.elevenlabs.io www.elevenlabs.io
-192.255.159.241 api.elevenlabs.io elevenlabs.io help.elevenlabs.io
-192.3.233.253 api.us.elevenlabs.io eleven-public-cdn.elevenlabs.io help.elevenlabs.io payload.elevenlabs.io try.elevenlabs.io
+107.175.76.134 try.elevenlabs.io www.elevenlabs.io
+143.20.64.192 api.us.elevenlabs.io
+192.255.159.240 eleven-public-cdn.elevenlabs.io elevenlabs.io payload.elevenlabs.io www.elevenlabs.io
+192.255.159.241 elevenlabs.io help.elevenlabs.io
+192.3.233.253 eleven-public-cdn.elevenlabs.io help.elevenlabs.io payload.elevenlabs.io try.elevenlabs.io
+217.60.245.219 api.elevenlabs.io
+217.60.245.233 api.elevenlabs.io api.us.elevenlabs.io
 107.175.76.134 elevenmusic.io
 192.255.159.241 elevenmusic.io www.elevenmusic.io
 192.3.233.253 www.elevenmusic.io
@@ -859,18 +883,22 @@ ff02::2 ip6-allrouters
 192.3.233.253 gofundme.com
 217.60.245.219 gonift.com
 217.60.245.233 gonift.com
-107.175.76.134 alkalicore-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev fitbit.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com
-143.20.64.192 news.google.com
-192.255.159.240 aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com datastudio.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com news.google.com notebooklm.google.com people-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-192.255.159.241 ai.google.dev apis.google.com bard.google.com discuss.ai.google.dev fitbit.google.com gemini.google.com geminiweb-pa.clients6.google.com jules.google.com notebook.google.com opal.google.com people-pa.clients6.google.com waa-pa.clients6.google.com
-192.3.233.253 ai.google.dev aistudio.google.com alkalimakersuite-pa.clients6.google.com gemini.google.com labs.google.com opal.google.com signaler-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-217.60.245.233 google.com
-31.25.239.132 google.com google.dev suggestqueries.google.com
+107.175.76.134 apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev fitbit.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com
+143.20.64.192 ai.google.dev aistudio.google.com news.google.com
+192.255.159.240 datastudio.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com news.google.com notebooklm.google.com people-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+192.255.159.241 apis.google.com bard.google.com discuss.ai.google.dev fitbit.google.com gemini.google.com geminiweb-pa.clients6.google.com jules.google.com notebook.google.com opal.google.com people-pa.clients6.google.com waa-pa.clients6.google.com
+192.3.233.253 gemini.google.com labs.google.com opal.google.com signaler-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+217.60.245.219 alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com
+217.60.245.233 aistudio.google.com alkalicore-pa.clients6.google.com google.com
+31.25.239.132 ai.google.dev alkalimakersuite-pa.clients6.google.com google.com google.dev suggestqueries.google.com
 45.88.174.254 google.dev suggestqueries.google.com
 107.175.76.134 appcatalyst.pa.googleapis.com daily-cloudcode-pa.googleapis.com geller-pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com
-192.255.159.240 aisandbox-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com
-192.255.159.241 assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com notebook-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
-192.3.233.253 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com developerprofiles-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com notebooklm-pa.googleapis.com robinfrontend-pa.googleapis.com
+192.255.159.240 daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com
+192.255.159.241 fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com notebook-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+192.3.233.253 appcatalyst.pa.googleapis.com developerprofiles-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com notebooklm-pa.googleapis.com robinfrontend-pa.googleapis.com
+217.60.245.219 assistant-s3-pa.googleapis.com
+217.60.245.233 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com
+31.25.239.132 aisandbox-pa.googleapis.com
 45.88.174.254 googleapis.com
 89.150.59.128 googleapis.com
 62.133.62.97 gov.ua
@@ -940,9 +968,8 @@ ff02::2 ip6-allrouters
 217.60.245.219 hex-rays.com
 217.60.245.233 hollisterco.com
 31.25.239.132 hollisterco.com
-107.175.76.134 api.home-connect.com
-192.3.233.253 api.home-connect.com
-31.25.239.132 home-connect.cn
+143.20.64.192 api.home-connect.com
+31.25.239.132 api.home-connect.com home-connect.cn
 45.88.174.254 api.home-connect.cn home-connect.cn home-connect.com
 89.150.59.128 api.home-connect.cn home-connect.com
 107.175.76.134 hostinger.com
@@ -989,9 +1016,10 @@ ff02::2 ip6-allrouters
 143.20.64.192 www.imagecache365.com
 192.255.159.241 imagecache365.com
 192.3.233.253 imagecache365.com
-107.175.76.134 api.imgur.com
-192.255.159.240 api.imgur.com imgur.com
+143.20.64.192 api.imgur.com
+192.255.159.240 imgur.com
 192.255.159.241 imgur.com
+217.60.245.219 api.imgur.com
 107.175.76.134 inceptionlabs.ai www.inceptionlabs.ai
 192.255.159.240 www.inceptionlabs.ai
 192.255.159.241 inceptionlabs.ai
@@ -1299,12 +1327,13 @@ ff02::2 ip6-allrouters
 192.3.233.253 www.modivo.pl
 192.255.159.241 moneypuck.com
 192.3.233.253 moneypuck.com
-107.175.76.134 account.mongodb.com api.blue.mongodb.com webassets.mongodb.com
+107.175.76.134 account.mongodb.com webassets.mongodb.com
 192.255.159.240 webassets.mongodb.com
 192.255.159.241 account.mongodb.com cloud.mongodb.com mongodb.com www.mongodb.com
-192.3.233.253 api.blue.mongodb.com cloud.mongodb.com mongodb.com www.mongodb.com
+192.3.233.253 cloud.mongodb.com mongodb.com www.mongodb.com
 217.60.245.219 mongodb.net
-217.60.245.233 mongodb.net
+217.60.245.233 api.blue.mongodb.com mongodb.net
+31.25.239.132 api.blue.mongodb.com
 45.88.174.254 evs.blue.mongodb.co
 89.150.59.128 evs.blue.mongodb.co
 107.175.76.134 www.monica.im
@@ -1359,10 +1388,13 @@ ff02::2 ip6-allrouters
 192.255.159.240 css.naukimg.com js.naukimg.com np.naukimg.com p.naukimg.com suggestlg.naukimg.com
 192.255.159.241 arabicstatic.naukimg.com autodiscover.naukimg.com img.naukimg.com js.naukimg.com static.naukimg.com suggest.naukimg.com suggestlg.naukimg.com www.naukimg.com
 192.3.233.253 bms.naukimg.com naukimg.com np.naukimg.com static.naukimg.com suggest.naukimg.com
-107.175.76.134 aeronube.csm.naukri.com apis.naukri.com applyintegration.naukri.com assessment.nc.naukri.com assessments.naukri.com assets.staging.assessment.nc.naukri.com autodiscover.login.recruit.naukri.com autodiscover.naukri.com autodiscover.rms.naukri.com avasin.naukri.com careers.naukri.com careersite.secure.naukri.com careersitescdn.naukri.com ccs-service.naukri.com chatbot.naukri.com chatclient.naukri.com communication.naukri.com companies.naukri.com company.naukri.com contentcdn.naukri.com contest.nc.naukri.com csmmail.naukri.com css.naukri.com dashboard.naukri.com delivery.naukri.com demologin.resdex.naukri.com demoresdex.naukri.com e-learning.naukri.com eapps.naukri.com engineering.naukri.com feeds.naukri.com files.naukri.com filestg.naukri.com hiring.naukri.com images.naukri.com img.naukri.com jpreports.naukri.com js.naukri.com learning.naukri.com lg.naukri.com login.naukri.com m.naukri.com m102.naukri.com m75.naukri.com m91.naukri.com mail.naukri.com media.naukri.com mediacdn.naukri.com mscanus.naukri.com my.naukri.com naukri.com naukriconfidential.naukri.com naukrirecruiter.naukri.com nimg.naukri.com nmail-103-214-115-103.naukri.com nmail-one03-two14-one15-one22.naukri.com nmail-one03-two14-one15-one24.naukri.com nmail-one03-two14-one15-one32.naukri.com nmail-one03-two14-one15-one38.naukri.com nmail-one03-two14-one15-one39.naukri.com nmail-one03-two14-one15-one93.naukri.com nmail-one03-two14-one15-one95.naukri.com nmail-one03-two14-one15-two14.naukri.com noidacas01.naukri.com noinsight.naukri.com notifications.naukri.com onlinetest.nc.naukri.com p.naukri.com pop.naukri.com productupdates.naukri.com pt.naukri.com rdxfootmark.naukri.com recruit.naukri.com recruiterfaq.naukri.com recruiterzone.naukri.com referral.naukri.com resbilling.naukri.com resdex.base.naukri.com resdex.naukri.com resht.naukri.com resman.naukri.com response.naukri.com resume.naukri.com resumeservices.naukri.com rms.naukri.com rmsbulkupload.naukri.com rmsmail.naukri.com staging.assessment.nc.naukri.com static.staging.assessment.nc.naukri.com stgmtstap.naukri.com streamgenai.naukri.com suggest-staging.naukri.com suggest.naukri.com suggestor.naukri.com tableau.naukri.com trust.naukri.com vmscanus.naukri.com w10.naukri.com w28.naukri.com w37.naukri.com w5.naukri.com webtracker.naukri.com whitehat.naukri.com wtg.csm.naukri.com www.e-learning.naukri.com www.naukri.com www.resume.naukri.com yahoo.naukri.com
-192.255.159.240 apply.naukri.com applyintegration.naukri.com assessments.nc.naukri.com assets.staging.assessment.nc.naukri.com autodiscover.csm.naukri.com autodiscover.login.recruit.naukri.com careers.naukri.com careersite.naukri.com careersite.secure.naukri.com careersitescdn.naukri.com chatbot.naukri.com chatclient-mobile.naukri.com company.naukri.com contentcdn.naukri.com corp.naukri.com csm.naukri.com demoresdex.naukri.com engineering.naukri.com enterprise.naukri.com files.naukri.com filestg.naukri.com fn-hackathon-ui.nc.naukri.com freesearch.naukri.com img.naukri.com insights.naukri.com insightsapi.naukri.com jatracking.naukri.com jobfeeds.naukri.com jobs.naukri.com jobsearch.naukri.com learning.naukri.com lms.naukri.com login.naukri.com login.recruit.naukri.com logs.naukri.com lyncdiscover.naukri.com m9.naukri.com maestrorecruiter.naukri.com mail.naukri.com mailtracking.naukri.com messenger.naukri.com mobile.naukri.com naukri.com naukriconfidential.naukri.com nimg.naukri.com nmail-103-214-115-125.naukri.com nmail-one03-two14-one15-one22.naukri.com nmail-one03-two14-one15-one32.naukri.com nmail-one03-two14-one15-one38.naukri.com nmail-one03-two14-one15-one94.naukri.com nmail-one03-two14-one15-one96.naukri.com nmail-one03-two14-one15-one97.naukri.com nmail-one03-two14-one15-two15.naukri.com nmail193.naukri.com pg.naukri.com posting.naukri.com pulse.naukri.com recruiter.naukri.com recruiterfaq.naukri.com resht.naukri.com restservices.naukri.com resumeservices.naukri.com rmsbulkupload.naukri.com sip.naukri.com smtp.naukri.com staging.contest.nc.naukri.com staging.onlinetest.nc.naukri.com static.naukri.com static.staging.assessment.nc.naukri.com stgmtstjs.naukri.com stgmtstwb.naukri.com suggest-staging.naukri.com target.naukri.com verify.naukri.com w.naukri.com w10.naukri.com w16.naukri.com w4.naukri.com webhooks.naukri.com www.echo.naukri.com www.learning.naukri.com
-192.255.159.241 aeronube.csm.naukri.com assessments.nc.naukri.com autodiscover.csm.naukri.com blogs.naukri.com careernavigator.naukri.com careersite.naukri.com chatclient-mobile.naukri.com chatclient.naukri.com cm.naukri.com communication.naukri.com companies.naukri.com contest.nc.naukri.com corp.naukri.com cps.naukri.com delivery.naukri.com demologin.resdex.naukri.com echo.naukri.com enterprise.naukri.com fflms.naukri.com filevalidation.naukri.com fn-hackathon-ui.nc.naukri.com freesearch.naukri.com images.naukri.com in.naukri.com insights.naukri.com insightsapi.naukri.com jatracking.naukri.com jobfeeds.naukri.com jobsearch.naukri.com js.naukri.com lms.naukri.com logs.naukri.com m.naukri.com m83.naukri.com m91.naukri.com maestrorecruiter.naukri.com mailersystem.naukri.com messenger.naukri.com mobile.naukri.com naukrihiringsuite.naukri.com nmail-103-214-115-103.naukri.com nmail-103-214-115-125.naukri.com nmail-one03-two14-one15-one24.naukri.com nmail-one03-two14-one15-one33.naukri.com nmail-one03-two14-one15-one34.naukri.com nmail-one03-two14-one15-one93.naukri.com nmail-one03-two14-one15-one94.naukri.com nmail-one03-two14-one15-one96.naukri.com nmail-one03-two14-one15-one97.naukri.com nmail-one03-two14-one15-two13.naukri.com nmail-one03-two14-one15-two14.naukri.com nmail214.naukri.com notifications.naukri.com onlinetest.nc.naukri.com posting.naukri.com rdxfootmark.naukri.com recruit.naukri.com recruiter.naukri.com recruiters.naukri.com recruitersurvey.naukri.com resdex.base.naukri.com resdex.naukri.com resman.naukri.com restservices.naukri.com resume.naukri.com resumepedia.naukri.com rmsmail.naukri.com staging.fn-hackathon-ui.nc.naukri.com staging.onlinetest.nc.naukri.com static.naukri.com stgmtstjs.naukri.com stgmtstmnj.naukri.com stgmtstwb.naukri.com stream.naukri.com streamgenai.naukri.com suggestlg.naukri.com suggestor.naukri.com taxonomy-suggest.naukri.com vmscanus.naukri.com w.naukri.com w28.naukri.com w4.naukri.com w5.naukri.com webhooks.naukri.com webtracker.naukri.com www.resume.naukri.com
-192.3.233.253 apis.naukri.com apply.naukri.com assessment.nc.naukri.com assessments.naukri.com autodiscover.naukri.com autodiscover.rms.naukri.com avasin.naukri.com blogs.naukri.com careernavigator.naukri.com ccs-service.naukri.com cm.naukri.com cps.naukri.com csm.naukri.com csmmail.naukri.com css.naukri.com dashboard.naukri.com e-learning.naukri.com eapps.naukri.com echo.naukri.com feeds.naukri.com fflms.naukri.com filevalidation.naukri.com hiring.naukri.com in.naukri.com jobs.naukri.com jpreports.naukri.com lg.naukri.com login.recruit.naukri.com lyncdiscover.naukri.com m102.naukri.com m75.naukri.com m83.naukri.com m9.naukri.com mailersystem.naukri.com mailtracking.naukri.com media.naukri.com mediacdn.naukri.com mscanus.naukri.com my.naukri.com naukrihiringsuite.naukri.com naukrirecruiter.naukri.com nmail-one03-two14-one15-one33.naukri.com nmail-one03-two14-one15-one34.naukri.com nmail-one03-two14-one15-one39.naukri.com nmail-one03-two14-one15-one95.naukri.com nmail-one03-two14-one15-two13.naukri.com nmail-one03-two14-one15-two15.naukri.com nmail193.naukri.com nmail214.naukri.com noidacas01.naukri.com noinsight.naukri.com p.naukri.com pg.naukri.com pop.naukri.com productupdates.naukri.com pt.naukri.com pulse.naukri.com recruiters.naukri.com recruitersurvey.naukri.com recruiterzone.naukri.com referral.naukri.com resbilling.naukri.com response.naukri.com resumepedia.naukri.com rms.naukri.com sip.naukri.com smtp.naukri.com staging.assessment.nc.naukri.com staging.contest.nc.naukri.com staging.fn-hackathon-ui.nc.naukri.com stgmtstap.naukri.com stgmtstmnj.naukri.com stream.naukri.com suggest.naukri.com suggestlg.naukri.com tableau.naukri.com target.naukri.com taxonomy-suggest.naukri.com trust.naukri.com verify.naukri.com w16.naukri.com w37.naukri.com whitehat.naukri.com wtg.csm.naukri.com www.e-learning.naukri.com www.echo.naukri.com www.learning.naukri.com www.naukri.com yahoo.naukri.com
+107.175.76.134 applyintegration.naukri.com assessment.nc.naukri.com assessments.naukri.com assets.staging.assessment.nc.naukri.com autodiscover.login.recruit.naukri.com autodiscover.naukri.com autodiscover.rms.naukri.com avasin.naukri.com careers.naukri.com careersite.secure.naukri.com careersitescdn.naukri.com ccs-service.naukri.com chatbot.naukri.com chatclient.naukri.com communication.naukri.com companies.naukri.com contentcdn.naukri.com contest.nc.naukri.com csmmail.naukri.com css.naukri.com dashboard.naukri.com delivery.naukri.com demologin.resdex.naukri.com demoresdex.naukri.com e-learning.naukri.com eapps.naukri.com engineering.naukri.com feeds.naukri.com files.naukri.com filestg.naukri.com hiring.naukri.com images.naukri.com img.naukri.com jpreports.naukri.com js.naukri.com learning.naukri.com lg.naukri.com login.naukri.com m.naukri.com m102.naukri.com m75.naukri.com m91.naukri.com mail.naukri.com media.naukri.com mediacdn.naukri.com mscanus.naukri.com my.naukri.com naukri.com naukriconfidential.naukri.com naukrirecruiter.naukri.com nimg.naukri.com nmail-103-214-115-103.naukri.com nmail-one03-two14-one15-one22.naukri.com nmail-one03-two14-one15-one24.naukri.com nmail-one03-two14-one15-one32.naukri.com nmail-one03-two14-one15-one38.naukri.com nmail-one03-two14-one15-one39.naukri.com nmail-one03-two14-one15-one93.naukri.com nmail-one03-two14-one15-one95.naukri.com nmail-one03-two14-one15-two14.naukri.com noidacas01.naukri.com noinsight.naukri.com notifications.naukri.com onlinetest.nc.naukri.com p.naukri.com pop.naukri.com productupdates.naukri.com pt.naukri.com rdxfootmark.naukri.com recruit.naukri.com recruiterfaq.naukri.com recruiterzone.naukri.com referral.naukri.com resbilling.naukri.com resdex.base.naukri.com resdex.naukri.com resht.naukri.com resman.naukri.com response.naukri.com resume.naukri.com resumeservices.naukri.com rms.naukri.com rmsbulkupload.naukri.com rmsmail.naukri.com staging.assessment.nc.naukri.com static.staging.assessment.nc.naukri.com stgmtstap.naukri.com streamgenai.naukri.com suggest-staging.naukri.com suggest.naukri.com suggestor.naukri.com tableau.naukri.com trust.naukri.com vmscanus.naukri.com w10.naukri.com w28.naukri.com w37.naukri.com w5.naukri.com webtracker.naukri.com whitehat.naukri.com wtg.csm.naukri.com www.e-learning.naukri.com www.naukri.com www.resume.naukri.com yahoo.naukri.com
+143.20.64.192 aeronube.csm.naukri.com company.naukri.com
+192.255.159.240 apply.naukri.com applyintegration.naukri.com assessments.nc.naukri.com assets.staging.assessment.nc.naukri.com autodiscover.csm.naukri.com autodiscover.login.recruit.naukri.com careers.naukri.com careersite.naukri.com careersite.secure.naukri.com careersitescdn.naukri.com chatbot.naukri.com chatclient-mobile.naukri.com contentcdn.naukri.com corp.naukri.com csm.naukri.com demoresdex.naukri.com engineering.naukri.com enterprise.naukri.com files.naukri.com filestg.naukri.com fn-hackathon-ui.nc.naukri.com freesearch.naukri.com img.naukri.com insights.naukri.com insightsapi.naukri.com jatracking.naukri.com jobfeeds.naukri.com jobs.naukri.com jobsearch.naukri.com learning.naukri.com lms.naukri.com login.naukri.com login.recruit.naukri.com logs.naukri.com lyncdiscover.naukri.com m9.naukri.com maestrorecruiter.naukri.com mail.naukri.com mailtracking.naukri.com messenger.naukri.com mobile.naukri.com naukri.com naukriconfidential.naukri.com nimg.naukri.com nmail-103-214-115-125.naukri.com nmail-one03-two14-one15-one22.naukri.com nmail-one03-two14-one15-one32.naukri.com nmail-one03-two14-one15-one38.naukri.com nmail-one03-two14-one15-one94.naukri.com nmail-one03-two14-one15-one96.naukri.com nmail-one03-two14-one15-one97.naukri.com nmail-one03-two14-one15-two15.naukri.com nmail193.naukri.com pg.naukri.com posting.naukri.com pulse.naukri.com recruiter.naukri.com recruiterfaq.naukri.com resht.naukri.com restservices.naukri.com resumeservices.naukri.com rmsbulkupload.naukri.com sip.naukri.com smtp.naukri.com staging.contest.nc.naukri.com staging.onlinetest.nc.naukri.com static.naukri.com static.staging.assessment.nc.naukri.com stgmtstjs.naukri.com stgmtstwb.naukri.com suggest-staging.naukri.com target.naukri.com verify.naukri.com w.naukri.com w10.naukri.com w16.naukri.com w4.naukri.com webhooks.naukri.com www.echo.naukri.com www.learning.naukri.com
+192.255.159.241 assessments.nc.naukri.com autodiscover.csm.naukri.com blogs.naukri.com careernavigator.naukri.com careersite.naukri.com chatclient-mobile.naukri.com chatclient.naukri.com cm.naukri.com communication.naukri.com companies.naukri.com contest.nc.naukri.com corp.naukri.com cps.naukri.com delivery.naukri.com demologin.resdex.naukri.com echo.naukri.com enterprise.naukri.com fflms.naukri.com filevalidation.naukri.com fn-hackathon-ui.nc.naukri.com freesearch.naukri.com images.naukri.com in.naukri.com insights.naukri.com insightsapi.naukri.com jatracking.naukri.com jobfeeds.naukri.com jobsearch.naukri.com js.naukri.com lms.naukri.com logs.naukri.com m.naukri.com m83.naukri.com m91.naukri.com maestrorecruiter.naukri.com mailersystem.naukri.com messenger.naukri.com mobile.naukri.com naukrihiringsuite.naukri.com nmail-103-214-115-103.naukri.com nmail-103-214-115-125.naukri.com nmail-one03-two14-one15-one24.naukri.com nmail-one03-two14-one15-one33.naukri.com nmail-one03-two14-one15-one34.naukri.com nmail-one03-two14-one15-one93.naukri.com nmail-one03-two14-one15-one94.naukri.com nmail-one03-two14-one15-one96.naukri.com nmail-one03-two14-one15-one97.naukri.com nmail-one03-two14-one15-two13.naukri.com nmail-one03-two14-one15-two14.naukri.com nmail214.naukri.com notifications.naukri.com onlinetest.nc.naukri.com posting.naukri.com rdxfootmark.naukri.com recruit.naukri.com recruiter.naukri.com recruiters.naukri.com recruitersurvey.naukri.com resdex.base.naukri.com resdex.naukri.com resman.naukri.com restservices.naukri.com resume.naukri.com resumepedia.naukri.com rmsmail.naukri.com staging.fn-hackathon-ui.nc.naukri.com staging.onlinetest.nc.naukri.com static.naukri.com stgmtstjs.naukri.com stgmtstmnj.naukri.com stgmtstwb.naukri.com stream.naukri.com streamgenai.naukri.com suggestlg.naukri.com suggestor.naukri.com taxonomy-suggest.naukri.com vmscanus.naukri.com w.naukri.com w28.naukri.com w4.naukri.com w5.naukri.com webhooks.naukri.com webtracker.naukri.com www.resume.naukri.com
+192.3.233.253 apply.naukri.com assessment.nc.naukri.com assessments.naukri.com autodiscover.naukri.com autodiscover.rms.naukri.com avasin.naukri.com blogs.naukri.com careernavigator.naukri.com ccs-service.naukri.com cm.naukri.com cps.naukri.com csm.naukri.com csmmail.naukri.com css.naukri.com dashboard.naukri.com e-learning.naukri.com eapps.naukri.com echo.naukri.com feeds.naukri.com fflms.naukri.com filevalidation.naukri.com hiring.naukri.com in.naukri.com jobs.naukri.com jpreports.naukri.com lg.naukri.com login.recruit.naukri.com lyncdiscover.naukri.com m102.naukri.com m75.naukri.com m83.naukri.com m9.naukri.com mailersystem.naukri.com mailtracking.naukri.com media.naukri.com mediacdn.naukri.com mscanus.naukri.com my.naukri.com naukrihiringsuite.naukri.com naukrirecruiter.naukri.com nmail-one03-two14-one15-one33.naukri.com nmail-one03-two14-one15-one34.naukri.com nmail-one03-two14-one15-one39.naukri.com nmail-one03-two14-one15-one95.naukri.com nmail-one03-two14-one15-two13.naukri.com nmail-one03-two14-one15-two15.naukri.com nmail193.naukri.com nmail214.naukri.com noidacas01.naukri.com noinsight.naukri.com p.naukri.com pg.naukri.com pop.naukri.com productupdates.naukri.com pt.naukri.com pulse.naukri.com recruiters.naukri.com recruitersurvey.naukri.com recruiterzone.naukri.com referral.naukri.com resbilling.naukri.com response.naukri.com resumepedia.naukri.com rms.naukri.com sip.naukri.com smtp.naukri.com staging.assessment.nc.naukri.com staging.contest.nc.naukri.com staging.fn-hackathon-ui.nc.naukri.com stgmtstap.naukri.com stgmtstmnj.naukri.com stream.naukri.com suggest.naukri.com suggestlg.naukri.com tableau.naukri.com target.naukri.com taxonomy-suggest.naukri.com trust.naukri.com verify.naukri.com w16.naukri.com w37.naukri.com whitehat.naukri.com wtg.csm.naukri.com www.e-learning.naukri.com www.echo.naukri.com www.learning.naukri.com www.naukri.com yahoo.naukri.com
+217.60.245.219 aeronube.csm.naukri.com apis.naukri.com
+31.25.239.132 apis.naukri.com company.naukri.com
 217.60.245.219 nba.com
 217.60.245.233 nba.com
 107.175.76.134 downloads.ndi.tv ndi.tv ndi.video
@@ -1496,9 +1528,11 @@ ff02::2 ip6-allrouters
 192.255.159.240 opal.google
 192.255.159.241 opal.google
 107.175.76.134 android.chat.openai.com auth0.openai.com developers.openai.com www.openai.com
+143.20.64.192 api.openai.com
 192.255.159.240 cdn.platform.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com
-192.255.159.241 api.openai.com auth.openai.com cdn.platform.openai.com chat.openai.com openai.com videos.openai.com
-192.3.233.253 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+192.255.159.241 auth.openai.com cdn.platform.openai.com chat.openai.com openai.com videos.openai.com
+192.3.233.253 android.chat.openai.com auth.openai.com auth0.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+31.25.239.132 api.openai.com
 192.255.159.240 opencode.ai www.opencode.ai
 192.255.159.241 opencode.ai
 192.3.233.253 www.opencode.ai
@@ -1696,10 +1730,11 @@ ff02::2 ip6-allrouters
 89.150.59.128 download.qt.io qt.io
 107.175.76.134 qualcomm.com
 62.133.62.97 qualcomm.com
-107.175.76.134 anthropic.qualtrics.com
-192.255.159.240 anthropic.qualtrics.com www.qualtrics.com
+192.255.159.240 www.qualtrics.com
 192.255.159.241 qualtrics.com
 192.3.233.253 qualtrics.com www.qualtrics.com
+217.60.245.219 anthropic.qualtrics.com
+31.25.239.132 anthropic.qualtrics.com
 143.20.64.192 quicknode.com
 192.255.159.240 quicknode.com
 192.255.159.240 qwant.com
@@ -1748,10 +1783,11 @@ ff02::2 ip6-allrouters
 217.60.245.219 research.net
 45.88.174.254 resp.app
 89.150.59.128 resp.app
-107.175.76.134 app.reve.com
-192.255.159.240 app.reve.com preview.reve.art www.reve.com
+143.20.64.192 app.reve.com
+192.255.159.240 preview.reve.art www.reve.com
 192.255.159.241 preview.reve.art reve.art reve.com www.reve.art
 192.3.233.253 reve.art reve.com www.reve.art www.reve.com
+217.60.245.219 app.reve.com
 217.60.245.219 reverb.com
 217.60.245.233 reverb.com
 31.25.239.132 ribbonsoft.com
@@ -1926,10 +1962,14 @@ ff02::2 ip6-allrouters
 192.255.159.240 splunk.com
 192.255.159.240 splunkcloud.com
 192.255.159.241 splunkcloud.com
-107.175.76.134 aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-guc3.spotify.com ap-sto3.spotify.com api-partner.spotify.com appresolve.spotify.com connect.spotify.com dealer-wg.spotify.com desktop.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com gue1-dealer.g2.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login5.spotify.com pixel-static.spotify.com pixel.spotify.com web-partner.spotify.com xpui.app.spotify.com
-192.255.159.240 account.spotify.com accounts.spotify.com aet.spotify.com ap-gue1.spotify.com ap.spotify.com client.spotify.com edge-web.dual-gslb.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com login.spotify.com login5.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
-192.255.159.241 account.spotify.com accounts.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-gue1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com clienttoken.spotify.com content.spotify.com crashdump.spotify.com dealer.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gew1-dealer.spotify.com gnl-spclient.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com login.app.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com www.spotify.com
-192.3.233.253 ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-sto3.spotify.com ap.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gew1-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com metrics.spotify.com spclient.spotify.com spclient.wg.spotify.com
+107.175.76.134 api-partner.spotify.com appresolve.spotify.com connect.spotify.com dealer-wg.spotify.com desktop.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com gue1-dealer.g2.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login5.spotify.com pixel-static.spotify.com pixel.spotify.com web-partner.spotify.com xpui.app.spotify.com
+143.20.64.192 aet.spotify.com analytics.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap.spotify.com
+192.255.159.240 account.spotify.com accounts.spotify.com client.spotify.com edge-web.dual-gslb.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com login.spotify.com login5.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+192.255.159.241 account.spotify.com accounts.spotify.com api-partner.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com clienttoken.spotify.com content.spotify.com crashdump.spotify.com dealer.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gew1-dealer.spotify.com gnl-spclient.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com login.app.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com www.spotify.com
+192.3.233.253 apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gew1-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com metrics.spotify.com spclient.spotify.com spclient.wg.spotify.com
+217.60.245.219 analytics.spotify.com ap-gae2.spotify.com ap-gue1.spotify.com api.spotify.com
+217.60.245.233 ap-gae2.spotify.com ap-gew1.spotify.com ap-sto3.spotify.com ap.spotify.com api.spotify.com
+31.25.239.132 aet.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-sto3.spotify.com
 109.120.137.190 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 217.60.245.219 spotifycdn.net
 217.60.245.233 spotifycdn.net
@@ -1973,12 +2013,10 @@ ff02::2 ip6-allrouters
 31.25.239.132 members.summerana.com
 45.88.174.254 members.summerana.com summerana.com
 89.150.59.128 summerana.com
-107.175.76.134 store.supercell.com
-192.255.159.240 clashofclans.inbox.supercell.com security.id.supercell.com
+107.175.76.134 accounts.supercell.com store.supercell.com
+192.255.159.240 accounts.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com
 192.255.159.241 cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
 192.3.233.253 cdn.id.supercell.com
-217.60.245.219 accounts.supercell.com
-31.25.239.132 accounts.supercell.com
 62.133.62.97 supercell.com
 89.150.59.128 supercell.com
 107.175.76.134 superpharm.eu www.superpharm.pl
@@ -2090,8 +2128,10 @@ ff02::2 ip6-allrouters
 89.150.59.128 toolbox.app
 107.175.76.134 torrenteditor.com
 62.133.62.97 torrenteditor.com
-192.255.159.240 api-sg-central.trae.ai api.trae.ai
-192.3.233.253 api-sg-central.trae.ai api.trae.ai
+143.20.64.192 api-sg-central.trae.ai
+192.255.159.240 api.trae.ai
+192.3.233.253 api.trae.ai
+217.60.245.219 api-sg-central.trae.ai
 45.88.174.254 trae.ai
 89.150.59.128 trae.ai
 103.27.157.38 ncsi-geo.trafficmanager.net ncsiv6-geo.trafficmanager.net
@@ -2287,8 +2327,10 @@ ff02::2 ip6-allrouters
 192.3.233.253 www.wise.com
 107.175.76.134 stitch.withgoogle.com
 192.255.159.240 stitch.withgoogle.com
-192.255.159.241 aitestkitchen.withgoogle.com opal.withgoogle.com
-192.3.233.253 aitestkitchen.withgoogle.com opal.withgoogle.com
+192.255.159.241 opal.withgoogle.com
+192.3.233.253 opal.withgoogle.com
+217.60.245.219 aitestkitchen.withgoogle.com
+217.60.245.233 aitestkitchen.withgoogle.com
 107.175.76.134 users.wix.com
 192.255.159.241 users.wix.com
 31.25.239.132 wk.cz
