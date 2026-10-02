@@ -426,6 +426,7 @@
 ||discuss.ai.google.dev^$dnsrewrite=NOERROR;A;217.60.245.219
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||gemini.google.com^$dnsrewrite=NOERROR;A;217.60.245.219
+||geminiweb-pa.clients.google.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||jules.google.com^$dnsrewrite=NOERROR;A;217.60.245.219
 ||labs.google.com^$dnsrewrite=NOERROR;A;217.60.245.219
