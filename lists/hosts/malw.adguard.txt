@@ -119,7 +119,6 @@
 ||accounts.autodesk.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.autodesk.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||rewards.bing.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||access.broadcom.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -168,9 +167,7 @@
 ||developers.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||dict-audio.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||dict.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||errortracking.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||experimentation-grpc.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||experimentation.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||gtm.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||home.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -258,7 +255,6 @@
 ||autodiscover.last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
 ||jira.last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
 ||last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
-||s.last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
 ||saa.last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
 ||secure.last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
 ||shop.last.fm^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -277,7 +273,6 @@
 ||m3u.in^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.m3u.in^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.manus.im^$dnsrewrite=NOERROR;A;62.133.62.97
-||manus.im^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.manus.im^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api16-normal-alisg.mchost.guru^$dnsrewrite=NOERROR;A;62.133.62.97
 ||trae-api-sg.mchost.guru^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -289,7 +284,6 @@
 ||mongodb.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||webassets.mongodb.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.mongodb.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||netacad.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||app.notion.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||calendar.notion.so^$dnsrewrite=NOERROR;A;62.133.62.97
 ||notion.so^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -301,7 +295,6 @@
 ||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.oaiusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -337,7 +330,6 @@
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||analytics.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||ap-gae2.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||ap-gew1.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||ap-gew4.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||ap-guc3.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||ap-gue1.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -385,7 +377,6 @@
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||heads4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||image-cdn-fa.spotifycdn.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;62.133.62.97
