@@ -142,6 +142,14 @@
 ||www.claudeusercontent.com^$dnsrewrite=NOERROR;A;87.228.47.201
 ||chat.openai.com.cdn.cloudflare.net^$dnsrewrite=NOERROR;A;87.228.47.203
 ||backend-v2.crixet.com^$dnsrewrite=NOERROR;A;87.228.47.199
+||agentn.api2.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.api3.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.api4.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.api5.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.global.api2.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.global.api3.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.global.api4.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
+||agentn.global.api5.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
 ||api2.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
 ||api3.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
 ||api4.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
@@ -152,6 +160,7 @@
 ||cursor.com^$dnsrewrite=NOERROR;A;87.228.47.201
 ||cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
 ||downloads.cursor.com^$dnsrewrite=NOERROR;A;87.228.47.201
+||origin.cursor.com^$dnsrewrite=NOERROR;A;87.228.47.201
 ||repo42.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
 ||us-asia.gcpp.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
 ||us-eu.gcpp.cursor.sh^$dnsrewrite=NOERROR;A;87.228.47.201
