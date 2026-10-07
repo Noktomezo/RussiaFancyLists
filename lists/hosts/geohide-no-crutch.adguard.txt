@@ -155,6 +155,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||www.codeium.com^$dnsrewrite=NOERROR;A;192.3.233.253
 ||images.contentstack.io^$dnsrewrite=NOERROR;A;31.25.239.132
 ||coreweave.com^$dnsrewrite=NOERROR;A;45.13.237.213
