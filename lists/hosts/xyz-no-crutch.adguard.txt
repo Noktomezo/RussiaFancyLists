@@ -133,6 +133,7 @@
 ||assets.grok.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||grok.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.grok.com^$dnsrewrite=NOERROR;A;109.120.137.190
+||api.groq.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||console.groq.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||guidedhacking.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.guidedhacking.com^$dnsrewrite=NOERROR;A;109.120.137.190

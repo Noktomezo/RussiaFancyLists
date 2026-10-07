@@ -19,6 +19,7 @@ from russiafancylists.config import (
     BLACKLIST_LIST_FOLDER,
     BLACKLIST_MIHOMO_FOLDER,
     BLACKLIST_SING_BOX_FOLDER,
+    CUSTOM_FOLDER,
     GEOBLOCK_FOLDER,
     GEOBLOCK_MIHOMO_FOLDER,
     GEOBLOCK_SING_BOX_FOLDER,
@@ -89,6 +90,7 @@ def setup_dirs(skip_download: bool = False):
 
     # Ensure all directories exist
     for folder in [
+        CUSTOM_FOLDER,
         TEMP_FOLDER / "domains",
         TEMP_FOLDER / "ipsets",
         TEMP_FOLDER / "hosts",
@@ -189,6 +191,14 @@ async def run_pipeline(
                 console.print(
                     "[yellow]⚠ Zapret-Manager.sh not found, skipping its parsing[/yellow]"
                 )
+
+            # Copy custom lists into temp hosts folder if available
+            if CUSTOM_FOLDER.exists():
+                for custom_file in CUSTOM_FOLDER.glob("*.lst"):
+                    shutil.copy2(
+                        custom_file,
+                        TEMP_FOLDER / "hosts" / f"custom-{custom_file.name}",
+                    )
 
             # 1. Merge domain, ipset, and geoblock lists (acting as base for hosts lists) in parallel
             await asyncio.gather(

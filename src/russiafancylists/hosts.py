@@ -270,9 +270,13 @@ def get_source_info(file_path: Path):
                 continue
 
             is_ipv4 = IPV4_PATTERN.match(cols[0])
-            is_ipv6 = IPV6_PATTERN.match(cols[0])
+            is_ipv6 = IPV6_PATTERN.match(cols[0]) and ":" in cols[0]
 
-            if is_ipv4 or is_ipv6:
+            if is_ipv6:
+                # Exclude IPv6 addresses since IPv6 is not universally supported
+                continue
+
+            if is_ipv4:
                 if len(cols) < 2:
                     continue
                 ip = cols[0]
@@ -308,6 +312,10 @@ async def check_ip_active(ip: str, timeout: float = 2.5) -> bool:
     # Loopback addresses are always active
     if ip in ("127.0.0.1", "::1", "localhost", "ip6-localhost"):
         return True
+
+    # Exclude IPv6 addresses as IPv6 is not universally supported
+    if ":" in ip:
+        return False
 
     async def try_port(port: int) -> bool:
         async with IP_CHECK_SEMAPHORE:
@@ -583,13 +591,22 @@ async def detect_provider_proxy_ips(
 
     if not detected_proxy_ips["dns-ai"]:
         existing_dns_ai = (
-            hosts_temp_dir.parent.parent / "lists" / "hosts" / "dns-ai.hosts"
+            hosts_temp_dir.parent.parent / "lists" / "hosts" / "dns-ai-no-crutch.hosts"
         )
+        if not existing_dns_ai.exists():
+            existing_dns_ai = (
+                hosts_temp_dir.parent.parent / "lists" / "hosts" / "dns-ai.hosts"
+            )
         if existing_dns_ai.exists():
-            _, existing_dns_ai_doms = get_source_info(existing_dns_ai)
-            for ip in existing_dns_ai_doms:
-                if ip not in detected_proxy_ips["dns-ai"]:
-                    detected_proxy_ips["dns-ai"].append(ip)
+            try:
+                top_ips, _ = get_source_info(existing_dns_ai)
+                for ip in top_ips:
+                    if ip not in detected_proxy_ips["dns-ai"]:
+                        detected_proxy_ips["dns-ai"].append(ip)
+            except Exception:
+                pass
+        if not detected_proxy_ips["dns-ai"]:
+            detected_proxy_ips["dns-ai"] = ["62.60.230.61"]
 
     detected_proxy_ips = {k: sorted(v) for k, v in detected_proxy_ips.items()}
     all_clean_ips = sorted(
@@ -745,8 +762,12 @@ async def generate_aligned_hosts(
     for _, doms in zapret_ip_domains.items():
         allowed_domains.update(doms)
 
-    # Load domains from non-hosts sources (like itdoginfo-geoblock.lst and dartraiden-geoblock.lst which have no IP mappings)
-    for extra_name in ("itdoginfo-geoblock.lst", "dartraiden-geoblock.lst"):
+    # Load domains from non-hosts sources (like itdoginfo-geoblock.lst, dartraiden-geoblock.lst, and custom-*.lst which have no IP mappings)
+    extra_sources = ["itdoginfo-geoblock.lst", "dartraiden-geoblock.lst"]
+    for custom_path in sorted(hosts_temp_dir.glob("custom-*.lst")):
+        if custom_path.name not in extra_sources:
+            extra_sources.append(custom_path.name)
+    for extra_name in extra_sources:
         extra_path = hosts_temp_dir / extra_name
         if extra_path.exists():
             with open(extra_path, encoding="utf-8", errors="ignore") as f:
@@ -765,6 +786,18 @@ async def generate_aligned_hosts(
                     if dom:
                         for cleaned in clean_and_validate_domain(dom):
                             allowed_domains.add(cleaned.lower().strip())
+
+    # Load previously verified dns-ai domains into allowed_domains as fallback
+    existing_dns_ai_file = output_smart.parent / "dns-ai-no-crutch.hosts"
+    if not existing_dns_ai_file.exists():
+        existing_dns_ai_file = output_smart.parent / "dns-ai.hosts"
+    if existing_dns_ai_file.exists():
+        try:
+            _, prev_dns_ai_doms = get_source_info(existing_dns_ai_file)
+            for doms in prev_dns_ai_doms.values():
+                allowed_domains.update(doms)
+        except Exception:
+            pass
 
     # Filter geoblock_domains to only keep those allowed
     geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
@@ -855,24 +888,30 @@ async def generate_aligned_hosts(
                 if d in candidate_smart_domains:
                     provider_supported.setdefault("mafioznik", {})[d] = [chosen_ip]
 
-    # 2. dns-ai: if cloud CI dropped connections or geofencing returned 0 domains, fallback to disk
-    if not provider_supported.get("dns-ai"):
-        existing_dns_ai = output_smart.parent / "dns-ai-no-crutch.hosts"
-        if not existing_dns_ai.exists():
-            existing_dns_ai = output_smart.parent / "dns-ai.hosts"
-        if existing_dns_ai.exists():
+    # 2. dns-ai: if cloud CI dropped connections or geofencing returned fewer/0 domains, fallback to disk
+    existing_dns_ai = output_smart.parent / "dns-ai-no-crutch.hosts"
+    if not existing_dns_ai.exists():
+        existing_dns_ai = output_smart.parent / "dns-ai.hosts"
+    if existing_dns_ai.exists():
+        try:
             _, existing_doms = get_source_info(existing_dns_ai)
-            dns_ai_ips = detected_proxy_ips.get("dns-ai") or list(existing_doms.keys())
-            default_ip = dns_ai_ips[0] if dns_ai_ips else "127.0.0.1"
-            if existing_doms:
-                print(
-                    "Notice: Preserving previously verified dns-ai domains from disk as fallback..."
-                )
-                for ip, doms in existing_doms.items():
-                    chosen_ip = ip if ip in dns_ai_ips else default_ip
-                    for d in doms:
-                        if d in candidate_smart_domains:
-                            provider_supported.setdefault("dns-ai", {})[d] = [chosen_ip]
+        except Exception:
+            existing_doms = {}
+
+        dns_ai_ips = detected_proxy_ips.get("dns-ai") or list(existing_doms.keys())
+        default_ip = dns_ai_ips[0] if dns_ai_ips else "62.60.230.61"
+        current_dns_ai = provider_supported.get("dns-ai", {})
+        prev_dns_ai_count = sum(len(doms) for doms in existing_doms.values())
+
+        if len(current_dns_ai) < prev_dns_ai_count:
+            print(
+                "Notice: Preserving previously verified dns-ai domains from disk as fallback..."
+            )
+            for ip, doms in existing_doms.items():
+                chosen_ip = ip if ip in dns_ai_ips else default_ip
+                for d in doms:
+                    if d in candidate_smart_domains and d not in current_dns_ai:
+                        provider_supported.setdefault("dns-ai", {})[d] = [chosen_ip]
 
     # 7. Helper to write individual provider hosts and AdGuard Home files
     def write_provider_hosts(
@@ -1111,7 +1150,11 @@ def parse_zapret_sh(input_sh: Path, output_lst: Path):
             is_ipv4 = IPV4_PATTERN.match(first)
             is_ipv6 = IPV6_PATTERN.match(first) and ":" in first
 
-            if is_ipv4 or is_ipv6:
+            if is_ipv6:
+                # Exclude IPv6 addresses since IPv6 is not universally supported
+                continue
+
+            if is_ipv4:
                 clean_domains = []
                 for d in cols[1:]:
                     d = d.strip("\"' ").lower()

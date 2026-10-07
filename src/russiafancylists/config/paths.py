@@ -1,6 +1,7 @@
 from pathlib import Path
 
 ROOT_DIR = Path.cwd()
+CUSTOM_FOLDER = ROOT_DIR / "custom"
 TEMP_FOLDER = ROOT_DIR / "temp"
 LIST_FOLDER = ROOT_DIR / "lists"
 BLACKLIST_LIST_FOLDER = LIST_FOLDER / "blacklist"

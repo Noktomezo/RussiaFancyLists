@@ -32,7 +32,6 @@
 ||www.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||game.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||a.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
 ||api.claude.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -134,6 +133,7 @@
 ||assets.grok.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||grok.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.grok.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||api.groq.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||console.groq.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||guidedhacking.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.guidedhacking.com^$dnsrewrite=NOERROR;A;62.133.62.97

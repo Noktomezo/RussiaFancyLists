@@ -17,6 +17,8 @@
 ||platform.claude.com^$dnsrewrite=NOERROR;A;62.60.230.61
 ||www.claude.ai^$dnsrewrite=NOERROR;A;62.60.230.61
 ||www.claude.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||claudeusercontent.com^$dnsrewrite=NOERROR;A;62.60.230.61
+||www.claudeusercontent.com^$dnsrewrite=NOERROR;A;62.60.230.61
 ||api2.cursor.sh^$dnsrewrite=NOERROR;A;62.60.230.61
 ||api3.cursor.sh^$dnsrewrite=NOERROR;A;62.60.230.61
 ||api4.cursor.sh^$dnsrewrite=NOERROR;A;62.60.230.61
@@ -24,12 +26,10 @@
 ||us-only.gcpp.cursor.sh^$dnsrewrite=NOERROR;A;62.60.230.61
 ||www.genspark.ai^$dnsrewrite=NOERROR;A;62.60.230.61
 ||grok.com^$dnsrewrite=NOERROR;A;62.60.230.61
-||api.manus.im^$dnsrewrite=NOERROR;A;62.60.230.61
 ||manus.im^$dnsrewrite=NOERROR;A;62.60.230.61
 ||www.manus.im^$dnsrewrite=NOERROR;A;62.60.230.61
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;62.60.230.61
 ||android.chat.openai.com^$dnsrewrite=NOERROR;A;62.60.230.61
-||api.openai.com^$dnsrewrite=NOERROR;A;62.60.230.61
 ||auth.openai.com^$dnsrewrite=NOERROR;A;62.60.230.61
 ||cdn-1.strava.com^$dnsrewrite=NOERROR;A;62.60.230.61
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;62.60.230.61

@@ -3,6 +3,7 @@ from russiafancylists.config.paths import (
     BLACKLIST_LIST_FOLDER,
     BLACKLIST_MIHOMO_FOLDER,
     BLACKLIST_SING_BOX_FOLDER,
+    CUSTOM_FOLDER,
     GEOBLOCK_FOLDER,
     GEOBLOCK_MIHOMO_FOLDER,
     GEOBLOCK_SING_BOX_FOLDER,
@@ -21,6 +22,7 @@ from russiafancylists.config.providers import DOWNLOADS
 
 __all__ = [
     "ROOT_DIR",
+    "CUSTOM_FOLDER",
     "TEMP_FOLDER",
     "LIST_FOLDER",
     "BLACKLIST_LIST_FOLDER",
