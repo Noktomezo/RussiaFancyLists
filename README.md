@@ -268,7 +268,7 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/service-sing-box/direct-with-ech.srs"><code>direct-with-ech.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/service-sing-box/prefer-direct.json -->14.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-sing-box/prefer-direct.json -->13.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.srs -->4.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->410.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->104.1 KB<!-- SIZE_END -->
@@ -326,8 +326,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->101.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->98.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->101.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->99.1 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2086/2086<br>
@@ -341,8 +341,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->689.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->686.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->691.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->689.2 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2086/2086<br>
@@ -371,8 +371,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.hosts"><code>comss-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.hosts -->9.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->6.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.hosts -->9.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->6.5 KB<!-- SIZE_END -->
       </td>
       <td>
         • 285/2086<br>
@@ -386,12 +386,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/xbox-dns-no-crutch.hosts"><code>xbox-dns-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/xbox-dns.hosts -->7.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/xbox-dns-no-crutch.hosts -->4.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/xbox-dns.hosts -->5.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/xbox-dns-no-crutch.hosts -->2.5 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 212/2086<br>
-        • 212/2086
+        • 124/2086<br>
+        • 124/2086
       </td>
     </tr>
     <tr>
@@ -489,8 +489,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->227.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->221.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->227.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->221.7 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2086/2086<br>
@@ -505,7 +505,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
       <td>
         • <!-- SIZE:lists/hosts/combined.adguard.txt -->1.63 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->1.62 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->1.63 MB<!-- SIZE_END -->
       </td>
       <td>
         • 2086/2086<br>
@@ -534,8 +534,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->21.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->15.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->22.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->16.2 KB<!-- SIZE_END -->
       </td>
       <td>
         • 285/2086<br>
@@ -549,12 +549,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/xbox-dns-no-crutch.adguard.txt"><code>xbox-dns-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/xbox-dns.adguard.txt -->17.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/xbox-dns-no-crutch.adguard.txt -->11.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/xbox-dns.adguard.txt -->12.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/xbox-dns-no-crutch.adguard.txt -->6.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 212/2086<br>
-        • 212/2086
+        • 124/2086<br>
+        • 124/2086
       </td>
     </tr>
     <tr>
@@ -672,7 +672,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 <!-- STATUS_START -->
 - **GeoHide**: 💚💚💚💚💚💚💚💚💚
 - **Comss**: 💚💚
-- **Xbox DNS**: 💚💚💚
+- **Xbox DNS**: 💚
 - **dns-ai**: 💚
 - **AstraCat**: 💚
 - **XyZ**: 💚
