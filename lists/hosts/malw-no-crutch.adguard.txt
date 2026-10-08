@@ -29,7 +29,6 @@
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||www.chatgpt.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||a.claude.ai^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -106,7 +105,6 @@
 ||eleven-public-cdn.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
-||payload.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||try.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.elevenlabs.io^$dnsrewrite=NOERROR;A;62.133.62.97
 ||elevenreader.io^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -217,7 +215,6 @@
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;62.133.62.97
 ||patreon.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.patreon.com^$dnsrewrite=NOERROR;A;62.133.62.97
-||patreonusercontent.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||o.pki.goog^$dnsrewrite=NOERROR;A;62.133.62.97
 ||eu.posthog.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||us.posthog.com^$dnsrewrite=NOERROR;A;62.133.62.97
@@ -228,6 +225,7 @@
 ||qwant.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||www.qwant.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||account.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
+||accounts.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||analytics.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
 ||ap-gae2.spotify.com^$dnsrewrite=NOERROR;A;62.133.62.97
