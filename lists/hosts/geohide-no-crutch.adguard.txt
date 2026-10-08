@@ -863,8 +863,10 @@
 ||spclient.spotify.com^$dnsrewrite=NOERROR;A;5.175.161.3
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;5.175.161.3
 ||spotify.com^$dnsrewrite=NOERROR;A;5.175.161.3
+||spotify.dev^$dnsrewrite=NOERROR;A;5.175.161.3
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;5.175.161.3
 ||www.spotify.com^$dnsrewrite=NOERROR;A;5.175.161.3
+||www.spotify.dev^$dnsrewrite=NOERROR;A;5.175.161.3
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;5.175.161.3
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;5.175.161.40
 ||api.squareup.com^$dnsrewrite=NOERROR;A;5.175.161.40
