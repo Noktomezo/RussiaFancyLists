@@ -5,85 +5,85 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-103.137.248.145 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-157.22.177.90 antigravity.google
+157.22.177.90 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+95.81.102.20 antigravity.google
 95.81.98.64 accounts.autodesk.com autodesk.com efulfillment.autodesk.com
-103.137.248.145 avast.com avast.ru www.avast.com
-157.22.177.90 avira.com my.avira.com
+157.22.177.90 avast.com avast.ru www.avast.com
+95.81.102.20 avira.com my.avira.com
 95.81.98.64 bitdefender.com
-103.137.248.145 ai-chat.bsg.brave.com
-157.22.177.90 access.broadcom.com broadcom.com knowledge.broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+157.22.177.90 ai-chat.bsg.brave.com
+95.81.102.20 access.broadcom.com broadcom.com knowledge.broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
 95.81.98.64 content-management-files.canva.com static.canva.com
-103.137.248.145 api.cerebras.ai
-157.22.177.90 www.cgtrader.com
+157.22.177.90 api.cerebras.ai
+95.81.102.20 www.cgtrader.com
 95.81.98.64 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
-103.137.248.145 cisco.com
-157.22.177.90 clamav.net database.clamav.net
+157.22.177.90 cisco.com
+95.81.102.20 clamav.net database.clamav.net
 95.81.98.64 a.claude.ai api.claude.ai claude.ai downloads.claude.ai platform.claude.ai www.claude.ai
-103.137.248.145 clickup.com www.clickup.com
-157.22.177.90 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com www.codeium.com
+157.22.177.90 clickup.com www.clickup.com
+95.81.102.20 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com www.codeium.com
 95.81.98.64 www.crunchyroll.com
-103.137.248.145 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-157.22.177.90 app.deepsource.com deepsource.io
+157.22.177.90 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+95.81.102.20 app.deepsource.com deepsource.io
 95.81.98.64 ecosia.org www.ecosia.org
-103.137.248.145 elevenlabs.io
-157.22.177.90 gemini.google
+157.22.177.90 elevenlabs.io
+95.81.102.20 gemini.google
 95.81.98.64 genspark.ai
-103.137.248.145 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-157.22.177.90 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+157.22.177.90 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+95.81.102.20 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 95.81.98.64 assets.grok.com grok.com
-103.137.248.145 api.groq.com chat.groq.com console.groq.com groq.com
-157.22.177.90 www.guilded.gg
+157.22.177.90 api.groq.com chat.groq.com console.groq.com groq.com
+95.81.102.20 www.guilded.gg
 95.81.98.64 api.home-connect.cn api.home-connect.com home-connect.com
-103.137.248.145 ghostrc.game.idtech.services
-157.22.177.90 www.intel.com
+157.22.177.90 ghostrc.game.idtech.services
+95.81.102.20 www.intel.com
 95.81.98.64 api.app.prod.grazie.aws.intellij.net
-103.137.248.145 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
-157.22.177.90 labs.google
+157.22.177.90 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
+95.81.102.20 labs.google
 95.81.98.64 lidarr.audio
-103.137.248.145 lightning.ai
-157.22.177.90 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
+157.22.177.90 lightning.ai
+95.81.102.20 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
 95.81.98.64 api.manus.im manus.im www.manus.im
-103.137.248.145 trae-api-sg.mchost.guru
-157.22.177.90 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
+157.22.177.90 trae-api-sg.mchost.guru
+95.81.102.20 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
 95.81.98.64 login.norton.com norton.com
-103.137.248.145 notebook.google www.notebook.google
-157.22.177.90 notebooklm.google
+157.22.177.90 notebook.google www.notebook.google
+95.81.102.20 notebooklm.google
 95.81.98.64 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
-103.137.248.145 cdn.oaistatic.com www.oaistatic.com
-157.22.177.90 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+157.22.177.90 cdn.oaistatic.com www.oaistatic.com
+95.81.102.20 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
 95.81.98.64 opal.google
-103.137.248.145 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
-157.22.177.90 ciscobinary.openh264.org
+157.22.177.90 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+95.81.102.20 ciscobinary.openh264.org
 95.81.98.64 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
-103.137.248.145 pandasecurity.com www.pandasecurity.com
-157.22.177.90 qwant.com www.qwant.com
+157.22.177.90 pandasecurity.com www.pandasecurity.com
+95.81.102.20 qwant.com www.qwant.com
 95.81.98.64 api.radarr.video radarr.video
-103.137.248.145 raycast.com releases.raycast.com
-157.22.177.90 recraft.ai
+157.22.177.90 raycast.com releases.raycast.com
+95.81.102.20 recraft.ai
 95.81.98.64 app.reve.com preview.reve.art reve.art
-103.137.248.145 blogs.sap.com community.sap.com
-157.22.177.90 sentry.dev sentry.io
+157.22.177.90 blogs.sap.com community.sap.com
+95.81.102.20 sentry.dev sentry.io
 95.81.98.64 radarr.servarr.com
-103.137.248.145 singlekey-id.com
-157.22.177.90 3dwarehouse.sketchup.com extensions.sketchup.com
+157.22.177.90 singlekey-id.com
+95.81.102.20 3dwarehouse.sketchup.com extensions.sketchup.com
 95.81.98.64 sophos.com
-103.137.248.145 sora.com
-157.22.177.90 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+157.22.177.90 sora.com
+95.81.102.20 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
 95.81.98.64 api.themoviedb.org
-103.137.248.145 image.tmdb.org images.tmdb.org
-157.22.177.90 api.trae.ai trae.ai
+157.22.177.90 image.tmdb.org images.tmdb.org
+95.81.102.20 api.trae.ai trae.ai
 95.81.98.64 id.trimble.com
-103.137.248.145 usher.ttvnw.net
-157.22.177.90 gql.twitch.tv
+157.22.177.90 usher.ttvnw.net
+95.81.102.20 gql.twitch.tv
 95.81.98.64 fw-download.ubnt.com
-103.137.248.145 docs.vmware.com vmware.com
-157.22.177.90 wbagora.com
+157.22.177.90 docs.vmware.com vmware.com
+95.81.102.20 wbagora.com
 95.81.98.64 account.wbgames.com wbgames.com www.wbgames.com
-103.137.248.145 upsx.weather.com weather.com www.weather.com
-157.22.177.90 marketplace.windsurf.com
+157.22.177.90 upsx.weather.com weather.com www.weather.com
+95.81.102.20 marketplace.windsurf.com
 95.81.98.64 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
-103.137.248.145 users.wix.com
-157.22.177.90 api.workos.com
+157.22.177.90 users.wix.com
+95.81.102.20 api.workos.com
 95.81.98.64 wunderground.com www.wunderground.com
-103.137.248.145 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
+157.22.177.90 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
