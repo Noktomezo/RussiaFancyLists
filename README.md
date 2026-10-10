@@ -50,8 +50,8 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist/ipsets/full.lst -->950.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->627.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->184.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->627.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->185.0 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -83,9 +83,9 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.54 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->187.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->1.02 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->143.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->312.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->1.03 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->143.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->312.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->43.9 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -118,9 +118,9 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.26 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->219.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->857.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->857.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->183.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->254.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->254.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->58.0 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -255,7 +255,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/service/prefer-direct.lst -->7.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service/direct-with-ech.lst -->244.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service/direct-with-ech.lst -->240.0 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -270,8 +270,8 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.json -->14.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.srs -->4.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->418.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->105.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->410.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->104.1 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -286,8 +286,8 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->11.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.mrs -->3.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->339.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->105.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->333.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->103.4 KB<!-- SIZE_END -->
       </td>
     </tr>
   </tbody>
@@ -326,8 +326,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->102.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->99.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->101.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->99.3 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2089/2089<br>
@@ -489,8 +489,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->228.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->222.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->228.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->222.1 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2089/2089<br>
