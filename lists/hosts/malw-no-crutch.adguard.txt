@@ -9,6 +9,7 @@
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -213,15 +214,12 @@
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||audio-cf.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||heads4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||image-cdn-fa.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||open-exp.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174

@@ -114,7 +114,6 @@ api.groq.com
 api.home-connect.cn
 api.home-connect.com
 api.imgur.com
-api.instagram.com
 api.jetbrains.ai
 api.manus.im
 api.openai.com
@@ -176,9 +175,7 @@ atlassian.com
 att.com
 atwiki.jp
 audacy.com
-audio-cf.spotifycdn.com
 audio-fa-tls13.spotifycdn.com
-audio4-fa-tls13.spotifycdn.com
 augmentcode.com
 auth.anthropic.com
 auth.deepl.com
@@ -213,6 +210,7 @@ avid.com
 avira.com
 aybest.xyz
 azwindows.ipv6.microsoft.com.akadns.net
+b.i.instagram.com
 bacch.com
 backend-v2.crixet.com
 backend.deepl.com
@@ -367,6 +365,7 @@ completeaccess.audio
 concerts.spotifycdn.com
 connect.ngrok-agent.com
 connect.spotify.com
+connect.ubisoft.com
 consent.badoo.com
 consent.trustarc.com
 console.anthropic.com
@@ -523,7 +522,6 @@ echo.naukri.com
 ecosia.org
 ecs.office.com
 edelivery.windriver.com
-edge-chat.instagram.com
 edge-web.dual-gslb.spotify.com
 edgeservices.bing.com
 editmysite.com
@@ -644,12 +642,15 @@ gae2-spclient.spotify.com
 gallery.zetalliance.org
 gambody.com
 game.boombeachgame.com
+game.brawlstarsgame.com
+game.clashroyaleapp.com
 game.co.uk
 game.mocogame.com
 game.squadbustersgame.com
 game8.co
 game8.co.jp
 game8.jp
+gamea.clashofclans.com
 gamestop.com
 gaming.amazon.com
 gateway.pinata.cloud
@@ -695,7 +696,6 @@ gpu-monkey.com
 gql.twitch.tv
 grafana.com
 grammarly.com
-graph.instagram.com
 graphql.strava.com
 graylog.org
 grazie.ai
@@ -727,6 +727,7 @@ heads-fa-tls13.spotifycdn.com
 heads4-fa-tls13.spotifycdn.com
 healthline.com
 help.elevenlabs.io
+help.instagram.com
 herokucdn.com
 hex-rays.com
 hiring.naukri.com
@@ -747,7 +748,6 @@ hume.ai
 hybrid-analysis.com
 hyundainews.com
 i.dell.com
-i.instagram.com
 i1.api.augmentcode.com
 iaai.com
 ibm.com
@@ -1252,7 +1252,6 @@ onshape.com
 opal.google
 opal.google.com
 opal.withgoogle.com
-open-exp.spotifycdn.com
 openai.com
 opencode.ai
 openculture.com
@@ -1371,6 +1370,7 @@ quicknode.com
 qwant.com
 radarr.servarr.com
 radarr.video
+rainbow6.com
 ratatype.com
 raycast-releases.com
 raycast.com
@@ -1448,6 +1448,7 @@ schaeffler.com
 schenker-tech.de
 schneider-electric.com
 scim.strava.com
+scontent-hel3-1.xx.fbcdn.net
 screamingfrog.co.uk
 scribd.com
 scribdassets.com
@@ -1550,7 +1551,6 @@ stalker2.com
 static-assets-1.truthsocial.com
 static.app
 static.canva.com
-static.cdninstagram.com
 static.deepl.com
 static.linear.app
 static.naukimg.com
@@ -1695,6 +1695,7 @@ undress.cc
 unleash.codeium.com
 unscreen.com
 unsplash.com
+uplay.ubisoft.com
 uploads.linear.app
 upsx.weather.com
 upv.es
@@ -1800,6 +1801,7 @@ win1910.ipv6.microsoft.com
 windguru.cz
 windriver.com
 windsurf-stable.codeium.com
+windsurf-telemetry.codeium.com
 windsurf.com
 wise.com
 wk.cz
@@ -2075,6 +2077,7 @@ yourdictionary.com
 youtrack.cloud
 youtrack.jetbrains.com
 yupp.ai
+z-p42-chat-e2ee-ig.facebook.com
 zapier-deployment.com
 zapier.com
 zedge.net

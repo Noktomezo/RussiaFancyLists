@@ -5,101 +5,60 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-8.47.69.5 2407.pl
-8.47.69.5 www.37signals.com
-8.47.69.5 4pda.to
-8.47.69.5 aave.com www.aave.com
-8.47.69.5 www.affinity.studio
-8.47.69.5 app.ahrefs.com
-8.47.69.5 ai.com
+8.47.69.7 4pda.to
+8.6.112.7 aave.com
 160.79.104.10 a-api.anthropic.com anthropic.com api.anthropic.com assets-proxy.anthropic.com console.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-8.47.69.5 anythingllm.com
-8.47.69.5 arc.net
-8.47.69.5 w.atwiki.jp
-8.47.69.5 brickset.com
-8.47.69.5 buanzo.org
-8.47.69.5 buymeacoffee.com www.buymeacoffee.com
-8.47.69.5 stream.camelai.com
-8.47.69.5 www.canva-apps.com
-8.47.69.5 api.cerebras.ai
-8.47.69.5 chatgpt.site sora.chatgpt.com www.chatgpt.site
+8.6.112.7 support.anydesk.com
+8.6.112.7 blizzardwatch.com
+8.6.112.7 boosteroid.com
+8.6.112.7 stream.camelai.com
+8.6.112.7 canva.dev
+8.47.69.7 cats.com
 160.79.104.10 a.claude.ai claude.ai claude.com platform.claude.com www.claude.ai www.claude.com
 160.79.104.10 claudeusercontent.com www.claudeusercontent.com
-8.47.69.5 clevelandclinic.org
-8.47.69.5 cocalc.com
-8.47.69.5 completeaccess.audio
-8.47.69.5 www.coreweave.com
-8.47.69.5 www.corsair.com
-8.47.69.5 crunchbase.com
-8.47.69.5 crunchyroll.com
-8.47.69.5 authenticate.cursor.sh authenticator.cursor.sh
-8.47.69.5 clearance.deepl.com jobs.deepl.com
-8.47.69.5 deepsource.io
-8.47.69.5 devexpress.com
-8.47.69.5 document360.com
-8.47.69.5 try.elevenlabs.io
-8.47.69.5 eneba.com
-8.47.69.5 engagor.com
-8.47.69.5 extremetech.com
-8.47.69.5 fiercepc.co.uk
-8.47.69.5 flowmusic.app
-8.47.69.5 freakhosting.com
-8.47.69.5 futurelearn.com
-8.47.69.5 genspark.ai
-8.47.69.5 grizzlysms.com
-8.47.69.5 www.grok.com
-8.47.69.5 chat.groq.com
-8.47.69.5 grouponcdn.com
-8.47.69.5 guidedhacking.com www.guidedhacking.com
-8.47.69.5 humblebundle.com
-8.47.69.5 intellipaat.com
-8.47.69.5 joesandbox.com
-8.47.69.5 kaleido.ai
-8.47.69.5 lenso.ai
-8.47.69.5 lifehacker.com
-8.47.69.5 lightning.ai
-8.47.69.5 linear.app public.linear.app static.linear.app
-8.47.69.5 londonstockexchange.com
-8.47.69.5 macpaw.com
-8.47.69.5 makita.com.au www.makita.ca
-8.47.69.5 manybooks.net
-8.47.69.5 mediaexpert.pl
-8.47.69.5 militarnyi.com
-8.47.69.5 monotypefonts.com
-8.47.69.5 n8n.cloud www.n8n.cloud
-8.47.69.5 oaistatic.com www.oaistatic.com
-8.47.69.5 sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com
-8.47.69.5 oclc.org
-8.47.69.5 openrouter.ai
-8.47.69.5 clip.opus.pro
-8.47.69.5 www.panic.com
-8.47.69.5 pcspecialist.co.uk
-8.47.69.5 pi.ai
-8.47.69.5 pimeyes.com
-8.47.69.5 pixabay.com
-8.47.69.5 powertoolsuk.co.uk www.powertoolsuk.co.uk
-8.47.69.5 frontend-api-v3.pump.fun images.pump.fun
-8.47.69.5 ratatype.com
-8.47.69.5 remove.bg www.remove.bg
-8.47.69.5 schenker-tech.de
-8.47.69.5 seagate.com
-8.47.69.5 smartdeploy.com
-8.47.69.5 socradar.io
-8.47.69.5 sora.com
-8.47.69.5 stalker2.com
-8.47.69.5 static.app
-8.47.69.5 stereophile.com
-8.47.69.5 www.superpharm.pl
-8.47.69.5 swapd.co
-8.47.69.5 telemetr.io
-8.47.69.5 thinkpads.com
-8.47.69.5 tokenharbor.ai
-8.47.69.5 tria.ge
-8.47.69.5 static-assets-1.truthsocial.com truthsocial.com
-8.47.69.5 ultimaker.com www.ultimaker.com
-8.47.69.5 volet.com
-8.47.69.5 www.whimsical.com
-8.47.69.5 api.workos.com
-8.47.69.5 console.x.ai www.x.ai
-8.47.69.5 xfantazy.com
-8.47.69.5 zerossl.com
+8.6.112.7 coingate.com
+8.47.69.7 coreweave.com
+8.6.112.7 cpu-monkey.com
+8.47.69.7 crunchyroll.com
+8.47.69.7 cvedetails.com
+8.47.69.7 dict-audio.deepl.com www.deepl.com
+8.47.69.7 findagrave.com
+8.47.69.7 foxtrot.com.ua
+8.6.112.7 www.freakhosting.com
+8.47.69.7 grizzlysms.com
+8.6.112.7 assets.grok.com
+8.47.69.7 img.grouponcdn.com
+8.47.69.7 guidedhacking.com
+8.47.69.7 kaleido.ai
+8.47.69.7 lifehacker.com
+8.6.112.7 client-api.linear.app
+8.6.112.7 lipstickalley.com
+8.47.69.7 makita.ca www.makita.com.au
+8.6.112.7 makita.com.au
+8.47.69.7 manybooks.net
+8.6.112.7 www.manybooks.net
+8.47.69.7 meest-shop.com
+8.6.112.7 microcenter.com
+8.47.69.7 cms-images.mmst.eu
+8.6.112.7 neo4j.com
+8.47.69.7 sdmntprpolandcentral.oaiusercontent.com
+8.6.112.7 files.oaiusercontent.com sdmntprnortheu.oaiusercontent.com
+8.47.69.7 octopart.com
+8.6.112.7 geolocation.onetrust.com
+8.6.112.7 clip.opus.pro
+8.47.69.7 parallels.cn
+8.6.112.7 parts-express.com
+8.47.69.7 www.pi.ai
+8.6.112.7 pinata.cloud
+8.6.112.7 play.date www.play.date
+8.47.69.7 screamingfrog.co.uk
+8.6.112.7 www.securitytrails.com
+8.6.112.7 serverkast.com
+8.6.112.7 superpharm.pl
+8.47.69.7 telemetr.io
+8.6.112.7 www.tria.ge
+8.47.69.7 wellfound.com
+8.6.112.7 www.whimsical.com
+8.47.69.7 wpengine.com
+8.47.69.7 www.x.ai
+8.6.112.7 api.x.ai assets.x.ai

@@ -48,6 +48,7 @@
 ||unleash.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||web-backend.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||windsurf-stable.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
+||windsurf-telemetry.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.codeium.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||api.deepl.com^$dnsrewrite=NOERROR;A;109.120.137.190
@@ -274,15 +275,12 @@
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||www.spotify.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;109.120.137.190
-||audio-cf.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
-||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||heads4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||image-cdn-fa.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
-||open-exp.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;109.120.137.190
