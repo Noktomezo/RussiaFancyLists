@@ -31,11 +31,10 @@ ff02::2 ip6-allrouters
 157.22.178.170 elevenlabs.io
 157.22.178.170 gemini.google
 157.22.178.170 genspark.ai
-132.243.112.221 aistudio.google.com bard.google.com notebook.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-157.22.178.170 ai.google.dev alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com gemini.google.com jules.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com
-132.243.112.221 developerprofiles-pa.googleapis.com robinfrontend-pa.googleapis.com
-157.22.177.90 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com
-157.22.178.170 generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com
+132.243.112.221 aistudio.google.com
+157.22.178.170 ai.google.dev alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+132.243.112.221 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com
+157.22.178.170 developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 157.22.178.170 assets.grok.com grok.com
 157.22.178.170 api.groq.com chat.groq.com console.groq.com groq.com
 157.22.178.170 www.guilded.gg
@@ -44,7 +43,7 @@ ff02::2 ip6-allrouters
 157.22.178.170 www.intel.com
 157.22.178.170 api.app.prod.grazie.aws.intellij.net
 157.22.178.170 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
-157.22.177.90 labs.google
+132.243.112.221 labs.google
 157.22.178.170 lidarr.audio
 157.22.178.170 lightning.ai
 157.22.178.170 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
@@ -53,9 +52,8 @@ ff02::2 ip6-allrouters
 132.243.112.38 copilot.microsoft.com designer.microsoft.com
 157.22.178.170 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
 157.22.178.170 login.norton.com norton.com
-132.243.112.221 www.notebook.google
-157.22.178.170 notebook.google
-132.243.112.221 notebooklm.google
+157.22.178.170 notebook.google www.notebook.google
+157.22.178.170 notebooklm.google
 157.22.178.170 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 157.22.178.170 cdn.oaistatic.com www.oaistatic.com
 157.22.178.170 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com

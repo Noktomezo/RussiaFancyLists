@@ -5,6 +5,32 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-160.79.104.10 a-api.anthropic.com anthropic.com api.anthropic.com assets-proxy.anthropic.com console.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-160.79.104.10 a.claude.ai claude.ai claude.com platform.claude.com www.claude.ai www.claude.com
-160.79.104.10 claudeusercontent.com www.claudeusercontent.com
+13.140.94.151 a-cdn.anthropic.com anthropic.com statsig.anthropic.com status.anthropic.com
+191.44.41.79 a-api.anthropic.com api.anthropic.com auth.anthropic.com console.anthropic.com www.anthropic.com
+62.60.230.61 assets-proxy.anthropic.com support.anthropic.com
+62.60.230.61 ab.chatgpt.com chatgpt.com
+13.140.94.151 platform.claude.ai platform.claude.com
+191.44.41.79 a.claude.ai claude.com
+62.60.230.61 claude.ai downloads.claude.ai
+13.140.94.151 claudeusercontent.com
+13.140.94.151 agentn.api5.cursor.sh agentn.global.api5.cursor.sh
+62.60.230.61 us-only.gcpp.cursor.sh
+191.44.41.79 www.genspark.ai
+13.140.94.151 alkalimakersuite-pa.clients6.google.com gemini.google.com notebook.google.com notebooklm.google.com
+191.44.41.79 aistudio.google.com jules.google.com
+13.140.94.151 aisandbox-pa.googleapis.com daily-cloudcode-pa.googleapis.com generativelanguage.googleapis.com
+191.44.41.79 notebooklm-pa.googleapis.com
+13.140.94.151 www.grok.com
+191.44.41.79 assets.grok.com grok.com
+13.140.94.151 labs.google
+13.140.94.151 www.manus.im
+191.44.41.79 manus.im
+191.44.41.79 copilot.microsoft.com
+13.140.94.151 auth.openai.com
+62.60.230.61 android.chat.openai.com
+62.60.230.61 cdn-1.strava.com graphql.strava.com strava.com www.strava.com
+13.140.94.151 usher.ttvnw.net
+13.140.94.151 gql.twitch.tv
+13.140.94.151 assets.x.ai
+191.44.41.79 accounts.x.ai grok.x.ai www.x.ai
+62.60.230.61 console.x.ai x.ai

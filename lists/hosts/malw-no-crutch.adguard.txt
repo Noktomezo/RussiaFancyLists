@@ -205,7 +205,6 @@
 ||login.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||metrics.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||open.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pixel-static.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pixel.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174

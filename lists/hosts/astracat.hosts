@@ -10,7 +10,6 @@ ff02::2 ip6-allrouters
 23.48.23.145 heads-ak-spotify-com.akamaized.net
 103.27.157.38 game-assets.brawlstarsgame.com
 185.246.223.127 game.brawlstarsgame.com
-31.13.66.63 scontent-hel3-1.cdninstagram.com scontent.cdninstagram.com
 57.144.244.192 static.cdninstagram.com
 103.27.157.38 game-assets.clashofclans.com
 193.23.209.189 gamea.clashofclans.com
@@ -22,20 +21,20 @@ ff02::2 ip6-allrouters
 57.144.244.1 facebook.com www.facebook.com
 57.144.244.1 fb.com
 31.13.67.20 scontent-hel3-1.xx.fbcdn.net
-57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 140.82.114.3 github.com
 185.199.110.133 camo.githubassets.com
+185.199.110.154 github.githubassets.com
 146.75.22.132 avatars.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com avatars4.githubusercontent.com avatars5.githubusercontent.com camo.githubusercontent.com gist.githubusercontent.com objects.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com release-assets.githubusercontent.com
-157.240.205.174 instagram.com www.instagram.com
-157.240.245.174 b.i.instagram.com help.instagram.com
+157.240.245.174 b.i.instagram.com help.instagram.com instagram.com www.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 130.255.77.28 ntc.party
 172.67.139.108 r6s.com
 54.155.2.87 rainbow6.com
 65.8.158.112 tr.rbxcdn.com
-172.66.159.63 d.rutor.info rutor.info
+185.39.18.98 lib.rus.ec www.lib.rus.ec
 199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
+35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
 108.61.167.26 game.squadbustersgame.com
 103.27.157.38 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
@@ -51,6 +50,7 @@ ff02::2 ip6-allrouters
 99.83.188.134 public-ubiservices.ubi.com
 18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
+54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
 217.60.179.6 api.anthropic.com console.anthropic.com
@@ -95,6 +95,7 @@ ff02::2 ip6-allrouters
 217.60.179.6 o.pki.goog
 217.60.179.6 frontend-api-v3.pump.fun images.pump.fun pump.fun swap-api.pump.fun
 217.60.179.6 www.qwant.com
+217.60.179.6 d.rutor.info
 217.60.179.6 sora.com
 217.60.179.6 api-global.squareup.com api.squareup.com
 217.60.179.6 controlplane.tailscale.com

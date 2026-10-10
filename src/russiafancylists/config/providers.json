@@ -3,8 +3,8 @@
     "key": "geohide",
     "name": "GeoHide",
     "doh_endpoints": {
-      "geohide_eu": "https://v.recipes/dns/eu.geohide.ru/dns-query",
-      "geohide_us": "https://v.recipes/dns/us.geohide.ru/dns-query"
+      "geohide_eu": "https://eu.geohide.ru/dns-query",
+      "geohide_us": "https://us.geohide.ru/dns-query"
     },
     "aliases": ["geohide_ru"],
     "download_sources": [
@@ -27,7 +27,7 @@
     "key": "comss",
     "name": "Comss",
     "doh_endpoints": {
-      "comss": "https://v.recipes/dns/dns.comss.one/dns-query"
+      "comss": "https://dns.comss.one/dns-query"
     },
     "aliases": [],
     "download_sources": [],
@@ -37,7 +37,7 @@
     "key": "xbox-dns",
     "name": "Xbox DNS",
     "doh_endpoints": {
-      "xbox_dns": "https://v.recipes/dns/xbox-dns.ru/dns-query"
+      "xbox_dns": "https://xbox-dns.ru/dns-query"
     },
     "aliases": ["xbox_dns"],
     "download_sources": [],
@@ -47,7 +47,7 @@
     "key": "dns-ai",
     "name": "dns-ai",
     "doh_endpoints": {
-      "dns_ai": "https://v.recipes/dns/dns.dns-ai.ru/dns-query"
+      "dns_ai": "https://dns.dns-ai.ru/dns-query"
     },
     "aliases": ["dns_ai"],
     "download_sources": [],
@@ -57,7 +57,7 @@
     "key": "astracat",
     "name": "AstraCat",
     "doh_endpoints": {
-      "astracat": "https://v.recipes/dns/dns.astracat.network/dns-query"
+      "astracat": "https://dns.astracat.network/dns-query"
     },
     "aliases": [],
     "download_sources": [],
@@ -67,7 +67,7 @@
     "key": "xyz",
     "name": "XyZ",
     "doh_endpoints": {
-      "xyz": "https://v.recipes/dns/dns.yo1nk.app/dns-query"
+      "xyz": "https://dns.yo1nk.app/dns-query"
     },
     "aliases": [],
     "download_sources": [],
@@ -77,7 +77,7 @@
     "key": "malw",
     "name": "ImMALWARE",
     "doh_endpoints": {
-      "malw": "https://v.recipes/dns/dns.malw.link/dns-query"
+      "malw": "https://dns.malw.link/dns-query"
     },
     "aliases": ["malw"],
     "download_sources": [
@@ -94,7 +94,7 @@
     "key": "mafioznik",
     "name": "Mafioznik",
     "doh_endpoints": {
-      "mafioznik": "https://v.recipes/dns/dns.mafioznik.xyz/dns-query"
+      "mafioznik": "https://dns.mafioznik.xyz/dns-query"
     },
     "aliases": ["freedom.mafioznik.xyz"],
     "download_sources": [

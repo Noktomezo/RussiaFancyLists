@@ -102,8 +102,7 @@ async def query_doh_a_records(
                 ips = parse_dns_wire_a_records(r.content)
                 if ips:
                     return ips
-            if r.status_code in (400, 403, 404, 405, 500, 502, 503, 504):
-                fallback_to_get = True
+            fallback_to_get = True
         except Exception:
             fallback_to_get = True
 

@@ -7,8 +7,6 @@
 ||heads-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.48.23.145
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;185.246.223.127
-||scontent-hel3-1.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
-||scontent.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||gamea.clashofclans.com^$dnsrewrite=NOERROR;A;193.23.209.189
@@ -21,11 +19,10 @@
 ||www.facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||fb.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||scontent-hel3-1.xx.fbcdn.net^$dnsrewrite=NOERROR;A;31.13.67.20
-||scontent.xx.fbcdn.net^$dnsrewrite=NOERROR;A;57.144.244.128
-||static.xx.fbcdn.net^$dnsrewrite=NOERROR;A;57.144.244.128
 ||fbsbx.com^$dnsrewrite=NOERROR;A;57.144.244.1
 ||github.com^$dnsrewrite=NOERROR;A;140.82.114.3
 ||camo.githubassets.com^$dnsrewrite=NOERROR;A;185.199.110.133
+||github.githubassets.com^$dnsrewrite=NOERROR;A;185.199.110.154
 ||avatars.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
 ||avatars0.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
 ||avatars1.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
@@ -39,10 +36,10 @@
 ||private-user-images.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
 ||raw.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
 ||release-assets.githubusercontent.com^$dnsrewrite=NOERROR;A;146.75.22.132
-||instagram.com^$dnsrewrite=NOERROR;A;157.240.205.174
-||www.instagram.com^$dnsrewrite=NOERROR;A;157.240.205.174
 ||b.i.instagram.com^$dnsrewrite=NOERROR;A;157.240.245.174
 ||help.instagram.com^$dnsrewrite=NOERROR;A;157.240.245.174
+||instagram.com^$dnsrewrite=NOERROR;A;157.240.245.174
+||www.instagram.com^$dnsrewrite=NOERROR;A;157.240.245.174
 ||api.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||edge-chat.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||graph.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
@@ -51,8 +48,8 @@
 ||r6s.com^$dnsrewrite=NOERROR;A;172.67.139.108
 ||rainbow6.com^$dnsrewrite=NOERROR;A;54.155.2.87
 ||tr.rbxcdn.com^$dnsrewrite=NOERROR;A;65.8.158.112
-||d.rutor.info^$dnsrewrite=NOERROR;A;172.66.159.63
-||rutor.info^$dnsrewrite=NOERROR;A;172.66.159.63
+||lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
+||www.lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||accounts.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||av.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||daily-mix.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
@@ -66,6 +63,7 @@
 ||seafoam.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||www-growth.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
 ||www.scdn.co^$dnsrewrite=NOERROR;A;199.232.210.248
+||open.spotify.com^$dnsrewrite=NOERROR;A;35.186.224.24
 ||audio-cf.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||audio4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
 ||open-exp.spotifycdn.com^$dnsrewrite=NOERROR;A;162.159.141.124
@@ -114,6 +112,7 @@
 ||public-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;99.83.188.134
 ||connect.ubisoft.com^$dnsrewrite=NOERROR;A;18.209.141.203
 ||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
+||uplay.ubisoft.com^$dnsrewrite=NOERROR;A;54.76.54.196
 
 ! Geoblock
 ||a-api.anthropic.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -222,25 +221,25 @@
 ||gemini.google^$dnsrewrite=NOERROR;A;157.22.178.170
 ||genspark.ai^$dnsrewrite=NOERROR;A;157.22.178.170
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;132.243.112.221
-||bard.google.com^$dnsrewrite=NOERROR;A;132.243.112.221
-||notebook.google.com^$dnsrewrite=NOERROR;A;132.243.112.221
-||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;132.243.112.221
 ||ai.google.dev^$dnsrewrite=NOERROR;A;157.22.178.170
 ||alkalicore-pa.clients6.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||apis.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
+||bard.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||gemini.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||jules.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
+||notebook.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||signaler-pa.clients6.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||waa-pa.clients6.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
-||developerprofiles-pa.googleapis.com^$dnsrewrite=NOERROR;A;132.243.112.221
-||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;132.243.112.221
-||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;157.22.177.90
-||appcatalyst.pa.googleapis.com^$dnsrewrite=NOERROR;A;157.22.177.90
+||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;157.22.178.170
+||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;132.243.112.221
+||appcatalyst.pa.googleapis.com^$dnsrewrite=NOERROR;A;132.243.112.221
+||developerprofiles-pa.googleapis.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||notebooklm-pa.googleapis.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;157.22.178.170
+||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||assets.grok.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||grok.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||api.groq.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -263,7 +262,7 @@
 ||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||www.jetbrains.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||youtrack.jetbrains.com^$dnsrewrite=NOERROR;A;157.22.178.170
-||labs.google^$dnsrewrite=NOERROR;A;157.22.177.90
+||labs.google^$dnsrewrite=NOERROR;A;132.243.112.221
 ||lidarr.audio^$dnsrewrite=NOERROR;A;157.22.178.170
 ||lightning.ai^$dnsrewrite=NOERROR;A;157.22.178.170
 ||downloads.malwarebytes.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -283,9 +282,9 @@
 ||www.mongodb.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||login.norton.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||norton.com^$dnsrewrite=NOERROR;A;157.22.178.170
-||www.notebook.google^$dnsrewrite=NOERROR;A;132.243.112.221
 ||notebook.google^$dnsrewrite=NOERROR;A;157.22.178.170
-||notebooklm.google^$dnsrewrite=NOERROR;A;132.243.112.221
+||www.notebook.google^$dnsrewrite=NOERROR;A;157.22.178.170
+||notebooklm.google^$dnsrewrite=NOERROR;A;157.22.178.170
 ||app.notion.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||calendar.notion.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||calendar.notion.so^$dnsrewrite=NOERROR;A;157.22.178.170
