@@ -707,7 +707,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 
 ## 💖 Support
 
-### Rubles & US Dollars
+### Fiat
 <img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Donation in RUB](https://pay.cloudtips.ru/p/227e7223) — CloudTips (SBP, T-Pay, bank cards)<br>
 <img src="./assets/icons/usd.svg" width="16" height="16" valign="middle"> [Donation in USD](https://hipolink.net/noktomezo/tips) — HipoLink (Visa, Mastercard, etc.)
 
