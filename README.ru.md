@@ -707,10 +707,8 @@
 
 ## 💖 Поддержка
 
-### Рубли
-<img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Пожертвование в рублях](https://pay.cloudtips.ru/p/227e7223) — CloudTips (СБП, T-Pay, банковские карты)
-
-### Доллары
+### Рубли и доллары
+<img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Пожертвование в рублях](https://pay.cloudtips.ru/p/227e7223) — CloudTips (СБП, T-Pay, банковские карты)<br>
 <img src="./assets/icons/usd.svg" width="16" height="16" valign="middle"> [Пожертвование в долларах](https://hipolink.net/noktomezo/tips) — HipoLink (Visa, Mastercard и др.)
 
 ### Криптовалюта
