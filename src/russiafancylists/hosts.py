@@ -4,7 +4,7 @@ import ipaddress
 import json
 import re
 import ssl
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 import httpx
@@ -836,15 +836,10 @@ async def generate_aligned_hosts(
         or ["127.0.0.1"]
     )
 
-    brand_map = defaultdict(list)
-    for dom in candidate_smart_domains:
-        brand = get_raw_brand(dom)
-        brand_map[brand].append(dom)
-
-    sorted_brands = sorted(brand_map.keys())
-    for idx, brand in enumerate(sorted_brands):
-        ip_to_use = combined_active_proxies[idx % len(combined_active_proxies)]
-        combined_geoblock.setdefault((ip_to_use, brand), set()).update(brand_map[brand])
+    for ip in combined_active_proxies:
+        for dom in candidate_smart_domains:
+            brand = get_raw_brand(dom)
+            combined_geoblock.setdefault((ip, brand), set()).add(dom)
 
     combined_geoblock_nc = {k: set(v) for k, v in combined_geoblock.items()}
 

@@ -38,7 +38,7 @@ This file contains global rules, workflow requirements, and architectural guidel
 ### 1. Separate Hosts Families
 - The generated hosts files are organized into the following families:
   1. **Smart Hosts Files**: `smart.hosts`, `smart-no-crutch.hosts` (recommended multi-provider solution, actively SNI-probed across all available proxy endpoints, keeping only validated working `[IP - domain]` pairs).
-  2. **Combined Hosts Files**: `combined.hosts`, `combined-no-crutch.hosts` (full unified geoblock list mapped across active proxy endpoints; round-robin mapping without per-domain SNI check, noted as less reliable).
+  2. **Combined Hosts Files**: `combined.hosts`, `combined-no-crutch.hosts` (full unified geoblock list mapped across all active proxy endpoints without per-domain SNI check, noted as less reliable).
   3. **Dedicated Provider Files (with Crutches)**: `geohide.hosts`, `comss.hosts`, `xbox-dns.hosts`, `dns-ai.hosts`, `astracat.hosts`, `xyz.hosts`, `malw.hosts`, `mafioznik.hosts` (each provider's confirmed working geoblock domains; cleanly omitted if the provider has 0 working geoblock domains).
   4. **No-Crutch Provider Files**: `geohide-no-crutch.hosts`, `comss-no-crutch.hosts`, `xbox-dns-no-crutch.hosts`, `dns-ai-no-crutch.hosts`, `astracat-no-crutch.hosts`, `xyz-no-crutch.hosts`, `malw-no-crutch.hosts`, `mafioznik-no-crutch.hosts` (each provider's domains with crutches excluded; cleanly omitted if the provider has 0 working geoblock domains).
   5. **Only-Crutch Hosts File**: `only-crutch.hosts` (direct service IP mappings).
@@ -49,7 +49,7 @@ This file contains global rules, workflow requirements, and architectural guidel
   - `combined-no-crutch.hosts` domain set must equal `lists/geoblock/full.lst`.
   - For each provider file with crutches, its no-crutch counterpart must be a subset whose difference contains only crutches.
   - All domains across all hosts files must be valid subsets of `lists/geoblock/full.lst` ∪ `only-crutch.hosts`.
-  - Russian proxy IPs are dynamically detected via GeoIP and strictly excluded from the round-robin pool in `combined.hosts`, while `smart.hosts` and dedicated provider lists retain verified working Smart DNS endpoints.
+  - Russian proxy IPs are dynamically detected via GeoIP and strictly excluded from the proxy pool in `combined.hosts`, while `smart.hosts` and dedicated provider lists retain verified working Smart DNS endpoints.
   - The verification script `verify_hosts_sync.py` checks these rules accordingly.
 
 ### 2. The `# Crutch` Section
