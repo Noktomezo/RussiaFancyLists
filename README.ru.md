@@ -708,15 +708,15 @@
 ## 💖 Поддержка
 
 ### Фиат
-<img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Пожертвование в рублях](https://pay.cloudtips.ru/p/227e7223) — CloudTips (СБП, T-Pay, банковские карты)<br>
-<img src="./assets/icons/usd.svg" width="16" height="16" valign="middle"> [Пожертвование в долларах](https://hipolink.net/noktomezo/tips) — HipoLink (Visa, Mastercard и др.)
+<sub><img src="./assets/icons/rub.svg" width="16" height="16"></sub> [Пожертвование в рублях](https://pay.cloudtips.ru/p/227e7223) — CloudTips (СБП, T-Pay, банковские карты)<br>
+<sub><img src="./assets/icons/usd.svg" width="16" height="16"></sub> [Пожертвование в долларах](https://hipolink.net/noktomezo/tips) — HipoLink (Visa, Mastercard и др.)
 
 ### Криптовалюта
-<img src="./assets/icons/trx.svg" width="16" height="16" valign="middle"> **USDT (TRC20)** — `TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA`<br>
-<img src="./assets/icons/ton.svg" width="16" height="16" valign="middle"> **USDT (TON)** — `UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO`<br>
-<img src="./assets/icons/sol.svg" width="16" height="16" valign="middle"> **USDT (SPL)** — `9uxu5dcoBsDNNvjZrTNaJbJd4RXjQNpgunQ4qcDqHfmn`<br>
-<img src="./assets/icons/eth.svg" width="16" height="16" valign="middle"> **USDT (ERC20)** — `0x207b4c60e8073C50F736dEFf3fe1182F442d95e4`<br>
-<img src="./assets/icons/bnb.svg" width="16" height="16" valign="middle"> **USDT (BEP20)** — `0x207b4c60e8073C50F736dEFf3fe1182F442d95e4`
+<sub><img src="./assets/icons/trx.svg" width="16" height="16"></sub> **USDT (TRC20)** — `TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA`<br>
+<sub><img src="./assets/icons/ton.svg" width="16" height="16"></sub> **USDT (TON)** — `UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO`<br>
+<sub><img src="./assets/icons/sol.svg" width="16" height="16"></sub> **USDT (SPL)** — `9uxu5dcoBsDNNvjZrTNaJbJd4RXjQNpgunQ4qcDqHfmn`<br>
+<sub><img src="./assets/icons/eth.svg" width="16" height="16"></sub> **USDT (ERC20)** — `0x207b4c60e8073C50F736dEFf3fe1182F442d95e4`<br>
+<sub><img src="./assets/icons/bnb.svg" width="16" height="16"></sub> **USDT (BEP20)** — `0x207b4c60e8073C50F736dEFf3fe1182F442d95e4`
 
 &nbsp;
 
