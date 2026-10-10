@@ -710,6 +710,9 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 ### Rubles
 <img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Donation in RUB](https://pay.cloudtips.ru/p/227e7223) — CloudTips (SBP, T-Pay, bank cards)
 
+### US Dollars
+<img src="./assets/icons/usd.svg" width="16" height="16" valign="middle"> [Donation in USD](https://hipolink.net/noktomezo/tips) — HipoLink (Visa, Mastercard, etc.)
+
 ### Cryptocurrency
 <img src="./assets/icons/trx.svg" width="16" height="16" valign="middle"> **USDT (TRC20)** — `TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA`<br>
 <img src="./assets/icons/ton.svg" width="16" height="16" valign="middle"> **USDT (TON)** — `UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO`<br>
