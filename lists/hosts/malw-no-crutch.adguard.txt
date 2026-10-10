@@ -9,7 +9,6 @@
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -20,8 +19,6 @@
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||a.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -208,6 +205,7 @@
 ||login.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||metrics.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||open.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pixel-static.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pixel.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -260,11 +258,6 @@
 ||www.metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||accounts.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||security.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||store.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174

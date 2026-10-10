@@ -192,49 +192,17 @@ for p in PROVIDERS:
             src["description"],
         )
 
-# Canonical geoblocked domains used to probe DoH resolvers for proxy IPs across all provider categories
+# Canonical geoblocked domains used to probe DoH resolvers for proxy IPs
 DOH_PROBE_DOMAINS = [
-    # AI & Productivity
+    # OpenAI / ChatGPT
     "chatgpt.com",
     "openai.com",
-    "api.openai.com",
+    # Anthropic / Claude
     "claude.ai",
     "anthropic.com",
+    # Google Gemini
+    "gemini.google.com",
+    # Microsoft Copilot
     "copilot.microsoft.com",
-    "canva.com",
-    "notion.so",
-    "figma.com",
-    "medium.com",
-    "adobe.com",
-    # Media & Streaming
-    "spotify.com",
-    "deezer.com",
-    "soundcloud.com",
-    "netflix.com",
-    # Gaming & Consoles
-    "xsts.auth.xboxlive.com",
-    "user.auth.xboxlive.com",
-    "title.auth.xboxlive.com",
-    "device.auth.xboxlive.com",
-    "xbox.com",
-    "epicgames.com",
-    "ea.com",
-    "playstation.com",
-    # Torrents & Trackers
-    "rutracker.org",
-    "rutor.info",
-    "nnmclub.to",
-    # Tech, Hardware & Crypto
-    "4pda.to",
-    "37signals.com",
-    "aave.com",
-    "meduza.io",
-    "intel.com",
-    "dell.com",
-    "qualcomm.com",
-    # Social / News
-    "instagram.com",
-    "facebook.com",
-    "bbc.com",
-    "dw.com",
+    "sydney.bing.com",
 ]
