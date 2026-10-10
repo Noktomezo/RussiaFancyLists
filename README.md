@@ -705,6 +705,48 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 💜 [sing-box](https://github.com/SagerNet/sing-box) — universal proxy platform core by SagerNet (stored in `thirdparty/sing-box`)<br>
 💜 [mihomo](https://github.com/MetaCubeX/mihomo) — Clash core successor by MetaCubeX (stored in `thirdparty/mihomo`)
 
+## 💖 Support / Donations
+
+If you find this project useful, you can support its development and maintenance:
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="280" align="center"><b>Method</b></th>
+      <th align="center"><b>Details</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>💳 Bank Cards (RUB)</b></td>
+      <td>
+        <a href="https://pay.cloudtips.ru/p/227e7223">
+          <img src="https://img.shields.io/badge/CloudTips-Donate%20via%20Card-792EE5?style=for-the-badge&logo=ruble&logoColor=white" alt="CloudTips">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><b>🪙 USDT (TRC20)</b></td>
+      <td><code>TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA</code></td>
+    </tr>
+    <tr>
+      <td><b>🪙 USDT (TON)</b></td>
+      <td><code>UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO</code></td>
+    </tr>
+    <tr>
+      <td><b>🪙 USDT (SPL / Solana)</b></td>
+      <td><code>9uxu5dcoBsDNNvjZrTNaJbJd4RXjQNpgunQ4qcDqHfmn</code></td>
+    </tr>
+    <tr>
+      <td><b>🪙 USDT (ERC20 / Ethereum)</b></td>
+      <td><code>0x207b4c60e8073C50F736dEFf3fe1182F442d95e4</code></td>
+    </tr>
+    <tr>
+      <td><b>🪙 USDT (BEP20 / BNB Chain)</b></td>
+      <td><code>0x207b4c60e8073C50F736dEFf3fe1182F442d95e4</code></td>
+    </tr>
+  </tbody>
+</table>
 
 &nbsp;
 
