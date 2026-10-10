@@ -705,48 +705,14 @@
 💜 [sing-box](https://github.com/SagerNet/sing-box) — универсальное ядро прокси от SagerNet (хранится в `thirdparty/sing-box`)<br>
 💜 [mihomo](https://github.com/MetaCubeX/mihomo) — ядро прокси-клиента (преемник Clash) от MetaCubeX (хранится в `thirdparty/mihomo`)
 
-## 💖 Поддержка проекта
+## 💖 Поддержка
 
-Если проект оказался для вас полезным, вы можете поддержать его развитие и поддержание инфраструктуры:
-
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="280" align="center"><b>Способ</b></th>
-      <th align="center"><b>Реквизиты</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>💳 Банковские карты (Рубли)</b></td>
-      <td>
-        <a href="https://pay.cloudtips.ru/p/227e7223">
-          <img src="https://img.shields.io/badge/CloudTips-Поддержать%20рублями-792EE5?style=for-the-badge&logo=ruble&logoColor=white" alt="CloudTips">
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td><b>🪙 USDT (TRC20)</b></td>
-      <td><code>TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA</code></td>
-    </tr>
-    <tr>
-      <td><b>🪙 USDT (TON)</b></td>
-      <td><code>UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO</code></td>
-    </tr>
-    <tr>
-      <td><b>🪙 USDT (SPL / Solana)</b></td>
-      <td><code>9uxu5dcoBsDNNvjZrTNaJbJd4RXjQNpgunQ4qcDqHfmn</code></td>
-    </tr>
-    <tr>
-      <td><b>🪙 USDT (ERC20 / Ethereum)</b></td>
-      <td><code>0x207b4c60e8073C50F736dEFf3fe1182F442d95e4</code></td>
-    </tr>
-    <tr>
-      <td><b>🪙 USDT (BEP20 / BNB Chain)</b></td>
-      <td><code>0x207b4c60e8073C50F736dEFf3fe1182F442d95e4</code></td>
-    </tr>
-  </tbody>
-</table>
+<img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Банковские карты (Рубли)](https://pay.cloudtips.ru/p/227e7223) — CloudTips<br>
+<img src="./assets/icons/trx.svg" width="16" height="16" valign="middle"> **USDT (TRC20)** — `TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA`<br>
+<img src="./assets/icons/ton.svg" width="16" height="16" valign="middle"> **USDT (TON)** — `UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO`<br>
+<img src="./assets/icons/sol.svg" width="16" height="16" valign="middle"> **USDT (SPL)** — `9uxu5dcoBsDNNvjZrTNaJbJd4RXjQNpgunQ4qcDqHfmn`<br>
+<img src="./assets/icons/eth.svg" width="16" height="16" valign="middle"> **USDT (ERC20)** — `0x207b4c60e8073C50F736dEFf3fe1182F442d95e4`<br>
+<img src="./assets/icons/bnb.svg" width="16" height="16" valign="middle"> **USDT (BEP20)** — `0x207b4c60e8073C50F736dEFf3fe1182F442d95e4`
 
 &nbsp;
 

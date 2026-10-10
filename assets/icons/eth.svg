@@ -1,0 +1,11 @@
+<svg version="1.1" id="eth" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <circle cx="250" cy="250" r="250" fill="#627EEA"/>
+  <g transform="matrix(0.75 0 0 0.75 62.5 62.5)">
+    <polygon fill="#FFFFFF" fill-opacity="0.6" points="250,30 250,223.5 130,277"/>
+    <polygon fill="#FFFFFF" points="250,30 370,277 250,223.5"/>
+    <polygon fill="#FFFFFF" fill-opacity="0.6" points="250,323.5 250,470 130,299"/>
+    <polygon fill="#FFFFFF" points="250,323.5 370,299 250,470"/>
+    <polygon fill="#FFFFFF" fill-opacity="0.2" points="250,223.5 250,323.5 130,277"/>
+    <polygon fill="#FFFFFF" fill-opacity="0.6" points="250,223.5 370,277 250,323.5"/>
+  </g>
+</svg>
