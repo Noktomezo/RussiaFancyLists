@@ -18,7 +18,17 @@ from russiafancylists.config.paths import (
     WHITELIST_MIHOMO_FOLDER,
     WHITELIST_SING_BOX_FOLDER,
 )
-from russiafancylists.config.providers import DOWNLOADS
+from russiafancylists.config.providers import (
+    CANONICAL_PROVIDER_KEYS,
+    DOH_TO_CANONICAL,
+    DOWNLOADS,
+    PROVIDER_DISPLAY_NAMES,
+    PROVIDER_NAME_TO_KEY,
+    PROVIDERS,
+    PROVIDERS_BY_KEY,
+    SMART_DNS_DOH_SERVERS,
+    SmartDNSProvider,
+)
 
 __all__ = [
     "ROOT_DIR",
@@ -39,6 +49,14 @@ __all__ = [
     "SERVICE_MIHOMO_FOLDER",
     "SERVICE_SING_BOX_FOLDER",
     "DOWNLOADS",
+    "PROVIDERS",
+    "PROVIDERS_BY_KEY",
+    "CANONICAL_PROVIDER_KEYS",
+    "PROVIDER_DISPLAY_NAMES",
+    "PROVIDER_NAME_TO_KEY",
+    "SMART_DNS_DOH_SERVERS",
+    "DOH_TO_CANONICAL",
+    "SmartDNSProvider",
     "HOSTS_DIRECT",
     "ILLEGAL_CHARS",
     "WHITELIST",

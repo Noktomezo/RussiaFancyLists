@@ -5,61 +5,200 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-103.27.157.38 azwindows.ipv6.microsoft.com.akadns.net www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
-103.27.157.38 a1961.g2.akamai.net a1968.i6g1.akamai.net
-103.27.157.38 e13678.dscb.akamaiedge.net
-103.27.157.38 api.anthropic.com auth.anthropic.com console.anthropic.com
-103.27.157.38 web.archive.org
-103.27.157.38 cdn.auth0.com
-103.27.157.38 edgeservices.bing.com rewards.bing.com sydney.bing.com
-103.27.157.38 game-assets.brawlstarsgame.com
-103.27.157.38 access.broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
-103.27.157.38 ab.chatgpt.com chatgpt.com operator.chatgpt.com webrtc.chatgpt.com
-103.27.157.38 game-assets.clashofclans.com
-103.27.157.38 game-assets.clashroyaleapp.com
-103.27.157.38 claude.ai
-103.27.157.38 api-free.deepl.com auth.deepl.com backend.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-103.27.157.38 deezer.com payment.deezer.com www.deezer.com
-103.27.157.38 dds.dell.com i.dell.com nexus.dell.com www.dell.com
-103.27.157.38 afcs.dellcdn.com
-103.27.157.38 www.dyson.com www.dyson.fr
-103.27.157.38 dzcdn.net
-103.27.157.38 www.microsoft.com-c-3.edgekey.net
-103.27.157.38 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
-103.27.157.38 elevenreader.io
-103.27.157.38 api.fitbit.com
-103.27.157.38 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-103.27.157.38 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
-103.27.157.38 assets.grok.com grok.com
-103.27.157.38 guilded.gg www.guilded.gg
-103.27.157.38 api.imgur.com
-103.27.157.38 www.intel.com www.intel.de
-103.27.157.38 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
-103.27.157.38 labs.google
-103.27.157.38 api.manus.im
-103.27.157.38 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
-103.27.157.38 copilot.microsoft.com win1910.ipv6.microsoft.com
-103.27.157.38 notebooklm.google
-103.27.157.38 www.notion.so
-103.27.157.38 developer.nvidia.com
-103.27.157.38 cdn.oaistatic.com
-103.27.157.38 files.oaiusercontent.com
-103.27.157.38 geolocation.onetrust.com
-103.27.157.38 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com
-103.27.157.38 builds.parsec.app
-103.27.157.38 o.pki.goog
-103.27.157.38 eu.posthog.com us.posthog.com
-103.27.157.38 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com gew1-spclient.spotify.com login.app.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com xpui.app.spotify.com
-103.27.157.38 api-global.squareup.com api.squareup.com
-103.27.157.38 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-103.27.157.38 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
-103.27.157.38 www.tiktok.com
-103.27.157.38 ncsi-geo.trafficmanager.net ncsiv6-geo.trafficmanager.net
-103.27.157.38 tria.ge
-103.27.157.38 static-assets-1.truthsocial.com truthsocial.com
-103.27.157.38 usher.ttvnw.net
-103.27.157.38 gql.twitch.tv
-103.27.157.38 upsx.weather.com weather.com
-103.27.157.38 aitestkitchen.withgoogle.com stitch.withgoogle.com
-103.27.157.38 accounts.x.ai
-103.27.157.38 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
+143.20.64.55 www.37signals.com
+143.20.64.55 adobe.io www.adobe.io
+143.20.64.55 amd.com www.amd.com
+143.20.64.55 analog.com www.analog.com
+143.20.64.55 api.anthropic.com assets-proxy.anthropic.com statsig.anthropic.com status.anthropic.com www.anthropic.com
+143.20.64.55 antigravity.google www.antigravity.google
+143.20.64.55 web.archive.org
+143.20.64.55 www.arduino.cc
+143.20.64.55 arkoselabs.com www.arkoselabs.com
+143.20.64.55 arrow.com
+143.20.64.55 atlassian.com www.atlassian.com
+143.20.64.55 audacy.com
+143.20.64.55 autocad.com
+143.20.64.55 autodesk.be autodesk.eu autodesk.net dl.appstreaming.autodesk.com www.autodesk.ae www.autodesk.be www.autodesk.com www.autodesk.eu
+143.20.64.55 www.autodesk360.com
+143.20.64.55 avast.ru www.avast.ru
+143.20.64.55 badoocdn.com eu1.ecdn2.badoocdn.com
+143.20.64.55 basecamp.com www.basecamp.com
+143.20.64.55 www.basecampapi.com
+143.20.64.55 behance.net www.behance.net
+143.20.64.55 bestbuy.com
+143.20.64.55 bike-components.de
+143.20.64.55 bike24.com
+143.20.64.55 bing.com sydney.bing.com
+143.20.64.55 game.boombeachgame.com
+143.20.64.55 brawlstarsgame.com
+143.20.64.55 knowledge.broadcom.com profile.broadcom.com support.broadcom.com
+143.20.64.55 buf.build www.buf.build
+143.20.64.55 bumble.com www.bumble.com
+143.20.64.55 buymeacoffee.com
+143.20.64.55 camelai.com stream.camelai.com www.camelai.com
+143.20.64.55 canva.dev content-management-files.canva.com www.canva-apps.com www.canva.dev
+143.20.64.55 www.capcut.com
+143.20.64.55 api.cdnlibs.org
+143.20.64.55 cerebras.ai
+143.20.64.55 www.cgtrader.com
+143.20.64.55 accounts.chaos.com ssooauth.chaos.com www.chaos.com
+143.20.64.55 chatgpt.com operator.chatgpt.com sora.chatgpt.com www.chatgpt.com
+143.20.64.55 assets-configurator.chess.com
+143.20.64.55 www.cici.com
+143.20.64.55 clashofclans.com
+143.20.64.55 clashroyaleapp.com
+143.20.64.55 api.claude.ai api.claude.com claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
+143.20.64.55 claudemcpclient.com www.claudemcpclient.com
+143.20.64.55 www.claudeusercontent.com
+143.20.64.55 www.clickup.com
+143.20.64.55 codeium.com web-backend.codeium.com windsurf-stable.codeium.com
+143.20.64.55 codeiumdata.com
+143.20.64.55 coreweave.com
+143.20.64.55 www.corsair.com
+143.20.64.55 www.cummins.com
+143.20.64.55 agentn.api3.cursor.sh agentn.api5.cursor.sh agentn.global.api3.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh cursor-cdn.com cursor.sh origin.cursor.com repo42.cursor.sh us-only.gcpp.cursor.sh www.cursor-cdn.com www.cursor.com
+143.20.64.55 cursorapi.com marketplace.cursorapi.com
+143.20.64.55 cursorvm.com www.cursorvm.com
+143.20.64.55 api-free.deepl.com api.deepl.com auth.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com developers.deepl.com dict-audio.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+143.20.64.55 deepmind.com deepmind.google
+143.20.64.55 dds.dell.com dell.com dl.dell.com
+143.20.64.55 designify.com www.designify.com
+143.20.64.55 digikey.com www.digikey.com
+143.20.64.55 www.digikeyassets.com
+143.20.64.55 dola.com
+143.20.64.55 dyson.com dyson.de dyson.se www.dyson.fr
+143.20.64.55 elevenlabs.io help.elevenlabs.io payload.elevenlabs.io www.elevenlabs.io
+143.20.64.55 elgato.com
+143.20.64.55 eneba.com www.eneba.com
+143.20.64.55 enscape3d.com
+143.20.64.55 etsy.com
+143.20.64.55 euro.com.pl www.euro.com.pl
+143.20.64.55 octanorm.expo.shop
+143.20.64.55 api.fitbit.com
+143.20.64.55 flow.google www.flow.google
+143.20.64.55 flowmusic.app
+143.20.64.55 framer.com www.framer.com
+143.20.64.55 www.freakhosting.com
+143.20.64.55 game8.co game8.co.jp game8.jp www.game8.co
+143.20.64.55 gamestop.com
+143.20.64.55 gemini.google
+143.20.64.55 genspark.ai www.genspark.ai
+143.20.64.55 ai.google.dev apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev gemini.google.com geminiweb-pa.clients.google.com labs.google.com lookerstudio.google.com notebook.google.com opal.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+143.20.64.55 aicode.googleapis.com aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com
+143.20.64.55 grok.com www.grok.com
+143.20.64.55 console.groq.com
+143.20.64.55 guidedhacking.com www.guidedhacking.com
+143.20.64.55 www.guilded.gg
+143.20.64.55 hume.ai www.hume.ai
+143.20.64.55 ikea.com
+143.20.64.55 inceptionlabs.ai www.inceptionlabs.ai
+143.20.64.55 indeed.com www.indeed.com
+143.20.64.55 graph.instagram.com i.instagram.com
+143.20.64.55 www.intel.de
+143.20.64.55 downloads.intercomcdn.com
+143.20.64.55 datalore.jetbrains.com jetbrains.ai www.jetbrains.space
+143.20.64.55 jules.google
+143.20.64.55 labs.google
+143.20.64.55 jira.last.fm last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
+143.20.64.55 lego.com www.lego.com
+143.20.64.55 constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app www.linear.app
+143.20.64.55 linguee.com www.linguee.com
+143.20.64.55 madmapper.com www.madmapper.com
+143.20.64.55 make.com www.make.com
+143.20.64.55 makita.ca makita.co.nz makita.sk makita.ua www.makita.ca www.makita.cl www.makita.co.nz www.makita.com.au
+143.20.64.55 makitalatinamerica.com www.makitalatinamerica.com
+143.20.64.55 downloads.malwarebytes.com malwarebytes.com
+143.20.64.55 api.manus.im
+143.20.64.55 www.manybooks.net
+143.20.64.55 trae-api-sg.mchost.guru
+143.20.64.55 mediaexpert.pl
+143.20.64.55 mediamarkt.pl www.mediamarkt.pl
+143.20.64.55 aidemos.meta.com meta.ai www.meta.ai
+143.20.64.55 copilot.microsoft.com designer.microsoft.com win1910.ipv6.microsoft.com
+143.20.64.55 dr.miromind.ai
+143.20.64.55 misterfpga.org www.misterfpga.org
+143.20.64.55 www.modivo.pl
+143.20.64.55 api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
+143.20.64.55 monica.im www.monica.im
+143.20.64.55 mouser.com
+143.20.64.55 downloads.ndi.tv ndi.tv ndi.video www.ndi.tv
+143.20.64.55 www.netapp.com
+143.20.64.55 calendar.notion.so notion.com www.notion.com
+143.20.64.55 ngc.nvidia.com
+143.20.64.55 cdn.oaistatic.com www.oaistatic.com
+143.20.64.55 oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+143.20.64.55 octanorm.com www.octanorm.com
+143.20.64.55 geolocation.onetrust.com
+143.20.64.55 api.openai.com auth0.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com www.openai.com
+143.20.64.55 tracker.openbittorrent.com
+143.20.64.55 opencode.ai www.opencode.ai
+143.20.64.55 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
+143.20.64.55 cloud.oracle.com oracle.com
+143.20.64.55 www.padi.com
+143.20.64.55 www.pandasecurity.com
+143.20.64.55 www.panic.com
+143.20.64.55 platform.parallel.ai
+143.20.64.55 builds.parsec.app
+143.20.64.55 www.patreon.com
+143.20.64.55 www.pcmag.com
+143.20.64.55 pi.ai www.pi.ai
+143.20.64.55 www.play.date
+143.20.64.55 powertoolsuk.co.uk
+143.20.64.55 ppkas.com www.ppkas.com
+143.20.64.55 pr0gramm.com www.pr0gramm.com
+143.20.64.55 promods.net
+143.20.64.55 pubnubapi.com
+143.20.64.55 images.pump.fun pump.fun swap-api.pump.fun
+143.20.64.55 www.qoder.com
+143.20.64.55 remove.bg www.remove.bg
+143.20.64.55 app.reve.com reve.art reve.com www.reve.com
+143.20.64.55 www.romsgames.net
+143.20.64.55 blogs.sap.com
+143.20.64.55 www.scribd.com
+143.20.64.55 www.scribdassets.com
+143.20.64.55 securitytrails.com www.securitytrails.com
+143.20.64.55 sentry.io
+143.20.64.55 prowlarr.servarr.com
+143.20.64.55 singlekey-id.com
+143.20.64.55 3dwarehouse.sketchup.com www.sketchup.com
+143.20.64.55 www.slack.com
+143.20.64.55 www.slackb.com
+143.20.64.55 account.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-guc3.spotify.com ap-sto3.spotify.com api-partner.spotify.com apresolve.spotify.com auth.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com gue1-spclient.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.wg.spotify.com xpui.app.spotify.com
+143.20.64.55 concerts.spotifycdn.com image-cdn-fa.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com thisis-images.spotifycdn.com web-sdk-assets.spotifycdn.com
+143.20.64.55 game.squadbustersgame.com squadbustersgame.com
+143.20.64.55 api.squareup.com squareup.com
+143.20.64.55 c.strava.com cdn-1.strava.com dam.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+143.20.64.55 matchmaking.stumbleguys.com
+143.20.64.55 supercell.com
+143.20.64.55 superpharm.eu superpharm.pl
+143.20.64.55 controlplane.tailscale.com pkgs.tailscale.com tailscale.com
+143.20.64.55 dl.teamviewer.com
+143.20.64.55 templatemonster.com
+143.20.64.55 api.themoviedb.org
+143.20.64.55 ti.com www.ti.com
+143.20.64.55 auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com login.tidal.com
+143.20.64.55 image.tmdb.org tmdb.org
+143.20.64.55 api-sg-central.trae.ai
+143.20.64.55 tria.ge
+143.20.64.55 id.trimble.com sketchup.trimble.com www.trimble.com
+143.20.64.55 static-assets-1.truthsocial.com truthsocial.com www.truthsocial.com
+143.20.64.55 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com test.tuta.com w1.api.test.tuta.com w11.api.tuta.com w12.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com www.tuta.com
+143.20.64.55 tutanota.com
+143.20.64.55 uainvest.com.ua www.uainvest.com.ua
+143.20.64.55 www.ultimaker.com
+143.20.64.55 w-x.co
+143.20.64.55 www.weather.com
+143.20.64.55 windguru.cz
+143.20.64.55 marketplace.windsurf.com windsurf.com
+143.20.64.55 wise.com www.wise.com
+143.20.64.55 opal.withgoogle.com stitch.withgoogle.com
+143.20.64.55 api.workos.com
+143.20.64.55 wund.com
+143.20.64.55 www.wunderground.com
+143.20.64.55 www.wxug.com wxug.com
+143.20.64.55 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.com www.x.ai
+143.20.64.55 www.support.xerox.com www.xerox.com
+143.20.64.55 www.xiaomi.eu
+143.20.64.55 www.yeggi.com
+143.20.64.55 www.zapier.com
+143.20.64.55 app.zerossl.com

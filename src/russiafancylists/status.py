@@ -2,6 +2,8 @@ import json
 import re
 from pathlib import Path
 
+from russiafancylists.config.providers import PROVIDERS
+
 ADGUARD_REWRITE_PATTERN = re.compile(r"^\|\|([^^]+)\^\$dnsrewrite=")
 
 
@@ -44,37 +46,20 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
     if not provider_ips:
         hosts_dir = root_dir / "lists" / "hosts"
         provider_ips = {
-            "GeoHide": parse_proxy_ips_from_hosts(hosts_dir / "geohide.hosts"),
-            "Comss": parse_proxy_ips_from_hosts(hosts_dir / "comss.hosts"),
-            "Xbox DNS": parse_proxy_ips_from_hosts(hosts_dir / "xbox-dns.hosts"),
-            "dns-ai": parse_proxy_ips_from_hosts(hosts_dir / "dns-ai.hosts"),
-            "AstraCat": parse_proxy_ips_from_hosts(hosts_dir / "astracat.hosts"),
-            "XyZ": parse_proxy_ips_from_hosts(hosts_dir / "xyz.hosts"),
-            "Malw": parse_proxy_ips_from_hosts(hosts_dir / "malw.hosts"),
-            "Mafioznik": parse_proxy_ips_from_hosts(hosts_dir / "mafioznik.hosts"),
+            p.name: parse_proxy_ips_from_hosts(hosts_dir / p.hosts_filename)
+            for p in PROVIDERS
         }
-
-    provider_order = [
-        "GeoHide",
-        "Comss",
-        "Xbox DNS",
-        "dns-ai",
-        "AstraCat",
-        "XyZ",
-        "Malw",
-        "Mafioznik",
-    ]
 
     # 2. Format status strings (render 💚 for each found proxy IP, skip if provider has 0 IPs)
     status_en = []
     status_ru = []
-    for provider in provider_order:
-        ips = provider_ips.get(provider, [])
+    for p in PROVIDERS:
+        ips = provider_ips.get(p.name) or provider_ips.get(p.key) or []
         if not ips:
             continue
         heart_str = "💚" * len(ips)
-        status_en.append(f"- **{provider}**: {heart_str}")
-        status_ru.append(f"- **{provider}**: {heart_str}")
+        status_en.append(f"- **{p.name}**: {heart_str}")
+        status_ru.append(f"- **{p.name}**: {heart_str}")
 
     en_block = (
         "\n".join(status_en)
@@ -163,17 +148,6 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
             }
     total_geoblocks = len(geoblock_domains)
 
-    provider_defs = [
-        ("geohide", "GeoHide"),
-        ("comss", "Comss"),
-        ("xbox-dns", "Xbox DNS"),
-        ("dns-ai", "dns-ai"),
-        ("astracat", "AstraCat"),
-        ("xyz", "XyZ"),
-        ("malw", "ImMALWARE"),
-        ("mafioznik", "Mafioznik"),
-    ]
-
     def format_coverage(count: int) -> str:
         if total_geoblocks == 0 or count == 0:
             return "—"
@@ -222,7 +196,7 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     )
                     coverages.append(get_coverage(nc_smart))
                 name = "<b>Smart</b>&nbsp;❤️"
-                items.append((name, files, sizes, coverages))
+                items.append((name, True, files, sizes, coverages))
 
             # 2. Combined
             std_comb = hosts_dir / f"combined{ext}"
@@ -240,27 +214,31 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                     )
                     coverages.append(get_coverage(nc_comb))
                 name = "<b>Combined</b>&nbsp;⚠️"
-                items.append((name, files, sizes, coverages))
+                items.append((name, True, files, sizes, coverages))
 
             # 3. Providers
-            for key, display_name in provider_defs:
-                p_std = hosts_dir / f"{key}{ext}"
-                p_nc = hosts_dir / f"{key}-no-crutch{ext}"
-                if p_std.exists():
-                    files = [f"{key}{ext}"]
+            for p in PROVIDERS:
+                p_std = hosts_dir / f"{p.key}{ext}"
+                p_nc = hosts_dir / f"{p.key}-no-crutch{ext}"
+                cov_nc = get_coverage(p_nc) if p_nc.exists() else "—"
+                is_available = p_std.exists() and p_nc.exists() and cov_nc != "—"
+                if is_available:
+                    files = [f"{p.key}{ext}"]
                     sizes = [
-                        f"<!-- SIZE:lists/hosts/{key}{ext} -->unknown<!-- SIZE_END -->"
+                        f"<!-- SIZE:lists/hosts/{p.key}{ext} -->unknown<!-- SIZE_END -->"
                     ]
                     coverages = [get_coverage(p_std)]
                     if p_nc.exists():
-                        files.append(f"{key}-no-crutch{ext}")
+                        files.append(f"{p.key}-no-crutch{ext}")
                         sizes.append(
-                            f"<!-- SIZE:lists/hosts/{key}-no-crutch{ext} -->unknown<!-- SIZE_END -->"
+                            f"<!-- SIZE:lists/hosts/{p.key}-no-crutch{ext} -->unknown<!-- SIZE_END -->"
                         )
-                        coverages.append(get_coverage(p_nc))
-                    items.append((f"<b>{display_name}</b>", files, sizes, coverages))
+                        coverages.append(cov_nc)
+                    items.append((f"<b>{p.name}</b>", True, files, sizes, coverages))
+                else:
+                    items.append((f"<b>{p.name}</b>", False, [], [], []))
 
-            # 3. Only Crutch
+            # 4. Only Crutch
             oc = hosts_dir / f"only-crutch{ext}"
             if oc.exists():
                 files = [f"only-crutch{ext}"]
@@ -269,29 +247,43 @@ async def update_readme_hosts_links(root_dir: Path, hosts_dir: Path):
                 ]
                 coverages = ["—"]
                 name = "<b>Только костыли</b>" if is_ru else "<b>Only Crutch</b>"
-                items.append((name, files, sizes, coverages))
+                items.append((name, True, files, sizes, coverages))
 
             rowspan = len(items)
-            for idx, (name, files_list, sizes_list, coverages_list) in enumerate(items):
-                file_links = "<br>\n".join(
-                    f'        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{f}"><code>{f}</code></a>'
-                    for f in files_list
-                )
-                size_labels = "<br>\n".join(f"        • {s}" for s in sizes_list)
-                cov_labels = "<br>\n".join(f"        • {c}" for c in coverages_list)
-
+            for idx, (
+                name,
+                is_available,
+                files_list,
+                sizes_list,
+                coverages_list,
+            ) in enumerate(items):
                 row_html = "    <tr>\n"
                 if idx == 0:
                     row_html += (
                         f'      <td rowspan="{rowspan}"><b>{variant_label}</b></td>\n'
                     )
-                row_html += (
-                    f"      <td>{name}</td>\n"
-                    f"      <td>\n{file_links}\n      </td>\n"
-                    f"      <td>\n{size_labels}\n      </td>\n"
-                    f"      <td>\n{cov_labels}\n      </td>\n"
-                    "    </tr>"
-                )
+                if is_available:
+                    file_links = "<br>\n".join(
+                        f'        • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/{f}"><code>{f}</code></a>'
+                        for f in files_list
+                    )
+                    size_labels = "<br>\n".join(f"        • {s}" for s in sizes_list)
+                    cov_labels = "<br>\n".join(f"        • {c}" for c in coverages_list)
+
+                    row_html += (
+                        f"      <td>{name}</td>\n"
+                        f"      <td>\n{file_links}\n      </td>\n"
+                        f"      <td>\n{size_labels}\n      </td>\n"
+                        f"      <td>\n{cov_labels}\n      </td>\n"
+                        "    </tr>"
+                    )
+                else:
+                    unavail_label = "🚫 Недоступен" if is_ru else "🚫 Unavailable"
+                    row_html += (
+                        f"      <td>{name}</td>\n"
+                        f'      <td colspan="3" align="center">{unavail_label}</td>\n'
+                        "    </tr>"
+                    )
                 all_rows.append(row_html)
 
         table_html = (

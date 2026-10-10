@@ -2,6 +2,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+from russiafancylists.config.providers import CANONICAL_PROVIDER_KEYS
+
 
 def parse_domains_from_hosts(file_path: Path) -> set[str]:
     """Parse domain names from a hosts file, ignoring loopback headers and comments."""
@@ -88,38 +91,44 @@ def main():
 
     mismatches = 0
 
-    # 1. Check expected files exist
-    expected_stems = [
+    # 1. Check core files exist
+    required_core_stems = [
         "smart",
         "smart-no-crutch",
         "combined",
         "combined-no-crutch",
-        "geohide",
-        "geohide-no-crutch",
-        "comss",
-        "comss-no-crutch",
-        "xbox-dns",
-        "xbox-dns-no-crutch",
-        "dns-ai",
-        "dns-ai-no-crutch",
-        "astracat",
-        "astracat-no-crutch",
-        "xyz",
-        "xyz-no-crutch",
-        "malw",
-        "malw-no-crutch",
-        "mafioznik",
-        "mafioznik-no-crutch",
         "only-crutch",
     ]
-    for stem in expected_stems:
+    for stem in required_core_stems:
         h_file = hosts_dir / f"{stem}.hosts"
         a_file = hosts_dir / f"{stem}.adguard.txt"
         if not h_file.exists():
-            print(f"Error: Expected file {h_file.name} is missing.")
+            print(f"Error: Expected core file {h_file.name} is missing.")
             mismatches += 1
         if not a_file.exists():
-            print(f"Error: Expected file {a_file.name} is missing.")
+            print(f"Error: Expected core file {a_file.name} is missing.")
+            mismatches += 1
+
+    # Check provider files: either all 4 exist (available), or none exist (cleanly unavailable)
+    for p in CANONICAL_PROVIDER_KEYS:
+        h_std = hosts_dir / f"{p}.hosts"
+        h_nc = hosts_dir / f"{p}-no-crutch.hosts"
+        a_std = hosts_dir / f"{p}.adguard.txt"
+        a_nc = hosts_dir / f"{p}-no-crutch.adguard.txt"
+        files = [h_std, h_nc, a_std, a_nc]
+        existing_count = sum(1 for f in files if f.exists())
+        if existing_count == 4:
+            continue
+        elif existing_count == 0:
+            print(
+                f"Notice: Provider '{p}' is unavailable (cleanly omitted, no dummy files)."
+            )
+        else:
+            print(
+                f"Error: Inconsistent file set for provider '{p}': "
+                f"{[f.name for f in files if f.exists()]} present, "
+                f"{[f.name for f in files if not f.exists()]} missing."
+            )
             mismatches += 1
 
     if mismatches > 0:
@@ -236,21 +245,15 @@ def main():
             "smart-no-crutch.hosts is a valid subset of combined-no-crutch.hosts [OK]"
         )
 
-    # 7. Verify Provider Families (geohide, malw, mafioznik)
+    # 7. Verify Provider Families
     print("\n--- Verifying Provider Families Scoping ---")
-    providers = [
-        "geohide",
-        "comss",
-        "xbox-dns",
-        "dns-ai",
-        "astracat",
-        "xyz",
-        "malw",
-        "mafioznik",
-    ]
-    for p in providers:
+    for p in CANONICAL_PROVIDER_KEYS:
         p_path = hosts_dir / f"{p}.hosts"
         p_nc_path = hosts_dir / f"{p}-no-crutch.hosts"
+        if not p_path.exists() and not p_nc_path.exists():
+            print(f"{p}.hosts is unavailable (cleanly omitted) [OK]")
+            continue
+
         p_doms = parse_domains_from_hosts(p_path)
         p_nc_doms = parse_domains_from_hosts(p_nc_path)
 

@@ -1,6 +1,5 @@
 import asyncio
 import re
-import socket
 import ssl
 import sys
 from pathlib import Path
@@ -25,14 +24,13 @@ except ImportError:
 
 def get_dynamic_provider_proxies() -> dict[str, list[str]]:
     """Dynamically discover proxy IPs for each provider from generated hosts or DNS."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+    from russiafancylists.config.providers import PROVIDERS
+
     hosts_dir = Path(__file__).resolve().parent.parent / "lists" / "hosts"
     proxies = {}
-    for prov, file_name in [
-        ("GeoHide", "geohide.hosts"),
-        ("Malw", "malw.hosts"),
-        ("Mafioznik", "mafioznik.hosts"),
-    ]:
-        p = hosts_dir / file_name
+    for prov in PROVIDERS:
+        p = hosts_dir / prov.hosts_filename
         ips = set()
         if p.exists():
             in_geo = False
@@ -48,20 +46,8 @@ def get_dynamic_provider_proxies() -> dict[str, list[str]]:
                     cols = line.split()
                     if cols:
                         ips.add(cols[0])
-        if not ips:
-            # Fallback to dynamic DNS resolution
-            domains = {
-                "GeoHide": ["eu.geohide.ru", "us.geohide.ru"],
-                "Malw": ["dns.malw.link"],
-                "Mafioznik": ["freedom.mafioznik.xyz"],
-            }.get(prov, [])
-            for d in domains:
-                try:
-                    for info in socket.getaddrinfo(d, None, socket.AF_INET):
-                        ips.add(info[4][0])
-                except Exception:
-                    pass
-        proxies[prov] = sorted(list(ips))
+        if ips:
+            proxies[prov.name] = sorted(list(ips))
     return proxies
 
 

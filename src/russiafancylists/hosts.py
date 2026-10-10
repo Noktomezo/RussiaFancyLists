@@ -10,16 +10,18 @@ from pathlib import Path
 import httpx
 
 from russiafancylists.config import HOSTS_DIRECT
+from russiafancylists.config.providers import (
+    CANONICAL_PROVIDER_KEYS,
+    DOH_TO_CANONICAL,
+    PROVIDERS,
+)
 from russiafancylists.doh import (
     discover_doh_proxy_ips,
     resolve_geoblock_domains_per_provider,
 )
 from russiafancylists.processors import (
-    CLEANUP_EXTENSIONS,
-    DOMAIN_PATTERN,
     IPV4_PATTERN,
     IPV6_PATTERN,
-    clean_and_validate_domain,
 )
 
 LOOPBACK_HEADER = (
@@ -161,6 +163,8 @@ def normalize_brand_name(dom: str) -> str:
         )
     ):
         return "openai"
+    if any(k in dom for k in ("xbox", "xboxlive")):
+        return "xbox"
     if any(
         k in dom
         for k in (
@@ -536,11 +540,10 @@ async def get_ru_ip_set(candidate_ips: list[str]) -> set[str]:
 
 
 async def detect_provider_proxy_ips(
-    hosts_temp_dir: Path,
+    hosts_temp_dir: Path | None = None,
 ) -> tuple[dict[str, list[str]], dict[str, list[str]], set[str]]:
-    """Strictly detects Smart DNS proxy IPs for each provider exclusively via DoH and DNS resolvers.
-    Differentiates Smart DNS proxy servers from direct service crutches,
-    and dynamically detects and excludes any Russian proxy IPs across all providers.
+    """Strictly detects Smart DNS proxy IPs for each provider exclusively via DoH brute force.
+    Dynamically detects and excludes any Russian proxy IPs across all providers.
     """
     raw_proxies = await discover_doh_proxy_ips()
     all_raw_ips = [ip for ips in raw_proxies.values() for ip in ips]
@@ -548,65 +551,13 @@ async def detect_provider_proxy_ips(
     # Dynamic Russian IP detection across candidate proxy IPs
     ru_ips = await get_ru_ip_set(all_raw_ips)
 
-    # Map to canonical provider keys
-    doh_to_canonical = {
-        "comss": "comss",
-        "astracat": "astracat",
-        "xyz": "xyz",
-        "dns_ai": "dns-ai",
-        "dns-ai": "dns-ai",
-        "xbox_dns": "xbox-dns",
-        "xbox-dns": "xbox-dns",
-        "malw": "malw",
-        "geohide_eu": "geohide",
-        "geohide_us": "geohide",
-        "geohide_ru": "geohide",
-        "geohide": "geohide",
-        "mafioznik": "mafioznik",
-    }
-    canonical_providers = [
-        "geohide",
-        "comss",
-        "xbox-dns",
-        "dns-ai",
-        "astracat",
-        "xyz",
-        "malw",
-        "mafioznik",
-    ]
-    detected_proxy_ips: dict[str, list[str]] = {p: [] for p in canonical_providers}
+    detected_proxy_ips: dict[str, list[str]] = {p: [] for p in CANONICAL_PROVIDER_KEYS}
     for k, ips in raw_proxies.items():
-        ck = doh_to_canonical.get(k)
+        ck = DOH_TO_CANONICAL.get(k)
         if ck:
             for ip in ips:
-                if ip not in detected_proxy_ips[ck]:
+                if ip not in ru_ips and ip not in detected_proxy_ips[ck]:
                     detected_proxy_ips[ck].append(ip)
-
-    maf_file = hosts_temp_dir / "mafioznik-hosts.lst"
-    if maf_file.exists():
-        _, maf_ip_doms = get_source_info(maf_file)
-        for ip in maf_ip_doms:
-            if ip not in detected_proxy_ips["mafioznik"]:
-                detected_proxy_ips["mafioznik"].append(ip)
-
-    if not detected_proxy_ips["dns-ai"]:
-        existing_dns_ai = (
-            hosts_temp_dir.parent.parent / "lists" / "hosts" / "dns-ai-no-crutch.hosts"
-        )
-        if not existing_dns_ai.exists():
-            existing_dns_ai = (
-                hosts_temp_dir.parent.parent / "lists" / "hosts" / "dns-ai.hosts"
-            )
-        if existing_dns_ai.exists():
-            try:
-                top_ips, _ = get_source_info(existing_dns_ai)
-                for ip in top_ips:
-                    if ip not in detected_proxy_ips["dns-ai"]:
-                        detected_proxy_ips["dns-ai"].append(ip)
-            except Exception:
-                pass
-        if not detected_proxy_ips["dns-ai"]:
-            detected_proxy_ips["dns-ai"] = ["62.60.230.61"]
 
     detected_proxy_ips = {k: sorted(v) for k, v in detected_proxy_ips.items()}
     all_clean_ips = sorted(
@@ -614,7 +565,7 @@ async def detect_provider_proxy_ips(
     )
     detected_proxy_ips["doh"] = all_clean_ips
 
-    print(f"Strictly detected proxy IPs via DoH/DNS: {detected_proxy_ips}")
+    print(f"Strictly detected proxy IPs via DoH brute force: {detected_proxy_ips}")
     return detected_proxy_ips, raw_proxies, ru_ips
 
 
@@ -642,17 +593,7 @@ async def generate_aligned_hosts(
         py_p = p.replace("[[:space:]]", r"\s")
         blacklist_patterns.append(re.compile(py_p))
 
-    # 2. Extract source info (original domains and candidate IPs)
-    _, malw_ip_domains = get_source_info(hosts_temp_dir / "malw-hosts.lst")
-    _, mafioznik_ip_domains = get_source_info(hosts_temp_dir / "mafioznik-hosts.lst")
-    _, geohide_eu_ip_domains = get_source_info(hosts_temp_dir / "geohide-eu-hosts.lst")
-    _, geohide_us_ip_domains = get_source_info(hosts_temp_dir / "geohide-us-hosts.lst")
-    geohide_ip_domains = {}
-    for ip_doms in (geohide_eu_ip_domains, geohide_us_ip_domains):
-        for ip, doms in ip_doms.items():
-            geohide_ip_domains.setdefault(ip, set()).update(doms)
-
-    # Parse zapret-manager-parsed.lst as an IP source
+    # 2. Extract direct crutches from zapret-manager source
     zapret_ip_domains = {}
     zapret_path = hosts_temp_dir / "zapret-manager-parsed.lst"
     if zapret_path.exists():
@@ -666,33 +607,21 @@ async def generate_aligned_hosts(
     detected_proxy_ips, doh_proxies, ru_ips = await detect_provider_proxy_ips(
         hosts_temp_dir
     )
-    malw_ips = detected_proxy_ips["malw"]
-    geohide_ips = detected_proxy_ips["geohide"]
-    mafioznik_ips = detected_proxy_ips["mafioznik"]
-    doh_ips = detected_proxy_ips.get("doh", [])
 
-    # Also detect and exclude any Russian IPs from crutch sources
-    all_source_ips = (
-        set(malw_ip_domains.keys())
-        | set(geohide_ip_domains.keys())
-        | set(mafioznik_ip_domains.keys())
-        | set(zapret_ip_domains.keys())
-    )
+    # Detect and exclude any Russian IPs from crutch sources
+    all_source_ips = set(zapret_ip_domains.keys()) if zapret_ip_domains else set()
     extra_ru_ips = await get_ru_ip_set(list(all_source_ips - ru_ips))
     ru_ips.update(extra_ru_ips)
 
-    # 4. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
-    provider_proxy_ips = (
-        set(malw_ips) | set(geohide_ips) | set(mafioznik_ips) | set(doh_ips)
-    )
+    # 3. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
+    provider_proxy_ips = {
+        ip for p in CANONICAL_PROVIDER_KEYS for ip in detected_proxy_ips.get(p, [])
+    } | set(detected_proxy_ips.get("doh", []))
+
+    all_ip_domain_sources = [zapret_ip_domains] if zapret_ip_domains else []
 
     global_custom_candidates = {}
-    for ip_domains in (
-        malw_ip_domains,
-        geohide_ip_domains,
-        mafioznik_ip_domains,
-        zapret_ip_domains,
-    ):
+    for ip_domains in all_ip_domain_sources:
         for ip, domains in ip_domains.items():
             if ip in ru_ips:
                 continue
@@ -704,11 +633,7 @@ async def generate_aligned_hosts(
             elif role == "SMART_PROXY":
                 provider_proxy_ips.add(ip)
 
-    ips_list = sorted(list(set(malw_ips + geohide_ips + mafioznik_ips)))
-    if not ips_list:
-        ips_list = ["127.0.0.1"]
-
-    # 3. Load and filter domains from the geoblock list
+    # 4. Load and filter domains from the geoblock list
     geoblock_domains = []
     if geoblock_file.exists():
         with open(geoblock_file, encoding="utf-8") as f:
@@ -751,57 +676,6 @@ async def generate_aligned_hosts(
     # Sort for deterministic output
     geoblock_domains = sorted(list(set(geoblock_domains)))
 
-    # Extract allowed standard geoblock domains (all domains from provider hosts files plus non-hosts sources)
-    allowed_domains = set()
-    for _, doms in malw_ip_domains.items():
-        allowed_domains.update(doms)
-    for _, doms in mafioznik_ip_domains.items():
-        allowed_domains.update(doms)
-    for _, doms in geohide_ip_domains.items():
-        allowed_domains.update(doms)
-    for _, doms in zapret_ip_domains.items():
-        allowed_domains.update(doms)
-
-    # Load domains from non-hosts sources (like itdoginfo-geoblock.lst, dartraiden-geoblock.lst, and custom-*.lst which have no IP mappings)
-    extra_sources = ["itdoginfo-geoblock.lst", "dartraiden-geoblock.lst"]
-    for custom_path in sorted(hosts_temp_dir.glob("custom-*.lst")):
-        if custom_path.name not in extra_sources:
-            extra_sources.append(custom_path.name)
-    for extra_name in extra_sources:
-        extra_path = hosts_temp_dir / extra_name
-        if extra_path.exists():
-            with open(extra_path, encoding="utf-8", errors="ignore") as f:
-                for line in f:
-                    if extra_name == "dartraiden-geoblock.lst":
-                        for match in DOMAIN_PATTERN.finditer(line):
-                            d = match.group(0).lower().rstrip(".")
-                            if not d.endswith(CLEANUP_EXTENSIONS):
-                                for cleaned in clean_and_validate_domain(d):
-                                    allowed_domains.add(cleaned.lower().strip())
-
-                    line = line.split("#", 1)[0].strip()
-                    if not line:
-                        continue
-                    dom = line.lower().strip()
-                    if dom:
-                        for cleaned in clean_and_validate_domain(dom):
-                            allowed_domains.add(cleaned.lower().strip())
-
-    # Load previously verified dns-ai domains into allowed_domains as fallback
-    existing_dns_ai_file = output_smart.parent / "dns-ai-no-crutch.hosts"
-    if not existing_dns_ai_file.exists():
-        existing_dns_ai_file = output_smart.parent / "dns-ai.hosts"
-    if existing_dns_ai_file.exists():
-        try:
-            _, prev_dns_ai_doms = get_source_info(existing_dns_ai_file)
-            for doms in prev_dns_ai_doms.values():
-                allowed_domains.update(doms)
-        except Exception:
-            pass
-
-    # Filter geoblock_domains to only keep those allowed
-    geoblock_domains = [d for d in geoblock_domains if d in allowed_domains]
-
     def get_raw_brand(dom: str) -> str:
         parts = dom.split(".")
         brand = parts[-2]
@@ -824,9 +698,9 @@ async def generate_aligned_hosts(
 
     # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
-    unique_primary_ips = (
-        set(malw_ips) | set(geohide_ips) | set(mafioznik_ips) | set(doh_ips)
-    )
+    unique_primary_ips = {
+        ip for p in CANONICAL_PROVIDER_KEYS for ip in detected_proxy_ips.get(p, [])
+    } | set(detected_proxy_ips.get("doh", []))
     all_ips_to_test = list(unique_custom_ips | unique_primary_ips)
 
     print(f"Testing connectivity of {len(all_ips_to_test)} unique IPs...")
@@ -873,46 +747,6 @@ async def generate_aligned_hosts(
         candidate_smart_domains, detected_proxy_ips
     )
 
-    # Ensure provider_supported has robust fallbacks if cloud CI or firewalls blocked specific providers:
-    # 1. Mafioznik: if port 53 was blocked by cloud firewalls, fallback to downloaded official hosts list
-    if not provider_supported.get("mafioznik"):
-        print(
-            "Notice: Using downloaded official hosts list as fallback for Mafioznik..."
-        )
-        maf_ips = detected_proxy_ips.get("mafioznik") or list(
-            mafioznik_ip_domains.keys()
-        )
-        for ip, doms in mafioznik_ip_domains.items():
-            chosen_ip = ip if ip in maf_ips else (maf_ips[0] if maf_ips else ip)
-            for d in doms:
-                if d in candidate_smart_domains:
-                    provider_supported.setdefault("mafioznik", {})[d] = [chosen_ip]
-
-    # 2. dns-ai: if cloud CI dropped connections or geofencing returned fewer/0 domains, fallback to disk
-    existing_dns_ai = output_smart.parent / "dns-ai-no-crutch.hosts"
-    if not existing_dns_ai.exists():
-        existing_dns_ai = output_smart.parent / "dns-ai.hosts"
-    if existing_dns_ai.exists():
-        try:
-            _, existing_doms = get_source_info(existing_dns_ai)
-        except Exception:
-            existing_doms = {}
-
-        dns_ai_ips = detected_proxy_ips.get("dns-ai") or list(existing_doms.keys())
-        default_ip = dns_ai_ips[0] if dns_ai_ips else "62.60.230.61"
-        current_dns_ai = provider_supported.get("dns-ai", {})
-        prev_dns_ai_count = sum(len(doms) for doms in existing_doms.values())
-
-        if len(current_dns_ai) < prev_dns_ai_count:
-            print(
-                "Notice: Preserving previously verified dns-ai domains from disk as fallback..."
-            )
-            for ip, doms in existing_doms.items():
-                chosen_ip = ip if ip in dns_ai_ips else default_ip
-                for d in doms:
-                    if d in candidate_smart_domains and d not in current_dns_ai:
-                        provider_supported.setdefault("dns-ai", {})[d] = [chosen_ip]
-
     # 7. Helper to write individual provider hosts and AdGuard Home files
     def write_provider_hosts(
         base_output: Path,
@@ -934,17 +768,33 @@ async def generate_aligned_hosts(
         direct_groups = {k: set(v) for k, v in combined_direct.items()}
 
         geoblock_groups = {}
-        brand_map = defaultdict(list)
-        for dom, _resolved_ips in supported_domains.items():
+        for dom, resolved_ips in supported_domains.items():
             if dom in global_custom:
                 continue
             brand = get_raw_brand(dom)
-            brand_map[brand].append(dom)
+            matching_ips = [
+                ip for ip in resolved_ips if ip in active_ips
+            ] or resolved_ips
+            chosen_ip = matching_ips[0] if matching_ips else ips_to_use[0]
+            geoblock_groups.setdefault((chosen_ip, brand), []).append(dom)
 
-        sorted_brands = sorted(brand_map.keys())
-        for idx, brand in enumerate(sorted_brands):
-            ip_to_use = ips_to_use[idx % len(ips_to_use)]
-            geoblock_groups.setdefault((ip_to_use, brand), []).extend(brand_map[brand])
+        adg_output = base_output.parent / f"{base_output.stem}.adguard.txt"
+        adg_no_crutch_output = (
+            base_output.parent / f"{base_output.stem}-no-crutch.adguard.txt"
+        )
+
+        # If provider has 0 supported geoblock domains, do NOT generate dummy files with only loopback / crutches.
+        # Clean up existing files if present.
+        if not geoblock_groups:
+            for path in (
+                base_output,
+                no_crutch_output,
+                adg_output,
+                adg_no_crutch_output,
+            ):
+                if path.exists():
+                    path.unlink()
+            return
 
         # Standard hosts file (with crutches)
         write_hosts_file(base_output, direct_groups, geoblock_groups)
@@ -953,13 +803,9 @@ async def generate_aligned_hosts(
         write_hosts_file(no_crutch_output, {}, geoblock_groups)
 
         # Standard AdGuard Home file
-        adg_output = base_output.parent / f"{base_output.stem}.adguard.txt"
         write_adguard_file(adg_output, display_name, direct_groups, geoblock_groups)
 
         # No-crutch AdGuard Home file
-        adg_no_crutch_output = (
-            base_output.parent / f"{base_output.stem}-no-crutch.adguard.txt"
-        )
         write_adguard_file(
             adg_no_crutch_output,
             f"{display_name} No-Crutch",
@@ -967,38 +813,18 @@ async def generate_aligned_hosts(
             geoblock_groups,
         )
 
-    # 8. Write all 8 provider hosts families
-    providers_info = [
-        ("geohide", "GeoHide"),
-        ("comss", "Comss"),
-        ("xbox-dns", "Xbox DNS"),
-        ("dns-ai", "dns-ai"),
-        ("astracat", "AstraCat"),
-        ("xyz", "XyZ"),
-        ("malw", "ImMALWARE"),
-        ("mafioznik", "Mafioznik"),
-    ]
-    for p_key, display_name in providers_info:
-        prov_path = output_smart.parent / f"{p_key}.hosts"
-        prov_ips = detected_proxy_ips.get(p_key, [])
-        prov_doms = provider_supported.get(p_key, {})
-        write_provider_hosts(prov_path, display_name, prov_ips, prov_doms)
+    # 8. Write all provider hosts families
+    for prov in PROVIDERS:
+        prov_path = output_smart.parent / prov.hosts_filename
+        prov_ips = detected_proxy_ips.get(prov.key, [])
+        prov_doms = provider_supported.get(prov.key, {})
+        write_provider_hosts(prov_path, prov.name, prov_ips, prov_doms)
 
     # 9. Build and write Combined hosts files (all geoblock domains mapped across all active non-RU proxies)
     combined_geoblock = {}
-    all_candidate_prov_ips = set()
-    for prov in (
-        "geohide",
-        "comss",
-        "xbox-dns",
-        "dns-ai",
-        "astracat",
-        "xyz",
-        "malw",
-        "mafioznik",
-        "doh",
-    ):
-        all_candidate_prov_ips.update(detected_proxy_ips.get(prov, []))
+    all_candidate_prov_ips = {
+        ip for p in CANONICAL_PROVIDER_KEYS for ip in detected_proxy_ips.get(p, [])
+    } | set(detected_proxy_ips.get("doh", []))
 
     # Strictly exclude Russian IPs from Combined hosts pool
     combined_non_ru_candidates = [
@@ -1010,10 +836,15 @@ async def generate_aligned_hosts(
         or ["127.0.0.1"]
     )
 
-    for ip in combined_active_proxies:
-        for dom in candidate_smart_domains:
-            brand = get_raw_brand(dom)
-            combined_geoblock.setdefault((ip, brand), set()).add(dom)
+    brand_map = defaultdict(list)
+    for dom in candidate_smart_domains:
+        brand = get_raw_brand(dom)
+        brand_map[brand].append(dom)
+
+    sorted_brands = sorted(brand_map.keys())
+    for idx, brand in enumerate(sorted_brands):
+        ip_to_use = combined_active_proxies[idx % len(combined_active_proxies)]
+        combined_geoblock.setdefault((ip_to_use, brand), set()).update(brand_map[brand])
 
     combined_geoblock_nc = {k: set(v) for k, v in combined_geoblock.items()}
 
@@ -1046,16 +877,9 @@ async def generate_aligned_hosts(
     output_only_crutch_adg = output_smart.parent / "only-crutch.adguard.txt"
     write_adguard_file(output_only_crutch_adg, "Only Crutch", combined_direct, {})
 
-    # 11. Build and write Smart hosts files
+    # 11. Build and write Smart hosts files (true "выжимка" of verified working proxy mappings)
     smart_geoblock = {}
-    primary_proxies = [
-        ip
-        for prov in ("geohide", "comss", "malw")
-        for ip in detected_proxy_ips.get(prov, [])
-        if ip in active_ips and ip not in ru_ips
-    ] or combined_active_proxies
-
-    for idx, dom in enumerate(candidate_smart_domains):
+    for dom in candidate_smart_domains:
         brand = get_raw_brand(dom)
         dom_ips = []
         for _p_key, p_doms in provider_supported.items():
@@ -1064,11 +888,7 @@ async def generate_aligned_hosts(
                     if (ip in active_ips or not active_ips) and ip not in dom_ips:
                         dom_ips.append(ip)
         if not dom_ips:
-            # Resilient fallback pairing with primary multi-brand proxies
-            dom_ips = [
-                primary_proxies[idx % len(primary_proxies)],
-                primary_proxies[(idx + 1) % len(primary_proxies)],
-            ]
+            continue
         for ip in dom_ips[:2]:
             smart_geoblock.setdefault((ip, brand), set()).add(dom)
 
@@ -1092,22 +912,15 @@ async def generate_aligned_hosts(
         f.write("\n".join(geoblock_domains_no_crutch) + "\n")
 
     # 13. Save active provider IPs mapping for status updates in README
-    all_provider_map = {
-        "GeoHide": set(detected_proxy_ips.get("geohide", [])),
-        "Comss": set(detected_proxy_ips.get("comss", [])),
-        "Xbox DNS": set(detected_proxy_ips.get("xbox-dns", [])),
-        "dns-ai": set(detected_proxy_ips.get("dns-ai", [])),
-        "AstraCat": set(detected_proxy_ips.get("astracat", [])),
-        "XyZ": set(detected_proxy_ips.get("xyz", [])),
-        "Malw": set(detected_proxy_ips.get("malw", [])),
-        "Mafioznik": set(detected_proxy_ips.get("mafioznik", [])),
-    }
-
     active_provider_ips = {}
-    for prov_name, prov_ips in all_provider_map.items():
+    for prov in PROVIDERS:
+        if not provider_supported.get(prov.key):
+            continue
+        prov_ips = set(detected_proxy_ips.get(prov.key, []))
         working = sorted(list(prov_ips & active_ips)) or sorted(list(prov_ips))
         if working:
-            active_provider_ips[prov_name] = working
+            active_provider_ips[prov.name] = working
+            active_provider_ips[prov.key] = working
 
     active_proxies_file = hosts_temp_dir / "active_provider_ips.json"
     hosts_temp_dir.mkdir(parents=True, exist_ok=True)

@@ -25,7 +25,6 @@ accountmanagement.services.xerox.com
 accounts.autodesk.com
 accounts.chaos.com
 accounts.spotify.com
-accounts.supercell.com
 accounts.x.ai
 activestate.com
 acurapartswarehouse.com
@@ -43,6 +42,14 @@ affinity.studio
 aftermarket.schaeffler.com
 aftermarket.zf.com
 agar.io
+agentn.api2.cursor.sh
+agentn.api3.cursor.sh
+agentn.api4.cursor.sh
+agentn.api5.cursor.sh
+agentn.global.api2.cursor.sh
+agentn.global.api3.cursor.sh
+agentn.global.api4.cursor.sh
+agentn.global.api5.cursor.sh
 ahrefs.com
 ai-chat.bsg.brave.com
 ai.com
@@ -107,6 +114,7 @@ api.groq.com
 api.home-connect.cn
 api.home-connect.com
 api.imgur.com
+api.instagram.com
 api.jetbrains.ai
 api.manus.im
 api.openai.com
@@ -148,6 +156,7 @@ apresolve.spotify.com
 apt.grafana.com
 arabicstatic.naukimg.com
 arc.net
+archive.org
 arduino.cc
 arkoselabs.com
 arrow.com
@@ -167,8 +176,9 @@ atlassian.com
 att.com
 atwiki.jp
 audacy.com
+audio-cf.spotifycdn.com
 audio-fa-tls13.spotifycdn.com
-audio4-ak-spotify-com.akamaized.net
+audio4-fa-tls13.spotifycdn.com
 augmentcode.com
 auth.anthropic.com
 auth.deepl.com
@@ -284,7 +294,6 @@ cats.com
 ccs-service.naukri.com
 cdn-1.strava.com
 cdn.auth0.com
-cdn.id.supercell.com
 cdn.oaistatic.com
 cdn.platform.openai.com
 cdn.web-platform.io
@@ -318,7 +327,6 @@ citrix.com
 clamav.net
 clarabridge.net
 clashofclans.com
-clashofclans.inbox.supercell.com
 clashroyaleapp.com
 claude.ai
 claude.com
@@ -469,6 +477,7 @@ dl.dell.com
 dl.grafana.com
 dl.teamviewer.com
 dnb.com
+dns.malw.link
 dnsspeedtest.online
 dnstest.geohide.ru
 docker.io
@@ -514,6 +523,7 @@ echo.naukri.com
 ecosia.org
 ecs.office.com
 edelivery.windriver.com
+edge-chat.instagram.com
 edge-web.dual-gslb.spotify.com
 edgeservices.bing.com
 editmysite.com
@@ -633,12 +643,10 @@ g711.org
 gae2-spclient.spotify.com
 gallery.zetalliance.org
 gambody.com
-game-assets.brawlstarsgame.com
-game-assets.clashofclans.com
-game-assets.clashroyaleapp.com
 game.boombeachgame.com
 game.co.uk
 game.mocogame.com
+game.squadbustersgame.com
 game8.co
 game8.co.jp
 game8.jp
@@ -655,6 +663,7 @@ geminiweb-pa.clients6.google.com
 generativeai.google
 generativelanguage.googleapis.com
 genspark.ai
+geohide.ru
 geolocation.onetrust.com
 geospy.ai
 getoutline.com
@@ -686,6 +695,7 @@ gpu-monkey.com
 gql.twitch.tv
 grafana.com
 grammarly.com
+graph.instagram.com
 graphql.strava.com
 graylog.org
 grazie.ai
@@ -737,6 +747,7 @@ hume.ai
 hybrid-analysis.com
 hyundainews.com
 i.dell.com
+i.instagram.com
 i1.api.augmentcode.com
 iaai.com
 ibm.com
@@ -1241,6 +1252,7 @@ onshape.com
 opal.google
 opal.google.com
 opal.withgoogle.com
+open-exp.spotifycdn.com
 openai.com
 opencode.ai
 openculture.com
@@ -1250,6 +1262,7 @@ opentext.com
 operator.chatgpt.com
 oracle.com
 oraclecloud.com
+origin.cursor.com
 otawa.fr
 ott.deepl.com
 ottg.app
@@ -1435,9 +1448,6 @@ schaeffler.com
 schenker-tech.de
 schneider-electric.com
 scim.strava.com
-scontent-hel3-1.cdninstagram.com
-scontent.cdninstagram.com
-scontent.xx.fbcdn.net
 screamingfrog.co.uk
 scribd.com
 scribdassets.com
@@ -1451,7 +1461,6 @@ seagate.com
 seconddinnertech.com
 secure-web.cisco.com
 secure.last.fm
-security.id.supercell.com
 securitytrails.com
 seed-mix-image.spotifycdn.com
 seekvectorlogo.net
@@ -1524,6 +1533,7 @@ spitfireaudio.com
 splunk.com
 splunkcloud.com
 spotify.com
+spotify.dev
 spotifycdn.com
 spotifycdn.net
 squadbustersgame.com
@@ -1540,12 +1550,12 @@ stalker2.com
 static-assets-1.truthsocial.com
 static.app
 static.canva.com
+static.cdninstagram.com
 static.deepl.com
 static.linear.app
 static.naukimg.com
 static.naukri.com
 static.staging.assessment.nc.naukri.com
-static.xx.fbcdn.net
 statsig.anthropic.com
 status.anthropic.com
 status.strava.com
@@ -1566,7 +1576,6 @@ store.last.fm
 store.serif.com
 store.solidstatelogic.com
 store.strava.com
-store.supercell.com
 store.ubi.com
 stories.strava.com
 strava.com
@@ -1627,6 +1636,7 @@ tempmail.plus
 tenable.com
 terraform.io
 teslasoft.org
+test.dns.malw.link
 test.tuta.com
 theaudiodb.com
 themoviedb.org
@@ -1654,6 +1664,7 @@ toolbox.app
 tools.cisco.com
 torrenteditor.com
 trace.wrs.com
+tracker.openbittorrent.com
 trae-api-sg.mchost.guru
 trae.ai
 trailblazer.me
@@ -1676,7 +1687,6 @@ tvn24.pl
 typing.com
 uainvest.com.ua
 uaudio.com
-ubiservices.cdn.ubi.com
 ubnt.com
 uizard.io
 ultimaker.com
@@ -1840,6 +1850,7 @@ www.business.strava.com
 www.buymeacoffee.com
 www.camelai.com
 www.canva-apps.com
+www.canva.com
 www.canva.dev
 www.capcut.com
 www.cerebras.ai
@@ -1997,6 +2008,7 @@ www.sketchup.com
 www.slack.com
 www.slackb.com
 www.spotify.com
+www.spotify.dev
 www.squareup.com
 www.strava.com
 www.superpharm.eu

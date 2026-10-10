@@ -1,9 +1,95 @@
+import json
+from dataclasses import dataclass, field
+from pathlib import Path
+
 from russiafancylists.config.paths import (
     TEMP_FOLDER,
     WHITELIST_LIST_FOLDER,
 )
 
-DOWNLOADS = {
+
+@dataclass(frozen=True)
+class SmartDNSProvider:
+    key: str
+    name: str
+    doh_endpoints: dict[str, str] = field(default_factory=dict)
+    aliases: list[str] = field(default_factory=list)
+    download_sources: list[dict[str, str]] = field(default_factory=list)
+    default_ips: list[str] = field(default_factory=list)
+    primary_fallback: bool = False
+    fallback_to_disk: bool = False
+
+    @property
+    def hosts_filename(self) -> str:
+        return f"{self.key}.hosts"
+
+    @property
+    def no_crutch_hosts_filename(self) -> str:
+        return f"{self.key}-no-crutch.hosts"
+
+    @property
+    def adguard_filename(self) -> str:
+        return f"{self.key}.adguard.txt"
+
+    @property
+    def no_crutch_adguard_filename(self) -> str:
+        return f"{self.key}-no-crutch.adguard.txt"
+
+    @property
+    def all_filenames(self) -> list[str]:
+        return [
+            self.hosts_filename,
+            self.no_crutch_hosts_filename,
+            self.adguard_filename,
+            self.no_crutch_adguard_filename,
+        ]
+
+    @property
+    def download_filenames(self) -> list[str]:
+        return [
+            s["temp_filename"] for s in self.download_sources if "temp_filename" in s
+        ]
+
+
+def _load_providers() -> list[SmartDNSProvider]:
+    config_file = Path(__file__).parent / "providers.json"
+    with open(config_file, encoding="utf-8") as f:
+        data = json.load(f)
+    return [SmartDNSProvider(**item) for item in data]
+
+
+# Loaded provider instances from central providers.json
+PROVIDERS: list[SmartDNSProvider] = _load_providers()
+PROVIDERS_BY_KEY: dict[str, SmartDNSProvider] = {p.key: p for p in PROVIDERS}
+CANONICAL_PROVIDER_KEYS: list[str] = [p.key for p in PROVIDERS]
+PROVIDER_DISPLAY_NAMES: dict[str, str] = {p.key: p.name for p in PROVIDERS}
+PRIMARY_FALLBACK_PROVIDERS: list[str] = [p.key for p in PROVIDERS if p.primary_fallback]
+
+PROVIDER_NAME_TO_KEY: dict[str, str] = {}
+for p in PROVIDERS:
+    PROVIDER_NAME_TO_KEY[p.name] = p.key
+    PROVIDER_NAME_TO_KEY[p.key] = p.key
+    for alias in p.aliases:
+        PROVIDER_NAME_TO_KEY[alias] = p.key
+# Common aliases / short names
+PROVIDER_NAME_TO_KEY["Malw"] = "malw"
+
+# Smart DNS / DoH endpoints for harvesting SNI proxy IP addresses
+SMART_DNS_DOH_SERVERS: dict[str, str] = {}
+for p in PROVIDERS:
+    SMART_DNS_DOH_SERVERS.update(p.doh_endpoints)
+
+# Map DoH endpoint names and aliases to canonical provider keys
+DOH_TO_CANONICAL: dict[str, str] = {}
+for p in PROVIDERS:
+    DOH_TO_CANONICAL[p.key] = p.key
+    for endpoint_name in p.doh_endpoints:
+        DOH_TO_CANONICAL[endpoint_name] = p.key
+    for alias in p.aliases:
+        DOH_TO_CANONICAL[alias] = p.key
+
+# Non-provider base downloads
+DOWNLOADS: dict[str, tuple[str, Path, str]] = {
     # Domains
     "antifilter_domains": (
         "https://antifilter.download/list/domains.lst",
@@ -41,27 +127,7 @@ DOWNLOADS = {
         TEMP_FOLDER / "ipsets" / "re-filter.lst",
         "Re:filter IPSet",
     ),
-    # Hosts
-    "malw_hosts": (
-        "https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/refs/heads/master/hosts",
-        TEMP_FOLDER / "hosts" / "malw-hosts.lst",
-        "ImMALWARE's hosts",
-    ),
-    "mafioznik_hosts": (
-        "https://freedom.mafioznik.xyz/file/hosts",
-        TEMP_FOLDER / "hosts" / "mafioznik-hosts.lst",
-        "Mafioznik's hosts",
-    ),
-    "geohide_eu_hosts": (
-        "https://geohide.ru/eu/hosts",
-        TEMP_FOLDER / "hosts" / "geohide-eu-hosts.lst",
-        "GeoHide's EU hosts",
-    ),
-    "geohide_us_hosts": (
-        "https://geohide.ru/us/hosts",
-        TEMP_FOLDER / "hosts" / "geohide-us-hosts.lst",
-        "GeoHide's US hosts",
-    ),
+    # External Geoblock Sources
     "itdoginfo_hosts": (
         "https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Categories/geoblock.lst",
         TEMP_FOLDER / "hosts" / "itdoginfo-geoblock.lst",
@@ -117,31 +183,58 @@ DOWNLOADS = {
     ),
 }
 
-# Smart DNS / DoH endpoints for harvesting SNI proxy IP addresses
-# Routed via v.recipes accelerator for anycast edge routing, per-request pacing, and reliability
-SMART_DNS_DOH_SERVERS = {
-    "comss": "https://v.recipes/dns/dns.comss.one/dns-query",
-    "astracat": "https://v.recipes/dns/dns.astracat.network/dns-query",
-    "xyz": "https://v.recipes/dns/dns.yo1nk.app/dns-query",
-    "dns_ai": "https://dns.dns-ai.ru/dns-query",
-    "xbox_dns": "https://v.recipes/dns/xbox-dns.ru/dns-query",
-    "malw": "https://v.recipes/dns/dns.malw.link/dns-query",
-    "geohide_eu": "https://v.recipes/dns/eu.geohide.ru/dns-query",
-    "geohide_us": "https://v.recipes/dns/us.geohide.ru/dns-query",
-}
+# Dynamically merge all provider download sources into DOWNLOADS
+for p in PROVIDERS:
+    for src in p.download_sources:
+        DOWNLOADS[src["id"]] = (
+            src["url"],
+            TEMP_FOLDER / "hosts" / src["temp_filename"],
+            src["description"],
+        )
 
-# Canonical geoblocked domains used to probe DoH resolvers for proxy IPs
+# Canonical geoblocked domains used to probe DoH resolvers for proxy IPs across all provider categories
 DOH_PROBE_DOMAINS = [
+    # AI & Productivity
     "chatgpt.com",
     "openai.com",
     "api.openai.com",
     "claude.ai",
+    "anthropic.com",
     "copilot.microsoft.com",
     "canva.com",
     "notion.so",
-    "spotify.com",
-    "rutracker.org",
-    "dell.com",
-    "intel.com",
+    "figma.com",
     "medium.com",
+    "adobe.com",
+    # Media & Streaming
+    "spotify.com",
+    "deezer.com",
+    "soundcloud.com",
+    "netflix.com",
+    # Gaming & Consoles
+    "xsts.auth.xboxlive.com",
+    "user.auth.xboxlive.com",
+    "title.auth.xboxlive.com",
+    "device.auth.xboxlive.com",
+    "xbox.com",
+    "epicgames.com",
+    "ea.com",
+    "playstation.com",
+    # Torrents & Trackers
+    "rutracker.org",
+    "rutor.info",
+    "nnmclub.to",
+    # Tech, Hardware & Crypto
+    "4pda.to",
+    "37signals.com",
+    "aave.com",
+    "meduza.io",
+    "intel.com",
+    "dell.com",
+    "qualcomm.com",
+    # Social / News
+    "instagram.com",
+    "facebook.com",
+    "bbc.com",
+    "dw.com",
 ]

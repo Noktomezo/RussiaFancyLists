@@ -10,7 +10,9 @@ from collections import defaultdict
 import httpx
 
 from russiafancylists.config.providers import (
+    CANONICAL_PROVIDER_KEYS,
     DOH_PROBE_DOMAINS,
+    DOH_TO_CANONICAL,
     SMART_DNS_DOH_SERVERS,
 )
 
@@ -330,7 +332,7 @@ async def discover_doh_proxy_ips(
 
     confirmed_proxies: dict[str, list[str]] = {}
     for name, ip_map in resolver_ip_brands.items():
-        canonical_name = "dns-ai" if name in ("dns_ai", "dns-ai") else name
+        canonical_name = DOH_TO_CANONICAL.get(name, name)
         prov_ips = [ip for ip, brands in ip_map.items() if len(brands) >= 2]
         if prov_ips:
             confirmed_proxies.setdefault(canonical_name, []).extend(prov_ips)
@@ -354,45 +356,23 @@ async def resolve_geoblock_domains_per_provider(
     Returns a mapping: {canonical_provider_key: {domain: [proxy_ips]}} containing only the
     domains that genuinely resolve to that provider's active Smart DNS proxy IPs.
     """
-    canonical_providers = [
-        "geohide",
-        "comss",
-        "xbox-dns",
-        "dns-ai",
-        "astracat",
-        "xyz",
-        "malw",
-        "mafioznik",
-    ]
-    results: dict[str, dict[str, list[str]]] = {p: {} for p in canonical_providers}
+    results: dict[str, dict[str, list[str]]] = {p: {} for p in CANONICAL_PROVIDER_KEYS}
 
-    # Map DoH endpoint names to canonical provider keys
-    doh_to_canonical = {
-        "comss": "comss",
-        "astracat": "astracat",
-        "xyz": "xyz",
-        "dns_ai": "dns-ai",
-        "dns-ai": "dns-ai",
-        "xbox_dns": "xbox-dns",
-        "xbox-dns": "xbox-dns",
-        "malw": "malw",
-        "geohide_eu": "geohide",
-        "geohide_us": "geohide",
-        "geohide_ru": "geohide",
-        "geohide": "geohide",
-    }
-
-    async def check_doh_endpoint(prov_key: str, doh_url: str, target_ips: set[str]):
+    async def check_doh_endpoint(
+        prov_key: str, doh_url: str, target_ips: set[str]
+    ) -> tuple[str, dict[str, list[str]]]:
+        endpoint_res: dict[str, list[str]] = {}
         if not target_ips:
-            return
-        sem = asyncio.Semaphore(35)
+            return prov_key, endpoint_res
+
+        sem = asyncio.Semaphore(50)
         transport = httpx.AsyncHTTPTransport(
             local_address="0.0.0.0", http2=True, verify=False
         )
         async with httpx.AsyncClient(
             transport=transport,
             timeout=6.0,
-            limits=httpx.Limits(max_connections=40, max_keepalive_connections=40),
+            limits=httpx.Limits(max_connections=50, max_keepalive_connections=50),
         ) as client:
 
             async def check_dom(d: str):
@@ -400,23 +380,31 @@ async def resolve_geoblock_domains_per_provider(
                     ips = await query_doh_a_records(client, doh_url, d)
                     matching = [ip for ip in ips if ip in target_ips]
                     if matching:
-                        current = results[prov_key].setdefault(d, [])
-                        for ip in matching:
-                            if ip not in current:
-                                current.append(ip)
+                        endpoint_res.setdefault(d, []).extend(matching)
 
             await asyncio.gather(
                 *(check_dom(d) for d in domains), return_exceptions=True
             )
 
+        return prov_key, endpoint_res
+
     doh_tasks = []
     for endpoint_name, url in SMART_DNS_DOH_SERVERS.items():
-        prov_key = doh_to_canonical.get(endpoint_name)
+        prov_key = DOH_TO_CANONICAL.get(endpoint_name)
         if not prov_key:
             continue
         prov_target_ips = set(provider_proxies.get(prov_key, []))
         if prov_target_ips:
             doh_tasks.append(check_doh_endpoint(prov_key, url, prov_target_ips))
 
-    await asyncio.gather(*doh_tasks, return_exceptions=True)
+    task_results = await asyncio.gather(*doh_tasks, return_exceptions=True)
+    for res in task_results:
+        if isinstance(res, tuple) and len(res) == 2:
+            prov_key, endp_map = res
+            for d, ips in endp_map.items():
+                current = results[prov_key].setdefault(d, [])
+                for ip in ips:
+                    if ip not in current:
+                        current.append(ip)
+
     return results
