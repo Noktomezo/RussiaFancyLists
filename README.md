@@ -707,7 +707,10 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 
 ## 💖 Support
 
-<img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Bank Cards (RUB)](https://pay.cloudtips.ru/p/227e7223) — CloudTips<br>
+### Rubles
+<img src="./assets/icons/rub.svg" width="16" height="16" valign="middle"> [Donation in RUB](https://pay.cloudtips.ru/p/227e7223) — CloudTips (SBP, T-Pay, bank cards)
+
+### Cryptocurrency
 <img src="./assets/icons/trx.svg" width="16" height="16" valign="middle"> **USDT (TRC20)** — `TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA`<br>
 <img src="./assets/icons/ton.svg" width="16" height="16" valign="middle"> **USDT (TON)** — `UQBxp5ZfvLr-V0SCPFDjA13qFIxQi6Y5Ga5FdTImaX10IqHO`<br>
 <img src="./assets/icons/sol.svg" width="16" height="16" valign="middle"> **USDT (SPL)** — `9uxu5dcoBsDNNvjZrTNaJbJd4RXjQNpgunQ4qcDqHfmn`<br>
