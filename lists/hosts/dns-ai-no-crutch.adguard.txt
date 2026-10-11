@@ -4,12 +4,12 @@
 ! Geoblock
 ||a-api.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
-||api.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
-||assets-proxy.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||console.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||status.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
+||support.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||www.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||a.claude.ai^$dnsrewrite=NOERROR;A;160.79.104.10
-||claude.ai^$dnsrewrite=NOERROR;A;160.79.104.10
-||claude.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||platform.claude.com^$dnsrewrite=NOERROR;A;160.79.104.10
+||www.claude.ai^$dnsrewrite=NOERROR;A;160.79.104.10
+||www.claude.com^$dnsrewrite=NOERROR;A;160.79.104.10
+||www.claudeusercontent.com^$dnsrewrite=NOERROR;A;160.79.104.10
