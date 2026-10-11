@@ -2,8 +2,11 @@
 ! Homepage: https://github.com/Noktomezo/RussiaFancyLists
 
 ! Geoblock
+||a-api.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
+||anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||assets-proxy.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
+||console.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||status.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||support.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10
 ||www.anthropic.com^$dnsrewrite=NOERROR;A;160.79.104.10

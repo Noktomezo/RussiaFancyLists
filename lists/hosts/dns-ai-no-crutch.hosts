@@ -5,6 +5,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-160.79.104.10 api.anthropic.com assets-proxy.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+160.79.104.10 a-api.anthropic.com anthropic.com api.anthropic.com assets-proxy.anthropic.com console.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
 160.79.104.10 a.claude.ai claude.ai claude.com platform.claude.com www.claude.ai www.claude.com
 160.79.104.10 claudeusercontent.com www.claudeusercontent.com
