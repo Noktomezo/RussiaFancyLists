@@ -311,7 +311,7 @@ def get_source_info(file_path: Path):
 IP_CHECK_SEMAPHORE = asyncio.Semaphore(30)
 
 
-async def check_ip_active(ip: str, timeout: float = 2.5) -> bool:
+async def check_ip_active(ip: str, timeout: float = 3.5) -> bool:
     """Check TCP connectivity to an IP on ports 443 and 80 in parallel."""
     # Loopback addresses are always active
     if ip in ("127.0.0.1", "::1", "localhost", "ip6-localhost"):
@@ -559,6 +559,28 @@ async def detect_provider_proxy_ips(
                 if ip not in ru_ips and ip not in detected_proxy_ips[ck]:
                     detected_proxy_ips[ck].append(ip)
 
+    # Merge default_ips and disk fallback IPs for providers (e.g. dns-ai under CI runners outside RU)
+    hosts_output_dir = Path("lists/hosts")
+    for prov in PROVIDERS:
+        for ip in prov.default_ips:
+            if ip not in ru_ips and ip not in detected_proxy_ips.get(prov.key, []):
+                detected_proxy_ips.setdefault(prov.key, []).append(ip)
+        if prov.fallback_to_disk and hosts_output_dir.exists():
+            disk_hosts = hosts_output_dir / prov.no_crutch_hosts_filename
+            if disk_hosts.exists():
+                with open(disk_hosts, encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith("#"):
+                            continue
+                        cols = line.split()
+                        if cols and IPV4_PATTERN.match(cols[0]):
+                            ip = cols[0]
+                            if ip not in ru_ips and ip not in detected_proxy_ips.get(
+                                prov.key, []
+                            ):
+                                detected_proxy_ips.setdefault(prov.key, []).append(ip)
+
     detected_proxy_ips = {k: sorted(v) for k, v in detected_proxy_ips.items()}
     all_clean_ips = sorted(
         list({ip for ips in detected_proxy_ips.values() for ip in ips})
@@ -746,6 +768,30 @@ async def generate_aligned_hosts(
     provider_supported = await resolve_geoblock_domains_per_provider(
         candidate_smart_domains, detected_proxy_ips
     )
+
+    # Merge disk fallback for providers with fallback_to_disk (e.g. dns-ai and astracat under CI runners outside RU)
+    for prov in PROVIDERS:
+        if prov.fallback_to_disk:
+            disk_hosts = output_smart.parent / prov.no_crutch_hosts_filename
+            if disk_hosts.exists():
+                prov_doms = provider_supported.setdefault(prov.key, {})
+                with open(disk_hosts, encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith("#"):
+                            continue
+                        cols = line.split()
+                        if not cols or not IPV4_PATTERN.match(cols[0]):
+                            continue
+                        ip = cols[0]
+                        if ip in ru_ips:
+                            continue
+                        for dom in cols[1:]:
+                            if (
+                                dom in candidate_smart_domains
+                                and ip not in prov_doms.setdefault(dom, [])
+                            ):
+                                prov_doms[dom].append(ip)
 
     # 7. Helper to write individual provider hosts and AdGuard Home files
     def write_provider_hosts(

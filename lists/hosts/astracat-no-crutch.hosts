@@ -1,0 +1,56 @@
+# Loopback
+127.0.0.1 localhost
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# Geoblock
+217.60.179.6 api.anthropic.com console.anthropic.com
+217.60.179.6 web.archive.org
+217.60.179.6 accounts.autodesk.com
+217.60.179.6 edgeservices.bing.com rewards.bing.com
+217.60.179.6 profile.broadcom.com
+217.60.179.6 content-management-files.canva.com static.canva.com www.canva.com
+217.60.179.6 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+217.60.179.6 a.claude.ai claude.ai platform.claude.com
+217.60.179.6 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com
+217.60.179.6 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+217.60.179.6 deezer.com payment.deezer.com www.deezer.com
+217.60.179.6 dyson.com
+217.60.179.6 elevenlabs.io
+217.60.179.6 elevenreader.io
+217.60.179.6 framer.com
+217.60.179.6 fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+217.60.179.6 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+217.60.179.6 assets.grok.com grok.com
+217.60.179.6 api.imgur.com
+217.60.179.6 www.intel.com
+217.60.179.6 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+217.60.179.6 labs.google
+217.60.179.6 client-api.linear.app constellation.linear.app public.linear.app s.linear.app uploads.linear.app
+217.60.179.6 manus.im
+217.60.179.6 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
+217.60.179.6 copilot.microsoft.com
+217.60.179.6 game.mocogame.com
+217.60.179.6 calendar.notion.so www.notion.so
+217.60.179.6 developer.nvidia.com
+217.60.179.6 cdn.oaistatic.com
+217.60.179.6 files.oaiusercontent.com
+217.60.179.6 geolocation.onetrust.com
+217.60.179.6 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com developers.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+217.60.179.6 patreon.com www.patreon.com
+217.60.179.6 o.pki.goog
+217.60.179.6 pump.fun
+217.60.179.6 sora.com
+217.60.179.6 api-global.squareup.com
+217.60.179.6 dd.tidal.com login.tidal.com resources.tidal.com
+217.60.179.6 www.tiktok.com
+217.60.179.6 api-sg-central.trae.ai api.trae.ai
+217.60.179.6 tria.ge
+217.60.179.6 static-assets-1.truthsocial.com truthsocial.com
+217.60.179.6 usher.ttvnw.net
+217.60.179.6 gql.twitch.tv
+217.60.179.6 upsx.weather.com weather.com
+217.60.179.6 stitch.withgoogle.com
+217.60.179.6 accounts.x.ai
+217.60.179.6 xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
