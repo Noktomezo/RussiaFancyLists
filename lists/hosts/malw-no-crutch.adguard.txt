@@ -35,6 +35,7 @@
 ||www.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||gtm.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -49,7 +50,6 @@
 ||errortracking.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||experimentation-grpc.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||experimentation.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||gtm.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||home.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||internal.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -90,7 +90,6 @@
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gemini.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||jules.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -101,8 +100,8 @@
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||grok.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||assets.grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||hybrid-analysis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.imgur.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -198,9 +197,6 @@
 ||gew1-dealer.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gew1-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gnl-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||guc3-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||guc3-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||gue1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gue1-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||image-upload.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||log.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -242,7 +238,6 @@
 ||dev.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||email.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||email1.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||graphql.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||interview.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||links.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -282,7 +277,6 @@
 ||static-assets-1.truthsocial.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||truthsocial.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||usher.ttvnw.net^$dnsrewrite=NOERROR;A;179.254.166.174
-||gql.twitch.tv^$dnsrewrite=NOERROR;A;179.254.166.174
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||weather.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.weather.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -292,7 +286,6 @@
 ||api.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||console.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
-||grok.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||xgpuweb.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;179.254.166.174
