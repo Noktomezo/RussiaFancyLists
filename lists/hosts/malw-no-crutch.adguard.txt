@@ -72,6 +72,7 @@
 ||dyson.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.dyson.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;179.254.166.174
+||dzcdn.net^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.us.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||eleven-public-cdn.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -175,6 +176,7 @@
 ||ap.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-partner.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||appresolve.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||apresolve.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -259,6 +261,7 @@
 ||api.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fsu.fa.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||images.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||link.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
