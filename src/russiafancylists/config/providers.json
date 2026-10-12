@@ -51,15 +51,7 @@
     },
     "aliases": ["dns_ai"],
     "download_sources": [],
-    "default_ips": [
-      "62.60.230.61",
-      "191.44.41.79",
-      "191.44.41.215",
-      "13.140.94.151",
-      "160.79.104.10"
-    ],
-    "primary_fallback": false,
-    "fallback_to_disk": true
+    "primary_fallback": false
   },
   {
     "key": "astracat",
@@ -69,11 +61,7 @@
     },
     "aliases": [],
     "download_sources": [],
-    "default_ips": [
-      "217.60.179.6"
-    ],
-    "primary_fallback": false,
-    "fallback_to_disk": true
+    "primary_fallback": false
   },
   {
     "key": "xyz",

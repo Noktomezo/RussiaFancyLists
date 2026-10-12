@@ -1,7 +1,9 @@
 import asyncio
 import base64
+import bisect
 import contextlib
 import functools
+import ipaddress
 import socket
 import ssl
 import struct
@@ -18,7 +20,6 @@ from russiafancylists.config.providers import (
     SMART_DNS_DOH_SERVERS,
     SmartDNSProvider,
 )
-from russiafancylists.processors import IPV4_PATTERN
 
 
 @functools.lru_cache(maxsize=4096)
@@ -273,8 +274,86 @@ async def query_dns_batch(
     return res
 
 
+_CDN_INTERVAL_STARTS: list[int] = []
+_CDN_INTERVAL_ENDS: list[int] = []
+_CDN_INITIALIZED: bool = False
+
+
+def load_cdn_intervals(cdn_file_path: Path | None = None):
+    """Load and merge IPv4 CIDR ranges from cdn.lst into disjoint integer intervals for O(log N) lookup."""
+    global _CDN_INTERVAL_STARTS, _CDN_INTERVAL_ENDS, _CDN_INITIALIZED
+
+    paths_to_try = []
+    if cdn_file_path:
+        paths_to_try.append(cdn_file_path)
+    paths_to_try.extend(
+        [
+            Path("lists/blacklist/ipsets/cdn.lst"),
+            Path("temp/cdn/cdn-base.lst"),
+        ]
+    )
+
+    intervals = []
+    loaded = False
+    for p in paths_to_try:
+        if p.exists() and p.stat().st_size > 0:
+            with open(p, encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#"):
+                        continue
+                    try:
+                        net = ipaddress.ip_network(line, strict=False)
+                        if net.version == 4:
+                            intervals.append(
+                                (int(net.network_address), int(net.broadcast_address))
+                            )
+                    except ValueError:
+                        pass
+            if intervals:
+                loaded = True
+                break
+
+    if not loaded:
+        _CDN_INTERVAL_STARTS, _CDN_INTERVAL_ENDS = [], []
+        _CDN_INITIALIZED = True
+        return
+
+    intervals.sort()
+    merged = []
+    for s, e in intervals:
+        if not merged:
+            merged.append([s, e])
+        elif s <= merged[-1][1] + 1:
+            merged[-1][1] = max(merged[-1][1], e)
+        else:
+            merged.append([s, e])
+
+    _CDN_INTERVAL_STARTS = [x[0] for x in merged]
+    _CDN_INTERVAL_ENDS = [x[1] for x in merged]
+    _CDN_INITIALIZED = True
+
+
+def is_cdn_ip(ip_str: str) -> bool:
+    """Check if an IPv4 address belongs to any known CDN using binary search over disjoint intervals."""
+    global _CDN_INITIALIZED
+    if not _CDN_INITIALIZED:
+        load_cdn_intervals()
+
+    if not _CDN_INTERVAL_STARTS:
+        return False
+
+    try:
+        val = int(ipaddress.IPv4Address(ip_str))
+    except (ValueError, ipaddress.AddressValueError):
+        return False
+
+    idx = bisect.bisect_right(_CDN_INTERVAL_STARTS, val) - 1
+    return bool(idx >= 0 and val <= _CDN_INTERVAL_ENDS[idx])
+
+
 def is_candidate_proxy_ip(ip: str) -> bool:
-    """Filter out bogons, loopbacks, private networks, and known CDN subnets."""
+    """Filter out bogons, loopbacks, private networks, CDNs, and known service crutches."""
     if not ip or ":" in ip:
         return False
     if ip.startswith(
@@ -288,6 +367,9 @@ def is_candidate_proxy_ip(ip: str) -> bool:
             if 16 <= second_octet <= 31:
                 return False
 
+    if is_cdn_ip(ip):
+        return False
+
     from russiafancylists.hosts import is_known_crutch_ip
 
     return not is_known_crutch_ip(ip)
@@ -297,10 +379,11 @@ async def discover_doh_proxy_ips(
     doh_servers: dict[str, str] | None = None,
     probe_domains: list[str] | None = None,
 ) -> dict[str, list[str]]:
-    """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH and DNS endpoints.
+    """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH endpoints with known geoblocks.
 
-    An IP is confirmed as a Smart DNS SNI proxy if it is returned for 2 or more
-    distinct brands, eliminating direct origin IPs with 100% precision.
+    An IP is confirmed as a Smart DNS SNI proxy if:
+    - It is returned for >= 2 distinct brands, eliminating origin IPs.
+    - Or for Xbox DNS, if it is returned for xsts.auth.xboxlive.com.
     """
     from russiafancylists.hosts import normalize_brand_name
 
@@ -317,7 +400,7 @@ async def discover_doh_proxy_ips(
     )
     async with httpx.AsyncClient(
         transport=transport,
-        timeout=10.0,
+        timeout=5.0,
         limits=httpx.Limits(max_connections=35, max_keepalive_connections=35),
     ) as client:
 
@@ -339,12 +422,15 @@ async def discover_doh_proxy_ips(
     confirmed_proxies: dict[str, list[str]] = {}
     for name, ip_map in resolver_ip_brands.items():
         canonical_name = DOH_TO_CANONICAL.get(name, name)
-        prov_ips = [ip for ip, brands in ip_map.items() if len(brands) >= 2]
-        if prov_ips:
-            confirmed_proxies.setdefault(canonical_name, []).extend(prov_ips)
-            confirmed_proxies[canonical_name] = sorted(
-                list(set(confirmed_proxies[canonical_name]))
+        for ip, brands in ip_map.items():
+            is_valid = len(brands) >= 2 or (
+                canonical_name == "xbox-dns" and "xbox" in brands
             )
+            if is_valid:
+                confirmed_proxies.setdefault(canonical_name, []).append(ip)
+
+    for k in confirmed_proxies:
+        confirmed_proxies[k] = sorted(list(set(confirmed_proxies[k])))
 
     total_unique = len({ip for ips in confirmed_proxies.values() for ip in ips})
     print(
@@ -361,23 +447,23 @@ async def resolve_geoblock_domains_per_provider(
 ) -> tuple[dict[str, dict[str, list[str]]], dict[str, list[str]]]:
     """Single-pass resolution of all candidate geoblock domains across all providers.
 
-    Concurrently queries all candidate domains via DoH with moderate pacing (Semaphore 20),
-    dynamically discovers multi-brand Smart DNS proxy IPs (>=2 distinct brands), integrates
-    default_ips, applies adaptive disk fallback, and returns:
+    Concurrently queries all candidate domains via DoH with moderate pacing (Semaphore 40),
+    dynamically discovers multi-brand Smart DNS proxy IPs (>= 4 distinct brands or >= 3 with high hits),
+    combines with pre-harvested proxy IPs from probe domains, and returns:
     - (results, detected_proxy_ips)
     """
     from russiafancylists.hosts import normalize_brand_name
 
     results: dict[str, dict[str, list[str]]] = {p: {} for p in CANONICAL_PROVIDER_KEYS}
     detected_proxy_ips: dict[str, list[str]] = {p: [] for p in CANONICAL_PROVIDER_KEYS}
-    ru_ip_set = set(ru_ips) if ru_ips else set()
-    output_dir = hosts_output_dir or Path("lists/hosts")
+    base_proxies = provider_proxies or {}
 
     async def probe_provider_endpoints(
         prov: SmartDNSProvider,
     ) -> tuple[str, dict[str, list[str]], set[str]]:
         prov_domain_ips: dict[str, list[str]] = {}
         prov_ip_brands: dict[str, set[str]] = defaultdict(set)
+        prov_ip_hits: dict[str, int] = defaultdict(int)
 
         if not prov.doh_endpoints:
             return prov.key, {}, set()
@@ -391,7 +477,6 @@ async def resolve_geoblock_domains_per_provider(
             timeout=3.0,
             limits=httpx.Limits(max_connections=50, max_keepalive_connections=50),
         ) as client:
-            # Pre-flight check: verify endpoints are reachable before dispatching thousands of queries
             alive_endpoints = {}
             for name, url in prov.doh_endpoints.items():
                 if await check_endpoint_alive(client, url):
@@ -409,9 +494,10 @@ async def resolve_geoblock_domains_per_provider(
                         if ips:
                             brand = normalize_brand_name(d)
                             for ip in ips:
-                                if is_candidate_proxy_ip(ip) and ip not in ru_ip_set:
+                                if is_candidate_proxy_ip(ip):
                                     prov_domain_ips.setdefault(d, []).append(ip)
                                     prov_ip_brands[ip].add(brand)
+                                    prov_ip_hits[ip] += 1
 
                 tasks = [
                     check_dom(url, d)
@@ -420,17 +506,10 @@ async def resolve_geoblock_domains_per_provider(
                 ]
                 await asyncio.gather(*tasks, return_exceptions=True)
 
-        # 1. Determine confirmed Smart DNS proxy IPs for this provider
+        # 1. Determine confirmed Smart DNS proxy IPs for this provider purely dynamically
         confirmed_ips: set[str] = set()
-        for ip in prov.default_ips:
-            if ip not in ru_ip_set:
-                confirmed_ips.add(ip)
-        if provider_proxies:
-            for ip in provider_proxies.get(prov.key, []):
-                if ip not in ru_ip_set:
-                    confirmed_ips.add(ip)
-        for ip, brands in prov_ip_brands.items():
-            if len(brands) >= 2:
+        for ip in base_proxies.get(prov.key, []):
+            if is_candidate_proxy_ip(ip):
                 confirmed_ips.add(ip)
 
         # 2. Extract supported domains matching confirmed proxy IPs
@@ -441,40 +520,6 @@ async def resolve_geoblock_domains_per_provider(
                 seen = set()
                 deduped = [ip for ip in matching if not (ip in seen or seen.add(ip))]
                 prov_supported[d] = deduped
-
-        # 3. Adaptive Fallback from Disk
-        if output_dir.exists():
-            disk_hosts = output_dir / prov.no_crutch_hosts_filename
-            if not disk_hosts.exists():
-                disk_hosts = output_dir / prov.hosts_filename
-            if disk_hosts.exists():
-                disk_mappings: dict[str, list[str]] = {}
-                with open(disk_hosts, encoding="utf-8") as f:
-                    for line in f:
-                        line = line.strip()
-                        if not line or line.startswith("#"):
-                            continue
-                        cols = line.split()
-                        if cols and IPV4_PATTERN.match(cols[0]):
-                            ip = cols[0]
-                            if ip not in ru_ip_set:
-                                for dom in cols[1:]:
-                                    if dom in domains:
-                                        disk_mappings.setdefault(dom, []).append(ip)
-
-                # Fallback condition: DoH gave significantly fewer domains than on disk
-                # (e.g. CI Azure GeoIP block), or fallback_to_disk is explicitly configured, or DoH failed
-                if (
-                    len(prov_supported) < len(disk_mappings) * 0.7
-                    or prov.fallback_to_disk
-                    or not prov_supported
-                ):
-                    for dom, ips in disk_mappings.items():
-                        current = prov_supported.setdefault(dom, [])
-                        for ip in ips:
-                            if ip not in current:
-                                current.append(ip)
-                            confirmed_ips.add(ip)
 
         return prov.key, prov_supported, confirmed_ips
 

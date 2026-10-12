@@ -13,9 +13,12 @@ from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.config.providers import (
     CANONICAL_PROVIDER_KEYS,
     DOH_PROBE_DOMAINS,
+    DOH_TO_CANONICAL,
     PROVIDERS,
 )
 from russiafancylists.doh import (
+    discover_doh_proxy_ips,
+    is_candidate_proxy_ip,
     resolve_geoblock_domains_per_provider,
 )
 from russiafancylists.processors import (
@@ -49,10 +52,25 @@ KNOWN_CRUTCH_SUBNETS = [
     ipaddress.ip_network("23.32.0.0/11"),  # Akamai Technologies
     ipaddress.ip_network("2.16.0.0/13"),  # Akamai Technologies
     ipaddress.ip_network("2.23.0.0/16"),  # Akamai Technologies
-    ipaddress.ip_network("23.48.0.0/14"),  # Akamai Technologies
     ipaddress.ip_network("8.47.69.0/24"),  # Cloudflare Edge CDN Anycast
     ipaddress.ip_network("8.6.112.0/24"),  # Cloudflare Edge CDN Anycast
     ipaddress.ip_network("76.76.21.0/24"),  # Vercel CDN Anycast
+    ipaddress.ip_network("108.138.0.0/15"),  # AWS CloudFront CDN
+    ipaddress.ip_network("108.156.0.0/14"),  # AWS CloudFront CDN
+    ipaddress.ip_network("13.32.0.0/15"),  # AWS CloudFront CDN
+    ipaddress.ip_network("13.35.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("65.8.0.0/15"),  # AWS CloudFront CDN
+    ipaddress.ip_network("65.9.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("99.84.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("99.86.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("18.64.0.0/14"),  # AWS CloudFront CDN
+    ipaddress.ip_network("18.154.0.0/15"),  # AWS CloudFront CDN
+    ipaddress.ip_network("18.160.0.0/13"),  # AWS CloudFront CDN
+    ipaddress.ip_network("54.192.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("54.230.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("54.239.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("54.240.0.0/16"),  # AWS CloudFront CDN
+    ipaddress.ip_network("95.100.0.0/15"),  # Akamai Technologies
 ]
 
 
@@ -667,7 +685,33 @@ async def generate_aligned_hosts(
         d for d in geoblock_domains if d not in global_custom_candidates
     ]
 
-    # 5. Single-Pass DoH resolution across all candidate geoblock domains
+    # 5. Harvest verified Smart DNS proxy IPs strictly from core probe domains and official sources
+    print("Harvesting authentic Smart DNS proxy IPs across providers...")
+    doh_harvested_proxies = await discover_doh_proxy_ips()
+    provider_proxies = {p: [] for p in CANONICAL_PROVIDER_KEYS}
+    for k, ips in doh_harvested_proxies.items():
+        ck = DOH_TO_CANONICAL.get(k, k)
+        if ck in provider_proxies:
+            for ip in ips:
+                if is_candidate_proxy_ip(ip) and ip not in provider_proxies[ck]:
+                    provider_proxies[ck].append(ip)
+
+    # Also harvest top IPs from official downloaded provider source files (e.g. malw, mafioznik)
+    for prov in PROVIDERS:
+        for src in prov.download_sources:
+            src_path = hosts_temp_dir / src.get("temp_filename", "")
+            if src_path.exists():
+                try:
+                    top_ips, _ = get_source_info(src_path)
+                    for ip in top_ips:
+                        if is_candidate_proxy_ip(
+                            ip
+                        ) and ip not in provider_proxies.setdefault(prov.key, []):
+                            provider_proxies[prov.key].append(ip)
+                except Exception:
+                    pass
+
+    # 6. Single-Pass DoH resolution across candidate geoblock domains strictly against confirmed proxy IPs
     print(
         f"Starting Single-Pass DoH resolution for {len(candidate_smart_domains)} geoblock domains across all {len(PROVIDERS)} providers..."
     )
@@ -676,25 +720,15 @@ async def generate_aligned_hosts(
         detected_proxy_ips,
     ) = await resolve_geoblock_domains_per_provider(
         candidate_smart_domains,
+        provider_proxies=provider_proxies,
         ru_ips=ru_ips,
         hosts_output_dir=output_smart.parent,
     )
 
-    # Exclude any newly detected Russian proxy IPs if discovered
+    # Exclude any newly detected Russian proxy IPs from combined.hosts pool
     extra_ru = await get_ru_ip_set(detected_proxy_ips.get("doh", []))
     if extra_ru:
         ru_ips.update(extra_ru)
-        for p in CANONICAL_PROVIDER_KEYS:
-            detected_proxy_ips[p] = [
-                ip for ip in detected_proxy_ips.get(p, []) if ip not in ru_ips
-            ]
-            if p in provider_supported:
-                for dom in list(provider_supported[p].keys()):
-                    provider_supported[p][dom] = [
-                        ip for ip in provider_supported[p][dom] if ip not in ru_ips
-                    ]
-                    if not provider_supported[p][dom]:
-                        del provider_supported[p][dom]
 
     # 6. Perform TCP connectivity checks on all unique IPs (proxies and crutches) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
