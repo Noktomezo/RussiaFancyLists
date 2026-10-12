@@ -725,6 +725,32 @@ async def generate_aligned_hosts(
         hosts_output_dir=output_smart.parent,
     )
 
+    # Integrate domains and confirmed IPs from official downloaded provider source files (e.g. mafioznik, malw)
+    for prov in PROVIDERS:
+        for src in prov.download_sources:
+            src_path = hosts_temp_dir / src.get("temp_filename", "")
+            if src_path.exists():
+                try:
+                    top_ips, ip_doms = get_source_info(src_path)
+                    for ip in top_ips:
+                        if is_candidate_proxy_ip(ip):
+                            if ip not in detected_proxy_ips.setdefault(prov.key, []):
+                                detected_proxy_ips[prov.key].append(ip)
+                            dom_map = provider_supported.setdefault(prov.key, {})
+                            for dom in ip_doms.get(ip, set()):
+                                if (
+                                    dom in candidate_smart_domains
+                                    and ip not in dom_map.setdefault(dom, [])
+                                ):
+                                    dom_map[dom].append(ip)
+                except Exception:
+                    pass
+
+    # Update global pool of active detected proxy IPs
+    detected_proxy_ips["doh"] = sorted(
+        list({ip for p, ips in detected_proxy_ips.items() if p != "doh" for ip in ips})
+    )
+
     # Exclude any newly detected Russian proxy IPs from combined.hosts pool
     extra_ru = await get_ru_ip_set(detected_proxy_ips.get("doh", []))
     if extra_ru:

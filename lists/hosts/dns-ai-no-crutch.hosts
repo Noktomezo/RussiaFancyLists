@@ -1,0 +1,18 @@
+# Loopback
+127.0.0.1 localhost
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# Geoblock
+62.60.230.61 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com
+62.60.230.61 ab.chatgpt.com webrtc.chatgpt.com
+62.60.230.61 a.claude.ai api.claude.ai api.claude.com www.claude.ai www.claude.com
+62.60.230.61 www.claudeusercontent.com
+62.60.230.61 agentn.api5.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh repo42.cursor.sh
+62.60.230.61 assets.grok.com grok.com
+62.60.230.61 api.manus.im manus.im
+62.60.230.61 android.chat.openai.com api.openai.com auth.openai.com
+62.60.230.61 cdn-1.strava.com graphql.strava.com
+62.60.230.61 gql.twitch.tv
+62.60.230.61 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai

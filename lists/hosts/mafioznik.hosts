@@ -9,14 +9,20 @@ ff02::2 ip6-allrouters
 23.36.163.34 audio-ak-spotify-com.akamaized.net
 23.48.23.145 heads-ak-spotify-com.akamaized.net
 31.25.239.132 game.boombeachgame.com
+185.246.223.127 game.brawlstarsgame.com
 31.25.239.132 game-assets.brawlstarsgame.com
 31.13.66.63 scontent-hel3-1.cdninstagram.com scontent.cdninstagram.com
 57.144.244.192 static.cdninstagram.com
+193.23.209.189 gamea.clashofclans.com
 31.25.239.132 game-assets.clashofclans.com
 31.25.239.132 game-assets.clashroyaleapp.com
+62.133.62.97 game.clashroyaleapp.com
+144.31.14.104 windsurf-telemetry.codeium.com
 162.159.135.232 updates.discord.com
+157.240.245.174 z-p42-chat-e2ee-ig.facebook.com
 57.144.244.1 facebook.com www.facebook.com
 57.144.244.1 fb.com
+31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 140.82.114.3 github.com
@@ -24,16 +30,19 @@ ff02::2 ip6-allrouters
 185.199.110.154 github.githubassets.com
 146.75.22.132 avatars.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com avatars4.githubusercontent.com avatars5.githubusercontent.com camo.githubusercontent.com gist.githubusercontent.com objects.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com release-assets.githubusercontent.com
 157.240.205.174 instagram.com www.instagram.com
+157.240.245.174 b.i.instagram.com help.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 31.25.239.132 game.mocogame.com
 130.255.77.28 ntc.party
 172.67.139.108 r6s.com
+54.155.2.87 rainbow6.com
 65.8.158.112 tr.rbxcdn.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 172.66.159.63 d.rutor.info rutor.info
 199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
 35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
+108.61.167.26 game.squadbustersgame.com
 31.25.239.132 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
 149.154.167.220 t.me
 216.24.57.3 tapeop.dev www.tapeop.dev
@@ -43,134 +52,64 @@ ff02::2 ip6-allrouters
 2.23.89.244 ubiservices.cdn.ubi.com
 2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
+52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
-52.222.149.31 ubisoft.com
+18.209.141.203 connect.ubisoft.com
+54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
-143.20.64.55 aave.com
-31.58.216.201 affinity.studio
-143.20.64.55 ai.com
-132.243.112.221 a-api.anthropic.com
-143.20.64.55 statsig.anthropic.com status.anthropic.com
-143.20.64.55 atlassian.com
-31.58.216.201 autocad.com
-193.233.112.88 accounts.autodesk.com
-31.58.216.201 www.autodesk.ae
-31.58.216.201 www.avast.ru
-193.233.112.68 ai-chat.bsg.brave.com
-157.22.178.170 login.broadcom.com
-31.58.216.201 access.broadcom.com
-159.194.200.33 static.canva.com
-31.58.216.201 canva-apps.com
-143.20.64.55 ssooauth.chaos.com try.chaos.com
-159.194.200.33 accounts.chaos.com
-143.20.64.55 ab.chatgpt.com
-157.22.178.170 database.clamav.net
-193.233.112.67 a.claude.ai
-132.243.112.221 unleash.codeium.com
-143.20.64.55 windsurf-stable.codeium.com
-159.194.200.33 codeium.com
-143.20.64.55 coreweave.com
-143.20.64.55 corsair.com
-143.20.64.55 www.cummins.com
-143.20.64.55 downloads.cursor.com us-eu.gcpp.cursor.sh www.cursor-cdn.com
-193.233.112.67 authenticate.cursor.sh
-31.58.216.201 api4.cursor.sh us-only.gcpp.cursor.sh www.cursor.com
-132.243.112.221 www.deepl.com
-143.20.64.55 community-auth.deepl.com deepl.com developers.deepl.com gtm.deepl.com
-159.194.200.33 write-free.www.deepl.com
-193.233.112.67 static.deepl.com
-143.20.64.55 deepmind.google
-193.233.112.68 afcs.dellcdn.com
-31.58.216.201 digikeyassets.com
-143.20.64.55 dtm8.dinamicagenerale.com
-193.233.112.88 www.dola.com
-143.20.64.55 dyson.com dyson.se www.dyson.se
-159.194.200.33 www.dyson.com
-193.233.112.88 www.dyson.de
-31.58.216.201 dyson.de
-143.20.64.55 ecosia.org
-143.20.64.55 help.elevenlabs.io
-193.233.112.88 try.elevenlabs.io
-143.20.64.55 www.game8.co.jp
-143.20.64.55 generativeai.google
-143.20.64.55 www.genspark.ai
-193.233.112.68 geohide.ru
-132.243.112.221 alkalimakersuite-pa.clients6.google.com
-143.20.64.55 apis.google.com
-157.22.178.170 ai.google.dev
-193.233.112.68 signaler-pa.clients6.google.com
-31.58.216.201 alkalicore-pa.clients6.google.com jules.google.com people-pa.clients6.google.com waa-pa.clients6.google.com
-193.233.112.68 generativelanguage.googleapis.com
-31.58.216.201 aicode.googleapis.com proactivebackend-pa.googleapis.com
-193.233.112.67 grok.com
-143.20.64.55 www.guidedhacking.com
-31.58.216.201 www.guilded.gg
-143.20.64.55 hume.ai
-31.58.216.201 www.inceptionlabs.ai
-157.22.178.170 account.jetbrains.com
-143.20.64.55 jules.google
-143.20.64.55 linear.app
-193.233.112.68 static.linear.app
-31.58.216.201 uploads.linear.app
-31.58.216.201 madmapper.com
-157.22.178.170 www.manus.im
-31.58.216.201 trae-api-sg.mchost.guru
-31.58.216.201 microcenter.com
-193.233.112.68 copilot.microsoft.com
-31.58.216.201 designer.microsoft.com
-159.194.200.33 mongodb.com
-31.58.216.201 evs.blue.mongodb.co
-143.20.64.55 www.monica.im
-193.233.112.68 monica.im
-143.20.64.55 www.mouser.com
-31.58.216.201 www.myjetbrains.com
-31.58.216.201 n8n.cloud
-159.194.200.33 static.naukimg.com
-193.233.112.88 naukimg.com
-159.194.200.33 autodiscover.naukri.com staging.assessment.nc.naukri.com static.naukri.com
-193.233.112.67 careersite.naukri.com naukriconfidential.naukri.com
-193.233.112.68 apis.naukri.com resman.naukri.com
-193.233.112.88 careers.naukri.com staging.contest.nc.naukri.com trust.naukri.com
-193.233.112.67 calendar.notion.com calendar.notion.so
-193.233.112.88 app.notion.com
-31.58.216.201 build.nvidia.com
-132.243.112.221 sdmntpritalynorth.oaiusercontent.com
-159.194.200.33 sdmntprpolandcentral.oaiusercontent.com
-193.233.112.67 sdmntprukwest.oaiusercontent.com
-159.194.200.33 auth.openai.com
-31.58.216.201 openai.com
-193.233.112.88 pcmag.com
-31.58.216.201 pr0gramm.com
-159.194.200.33 anthropic.qualtrics.com
-143.20.64.55 app.reve.com www.reve.com
-31.58.216.201 www.romsgames.net
-31.58.216.201 singlekey-id.com
-143.20.64.55 www.sketchup.com
-31.58.216.201 www.slack.com
-159.194.200.33 gew1-dealer.g2.spotify.com
-193.233.112.68 accounts.spotify.com
-193.233.112.88 gew1-spclient.spotify.com
-31.58.216.201 dealer-wg.spotify.com
-143.20.64.55 squareup.com
-132.243.112.221 business.strava.com
-193.233.112.68 c.strava.com
-31.58.216.201 dev.strava.com
-159.194.200.33 www.superpharm.pl
-193.233.112.67 www.superpharm.eu
-31.58.216.201 link.tidal.com
-31.58.216.201 tmdb.org
-143.20.64.55 id.trimble.com
-193.233.112.68 trueachievements.com
-193.233.112.88 truthsocial.com
-31.58.216.201 usher.ttvnw.net
-143.20.64.55 w10.api.tuta.com w13.api.tuta.com w15.api.tuta.com w16.api.tuta.com w3.api.test.tuta.com
-31.58.216.201 tuta.com w11.api.tuta.com
-193.233.112.88 upsx.weather.com
-31.58.216.201 windsurf.com
-143.20.64.55 users.wix.com
-132.243.112.221 api.workos.com
-132.243.112.221 api.x.ai
-193.233.112.67 assets.x.ai
-193.233.112.68 accounts.x.ai
-31.58.216.201 grok.x.ai
+103.27.157.38 azwindows.ipv6.microsoft.com.akadns.net www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
+103.27.157.38 a1961.g2.akamai.net a1968.i6g1.akamai.net
+103.27.157.38 e13678.dscb.akamaiedge.net
+103.27.157.38 api.anthropic.com auth.anthropic.com console.anthropic.com
+103.27.157.38 web.archive.org
+103.27.157.38 cdn.auth0.com
+103.27.157.38 edgeservices.bing.com rewards.bing.com sydney.bing.com
+103.27.157.38 access.broadcom.com knowledge.broadcom.com profile.broadcom.com support.broadcom.com
+103.27.157.38 www.canva.com
+103.27.157.38 ab.chatgpt.com chatgpt.com operator.chatgpt.com webrtc.chatgpt.com
+103.27.157.38 claude.ai
+103.27.157.38 api-free.deepl.com auth.deepl.com backend.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+103.27.157.38 deezer.com payment.deezer.com www.deezer.com
+103.27.157.38 dds.dell.com i.dell.com nexus.dell.com www.dell.com
+103.27.157.38 afcs.dellcdn.com
+103.27.157.38 www.dyson.com www.dyson.fr
+103.27.157.38 dzcdn.net
+103.27.157.38 www.microsoft.com-c-3.edgekey.net
+103.27.157.38 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
+103.27.157.38 elevenreader.io
+103.27.157.38 api.fitbit.com
+103.27.157.38 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+103.27.157.38 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+103.27.157.38 assets.grok.com grok.com
+103.27.157.38 guilded.gg www.guilded.gg
+103.27.157.38 api.imgur.com
+103.27.157.38 www.intel.com www.intel.de
+103.27.157.38 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+103.27.157.38 labs.google
+103.27.157.38 api.manus.im
+103.27.157.38 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
+103.27.157.38 copilot.microsoft.com win1910.ipv6.microsoft.com
+103.27.157.38 notebooklm.google
+103.27.157.38 www.notion.so
+103.27.157.38 developer.nvidia.com
+103.27.157.38 cdn.oaistatic.com
+103.27.157.38 files.oaiusercontent.com
+103.27.157.38 geolocation.onetrust.com
+103.27.157.38 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com
+103.27.157.38 builds.parsec.app
+103.27.157.38 o.pki.goog
+103.27.157.38 eu.posthog.com us.posthog.com
+103.27.157.38 accounts.spotify.com aet.spotify.com ap-gew1.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com gew1-spclient.spotify.com login.app.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com xpui.app.spotify.com
+103.27.157.38 api-global.squareup.com api.squareup.com
+103.27.157.38 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
+103.27.157.38 www.tiktok.com
+103.27.157.38 ncsi-geo.trafficmanager.net ncsiv6-geo.trafficmanager.net
+103.27.157.38 tria.ge
+103.27.157.38 static-assets-1.truthsocial.com truthsocial.com
+103.27.157.38 usher.ttvnw.net
+103.27.157.38 gql.twitch.tv
+103.27.157.38 upsx.weather.com weather.com
+103.27.157.38 aitestkitchen.withgoogle.com stitch.withgoogle.com
+103.27.157.38 accounts.x.ai
+103.27.157.38 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com

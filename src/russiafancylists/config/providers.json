@@ -93,9 +93,7 @@
   {
     "key": "mafioznik",
     "name": "Mafioznik",
-    "doh_endpoints": {
-      "mafioznik": "https://dns.mafioznik.xyz/dns-query"
-    },
+    "doh_endpoints": {},
     "aliases": ["freedom.mafioznik.xyz"],
     "download_sources": [
       {
