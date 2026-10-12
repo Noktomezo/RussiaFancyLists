@@ -6,6 +6,7 @@ import socket
 import ssl
 import struct
 from collections import defaultdict
+from pathlib import Path
 
 import httpx
 
@@ -13,8 +14,11 @@ from russiafancylists.config.providers import (
     CANONICAL_PROVIDER_KEYS,
     DOH_PROBE_DOMAINS,
     DOH_TO_CANONICAL,
+    PROVIDERS,
     SMART_DNS_DOH_SERVERS,
+    SmartDNSProvider,
 )
+from russiafancylists.processors import IPV4_PATTERN
 
 
 @functools.lru_cache(maxsize=4096)
@@ -348,62 +352,132 @@ async def discover_doh_proxy_ips(
 
 async def resolve_geoblock_domains_per_provider(
     domains: list[str],
-    provider_proxies: dict[str, list[str]],
-) -> dict[str, dict[str, list[str]]]:
-    """Query each provider's DoH resolver for all geoblocked domains.
+    provider_proxies: dict[str, list[str]] | None = None,
+    ru_ips: set[str] | None = None,
+    hosts_output_dir: Path | None = None,
+) -> tuple[dict[str, dict[str, list[str]]], dict[str, list[str]]]:
+    """Single-pass resolution of all candidate geoblock domains across all providers.
 
-    Returns a mapping: {canonical_provider_key: {domain: [proxy_ips]}} containing only the
-    domains that genuinely resolve to that provider's active Smart DNS proxy IPs.
+    Concurrently queries all candidate domains via DoH with moderate pacing (Semaphore 20),
+    dynamically discovers multi-brand Smart DNS proxy IPs (>=2 distinct brands), integrates
+    default_ips, applies adaptive disk fallback, and returns:
+    - (results, detected_proxy_ips)
     """
+    from russiafancylists.hosts import normalize_brand_name
+
     results: dict[str, dict[str, list[str]]] = {p: {} for p in CANONICAL_PROVIDER_KEYS}
+    detected_proxy_ips: dict[str, list[str]] = {p: [] for p in CANONICAL_PROVIDER_KEYS}
+    ru_ip_set = set(ru_ips) if ru_ips else set()
+    output_dir = hosts_output_dir or Path("lists/hosts")
 
-    async def check_doh_endpoint(
-        prov_key: str, doh_url: str, target_ips: set[str]
-    ) -> tuple[str, dict[str, list[str]]]:
-        endpoint_res: dict[str, list[str]] = {}
-        if not target_ips:
-            return prov_key, endpoint_res
+    async def probe_provider_endpoints(
+        prov: SmartDNSProvider,
+    ) -> tuple[str, dict[str, list[str]], set[str]]:
+        prov_domain_ips: dict[str, list[str]] = {}
+        prov_ip_brands: dict[str, set[str]] = defaultdict(set)
 
-        sem = asyncio.Semaphore(50)
+        if not prov.doh_endpoints:
+            return prov.key, {}, set()
+
+        sem = asyncio.Semaphore(20)
         transport = httpx.AsyncHTTPTransport(
             local_address="0.0.0.0", http2=True, verify=False
         )
         async with httpx.AsyncClient(
             transport=transport,
-            timeout=6.0,
-            limits=httpx.Limits(max_connections=50, max_keepalive_connections=50),
+            timeout=5.0,
+            limits=httpx.Limits(max_connections=25, max_keepalive_connections=25),
         ) as client:
 
-            async def check_dom(d: str):
+            async def check_dom(endpoint_url: str, d: str):
                 async with sem:
-                    ips = await query_doh_a_records(client, doh_url, d)
-                    matching = [ip for ip in ips if ip in target_ips]
-                    if matching:
-                        endpoint_res.setdefault(d, []).extend(matching)
+                    ips = await query_doh_a_records(client, endpoint_url, d)
+                    if ips:
+                        brand = normalize_brand_name(d)
+                        for ip in ips:
+                            if is_candidate_proxy_ip(ip) and ip not in ru_ip_set:
+                                prov_domain_ips.setdefault(d, []).append(ip)
+                                prov_ip_brands[ip].add(brand)
 
-            await asyncio.gather(
-                *(check_dom(d) for d in domains), return_exceptions=True
-            )
+            tasks = [
+                check_dom(url, d)
+                for url in prov.doh_endpoints.values()
+                for d in domains
+            ]
+            await asyncio.gather(*tasks, return_exceptions=True)
 
-        return prov_key, endpoint_res
+        # 1. Determine confirmed Smart DNS proxy IPs for this provider
+        confirmed_ips: set[str] = set()
+        for ip in prov.default_ips:
+            if ip not in ru_ip_set:
+                confirmed_ips.add(ip)
+        if provider_proxies:
+            for ip in provider_proxies.get(prov.key, []):
+                if ip not in ru_ip_set:
+                    confirmed_ips.add(ip)
+        for ip, brands in prov_ip_brands.items():
+            if len(brands) >= 2:
+                confirmed_ips.add(ip)
 
-    doh_tasks = []
-    for endpoint_name, url in SMART_DNS_DOH_SERVERS.items():
-        prov_key = DOH_TO_CANONICAL.get(endpoint_name)
-        if not prov_key:
-            continue
-        prov_target_ips = set(provider_proxies.get(prov_key, []))
-        if prov_target_ips:
-            doh_tasks.append(check_doh_endpoint(prov_key, url, prov_target_ips))
+        # 2. Extract supported domains matching confirmed proxy IPs
+        prov_supported: dict[str, list[str]] = {}
+        for d, ips in prov_domain_ips.items():
+            matching = [ip for ip in ips if ip in confirmed_ips]
+            if matching:
+                seen = set()
+                deduped = [ip for ip in matching if not (ip in seen or seen.add(ip))]
+                prov_supported[d] = deduped
 
-    task_results = await asyncio.gather(*doh_tasks, return_exceptions=True)
-    for res in task_results:
-        if isinstance(res, tuple) and len(res) == 2:
-            prov_key, endp_map = res
-            for d, ips in endp_map.items():
-                current = results[prov_key].setdefault(d, [])
-                for ip in ips:
-                    if ip not in current:
-                        current.append(ip)
+        # 3. Adaptive Fallback from Disk
+        if output_dir.exists():
+            disk_hosts = output_dir / prov.no_crutch_hosts_filename
+            if disk_hosts.exists():
+                disk_mappings: dict[str, list[str]] = {}
+                with open(disk_hosts, encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith("#"):
+                            continue
+                        cols = line.split()
+                        if cols and IPV4_PATTERN.match(cols[0]):
+                            ip = cols[0]
+                            if ip not in ru_ip_set:
+                                for dom in cols[1:]:
+                                    if dom in domains:
+                                        disk_mappings.setdefault(dom, []).append(ip)
 
-    return results
+                # Fallback condition: DoH gave significantly fewer domains than on disk
+                # (e.g. CI Azure GeoIP block), or fallback_to_disk is explicitly configured, or DoH failed
+                if (
+                    len(prov_supported) < len(disk_mappings) * 0.7
+                    or prov.fallback_to_disk
+                    or not prov_supported
+                ):
+                    for dom, ips in disk_mappings.items():
+                        current = prov_supported.setdefault(dom, [])
+                        for ip in ips:
+                            if ip not in current:
+                                current.append(ip)
+                            confirmed_ips.add(ip)
+
+        return prov.key, prov_supported, confirmed_ips
+
+    tasks = [probe_provider_endpoints(p) for p in PROVIDERS]
+    provider_results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    for res in provider_results:
+        if isinstance(res, tuple) and len(res) == 3:
+            prov_key, prov_supp, conf_ips = res
+            results[prov_key] = prov_supp
+            detected_proxy_ips[prov_key] = sorted(list(conf_ips))
+
+    all_clean_ips = sorted(
+        list({ip for ips in detected_proxy_ips.values() for ip in ips})
+    )
+    detected_proxy_ips["doh"] = all_clean_ips
+
+    active_prov_count = sum(1 for v in results.values() if v)
+    print(
+        f"Single-Pass DoH resolution completed: harvested {len(all_clean_ips)} proxy IPs across {active_prov_count} active providers."
+    )
+    return results, detected_proxy_ips

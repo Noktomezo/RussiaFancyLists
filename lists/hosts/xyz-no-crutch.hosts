@@ -5,49 +5,217 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
+188.114.96.4 3parug.com
+143.204.181.8 platform.activestate.com
+13.226.244.47 agar.io
+65.9.130.91 alltrails.com
+188.114.96.4 annimon.com
 109.120.137.190 api.anthropic.com console.anthropic.com
 109.120.137.190 web.archive.org
+216.150.1.193 augmentcode.com
+150.171.109.101 production-openaicom-storage.azureedge.net
 109.120.137.190 edgeservices.bing.com rewards.bing.com sydney.bing.com
+162.159.140.167 bitnami.com
+66.33.60.66 blur.io
+15.197.187.125 bosch-home.com
+166.117.142.108 bosch-home.co.nz bosch-home.com.sg
+95.100.110.32 bosch-diy.com
+162.159.140.167 access.broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+54.68.22.26 broadcom.com
+166.117.142.108 bsh-group.com
+141.193.213.11 cambiumnetworks.com
 109.120.137.190 canva.com content-management-files.canva.com static.canva.com www.canva.com
+95.100.110.21 capcut.com
+95.100.110.15 carrefouruae.com
+188.114.96.3 cdromance.org
+18.66.112.128 cesium.com
+188.114.97.3 chatfuel.com
 109.120.137.190 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+95.100.110.14 id.cisco.com
 109.120.137.190 a.claude.ai claude.ai claude.com platform.claude.com
 109.120.137.190 clickup.com
+188.114.96.3 cmems-du.eu
+35.223.238.178 server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
+18.66.112.128 copernicus.eu
+95.100.110.2 crowdstrike.com
+188.114.96.3 darkproject.eu
+13.226.244.47 databricks.com
 109.120.137.190 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 109.120.137.190 deezer.com payment.deezer.com www.deezer.com
+23.209.210.102 dds.dell.com nexus.dell.com www.dell.com
+23.209.210.102 afcs.dellcdn.com
+23.209.210.102 www.delltechnologies.com
+66.33.60.66 diabrowser.com
+3.33.251.168 disctech.com
+217.114.94.2 dolby.com
 109.120.137.190 dyson.com www.dyson.com www.dyson.fr
 109.120.137.190 dzcdn.net
 109.120.137.190 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 109.120.137.190 elevenreader.io
+150.171.109.101 elgiganten.se
+18.66.122.78 espares.ie
+67.199.248.13 f1.com
+141.193.213.10 fastspring.com
 109.120.137.190 api.fitbit.com
+217.114.94.2 flir.com flir.eu
+145.224.209.237 force-user-content.com
+23.1.106.133 force.com
+99.84.152.35 framercanvas.com
+76.223.34.124 freeimages.com
+100.22.226.56 freescale.com
+95.100.110.7 game.co.uk
+65.9.130.98 shop.gameloft.com
+34.194.97.138 geforcenow.com
+18.173.205.70 gofundme.com
 109.120.137.190 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
 109.120.137.190 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+99.84.152.25 grammarly.com
+34.78.67.165 grazie.ai
 109.120.137.190 assets.grok.com grok.com
+108.138.26.76 guilded.gg
+104.247.81.99 hashflare.io
+159.69.66.229 hc-ping.com
+178.63.26.145 hchk.io
+166.117.142.108 home-connect.com
+95.100.110.12 housebrand.com
+216.150.1.1 hume.ai
 109.120.137.190 hybrid-analysis.com
+150.171.109.101 ghostrc.game.idtech.services
 109.120.137.190 api.imgur.com
+217.114.94.2 infosecinstitute.com
+188.114.96.3 insanelymac.com
+67.199.248.12 intel.ly
+34.78.67.165 intellij.net
 109.120.137.190 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+34.78.67.165 jetbrains.ai
+18.66.122.27 klaviyo.com
 109.120.137.190 labs.google
+198.202.211.1 langdock.com
 109.120.137.190 last.fm
+13.226.244.46 lego.com
 109.120.137.190 client-api.linear.app constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app uploads.linear.app
+216.150.1.193 docs.liquibase.com
+198.202.211.1 liquidsky.com
+18.66.147.59 llama3-1.llamameta.net
+95.100.110.32 lowes.com
+188.114.97.3 macvendors.com
+18.66.122.78 manus.im
+18.66.122.105 marvelsnap.com
+18.66.122.27 data-cdn.mbamupdates.com
+108.138.26.85 mbed.com
+99.84.152.35 medicalnewstoday.com
+99.84.152.56 meshcapade.com
+99.84.152.68 me.meshcapade.com
+3.174.46.43 sam2.metademolab.com
 109.120.137.190 copilot.microsoft.com
+3.174.46.43 multisim.com
+18.64.211.60 myjetbrains.com
+95.100.110.8 nab.com.au
+18.236.7.30 netflix.net
+34.252.74.1 netflix.ca
+34.218.19.240 netflixinvestor.com
+3.33.186.135 netlify.com
+207.45.72.215 nflxext.com
+207.45.72.215 nflximg.com
+44.226.113.145 nflxsearch.net
+107.20.175.192 nflxvideo.net
+95.100.110.7 login.norton.com
 109.120.137.190 app.notion.com calendar.notion.so notion.so www.notion.so
 109.120.137.190 developer.nvidia.com
+34.194.97.138 nvidia.com
+54.190.224.0 nxp.com
 109.120.137.190 cdn.oaistatic.com oaistatic.com
 109.120.137.190 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+188.114.96.3 ocstore.com
 109.120.137.190 geolocation.onetrust.com
 109.120.137.190 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+138.1.33.162 oracle.com
+138.1.33.162 oraclecloud.com
+104.247.81.99 otawa.fr
+15.197.167.90 paddle.com
+66.33.60.66 paddlestatus.com
+108.138.26.85 paraswap.io
+143.204.181.8 app.paraswap.io
+15.197.225.128 paritydeals.com
 109.120.137.190 builds.parsec.app
 109.120.137.190 patreon.com www.patreon.com
 109.120.137.190 patreonusercontent.com
+166.117.11.182 pdfexpert.com
+216.150.1.1 pencil.dev
+23.185.0.1 penguin.com
+170.171.208.137 penguinrandomhouse.com
+188.114.97.3 peter-tanner.com
+188.114.96.3 philiascans.org
 109.120.137.190 o.pki.goog
+216.150.1.1 posthog.com
+170.171.208.137 prh.com
+18.66.122.105 sites.prh.com
+184.86.103.213 primark.com
+188.114.96.3 prowlarr.com
+99.84.152.56 footballapi.pulselive.com
+188.114.96.3 radarr.video
+216.150.1.1 reactflow.dev
+166.117.11.182 readdle.com
+188.114.97.3 readybot.io
+65.9.130.90 research.net
+145.224.209.234 salesforce-scrt.com salesforce-setup.com salesforce-sites.com
+145.224.209.237 salesforce-experience.com salesforce-hub.com
+184.31.3.130 salesforce.com
+35.176.92.19 salesforceliveagent.com
+34.227.236.7 schneider-electric.com
+34.227.236.7 se.com
+18.173.205.70 sendy.jp
+54.192.35.119 serato.com
+188.114.96.3 radarr.servarr.com
+145.224.209.239 sfdcopens.com
+65.9.130.19 sharefile.com
+188.114.97.3 shouldianswer.net
+34.211.108.46 site.com
+18.66.147.59 3dwarehouse.sketchup.com
+162.159.140.69 smartbear.com
+3.136.255.152 smartbear.co
+3.136.255.152 soapui.org
+150.171.109.101 solarwinds.com
+184.86.103.213 sonara.ai
+95.100.110.27 sophos.com
+141.193.213.10 spiceworks.com
+23.227.38.65 spitfireaudio.com
 109.120.137.190 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
 109.120.137.190 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 109.120.137.190 strava.com
+216.150.1.193 studychat.app
+18.66.122.41 supercell.com
+65.9.130.90 surveymonkey.com
+162.159.140.69 swagger.io
+188.114.96.3 synoforum.com
+18.66.122.53 pkgs.tailscale.com
 109.120.137.190 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com tidal.com
 109.120.137.190 www.tiktok.com
+95.100.110.27 tiktok.com
+99.84.152.34 tmdb.org
+198.202.211.1 together.ai
+34.78.67.165 toolbox.app
 109.120.137.190 usher.ttvnw.net
+65.9.130.19 tvn24.pl
 109.120.137.190 gql.twitch.tv
+23.227.38.65 uaudio.com
+108.138.7.128 uizard.io
+188.114.97.3 undress.cc
+54.192.35.119 verificationacademy.com
+108.138.7.128 viperatech.com
+162.159.140.167 softwareupdate.vmware.com
+52.13.171.212 docs.vmware.com
+54.68.22.26 vmware.com
+76.223.34.124 wakanim.tv
+65.9.130.60 account.wbgames.com
 109.120.137.190 upsx.weather.com weather.com
+99.84.152.68 cdn.web-platform.io
+23.185.0.1 windriver.com
+35.223.238.178 marketplace.windsurf.com
 109.120.137.190 aitestkitchen.withgoogle.com stitch.withgoogle.com
+23.185.0.1 wrs.com
 109.120.137.190 accounts.x.ai console.x.ai x.ai
 109.120.137.190 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
 109.120.137.190 xdaforums.com
+95.100.110.8 www.support.xerox.com
+18.64.211.41 youtrack.cloud

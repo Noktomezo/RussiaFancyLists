@@ -197,12 +197,35 @@ DOH_PROBE_DOMAINS = [
     # OpenAI / ChatGPT
     "chatgpt.com",
     "openai.com",
+    "auth.openai.com",
+    "api.openai.com",
     # Anthropic / Claude
     "claude.ai",
     "anthropic.com",
-    # Google Gemini
+    "api.anthropic.com",
+    # Google Gemini & AI Studio
     "gemini.google.com",
+    "aistudio.google.com",
+    "notebooklm.google.com",
+    "generativelanguage.googleapis.com",
     # Microsoft Copilot
     "copilot.microsoft.com",
     "sydney.bing.com",
+    # xAI / Grok
+    "grok.com",
+    "x.ai",
+    "console.x.ai",
+    # AI Search & Generation
+    "genspark.ai",
+    "manus.im",
+    "perplexity.ai",
+    # Gaming & Consoles
+    "xsts.auth.xboxlive.com",
+    # Media & Fitness
+    "deezer.com",
+    "tidal.com",
+    "strava.com",
+    # Additional AI Geoblocks
+    "cursor.com",
+    "sora.com",
 ]

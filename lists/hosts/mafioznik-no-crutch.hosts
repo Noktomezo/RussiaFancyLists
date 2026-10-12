@@ -1,0 +1,251 @@
+# Loopback
+127.0.0.1 localhost
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# Geoblock
+143.20.64.55 adobe.io
+13.33.235.72 agar.io
+23.210.18.103 e13678.dscb.akamaiedge.net
+143.20.64.55 analog.com
+3.173.161.61 angryemailtranslator.com
+143.20.64.55 api.anthropic.com auth.anthropic.com console.anthropic.com
+31.58.216.201 web.archive.org
+143.20.64.55 arduino.cc
+143.20.64.55 marketplace.atlassian.com
+132.243.112.221 autodesk.com
+143.20.64.55 accounts.autodesk.com damassets.autodesk.net efulfillment.autodesk.com
+31.58.216.201 dl.appstreaming.autodesk.com
+31.58.216.201 bestbuy.com
+162.159.140.167 bitnami.com
+66.33.60.130 blur.io
+166.117.142.108 bosch-home.co.nz bosch-home.com bosch-home.com.sg
+31.58.216.201 ai-chat.bsg.brave.com
+157.22.177.90 broadcom.com
+162.159.140.167 packages-prod.broadcom.com profile.broadcom.com
+31.58.216.201 access.broadcom.com support.broadcom.com
+15.197.187.125 bsh-group.com
+141.193.213.10 cambiumnetworks.com
+95.101.74.34 www.usa.canon.com
+31.58.216.201 canva-apps.com canva.dev content-management-files.canva.com static.canva.com www.canva.com
+143.20.64.55 chaos.com
+31.58.216.201 try.chaos.com
+143.20.64.55 operator.chatgpt.com webrtc.chatgpt.com
+31.58.216.201 sora.chatgpt.com
+54.192.100.40 chipestimate.com
+143.20.64.55 cici.com
+31.58.216.201 clashroyaleapp.com
+143.20.64.55 claude.com
+157.22.177.90 claude.ai
+143.20.64.55 clickup.com
+143.20.64.55 unleash.codeium.com web-backend.codeium.com
+157.22.177.90 codeium.com
+31.58.216.201 inference.codeium.com
+143.20.64.55 www3.corsair.com
+31.58.216.201 cursor-cdn.com
+143.20.64.55 cursorapi.com
+188.114.96.0 darkproject.eu
+143.20.64.55 clearance.deepl.com deepl.com dict.deepl.com experimentation-grpc.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com www.deepl.com
+157.22.177.90 auth.deepl.com login-wall.deepl.com
+31.58.216.201 api-free.deepl.com checkout.www.deepl.com errortracking.deepl.com oneshot-free.www.deepl.com w.deepl.com write-free.www.deepl.com
+18.165.122.68 deezer.com
+31.58.216.201 payment.deezer.com www.deezer.com
+143.20.64.55 dds.dell.com dell.com i.dell.com nexus.dell.com www.dell.com
+3.33.251.168 disctech.com
+217.114.94.2 dolby.com
+143.20.64.55 dyson.com
+31.58.216.201 www.dyson.com www.dyson.fr
+23.210.18.103 www.microsoft.com-c-3.edgekey.net
+143.20.64.55 api.elevenlabs.io api.us.elevenlabs.io help.elevenlabs.io
+143.20.64.55 elevenreader.io
+143.20.64.55 etsy.com
+67.199.248.12 f1.com
+141.193.213.11 fastspring.com
+217.114.94.2 flir.com flir.eu
+145.224.209.237 force-user-content.com
+23.1.106.133 force.com
+143.20.64.55 framer.com
+76.223.34.124 freeimages.com
+100.22.226.56 freescale.com
+31.58.216.201 gamestop.com
+34.194.97.138 geforcenow.com
+18.239.18.76 gofund.me
+3.174.113.44 gofundme.com
+143.20.64.55 gemini.google.com labs.google.com notebooklm.google.com
+157.22.178.170 alkalimakersuite-pa.clients6.google.com
+31.58.216.201 discuss.ai.google.dev
+132.243.112.221 robinfrontend-pa.googleapis.com
+157.22.178.170 generativelanguage.googleapis.com
+31.58.216.201 proactivebackend-pa.googleapis.com
+18.239.18.76 grammarly.com
+34.78.67.165 grazie.ai
+143.20.64.55 assets.grok.com grok.com
+157.22.177.90 chat.groq.com console.groq.com
+157.22.177.90 www.guilded.gg
+31.58.216.201 guilded.gg
+104.247.81.99 hashflare.io
+3.174.113.44 hbomax.com
+188.40.122.95 hc-ping.com
+159.69.66.229 hchk.io
+15.197.187.125 home-connect.com
+95.101.74.34 hotels.com
+216.150.1.1 hume.ai
+31.58.216.201 ikea.com
+31.58.216.201 api.imgur.com
+217.114.94.2 infosecinstitute.com
+188.114.97.1 insanelymac.com
+143.20.64.55 intel.se
+31.58.216.201 www.intel.com www.intel.de
+67.199.248.12 intel.ly
+34.78.67.165 intellij.net
+143.20.64.55 youtrack.jetbrains.com
+157.22.177.90 datalore.jetbrains.com
+31.58.216.201 api.jetbrains.ai
+34.78.67.165 jetbrains.ai
+18.239.69.107 klaviyo.com
+157.22.178.170 labs.google
+198.202.211.1 langdock.com
+157.22.177.90 lightning.ai
+143.20.64.55 linear.app
+216.150.16.65 docs.liquibase.com
+198.202.211.1 liquidsky.com
+65.9.46.70 llama3-1.llamameta.net
+3.164.206.109 malwarebytes.org
+31.58.216.201 downloads.malwarebytes.com
+143.20.64.55 api.manus.im
+31.58.216.201 manus.im
+143.20.64.55 manybooks.net
+18.165.122.64 data-cdn.mbamupdates.com
+18.165.122.64 documentation.meraki.com
+54.192.100.40 meraki.com
+31.58.216.201 aidemos.meta.com meta.ai meta.com
+3.164.206.109 sam2.metademolab.com
+143.20.64.55 designer.microsoft.com
+31.58.216.201 win1910.ipv6.microsoft.com
+31.58.216.201 mongodb.com
+143.20.64.55 downloads.ndi.tv
+143.20.64.55 netapp.com
+204.236.236.127 netflix.net
+44.226.113.145 netflix.ca
+34.252.74.1 netflixinvestor.com
+3.33.186.135 netlify.com
+207.45.72.215 nflxext.com
+207.45.72.215 nflximg.com
+204.236.236.127 nflxsearch.net
+18.236.7.30 nflxvideo.net
+54.192.100.7 nike.com
+157.22.177.90 norton.com
+143.20.64.55 notebooklm.google
+143.20.64.55 notion.com
+217.60.179.6 calendar.notion.so
+31.58.216.201 app.notion.com
+143.20.64.55 developer.nvidia.com
+34.194.97.138 nvidia.com
+100.22.226.56 nxp.com
+143.20.64.55 oaistatic.com
+157.22.177.90 cdn.oaistatic.com
+143.20.64.55 oaiusercontent.com sdmntprukwest.oaiusercontent.com
+157.22.177.90 files.oaiusercontent.com
+31.58.216.201 sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com
+18.239.69.107 omnissa.com
+31.58.216.201 geolocation.onetrust.com
+132.243.112.221 cdn.platform.openai.com
+143.20.64.55 developers.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+31.58.216.201 api.openai.com ios.chat.openai.com
+143.20.64.55 openrouter.ai
+138.1.33.162 oracle.com
+138.1.33.162 oraclecloud.com
+104.247.81.99 otawa.fr
+3.33.186.135 paddle.com
+66.33.60.130 paddlestatus.com
+31.58.216.201 pandasecurity.com
+3.33.251.168 paritydeals.com
+31.58.216.201 public.parsec.app
+143.20.64.55 pcmag.com
+166.117.11.182 pdfexpert.com
+216.150.1.1 pencil.dev
+23.185.0.1 penguin.com
+170.171.208.137 penguinrandomhouse.com
+188.114.97.0 peter-tanner.com
+216.150.1.1 posthog.com
+31.58.216.201 eu.posthog.com
+170.171.208.137 prh.com
+54.192.100.16 primevideo.com
+143.20.64.55 promods.net
+188.114.97.1 prowlarr.com
+54.192.100.7 qodana.cloud
+31.58.216.201 qoder.com
+188.114.96.0 radarr.video
+216.150.1.1 reactflow.dev
+99.83.131.201 readdle.com
+188.114.97.0 readybot.io
+143.20.64.55 remove.bg
+132.243.112.221 reve.art
+145.224.209.234 salesforce-experience.com salesforce-sites.com
+145.224.209.237 salesforce-scrt.com salesforce-setup.com
+184.31.10.133 salesforce.com
+3.71.139.153 salesforceiq.com
+35.176.92.19 salesforceliveagent.com
+143.20.64.55 blogs.sap.com
+143.20.64.55 se.com
+188.114.96.0 radarr.servarr.com
+188.114.96.0 shouldianswer.net
+3.126.5.188 showtime.com
+34.211.108.46 site.com
+31.58.216.201 3dwarehouse.sketchup.com extensions.sketchup.com
+162.159.140.69 smartbear.com
+18.116.254.113 smartbear.co
+18.116.254.113 soapui.org
+141.193.213.11 spiceworks.com
+23.227.38.65 spitfireaudio.com
+31.58.216.201 account.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com appresolve.spotify.com auth.spotify.com client.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com guc3-dealer.g2.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com
+31.58.216.201 mrkt.spotifycdn.com pickasso.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com web-sdk-assets.spotifycdn.com
+143.20.64.55 api-global.squareup.com
+31.58.216.201 squareup.com
+216.150.16.65 studychat.app
+31.58.216.201 supercell.com
+162.159.140.69 swagger.io
+31.58.216.201 tableau.com
+143.20.64.55 download.teamviewer.com
+143.20.64.55 templatemonster.com
+3.173.161.61 api.themoviedb.org
+188.114.97.0 thesassway.com
+31.58.216.201 ti.com
+31.58.216.201 api.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com listen.tidal.com
+217.60.179.6 www.tiktok.com
+132.243.112.221 images.tmdb.org
+31.58.216.201 image.tmdb.org
+198.202.211.1 together.ai
+34.78.67.165 toolbox.app
+143.20.64.55 trae.ai
+143.20.64.55 truthsocial.com
+143.20.64.55 usher.ttvnw.net
+143.20.64.55 tutanota.com
+13.33.235.72 tvn24.pl
+23.227.38.65 uaudio.com
+65.9.46.70 uizard.io
+188.114.97.0 undress.cc
+143.20.64.55 unscreen.com
+18.165.122.68 vaio.com
+157.22.177.90 docs.vmware.com
+162.159.140.167 softwareupdate.vmware.com
+76.223.34.124 wakanim.tv
+31.58.216.201 wbgames.com
+143.20.64.55 upsx.weather.com
+31.58.216.201 weather.com
+143.20.64.55 windguru.cz
+23.185.0.1 windriver.com
+157.22.177.90 marketplace.windsurf.com
+31.58.216.201 windsurf.com
+31.58.216.201 aitestkitchen.withgoogle.com
+23.185.0.1 wrs.com
+143.20.64.55 wunderground.com
+143.20.64.55 accounts.x.ai grok.x.com
+31.58.216.201 x.ai
+143.20.64.55 support.xerox.com
+31.58.216.201 xerox.com
+143.20.64.55 xiaomi.eu
+3.174.113.121 yourdictionary.com
+31.58.216.201 zapier.com
+31.58.216.201 app.zerossl.com

@@ -12,11 +12,10 @@ import httpx
 from russiafancylists.config import HOSTS_DIRECT
 from russiafancylists.config.providers import (
     CANONICAL_PROVIDER_KEYS,
-    DOH_TO_CANONICAL,
+    DOH_PROBE_DOMAINS,
     PROVIDERS,
 )
 from russiafancylists.doh import (
-    discover_doh_proxy_ips,
     resolve_geoblock_domains_per_provider,
 )
 from russiafancylists.processors import (
@@ -51,6 +50,9 @@ KNOWN_CRUTCH_SUBNETS = [
     ipaddress.ip_network("2.16.0.0/13"),  # Akamai Technologies
     ipaddress.ip_network("2.23.0.0/16"),  # Akamai Technologies
     ipaddress.ip_network("23.48.0.0/14"),  # Akamai Technologies
+    ipaddress.ip_network("8.47.69.0/24"),  # Cloudflare Edge CDN Anycast
+    ipaddress.ip_network("8.6.112.0/24"),  # Cloudflare Edge CDN Anycast
+    ipaddress.ip_network("76.76.21.0/24"),  # Vercel CDN Anycast
 ]
 
 
@@ -163,6 +165,10 @@ def normalize_brand_name(dom: str) -> str:
         )
     ):
         return "openai"
+    if any(k in dom for k in ("anthropic", "claude")):
+        return "anthropic"
+    if any(k in dom for k in ("x.ai", "grok")):
+        return "xai"
     if any(k in dom for k in ("xbox", "xboxlive")):
         return "xbox"
     if any(
@@ -173,6 +179,7 @@ def normalize_brand_name(dom: str) -> str:
             "msftncsi",
             "office",
             "live.com",
+            "bing.com",
         )
     ):
         return "microsoft"
@@ -542,53 +549,12 @@ async def get_ru_ip_set(candidate_ips: list[str]) -> set[str]:
 async def detect_provider_proxy_ips(
     hosts_temp_dir: Path | None = None,
 ) -> tuple[dict[str, list[str]], dict[str, list[str]], set[str]]:
-    """Strictly detects Smart DNS proxy IPs for each provider exclusively via DoH brute force.
-    Dynamically detects and excludes any Russian proxy IPs across all providers.
-    """
-    raw_proxies = await discover_doh_proxy_ips()
-    all_raw_ips = [ip for ips in raw_proxies.values() for ip in ips]
-
-    # Dynamic Russian IP detection across candidate proxy IPs
-    ru_ips = await get_ru_ip_set(all_raw_ips)
-
-    detected_proxy_ips: dict[str, list[str]] = {p: [] for p in CANONICAL_PROVIDER_KEYS}
-    for k, ips in raw_proxies.items():
-        ck = DOH_TO_CANONICAL.get(k)
-        if ck:
-            for ip in ips:
-                if ip not in ru_ips and ip not in detected_proxy_ips[ck]:
-                    detected_proxy_ips[ck].append(ip)
-
-    # Merge default_ips and disk fallback IPs for providers (e.g. dns-ai under CI runners outside RU)
-    hosts_output_dir = Path("lists/hosts")
-    for prov in PROVIDERS:
-        for ip in prov.default_ips:
-            if ip not in ru_ips and ip not in detected_proxy_ips.get(prov.key, []):
-                detected_proxy_ips.setdefault(prov.key, []).append(ip)
-        if prov.fallback_to_disk and hosts_output_dir.exists():
-            disk_hosts = hosts_output_dir / prov.no_crutch_hosts_filename
-            if disk_hosts.exists():
-                with open(disk_hosts, encoding="utf-8") as f:
-                    for line in f:
-                        line = line.strip()
-                        if not line or line.startswith("#"):
-                            continue
-                        cols = line.split()
-                        if cols and IPV4_PATTERN.match(cols[0]):
-                            ip = cols[0]
-                            if ip not in ru_ips and ip not in detected_proxy_ips.get(
-                                prov.key, []
-                            ):
-                                detected_proxy_ips.setdefault(prov.key, []).append(ip)
-
-    detected_proxy_ips = {k: sorted(v) for k, v in detected_proxy_ips.items()}
-    all_clean_ips = sorted(
-        list({ip for ips in detected_proxy_ips.values() for ip in ips})
+    """Legacy helper for discovering proxy IPs."""
+    ru_ips = await get_ru_ip_set([])
+    _, detected = await resolve_geoblock_domains_per_provider(
+        DOH_PROBE_DOMAINS, ru_ips=ru_ips, hosts_output_dir=Path("lists/hosts")
     )
-    detected_proxy_ips["doh"] = all_clean_ips
-
-    print(f"Strictly detected proxy IPs via DoH brute force: {detected_proxy_ips}")
-    return detected_proxy_ips, raw_proxies, ru_ips
+    return detected, {}, ru_ips
 
 
 async def generate_aligned_hosts(
@@ -626,34 +592,9 @@ async def generate_aligned_hosts(
                 f"Warning: Failed to parse zapret-manager-parsed.lst as hosts source: {e}"
             )
 
-    detected_proxy_ips, doh_proxies, ru_ips = await detect_provider_proxy_ips(
-        hosts_temp_dir
-    )
-
-    # Detect and exclude any Russian IPs from crutch sources
+    # 3. Dynamic discovery of Russian IPs from crutch sources
     all_source_ips = set(zapret_ip_domains.keys()) if zapret_ip_domains else set()
-    extra_ru_ips = await get_ru_ip_set(list(all_source_ips - ru_ips))
-    ru_ips.update(extra_ru_ips)
-
-    # 3. Provenance-first classification of IP mappings (Crutches vs Smart DNS proxies)
-    provider_proxy_ips = {
-        ip for p in CANONICAL_PROVIDER_KEYS for ip in detected_proxy_ips.get(p, [])
-    } | set(detected_proxy_ips.get("doh", []))
-
-    all_ip_domain_sources = [zapret_ip_domains] if zapret_ip_domains else []
-
-    global_custom_candidates = {}
-    for ip_domains in all_ip_domain_sources:
-        for ip, domains in ip_domains.items():
-            if ip in ru_ips:
-                continue
-            role = classify_ip_role(ip, domains, provider_proxy_ips, ru_ips)
-            if role == "DIRECT_CRUTCH":
-                for dom in domains:
-                    if ip not in global_custom_candidates.setdefault(dom, []):
-                        global_custom_candidates[dom].append(ip)
-            elif role == "SMART_PROXY":
-                provider_proxy_ips.add(ip)
+    ru_ips = await get_ru_ip_set(list(all_source_ips))
 
     # 4. Load and filter domains from the geoblock list
     geoblock_domains = []
@@ -670,7 +611,7 @@ async def generate_aligned_hosts(
                     if p.search(dom):
                         is_blacklisted = True
                         break
-                if is_blacklisted and dom not in global_custom_candidates:
+                if is_blacklisted:
                     continue
 
                 # Skip connectivity checks
@@ -712,13 +653,50 @@ async def generate_aligned_hosts(
             brand = brand.split("-")[0]
         return brand
 
-    # Group domains by brand
-    brand_domains = {}
-    for dom in geoblock_domains:
-        brand = get_raw_brand(dom)
-        brand_domains.setdefault(brand, []).append(dom)
+    # Extract direct crutches from zapret-manager source
+    global_custom_candidates = {}
+    for ip, domains in zapret_ip_domains.items():
+        if ip in ru_ips:
+            continue
+        for dom in domains:
+            if ip not in global_custom_candidates.setdefault(dom, []):
+                global_custom_candidates[dom].append(ip)
 
-    # Perform TCP connectivity checks on all unique IPs (primary and custom) in parallel
+    # Candidate geoblock domains (crutches removed)
+    candidate_smart_domains = [
+        d for d in geoblock_domains if d not in global_custom_candidates
+    ]
+
+    # 5. Single-Pass DoH resolution across all candidate geoblock domains
+    print(
+        f"Starting Single-Pass DoH resolution for {len(candidate_smart_domains)} geoblock domains across all {len(PROVIDERS)} providers..."
+    )
+    (
+        provider_supported,
+        detected_proxy_ips,
+    ) = await resolve_geoblock_domains_per_provider(
+        candidate_smart_domains,
+        ru_ips=ru_ips,
+        hosts_output_dir=output_smart.parent,
+    )
+
+    # Exclude any newly detected Russian proxy IPs if discovered
+    extra_ru = await get_ru_ip_set(detected_proxy_ips.get("doh", []))
+    if extra_ru:
+        ru_ips.update(extra_ru)
+        for p in CANONICAL_PROVIDER_KEYS:
+            detected_proxy_ips[p] = [
+                ip for ip in detected_proxy_ips.get(p, []) if ip not in ru_ips
+            ]
+            if p in provider_supported:
+                for dom in list(provider_supported[p].keys()):
+                    provider_supported[p][dom] = [
+                        ip for ip in provider_supported[p][dom] if ip not in ru_ips
+                    ]
+                    if not provider_supported[p][dom]:
+                        del provider_supported[p][dom]
+
+    # 6. Perform TCP connectivity checks on all unique IPs (proxies and crutches) in parallel
     unique_custom_ips = {ip for ips in global_custom_candidates.values() for ip in ips}
     unique_primary_ips = {
         ip for p in CANONICAL_PROVIDER_KEYS for ip in detected_proxy_ips.get(p, [])
@@ -743,9 +721,6 @@ async def generate_aligned_hosts(
         )
 
     # Filter custom mappings to keep only active direct/custom IPs
-    # If a custom IP is offline, its domain will naturally fallback to primary_proxy_ips and move to # Geoblock
-
-    # Build a unified global custom mapping from active custom IPs
     global_custom = {}
     for d, ips in global_custom_candidates.items():
         active_candidates = [ip for ip in ips if ip in active_ips]
@@ -758,40 +733,8 @@ async def generate_aligned_hosts(
         brand = get_raw_brand(dom)
         combined_direct.setdefault((ip, brand), set()).add(dom)
 
-    # 5. Candidate geoblock domains (crutches removed)
+    # Final candidate geoblock domains (with active crutches strictly removed)
     candidate_smart_domains = [d for d in geoblock_domains if d not in global_custom]
-
-    # 6. Resolve all candidate domains across all 8 providers dynamically via DoH/DNS
-    print(
-        f"Resolving {len(candidate_smart_domains)} geoblock domains across all 8 providers via DoH/DNS..."
-    )
-    provider_supported = await resolve_geoblock_domains_per_provider(
-        candidate_smart_domains, detected_proxy_ips
-    )
-
-    # Merge disk fallback for providers with fallback_to_disk (e.g. dns-ai and astracat under CI runners outside RU)
-    for prov in PROVIDERS:
-        if prov.fallback_to_disk:
-            disk_hosts = output_smart.parent / prov.no_crutch_hosts_filename
-            if disk_hosts.exists():
-                prov_doms = provider_supported.setdefault(prov.key, {})
-                with open(disk_hosts, encoding="utf-8") as f:
-                    for line in f:
-                        line = line.strip()
-                        if not line or line.startswith("#"):
-                            continue
-                        cols = line.split()
-                        if not cols or not IPV4_PATTERN.match(cols[0]):
-                            continue
-                        ip = cols[0]
-                        if ip in ru_ips:
-                            continue
-                        for dom in cols[1:]:
-                            if (
-                                dom in candidate_smart_domains
-                                and ip not in prov_doms.setdefault(dom, [])
-                            ):
-                                prov_doms[dom].append(ip)
 
     # 7. Helper to write individual provider hosts and AdGuard Home files
     def write_provider_hosts(
