@@ -81,67 +81,70 @@ def parse_dns_wire_a_records(data: bytes) -> list[str]:
     return ips
 
 
-async def query_doh_a_records(
-    client: httpx.AsyncClient, doh_url: str, domain: str
-) -> list[str]:
-    """Query a DoH endpoint for A records of a domain over HTTP/2 using POST or GET.
+async def check_endpoint_alive(client: httpx.AsyncClient, url: str) -> bool:
+    """Pre-flight check: probe endpoint with a fast test query (e.g. google.com).
 
-    Falls back between v.recipes accelerator and direct upstream if either fails.
+    Returns False immediately if endpoint is down (5xx, timeout, connect error).
+    """
+    wire_query = build_dns_wire_query("google.com")
+    try:
+        r = await client.post(
+            url,
+            content=wire_query,
+            headers={
+                "content-type": "application/dns-message",
+                "accept": "application/dns-message",
+            },
+            timeout=2.5,
+        )
+        if r.status_code == 200:
+            return True
+        if r.status_code in (400, 405):
+            b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
+            r_get = await client.get(
+                f"{url}?dns={b64}",
+                headers={"accept": "application/dns-message"},
+                timeout=2.5,
+            )
+            return r_get.status_code == 200
+        return False
+    except Exception:
+        return False
+
+
+async def query_doh_a_records(
+    client: httpx.AsyncClient, doh_url: str, domain: str, timeout: float = 2.5
+) -> list[str]:
+    """Query a DoH endpoint for A records of a domain over HTTP/2.
+
+    Sends standard DNS POST first; only falls back to GET if the server returned 400 or 405.
+    Never retries GET on connection errors or timeouts.
     """
     wire_query = build_dns_wire_query(domain)
-
-    async def try_url(target_url: str) -> list[str]:
-        fallback_to_get = False
-        try:
-            r = await client.post(
-                target_url,
-                content=wire_query,
-                headers={
-                    "content-type": "application/dns-message",
-                    "accept": "application/dns-message",
-                },
-                timeout=3.5,
-            )
-            if r.status_code == 200 and r.content:
-                ips = parse_dns_wire_a_records(r.content)
-                if ips:
-                    return ips
-            fallback_to_get = True
-        except Exception:
-            fallback_to_get = True
-
-        if fallback_to_get:
-            try:
-                b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
-                r = await client.get(
-                    f"{target_url}?dns={b64}",
-                    headers={"accept": "application/dns-message"},
-                    timeout=4.0,
-                )
-                if r.status_code == 200 and r.content:
-                    return parse_dns_wire_a_records(r.content)
-            except Exception:
-                pass
-        return []
-
-    # 1. Try specified primary URL
-    primary_ips = await try_url(doh_url)
-    if primary_ips:
-        return primary_ips
-
-    # 2. Resilient fallback: if accelerated via v.recipes, fallback to direct; if direct, fallback to v.recipes
-    if "dns-ai.ru" in doh_url:
-        return []
-
-    if "v.recipes" in doh_url:
-        fallback_url = doh_url.replace("https://v.recipes/dns/", "https://").replace(
-            "http://v.recipes/dns/", "http://"
+    try:
+        r = await client.post(
+            doh_url,
+            content=wire_query,
+            headers={
+                "content-type": "application/dns-message",
+                "accept": "application/dns-message",
+            },
+            timeout=timeout,
         )
-        return await try_url(fallback_url)
-    else:
-        clean = doh_url.replace("https://", "").replace("http://", "")
-        accel_url = f"https://v.recipes/dns/{clean}"
-        return await try_url(accel_url)
+        if r.status_code == 200 and r.content:
+            return parse_dns_wire_a_records(r.content)
+        if r.status_code in (400, 405):
+            b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
+            r_get = await client.get(
+                f"{doh_url}?dns={b64}",
+                headers={"accept": "application/dns-message"},
+                timeout=timeout,
+            )
+            if r_get.status_code == 200 and r_get.content:
+                return parse_dns_wire_a_records(r_get.content)
+    except Exception:
+        pass
+    return []
 
 
 async def query_tcp_dns_batch(
@@ -379,32 +382,43 @@ async def resolve_geoblock_domains_per_provider(
         if not prov.doh_endpoints:
             return prov.key, {}, set()
 
-        sem = asyncio.Semaphore(20)
+        sem = asyncio.Semaphore(40)
         transport = httpx.AsyncHTTPTransport(
             local_address="0.0.0.0", http2=True, verify=False
         )
         async with httpx.AsyncClient(
             transport=transport,
-            timeout=5.0,
-            limits=httpx.Limits(max_connections=25, max_keepalive_connections=25),
+            timeout=3.0,
+            limits=httpx.Limits(max_connections=50, max_keepalive_connections=50),
         ) as client:
+            # Pre-flight check: verify endpoints are reachable before dispatching thousands of queries
+            alive_endpoints = {}
+            for name, url in prov.doh_endpoints.items():
+                if await check_endpoint_alive(client, url):
+                    alive_endpoints[name] = url
+                else:
+                    print(
+                        f"Notice: Endpoint '{name}' ({url}) for provider '{prov.key}' is unavailable/down. Skipping queries."
+                    )
 
-            async def check_dom(endpoint_url: str, d: str):
-                async with sem:
-                    ips = await query_doh_a_records(client, endpoint_url, d)
-                    if ips:
-                        brand = normalize_brand_name(d)
-                        for ip in ips:
-                            if is_candidate_proxy_ip(ip) and ip not in ru_ip_set:
-                                prov_domain_ips.setdefault(d, []).append(ip)
-                                prov_ip_brands[ip].add(brand)
+            if alive_endpoints:
 
-            tasks = [
-                check_dom(url, d)
-                for url in prov.doh_endpoints.values()
-                for d in domains
-            ]
-            await asyncio.gather(*tasks, return_exceptions=True)
+                async def check_dom(endpoint_url: str, d: str):
+                    async with sem:
+                        ips = await query_doh_a_records(client, endpoint_url, d)
+                        if ips:
+                            brand = normalize_brand_name(d)
+                            for ip in ips:
+                                if is_candidate_proxy_ip(ip) and ip not in ru_ip_set:
+                                    prov_domain_ips.setdefault(d, []).append(ip)
+                                    prov_ip_brands[ip].add(brand)
+
+                tasks = [
+                    check_dom(url, d)
+                    for url in alive_endpoints.values()
+                    for d in domains
+                ]
+                await asyncio.gather(*tasks, return_exceptions=True)
 
         # 1. Determine confirmed Smart DNS proxy IPs for this provider
         confirmed_ips: set[str] = set()
@@ -431,6 +445,8 @@ async def resolve_geoblock_domains_per_provider(
         # 3. Adaptive Fallback from Disk
         if output_dir.exists():
             disk_hosts = output_dir / prov.no_crutch_hosts_filename
+            if not disk_hosts.exists():
+                disk_hosts = output_dir / prov.hosts_filename
             if disk_hosts.exists():
                 disk_mappings: dict[str, list[str]] = {}
                 with open(disk_hosts, encoding="utf-8") as f:

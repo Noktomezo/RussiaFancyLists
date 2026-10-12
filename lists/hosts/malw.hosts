@@ -9,14 +9,20 @@ ff02::2 ip6-allrouters
 23.36.163.34 audio-ak-spotify-com.akamaized.net
 23.48.23.145 heads-ak-spotify-com.akamaized.net
 31.25.239.132 game.boombeachgame.com
+185.246.223.127 game.brawlstarsgame.com
 31.25.239.132 game-assets.brawlstarsgame.com
 31.13.66.63 scontent-hel3-1.cdninstagram.com scontent.cdninstagram.com
 57.144.244.192 static.cdninstagram.com
+193.23.209.189 gamea.clashofclans.com
 31.25.239.132 game-assets.clashofclans.com
 31.25.239.132 game-assets.clashroyaleapp.com
+62.133.62.97 game.clashroyaleapp.com
+144.31.14.104 windsurf-telemetry.codeium.com
 162.159.135.232 updates.discord.com
+157.240.245.174 z-p42-chat-e2ee-ig.facebook.com
 57.144.244.1 facebook.com www.facebook.com
 57.144.244.1 fb.com
+31.13.67.20 scontent-hel3-1.xx.fbcdn.net
 57.144.244.128 scontent.xx.fbcdn.net static.xx.fbcdn.net
 57.144.244.1 fbsbx.com
 140.82.114.3 github.com
@@ -24,16 +30,19 @@ ff02::2 ip6-allrouters
 185.199.110.154 github.githubassets.com
 146.75.22.132 avatars.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com avatars4.githubusercontent.com avatars5.githubusercontent.com camo.githubusercontent.com gist.githubusercontent.com objects.githubusercontent.com private-user-images.githubusercontent.com raw.githubusercontent.com release-assets.githubusercontent.com
 157.240.205.174 instagram.com www.instagram.com
+157.240.245.174 b.i.instagram.com help.instagram.com
 57.144.244.192 api.instagram.com edge-chat.instagram.com graph.instagram.com i.instagram.com
 31.25.239.132 game.mocogame.com
 130.255.77.28 ntc.party
 172.67.139.108 r6s.com
+54.155.2.87 rainbow6.com
 65.8.158.112 tr.rbxcdn.com
 185.39.18.98 lib.rus.ec www.lib.rus.ec
 172.66.159.63 d.rutor.info rutor.info
 199.232.210.248 accounts.scdn.co av.scdn.co daily-mix.scdn.co encore.scdn.co i.scdn.co image-cdn-fa.scdn.co line-up.scdn.co lineup-images.scdn.co mosaic.scdn.co scdn.co seafoam.scdn.co www-growth.scdn.co www.scdn.co
 35.186.224.24 open.spotify.com
 162.159.141.124 audio-cf.spotifycdn.com audio4-fa-tls13.spotifycdn.com open-exp.spotifycdn.com
+108.61.167.26 game.squadbustersgame.com
 31.25.239.132 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
 149.154.167.220 t.me
 216.24.57.3 tapeop.dev www.tapeop.dev
@@ -43,263 +52,219 @@ ff02::2 ip6-allrouters
 2.23.89.244 ubiservices.cdn.ubi.com
 2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
+52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
+18.209.141.203 connect.ubisoft.com
 52.222.149.31 ubisoft.com
+54.76.54.196 uplay.ubisoft.com
 
 # Geoblock
-188.114.97.3 3parug.com
+52.85.154.10 activestate.com
 13.33.235.72 agar.io
-88.221.169.152 www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net
-88.221.169.152 e13678.dscb.akamaiedge.net
-52.85.154.21 alltrails.com
-18.165.140.48 angryemailtranslator.com
+18.165.140.87 angryemailtranslator.com
 179.254.166.174 api.anthropic.com console.anthropic.com
 179.254.166.174 web.archive.org
-13.33.235.79 arduino.cc
-198.202.211.1 www.arkoselabs.com
-179.254.166.174 ws.audioscrobbler.com
+13.33.235.27 arduino.cc
+52.85.154.112 atlassian.com
 216.150.1.193 augmentcode.com
-34.217.238.215 www.autocad.com
-44.239.0.53 autocad.com
-34.217.238.215 autodesk.eu
-103.75.71.79 aybest.xyz
-13.33.235.36 consent.badoo.com
 179.254.166.174 edgeservices.bing.com rewards.bing.com sydney.bing.com
 162.159.140.167 bitnami.com
-66.33.60.66 blur.io
-15.197.187.125 bosch-home.co.nz
-166.117.142.108 bosch-home.com bosch-home.com.sg
+66.33.60.130 blur.io
+15.197.187.125 bosch-home.co.nz bosch-home.com bosch-home.com.sg
 162.159.140.167 access.broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
-54.68.22.26 broadcom.com
-3.164.206.90 broccolionline.jp
+52.13.171.212 broadcom.com
 15.197.187.125 bsh-group.com
-141.193.213.10 cambiumnetworks.com
+141.193.213.11 cambiumnetworks.com
 179.254.166.174 canva.com content-management-files.canva.com static.canva.com www.canva.com
+95.101.133.18 capcut.com
 13.33.235.129 cesium.com
-179.254.166.174 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
-3.174.113.26 crosswork.cisco.com
-3.174.113.85 clashofclans.com
-179.254.166.174 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
-179.254.166.174 clickup.com www.clickup.com
-188.114.96.1 cmems-du.eu
+179.254.166.174 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+23.215.2.141 cici.com
+3.174.113.92 clashofclans.com
+179.254.166.174 a.claude.ai claude.ai claude.com platform.claude.com
+179.254.166.174 clickup.com
 35.223.238.178 server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com
-66.33.60.193 www.codeium.com
-66.33.60.193 www.cursor.com
-188.114.97.1 darkproject.eu
-3.174.113.46 databricks.com
-179.254.166.174 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-216.239.34.21 deepmind.com deepmind.google
+3.164.68.107 copernicus.eu
+18.165.122.63 credly.com
+3.174.113.53 databricks.com
+179.254.166.174 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 179.254.166.174 deezer.com payment.deezer.com www.deezer.com
-23.209.210.102 dds.dell.com www.dell.com
-23.209.210.102 afcs.dellcdn.com www.dellcdn.com
-23.209.210.102 www.delltechnologies.com
-188.114.96.3 deniko.xyz
-66.33.60.66 diabrowser.com
-204.221.76.76 digikey.com digikey.sg
-204.221.76.76 digikeyassets.com www.digikeyassets.com
+95.100.176.23 dds.dell.com www.dell.com
+95.100.176.23 afcs.dellcdn.com
+66.33.60.130 diabrowser.com
 15.197.225.128 disctech.com
 217.114.94.2 dolby.com
 179.254.166.174 dyson.com www.dyson.com www.dyson.fr
 179.254.166.174 dzcdn.net
-103.75.71.79 efsanetv.xyz
-179.254.166.174 api.elevenlabs.io api.us.elevenlabs.io eleven-public-cdn.elevenlabs.io elevenlabs.io help.elevenlabs.io payload.elevenlabs.io try.elevenlabs.io www.elevenlabs.io
+179.254.166.174 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 179.254.166.174 elevenreader.io
-150.171.109.106 elgiganten.se
-103.75.71.79 elmastvnet.xyz
-18.66.122.78 espares.ie
-62.153.73.242 octanorm.expo.shop
-188.114.96.3 eyyo.xyz
+18.165.140.69 espares.ie
 67.199.248.12 f1.com
 141.193.213.10 fastspring.com
 179.254.166.174 api.fitbit.com
 217.114.94.2 flir.com flir.eu
-145.224.209.239 force-user-content.com
-184.25.179.132 force.com
-99.84.152.25 framercanvas.com
+3.164.68.107 flourish.studio
+145.224.209.234 force-user-content.com
+23.1.35.132 force.com
+3.164.68.69 framer.app
+3.174.113.22 framer.com
+3.174.113.114 framercanvas.com
+3.164.68.69 framerusercontent.com
 76.223.34.124 freeimages.com
 100.22.226.56 freescale.com
-95.101.133.51 game.co.uk
-13.33.235.41 game8.jp
-3.164.206.61 game8.co.jp
 34.194.97.138 geforcenow.com
-31.43.161.6 geospy.ai
-18.165.140.114 ghidra-sre.org
+18.165.140.51 ghidra-sre.org
 13.33.235.52 gofund.me
 3.174.113.121 gofundme.com
 179.254.166.174 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com gemini.google.com jules.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-179.254.166.174 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+179.254.166.174 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 34.78.67.165 grazie.ai
-179.254.166.174 assets.grok.com grok.com www.grok.com
+179.254.166.174 assets.grok.com grok.com
+3.174.113.53 www.guilded.gg
 52.85.154.98 guilded.gg
 104.247.81.99 hashflare.io
+3.164.68.9 releases.hashicorp.com
+16.15.213.202 haydaygame.com
 3.174.113.44 hbomax.com
 159.69.66.229 hc-ping.com
-176.9.71.146 hchk.io
+159.69.66.229 hchk.io
 15.197.187.125 home-connect.com
 216.150.1.1 hume.ai
-216.150.1.129 www.hume.ai
 179.254.166.174 hybrid-analysis.com
 179.254.166.174 api.imgur.com
-31.43.160.6 inceptionlabs.ai
-31.43.161.6 www.inceptionlabs.ai
 217.114.94.2 infosecinstitute.com
 67.199.248.12 intel.ly
-3.174.113.104 api.app.prod.grazie.aws.intellij.net
+3.174.113.85 api.app.prod.grazie.aws.intellij.net
 34.78.67.165 intellij.net
-52.85.154.11 intercom.io
-13.33.235.80 jetbrains.com
+52.85.154.98 intercom.io
+13.33.235.129 jetbrains.com
 179.254.166.174 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
 34.78.67.165 jetbrains.ai
-13.33.235.26 klaviyo.com
+13.33.235.37 klaviyo.com
 13.33.235.37 kmail-lists.com
 179.254.166.174 labs.google
-141.101.90.106 app.langdock.com
 198.202.211.1 langdock.com
-179.254.166.174 autodiscover.last.fm jira.last.fm last.fm s.last.fm saa.last.fm secure.last.fm shop.last.fm store.last.fm support.last.fm wiki.last.fm www.last.fm
-179.254.166.174 client-api.linear.app constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app uploads.linear.app www.linear.app
-216.150.16.129 docs.liquibase.com
+179.254.166.174 last.fm
+179.254.166.174 client-api.linear.app constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app uploads.linear.app
+216.150.1.193 docs.liquibase.com
 198.202.211.1 liquidsky.com
-13.33.235.107 llama3-1.llamameta.net
-188.114.97.3 www.makita.com.tw
-3.164.206.109 malwarebytes.org
-18.66.122.78 www.manus.im
-13.33.235.5 max.com
-18.165.122.23 data-cdn.mbamupdates.com
+13.33.235.55 llama3-1.llamameta.net
+3.164.206.105 downloads.malwarebytes.com malwarebytes.org
+52.85.154.122 marvelsnap.com
+13.33.235.95 max.com
 3.174.113.19 mbed.com
 18.165.140.114 medicalnewstoday.com
-13.33.235.115 meraki.com
-13.33.235.91 meshcapade.com
+13.33.235.38 meraki.com
+13.33.235.57 meshcapade.com
 3.164.68.62 me.meshcapade.com
+3.164.206.109 sam2.metademolab.com
 179.254.166.174 copilot.microsoft.com
-99.84.152.25 webassets.mongodb.com
-13.33.235.79 monica.im
 18.165.140.48 multisim.com
 13.33.235.52 myjetbrains.com
-184.24.145.154 css.naukimg.com js.naukimg.com
-23.12.157.162 arabicstatic.naukimg.com bms.naukimg.com img.naukimg.com np.naukimg.com p.naukimg.com static.naukimg.com
-13.33.235.104 contest.nc.naukri.com
-13.33.235.107 staging.fn-hackathon-ui.nc.naukri.com
-13.33.235.53 assets.staging.assessment.nc.naukri.com
-13.33.235.79 onlinetest.nc.naukri.com
-145.224.205.235 insights.naukri.com
-18.165.140.89 mediacdn.naukri.com
-184.24.145.154 apis.naukri.com apply.naukri.com autodiscover.csm.naukri.com careernavigator.naukri.com chatbot.naukri.com cm.naukri.com companies.naukri.com company.naukri.com contentcdn.naukri.com csmmail.naukri.com css.naukri.com logs.naukri.com maestrorecruiter.naukri.com media.naukri.com nimg.naukri.com notifications.naukri.com p.naukri.com
-23.12.157.162 blogs.naukri.com careers.naukri.com ccs-service.naukri.com chatclient-mobile.naukri.com chatclient.naukri.com communication.naukri.com corp.naukri.com cps.naukri.com csm.naukri.com freesearch.naukri.com hiring.naukri.com img.naukri.com jatracking.naukri.com jobsearch.naukri.com js.naukri.com learning.naukri.com lg.naukri.com login.naukri.com login.recruit.naukri.com m.naukri.com mobile.naukri.com my.naukri.com naukrirecruiter.naukri.com pg.naukri.com static.naukri.com streamgenai.naukri.com suggest.naukri.com suggestor.naukri.com taxonomy-suggest.naukri.com trust.naukri.com
-34.252.74.1 netflix.ca
 46.137.171.215 netflix.net
-34.252.74.1 netflixinvestor.com
+52.31.48.193 netflix.ca
+50.17.247.9 netflixinvestor.com
 3.33.186.135 netlify.com
 207.45.72.215 nflxext.com
 207.45.72.215 nflximg.com
-52.31.48.193 nflxsearch.net
+34.252.74.1 nflxsearch.net
 107.20.175.192 nflxvideo.net
+95.101.133.50 login.norton.com
 179.254.166.174 app.notion.com calendar.notion.so notion.so www.notion.so
 179.254.166.174 developer.nvidia.com
-3.164.68.42 ngc.nvidia.com
 34.194.97.138 nvidia.com
-100.22.226.56 nxp.com
-179.254.166.174 cdn.oaistatic.com oaistatic.com www.oaistatic.com
-179.254.166.174 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
-62.153.73.242 octanorm.com www.octanorm.com
-13.33.235.51 omnissa.com
+54.190.224.0 nxp.com
+179.254.166.174 cdn.oaistatic.com oaistatic.com
+179.254.166.174 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+13.33.235.68 omnissa.com
 179.254.166.174 geolocation.onetrust.com
-179.254.166.174 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
-3.174.113.12 ciscobinary.openh264.org
-141.101.90.105 eu.openrouter.ai
+16.15.213.202 onfastspring.com
+179.254.166.174 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+3.174.113.46 ciscobinary.openh264.org
 138.1.33.162 oracle.com
 138.1.33.162 oraclecloud.com
 104.247.81.99 otawa.fr
 3.33.186.135 paddle.com
-66.33.60.193 paddlestatus.com
+108.156.22.52 paraswap.io
 18.165.140.51 app.paraswap.io
 3.33.251.168 paritydeals.com
 179.254.166.174 builds.parsec.app
 179.254.166.174 patreon.com www.patreon.com
 179.254.166.174 patreonusercontent.com
-166.117.11.182 pdfexpert.com
+99.83.131.201 pdfexpert.com
 216.150.1.1 pencil.dev
 23.185.0.1 penguin.com
 170.171.208.137 penguinrandomhouse.com
 179.254.166.174 o.pki.goog
 216.150.1.1 posthog.com
-13.33.235.13 sites.prh.com
+13.33.235.15 sites.prh.com
 170.171.208.137 prh.com
-188.114.97.3 prowlarr.com
-188.114.96.3 radarr.video
+13.33.235.55 footballapi.pulselive.com
+52.85.154.54 qodana.cloud
+52.85.154.98 x.raycast-releases.com
 216.150.1.1 reactflow.dev
-99.83.131.201 readdle.com
-188.114.97.3 readybot.io
-188.114.96.3 romsgames.net
-188.114.97.3 www.romsgames.net
-145.224.209.237 salesforce-scrt.com
-145.224.209.239 salesforce-experience.com salesforce-sites.com
-23.1.106.133 salesforce.com
-13.113.196.52 salesforceliveagent.com
+166.117.11.182 readdle.com
+18.165.140.114 research.net
+145.224.205.236 salesforce-scrt.com salesforce-setup.com
+145.224.209.234 salesforce-experience.com salesforce-sites.com
+23.1.35.132 salesforce.com
+35.176.92.19 salesforceliveagent.com
 34.227.236.7 schneider-electric.com
 34.227.236.7 se.com
-64.239.109.65 sentry.dev
-188.114.96.3 prowlarr.servarr.com radarr.servarr.com
-145.224.205.238 sfdcopens.com
-3.164.206.61 sharefile.com
-13.113.196.52 site.com
-13.33.235.68 sketchup.com
-15.197.167.90 www.sketchup.com
+18.165.140.104 serato.com
+108.156.22.52 store.serif.com
+145.224.205.236 sfdcopens.com
+3.164.206.105 sharefile.com
+34.226.36.51 site.com
+13.33.235.71 sketchup.com
+3.164.68.18 extensions.sketchup.com
 162.159.140.69 smartbear.com
 3.136.255.152 smartbear.co
 13.33.235.73 snapgene.com
-18.116.254.113 soapui.org
-150.171.109.106 solarwinds.com
+3.136.255.152 soapui.org
+95.101.133.18 sonara.ai
 3.174.113.92 intelix.sophos.com
-95.101.133.51 sophos.com
-3.164.68.42 spacelift.io
-141.193.213.10 spiceworks.com
+95.101.133.50 sophos.com
+3.164.68.62 spacelift.io
+141.193.213.11 spiceworks.com
 23.227.38.65 spitfireaudio.com
 179.254.166.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
 179.254.166.174 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
-162.159.140.28 square.com
-162.159.140.28 www.squareup.com
-179.254.166.174 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
-216.150.1.193 studychat.app
-13.33.235.107 stuff.co.nz
-3.164.206.90 api.stumbleguys.com matchmaking.stumbleguys.com
+179.254.166.174 strava.com
+13.33.235.12 stuff.co.nz
 3.174.113.104 supercell.com
-18.165.140.114 surveymonkey.com
+18.165.140.80 surveymonkey.com
 162.159.140.69 swagger.io
-188.114.96.1 synoforum.com
 3.174.113.121 sysdig.com
-18.165.122.23 api.themoviedb.org
-188.114.97.3 thesassway.com
 179.254.166.174 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com tidal.com
 179.254.166.174 www.tiktok.com
-52.85.154.98 tmdb.org
+80.239.254.35 tiktok.com
+52.85.154.54 tmdb.org
 198.202.211.1 together.ai
-66.33.60.193 www.tokenharbor.ai
 34.78.67.165 toolbox.app
-15.197.167.90 trimble.com
-3.33.186.135 sketchup.trimble.com www.trimble.com
-52.85.154.11 consent.trustarc.com
+23.215.2.141 api-sg-central.trae.ai
 179.254.166.174 usher.ttvnw.net
-185.205.69.12 tuta.com w12.api.tuta.com www.tuta.com
-185.205.69.12 tutanota.com
 13.33.235.72 tvn24.pl
 179.254.166.174 gql.twitch.tv
 23.227.38.65 uaudio.com
-13.33.235.73 uizard.io
-188.114.97.3 undress.cc
+13.33.235.70 uizard.io
+18.165.122.123 vaio.com
+13.33.235.12 verificationacademy.com
 162.159.140.167 softwareupdate.vmware.com
-50.112.202.115 vmware.com
-54.68.22.26 docs.vmware.com
-13.248.160.137 wakanim.tv
-179.254.166.174 upsx.weather.com weather.com www.weather.com
+52.13.171.212 docs.vmware.com
+54.68.22.26 vmware.com
+76.223.34.124 wakanim.tv
+13.33.235.49 wbgames.com
+13.33.235.52 account.wbgames.com
+18.165.140.87 we.tl
+179.254.166.174 upsx.weather.com weather.com
+108.156.22.22 wetransfer.com
 23.185.0.1 windriver.com
 35.223.238.178 marketplace.windsurf.com
 179.254.166.174 aitestkitchen.withgoogle.com stitch.withgoogle.com
 23.185.0.1 wrs.com
-3.129.94.189 www.wund.com
-54.160.9.107 wund.com
-18.158.212.228 www.wxug.com wxug.com
-179.254.166.174 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai x.ai
+179.254.166.174 accounts.x.ai console.x.ai x.ai
 179.254.166.174 xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
 179.254.166.174 xdaforums.com
-216.150.1.1 www.yupp.ai yupp.ai
-64.239.109.65 www.zapier-deployment.com
+3.174.113.121 yourdictionary.com
+13.33.235.99 youtrack.cloud

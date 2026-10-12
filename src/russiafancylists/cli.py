@@ -67,6 +67,8 @@ def setup_dirs(skip_download: bool = False):
 
         # Clear existing files and directories
         for item in LIST_FOLDER.iterdir():
+            if item.resolve() == HOSTS_LIST_FOLDER.resolve():
+                continue
             if skip_download and item.resolve() in download_targets:
                 continue
             try:
