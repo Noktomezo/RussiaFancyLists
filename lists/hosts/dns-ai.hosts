@@ -41,11 +41,10 @@ ff02::2 ip6-allrouters
 2.23.89.244 ubiservices.cdn.ubi.com
 2.23.89.92 static3.cdn.ubi.com
 3.33.249.140 public-ws-ubiservices.ubi.com
-52.6.7.14 ubi.com
 99.83.188.134 public-ubiservices.ubi.com
 52.222.149.31 ubisoft.com
 
 # Geoblock
-160.79.104.10 a-api.anthropic.com api.anthropic.com assets-proxy.anthropic.com console.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+160.79.104.10 a-api.anthropic.com anthropic.com api.anthropic.com assets-proxy.anthropic.com console.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
 160.79.104.10 a.claude.ai claude.ai claude.com platform.claude.com www.claude.ai www.claude.com
 160.79.104.10 claudeusercontent.com www.claudeusercontent.com
