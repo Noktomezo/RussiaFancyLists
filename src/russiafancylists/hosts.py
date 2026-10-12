@@ -49,6 +49,9 @@ KNOWN_CRUTCH_SUBNETS = [
     ipaddress.ip_network("104.16.0.0/12"),  # Cloudflare CDN
     ipaddress.ip_network("172.64.0.0/13"),  # Cloudflare CDN
     ipaddress.ip_network("173.245.48.0/20"),  # Cloudflare CDN
+    ipaddress.ip_network("162.158.0.0/15"),  # Cloudflare Edge CDN
+    ipaddress.ip_network("140.82.112.0/20"),  # GitHub Inc.
+    ipaddress.ip_network("185.199.108.0/22"),  # GitHub Inc. (Pages / Assets)
     ipaddress.ip_network("23.32.0.0/11"),  # Akamai Technologies
     ipaddress.ip_network("2.16.0.0/13"),  # Akamai Technologies
     ipaddress.ip_network("2.23.0.0/16"),  # Akamai Technologies
@@ -671,10 +674,22 @@ async def generate_aligned_hosts(
             brand = brand.split("-")[0]
         return brand
 
+    # Collect all known Smart DNS proxy IPs across all providers to ensure none leak into crutches
+    all_provider_proxy_ips = set()
+    for prov in PROVIDERS:
+        for src in prov.download_sources:
+            src_path = hosts_temp_dir / src.get("temp_filename", "")
+            if src_path.exists():
+                try:
+                    top_ips, _ = get_source_info(src_path)
+                    all_provider_proxy_ips.update(top_ips)
+                except Exception:
+                    pass
+
     # Extract direct crutches from zapret-manager source
     global_custom_candidates = {}
     for ip, domains in zapret_ip_domains.items():
-        if ip in ru_ips:
+        if ip in ru_ips or ip in all_provider_proxy_ips:
             continue
         for dom in domains:
             if ip not in global_custom_candidates.setdefault(dom, []):
@@ -780,10 +795,16 @@ async def generate_aligned_hosts(
             f"Offline IPs ({len(offline_ips)}): {', '.join(sorted(list(offline_ips)))}"
         )
 
-    # Filter custom mappings to keep only active direct/custom IPs
+    # Filter custom mappings to keep only active direct/custom IPs, strictly excluding proxy IPs
+    detected_proxies_set = set(detected_proxy_ips.get("doh", []))
+    for ips in detected_proxy_ips.values():
+        detected_proxies_set.update(ips)
+
     global_custom = {}
     for d, ips in global_custom_candidates.items():
-        active_candidates = [ip for ip in ips if ip in active_ips]
+        active_candidates = [
+            ip for ip in ips if ip in active_ips and ip not in detected_proxies_set
+        ]
         if active_candidates:
             global_custom[d] = active_candidates[-1]
 
@@ -972,6 +993,11 @@ async def generate_aligned_hosts(
         json.dump(active_provider_ips, f, indent=2)
 
 
+# Variables in Zapret-Manager that represent proxies / geoblocks rather than direct service crutches:
+EXCLUDED_ZAPRET_VARS = {"SCell", "AI", "TWCH", "SPFY", "NALOG"}
+ZAPRET_VAR_PATTERN = re.compile(r"(?:^|[;\s])([A-Za-z0-9_]+)=\"([^\"]*)\"")
+
+
 def parse_zapret_sh(input_sh: Path, output_lst: Path):
     """Parse a Bash script containing hosts variables and extract domains with their original IPs."""
     if not input_sh.exists():
@@ -983,44 +1009,55 @@ def parse_zapret_sh(input_sh: Path, output_lst: Path):
     with open(input_sh, encoding="utf-8", errors="ignore") as f:
         text = f.read()
 
-    # Replace escaped newlines with actual newlines
-    text = text.replace("\\n", "\n")
-
-    # Split into lines
-    lines = text.split("\n")
     parsed_lines = []
 
-    for line in lines:
-        # Strip comments and outer quotes/spaces
-        line = line.split("#", 1)[0].strip("\"' ")
-        if not line:
-            continue
-
-        # Split by semicolon since bash separates commands with them
-        for part in line.split(";"):
-            cols = part.strip().split()
-            if not cols:
+    # Extract variable assignments
+    matches = list(ZAPRET_VAR_PATTERN.finditer(text))
+    if matches:
+        for m in matches:
+            var_name, val = m.group(1), m.group(2)
+            if var_name in EXCLUDED_ZAPRET_VARS:
                 continue
-
-            # Clean quotes/braces from the first column (potential IP)
-            first = cols[0].strip("\"'")
-            is_ipv4 = IPV4_PATTERN.match(first)
-            is_ipv6 = IPV6_PATTERN.match(first) and ":" in first
-
-            if is_ipv6:
-                # Exclude IPv6 addresses since IPv6 is not universally supported
+            val = val.replace("\\n", "\n")
+            for line in val.split("\n"):
+                line = line.split("#", 1)[0].strip("\"' ")
+                if not line:
+                    continue
+                for part in line.split(";"):
+                    cols = part.strip().split()
+                    if not cols:
+                        continue
+                    first = cols[0].strip("\"'")
+                    is_ipv4 = IPV4_PATTERN.match(first)
+                    if is_ipv4:
+                        clean_domains = []
+                        for d in cols[1:]:
+                            d = d.strip("\"' ").lower().rstrip("\"'\\/")
+                            if d and "." in d and "$" not in d:
+                                clean_domains.append(d)
+                        if clean_domains:
+                            parsed_lines.append(f"{first} " + " ".join(clean_domains))
+    else:
+        # Fallback to plain line-based parsing if no variables matched
+        text = text.replace("\\n", "\n")
+        for line in text.split("\n"):
+            line = line.split("#", 1)[0].strip("\"' ")
+            if not line:
                 continue
-
-            if is_ipv4:
-                clean_domains = []
-                for d in cols[1:]:
-                    d = d.strip("\"' ").lower()
-                    # Clean trailing quotes/slashes/brackets
-                    d = d.rstrip("\"'\\/")
-                    if d and "." in d and "$" not in d:
-                        clean_domains.append(d)
-                if clean_domains:
-                    parsed_lines.append(f"{first} " + " ".join(clean_domains))
+            for part in line.split(";"):
+                cols = part.strip().split()
+                if not cols:
+                    continue
+                first = cols[0].strip("\"'")
+                is_ipv4 = IPV4_PATTERN.match(first)
+                if is_ipv4:
+                    clean_domains = []
+                    for d in cols[1:]:
+                        d = d.strip("\"' ").lower().rstrip("\"'\\/")
+                        if d and "." in d and "$" not in d:
+                            clean_domains.append(d)
+                    if clean_domains:
+                        parsed_lines.append(f"{first} " + " ".join(clean_domains))
 
     output_lst.parent.mkdir(parents=True, exist_ok=True)
     output_lst.write_text(

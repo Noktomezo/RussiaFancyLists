@@ -15,6 +15,7 @@
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||access.broadcom.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||knowledge.broadcom.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -24,6 +25,8 @@
 ||chatgpt.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||claude.ai^$dnsrewrite=NOERROR;A;103.27.157.38
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;103.27.157.38
@@ -126,6 +129,11 @@
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||api.squareup.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||accounts.supercell.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||security.id.supercell.com^$dnsrewrite=NOERROR;A;103.27.157.38
+||store.supercell.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||api.tidal.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;103.27.157.38
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;103.27.157.38

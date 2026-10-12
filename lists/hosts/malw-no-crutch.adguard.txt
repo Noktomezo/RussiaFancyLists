@@ -5,9 +5,12 @@
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||console.anthropic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web.archive.org^$dnsrewrite=NOERROR;A;179.254.166.174
+||ws.audioscrobbler.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -18,6 +21,8 @@
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||a.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -30,7 +35,6 @@
 ||www.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||write-free.www.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -62,6 +66,7 @@
 ||support.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||voice-proxy.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||w.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||write-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www2.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||deezer.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -98,6 +103,7 @@
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||hybrid-analysis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.imgur.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -116,6 +122,7 @@
 ||store.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wiki.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -256,6 +263,11 @@
 ||www.metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||accounts.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||security.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||store.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
