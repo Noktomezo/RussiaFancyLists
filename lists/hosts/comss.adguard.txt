@@ -128,7 +128,6 @@
 ||ai-chat.bsg.brave.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||access.broadcom.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||broadcom.com^$dnsrewrite=NOERROR;A;157.22.177.90
-||knowledge.broadcom.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||login.broadcom.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||packages-prod.broadcom.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -248,7 +247,6 @@
 ||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||www.jetbrains.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||youtrack.jetbrains.com^$dnsrewrite=NOERROR;A;157.22.178.170
-||labs.google^$dnsrewrite=NOERROR;A;157.22.177.90
 ||downloads.malwarebytes.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||malwarebytes.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||www.malwarebytes.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -339,6 +337,7 @@
 ||email1.strava.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||interview.strava.com^$dnsrewrite=NOERROR;A;157.22.177.90
+||links.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||metro.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||mi.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||promo.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -370,10 +369,8 @@
 ||wbagora.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||account.wbgames.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||wbgames.com^$dnsrewrite=NOERROR;A;157.22.178.170
-||www.wbgames.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||weather.com^$dnsrewrite=NOERROR;A;157.22.178.170
-||www.weather.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||marketplace.windsurf.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||aitestkitchen.withgoogle.com^$dnsrewrite=NOERROR;A;157.22.177.90
 ||opal.withgoogle.com^$dnsrewrite=NOERROR;A;157.22.178.170

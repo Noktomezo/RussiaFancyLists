@@ -326,8 +326,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->55.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->52.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->54.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->52.5 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1135/2093<br>
@@ -371,12 +371,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.hosts"><code>comss-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.hosts -->9.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->7.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.hosts -->9.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->6.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 289/2093<br>
-        • 289/2093
+        • 286/2093<br>
+        • 286/2093
       </td>
     </tr>
     <tr>
@@ -428,8 +428,8 @@
         • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->6.5 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 290/2093<br>
-        • 290/2093
+        • 287/2093<br>
+        • 287/2093
       </td>
     </tr>
     <tr>
@@ -512,12 +512,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->21.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->16.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->21.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->16.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 289/2093<br>
-        • 289/2093
+        • 286/2093<br>
+        • 286/2093
       </td>
     </tr>
     <tr>
@@ -565,12 +565,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->22.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->17.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->22.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->16.8 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 290/2093<br>
-        • 290/2093
+        • 287/2093<br>
+        • 287/2093
       </td>
     </tr>
     <tr>
