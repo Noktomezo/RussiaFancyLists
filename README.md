@@ -621,7 +621,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 > 2. **Free Proton VPN**: The same bot [@warp_generator_bot](https://t.me/warp_generator_bot) also provides free Proton VPN configuration generation (with ready-to-use profiles for AmneziaWG and Mihomo / Clash).
 > 3. **Hunting Foreign WARP Nodes with Warpscout**: Scan for endpoints where your traffic egresses outside Russia using [warpscout](https://github.com/vernette/warpscout):
 >    ```bash
->    warpscout.exe scan -p awg -jc 4 -jmin 10 -jmax 50 -i1 "<r 2><b 0x858000010001000000000669636c6f756403636f6d0000010001c00c000100010000105a00044d583737>"
+>    ./warpscout.exe scan -p awg -jc 4 -jmin 10 -jmax 50 -i1 "<r 2><b 0x858000010001000000000669636c6f756403636f6d0000010001c00c000100010000105a00044d583737>"
 >    ```
 >    Ensure that the scanned endpoint has a non-`RU` country in the `SEEN AS` column (e.g., `FI`, `SE`, `DE`).<br>
 >

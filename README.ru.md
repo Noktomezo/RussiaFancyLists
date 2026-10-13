@@ -621,7 +621,7 @@
 > 2. **Бесплатный Proton VPN**: В том же боте [@warp_generator_bot](https://t.me/warp_generator_bot) доступна генерация бесплатных конфигураций Proton VPN (с готовыми профилями под AmneziaWG и Mihomo / Clash).
 > 3. **Поиск зарубежных нод WARP через Warpscout**: Попробовать выбить иностранную ноду напрямую утилитой [warpscout](https://github.com/vernette/warpscout):
 >    ```bash
->    warpscout.exe scan -p awg -jc 4 -jmin 10 -jmax 50 -i1 "<r 2><b 0x858000010001000000000669636c6f756403636f6d0000010001c00c000100010000105a00044d583737>"
+>    ./warpscout.exe scan -p awg -jc 4 -jmin 10 -jmax 50 -i1 "<r 2><b 0x858000010001000000000669636c6f756403636f6d0000010001c00c000100010000105a00044d583737>"
 >    ```
 >    Главный критерий при сканировании: значение в столбце `SEEN AS` должно быть не `RU` (например, `FI`, `SE`, `DE`).<br>
 >
