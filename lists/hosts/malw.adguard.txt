@@ -341,6 +341,7 @@
 ||api.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth0.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||bps.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||chat.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||developers.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
