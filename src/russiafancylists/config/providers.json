@@ -56,10 +56,17 @@
     "key": "astracat",
     "name": "AstraCat",
     "doh_endpoints": {
-      "astracat": "https://dns.astracat.network/dns-query"
+      "astracat": "https://dns.commonnet.work/dns-query"
     },
     "aliases": [],
-    "download_sources": [],
+    "download_sources": [
+      {
+        "id": "astracat_hosts",
+        "url": "https://raw.githubusercontent.com/ASTRACAT2022/host-DNS/main/base_hosts.txt",
+        "temp_filename": "astracat-hosts.lst",
+        "description": "AstraCat's hosts"
+      }
+    ],
     "primary_fallback": false
   },
   {
