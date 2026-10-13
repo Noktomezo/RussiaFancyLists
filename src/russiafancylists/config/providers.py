@@ -13,6 +13,7 @@ class SmartDNSProvider:
     key: str
     name: str
     doh_endpoints: dict[str, str] = field(default_factory=dict)
+    dns_endpoints: list[str] = field(default_factory=list)
     aliases: list[str] = field(default_factory=list)
     download_sources: list[dict[str, str]] = field(default_factory=list)
     default_ips: list[str] = field(default_factory=list)

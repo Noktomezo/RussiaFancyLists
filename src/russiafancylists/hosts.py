@@ -3,7 +3,6 @@ import contextlib
 import ipaddress
 import json
 import re
-import ssl
 from collections import Counter
 from pathlib import Path
 
@@ -376,140 +375,17 @@ async def check_ip_active(ip: str, timeout: float = 3.5) -> bool:
     return active
 
 
-async def probe_sni_domains(
-    domains: list[str],
-    proxy_ips: list[str],
-    domain_candidates: dict[str, list[str]] | None = None,
-    timeout: float = 0.8,
-    concurrency: int = 200,
-    max_per_ip_concurrency: int = 25,
-    max_working_per_domain: int = 2,
-) -> dict[str, list[str]]:
-    """Probes TLS SNI handshake on port 443 across candidate proxy IPs for domains
-    using a targeted provenance-first pool with per-IP rate limiting and early exit.
-    Returns a dict: {domain: [working_ip_1, working_ip_2, ...]}
-    """
-    if not domains:
-        return {}
-
-    if domain_candidates is None:
-        if not proxy_ips:
-            return {}
-        domain_candidates = {dom: list(proxy_ips) for dom in domains}
-
-    total_checks = sum(len(domain_candidates.get(d, [])) for d in domains)
-    print(
-        f"Starting targeted SNI probe for {len(domains)} domains across candidate proxy IPs ({total_checks} planned checks)..."
-    )
-
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
-
-    all_unique_ips = set(proxy_ips)
-    for ips in domain_candidates.values():
-        all_unique_ips.update(ips)
-
-    global_sem = asyncio.Semaphore(concurrency)
-    ip_semaphores = {
-        ip: asyncio.Semaphore(max_per_ip_concurrency) for ip in all_unique_ips
-    }
-
-    working_map: dict[str, list[str]] = {}
-    lock = asyncio.Lock()
-
-    loop = asyncio.get_running_loop()
-    original_handler = loop.get_exception_handler()
-
-    def silent_exception_handler(current_loop, context):
-        exc = context.get("exception")
-        if isinstance(
-            exc,
-            (
-                ConnectionResetError,
-                ConnectionAbortedError,
-                TimeoutError,
-                ssl.SSLError,
-                OSError,
-            ),
-        ):
-            return
-        if original_handler:
-            original_handler(current_loop, context)
-        else:
-            current_loop.default_exception_handler(context)
-
-    loop.set_exception_handler(silent_exception_handler)
-
-    async def test_single_pair(dom: str, ip: str) -> bool:
-        sem_ip = ip_semaphores.get(ip)
-        if not sem_ip:
-            sem_ip = asyncio.Semaphore(max_per_ip_concurrency)
-            ip_semaphores[ip] = sem_ip
-        async with global_sem, sem_ip:
-            try:
-                reader, writer = await asyncio.wait_for(
-                    asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
-                    timeout=timeout,
-                )
-                writer.close()
-                with contextlib.suppress(Exception):
-                    await writer.wait_closed()
-                return True
-            except Exception:
-                return False
-
-    async def probe_single_domain(dom: str, candidates: list[str]):
-        working: list[str] = []
-        for ip in candidates:
-            if len(working) >= max_working_per_domain:
-                break
-            ok = await test_single_pair(dom, ip)
-            if ok:
-                working.append(ip)
-        if working:
-            async with lock:
-                working_map[dom] = working
-
-    try:
-        tasks = [
-            probe_single_domain(
-                d,
-                domain_candidates.get(d, proxy_ips) if domain_candidates else proxy_ips,
-            )
-            for d in domains
-        ]
-        await asyncio.gather(*tasks, return_exceptions=True)
-    finally:
-        loop.set_exception_handler(original_handler)
-
-    print(
-        f"Targeted SNI probe completed: {len(working_map)} / {len(domains)} domains actively validated on at least one proxy IP."
-    )
-    return working_map
-
-
 async def get_ru_ip_set(candidate_ips: list[str]) -> set[str]:
     """Dynamically discover Russian IP addresses to exclude them from proxy pools and crutches
-    using DNS discovery of geohide.ru and lightweight, non-rate-limited GeoIP services.
+    using lightweight, non-rate-limited GeoIP services.
     """
     ru_ips: set[str] = set()
 
-    # 1. Directly resolve geohide.ru A records (all are Russian Smart DNS servers)
-    try:
-        loop = asyncio.get_running_loop()
-        addr_info = await loop.getaddrinfo("geohide.ru", None)
-        for ai in addr_info:
-            ru_ips.add(ai[4][0])
-    except Exception as e:
-        print(f"Warning: Failed to resolve geohide.ru: {e}")
-
-    # 2. Check remaining candidate proxy IPs using GeoIP
+    # Check candidate proxy IPs using GeoIP
     ips_to_check = [
         ip
         for ip in set(candidate_ips)
-        if ip not in ru_ips
-        and not ip.startswith(("127.", "0.", "10.", "192.168.", "172."))
+        if not ip.startswith(("127.", "0.", "10.", "192.168.", "172."))
         and ":" not in ip
     ]
     if not ips_to_check:

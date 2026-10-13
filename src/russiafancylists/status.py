@@ -65,7 +65,10 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         "\n".join(status_en)
         + "\n\n"
         + (
-            "> [!NOTE]\n> Each heart represents a distinct active Smart DNS proxy IP (💚)."
+            "> [!NOTE]\n"
+            "> Each heart represents a distinct active Smart DNS proxy IP (💚).\n"
+            ">\n"
+            "> *Notice on Xbox DNS:* **Xbox DNS** is an independent community Smart DNS project providing routing for gaming platforms (Xbox Live, PSN) and various geoblocked services; it is **not affiliated with Microsoft Corporation**."
         )
     )
     ru_block = (
@@ -73,7 +76,9 @@ async def update_readme_status(hosts_temp_dir: Path, root_dir: Path):
         + "\n\n"
         + (
             "> [!NOTE]\n"
-            "> Каждое сердечко обозначает доступный IP-адрес сервера Smart DNS (💚)."
+            "> Каждое сердечко обозначает доступный IP-адрес сервера Smart DNS (💚).\n"
+            ">\n"
+            "> *Примечание по Xbox DNS:* Проект **Xbox DNS** является независимым сервисом сообщества для доступа к игровым платформам (Xbox Live, PSN) и различным геозаблокированным сервисам; он **никак не аффилирован с Microsoft Corporation**."
         )
     )
 

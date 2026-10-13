@@ -36,9 +36,8 @@
   {
     "key": "xbox-dns",
     "name": "Xbox DNS",
-    "doh_endpoints": {
-      "xbox_dns": "https://xbox-dns.ru/dns-query"
-    },
+    "doh_endpoints": {},
+    "dns_endpoints": ["111.88.96.54", "111.88.96.55"],
     "aliases": ["xbox_dns"],
     "download_sources": [],
     "primary_fallback": false

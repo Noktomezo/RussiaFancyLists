@@ -375,11 +375,124 @@ def is_candidate_proxy_ip(ip: str) -> bool:
     return not is_known_crutch_ip(ip)
 
 
+async def probe_sni_domains(
+    domains: list[str],
+    proxy_ips: list[str],
+    domain_candidates: dict[str, list[str]] | None = None,
+    timeout: float = 0.6,
+    concurrency: int = 250,
+    max_per_ip_concurrency: int = 60,
+    max_working_per_domain: int = 2,
+) -> dict[str, list[str]]:
+    """Probes TLS SNI handshake on port 443 across candidate proxy IPs for domains
+    using a targeted provenance-first pool with per-IP rate limiting and early exit.
+    Returns a dict: {domain: [working_ip_1, working_ip_2, ...]}
+    """
+    if not domains:
+        return {}
+
+    if domain_candidates is None:
+        if not proxy_ips:
+            return {}
+        domain_candidates = {dom: list(proxy_ips) for dom in domains}
+
+    total_checks = sum(len(domain_candidates.get(d, [])) for d in domains)
+    print(
+        f"Starting targeted SNI probe for {len(domains)} domains across candidate proxy IPs ({total_checks} planned checks)..."
+    )
+
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+
+    all_unique_ips = set(proxy_ips)
+    for ips in domain_candidates.values():
+        all_unique_ips.update(ips)
+
+    global_sem = asyncio.Semaphore(concurrency)
+    ip_semaphores = {
+        ip: asyncio.Semaphore(max_per_ip_concurrency) for ip in all_unique_ips
+    }
+
+    working_map: dict[str, list[str]] = {}
+    lock = asyncio.Lock()
+
+    loop = asyncio.get_running_loop()
+    original_handler = loop.get_exception_handler()
+
+    def silent_exception_handler(current_loop, context):
+        exc = context.get("exception")
+        if isinstance(
+            exc,
+            (
+                ConnectionResetError,
+                ConnectionAbortedError,
+                TimeoutError,
+                ssl.SSLError,
+                OSError,
+            ),
+        ):
+            return
+        if original_handler:
+            original_handler(current_loop, context)
+        else:
+            current_loop.default_exception_handler(context)
+
+    loop.set_exception_handler(silent_exception_handler)
+
+    async def test_single_pair(dom: str, ip: str) -> bool:
+        sem_ip = ip_semaphores.get(ip)
+        if not sem_ip:
+            sem_ip = asyncio.Semaphore(max_per_ip_concurrency)
+            ip_semaphores[ip] = sem_ip
+        async with global_sem, sem_ip:
+            try:
+                reader, writer = await asyncio.wait_for(
+                    asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
+                    timeout=timeout,
+                )
+                writer.close()
+                with contextlib.suppress(Exception):
+                    await writer.wait_closed()
+                return True
+            except Exception:
+                return False
+
+    async def probe_single_domain(dom: str, candidates: list[str]):
+        working: list[str] = []
+        for ip in candidates:
+            if len(working) >= max_working_per_domain:
+                break
+            ok = await test_single_pair(dom, ip)
+            if ok:
+                working.append(ip)
+        if working:
+            async with lock:
+                working_map[dom] = working
+
+    try:
+        tasks = [
+            probe_single_domain(
+                d,
+                domain_candidates.get(d, proxy_ips) if domain_candidates else proxy_ips,
+            )
+            for d in domains
+        ]
+        await asyncio.gather(*tasks, return_exceptions=True)
+    finally:
+        loop.set_exception_handler(original_handler)
+
+    print(
+        f"Targeted SNI probe completed: {len(working_map)} / {len(domains)} domains actively validated on at least one proxy IP."
+    )
+    return working_map
+
+
 async def discover_doh_proxy_ips(
     doh_servers: dict[str, str] | None = None,
     probe_domains: list[str] | None = None,
 ) -> dict[str, list[str]]:
-    """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH endpoints with known geoblocks.
+    """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH and DNS endpoints with known geoblocks.
 
     An IP is confirmed as a Smart DNS SNI proxy if:
     - It is returned for >= 2 distinct brands, eliminating origin IPs.
@@ -416,6 +529,22 @@ async def discover_doh_proxy_ips(
         for name, url in servers.items():
             for d in domains:
                 tasks.append(probe_endpoint(name, url, d))
+
+        # Also probe providers with raw DNS endpoints (e.g. Xbox DNS)
+        async def probe_dns_server(prov_key: str, host: str):
+            try:
+                res = await query_dns_batch(host, 53, domains, timeout=4.0)
+                for dom, ips in res.items():
+                    brand = normalize_brand_name(dom)
+                    for ip in ips:
+                        if is_candidate_proxy_ip(ip):
+                            resolver_ip_brands[prov_key][ip].add(brand)
+            except Exception:
+                pass
+
+        for p in PROVIDERS:
+            for dns_host in p.dns_endpoints:
+                tasks.append(probe_dns_server(p.key, dns_host))
 
         await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -465,46 +594,61 @@ async def resolve_geoblock_domains_per_provider(
         prov_ip_brands: dict[str, set[str]] = defaultdict(set)
         prov_ip_hits: dict[str, int] = defaultdict(int)
 
-        if not prov.doh_endpoints:
+        if not prov.doh_endpoints and not prov.dns_endpoints:
             return prov.key, {}, set()
 
-        sem = asyncio.Semaphore(40)
-        transport = httpx.AsyncHTTPTransport(
-            local_address="0.0.0.0", http2=True, verify=False
-        )
-        async with httpx.AsyncClient(
-            transport=transport,
-            timeout=3.0,
-            limits=httpx.Limits(max_connections=50, max_keepalive_connections=50),
-        ) as client:
-            alive_endpoints = {}
-            for name, url in prov.doh_endpoints.items():
-                if await check_endpoint_alive(client, url):
-                    alive_endpoints[name] = url
-                else:
-                    print(
-                        f"Notice: Endpoint '{name}' ({url}) for provider '{prov.key}' is unavailable/down. Skipping queries."
-                    )
+        if prov.doh_endpoints:
+            sem = asyncio.Semaphore(40)
+            transport = httpx.AsyncHTTPTransport(
+                local_address="0.0.0.0", http2=True, verify=False
+            )
+            async with httpx.AsyncClient(
+                transport=transport,
+                timeout=3.0,
+                limits=httpx.Limits(max_connections=50, max_keepalive_connections=50),
+            ) as client:
+                alive_endpoints = {}
+                for name, url in prov.doh_endpoints.items():
+                    if await check_endpoint_alive(client, url):
+                        alive_endpoints[name] = url
+                    else:
+                        print(
+                            f"Notice: Endpoint '{name}' ({url}) for provider '{prov.key}' is unavailable/down. Skipping queries."
+                        )
 
-            if alive_endpoints:
+                if alive_endpoints:
 
-                async def check_dom(endpoint_url: str, d: str):
-                    async with sem:
-                        ips = await query_doh_a_records(client, endpoint_url, d)
-                        if ips:
-                            brand = normalize_brand_name(d)
-                            for ip in ips:
-                                if is_candidate_proxy_ip(ip):
-                                    prov_domain_ips.setdefault(d, []).append(ip)
-                                    prov_ip_brands[ip].add(brand)
-                                    prov_ip_hits[ip] += 1
+                    async def check_dom(endpoint_url: str, d: str):
+                        async with sem:
+                            ips = await query_doh_a_records(client, endpoint_url, d)
+                            if ips:
+                                brand = normalize_brand_name(d)
+                                for ip in ips:
+                                    if is_candidate_proxy_ip(ip):
+                                        prov_domain_ips.setdefault(d, []).append(ip)
+                                        prov_ip_brands[ip].add(brand)
+                                        prov_ip_hits[ip] += 1
 
-                tasks = [
-                    check_dom(url, d)
-                    for url in alive_endpoints.values()
-                    for d in domains
-                ]
-                await asyncio.gather(*tasks, return_exceptions=True)
+                    tasks = [
+                        check_dom(url, d)
+                        for url in alive_endpoints.values()
+                        for d in domains
+                    ]
+                    await asyncio.gather(*tasks, return_exceptions=True)
+
+        if prov.dns_endpoints:
+            for dns_host in prov.dns_endpoints:
+                try:
+                    dns_res = await query_dns_batch(dns_host, 53, domains, timeout=4.0)
+                    for d, ips in dns_res.items():
+                        brand = normalize_brand_name(d)
+                        for ip in ips:
+                            if is_candidate_proxy_ip(ip):
+                                prov_domain_ips.setdefault(d, []).append(ip)
+                                prov_ip_brands[ip].add(brand)
+                                prov_ip_hits[ip] += 1
+                except Exception:
+                    pass
 
         # 1. Determine confirmed Smart DNS proxy IPs for this provider purely dynamically
         confirmed_ips: set[str] = set()
@@ -520,6 +664,28 @@ async def resolve_geoblock_domains_per_provider(
                 seen = set()
                 deduped = [ip for ip in matching if not (ip in seen or seen.add(ip))]
                 prov_supported[d] = deduped
+
+        # 3. For DNS-resolved endpoints (e.g. Xbox DNS), perform active TLS SNI validation
+        # to ensure only genuine, actively proxying domains are included.
+        if prov.dns_endpoints and prov_supported:
+            candidate_doms = list(prov_supported.keys())
+            candidate_ips = sorted(list(confirmed_ips))
+            print(
+                f"Validating {len(candidate_doms)} candidate domains for provider '{prov.name}' via active TLS SNI handshakes..."
+            )
+            validated_map = await probe_sni_domains(
+                candidate_doms,
+                candidate_ips,
+                domain_candidates=prov_supported,
+                timeout=0.6,
+                concurrency=250,
+                max_per_ip_concurrency=60,
+                max_working_per_domain=2,
+            )
+            prov_supported = validated_map
+            print(
+                f"Provider '{prov.name}' SNI validation: {len(prov_supported)} / {len(candidate_doms)} domains actively validated."
+            )
 
         return prov.key, prov_supported, confirmed_ips
 
