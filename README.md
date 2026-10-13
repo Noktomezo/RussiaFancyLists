@@ -630,7 +630,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 > **💡 Recommendation:**<br>
 > • **For most users**, **`smart.hosts`** (or `smart.adguard.txt`) is more than sufficient — SNI-probed proxy endpoints route targeted geoblocked services cleanly, fast, and with zero overhead.<br>
 > • **Hybrid setup**: you can combine **WARP / Proton + `smart.hosts`** — they work seamlessly together, allowing Smart DNS to intercept problematic domains that the public VPN struggles with.<br>
-> • **Ultimate setup**: for guaranteed 100% stability, a clean dedicated IP, and zero ASN restrictions, setting up a **self-hosted VPN on your own VPS** (VLESS / Shadowsocks / WireGuard) remains the gold standard.
+> • **Ultimate setup**: for guaranteed 100% stability, a clean dedicated IP, and zero ASN restrictions, setting up a **self-hosted VPN on your own VPS** (VLESS, Hysteria 2, AmneziaWG, Mieru, NaïveProxy) remains the gold standard.
 
 ## ⚡ Smart DNS Status
 <!-- STATUS_START -->
