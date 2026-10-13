@@ -1,17 +1,11 @@
 import asyncio
 import base64
-import bisect
-import contextlib
-import functools
-import ipaddress
-import socket
-import ssl
-import struct
 from collections import defaultdict
 from pathlib import Path
 
 import httpx
 
+from russiafancylists.cdn import is_cdn_ip, load_cdn_intervals
 from russiafancylists.config.providers import (
     CANONICAL_PROVIDER_KEYS,
     DOH_PROBE_DOMAINS,
@@ -20,66 +14,35 @@ from russiafancylists.config.providers import (
     SMART_DNS_DOH_SERVERS,
     SmartDNSProvider,
 )
+from russiafancylists.dns import (
+    build_dns_wire_query,
+    parse_dns_wire_a_records,
+    query_dns_batch,
+    query_tcp_dns_batch,
+    query_udp_dns_batch,
+)
+from russiafancylists.probe import (
+    check_proxy_canary,
+    is_candidate_proxy_ip,
+    probe_sni_domains,
+)
 
-
-@functools.lru_cache(maxsize=4096)
-def build_dns_wire_query(domain: str, query_id: int = 0x1234) -> bytes:
-    """Build a standard RFC 1035 DNS wireformat A-record query in pure Python."""
-    header = struct.pack("!HHHHHH", query_id, 0x0100, 1, 0, 0, 0)
-    qname = b""
-    for part in domain.strip(".").split("."):
-        enc = part.encode("ascii", errors="ignore")
-        qname += struct.pack("!B", len(enc)) + enc
-    qname += b"\x00"
-    question = qname + struct.pack("!HH", 1, 1)
-    return header + question
-
-
-def parse_dns_wire_a_records(data: bytes) -> list[str]:
-    """Extract IPv4 addresses (A records) from an RFC 1035 DNS wireformat response."""
-    if len(data) < 12:
-        return []
-    _, _, qdcount, ancount, _, _ = struct.unpack("!HHHHHH", data[:12])
-    offset = 12
-
-    # Skip questions section
-    for _ in range(qdcount):
-        while offset < len(data):
-            length = data[offset]
-            if length == 0:
-                offset += 1
-                break
-            if length >= 192:  # compression pointer
-                offset += 2
-                break
-            offset += 1 + length
-        offset += 4  # skip QTYPE and QCLASS
-
-    ips = []
-    # Parse answers section
-    for _ in range(ancount):
-        if offset >= len(data):
-            break
-        while offset < len(data):
-            length = data[offset]
-            if length == 0:
-                offset += 1
-                break
-            if length >= 192:  # compression pointer
-                offset += 2
-                break
-            offset += 1 + length
-        if offset + 10 > len(data):
-            break
-        type_, _, _, rdlength = struct.unpack("!HHIH", data[offset : offset + 10])
-        offset += 10
-        if offset + rdlength > len(data):
-            break
-        if type_ == 1 and rdlength == 4:
-            with contextlib.suppress(OSError):
-                ips.append(socket.inet_ntoa(data[offset : offset + 4]))
-        offset += rdlength
-    return ips
+__all__ = [
+    "build_dns_wire_query",
+    "check_endpoint_alive",
+    "check_proxy_canary",
+    "discover_doh_proxy_ips",
+    "is_candidate_proxy_ip",
+    "is_cdn_ip",
+    "load_cdn_intervals",
+    "parse_dns_wire_a_records",
+    "probe_sni_domains",
+    "query_dns_batch",
+    "query_doh_a_records",
+    "query_tcp_dns_batch",
+    "query_udp_dns_batch",
+    "resolve_geoblock_domains_per_provider",
+]
 
 
 async def check_endpoint_alive(client: httpx.AsyncClient, url: str) -> bool:
@@ -146,393 +109,6 @@ async def query_doh_a_records(
     except Exception:
         pass
     return []
-
-
-async def query_tcp_dns_batch(
-    host: str,
-    port: int,
-    domains: list[str],
-    timeout: float = 4.0,
-    chunk_size: int = 35,
-    concurrency: int = 15,
-    server_hostname: str | None = None,
-) -> dict[str, list[str]]:
-    """Resolve a batch of domains asynchronously over TCP DNS (RFC 1035 2-byte prefix)
-    or DoT (port 853 with TLS) chunked across parallel TCP connections. Works 100% reliably
-    across cloud CI (Azure, GitHub Actions) where outbound UDP 53 is restricted.
-    """
-    results: dict[str, list[str]] = {}
-    if not domains:
-        return results
-
-    ssl_ctx = None
-    if port == 853:
-        ssl_ctx = ssl.create_default_context()
-        ssl_ctx.check_hostname = False
-        ssl_ctx.verify_mode = ssl.CERT_NONE
-
-    sem = asyncio.Semaphore(concurrency)
-
-    async def query_chunk(chunk: list[str], start_idx: int):
-        async with sem:
-            try:
-                reader, writer = await asyncio.wait_for(
-                    asyncio.open_connection(
-                        host,
-                        port,
-                        ssl=ssl_ctx,
-                        server_hostname=server_hostname or host
-                        if port == 853
-                        else None,
-                    ),
-                    timeout=timeout,
-                )
-                for idx, d in enumerate(chunk):
-                    qid = (start_idx + idx) % 65535
-                    wire = build_dns_wire_query(d, query_id=qid)
-                    writer.write(struct.pack("!H", len(wire)) + wire)
-                await writer.drain()
-
-                for d in chunk:
-                    len_bytes = await asyncio.wait_for(
-                        reader.readexactly(2), timeout=timeout
-                    )
-                    rlen = struct.unpack("!H", len_bytes)[0]
-                    rwire = await asyncio.wait_for(
-                        reader.readexactly(rlen), timeout=timeout
-                    )
-                    ips = parse_dns_wire_a_records(rwire)
-                    if ips:
-                        results[d] = ips
-                writer.close()
-                with contextlib.suppress(Exception):
-                    await writer.wait_closed()
-            except Exception:
-                pass
-
-    chunks = [domains[i : i + chunk_size] for i in range(0, len(domains), chunk_size)]
-    tasks = [query_chunk(chunk, i * chunk_size) for i, chunk in enumerate(chunks)]
-    await asyncio.gather(*tasks, return_exceptions=True)
-    return results
-
-
-async def query_udp_dns_batch(
-    host: str, port: int, domains: list[str], timeout: float = 3.0
-) -> dict[str, list[str]]:
-    """Resolve a batch of domains asynchronously using UDP DNS transactions."""
-    loop = asyncio.get_running_loop()
-    results: dict[str, list[str]] = {}
-    if not domains:
-        return results
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.setblocking(False)
-
-    try:
-        # Send all queries with unique query IDs
-        domain_by_id = {}
-        for idx, dom in enumerate(domains):
-            qid = idx % 65535
-            domain_by_id[qid] = dom
-            wire = build_dns_wire_query(dom, query_id=qid)
-            s.sendto(wire, (host, port))
-
-        # Collect responses
-        pending = len(domain_by_id)
-        start_time = loop.time()
-        while pending > 0 and (loop.time() - start_time) < timeout:
-            remaining = timeout - (loop.time() - start_time)
-            if remaining <= 0:
-                break
-            try:
-                data = await asyncio.wait_for(
-                    loop.sock_recv(s, 2048), timeout=remaining
-                )
-                if len(data) >= 2:
-                    qid = struct.unpack("!H", data[:2])[0]
-                    if qid in domain_by_id:
-                        dom = domain_by_id.pop(qid)
-                        results[dom] = parse_dns_wire_a_records(data)
-                        pending -= 1
-            except (TimeoutError, OSError):
-                break
-    except Exception:
-        pass
-    finally:
-        s.close()
-
-    return results
-
-
-async def query_dns_batch(
-    host: str, port: int, domains: list[str], timeout: float = 4.0
-) -> dict[str, list[str]]:
-    """Query DNS using TCP first (immune to cloud UDP-53 firewall blocks), falling back to UDP."""
-    res = await query_tcp_dns_batch(host, port, domains, timeout=timeout)
-    if not res:
-        res = await query_udp_dns_batch(host, port, domains, timeout=timeout)
-    return res
-
-
-_CDN_INTERVAL_STARTS: list[int] = []
-_CDN_INTERVAL_ENDS: list[int] = []
-_CDN_INITIALIZED: bool = False
-
-
-def load_cdn_intervals(cdn_file_path: Path | None = None):
-    """Load and merge IPv4 CIDR ranges from cdn.lst into disjoint integer intervals for O(log N) lookup."""
-    global _CDN_INTERVAL_STARTS, _CDN_INTERVAL_ENDS, _CDN_INITIALIZED
-
-    paths_to_try = []
-    if cdn_file_path:
-        paths_to_try.append(cdn_file_path)
-    paths_to_try.extend(
-        [
-            Path("lists/blacklist/ipsets/cdn.lst"),
-            Path("temp/cdn/cdn-base.lst"),
-        ]
-    )
-
-    intervals = []
-    loaded = False
-    for p in paths_to_try:
-        if p.exists() and p.stat().st_size > 0:
-            with open(p, encoding="utf-8", errors="ignore") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    try:
-                        net = ipaddress.ip_network(line, strict=False)
-                        if net.version == 4:
-                            intervals.append(
-                                (int(net.network_address), int(net.broadcast_address))
-                            )
-                    except ValueError:
-                        pass
-            if intervals:
-                loaded = True
-                break
-
-    if not loaded:
-        _CDN_INTERVAL_STARTS, _CDN_INTERVAL_ENDS = [], []
-        _CDN_INITIALIZED = True
-        return
-
-    intervals.sort()
-    merged = []
-    for s, e in intervals:
-        if not merged:
-            merged.append([s, e])
-        elif s <= merged[-1][1] + 1:
-            merged[-1][1] = max(merged[-1][1], e)
-        else:
-            merged.append([s, e])
-
-    _CDN_INTERVAL_STARTS = [x[0] for x in merged]
-    _CDN_INTERVAL_ENDS = [x[1] for x in merged]
-    _CDN_INITIALIZED = True
-
-
-def is_cdn_ip(ip_str: str) -> bool:
-    """Check if an IPv4 address belongs to any known CDN using binary search over disjoint intervals."""
-    global _CDN_INITIALIZED
-    if not _CDN_INITIALIZED:
-        load_cdn_intervals()
-
-    if not _CDN_INTERVAL_STARTS:
-        return False
-
-    try:
-        val = int(ipaddress.IPv4Address(ip_str))
-    except (ValueError, ipaddress.AddressValueError):
-        return False
-
-    idx = bisect.bisect_right(_CDN_INTERVAL_STARTS, val) - 1
-    return bool(idx >= 0 and val <= _CDN_INTERVAL_ENDS[idx])
-
-
-def is_candidate_proxy_ip(ip: str, seed_ips: set[str] | None = None) -> bool:
-    """Filter out bogons, loopbacks, private networks, CDNs, and known service crutches.
-    If ip is already in verified seed_ips, it bypasses CDN exclusion.
-    """
-    if not ip or ":" in ip:
-        return False
-    if ip.startswith(
-        ("127.", "0.", "10.", "192.168.", "169.254.", "224.", "240.", "255.")
-    ):
-        return False
-    if ip.startswith("172."):
-        parts = ip.split(".")
-        if len(parts) >= 2 and parts[1].isdigit():
-            second_octet = int(parts[1])
-            if 16 <= second_octet <= 31:
-                return False
-
-    if seed_ips and ip in seed_ips:
-        return True
-
-    if is_cdn_ip(ip):
-        return False
-
-    from russiafancylists.hosts import is_known_crutch_ip
-
-    return not is_known_crutch_ip(ip)
-
-
-async def check_proxy_canary(
-    ip: str,
-    canary_domains: list[str] | None = None,
-    timeout: float = 2.5,
-) -> bool:
-    """Verifies that the proxy endpoint is reachable and not blocked at the datacenter/network level.
-    Sends a fast HTTP HEAD request over TLS; any valid HTTP response (including 403 WAF / 301 / 404)
-    indicates the origin was reached via this proxy.
-    """
-    domains = canary_domains or [
-        "chatgpt.com",
-        "xsts.auth.xboxlive.com",
-        "canva.com",
-        "claude.ai",
-        "notion.so",
-    ]
-    ctx = ssl.create_default_context()
-    for dom in domains:
-        try:
-            reader, writer = await asyncio.wait_for(
-                asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
-                timeout=timeout,
-            )
-            req = (
-                f"HEAD / HTTP/1.1\r\n"
-                f"Host: {dom}\r\n"
-                f"User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) RussiaFancyLists-Canary/1.0\r\n"
-                f"Connection: close\r\n\r\n"
-            ).encode("latin1")
-            writer.write(req)
-            await writer.drain()
-            data = await asyncio.wait_for(reader.read(512), timeout=timeout)
-            writer.close()
-            with contextlib.suppress(Exception):
-                await asyncio.wait_for(writer.wait_closed(), timeout=0.1)
-            if data.startswith(b"HTTP/1.") or data.startswith(b"HTTP/2"):
-                return True
-        except Exception:
-            continue
-    return False
-
-
-async def probe_sni_domains(
-    domains: list[str],
-    proxy_ips: list[str],
-    domain_candidates: dict[str, list[str]] | None = None,
-    timeout: float = 0.8,
-    concurrency: int = 250,
-    max_per_ip_concurrency: int = 60,
-    max_working_per_domain: int = 2,
-) -> dict[str, list[str]]:
-    """Probes TLS SNI handshake on port 443 across candidate proxy IPs for domains
-    using strict certificate verification (ssl.create_default_context) to ensure
-    only genuine reverse proxies delivering valid origin certificates are accepted.
-    Returns a dict: {domain: [working_ip_1, working_ip_2, ...]}
-    """
-    if not domains:
-        return {}
-
-    if domain_candidates is None:
-        if not proxy_ips:
-            return {}
-        domain_candidates = {dom: list(proxy_ips) for dom in domains}
-
-    total_checks = sum(len(domain_candidates.get(d, [])) for d in domains)
-    print(
-        f"Starting targeted SNI probe for {len(domains)} domains across candidate proxy IPs ({total_checks} planned checks)..."
-    )
-
-    ctx = ssl.create_default_context()
-
-    all_unique_ips = set(proxy_ips)
-    for ips in domain_candidates.values():
-        all_unique_ips.update(ips)
-
-    global_sem = asyncio.Semaphore(concurrency)
-    ip_semaphores = {
-        ip: asyncio.Semaphore(max_per_ip_concurrency) for ip in all_unique_ips
-    }
-
-    working_map: dict[str, list[str]] = {}
-    lock = asyncio.Lock()
-
-    loop = asyncio.get_running_loop()
-    original_handler = loop.get_exception_handler()
-
-    def silent_exception_handler(current_loop, context):
-        exc = context.get("exception")
-        if isinstance(
-            exc,
-            (
-                ConnectionResetError,
-                ConnectionAbortedError,
-                TimeoutError,
-                ssl.SSLCertVerificationError,
-                ssl.SSLError,
-                OSError,
-            ),
-        ):
-            return
-        if original_handler:
-            original_handler(current_loop, context)
-        else:
-            current_loop.default_exception_handler(context)
-
-    loop.set_exception_handler(silent_exception_handler)
-
-    async def test_single_pair(dom: str, ip: str) -> bool:
-        sem_ip = ip_semaphores.get(ip)
-        if not sem_ip:
-            sem_ip = asyncio.Semaphore(max_per_ip_concurrency)
-            ip_semaphores[ip] = sem_ip
-        async with global_sem, sem_ip:
-            try:
-                reader, writer = await asyncio.wait_for(
-                    asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
-                    timeout=timeout,
-                )
-                writer.close()
-                with contextlib.suppress(Exception):
-                    await asyncio.wait_for(writer.wait_closed(), timeout=0.1)
-                return True
-            except Exception:
-                return False
-
-    async def probe_single_domain(dom: str, candidates: list[str]):
-        working: list[str] = []
-        for ip in candidates:
-            if len(working) >= max_working_per_domain:
-                break
-            ok = await test_single_pair(dom, ip)
-            if ok:
-                working.append(ip)
-        if working:
-            async with lock:
-                working_map[dom] = working
-
-    try:
-        tasks = [
-            probe_single_domain(
-                d,
-                domain_candidates.get(d, proxy_ips) if domain_candidates else proxy_ips,
-            )
-            for d in domains
-        ]
-        await asyncio.gather(*tasks, return_exceptions=True)
-    finally:
-        loop.set_exception_handler(original_handler)
-
-    print(
-        f"Targeted SNI probe completed: {len(working_map)} / {len(domains)} domains actively validated on at least one proxy IP."
-    )
-    return working_map
 
 
 async def discover_doh_proxy_ips(
