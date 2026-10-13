@@ -31,6 +31,10 @@ This file contains global rules, workflow requirements, and architectural guidel
   ```
 - All checks must pass cleanly.
 
+### 4. File Size Limit (< 500 LOC)
+- **Rule**: All Python source code files (`.py`) must be strictly under 500 lines of code (`< 500 LOC`).
+- Modules approaching or exceeding 500 LOC must be cleanly refactored and modularized into focused, cohesive submodules (e.g., separating protocol queries, probes, caching, formatting, and file generation).
+
 ---
 
 ## 📐 Hosts Architecture & Parity Constraints
