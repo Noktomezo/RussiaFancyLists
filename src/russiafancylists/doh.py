@@ -352,8 +352,10 @@ def is_cdn_ip(ip_str: str) -> bool:
     return bool(idx >= 0 and val <= _CDN_INTERVAL_ENDS[idx])
 
 
-def is_candidate_proxy_ip(ip: str) -> bool:
-    """Filter out bogons, loopbacks, private networks, CDNs, and known service crutches."""
+def is_candidate_proxy_ip(ip: str, seed_ips: set[str] | None = None) -> bool:
+    """Filter out bogons, loopbacks, private networks, CDNs, and known service crutches.
+    If ip is already in verified seed_ips, it bypasses CDN exclusion.
+    """
     if not ip or ":" in ip:
         return False
     if ip.startswith(
@@ -367,6 +369,9 @@ def is_candidate_proxy_ip(ip: str) -> bool:
             if 16 <= second_octet <= 31:
                 return False
 
+    if seed_ips and ip in seed_ips:
+        return True
+
     if is_cdn_ip(ip):
         return False
 
@@ -375,17 +380,60 @@ def is_candidate_proxy_ip(ip: str) -> bool:
     return not is_known_crutch_ip(ip)
 
 
+async def check_proxy_canary(
+    ip: str,
+    canary_domains: list[str] | None = None,
+    timeout: float = 2.5,
+) -> bool:
+    """Verifies that the proxy endpoint is reachable and not blocked at the datacenter/network level.
+    Sends a fast HTTP HEAD request over TLS; any valid HTTP response (including 403 WAF / 301 / 404)
+    indicates the origin was reached via this proxy.
+    """
+    domains = canary_domains or [
+        "chatgpt.com",
+        "xsts.auth.xboxlive.com",
+        "canva.com",
+        "claude.ai",
+        "notion.so",
+    ]
+    ctx = ssl.create_default_context()
+    for dom in domains:
+        try:
+            reader, writer = await asyncio.wait_for(
+                asyncio.open_connection(ip, 443, ssl=ctx, server_hostname=dom),
+                timeout=timeout,
+            )
+            req = (
+                f"HEAD / HTTP/1.1\r\n"
+                f"Host: {dom}\r\n"
+                f"User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) RussiaFancyLists-Canary/1.0\r\n"
+                f"Connection: close\r\n\r\n"
+            ).encode("latin1")
+            writer.write(req)
+            await writer.drain()
+            data = await asyncio.wait_for(reader.read(512), timeout=timeout)
+            writer.close()
+            with contextlib.suppress(Exception):
+                await asyncio.wait_for(writer.wait_closed(), timeout=0.1)
+            if data.startswith(b"HTTP/1.") or data.startswith(b"HTTP/2"):
+                return True
+        except Exception:
+            continue
+    return False
+
+
 async def probe_sni_domains(
     domains: list[str],
     proxy_ips: list[str],
     domain_candidates: dict[str, list[str]] | None = None,
-    timeout: float = 0.6,
+    timeout: float = 0.8,
     concurrency: int = 250,
     max_per_ip_concurrency: int = 60,
     max_working_per_domain: int = 2,
 ) -> dict[str, list[str]]:
     """Probes TLS SNI handshake on port 443 across candidate proxy IPs for domains
-    using a targeted provenance-first pool with per-IP rate limiting and early exit.
+    using strict certificate verification (ssl.create_default_context) to ensure
+    only genuine reverse proxies delivering valid origin certificates are accepted.
     Returns a dict: {domain: [working_ip_1, working_ip_2, ...]}
     """
     if not domains:
@@ -402,8 +450,6 @@ async def probe_sni_domains(
     )
 
     ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
 
     all_unique_ips = set(proxy_ips)
     for ips in domain_candidates.values():
@@ -428,6 +474,7 @@ async def probe_sni_domains(
                 ConnectionResetError,
                 ConnectionAbortedError,
                 TimeoutError,
+                ssl.SSLCertVerificationError,
                 ssl.SSLError,
                 OSError,
             ),
@@ -453,7 +500,7 @@ async def probe_sni_domains(
                 )
                 writer.close()
                 with contextlib.suppress(Exception):
-                    await writer.wait_closed()
+                    await asyncio.wait_for(writer.wait_closed(), timeout=0.1)
                 return True
             except Exception:
                 return False
@@ -493,10 +540,13 @@ async def discover_doh_proxy_ips(
     probe_domains: list[str] | None = None,
 ) -> dict[str, list[str]]:
     """Harvest confirmed Smart DNS SNI proxy IPs by probing DoH and DNS endpoints with known geoblocks.
+    Uses a saturation loop (repeating passes until 2 consecutive passes yield no new IPs)
+    and verifies active origin connectivity via an HTTP canary check.
 
     An IP is confirmed as a Smart DNS SNI proxy if:
     - It is returned for >= 2 distinct brands, eliminating origin IPs.
     - Or for Xbox DNS, if it is returned for xsts.auth.xboxlive.com.
+    - And it passes an HTTP canary check confirming origin reachability.
     """
     from russiafancylists.hosts import normalize_brand_name
 
@@ -506,7 +556,7 @@ async def discover_doh_proxy_ips(
     resolver_ip_brands: dict[str, dict[str, set[str]]] = defaultdict(
         lambda: defaultdict(set)
     )
-    sem = asyncio.Semaphore(25)
+    sem = asyncio.Semaphore(35)
 
     transport = httpx.AsyncHTTPTransport(
         local_address="0.0.0.0", http2=True, verify=False
@@ -514,7 +564,7 @@ async def discover_doh_proxy_ips(
     async with httpx.AsyncClient(
         transport=transport,
         timeout=5.0,
-        limits=httpx.Limits(max_connections=35, max_keepalive_connections=35),
+        limits=httpx.Limits(max_connections=40, max_keepalive_connections=40),
     ) as client:
 
         async def probe_endpoint(name: str, url: str, domain: str):
@@ -525,15 +575,9 @@ async def discover_doh_proxy_ips(
                     if is_candidate_proxy_ip(ip):
                         resolver_ip_brands[name][ip].add(brand)
 
-        tasks = []
-        for name, url in servers.items():
-            for d in domains:
-                tasks.append(probe_endpoint(name, url, d))
-
-        # Also probe providers with raw DNS endpoints (e.g. Xbox DNS)
-        async def probe_dns_server(prov_key: str, host: str):
+        async def probe_dns_server(prov_key: str, host: str, doms: list[str]):
             try:
-                res = await query_dns_batch(host, 53, domains, timeout=4.0)
+                res = await query_dns_batch(host, 53, doms, timeout=4.0)
                 for dom, ips in res.items():
                     brand = normalize_brand_name(dom)
                     for ip in ips:
@@ -542,28 +586,69 @@ async def discover_doh_proxy_ips(
             except Exception:
                 pass
 
-        for p in PROVIDERS:
-            for dns_host in p.dns_endpoints:
-                tasks.append(probe_dns_server(p.key, dns_host))
+        # Saturation loop: up to 4 passes, stopping if 2 consecutive passes yield 0 new IPs
+        consecutive_no_growth = 0
+        known_ips: set[str] = set()
+        max_passes = 4
 
-        await asyncio.gather(*tasks, return_exceptions=True)
+        for pass_num in range(1, max_passes + 1):
+            tasks = []
+            for name, url in servers.items():
+                for d in domains:
+                    tasks.append(probe_endpoint(name, url, d))
 
-    confirmed_proxies: dict[str, list[str]] = {}
+            for p in PROVIDERS:
+                for dns_host in p.dns_endpoints:
+                    tasks.append(probe_dns_server(p.key, dns_host, domains))
+
+            await asyncio.gather(*tasks, return_exceptions=True)
+
+            current_ips = {
+                ip for ip_map in resolver_ip_brands.values() for ip in ip_map
+            }
+            new_ips = current_ips - known_ips
+            if not new_ips:
+                consecutive_no_growth += 1
+            else:
+                consecutive_no_growth = 0
+                known_ips.update(new_ips)
+
+            if consecutive_no_growth >= 2:
+                break
+            if pass_num < max_passes:
+                await asyncio.sleep(0.25)
+
+    candidate_proxies: dict[str, list[str]] = {}
     for name, ip_map in resolver_ip_brands.items():
         canonical_name = DOH_TO_CANONICAL.get(name, name)
         for ip, brands in ip_map.items():
             is_valid = len(brands) >= 2 or (
-                canonical_name == "xbox-dns" and "xbox" in brands
+                canonical_name == "xbox-dns"
+                and ("xbox" in brands or "playstation" in brands)
             )
             if is_valid:
-                confirmed_proxies.setdefault(canonical_name, []).append(ip)
+                candidate_proxies.setdefault(canonical_name, []).append(ip)
 
-    for k in confirmed_proxies:
-        confirmed_proxies[k] = sorted(list(set(confirmed_proxies[k])))
+    # Validate proxy IPs with HTTP canary check to eliminate unreachable/blocked endpoints
+    canary_ip_list = list({ip for ips in candidate_proxies.values() for ip in ips})
+    canary_results: dict[str, bool] = {}
+
+    async def run_canary(ip: str):
+        canary_results[ip] = await check_proxy_canary(ip)
+
+    await asyncio.gather(
+        *(run_canary(ip) for ip in canary_ip_list), return_exceptions=True
+    )
+
+    confirmed_proxies: dict[str, list[str]] = {}
+    for k, ips in candidate_proxies.items():
+        verified = [ip for ip in ips if canary_results.get(ip, False)]
+        if verified:
+            confirmed_proxies[k] = sorted(list(set(verified)))
 
     total_unique = len({ip for ips in confirmed_proxies.values() for ip in ips})
     print(
-        f"Harvested {total_unique} verified multi-brand Smart DNS proxy IPs across {len(confirmed_proxies)} providers."
+        f"Harvested {total_unique} verified multi-brand Smart DNS proxy IPs across {len(confirmed_proxies)} providers (saturation & canary verified)."
     )
     return confirmed_proxies
 
@@ -577,8 +662,8 @@ async def resolve_geoblock_domains_per_provider(
     """Single-pass resolution of all candidate geoblock domains across all providers.
 
     Concurrently queries all candidate domains via DoH with moderate pacing (Semaphore 40),
-    dynamically discovers multi-brand Smart DNS proxy IPs (>= 4 distinct brands or >= 3 with high hits),
-    combines with pre-harvested proxy IPs from probe domains, and returns:
+    dynamically discovers multi-brand Smart DNS proxy IPs, validates reachability via TLS SNI,
+    audits candidate proxy IPs, and returns:
     - (results, detected_proxy_ips)
     """
     from russiafancylists.hosts import normalize_brand_name
@@ -656,6 +741,20 @@ async def resolve_geoblock_domains_per_provider(
             if is_candidate_proxy_ip(ip):
                 confirmed_ips.add(ip)
 
+        # Audit: Report any candidate IPs with multiple brands outside confirmed pool
+        unconfirmed_multi_brand = {
+            ip: brands
+            for ip, brands in prov_ip_brands.items()
+            if ip not in confirmed_ips and len(brands) >= 3
+        }
+        if unconfirmed_multi_brand:
+            for u_ip, u_brands in sorted(
+                unconfirmed_multi_brand.items(), key=lambda x: -len(x[1])
+            ):
+                print(
+                    f"Audit notice [{prov.name}]: Potential unseeded proxy IP '{u_ip}' seen across {len(u_brands)} brands: {sorted(list(u_brands))[:5]}"
+                )
+
         # 2. Extract supported domains matching confirmed proxy IPs
         prov_supported: dict[str, list[str]] = {}
         for d, ips in prov_domain_ips.items():
@@ -677,7 +776,7 @@ async def resolve_geoblock_domains_per_provider(
                 candidate_doms,
                 candidate_ips,
                 domain_candidates=prov_supported,
-                timeout=0.6,
+                timeout=0.8,
                 concurrency=250,
                 max_per_ip_concurrency=60,
                 max_working_per_domain=2,

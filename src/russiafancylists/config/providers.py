@@ -222,10 +222,24 @@ DOH_PROBE_DOMAINS = [
     "perplexity.ai",
     # Gaming & Consoles
     "xsts.auth.xboxlive.com",
+    "xboxlive.com",
+    "playstation.net",
+    "ea.com",
+    "blizzard.com",
+    "battle.net",
     # Media & Fitness
     "deezer.com",
     "tidal.com",
+    "spotify.com",
+    "soundcloud.com",
     "strava.com",
+    "rutracker.org",
+    # Work, Design & Tech
+    "canva.com",
+    "notion.so",
+    "intel.com",
+    "dell.com",
+    "jetbrains.com",
     # Additional AI Geoblocks
     "cursor.com",
     "sora.com",
