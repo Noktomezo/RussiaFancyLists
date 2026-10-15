@@ -11,7 +11,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 adobe.io www.adobe.io
 143.20.64.55 affinity.studio www.affinity.studio
 143.20.64.55 ai.com
-143.20.64.55 azwindows.ipv6.microsoft.com.akadns.net
+31.58.216.201 azwindows.ipv6.microsoft.com.akadns.net
 143.20.64.55 amd.com login.amd.com www.amd.com
 143.20.64.55 analog.com www.analog.com
 143.20.64.55 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
@@ -22,7 +22,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 arrow.com www.arrow.com
 143.20.64.55 atlassian.com marketplace.atlassian.com www.atlassian.com
 31.58.216.201 audacy.com www.audacy.com
-143.20.64.55 ws.audioscrobbler.com
+31.58.216.201 ws.audioscrobbler.com
 143.20.64.55 cdn.auth0.com
 143.20.64.55 autocad.com www.autocad.com
 143.20.64.55 accounts.autodesk.com autodesk.ae autodesk.be autodesk.com autodesk.eu autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.ae www.autodesk.be www.autodesk.com www.autodesk.eu www.autodesk.net
@@ -51,7 +51,8 @@ ff02::2 ip6-allrouters
 143.20.64.55 api.cerebras.ai cerebras.ai www.cerebras.ai
 143.20.64.55 www.cgtrader.com
 143.20.64.55 accounts.chaos.com chaos.com forums.chaos.com my.chaos.com ssooauth.chaos.com try.chaos.com www.chaos.com
-143.20.64.55 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
+143.20.64.55 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com www.chatgpt.com
+31.58.216.201 webrtc.chatgpt.com
 31.58.216.201 assets-configurator.chess.com chess.com www.chess.com
 143.20.64.55 cici.com www.cici.com
 31.58.216.201 clashofclans.com game-assets.clashofclans.com gamea.clashofclans.com
@@ -72,7 +73,6 @@ ff02::2 ip6-allrouters
 143.20.64.55 deepmind.com deepmind.google
 31.58.216.201 deezer.com payment.deezer.com www.deezer.com
 143.20.64.55 dds.dell.com dell.com dl.dell.com i.dell.com nexus.dell.com www.dell.com
-143.20.64.55 afcs.dellcdn.com
 143.20.64.55 designify.com www.designify.com
 143.20.64.55 digikey.com www.digikey.com
 143.20.64.55 digikeyassets.com www.digikeyassets.com
@@ -100,8 +100,10 @@ ff02::2 ip6-allrouters
 143.20.64.55 gemini.google
 143.20.64.55 generativeai.google
 143.20.64.55 genspark.ai www.genspark.ai
-143.20.64.55 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com www.flow.google.com
-143.20.64.55 aicode.googleapis.com aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+143.20.64.55 ai.google.dev apis.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com www.flow.google.com
+31.58.216.201 aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com bard.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+143.20.64.55 aicode.googleapis.com aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+31.58.216.201 generativelanguage.googleapis.com
 143.20.64.55 assets.grok.com grok.com www.grok.com
 143.20.64.55 api.groq.com console.groq.com
 143.20.64.55 guidedhacking.com www.guidedhacking.com
@@ -109,13 +111,13 @@ ff02::2 ip6-allrouters
 143.20.64.55 api.home-connect.com
 143.20.64.55 hume.ai www.hume.ai
 143.20.64.55 iaai.com
-143.20.64.55 ikea.com www.ikea.com
+31.58.216.201 ikea.com www.ikea.com
 31.58.216.201 api.imgur.com
 143.20.64.55 inceptionlabs.ai www.inceptionlabs.ai
 143.20.64.55 indeed.com www.indeed.com
 143.20.64.55 intel.de intel.se www.intel.com www.intel.de www.intel.se
 143.20.64.55 downloads.intercomcdn.com
-143.20.64.55 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.space plugins.jetbrains.com www.jetbrains.com www.jetbrains.space youtrack.jetbrains.com
+143.20.64.55 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com jetbrains.ai jetbrains.space plugins.jetbrains.com www.jetbrains.com www.jetbrains.space youtrack.jetbrains.com
 143.20.64.55 jules.google
 143.20.64.55 kaleido.ai www.kaleido.ai
 143.20.64.55 labs.google
@@ -137,7 +139,8 @@ ff02::2 ip6-allrouters
 31.58.216.201 aidemos.meta.com meta.ai meta.com www.meta.ai
 143.20.64.55 microcenter.com www.microcenter.com
 143.20.64.55 microchip.com www.microchip.com
-143.20.64.55 copilot.microsoft.com designer.microsoft.com win1910.ipv6.microsoft.com
+143.20.64.55 copilot.microsoft.com designer.microsoft.com
+31.58.216.201 win1910.ipv6.microsoft.com
 143.20.64.55 minicircuits.com www.minicircuits.com
 143.20.64.55 dr.miromind.ai
 143.20.64.55 misterfpga.org www.misterfpga.org
@@ -157,13 +160,14 @@ ff02::2 ip6-allrouters
 143.20.64.55 notebooklm.google
 143.20.64.55 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 143.20.64.55 build.nvidia.com developer.nvidia.com ngc.nvidia.com
-143.20.64.55 cdn.oaistatic.com oaistatic.com www.oaistatic.com
-143.20.64.55 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+31.58.216.201 cdn.oaistatic.com oaistatic.com www.oaistatic.com
+31.58.216.201 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
 143.20.64.55 octanorm.com www.octanorm.com
 143.20.64.55 ecs.office.com
 143.20.64.55 geolocation.onetrust.com
 143.20.64.55 opal.google
-143.20.64.55 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+143.20.64.55 api.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+31.58.216.201 android.chat.openai.com auth.openai.com auth0.openai.com ios.chat.openai.com
 31.58.216.201 tracker.openbittorrent.com
 143.20.64.55 opencode.ai www.opencode.ai
 143.20.64.55 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai

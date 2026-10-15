@@ -1,0 +1,59 @@
+name: Sync Cloudflare Zero Trust DNS
+
+on:
+  schedule:
+    # Run every 3 hours at :30 (30 minutes after main list update at :00)
+    - cron: '30 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Override mode'
+        required: true
+        default: 'multi-ip'
+        type: choice
+        options:
+          - multi-ip
+          - single-ip
+      dry_run:
+        description: 'Perform dry run without modifying Cloudflare configuration'
+        required: false
+        default: false
+        type: boolean
+  workflow_run:
+    workflows: ["Automated List Update"]
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+jobs:
+  sync-zero-trust:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 1
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+
+    - name: Run Zero Trust Sync
+      env:
+        CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      run: |
+        EXTRA_ARGS=""
+        if [ "${{ github.event.inputs.mode }}" != "" ]; then
+          EXTRA_ARGS="$EXTRA_ARGS --mode ${{ github.event.inputs.mode }}"
+        fi
+        if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+          EXTRA_ARGS="$EXTRA_ARGS --dry-run"
+        fi
+
+        uv run python scripts/sync_cloudflare_zt.py $EXTRA_ARGS
