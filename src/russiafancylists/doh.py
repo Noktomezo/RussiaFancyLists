@@ -48,32 +48,36 @@ __all__ = [
 async def check_endpoint_alive(client: httpx.AsyncClient, url: str) -> bool:
     """Pre-flight check: probe endpoint with a fast test query (e.g. google.com).
 
-    Returns False immediately if endpoint is down (5xx, timeout, connect error).
+    Returns False if endpoint is down (5xx, timeout, connect error).
     """
     wire_query = build_dns_wire_query("google.com")
-    try:
-        r = await client.post(
-            url,
-            content=wire_query,
-            headers={
-                "content-type": "application/dns-message",
-                "accept": "application/dns-message",
-            },
-            timeout=2.5,
-        )
-        if r.status_code == 200:
-            return True
-        if r.status_code in (400, 405):
-            b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
-            r_get = await client.get(
-                f"{url}?dns={b64}",
-                headers={"accept": "application/dns-message"},
-                timeout=2.5,
+    for attempt in range(2):
+        try:
+            r = await client.post(
+                url,
+                content=wire_query,
+                headers={
+                    "content-type": "application/dns-message",
+                    "accept": "application/dns-message",
+                },
+                timeout=4.0,
             )
-            return r_get.status_code == 200
-        return False
-    except Exception:
-        return False
+            if r.status_code == 200:
+                return True
+            if r.status_code in (400, 405):
+                b64 = base64.urlsafe_b64encode(wire_query).decode("utf-8").rstrip("=")
+                r_get = await client.get(
+                    f"{url}?dns={b64}",
+                    headers={"accept": "application/dns-message"},
+                    timeout=4.0,
+                )
+                if r_get.status_code == 200:
+                    return True
+        except Exception:
+            if attempt < 1:
+                await asyncio.sleep(0.3)
+            continue
+    return False
 
 
 async def query_doh_a_records(

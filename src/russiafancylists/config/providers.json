@@ -110,5 +110,15 @@
       }
     ],
     "primary_fallback": false
+  },
+  {
+    "key": "bezmezhau",
+    "name": "Bezmezhau",
+    "doh_endpoints": {
+      "bezmezhau": "https://dns.bezmezhau.com/dns-query"
+    },
+    "aliases": ["bezmezhau_com"],
+    "download_sources": [],
+    "primary_fallback": false
   }
 ]
