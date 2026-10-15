@@ -128,14 +128,26 @@ class CloudflareGatewayClient:
         except Exception:
             data = {}
         if not resp.is_success or not data.get("success", False):
-            errs = ", ".join(e.get("message", "") for e in data.get("errors", []))
+            errors = data.get("errors", [])
+            err_msgs = []
+            for e in errors:
+                m = e.get("message", "")
+                for chain in e.get("error_chain", []):
+                    m += f" ({chain.get('message', '')})"
+                err_msgs.append(m)
+            errs = ", ".join(err_msgs)
             console.print(
                 f"[bold red]Token verification failed ({resp.status_code}): {errs}[/bold red]"
             )
+            if len(self.api_token) != 40:
+                console.print(
+                    f"[yellow]Note: Token length is {len(self.api_token)} chars. "
+                    "Cloudflare API Tokens are strictly 40 characters long. "
+                    "If you copied the 37-char Global API Key, you must create a dedicated API Token instead.[/yellow]"
+                )
             console.print(
-                "[yellow]Hint: Ensure CF_API_TOKEN is a valid API Token created at "
-                "https://dash.cloudflare.com/profile/api-tokens with 'Account -> Zero Trust: Edit' permission. "
-                "(Global API Key is not supported with Bearer auth).[/yellow]"
+                "[yellow]Hint: Create a token at https://dash.cloudflare.com/profile/api-tokens "
+                "with permission 'Account -> Zero Trust: Edit'.[/yellow]"
             )
             sys.exit(1)
 
