@@ -36,8 +36,9 @@
   {
     "key": "xbox-dns",
     "name": "Xbox DNS",
-    "doh_endpoints": {},
-    "dns_endpoints": ["111.88.96.54", "111.88.96.55"],
+    "doh_endpoints": {
+      "xbox_dns": "https://xbox-dns.ru/dns-query"
+    },
     "aliases": ["xbox_dns"],
     "download_sources": [],
     "primary_fallback": false
@@ -118,6 +119,16 @@
       "bezmezhau": "https://dns.bezmezhau.com/dns-query"
     },
     "aliases": ["bezmezhau_com"],
+    "download_sources": [],
+    "primary_fallback": false
+  },
+  {
+    "key": "wl-dns",
+    "name": "WL DNS",
+    "doh_endpoints": {
+      "wl_dns": "https://dns.wlrus.cfd/dns-query"
+    },
+    "aliases": ["wldns", "wlrus"],
     "download_sources": [],
     "primary_fallback": false
   }
