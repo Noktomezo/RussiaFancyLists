@@ -107,15 +107,61 @@ class CloudflareGatewayClient:
     """HTTP client for Cloudflare Zero Trust Gateway Lists & Rules API."""
 
     def __init__(self, account_id: str, api_token: str):
-        self.account_id = account_id
+        self.account_id = account_id.strip().strip("'\"")
+        self.api_token = api_token.strip().strip("'\"")
         self.base_url = (
-            f"https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway"
+            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/gateway"
         )
         headers = {
-            "Authorization": f"Bearer {api_token}",
+            "Authorization": f"Bearer {self.api_token}",
             "Content-Type": "application/json",
         }
         self.client = httpx.Client(headers=headers, timeout=30.0)
+
+    def verify_credentials(self):
+        """Pre-flight check to verify token and account accessibility."""
+        resp = self.client.get(
+            "https://api.cloudflare.com/client/v4/user/tokens/verify"
+        )
+        try:
+            data = resp.json()
+        except Exception:
+            data = {}
+        if not resp.is_success or not data.get("success", False):
+            errs = ", ".join(e.get("message", "") for e in data.get("errors", []))
+            console.print(
+                f"[bold red]Token verification failed ({resp.status_code}): {errs}[/bold red]"
+            )
+            console.print(
+                "[yellow]Hint: Ensure CF_API_TOKEN is a valid API Token created at "
+                "https://dash.cloudflare.com/profile/api-tokens with 'Account -> Zero Trust: Edit' permission. "
+                "(Global API Key is not supported with Bearer auth).[/yellow]"
+            )
+            sys.exit(1)
+
+        acc_resp = self.client.get(
+            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}"
+        )
+        try:
+            acc_data = acc_resp.json()
+        except Exception:
+            acc_data = {}
+        if not acc_resp.is_success or not acc_data.get("success", False):
+            errs = ", ".join(e.get("message", "") for e in acc_data.get("errors", []))
+            console.print(
+                f"[bold red]Account check failed for ID '{self.account_id}' ({acc_resp.status_code}): {errs}[/bold red]"
+            )
+            console.print(
+                "[yellow]Hint: Ensure CF_ACCOUNT_ID is the exact 32-char hex string from Cloudflare Dashboard overview.[/yellow]"
+            )
+            sys.exit(1)
+
+        masked_acc = (
+            f"{self.account_id[:4]}...{self.account_id[-4:]}"
+            if len(self.account_id) >= 8
+            else self.account_id
+        )
+        console.print(f"[green]✓ API Token and Account verified ({masked_acc})[/green]")
 
     def close(self):
         self.client.close()
@@ -418,6 +464,8 @@ def main():
 
     client = CloudflareGatewayClient(args.account_id, args.api_token)
     try:
+        if not args.dry_run:
+            client.verify_credentials()
         sync_zero_trust(
             client=client, groups=groups, prefix=args.prefix, dry_run=args.dry_run
         )
