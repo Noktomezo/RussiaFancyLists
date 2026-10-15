@@ -151,9 +151,7 @@ class CloudflareGatewayClient:
             )
             sys.exit(1)
 
-        acc_resp = self.client.get(
-            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}"
-        )
+        acc_resp = self.client.get(f"{self.base_url}/lists?page=1&per_page=1")
         try:
             acc_data = acc_resp.json()
         except Exception:
@@ -161,10 +159,11 @@ class CloudflareGatewayClient:
         if not acc_resp.is_success or not acc_data.get("success", False):
             errs = ", ".join(e.get("message", "") for e in acc_data.get("errors", []))
             console.print(
-                f"[bold red]Account check failed for ID '{self.account_id}' ({acc_resp.status_code}): {errs}[/bold red]"
+                f"[bold red]Zero Trust access failed for Account '{self.account_id}' ({acc_resp.status_code}): {errs}[/bold red]"
             )
             console.print(
-                "[yellow]Hint: Ensure CF_ACCOUNT_ID is the exact 32-char hex string from Cloudflare Dashboard overview.[/yellow]"
+                "[yellow]Hint: Ensure CF_ACCOUNT_ID is your 32-char hex Account ID, and the API Token has "
+                "'Account -> Zero Trust: Edit' permission for this account.[/yellow]"
             )
             sys.exit(1)
 
@@ -173,7 +172,9 @@ class CloudflareGatewayClient:
             if len(self.account_id) >= 8
             else self.account_id
         )
-        console.print(f"[green]✓ API Token and Account verified ({masked_acc})[/green]")
+        console.print(
+            f"[green]✓ API Token and Zero Trust access verified ({masked_acc})[/green]"
+        )
 
     def close(self):
         self.client.close()
