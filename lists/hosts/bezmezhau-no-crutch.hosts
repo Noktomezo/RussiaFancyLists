@@ -11,7 +11,6 @@ ff02::2 ip6-allrouters
 143.20.64.55 adobe.io www.adobe.io
 143.20.64.55 affinity.studio www.affinity.studio
 143.20.64.55 ai.com
-31.58.216.201 azwindows.ipv6.microsoft.com.akadns.net
 143.20.64.55 amd.com login.amd.com www.amd.com
 143.20.64.55 analog.com www.analog.com
 143.20.64.55 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
@@ -23,7 +22,6 @@ ff02::2 ip6-allrouters
 143.20.64.55 atlassian.com marketplace.atlassian.com www.atlassian.com
 31.58.216.201 audacy.com www.audacy.com
 31.58.216.201 ws.audioscrobbler.com
-143.20.64.55 cdn.auth0.com
 143.20.64.55 autocad.com www.autocad.com
 143.20.64.55 accounts.autodesk.com autodesk.ae autodesk.be autodesk.com autodesk.eu autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.ae www.autodesk.be www.autodesk.com www.autodesk.eu www.autodesk.net
 143.20.64.55 autodesk360.com www.autodesk360.com
@@ -135,11 +133,9 @@ ff02::2 ip6-allrouters
 143.20.64.55 api16-normal-alisg.mchost.guru trae-api-sg.mchost.guru
 143.20.64.55 mediaexpert.pl www.mediaexpert.pl
 143.20.64.55 mediamarkt.pl www.mediamarkt.pl
-31.58.216.201 aidemos.meta.com meta.ai meta.com www.meta.ai
 143.20.64.55 microcenter.com www.microcenter.com
 143.20.64.55 microchip.com www.microchip.com
 143.20.64.55 copilot.microsoft.com designer.microsoft.com
-31.58.216.201 win1910.ipv6.microsoft.com
 143.20.64.55 minicircuits.com www.minicircuits.com
 143.20.64.55 dr.miromind.ai
 143.20.64.55 misterfpga.org www.misterfpga.org
@@ -204,7 +200,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 3dwarehouse.sketchup.com extensions.sketchup.com sketchup.com www.sketchup.com
 143.20.64.55 slack.com www.slack.com
 143.20.64.55 slackb.com www.slackb.com
-31.58.216.201 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com appresolve.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com spotify.dev web-partner.spotify.com www.spotify.com www.spotify.dev xpui.app.spotify.com
+31.58.216.201 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com spotify.dev web-partner.spotify.com www.spotify.com www.spotify.dev xpui.app.spotify.com
 31.58.216.201 concerts.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 31.58.216.201 game.squadbustersgame.com squadbustersgame.com
 143.20.64.55 api-global.squareup.com api.squareup.com squareup.com www.squareup.com

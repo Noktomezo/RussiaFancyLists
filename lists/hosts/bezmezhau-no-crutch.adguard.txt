@@ -12,7 +12,6 @@
 ||affinity.studio^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.affinity.studio^$dnsrewrite=NOERROR;A;143.20.64.55
 ||ai.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||azwindows.ipv6.microsoft.com.akadns.net^$dnsrewrite=NOERROR;A;31.58.216.201
 ||amd.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||login.amd.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.amd.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -46,7 +45,6 @@
 ||audacy.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||www.audacy.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||ws.audioscrobbler.com^$dnsrewrite=NOERROR;A;31.58.216.201
-||cdn.auth0.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||autocad.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.autocad.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||accounts.autodesk.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -455,17 +453,12 @@
 ||www.mediaexpert.pl^$dnsrewrite=NOERROR;A;143.20.64.55
 ||mediamarkt.pl^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.mediamarkt.pl^$dnsrewrite=NOERROR;A;143.20.64.55
-||aidemos.meta.com^$dnsrewrite=NOERROR;A;31.58.216.201
-||meta.ai^$dnsrewrite=NOERROR;A;31.58.216.201
-||meta.com^$dnsrewrite=NOERROR;A;31.58.216.201
-||www.meta.ai^$dnsrewrite=NOERROR;A;31.58.216.201
 ||microcenter.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.microcenter.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||microchip.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.microchip.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||win1910.ipv6.microsoft.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||minicircuits.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.minicircuits.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||dr.miromind.ai^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -630,7 +623,6 @@
 ||ap.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||api-partner.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||api.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
-||appresolve.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||apresolve.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||auth.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||client.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
