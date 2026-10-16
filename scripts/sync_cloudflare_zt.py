@@ -281,7 +281,7 @@ class CloudflareGatewayClient:
             "action": "override",
             "enabled": True,
             "filters": ["dns"],
-            "traffic": f"any(dns.domains[*] in ${list_id})",
+            "traffic": f"dns.fqdn in ${list_id}",
             "precedence": precedence,
             "rule_settings": {"override_ips": override_ips},
         }
@@ -352,7 +352,7 @@ def sync_zero_trust(
         # Rule Sync
         precedence = base_precedence + (idx * 10)
         rule_ips = list(group.ips)
-        expected_traffic = f"any(dns.domains[*] in ${list_id})"
+        expected_traffic = f"dns.fqdn in ${list_id}"
 
         if rule_name in cf_rules:
             rule_info = cf_rules[rule_name]
