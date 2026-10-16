@@ -305,12 +305,12 @@ Generated artifacts are organized as follows:
 ## 🌐 Free & Reliable Geoblock Bypass
 
 > [!TIP]
-> **🚀 Quick Start via Cloudflare Zero Trust (DoH / DNS over HTTPS):**
-> If you prefer not to manage local `hosts` files or configure AdGuard Home, use the ready-to-use DoH resolver with pre-configured Smart DNS overrides from `smart.hosts` (auto-synced every 3 hours):
+> **🚀 Quick Start via DoH (DNS over HTTPS):**
+> If you don't want to download `hosts` files or configure AdGuard Home, you can simply use this ready-made secure DNS endpoint:
 > ```text
 > https://ys39tfku2v.cloudflare-gateway.com/dns-query
 > ```
-> *Simply add this URL to "Secure DNS" in your browser, router, or proxy client (sing-box, Mihomo, Clash, AdGuard).* Geoblocked domains will resolve transparently through verified proxy endpoints, while all other domains resolve directly via Cloudflare. *(You can also deploy your own private gateway via `scripts/sync_cloudflare_zt.py`).*
+> Add this address to "Secure DNS" in your browser, router, or proxy client (sing-box, Mihomo, Clash, AdGuard). Restricted and geoblocked websites will open automatically, while all other traffic resolves at full speed directly through Cloudflare DNS.
 
 Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local censorship:
 
