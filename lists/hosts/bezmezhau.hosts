@@ -135,10 +135,10 @@ ff02::2 ip6-allrouters
 143.20.64.55 gemini.google
 143.20.64.55 generativeai.google
 143.20.64.55 genspark.ai www.genspark.ai
-143.20.64.55 ai.google.dev apis.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com www.flow.google.com
-31.58.216.201 aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com bard.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-143.20.64.55 aicode.googleapis.com aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com daily-cloudcode-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
-31.58.216.201 generativelanguage.googleapis.com
+143.20.64.55 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com www.flow.google.com
+31.58.216.201 bard.google.com waa-pa.clients6.google.com
+143.20.64.55 aicode.googleapis.com aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+31.58.216.201 daily-cloudcode-pa.googleapis.com
 143.20.64.55 assets.grok.com grok.com www.grok.com
 143.20.64.55 api.groq.com console.groq.com
 143.20.64.55 guidedhacking.com www.guidedhacking.com
@@ -187,7 +187,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 mouser.com www.mouser.com
 143.20.64.55 myjetbrains.com www.myjetbrains.com
 143.20.64.55 n8n.cloud www.n8n.cloud
-143.20.64.55 downloads.ndi.tv ndi.tv ndi.video www.ndi.tv www.ndi.video
+143.20.64.55 downloads.ndi.tv ndi.tv www.ndi.tv
 143.20.64.55 console.neon.tech
 143.20.64.55 netapp.com www.netapp.com
 143.20.64.55 ngrok.com
@@ -201,7 +201,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 ecs.office.com
 143.20.64.55 geolocation.onetrust.com
 143.20.64.55 opal.google
-31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
+31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com www.openai.com
 31.58.216.201 tracker.openbittorrent.com
 143.20.64.55 opencode.ai www.opencode.ai
 143.20.64.55 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
@@ -226,7 +226,6 @@ ff02::2 ip6-allrouters
 143.20.64.55 frontend-api-v3.pump.fun images.pump.fun pump.fun swap-api.pump.fun
 143.20.64.55 qoder.com www.qoder.com
 143.20.64.55 www.qwant.com
-143.20.64.55 api.radarr.video
 143.20.64.55 remove.bg www.remove.bg
 143.20.64.55 app.reve.com preview.reve.art reve.art reve.com www.reve.art www.reve.com
 143.20.64.55 romsgames.net www.romsgames.net
