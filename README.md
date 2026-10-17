@@ -294,13 +294,8 @@ Generated artifacts are organized as follows:
 </table>
 
 > [!TIP]
-> **💡 Rule Category Overview:**<br>
-> 🚫 **`Blacklist`**: Domains and IP subnets blocked in Russia by regulators (accuracy ~99.9%). Since certain dynamic CDN ranges are not always listed in official registries, they are provided separately (`cdn`) and as a combined bundle (`full-and-cdn`).<br>
-> 🌍 **`Geoblock`**: Foreign services that restrict access from Russian IP addresses. Unlike state registries, there is no single source of truth, so this list is actively maintained and verified by the community.<br>
-> ⚪ **`Whitelist`**: Essential services and subnets that remain reachable during mobile internet restrictions / whitelist-only operational modes.<br>
-> ⚡ **`Service`**: Specialized routing lists for split tunneling:<br>
-> • **`prefer-direct`**: Services with aggressive anti-DDoS / WAF / bot protection mechanisms that drop obfuscated traffic (Zapret, ByeDPI, GoodbyeDPI) or block well-known VPN ASNs (e.g. Cloudflare WARP), returning rate limits or HTTP 403 Forbidden. Recommended for direct routing rules (`DIRECT`) when tunneling or obfuscating default traffic.<br>
-> • **`direct-with-ech`**: Blocked domains with verified Encrypted Client Hello (ECH / RFC 9460) support (sourced from `Akiyamov/singbox-ech-list`). When using an uncensored foreign DoH/DoT resolver (e.g. 1.1.1.1), SNI is encrypted and traffic can be routed directly (`DIRECT`), saving VPN bandwidth (works on ISPs without ECH filtering or when paired with DPI circumvention tools like Zapret).
+> **💡 Detailed Description of Categories & Lists:**
+> Full details on each list category and specialized routing list (including `prefer-direct` and `direct-with-ech`) can be found in our [Knowledge Base: List Categories](https://github.com/Noktomezo/RussiaFancyLists/wiki/List-Categories).
 
 ## 🌐 Free & Reliable Geoblock Bypass
 
@@ -311,6 +306,8 @@ Generated artifacts are organized as follows:
 > https://ys39tfku2v.cloudflare-gateway.com/dns-query
 > ```
 > Add this address to "Secure DNS" in your browser, router, or proxy client (sing-box, Mihomo, Clash, AdGuard). Restricted and geoblocked websites will open automatically, while all other traffic resolves at full speed directly through Cloudflare DNS.
+>
+> 📖 For full setup guides (including OpenWrt, Zapret integration, and resolving IPv6/browser leaks), see [Knowledge Base: DNS Setup](https://github.com/Noktomezo/RussiaFancyLists/wiki/DNS-Setup) and [Troubleshooting](https://github.com/Noktomezo/RussiaFancyLists/wiki/Troubleshooting).
 
 Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local censorship:
 
@@ -651,32 +648,9 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 <!-- HOSTS_TABLE_END -->
 
 > [!TIP]
-> **💡 Hosts & AdGuard Home Options:**<br>
-> 🧠 **`smart`**: Actively probed via TLS SNI handshakes. Contains only verified working `[IP - domain]` pairs across all providers, preventing broken routes for domains unsupported by proxies (recommended).<br>
-> 🔄 **`combined`**: Full unified list covering 100% of geoblocks across active proxies. **Notice**: Less reliable than Smart — because domains are mapped to multiple proxies via round-robin without individual SNI verification, some sites may fail on the first attempt and require refreshing the page several times before reaching a working proxy endpoint.<br>
-> 🩹 **What is a "Crutch"?:** A workaround mapping a domain directly to an unblocked IP in its subnet (e.g., CDN/edge servers for GitHub) to bypass local censorship directly, bypassing general SNI proxies.<br>
-> 🌐 **`-no-crutch`**: Excludes the `# Crutch` section. Useful if you route all other traffic through a VPN.<br>
-> ⚡ **`only-crutch`**: Contains **only** custom direct IP mappings (crutches). Useful if you route geoblocks via VPN but want to bypass local blocks for specific domains directly.<br>
-> 🛡️ **AdGuard Home Format (`.adguard.txt`)**: Compatible with AdGuard Home Custom Filtering Rules using `||domain^$dnsrewrite=NOERROR;A;IP` syntax.
-
-> [!NOTE]
-> **🌍 Need 100% Full Geoblock Coverage?**<br>
-> Hosts files and Smart DNS proxies only route domains explicitly supported by upstream proxy servers. For full outbound traffic tunneling, you can use free alternatives:
-> 1. **Free Cloudflare WARP Relay**: [@warp_generator_bot](https://t.me/warp_generator_bot) by *llimonix* routes traffic via a foreign relay (`User -> Foreign Server -> WARP in that country -> Internet`).<br>
->    *Caveat*: Requires binding your public IP in the bot's cabinet. If your router reboots or your ISP changes your IP, you will need to re-bind it.
-> 2. **Free Proton VPN**: The same bot [@warp_generator_bot](https://t.me/warp_generator_bot) also provides free Proton VPN configuration generation (with ready-to-use profiles for AmneziaWG and Mihomo / Clash).
-> 3. **Hunting Foreign WARP Nodes with Warpscout**: Scan for endpoints where your traffic egresses outside Russia using [warpscout](https://github.com/vernette/warpscout):
->    ```bash
->    ./warpscout.exe scan -p awg -jc 4 -jmin 10 -jmax 50 -i1 "<r 2><b 0x858000010001000000000669636c6f756403636f6d0000010001c00c000100010000105a00044d583737>"
->    ```
->    Ensure that the scanned endpoint has a non-`RU` country in the `SEEN AS` column (e.g., `FI`, `SE`, `DE`).<br>
->
-> **⚠️ Limitations of Public Free VPNs:**<br>
-> Free public services (WARP, Proton, etc.) are a convenient compromise, but far from ideal. Their IP pools and ASNs are widely known and heavily utilized. Services with strict anti-bot or fraud detection (AI platforms like Claude, Gemini, ChatGPT, or sites behind Cloudflare WAF) often ban these IPs outright, respond with `403 Forbidden` or `429 Too Many Requests` (rate limits), or loop through endless CAPTCHAs.<br><br>
-> **💡 Recommendation:**<br>
-> • **For most users**, **`smart.hosts`** (or `smart.adguard.txt`) is more than sufficient — SNI-probed proxy endpoints route targeted geoblocked services cleanly, fast, and with zero overhead.<br>
-> • **Hybrid setup**: you can combine **WARP / Proton + `smart.hosts`** — they work seamlessly together, allowing Smart DNS to intercept problematic domains that the public VPN struggles with.<br>
-> • **Ultimate setup**: for guaranteed 100% stability, a clean dedicated IP, and zero ASN restrictions, setting up a **self-hosted VPN on your own VPS** (VLESS, Hysteria 2, AmneziaWG, Mieru, NaïveProxy) remains the gold standard.
+> **💡 Hosts Formats & Alternatives:**<br>
+> • For detailed breakdown of `smart` vs `combined`, AdGuard Home syntax, and the `# Crutch` mechanism, see [Knowledge Base: Hosts and AdGuard](https://github.com/Noktomezo/RussiaFancyLists/wiki/Hosts-and-AdGuard).<br>
+> • For 100% geoblock coverage alternatives (WARP Relay, Proton, Warpscout, self-hosted VPS), see [Knowledge Base: Geoblock Alternatives](https://github.com/Noktomezo/RussiaFancyLists/wiki/Geoblock-Alternatives).
 
 ## ⚡ Smart DNS Status
 <!-- STATUS_START -->
