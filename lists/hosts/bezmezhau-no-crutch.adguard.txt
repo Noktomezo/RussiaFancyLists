@@ -606,10 +606,6 @@
 ||extensions.sketchup.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||sketchup.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.sketchup.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||slack.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||www.slack.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||slackb.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||www.slackb.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||account.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||accounts.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201

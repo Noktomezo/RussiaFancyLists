@@ -286,8 +286,6 @@
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||www.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||www.spotify.dev^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -310,6 +308,8 @@
 ||console.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.x.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||www.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
+||x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||auth.xboxlive.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||youtrack.cloud^$dnsrewrite=NOERROR;A;191.217.212.16
