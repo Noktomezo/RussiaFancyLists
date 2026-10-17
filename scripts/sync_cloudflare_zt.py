@@ -272,17 +272,15 @@ class CloudflareGatewayClient:
         description: str,
         list_id: str,
         override_ips: list[str],
-        precedence: int,
         rule_id: str | None = None,
     ) -> str:
-        payload = {
+        payload: dict[str, Any] = {
             "name": name,
             "description": description,
             "action": "override",
             "enabled": True,
             "filters": ["dns"],
             "traffic": f"dns.fqdn in ${list_id}",
-            "precedence": precedence,
             "rule_settings": {"override_ips": override_ips},
         }
         if rule_id:
@@ -315,10 +313,23 @@ def sync_zero_trust(
 
     console.print(f"Found {len(cf_lists)} existing RFL lists, {len(cf_rules)} rules.")
     desired_list_names = {g.name for g in groups}
-    base_precedence = 10000
 
-    # 1. Sync or Create Lists and Rules
-    for idx, group in enumerate(groups):
+    # 1. Cleanup obsolete rules first, then obsolete lists
+    expected_rule_names = {f"{prefix}Rule_{g.slug}" for g in groups}
+    for r_name, r_info in cf_rules.items():
+        if r_name not in expected_rule_names:
+            console.print(f"[bold red]- Deleting obsolete rule: {r_name}[/bold red]")
+            if not dry_run:
+                client.delete_rule(r_info["id"])
+
+    for l_name, l_info in cf_lists.items():
+        if l_name not in desired_list_names:
+            console.print(f"[bold red]- Deleting obsolete list: {l_name}[/bold red]")
+            if not dry_run:
+                client.delete_list(l_info["id"])
+
+    # 2. Sync or Create Lists and Rules
+    for group in groups:
         rule_name = f"{prefix}Rule_{group.slug}"
         desired_domains = set(group.domains)
         list_id = None
@@ -350,7 +361,6 @@ def sync_zero_trust(
                 list_id = "dry-run-uuid"
 
         # Rule Sync
-        precedence = base_precedence + (idx * 10)
         rule_ips = list(group.ips)
         expected_traffic = f"dns.fqdn in ${list_id}"
 
@@ -367,7 +377,6 @@ def sync_zero_trust(
                         "RFL Smart DNS override",
                         list_id,
                         rule_ips,
-                        precedence,
                         rule_info["id"],
                     )
             else:
@@ -378,22 +387,8 @@ def sync_zero_trust(
             )
             if not dry_run:
                 client.upsert_rule(
-                    rule_name, "RFL Smart DNS override", list_id, rule_ips, precedence
+                    rule_name, "RFL Smart DNS override", list_id, rule_ips
                 )
-
-    # 2. Cleanup obsolete rules first, then obsolete lists
-    expected_rule_names = {f"{prefix}Rule_{g.slug}" for g in groups}
-    for r_name, r_info in cf_rules.items():
-        if r_name not in expected_rule_names:
-            console.print(f"[bold red]- Deleting obsolete rule: {r_name}[/bold red]")
-            if not dry_run:
-                client.delete_rule(r_info["id"])
-
-    for l_name, l_info in cf_lists.items():
-        if l_name not in desired_list_names:
-            console.print(f"[bold red]- Deleting obsolete list: {l_name}[/bold red]")
-            if not dry_run:
-                client.delete_list(l_info["id"])
 
     console.print(
         "[bold green]✓ Cloudflare Zero Trust synchronization complete![/bold green]"
