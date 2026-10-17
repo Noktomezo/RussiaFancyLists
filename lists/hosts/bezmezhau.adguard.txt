@@ -421,6 +421,7 @@
 ||alkalicore-pa.clients6.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||apis.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||bard.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||datastudio.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||discuss.ai.google.dev^$dnsrewrite=NOERROR;A;143.20.64.55
 ||flow.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -438,7 +439,6 @@
 ||signaler-pa.clients6.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.flow.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||bard.google.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||waa-pa.clients6.google.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||aicode.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55

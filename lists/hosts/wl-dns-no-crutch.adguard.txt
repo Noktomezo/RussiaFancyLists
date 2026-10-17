@@ -97,6 +97,7 @@
 ||www.jetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||www.jetbrains.space^$dnsrewrite=NOERROR;A;191.217.212.16
 ||youtrack.jetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||labs.google^$dnsrewrite=NOERROR;A;191.217.212.16
 ||autodiscover.last.fm^$dnsrewrite=NOERROR;A;191.217.212.16
 ||myjetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||www.myjetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -180,10 +181,6 @@
 ||gue1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||gue1-spclient.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||image-upload.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||log.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||logger.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||login.app.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||login.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||metrics.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||pixel-static.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -192,7 +189,6 @@
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||www.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -215,6 +211,7 @@
 ||console.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.x.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||www.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||auth.xboxlive.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;191.217.212.16
