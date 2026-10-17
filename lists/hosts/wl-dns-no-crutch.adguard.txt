@@ -68,8 +68,11 @@
 ||bard.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||discuss.ai.google.dev^$dnsrewrite=NOERROR;A;191.217.212.16
 ||gemini.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||makersuite.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||signaler-pa.clients6.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||waa-pa.clients6.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||geller-pa.googleapis.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -178,8 +181,6 @@
 ||gue1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||gue1-spclient.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||image-upload.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||login.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||login5.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||metrics.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||pixel-static.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||pixel.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -211,7 +212,6 @@
 ||console.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.x.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||x.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||auth.xboxlive.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||youtrack.cloud^$dnsrewrite=NOERROR;A;191.217.212.16
