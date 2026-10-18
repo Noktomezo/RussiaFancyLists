@@ -695,8 +695,7 @@
 Если проект оказался для вас полезным, вы можете поддержать его развитие и инфраструктуру:
 
 Fiat:<br>
-<sub><img src="./assets/icons/rub.svg" width="16" height="16"></sub> [Пожертвование в рублях](https://pay.cloudtips.ru/p/227e7223) (СБП, T-Pay, банковские карты)<br>
-<sub><img src="./assets/icons/usd.svg" width="16" height="16"></sub> [Пожертвование в долларах](https://hipolink.net/noktomezo/tips) (Visa, Mastercard и др.)
+<sub><img src="./assets/icons/rub.svg" width="16" height="16"></sub> <sub><img src="./assets/icons/usd.svg" width="16" height="16"></sub> [Пожертвование в любой валюте](https://dalink.to/nxktxmezx) (Банковские карты, СБП, T-Pay и др.)
 
 Crypto:<br>
 <sub><img src="./assets/icons/trx.svg" width="16" height="16"></sub> **USDT (TRC20)** — `TEk8zn5hq41p3oECQyyUveSSy1n44FuWxA`<br>
