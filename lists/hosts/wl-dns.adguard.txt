@@ -279,6 +279,7 @@
 ||gue1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||gue1-spclient.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||image-upload.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||login.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||metrics.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||pixel-static.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -287,6 +288,8 @@
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||www.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||www.spotify.dev^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16

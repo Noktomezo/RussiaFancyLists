@@ -50,7 +50,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 amd.com login.amd.com www.amd.com
 143.20.64.55 analog.com www.analog.com
 143.20.64.55 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-143.20.64.55 antigravity.google www.antigravity.google
+143.20.64.55 antigravity-unleash.goog antigravity.google www.antigravity-unleash.goog www.antigravity.google
 143.20.64.55 web.archive.org
 143.20.64.55 arduino.cc www.arduino.cc
 143.20.64.55 arkoselabs.com www.arkoselabs.com
@@ -135,7 +135,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 genspark.ai www.genspark.ai
 143.20.64.55 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com www.flow.google.com
 31.58.216.201 waa-pa.clients6.google.com
-143.20.64.55 aicode.googleapis.com aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+143.20.64.55 aicode.googleapis.com aida.googleapis.com aisandbox-pa.googleapis.com antigravity-pa.googleapis.com antigravity.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 31.58.216.201 daily-cloudcode-pa.googleapis.com
 143.20.64.55 assets.grok.com grok.com www.grok.com
 143.20.64.55 api.groq.com console.groq.com
@@ -173,6 +173,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 microchip.com www.microchip.com
 143.20.64.55 copilot.microsoft.com designer.microsoft.com
 143.20.64.55 minicircuits.com www.minicircuits.com
+143.20.64.55 miro.com www.miro.com
 143.20.64.55 dr.miromind.ai
 143.20.64.55 misterfpga.org www.misterfpga.org
 143.20.64.55 mistral.ai

@@ -104,6 +104,7 @@
 ||console.anthropic.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||console.anthropic.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||antigravity-unleash.goog^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web.archive.org^$dnsrewrite=NOERROR;A;143.20.64.55
 ||web.archive.org^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ws.audioscrobbler.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -179,6 +180,7 @@
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||backend.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||checkout.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clearance.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||community-auth.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -430,6 +432,7 @@
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||blog.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||c.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn-1.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174

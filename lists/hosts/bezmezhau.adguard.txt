@@ -128,7 +128,9 @@
 ||status.anthropic.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||support.anthropic.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.anthropic.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||antigravity-unleash.goog^$dnsrewrite=NOERROR;A;143.20.64.55
 ||antigravity.google^$dnsrewrite=NOERROR;A;143.20.64.55
+||www.antigravity-unleash.goog^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.antigravity.google^$dnsrewrite=NOERROR;A;143.20.64.55
 ||web.archive.org^$dnsrewrite=NOERROR;A;143.20.64.55
 ||arduino.cc^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -441,7 +443,10 @@
 ||www.flow.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||waa-pa.clients6.google.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||aicode.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||aida.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||antigravity-pa.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||antigravity.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||appcatalyst.pa.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||developerprofiles-pa.googleapis.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -559,6 +564,8 @@
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||minicircuits.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.minicircuits.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||miro.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||www.miro.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||dr.miromind.ai^$dnsrewrite=NOERROR;A;143.20.64.55
 ||misterfpga.org^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.misterfpga.org^$dnsrewrite=NOERROR;A;143.20.64.55
