@@ -70,7 +70,7 @@ ff02::2 ip6-allrouters
 143.20.64.55 bestbuy.com streams.bestbuy.com www.bestbuy.com
 143.20.64.55 bike-components.de www.bike-components.de
 143.20.64.55 bike24.com www.bike24.com
-143.20.64.55 bing.com edgeservices.bing.com rewards.bing.com sydney.bing.com
+31.58.216.201 bing.com edgeservices.bing.com rewards.bing.com sydney.bing.com
 31.58.216.201 game.boombeachgame.com
 143.20.64.55 ai-chat.bsg.brave.com brave.com www.brave.com
 31.58.216.201 brawlstarsgame.com game-assets.brawlstarsgame.com game.brawlstarsgame.com
@@ -99,7 +99,8 @@ ff02::2 ip6-allrouters
 143.20.64.55 coreweave.com www.coreweave.com
 143.20.64.55 corsair.com www.corsair.com www3.corsair.com
 143.20.64.55 cummins.com www.cummins.com
-143.20.64.55 agentn.api2.cursor.sh agentn.api3.cursor.sh agentn.api4.cursor.sh agentn.api5.cursor.sh agentn.global.api2.cursor.sh agentn.global.api3.cursor.sh agentn.global.api4.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh authenticate.cursor.sh authenticator.cursor.sh cursor-cdn.com cursor.com cursor.sh downloads.cursor.com origin.cursor.com repo42.cursor.sh us-asia.gcpp.cursor.sh us-eu.gcpp.cursor.sh us-only.gcpp.cursor.sh www.cursor-cdn.com www.cursor.com
+143.20.64.55 cursor-cdn.com cursor.com downloads.cursor.com origin.cursor.com www.cursor-cdn.com www.cursor.com
+31.58.216.201 agentn.api2.cursor.sh agentn.api3.cursor.sh agentn.api4.cursor.sh agentn.api5.cursor.sh agentn.global.api2.cursor.sh agentn.global.api3.cursor.sh agentn.global.api4.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh authenticate.cursor.sh authenticator.cursor.sh cursor.sh repo42.cursor.sh us-asia.gcpp.cursor.sh us-eu.gcpp.cursor.sh us-only.gcpp.cursor.sh
 143.20.64.55 cursorapi.com marketplace.cursorapi.com
 143.20.64.55 cursorvm.com www.cursorvm.com
 143.20.64.55 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.app deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com www2.deepl.com
@@ -195,7 +196,7 @@ ff02::2 ip6-allrouters
 31.58.216.201 cdn.oaistatic.com oaistatic.com www.oaistatic.com
 31.58.216.201 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
 143.20.64.55 octanorm.com www.octanorm.com
-143.20.64.55 ecs.office.com
+31.58.216.201 ecs.office.com
 143.20.64.55 geolocation.onetrust.com
 143.20.64.55 opal.google
 31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com www.openai.com
