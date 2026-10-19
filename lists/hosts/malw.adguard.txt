@@ -120,9 +120,9 @@
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||static.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -133,6 +133,7 @@
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -148,7 +149,10 @@
 ||downloads.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -214,8 +218,6 @@
 ||www.dyson.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;143.20.64.55
 ||dyson.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.dyson.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.dyson.fr^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.elevenlabs.io^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api.us.elevenlabs.io^$dnsrewrite=NOERROR;A;143.20.64.55
 ||elevenlabs.io^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -227,7 +229,6 @@
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||payload.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||try.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||elevenreader.io^$dnsrewrite=NOERROR;A;143.20.64.55
 ||elevenreader.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -244,6 +245,7 @@
 ||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||grok.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -285,6 +287,7 @@
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
+||public.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||uploads.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -295,7 +298,6 @@
 ||calendar.notion.so^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.notion.so^$dnsrewrite=NOERROR;A;143.20.64.55
 ||app.notion.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||calendar.notion.so^$dnsrewrite=NOERROR;A;179.254.166.174
 ||notion.so^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.notion.so^$dnsrewrite=NOERROR;A;179.254.166.174
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -343,7 +345,6 @@
 ||videos.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;143.20.64.55
-||builds.parsec.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.patreon.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||patreon.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.patreon.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -423,9 +424,7 @@
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||c.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||cdn-1.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||blog.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||communityhub.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-a.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dam.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -437,6 +436,7 @@
 ||links.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||mi.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||scim.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||shop.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||staging.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -458,7 +458,6 @@
 ||security.id.supercell.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||store.supercell.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||security.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
