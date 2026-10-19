@@ -121,7 +121,6 @@
 ||static.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -205,7 +204,6 @@
 ||shield.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sl.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||support.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||voice-proxy.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||w.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||write-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -280,7 +278,6 @@
 ||secure.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||shop.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
-||support.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wiki.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -299,7 +296,6 @@
 ||uploads.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;143.20.64.55
-||copilot.microsoft.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||app.notion.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||calendar.notion.so^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.notion.so^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -385,8 +381,6 @@
 ||client.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clienttoken.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||connect.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||content.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||crashdump.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dealer-wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dealer.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||desktop.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -427,6 +421,7 @@
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||thisis-images.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wap.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -452,13 +447,12 @@
 ||staging.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||status.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||stories.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||support.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||tiles.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||watch.samsung.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.blog.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -487,6 +481,7 @@
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||resources.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.tiktok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static-assets-1.truthsocial.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||truthsocial.com^$dnsrewrite=NOERROR;A;143.20.64.55
