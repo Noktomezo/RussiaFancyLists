@@ -80,25 +80,25 @@ ff02::2 ip6-allrouters
 45.88.174.254 www.crunchyroll.com
 157.22.181.209 api2.cursor.sh cursor.com www.cursor.com
 45.88.174.254 api2.cursor.sh cursor.com www.cursor.com
-157.22.181.209 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com
+157.22.181.209 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 45.114.62.233 www2.deepl.com
-45.88.174.254 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+45.88.174.254 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com
 157.22.181.209 app.deepsource.com deepsource.io
 45.88.174.254 app.deepsource.com deepsource.io
 157.22.181.209 ecosia.org www.ecosia.org
 45.88.174.254 ecosia.org www.ecosia.org
 157.22.181.209 elevenlabs.io
 45.88.174.254 elevenlabs.io
+157.22.181.209 gemini.google
 45.114.62.233 gemini.google
-45.88.174.254 gemini.google
 157.22.181.209 genspark.ai
 45.88.174.254 genspark.ai
-157.22.181.209 ai.google.dev aistudio.google.com apis.google.com jules.google.com
-45.114.62.233 alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com bard.google.com gemini.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-45.88.174.254 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-157.22.181.209 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com
-45.114.62.233 developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
-45.88.174.254 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+157.22.181.209 ai.google.dev alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+45.114.62.233 aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com bard.google.com gemini.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+45.88.174.254 ai.google.dev aistudio.google.com apis.google.com jules.google.com
+157.22.181.209 developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+45.114.62.233 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+45.88.174.254 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com
 157.22.181.209 assets.grok.com grok.com
 45.88.174.254 assets.grok.com grok.com
 157.22.181.209 api.groq.com chat.groq.com console.groq.com groq.com
@@ -113,10 +113,10 @@ ff02::2 ip6-allrouters
 45.88.174.254 www.intel.com
 157.22.181.209 api.app.prod.grazie.aws.intellij.net
 45.88.174.254 api.app.prod.grazie.aws.intellij.net
-157.22.181.209 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com
+157.22.181.209 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
 45.114.62.233 youtrack.jetbrains.com
-45.88.174.254 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
-157.22.181.209 labs.google
+45.88.174.254 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com
+45.114.62.233 labs.google
 45.88.174.254 labs.google
 157.22.181.209 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
 45.88.174.254 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
@@ -131,10 +131,10 @@ ff02::2 ip6-allrouters
 45.88.174.254 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
 157.22.181.209 norton.com
 45.88.174.254 norton.com
+157.22.181.209 notebook.google www.notebook.google
 45.114.62.233 notebook.google www.notebook.google
-45.88.174.254 notebook.google www.notebook.google
+157.22.181.209 notebooklm.google
 45.114.62.233 notebooklm.google
-45.88.174.254 notebooklm.google
 157.22.181.209 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 45.88.174.254 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 157.22.181.209 cdn.oaistatic.com www.oaistatic.com
@@ -209,9 +209,8 @@ ff02::2 ip6-allrouters
 157.22.181.209 api.workos.com
 45.88.174.254 api.workos.com
 157.22.181.209 wunderground.com
-45.114.62.233 www.wunderground.com
-45.88.174.254 wunderground.com www.wunderground.com
-157.22.181.209 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai
+45.88.174.254 wunderground.com
+157.22.181.209 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
 45.114.62.233 www.x.ai
-45.88.174.254 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
+45.88.174.254 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai
 132.243.112.38 xsts.auth.xboxlive.com
