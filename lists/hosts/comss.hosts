@@ -56,8 +56,8 @@ ff02::2 ip6-allrouters
 80.74.30.162 bitdefender.com
 132.243.113.26 ai-chat.bsg.brave.com
 80.74.30.162 ai-chat.bsg.brave.com
-132.243.113.26 access.broadcom.com broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
-80.74.30.162 access.broadcom.com broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+132.243.113.26 access.broadcom.com broadcom.com knowledge.broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+80.74.30.162 access.broadcom.com broadcom.com knowledge.broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
 132.243.113.26 content-management-files.canva.com static.canva.com www.canva.com
 80.74.30.162 content-management-files.canva.com static.canva.com www.canva.com
 132.243.113.26 api.cerebras.ai
@@ -80,8 +80,8 @@ ff02::2 ip6-allrouters
 80.74.30.162 www.crunchyroll.com
 132.243.113.26 api2.cursor.sh cursor.com www.cursor.com
 80.74.30.162 api2.cursor.sh cursor.com www.cursor.com
-132.243.113.26 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-80.74.30.162 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+132.243.113.26 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+80.74.30.162 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 132.243.113.26 app.deepsource.com deepsource.io
 80.74.30.162 app.deepsource.com deepsource.io
 132.243.113.26 ecosia.org www.ecosia.org
@@ -119,8 +119,8 @@ ff02::2 ip6-allrouters
 80.74.30.162 miro.com www.miro.com
 132.243.113.26 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
 80.74.30.162 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
-132.243.113.26 norton.com
-80.74.30.162 norton.com
+132.243.113.26 login.norton.com norton.com
+80.74.30.162 login.norton.com norton.com
 132.243.113.26 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 80.74.30.162 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 132.243.113.26 cdn.oaistatic.com www.oaistatic.com
@@ -138,8 +138,8 @@ ff02::2 ip6-allrouters
 80.74.30.162 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
 132.243.113.26 pandasecurity.com www.pandasecurity.com
 80.74.30.162 pandasecurity.com www.pandasecurity.com
-132.243.113.26 qwant.com
-80.74.30.162 qwant.com
+132.243.113.26 qwant.com www.qwant.com
+80.74.30.162 qwant.com www.qwant.com
 132.243.113.26 api.radarr.video radarr.video
 80.74.30.162 api.radarr.video radarr.video
 132.243.113.26 raycast.com releases.raycast.com
