@@ -193,7 +193,6 @@
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||www.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;191.217.212.16

@@ -448,7 +448,6 @@
 ||antigravity.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||appcatalyst.pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
-||daily-cloudcode-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||developerprofiles-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||geller-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
@@ -457,6 +456,7 @@
 ||notebooklm-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;181.215.40.49
+||daily-cloudcode-pa.googleapis.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||assets.grok.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||grok.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.grok.com^$dnsrewrite=NOERROR;A;181.215.40.49
