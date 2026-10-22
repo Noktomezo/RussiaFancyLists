@@ -20,8 +20,8 @@ ff02::2 ip6-allrouters
 80.74.30.162 bitdefender.com
 157.22.178.37 ai-chat.bsg.brave.com
 80.74.30.162 ai-chat.bsg.brave.com
-157.22.178.37 access.broadcom.com broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
-80.74.30.162 access.broadcom.com broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+157.22.178.37 access.broadcom.com broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
+80.74.30.162 access.broadcom.com broadcom.com knowledge.broadcom.com packages-prod.broadcom.com profile.broadcom.com support.broadcom.com
 157.22.178.37 content-management-files.canva.com static.canva.com www.canva.com
 80.74.30.162 content-management-files.canva.com static.canva.com www.canva.com
 157.22.178.37 api.cerebras.ai
@@ -44,20 +44,19 @@ ff02::2 ip6-allrouters
 80.74.30.162 www.crunchyroll.com
 157.22.178.37 api2.cursor.sh cursor.com www.cursor.com
 80.74.30.162 api2.cursor.sh cursor.com www.cursor.com
-157.22.178.37 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-80.74.30.162 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+157.22.178.37 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+80.74.30.162 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 157.22.178.37 app.deepsource.com deepsource.io
 80.74.30.162 app.deepsource.com deepsource.io
 157.22.178.37 ecosia.org www.ecosia.org
 80.74.30.162 ecosia.org www.ecosia.org
 157.22.178.37 elevenlabs.io
 80.74.30.162 elevenlabs.io
-157.22.178.37 gemini.google
 157.22.178.37 genspark.ai
 80.74.30.162 genspark.ai
-157.22.178.37 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com gemini.google.com jules.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+157.22.178.37 ai.google.dev aistudio.google.com apis.google.com jules.google.com
 80.74.30.162 ai.google.dev apis.google.com jules.google.com
-157.22.178.37 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com developerprofiles-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+157.22.178.37 aisandbox-pa.googleapis.com appcatalyst.pa.googleapis.com
 157.22.178.37 assets.grok.com grok.com
 80.74.30.162 assets.grok.com grok.com
 157.22.178.37 api.groq.com chat.groq.com console.groq.com groq.com
@@ -74,6 +73,7 @@ ff02::2 ip6-allrouters
 80.74.30.162 api.app.prod.grazie.aws.intellij.net
 157.22.178.37 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
 80.74.30.162 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
+157.22.178.37 labs.google
 157.22.178.37 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
 80.74.30.162 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
 157.22.178.37 api.manus.im manus.im www.manus.im
@@ -85,10 +85,8 @@ ff02::2 ip6-allrouters
 80.74.30.162 miro.com www.miro.com
 157.22.178.37 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
 80.74.30.162 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
-157.22.178.37 login.norton.com norton.com
-80.74.30.162 login.norton.com norton.com
-157.22.178.37 notebook.google www.notebook.google
-157.22.178.37 notebooklm.google
+157.22.178.37 norton.com
+80.74.30.162 norton.com
 157.22.178.37 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 80.74.30.162 app.notion.com calendar.notion.com calendar.notion.so notion.com notion.so www.notion.com www.notion.so
 157.22.178.37 cdn.oaistatic.com www.oaistatic.com
