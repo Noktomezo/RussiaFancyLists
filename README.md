@@ -331,12 +331,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->58.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->56.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->58.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->56.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1196/2102<br>
-        • 1196/2102
+        • 1195/2102<br>
+        • 1195/2102
       </td>
     </tr>
     <tr>
@@ -361,8 +361,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.hosts"><code>geohide-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.hosts -->53.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->51.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.hosts -->53.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->51.4 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1075/2102<br>
@@ -376,12 +376,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.hosts"><code>comss-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.hosts -->14.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->11.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.hosts -->14.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->11.8 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 273/2102<br>
-        • 273/2102
+        • 274/2102<br>
+        • 274/2102
       </td>
     </tr>
     <tr>
@@ -429,12 +429,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.hosts -->11.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->8.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.hosts -->11.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->8.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 281/2102<br>
-        • 281/2102
+        • 284/2102<br>
+        • 284/2102
       </td>
     </tr>
     <tr>
@@ -467,8 +467,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <!-- SIZE:lists/hosts/wl-dns-no-crutch.hosts -->5.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 223/2102<br>
-        • 223/2102
+        • 221/2102<br>
+        • 221/2102
       </td>
     </tr>
     <tr>
@@ -492,11 +492,11 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
       <td>
         • <!-- SIZE:lists/hosts/smart.adguard.txt -->133.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->127.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->127.6 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1196/2102<br>
-        • 1196/2102
+        • 1195/2102<br>
+        • 1195/2102
       </td>
     </tr>
     <tr>
@@ -536,12 +536,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->35.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->29.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->35.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->29.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 273/2102<br>
-        • 273/2102
+        • 274/2102<br>
+        • 274/2102
       </td>
     </tr>
     <tr>
@@ -589,12 +589,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->27.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->22.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->28.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->22.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 281/2102<br>
-        • 281/2102
+        • 284/2102<br>
+        • 284/2102
       </td>
     </tr>
     <tr>
@@ -623,12 +623,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/wl-dns-no-crutch.adguard.txt"><code>wl-dns-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/wl-dns.adguard.txt -->18.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.adguard.txt -->12.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/wl-dns.adguard.txt -->18.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.adguard.txt -->12.8 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 223/2102<br>
-        • 223/2102
+        • 221/2102<br>
+        • 221/2102
       </td>
     </tr>
     <tr>

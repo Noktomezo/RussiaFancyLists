@@ -44,8 +44,9 @@ ff02::2 ip6-allrouters
 206.223.242.94 www.crunchyroll.com
 176.12.72.184 api2.cursor.sh cursor.com www.cursor.com
 206.223.242.94 api2.cursor.sh cursor.com www.cursor.com
-176.12.72.184 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+176.12.72.184 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com
 206.223.242.94 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+80.74.30.162 www2.deepl.com
 176.12.72.184 app.deepsource.com deepsource.io
 206.223.242.94 app.deepsource.com deepsource.io
 176.12.72.184 ecosia.org www.ecosia.org
@@ -70,8 +71,9 @@ ff02::2 ip6-allrouters
 206.223.242.94 www.intel.com
 176.12.72.184 api.app.prod.grazie.aws.intellij.net
 206.223.242.94 api.app.prod.grazie.aws.intellij.net
-176.12.72.184 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
+176.12.72.184 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com
 206.223.242.94 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
+80.74.30.162 youtrack.jetbrains.com
 176.12.72.184 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
 206.223.242.94 downloads.malwarebytes.com malwarebytes.com www.malwarebytes.com
 176.12.72.184 api.manus.im manus.im www.manus.im
@@ -102,8 +104,8 @@ ff02::2 ip6-allrouters
 206.223.242.94 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
 176.12.72.184 pandasecurity.com www.pandasecurity.com
 206.223.242.94 pandasecurity.com www.pandasecurity.com
-176.12.72.184 qwant.com
-206.223.242.94 qwant.com
+176.12.72.184 qwant.com www.qwant.com
+206.223.242.94 qwant.com www.qwant.com
 176.12.72.184 api.radarr.video radarr.video
 206.223.242.94 api.radarr.video radarr.video
 176.12.72.184 raycast.com releases.raycast.com
@@ -146,10 +148,12 @@ ff02::2 ip6-allrouters
 206.223.242.94 docs.vmware.com vmware.com
 176.12.72.184 wbagora.com
 206.223.242.94 wbagora.com
-176.12.72.184 account.wbgames.com wbgames.com www.wbgames.com
+176.12.72.184 account.wbgames.com wbgames.com
 206.223.242.94 account.wbgames.com wbgames.com www.wbgames.com
-176.12.72.184 upsx.weather.com weather.com www.weather.com
+80.74.30.162 www.wbgames.com
+176.12.72.184 upsx.weather.com weather.com
 206.223.242.94 upsx.weather.com weather.com www.weather.com
+80.74.30.162 www.weather.com
 176.12.72.184 marketplace.windsurf.com
 206.223.242.94 marketplace.windsurf.com
 176.12.72.184 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
@@ -158,8 +162,10 @@ ff02::2 ip6-allrouters
 206.223.242.94 users.wix.com
 176.12.72.184 api.workos.com
 206.223.242.94 api.workos.com
-176.12.72.184 wunderground.com www.wunderground.com
+176.12.72.184 wunderground.com
 206.223.242.94 wunderground.com www.wunderground.com
-176.12.72.184 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
+80.74.30.162 www.wunderground.com
+176.12.72.184 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai
 206.223.242.94 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai
+80.74.30.162 www.x.ai
 45.114.60.100 xsts.auth.xboxlive.com
