@@ -55,14 +55,12 @@
 ||access.broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||knowledge.broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
-||login.broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||packages-prod.broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||support.broadcom.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||access.broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||knowledge.broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
-||login.broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||packages-prod.broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||profile.broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||support.broadcom.com^$dnsrewrite=NOERROR;A;80.74.30.162
@@ -155,7 +153,6 @@
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||jobs.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
-||login-wall.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||oneshot-free.www.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||s.deepl.com^$dnsrewrite=NOERROR;A;132.243.113.26
@@ -189,7 +186,6 @@
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||jobs.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
-||login-wall.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||oneshot-free.www.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||s.deepl.com^$dnsrewrite=NOERROR;A;80.74.30.162
@@ -300,9 +296,7 @@
 ||mongodb.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||webassets.mongodb.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||www.mongodb.com^$dnsrewrite=NOERROR;A;80.74.30.162
-||login.norton.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||norton.com^$dnsrewrite=NOERROR;A;132.243.113.26
-||login.norton.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||norton.com^$dnsrewrite=NOERROR;A;80.74.30.162
 ||app.notion.com^$dnsrewrite=NOERROR;A;132.243.113.26
 ||calendar.notion.com^$dnsrewrite=NOERROR;A;132.243.113.26
