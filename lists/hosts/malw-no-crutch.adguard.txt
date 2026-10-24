@@ -17,12 +17,15 @@
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||game.brawlstarsgame.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||static.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -33,8 +36,11 @@
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||a.claude.ai^$dnsrewrite=NOERROR;A;143.20.64.55
 ||claude.ai^$dnsrewrite=NOERROR;A;143.20.64.55
 ||platform.claude.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -43,9 +49,10 @@
 ||api.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||downloads.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -97,11 +104,8 @@
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||shield.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||sl.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||voice-proxy.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||w.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||write-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www2.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -134,6 +138,7 @@
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fitbit.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gemini.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||jules.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -141,6 +146,8 @@
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||daily-cloudcode-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -160,7 +167,6 @@
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||datalore.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||download.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||labs.google^$dnsrewrite=NOERROR;A;179.254.166.174
 ||autodiscover.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -209,6 +215,7 @@
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -282,6 +289,7 @@
 ||desktop.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||edge-web.dual-gslb.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||exp.wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||gae2-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gce.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gew1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gew1-dealer.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -305,6 +313,7 @@
 ||spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -337,7 +346,6 @@
 ||mi.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||scim.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||shop.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||staging.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||status.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -346,6 +354,8 @@
 ||support.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||tiles.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||watch.samsung.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.blog.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -370,6 +380,7 @@
 ||api.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fsu.fa.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||images.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||link.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -400,3 +411,7 @@
 ||xgpuweb.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||xgpuwebf2p.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||xgpuweb.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||xgpuwebf2p.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||xdaforums.com^$dnsrewrite=NOERROR;A;179.254.166.174
