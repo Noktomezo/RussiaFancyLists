@@ -5,39 +5,49 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-191.217.212.16 adobe.com adobe.io
-191.217.212.16 anthropic.com api.anthropic.com console.anthropic.com
-191.217.212.16 accounts.autodesk.com autodesk.com autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.com
+191.217.212.16 adobe.com adobe.io www.adobe.io
+191.217.212.16 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
+191.217.212.16 autocad.com www.autocad.com
+191.217.212.16 accounts.autodesk.com autodesk.com autodesk.net damassets.autodesk.net dl.appstreaming.autodesk.com efulfillment.autodesk.com www.autodesk.ae www.autodesk.be www.autodesk.com www.autodesk.eu www.autodesk.net
+191.217.212.16 autodesk360.com www.autodesk360.com
+191.217.212.16 behance.net www.behance.net
 191.217.212.16 chat.com
-191.217.212.16 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
-191.217.212.16 a.claude.ai claude.ai claude.com platform.claude.com
-191.217.212.16 crunchyroll.com
+191.217.212.16 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
+191.217.212.16 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
+191.217.212.16 claudemcpclient.com www.claudemcpclient.com
+191.217.212.16 claudeusercontent.com www.claudeusercontent.com
+191.217.212.16 crunchyroll.com www.crunchyroll.com
 191.217.212.16 vod-fy.crunchyrollcdn.com
 191.217.212.16 fast.com
 191.217.212.16 geforcenow.com
-191.217.212.16 aistudio.google.com alkalimakersuite-pa.clients6.google.com bard.google.com discuss.ai.google.dev gemini.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-191.217.212.16 generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+191.217.212.16 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com bard.google.com discuss.ai.google.dev gemini.google.com geminiweb-pa.clients6.google.com makersuite.google.com notebook.google.com notebooklm.google.com signaler-pa.clients6.google.com waa-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+191.217.212.16 geller-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 191.217.212.16 auth.grazie.ai
-191.217.212.16 assets.grok.com grok.com
+191.217.212.16 assets.grok.com grok.com www.grok.com
 191.217.212.16 api.app.prod.grazie.aws.intellij.net intellij.net
-191.217.212.16 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com jetbrains.space jetbrains.team plugins.jetbrains.com youtrack.jetbrains.com
+191.217.212.16 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com jetbrains.space jetbrains.team plugins.jetbrains.com www.jetbrains.com www.jetbrains.space youtrack.jetbrains.com
 191.217.212.16 labs.google
-191.217.212.16 myjetbrains.com
+191.217.212.16 autodiscover.last.fm
+191.217.212.16 myjetbrains.com www.myjetbrains.com
+191.217.212.16 autodiscover.naukri.com autodiscover.rms.naukri.com
 191.217.212.16 netflix.ca netflix.com netflix.net
 191.217.212.16 nflxext.com
 191.217.212.16 nflximg.com nflximg.net
 191.217.212.16 nflxsearch.net
 191.217.212.16 nflxso.net
 191.217.212.16 nflxvideo.net
-191.217.212.16 developer.nvidia.com install.launcher.omniverse.nvidia.com nvidia.com nvidianews.nvidia.com
-191.217.212.16 cdn.oaistatic.com oaistatic.com
-191.217.212.16 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
-191.217.212.16 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+191.217.212.16 notebook.google www.notebook.google
+191.217.212.16 notebooklm.google
+191.217.212.16 build.nvidia.com developer.nvidia.com install.launcher.omniverse.nvidia.com ngc.nvidia.com nvidia.com nvidianews.nvidia.com
+191.217.212.16 cdn.oaistatic.com oaistatic.com www.oaistatic.com
+191.217.212.16 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+191.217.212.16 ecs.office.com
+191.217.212.16 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
 191.217.212.16 sora.com
-191.217.212.16 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+191.217.212.16 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com xpui.app.spotify.com
 191.217.212.16 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 191.217.212.16 v.vrv.co
-191.217.212.16 accounts.x.ai console.x.ai grok.x.com x.ai
+191.217.212.16 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai grok.x.com www.x.ai x.ai
 191.217.212.16 xbox.com xboxdesignlab.xbox.com
-191.217.212.16 xsts.auth.xboxlive.com
+191.217.212.16 auth.xboxlive.com xsts.auth.xboxlive.com
 191.217.212.16 youtrack.cloud

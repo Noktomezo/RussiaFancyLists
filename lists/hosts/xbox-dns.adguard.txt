@@ -101,5 +101,6 @@
 ||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
 
 ! Geoblock
+||auth.xboxlive.com^$dnsrewrite=NOERROR;A;87.228.47.196
 ||xgpuweb.gssv-play-prod.xboxlive.com^$dnsrewrite=NOERROR;A;87.228.47.196
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;87.228.47.196
