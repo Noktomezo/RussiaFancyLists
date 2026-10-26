@@ -176,6 +176,7 @@
 ||eu1.ecdn2.badoocdn.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||basecamp.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.basecamp.com^$dnsrewrite=NOERROR;A;181.215.40.49
+||3.basecampapi.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||basecampapi.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.basecampapi.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||behance.net^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -224,6 +225,7 @@
 ||api.cerebras.ai^$dnsrewrite=NOERROR;A;181.215.40.49
 ||cerebras.ai^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.cerebras.ai^$dnsrewrite=NOERROR;A;181.215.40.49
+||cgtrader.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.cgtrader.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||accounts.chaos.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||chaos.com^$dnsrewrite=NOERROR;A;181.215.40.49
@@ -384,6 +386,7 @@
 ||www.elevenlabs.io^$dnsrewrite=NOERROR;A;31.58.216.201
 ||elevenreader.io^$dnsrewrite=NOERROR;A;31.58.216.201
 ||elgato.com^$dnsrewrite=NOERROR;A;181.215.40.49
+||marketplace.elgato.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.elgato.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||eneba.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.eneba.com^$dnsrewrite=NOERROR;A;181.215.40.49
@@ -586,6 +589,7 @@
 ||www.mouser.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||myjetbrains.com^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.myjetbrains.com^$dnsrewrite=NOERROR;A;181.215.40.49
+||app.n8n.cloud^$dnsrewrite=NOERROR;A;181.215.40.49
 ||n8n.cloud^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.n8n.cloud^$dnsrewrite=NOERROR;A;181.215.40.49
 ||downloads.ndi.tv^$dnsrewrite=NOERROR;A;181.215.40.49
@@ -818,6 +822,7 @@
 ||security.id.supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||store.supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
+||static.superpharm.eu^$dnsrewrite=NOERROR;A;181.215.40.49
 ||superpharm.eu^$dnsrewrite=NOERROR;A;181.215.40.49
 ||superpharm.pl^$dnsrewrite=NOERROR;A;181.215.40.49
 ||www.superpharm.eu^$dnsrewrite=NOERROR;A;181.215.40.49
