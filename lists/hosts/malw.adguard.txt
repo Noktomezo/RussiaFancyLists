@@ -5,8 +5,6 @@
 ||audio4-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;2.16.168.44
 ||audio-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.36.163.34
 ||heads-ak-spotify-com.akamaized.net^$dnsrewrite=NOERROR;A;23.48.23.145
-||scontent-hel3-1.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
-||scontent.cdninstagram.com^$dnsrewrite=NOERROR;A;31.13.66.63
 ||static.cdninstagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||updates.discord.com^$dnsrewrite=NOERROR;A;162.159.135.232
 ||facebook.com^$dnsrewrite=NOERROR;A;57.144.244.1
@@ -124,7 +122,6 @@
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -135,7 +132,6 @@
 ||operator.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.chatgpt.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -151,10 +147,7 @@
 ||downloads.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -204,19 +197,18 @@
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||shield.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||sl.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||voice-proxy.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||w.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||write-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www2.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||deezer.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||payment.deezer.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.deezer.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||deezer.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||payment.deezer.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.deezer.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dyson.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.dyson.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -279,6 +271,7 @@
 ||s.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||saa.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||secure.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||shop.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wiki.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -449,6 +442,7 @@
 ||mi.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||scim.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||shop.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||staging.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||status.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174

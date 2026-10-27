@@ -268,10 +268,8 @@
 ||lightning.ai^$dnsrewrite=NOERROR;A;206.223.251.18
 ||downloads.malwarebytes.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||malwarebytes.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||www.malwarebytes.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||downloads.malwarebytes.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||malwarebytes.com^$dnsrewrite=NOERROR;A;206.223.251.18
-||www.malwarebytes.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||api.manus.im^$dnsrewrite=NOERROR;A;176.12.72.184
 ||manus.im^$dnsrewrite=NOERROR;A;176.12.72.184
 ||www.manus.im^$dnsrewrite=NOERROR;A;176.12.72.184
@@ -345,6 +343,7 @@
 ||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||chat.openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||developers.openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
+||ios.chat.openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||platform.openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;176.12.72.184
@@ -358,6 +357,7 @@
 ||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||chat.openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||developers.openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
+||ios.chat.openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||platform.openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;206.223.251.18
