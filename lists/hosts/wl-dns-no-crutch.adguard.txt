@@ -35,6 +35,7 @@
 ||www.autodesk360.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||behance.net^$dnsrewrite=NOERROR;A;191.217.212.16
 ||www.behance.net^$dnsrewrite=NOERROR;A;191.217.212.16
+||edgeservices.bing.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||chat.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||chatgpt.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -99,6 +100,7 @@
 ||youtrack.jetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||labs.google^$dnsrewrite=NOERROR;A;191.217.212.16
 ||autodiscover.last.fm^$dnsrewrite=NOERROR;A;191.217.212.16
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||myjetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||www.myjetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||autodiscover.naukri.com^$dnsrewrite=NOERROR;A;191.217.212.16
@@ -140,6 +142,7 @@
 ||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||chat.openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||developers.openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||ios.chat.openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||platform.openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;191.217.212.16
