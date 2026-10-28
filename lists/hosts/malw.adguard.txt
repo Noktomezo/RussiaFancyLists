@@ -102,6 +102,7 @@
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||console.anthropic.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||console.anthropic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||antigravity-unleash.goog^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web.archive.org^$dnsrewrite=NOERROR;A;143.20.64.55
 ||web.archive.org^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -119,6 +120,7 @@
 ||static.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||www.canva.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||content-management-files.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.canva.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -145,8 +147,6 @@
 ||claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||downloads.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
-||platform.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
-||platform.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.claude.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.claude.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clickup.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -180,6 +180,7 @@
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||checkout.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clearance.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||community-auth.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||developers.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dict-audio.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -190,8 +191,11 @@
 ||gtm.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||home.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||internal.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||jobs.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login-wall.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||oneshot-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||shield.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -234,13 +238,14 @@
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||jules.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||notebooklm.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||daily-cloudcode-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||grok.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -259,8 +264,10 @@
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||datalore.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||download.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||labs.google^$dnsrewrite=NOERROR;A;179.254.166.174
 ||autodiscover.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||jira.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||saa.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||secure.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -268,6 +275,7 @@
 ||store.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wiki.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;143.20.64.55
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;143.20.64.55
 ||linear.app^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -276,10 +284,12 @@
 ||static.linear.app^$dnsrewrite=NOERROR;A;143.20.64.55
 ||uploads.linear.app^$dnsrewrite=NOERROR;A;143.20.64.55
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
+||constellation.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||public.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||app.notion.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -292,7 +302,6 @@
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||oaistatic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.oaistatic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -300,7 +309,6 @@
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -325,8 +333,7 @@
 ||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||chat.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||developers.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||platform.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||ios.chat.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -335,7 +342,6 @@
 ||patreon.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.patreon.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||patreonusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||o.pki.goog^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.spotify.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api-partner.spotify.com^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -362,6 +368,8 @@
 ||auth.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clienttoken.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||connect.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||content.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||crashdump.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dealer-wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dealer.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -380,8 +388,6 @@
 ||login.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login5.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||metrics.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||pixel-static.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||pixel.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -389,12 +395,12 @@
 ||www.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||heads4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||image-cdn-fa.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||thisis-images.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -402,14 +408,18 @@
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||api.squareup.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||blog.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||c.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn-1.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||communityhub.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||content-a.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dam.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dev.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||email.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||email1.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||interview.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||links.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||mi.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -472,6 +482,7 @@
 ||accounts.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
+||console.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||grok.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
 ||x.ai^$dnsrewrite=NOERROR;A;179.254.166.174
