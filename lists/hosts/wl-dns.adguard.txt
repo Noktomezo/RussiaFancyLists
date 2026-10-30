@@ -38,7 +38,7 @@
 ||ntc.party^$dnsrewrite=NOERROR;A;130.255.77.28
 ||r6s.com^$dnsrewrite=NOERROR;A;172.67.139.108
 ||rainbow6.com^$dnsrewrite=NOERROR;A;54.155.2.87
-||tr.rbxcdn.com^$dnsrewrite=NOERROR;A;65.8.158.112
+||tr.rbxcdn.com^$dnsrewrite=NOERROR;A;99.84.181.63
 ||lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||www.lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||d.rutor.info^$dnsrewrite=NOERROR;A;172.66.159.63
@@ -184,6 +184,7 @@
 ||auth.grazie.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||assets.grok.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||www.grok.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||api.app.prod.grazie.aws.intellij.net^$dnsrewrite=NOERROR;A;191.217.212.16
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;191.217.212.16
