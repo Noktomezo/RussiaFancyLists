@@ -151,6 +151,7 @@
 ||gtm.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||home.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
+||internal.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||jobs.deepl.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -184,6 +185,7 @@
 ||gtm.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||home.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
+||internal.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||jobs.deepl.com^$dnsrewrite=NOERROR;A;176.12.72.184
@@ -428,6 +430,7 @@
 ||email.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||email1.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
+||interview.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||links.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||metro.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
 ||mi.strava.com^$dnsrewrite=NOERROR;A;157.22.178.170
@@ -458,6 +461,7 @@
 ||email.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||email1.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184
+||interview.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||links.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||metro.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||mi.strava.com^$dnsrewrite=NOERROR;A;176.12.72.184

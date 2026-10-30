@@ -84,7 +84,7 @@ Generated artifacts are organized as follows:
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.55 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->187.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->1.02 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->142.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->142.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->310.1 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->43.6 KB<!-- SIZE_END -->
       </td>
@@ -118,7 +118,7 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.27 MB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->218.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->854.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->854.8 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->182.0 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->252.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->57.7 KB<!-- SIZE_END -->
@@ -346,8 +346,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->60.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->58.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->60.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->57.9 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2187/2187<br>
@@ -377,11 +377,11 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
       <td>
         • <!-- SIZE:lists/hosts/comss.hosts -->14.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->11.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->11.8 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 274/2187<br>
-        • 274/2187
+        • 276/2187<br>
+        • 276/2187
       </td>
     </tr>
     <tr>
@@ -429,12 +429,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.hosts -->11.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->8.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.hosts -->11.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->9.3 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 279/2187<br>
-        • 279/2187
+        • 295/2187<br>
+        • 295/2187
       </td>
     </tr>
     <tr>
@@ -452,8 +452,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <!-- SIZE:lists/hosts/bezmezhau-no-crutch.hosts -->18.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 861/2187<br>
-        • 861/2187
+        • 860/2187<br>
+        • 860/2187
       </td>
     </tr>
     <tr>
@@ -464,11 +464,11 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
       <td>
         • <!-- SIZE:lists/hosts/wl-dns.hosts -->7.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.hosts -->5.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.hosts -->5.2 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 227/2187<br>
-        • 227/2187
+        • 225/2187<br>
+        • 225/2187
       </td>
     </tr>
     <tr>
@@ -492,7 +492,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
       </td>
       <td>
         • <!-- SIZE:lists/hosts/smart.adguard.txt -->133.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->128.4 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->128.5 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1205/2187<br>
@@ -506,8 +506,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->121.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->116.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->121.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->116.1 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2187/2187<br>
@@ -536,12 +536,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->35.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->29.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->35.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->30.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 274/2187<br>
-        • 274/2187
+        • 276/2187<br>
+        • 276/2187
       </td>
     </tr>
     <tr>
@@ -589,12 +589,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->28.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->22.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->29.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->23.9 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 279/2187<br>
-        • 279/2187
+        • 295/2187<br>
+        • 295/2187
       </td>
     </tr>
     <tr>
@@ -612,8 +612,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <!-- SIZE:lists/hosts/bezmezhau-no-crutch.adguard.txt -->46.7 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 861/2187<br>
-        • 861/2187
+        • 860/2187<br>
+        • 860/2187
       </td>
     </tr>
     <tr>
@@ -623,12 +623,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/wl-dns-no-crutch.adguard.txt"><code>wl-dns-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/wl-dns.adguard.txt -->18.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.adguard.txt -->13.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/wl-dns.adguard.txt -->18.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.adguard.txt -->13.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 227/2187<br>
-        • 227/2187
+        • 225/2187<br>
+        • 225/2187
       </td>
     </tr>
     <tr>
@@ -655,7 +655,7 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 ## ⚡ Smart DNS Status
 <!-- STATUS_START -->
 - **GeoHide**: 💚💚💚💚💚💚💚💚💚💚💚
-- **Comss**: 💚💚💚💚
+- **Comss**: 💚💚💚
 - **Xbox DNS**: 💚
 - **AstraCat**: 💚
 - **ImMALWARE**: 💚💚
