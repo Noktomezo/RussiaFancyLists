@@ -49,7 +49,7 @@ ff02::2 ip6-allrouters
 181.215.40.49 api.cerebras.ai cerebras.ai www.cerebras.ai
 181.215.40.49 cgtrader.com www.cgtrader.com
 181.215.40.49 accounts.chaos.com chaos.com forums.chaos.com my.chaos.com ssooauth.chaos.com try.chaos.com www.chaos.com
-31.58.216.201 ab.chatgpt.com chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
+31.58.216.201 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com www.chatgpt.com
 31.58.216.201 assets-configurator.chess.com chess.com www.chess.com
 181.215.40.49 cici.com www.cici.com
 31.58.216.201 clashofclans.com game-assets.clashofclans.com
@@ -61,13 +61,13 @@ ff02::2 ip6-allrouters
 181.215.40.49 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com www.codeium.com
 181.215.40.49 codeiumdata.com
 181.215.40.49 coreweave.com www.coreweave.com
-181.215.40.49 corsair.com www.corsair.com www3.corsair.com
+181.215.40.49 corsair.com www.corsair.com
 181.215.40.49 cummins.com www.cummins.com
-181.215.40.49 cursor-cdn.com cursor.com downloads.cursor.com www.cursor-cdn.com www.cursor.com
+181.215.40.49 cursor-cdn.com cursor.com downloads.cursor.com origin.cursor.com www.cursor-cdn.com www.cursor.com
 31.58.216.201 agentn.api2.cursor.sh agentn.api3.cursor.sh agentn.api4.cursor.sh agentn.api5.cursor.sh agentn.global.api2.cursor.sh agentn.global.api3.cursor.sh agentn.global.api4.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh api5.cursor.sh authenticate.cursor.sh authenticator.cursor.sh cursor.sh repo42.cursor.sh us-asia.gcpp.cursor.sh us-eu.gcpp.cursor.sh us-only.gcpp.cursor.sh
 181.215.40.49 cursorapi.com marketplace.cursorapi.com
 181.215.40.49 cursorvm.com www.cursorvm.com
-181.215.40.49 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.app deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com www2.deepl.com
+181.215.40.49 api-free.deepl.com api.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com community-auth.deepl.com deepl.app deepl.com developers.deepl.com dict-audio.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com home.deepl.com hs.deepl.com internal.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com jobs.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com sl.deepl.com static.deepl.com support.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.app www.deepl.com
 181.215.40.49 deepmind.com deepmind.google
 31.58.216.201 deezer.com payment.deezer.com www.deezer.com
 181.215.40.49 dds.dell.com dell.com dl.dell.com i.dell.com nexus.dell.com www.dell.com
@@ -86,6 +86,7 @@ ff02::2 ip6-allrouters
 181.215.40.49 etsy.com www.etsy.com
 181.215.40.49 euro.com.pl www.euro.com.pl
 181.215.40.49 evike.com www.evike.com
+181.215.40.49 octanorm.expo.shop
 31.58.216.201 api.fitbit.com
 181.215.40.49 flow.google www.flow.google
 31.58.216.201 flowmusic.app www.flowmusic.app
@@ -97,7 +98,7 @@ ff02::2 ip6-allrouters
 181.215.40.49 gemini.google
 181.215.40.49 generativeai.google
 181.215.40.49 genspark.ai www.genspark.ai
-181.215.40.49 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com www.flow.google.com
+181.215.40.49 ai.google.dev aistudio.google.com alkalicore-pa.clients6.google.com alkalimakersuite-pa.clients6.google.com apis.google.com bard.google.com datastudio.google.com discuss.ai.google.dev flow.google.com gemini.google.com geminiweb-pa.clients.google.com geminiweb-pa.clients6.google.com jules.google.com labs.google.com lookerstudio.google.com makersuite.google.com notebook.google.com notebooklm.google.com opal.google.com people-pa.clients6.google.com signaler-pa.clients6.google.com webchannel-alkalimakersuite-pa.clients6.google.com www.flow.google.com
 31.58.216.201 waa-pa.clients6.google.com
 181.215.40.49 aicode.googleapis.com aida.googleapis.com aisandbox-pa.googleapis.com antigravity-pa.googleapis.com antigravity.googleapis.com appcatalyst.pa.googleapis.com assistant-s3-pa.googleapis.com developerprofiles-pa.googleapis.com geller-pa.googleapis.com generativelanguage.googleapis.com labstailwind.pa.googleapis.com notebook-pa.googleapis.com notebooklm-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 31.58.216.201 daily-cloudcode-pa.googleapis.com
@@ -114,7 +115,7 @@ ff02::2 ip6-allrouters
 181.215.40.49 indeed.com www.indeed.com
 181.215.40.49 intel.de intel.se www.intel.com www.intel.de www.intel.se
 181.215.40.49 downloads.intercomcdn.com
-181.215.40.49 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com jetbrains.ai jetbrains.space plugins.jetbrains.com www.jetbrains.com www.jetbrains.space youtrack.jetbrains.com
+181.215.40.49 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com jetbrains.ai jetbrains.space plugins.jetbrains.com www.jetbrains.com www.jetbrains.space
 181.215.40.49 jules.google
 181.215.40.49 kaleido.ai www.kaleido.ai
 181.215.40.49 labs.google
@@ -158,17 +159,18 @@ ff02::2 ip6-allrouters
 181.215.40.49 build.nvidia.com developer.nvidia.com ngc.nvidia.com
 31.58.216.201 cdn.oaistatic.com oaistatic.com www.oaistatic.com
 31.58.216.201 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
-181.215.40.49 www.octanorm.com
+181.215.40.49 octanorm.com www.octanorm.com
 31.58.216.201 ecs.office.com
 181.215.40.49 geolocation.onetrust.com
-31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com www.openai.com
+181.215.40.49 opal.google
+31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com www.openai.com
 31.58.216.201 tracker.openbittorrent.com
-181.215.40.49 www.opencode.ai
-181.215.40.49 eu.openrouter.ai us.openrouter.ai www.openrouter.ai
-181.215.40.49 cloud.oracle.com www.oracle.com
-181.215.40.49 www.padi.com
-181.215.40.49 www.pandasecurity.com
-181.215.40.49 www.panic.com
+181.215.40.49 opencode.ai www.opencode.ai
+181.215.40.49 eu.openrouter.ai openrouter.ai us.openrouter.ai www.openrouter.ai
+181.215.40.49 cloud.oracle.com oracle.com www.oracle.com
+181.215.40.49 padi.com www.padi.com
+181.215.40.49 pandasecurity.com www.pandasecurity.com
+181.215.40.49 panic.com www.panic.com
 181.215.40.49 platform.parallel.ai
 31.58.216.201 builds.parsec.app parsec.app public.parsec.app
 31.58.216.201 www.patreon.com
@@ -184,67 +186,61 @@ ff02::2 ip6-allrouters
 181.215.40.49 promods.net www.promods.net
 181.215.40.49 pubnubapi.com www.pubnubapi.com
 181.215.40.49 frontend-api-v3.pump.fun images.pump.fun pump.fun swap-api.pump.fun
-181.215.40.49 qoder.com www.qoder.com
-181.215.40.49 www.qwant.com
-181.215.40.49 remove.bg www.remove.bg
-181.215.40.49 app.reve.com preview.reve.art reve.art reve.com www.reve.art www.reve.com
-181.215.40.49 romsgames.net www.romsgames.net
+181.215.40.49 qoder.com
+181.215.40.49 remove.bg
+181.215.40.49 app.reve.com preview.reve.art reve.art reve.com
+181.215.40.49 romsgames.net
 181.215.40.49 blogs.sap.com community.sap.com
-181.215.40.49 scribd.com www.scribd.com
-181.215.40.49 scribdassets.com www.scribdassets.com
-181.215.40.49 se.com www.se.com
-181.215.40.49 securitytrails.com www.securitytrails.com
+181.215.40.49 scribd.com
+181.215.40.49 scribdassets.com
+181.215.40.49 se.com
+181.215.40.49 securitytrails.com
 181.215.40.49 sentry.io
 181.215.40.49 prowlarr.servarr.com
-181.215.40.49 singlekey-id.com www.singlekey-id.com
-181.215.40.49 3dwarehouse.sketchup.com extensions.sketchup.com sketchup.com www.sketchup.com
-31.58.216.201 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com spotify.dev web-partner.spotify.com www.spotify.com www.spotify.dev xpui.app.spotify.com
+181.215.40.49 singlekey-id.com
+181.215.40.49 3dwarehouse.sketchup.com extensions.sketchup.com sketchup.com
+31.58.216.201 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com spotify.dev web-partner.spotify.com
 31.58.216.201 concerts.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.net thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 31.58.216.201 game.squadbustersgame.com squadbustersgame.com
-181.215.40.49 api-global.squareup.com api.squareup.com squareup.com www.squareup.com
-31.58.216.201 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com www.strava.com
+181.215.40.49 api-global.squareup.com api.squareup.com squareup.com
+31.58.216.201 blog.strava.com business.strava.com c.strava.com cdn-1.strava.com communityhub.strava.com content-a.strava.com dam.strava.com dev.strava.com email.strava.com email1.strava.com graphql.strava.com interview.strava.com links.strava.com metro.strava.com mi.strava.com promo.strava.com scim.strava.com shop.strava.com staging.strava.com status.strava.com store.strava.com stories.strava.com strava.com support.strava.com tiles.strava.com watch.samsung.strava.com www.blog.strava.com www.business.strava.com www.metro.strava.com www.promo.strava.com
 31.58.216.201 api.stumbleguys.com matchmaking.stumbleguys.com
 31.58.216.201 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com supercell.com
-181.215.40.49 static.superpharm.eu superpharm.eu superpharm.pl www.superpharm.eu www.superpharm.pl
-181.215.40.49 tableau.com www.tableau.com
+181.215.40.49 static.superpharm.eu superpharm.eu superpharm.pl
+181.215.40.49 tableau.com
 181.215.40.49 controlplane.tailscale.com pkgs.tailscale.com tailscale.com
 181.215.40.49 dl.teamviewer.com download.teamviewer.com
 181.215.40.49 account.templatemonster.com templatemonster.com
 31.58.216.201 api.themoviedb.org themoviedb.org
-181.215.40.49 ti.com www.ti.com
+181.215.40.49 ti.com
 31.58.216.201 api.tidal.com auth.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
 31.58.216.201 image.tmdb.org images.tmdb.org tmdb.org
-181.215.40.49 tokenharbor.ai www.tokenharbor.ai
+181.215.40.49 tokenharbor.ai
 181.215.40.49 api-sg-central.trae.ai api.trae.ai trae.ai
-181.215.40.49 tria.ge www.tria.ge
-181.215.40.49 id.trimble.com sketchup.trimble.com trimble.com www.trimble.com
-181.215.40.49 trueachievements.com www.trueachievements.com
-181.215.40.49 static-assets-1.truthsocial.com truthsocial.com www.truthsocial.com
+181.215.40.49 tria.ge
+181.215.40.49 id.trimble.com sketchup.trimble.com trimble.com
+181.215.40.49 trueachievements.com
+181.215.40.49 static-assets-1.truthsocial.com truthsocial.com
 181.215.40.49 usher.ttvnw.net
-181.215.40.49 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com www.tuta.com
+181.215.40.49 app.test.tuta.com app.tuta.com mta-sts.test.tuta.com mta-sts.tuta.com pay.test.tuta.com pay.tuta.com status.tuta.com test.tuta.com tuta.com w1.api.test.tuta.com w10.api.tuta.com w11.api.tuta.com w12.api.tuta.com w13.api.tuta.com w14.api.tuta.com w15.api.tuta.com w16.api.tuta.com w2.api.test.tuta.com w3.api.test.tuta.com w4.api.test.tuta.com w5.api.test.tuta.com w6.api.test.tuta.com w7.api.test.tuta.com w8.api.test.tuta.com w9.api.tuta.com
 181.215.40.49 tutanota.com
-181.215.40.49 uainvest.com.ua www.uainvest.com.ua
-181.215.40.49 ultimaker.com www.ultimaker.com
-181.215.40.49 unscreen.com www.unscreen.com
-181.215.40.49 w-x.co www.w-x.co
-31.58.216.201 account.wbgames.com wbgames.com www.wbgames.com
-181.215.40.49 upsx.weather.com weather.com www.weather.com
-181.215.40.49 whimsical.com www.whimsical.com
-181.215.40.49 windguru.cz www.windguru.cz
+181.215.40.49 uainvest.com.ua
+181.215.40.49 ultimaker.com
+181.215.40.49 unscreen.com
+181.215.40.49 w-x.co
+31.58.216.201 account.wbgames.com wbgames.com
+181.215.40.49 upsx.weather.com weather.com
+181.215.40.49 whimsical.com
+181.215.40.49 windguru.cz
 181.215.40.49 marketplace.windsurf.com windsurf.com
-181.215.40.49 wise.com www.wise.com
-181.215.40.49 aitestkitchen.withgoogle.com stitch.withgoogle.com
+181.215.40.49 wise.com
+181.215.40.49 aitestkitchen.withgoogle.com opal.withgoogle.com stitch.withgoogle.com
 181.215.40.49 users.wix.com
 181.215.40.49 api.workos.com
-181.215.40.49 wund.com www.wund.com
-181.215.40.49 wunderground.com www.wunderground.com
-181.215.40.49 www.wxug.com wxug.com
-181.215.40.49 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai grok.x.com www.x.ai x.ai
-31.58.216.201 xbox.com xboxdesignlab.xbox.com
-31.58.216.201 auth.xboxlive.com gssv-play-prod.xboxlive.com titlestorage.xboxlive.com xgpuweb.gssv-play-prod.xboxlive.com xgpuwebf2p.gssv-play-prod.xboxlive.com xsts.auth.xboxlive.com
-181.215.40.49 accountmanagement.services.xerox.com support.xerox.com www.support.xerox.com www.xerox.com xerox.com
-181.215.40.49 www.xiaomi.eu xiaomi.eu
-181.215.40.49 www.yeggi.com yeggi.com
-181.215.40.49 www.yupp.ai yupp.ai
-181.215.40.49 www.zapier-deployment.com www.zapier.com zapier-deployment.com zapier.com
+181.215.40.49 wund.com
+181.215.40.49 wunderground.com
+181.215.40.49 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai grok.x.com
+31.58.216.201 auth.xboxlive.com gssv-play-prod.xboxlive.com titlestorage.xboxlive.com
+181.215.40.49 accountmanagement.services.xerox.com support.xerox.com
+181.215.40.49 old.yummyani.me
 181.215.40.49 app.zerossl.com
