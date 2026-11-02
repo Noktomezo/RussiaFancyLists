@@ -6,155 +6,155 @@ ff02::2 ip6-allrouters
 
 # Geoblock
 199.189.255.234 anthropic.com api.anthropic.com console.anthropic.com
-206.223.251.18 anthropic.com api.anthropic.com console.anthropic.com
+206.223.246.75 anthropic.com api.anthropic.com console.anthropic.com
 199.189.255.234 accounts.autodesk.com autodesk.com efulfillment.autodesk.com
-206.223.251.18 accounts.autodesk.com autodesk.com efulfillment.autodesk.com
+206.223.246.75 accounts.autodesk.com autodesk.com efulfillment.autodesk.com
 199.189.255.234 avast.com avast.ru
-206.223.251.18 avast.com avast.ru
+206.223.246.75 avast.com avast.ru
 199.189.255.234 avira.com my.avira.com
-206.223.251.18 avira.com my.avira.com
+206.223.246.75 avira.com my.avira.com
 45.114.60.100 edgeservices.bing.com sydney.bing.com
 199.189.255.234 bitdefender.com
-206.223.251.18 bitdefender.com
+206.223.246.75 bitdefender.com
 199.189.255.234 ai-chat.bsg.brave.com
-206.223.251.18 ai-chat.bsg.brave.com
-157.22.178.170 packages-prod.broadcom.com profile.broadcom.com
+206.223.246.75 ai-chat.bsg.brave.com
 199.189.255.234 broadcom.com login.broadcom.com packages-prod.broadcom.com profile.broadcom.com
-206.223.251.18 broadcom.com login.broadcom.com
-157.22.178.170 static.canva.com www.canva.com
+206.223.246.75 broadcom.com login.broadcom.com
+206.223.251.18 packages-prod.broadcom.com profile.broadcom.com
 199.189.255.234 content-management-files.canva.com static.canva.com www.canva.com
-206.223.251.18 content-management-files.canva.com
-157.22.178.170 operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+206.223.246.75 content-management-files.canva.com
+206.223.251.18 static.canva.com www.canva.com
 199.189.255.234 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
-206.223.251.18 ab.chatgpt.com chatgpt.com
+206.223.246.75 ab.chatgpt.com chatgpt.com
+206.223.251.18 operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 199.189.255.234 cisco.com
-206.223.251.18 cisco.com
+206.223.246.75 cisco.com
 199.189.255.234 clamav.net database.clamav.net
-206.223.251.18 clamav.net database.clamav.net
+206.223.246.75 clamav.net database.clamav.net
 199.189.255.234 a.claude.ai claude.ai
-206.223.251.18 a.claude.ai claude.ai
+206.223.246.75 a.claude.ai claude.ai
 199.189.255.234 clickup.com
-206.223.251.18 clickup.com
-157.22.178.170 server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
+206.223.246.75 clickup.com
 199.189.255.234 codeium.com inference.codeium.com server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
-206.223.251.18 codeium.com inference.codeium.com
-157.22.178.170 oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+206.223.246.75 codeium.com inference.codeium.com
+206.223.251.18 server.codeium.com unleash.codeium.com web-backend.codeium.com windsurf-stable.codeium.com windsurf-telemetry.codeium.com
 199.189.255.234 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-206.223.251.18 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com
+206.223.246.75 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com
+206.223.251.18 oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 199.189.255.234 app.deepsource.com deepsource.io
-206.223.251.18 app.deepsource.com deepsource.io
+206.223.246.75 app.deepsource.com deepsource.io
 199.189.255.234 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io
-206.223.251.18 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io
+206.223.246.75 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io
 199.189.255.234 genspark.ai
-206.223.251.18 genspark.ai
+206.223.246.75 genspark.ai
 199.189.255.234 jules.google.com
-206.223.251.18 jules.google.com
+206.223.246.75 jules.google.com
 199.189.255.234 assets.grok.com grok.com
-206.223.251.18 assets.grok.com grok.com
+206.223.246.75 assets.grok.com grok.com
 199.189.255.234 chat.groq.com console.groq.com groq.com
-206.223.251.18 chat.groq.com console.groq.com groq.com
+206.223.246.75 chat.groq.com console.groq.com groq.com
 199.189.255.234 api.home-connect.cn home-connect.com
-206.223.251.18 api.home-connect.cn home-connect.com
+206.223.246.75 api.home-connect.cn home-connect.com
 199.189.255.234 ghostrc.game.idtech.services
-206.223.251.18 ghostrc.game.idtech.services
-157.22.178.170 www.intel.com
+206.223.246.75 ghostrc.game.idtech.services
 199.189.255.234 www.intel.com
+206.223.251.18 www.intel.com
 199.189.255.234 api.app.prod.grazie.aws.intellij.net
-206.223.251.18 api.app.prod.grazie.aws.intellij.net
-157.22.178.170 plugins.jetbrains.com youtrack.jetbrains.com
+206.223.246.75 api.app.prod.grazie.aws.intellij.net
 199.189.255.234 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com youtrack.jetbrains.com
-206.223.251.18 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com
+206.223.246.75 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com
+206.223.251.18 plugins.jetbrains.com youtrack.jetbrains.com
 199.189.255.234 lidarr.audio
-206.223.251.18 lidarr.audio
+206.223.246.75 lidarr.audio
 199.189.255.234 lightning.ai
-206.223.251.18 lightning.ai
+206.223.246.75 lightning.ai
 199.189.255.234 downloads.malwarebytes.com malwarebytes.com
-206.223.251.18 downloads.malwarebytes.com malwarebytes.com
+206.223.246.75 downloads.malwarebytes.com malwarebytes.com
 199.189.255.234 api.manus.im manus.im
-206.223.251.18 api.manus.im manus.im
-157.22.178.170 trae-api-sg.mchost.guru
+206.223.246.75 api.manus.im manus.im
 199.189.255.234 trae-api-sg.mchost.guru
+206.223.251.18 trae-api-sg.mchost.guru
 45.114.60.100 copilot.microsoft.com designer.microsoft.com
 199.189.255.234 account.mongodb.com cloud.mongodb.com mongodb.com
-206.223.251.18 account.mongodb.com cloud.mongodb.com mongodb.com
+206.223.246.75 account.mongodb.com cloud.mongodb.com mongodb.com
 199.189.255.234 login.norton.com
-206.223.251.18 login.norton.com
-157.22.178.170 www.notion.so
-199.189.255.234 app.notion.com calendar.notion.so www.notion.so
-206.223.251.18 app.notion.com calendar.notion.so
+206.223.246.75 login.norton.com
+199.189.255.234 app.notion.com calendar.notion.so notion.so www.notion.so
+206.223.246.75 app.notion.com calendar.notion.so
+206.223.251.18 notion.so www.notion.so
 199.189.255.234 cdn.oaistatic.com
-206.223.251.18 cdn.oaistatic.com
-157.22.178.170 sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
-199.189.255.234 files.oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
-206.223.251.18 files.oaiusercontent.com
-157.22.178.170 openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+206.223.246.75 cdn.oaistatic.com
+199.189.255.234 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+206.223.246.75 files.oaiusercontent.com
+206.223.251.18 oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 199.189.255.234 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
-206.223.251.18 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com
+206.223.246.75 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com
+206.223.251.18 openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
 199.189.255.234 ciscobinary.openh264.org
-206.223.251.18 ciscobinary.openh264.org
-157.22.178.170 openrouter.ai
+206.223.246.75 ciscobinary.openh264.org
 199.189.255.234 openrouter.ai
-157.22.178.170 pandasecurity.com
+206.223.251.18 openrouter.ai
 199.189.255.234 pandasecurity.com
-157.22.178.170 qwant.com www.qwant.com
+206.223.251.18 pandasecurity.com
 199.189.255.234 qwant.com www.qwant.com
-157.22.178.170 radarr.video
+206.223.251.18 qwant.com www.qwant.com
 199.189.255.234 radarr.video
-157.22.178.170 raycast.com releases.raycast.com
+206.223.251.18 radarr.video
 199.189.255.234 raycast.com releases.raycast.com
-157.22.178.170 recraft.ai
+206.223.251.18 raycast.com releases.raycast.com
 199.189.255.234 recraft.ai
-157.22.178.170 reve.art
+206.223.251.18 recraft.ai
 199.189.255.234 app.reve.com reve.art
-206.223.251.18 app.reve.com
+206.223.246.75 app.reve.com
+206.223.251.18 reve.art
 199.189.255.234 blogs.sap.com
-206.223.251.18 blogs.sap.com
-157.22.178.170 sentry.dev sentry.io
+206.223.246.75 blogs.sap.com
 199.189.255.234 sentry.dev sentry.io
-157.22.178.170 radarr.servarr.com
+206.223.251.18 sentry.dev sentry.io
 199.189.255.234 radarr.servarr.com
-157.22.178.170 singlekey-id.com
+206.223.251.18 radarr.servarr.com
 199.189.255.234 singlekey-id.com
+206.223.251.18 singlekey-id.com
 199.189.255.234 3dwarehouse.sketchup.com extensions.sketchup.com
-206.223.251.18 3dwarehouse.sketchup.com extensions.sketchup.com
-157.22.178.170 sophos.com
+206.223.246.75 3dwarehouse.sketchup.com extensions.sketchup.com
 199.189.255.234 sophos.com
-157.22.178.170 sora.com
+206.223.251.18 sophos.com
 199.189.255.234 sora.com
-157.22.178.170 strava.com
+206.223.251.18 sora.com
 199.189.255.234 strava.com
+206.223.251.18 strava.com
 199.189.255.234 api.themoviedb.org
-206.223.251.18 api.themoviedb.org
+206.223.246.75 api.themoviedb.org
 199.189.255.234 image.tmdb.org images.tmdb.org
-206.223.251.18 image.tmdb.org images.tmdb.org
-157.22.178.170 trae.ai
+206.223.246.75 image.tmdb.org images.tmdb.org
 199.189.255.234 api.trae.ai trae.ai
-206.223.251.18 api.trae.ai
-157.22.178.170 usher.ttvnw.net
+206.223.246.75 api.trae.ai
+206.223.251.18 trae.ai
 199.189.255.234 usher.ttvnw.net
+206.223.251.18 usher.ttvnw.net
 199.189.255.234 gql.twitch.tv
-206.223.251.18 gql.twitch.tv
+206.223.246.75 gql.twitch.tv
 199.189.255.234 fw-download.ubnt.com
-206.223.251.18 fw-download.ubnt.com
-157.22.178.170 vmware.com
+206.223.246.75 fw-download.ubnt.com
 199.189.255.234 docs.vmware.com vmware.com
-206.223.251.18 docs.vmware.com
-157.22.178.170 wbagora.com
+206.223.246.75 docs.vmware.com
+206.223.251.18 vmware.com
 199.189.255.234 wbagora.com
-157.22.178.170 wbgames.com
+206.223.251.18 wbagora.com
 199.189.255.234 account.wbgames.com wbgames.com
-206.223.251.18 account.wbgames.com
-157.22.178.170 upsx.weather.com weather.com
+206.223.246.75 account.wbgames.com
+206.223.251.18 wbgames.com
 199.189.255.234 upsx.weather.com weather.com
+206.223.251.18 upsx.weather.com weather.com
 199.189.255.234 marketplace.windsurf.com
-206.223.251.18 marketplace.windsurf.com
-157.22.178.170 stitch.withgoogle.com
+206.223.246.75 marketplace.windsurf.com
 199.189.255.234 aitestkitchen.withgoogle.com stitch.withgoogle.com
-206.223.251.18 aitestkitchen.withgoogle.com
-157.22.178.170 users.wix.com wix.com
+206.223.246.75 aitestkitchen.withgoogle.com
+206.223.251.18 stitch.withgoogle.com
 199.189.255.234 users.wix.com wix.com
-157.22.178.170 wunderground.com
+206.223.251.18 users.wix.com wix.com
 199.189.255.234 wunderground.com
+206.223.251.18 wunderground.com
 199.189.255.234 accounts.x.ai console.x.ai
-206.223.251.18 accounts.x.ai console.x.ai
+206.223.246.75 accounts.x.ai console.x.ai
 45.114.60.100 xsts.auth.xboxlive.com
