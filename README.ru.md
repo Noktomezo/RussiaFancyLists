@@ -331,8 +331,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->58.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->56.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->58.2 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->55.9 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1204/2187<br>
@@ -376,8 +376,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.hosts"><code>comss-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.hosts -->15.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->12.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.hosts -->14.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->11.7 KB<!-- SIZE_END -->
       </td>
       <td>
         • 269/2187<br>
@@ -433,8 +433,8 @@
         • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->9.4 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 299/2187<br>
-        • 299/2187
+        • 296/2187<br>
+        • 296/2187
       </td>
     </tr>
     <tr>
@@ -464,11 +464,11 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/wl-dns.hosts -->7.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.hosts -->5.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.hosts -->5.3 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 226/2187<br>
-        • 226/2187
+        • 228/2187<br>
+        • 228/2187
       </td>
     </tr>
     <tr>
@@ -492,7 +492,7 @@
       </td>
       <td>
         • <!-- SIZE:lists/hosts/smart.adguard.txt -->133.7 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->128.3 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->128.2 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1204/2187<br>
@@ -536,8 +536,8 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->35.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->29.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->35.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->29.8 KB<!-- SIZE_END -->
       </td>
       <td>
         • 269/2187<br>
@@ -589,12 +589,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->29.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->29.5 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->24.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 299/2187<br>
-        • 299/2187
+        • 296/2187<br>
+        • 296/2187
       </td>
     </tr>
     <tr>
@@ -623,12 +623,12 @@
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/wl-dns-no-crutch.adguard.txt"><code>wl-dns-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/wl-dns.adguard.txt -->18.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.adguard.txt -->13.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/wl-dns.adguard.txt -->18.7 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/wl-dns-no-crutch.adguard.txt -->13.2 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 226/2187<br>
-        • 226/2187
+        • 228/2187<br>
+        • 228/2187
       </td>
     </tr>
     <tr>
