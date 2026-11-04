@@ -37,8 +37,7 @@
 ||i.instagram.com^$dnsrewrite=NOERROR;A;57.144.244.192
 ||ntc.party^$dnsrewrite=NOERROR;A;130.255.77.28
 ||r6s.com^$dnsrewrite=NOERROR;A;172.67.139.108
-||rainbow6.com^$dnsrewrite=NOERROR;A;54.155.2.87
-||tr.rbxcdn.com^$dnsrewrite=NOERROR;A;99.84.181.63
+||tr.rbxcdn.com^$dnsrewrite=NOERROR;A;65.8.158.112
 ||lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||www.lib.rus.ec^$dnsrewrite=NOERROR;A;185.39.18.98
 ||d.rutor.info^$dnsrewrite=NOERROR;A;172.66.159.63
@@ -173,6 +172,8 @@
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||internal.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||jobs.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login-wall.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||oneshot-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -241,6 +242,7 @@
 ||flow.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gemini.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||jules.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||notebook.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -272,6 +274,7 @@
 ||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||labs.google^$dnsrewrite=NOERROR;A;179.254.166.174
 ||autodiscover.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||jira.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||saa.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -425,6 +428,7 @@
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||thisis-images.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wap.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -453,6 +457,7 @@
 ||stories.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||tiles.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||watch.samsung.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.blog.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -478,6 +483,7 @@
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||resources.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.tidal.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;31.58.216.201
