@@ -40,16 +40,45 @@ ff02::2 ip6-allrouters
 52.222.149.31 ubisoft.com
 
 # Geoblock
-62.60.230.61 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com www.anthropic.com
-62.60.230.61 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
-62.60.230.61 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai www.claude.com
+109.120.131.200 a-api.anthropic.com api.anthropic.com assets-proxy.anthropic.com console.anthropic.com s-cdn.anthropic.com statsig.anthropic.com status.anthropic.com support.anthropic.com
+62.60.230.61 a-cdn.anthropic.com anthropic.com api.anthropic.com api.console.anthropic.com auth.anthropic.com statsig.anthropic.com status.anthropic.com www.anthropic.com
+93.170.123.208 a-api.anthropic.com a-cdn.anthropic.com anthropic.com api.console.anthropic.com assets-proxy.anthropic.com auth.anthropic.com console.anthropic.com s-cdn.anthropic.com support.anthropic.com www.anthropic.com
+109.120.131.200 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
+62.60.230.61 webrtc.chatgpt.com
+93.170.123.208 ab.chatgpt.com chatgpt.com
+109.120.131.200 a.claude.ai api.claude.ai api.claude.com claude.ai claude.com platform.claude.ai platform.claude.com www.claude.ai www.claude.com
+62.60.230.61 api.claude.com claude.com downloads.claude.ai platform.claude.ai platform.claude.com www.claude.ai
+93.170.123.208 a.claude.ai api.claude.ai claude.ai downloads.claude.ai www.claude.com
+109.120.131.200 claudeusercontent.com
 62.60.230.61 claudeusercontent.com www.claudeusercontent.com
-62.60.230.61 agentn.api5.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh repo42.cursor.sh us-only.gcpp.cursor.sh
-62.60.230.61 api-free.deepl.com api.deepl.com backend.deepl.com community-auth.deepl.com deepl.com dict-audio.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com home.deepl.com login-wall.deepl.com s.deepl.com static.deepl.com w.deepl.com www.deepl.com www2.deepl.com
+93.170.123.208 www.claudeusercontent.com
+109.120.131.200 agentn.api5.cursor.sh agentn.global.api5.cursor.sh api2.cursor.sh api3.cursor.sh api4.cursor.sh us-only.gcpp.cursor.sh
+62.60.230.61 agentn.global.api5.cursor.sh api3.cursor.sh repo42.cursor.sh
+93.170.123.208 agentn.api5.cursor.sh api2.cursor.sh api4.cursor.sh repo42.cursor.sh us-only.gcpp.cursor.sh
+109.120.131.200 backend.deepl.com community-auth.deepl.com deepl.com experimentation-grpc.deepl.com experimentation.deepl.com home.deepl.com s.deepl.com static.deepl.com www.deepl.com
+62.60.230.61 api-free.deepl.com api.deepl.com backend.deepl.com community-auth.deepl.com deepl.com dict-audio.deepl.com experimentation-grpc.deepl.com login-wall.deepl.com static.deepl.com w.deepl.com www2.deepl.com
+93.170.123.208 api-free.deepl.com api.deepl.com dict-audio.deepl.com experimentation.deepl.com home.deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com www2.deepl.com
+109.120.131.200 gemini.google
 62.60.230.61 www.genspark.ai
-62.60.230.61 assets.grok.com grok.com www.grok.com
-62.60.230.61 api.manus.im manus.im www.manus.im
+93.170.123.208 www.genspark.ai
+109.120.131.200 ai.google.dev aistudio.google.com alkalimakersuite-pa.clients6.google.com flow.google.com gemini.google.com geminiweb-pa.clients6.google.com jules.google.com notebook.google.com notebooklm.google.com
+109.120.131.200 aisandbox-pa.googleapis.com daily-cloudcode-pa.googleapis.com generativelanguage.googleapis.com notebooklm-pa.googleapis.com robinfrontend-pa.googleapis.com
+109.120.131.200 assets.grok.com grok.com
+62.60.230.61 assets.grok.com www.grok.com
+93.170.123.208 grok.com www.grok.com
+109.120.131.200 labs.google
+109.120.131.200 api.manus.im www.manus.im
+62.60.230.61 manus.im
+93.170.123.208 api.manus.im manus.im www.manus.im
+109.120.131.200 copilot.microsoft.com
 62.60.230.61 copilot.microsoft.com
-62.60.230.61 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
-62.60.230.61 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
-62.60.230.61 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai x.ai
+109.120.131.200 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
+62.60.230.61 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+93.170.123.208 sdmntprnortheu.oaiusercontent.com www.oaiusercontent.com
+109.120.131.200 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com developers.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+62.60.230.61 android.chat.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com ios.chat.openai.com openai.com tcr9i.chat.openai.com www.openai.com
+93.170.123.208 api.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com platform.openai.com videos.openai.com www.openai.com
+109.120.131.200 tokenharbor.ai
+109.120.131.200 api.x.ai assets.x.ai console.x.ai grok.x.ai
+62.60.230.61 accounts.x.ai grok.x.ai www.x.ai x.ai
+93.170.123.208 accounts.x.ai api.x.ai assets.x.ai console.x.ai www.x.ai x.ai
