@@ -11,6 +11,7 @@
 ||ws.audioscrobbler.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||sydney.bing.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -150,6 +151,7 @@
 ||last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
+||linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||public.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -198,6 +200,7 @@
 ||ios.chat.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||platform.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||videos.openai.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||android.chat.openai.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||api.openai.com^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -251,6 +254,7 @@
 ||guc3-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gue1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gue1-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||image-upload.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||log.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||logger.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login.app.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -276,8 +280,7 @@
 ||www.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||audio-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||concerts.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||image-cdn-fa.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -303,6 +306,8 @@
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fsu.fa.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||images.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||link.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||listen.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||login.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||resources.tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||tidal.com^$dnsrewrite=NOERROR;A;179.254.166.174
