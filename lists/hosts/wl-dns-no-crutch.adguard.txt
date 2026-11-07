@@ -87,7 +87,6 @@
 ||auth.grazie.ai^$dnsrewrite=NOERROR;A;191.217.212.16
 ||assets.grok.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||grok.com^$dnsrewrite=NOERROR;A;191.217.212.16
-||www.grok.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||api.app.prod.grazie.aws.intellij.net^$dnsrewrite=NOERROR;A;191.217.212.16
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;191.217.212.16
