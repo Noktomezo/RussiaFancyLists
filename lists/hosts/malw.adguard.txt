@@ -151,6 +151,8 @@
 ||deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dict.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||errortracking.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||experimentation-grpc.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||experimentation.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gtm.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -211,6 +213,7 @@
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fitbit.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||flow.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gemini.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -220,6 +223,8 @@
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -270,10 +275,12 @@
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||oaistatic.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;31.58.216.201
+||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -334,6 +341,7 @@
 ||dealer.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||desktop.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||edge-web.dual-gslb.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||exp.wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gae2-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gce.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gew1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -376,6 +384,7 @@
 ||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||thisis-images.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wap.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -386,6 +395,7 @@
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||security.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
