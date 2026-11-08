@@ -161,6 +161,11 @@
 ||netflix.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||netflix.net^$dnsrewrite=NOERROR;A;191.217.212.16
 ||nflxext.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||nflximg.com^$dnsrewrite=NOERROR;A;191.217.212.16
+||nflximg.net^$dnsrewrite=NOERROR;A;191.217.212.16
+||nflxsearch.net^$dnsrewrite=NOERROR;A;191.217.212.16
+||nflxso.net^$dnsrewrite=NOERROR;A;191.217.212.16
+||nflxvideo.net^$dnsrewrite=NOERROR;A;191.217.212.16
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||install.launcher.omniverse.nvidia.com^$dnsrewrite=NOERROR;A;191.217.212.16
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;191.217.212.16
