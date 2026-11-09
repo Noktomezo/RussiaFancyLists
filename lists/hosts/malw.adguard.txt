@@ -164,8 +164,6 @@
 ||developers.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dict-audio.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dict.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||experimentation-grpc.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||experimentation.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gtm.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||home.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||hs.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -177,7 +175,6 @@
 ||oneshot-free.www.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||shield.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||sl.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.deepl.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -222,6 +219,8 @@
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;31.58.216.201
 ||api.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||api.us.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
+||eleven-public-cdn.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
+||elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||payload.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||try.elevenlabs.io^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -230,6 +229,7 @@
 ||api.us.elevenlabs.io^$dnsrewrite=NOERROR;A;31.58.216.201
 ||elevenlabs.io^$dnsrewrite=NOERROR;A;31.58.216.201
 ||help.elevenlabs.io^$dnsrewrite=NOERROR;A;31.58.216.201
+||elevenreader.io^$dnsrewrite=NOERROR;A;179.254.166.174
 ||elevenreader.io^$dnsrewrite=NOERROR;A;31.58.216.201
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -249,6 +249,7 @@
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.grok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||grok.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||hybrid-analysis.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -275,12 +276,15 @@
 ||store.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||support.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wiki.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.last.fm^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
+||public.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||s.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||uploads.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
+||www.linear.app^$dnsrewrite=NOERROR;A;179.254.166.174
 ||client-api.linear.app^$dnsrewrite=NOERROR;A;31.58.216.201
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;31.58.216.201
 ||linear.app^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -351,6 +355,7 @@
 ||account.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||analytics.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ap-gae2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ap-gew1.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||ap-gew4.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -371,7 +376,6 @@
 ||dealer.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||desktop.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||edge-web.dual-gslb.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||exp.wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gae2-spclient.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gce.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||gew1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -395,7 +399,6 @@
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||web-partner.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||xpui.app.spotify.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -414,7 +417,6 @@
 ||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||thisis-images.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||wap.spotifycdn.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -429,6 +431,8 @@
 ||content-a.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dam.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||dev.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||email.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
+||email1.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||graphql.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||interview.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||links.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
@@ -449,11 +453,9 @@
 ||www.business.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.metro.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||www.promo.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||www.strava.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
-||security.id.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||store.supercell.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;31.58.216.201
@@ -478,7 +480,6 @@
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||login.tidal.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||resources.tidal.com^$dnsrewrite=NOERROR;A;31.58.216.201
-||www.tiktok.com^$dnsrewrite=NOERROR;A;179.254.166.174
 ||static-assets-1.truthsocial.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||truthsocial.com^$dnsrewrite=NOERROR;A;31.58.216.201
 ||usher.ttvnw.net^$dnsrewrite=NOERROR;A;179.254.166.174
