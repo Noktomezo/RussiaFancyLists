@@ -16,7 +16,7 @@ ff02::2 ip6-allrouters
 31.58.216.201 game-assets.brawlstarsgame.com
 179.254.166.174 canva.com content-management-files.canva.com static.canva.com www.canva.com
 31.58.216.201 content-management-files.canva.com static.canva.com www.canva.com
-179.254.166.174 ab.chatgpt.com chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+179.254.166.174 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 31.58.216.201 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 179.254.166.174 game-assets.clashofclans.com
 31.58.216.201 game-assets.clashofclans.com
@@ -25,7 +25,7 @@ ff02::2 ip6-allrouters
 179.254.166.174 a.claude.ai claude.ai claude.com platform.claude.com
 31.58.216.201 a.claude.ai claude.ai platform.claude.com
 179.254.166.174 clickup.com
-179.254.166.174 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+179.254.166.174 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 31.58.216.201 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
 179.254.166.174 deezer.com payment.deezer.com www.deezer.com
 31.58.216.201 deezer.com payment.deezer.com www.deezer.com
@@ -55,13 +55,13 @@ ff02::2 ip6-allrouters
 31.58.216.201 app.notion.com calendar.notion.so www.notion.so
 179.254.166.174 developer.nvidia.com
 31.58.216.201 developer.nvidia.com
-179.254.166.174 cdn.oaistatic.com
+179.254.166.174 cdn.oaistatic.com oaistatic.com
 31.58.216.201 cdn.oaistatic.com
-179.254.166.174 files.oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
+179.254.166.174 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 31.58.216.201 files.oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 179.254.166.174 geolocation.onetrust.com
 31.58.216.201 geolocation.onetrust.com
-179.254.166.174 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+179.254.166.174 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
 31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com developers.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
 179.254.166.174 builds.parsec.app
 31.58.216.201 builds.parsec.app

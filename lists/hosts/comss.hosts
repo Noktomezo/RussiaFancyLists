@@ -40,9 +40,9 @@ ff02::2 ip6-allrouters
 52.222.149.31 ubisoft.com
 
 # Geoblock
+199.189.255.234 edgeservices.bing.com sydney.bing.com
 206.223.246.75 edgeservices.bing.com sydney.bing.com
-206.223.251.18 edgeservices.bing.com sydney.bing.com
+199.189.255.234 copilot.microsoft.com designer.microsoft.com
 206.223.246.75 copilot.microsoft.com designer.microsoft.com
-206.223.251.18 copilot.microsoft.com designer.microsoft.com
+199.189.255.234 xsts.auth.xboxlive.com
 206.223.246.75 xsts.auth.xboxlive.com
-206.223.251.18 xsts.auth.xboxlive.com
