@@ -5,14 +5,28 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-62.60.230.61 anthropic.com api.anthropic.com console.anthropic.com
-62.60.230.61 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
-62.60.230.61 a.claude.ai claude.ai claude.com platform.claude.com
+109.120.131.200 anthropic.com console.anthropic.com
+31.31.207.68 api.anthropic.com
+62.60.230.61 anthropic.com console.anthropic.com
+109.120.131.200 webrtc.chatgpt.com
+31.31.207.68 ab.chatgpt.com chatgpt.com
+62.60.230.61 webrtc.chatgpt.com
+31.31.207.68 a.claude.ai claude.ai claude.com platform.claude.com
+109.120.131.200 claudeusercontent.com
 62.60.230.61 claudeusercontent.com
-62.60.230.61 api-free.deepl.com backend.deepl.com deepl.com experimentation-grpc.deepl.com experimentation.deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com www2.deepl.com
-62.60.230.61 assets.grok.com grok.com
-62.60.230.61 api.manus.im manus.im
-62.60.230.61 copilot.microsoft.com
+109.120.131.200 experimentation-grpc.deepl.com experimentation.deepl.com s.deepl.com
+31.31.207.68 deepl.com login-wall.deepl.com
+62.60.230.61 experimentation-grpc.deepl.com experimentation.deepl.com s.deepl.com
+109.120.131.200 aistudio.google.com alkalimakersuite-pa.clients6.google.com flow.google.com gemini.google.com geminiweb-pa.clients6.google.com jules.google.com notebook.google.com notebooklm.google.com
+109.120.131.200 aisandbox-pa.googleapis.com generativelanguage.googleapis.com robinfrontend-pa.googleapis.com
+31.31.207.68 assets.grok.com grok.com
+109.120.131.200 labs.google
+31.31.207.68 manus.im
+31.31.207.68 copilot.microsoft.com
+109.120.131.200 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 62.60.230.61 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
-62.60.230.61 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+109.120.131.200 android.chat.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+31.31.207.68 api.openai.com auth.openai.com
+62.60.230.61 android.chat.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+109.120.131.200 accounts.x.ai console.x.ai x.ai
 62.60.230.61 accounts.x.ai console.x.ai x.ai

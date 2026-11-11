@@ -95,6 +95,7 @@
 ||static3.cdn.ubi.com^$dnsrewrite=NOERROR;A;2.23.89.92
 ||public-ws-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;3.33.249.140
 ||public-ubiservices.ubi.com^$dnsrewrite=NOERROR;A;99.83.188.134
+||ubisoft.com^$dnsrewrite=NOERROR;A;52.222.149.31
 
 ! Geoblock
 ||4pda.to^$dnsrewrite=NOERROR;A;143.20.64.55
@@ -241,6 +242,7 @@
 ||g2a.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||game8.co^$dnsrewrite=NOERROR;A;143.20.64.55
 ||gamestop.com^$dnsrewrite=NOERROR;A;143.20.64.55
+||geforcenow.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||genspark.ai^$dnsrewrite=NOERROR;A;143.20.64.55
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;143.20.64.55
