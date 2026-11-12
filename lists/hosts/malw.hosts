@@ -45,13 +45,13 @@ ff02::2 ip6-allrouters
 179.254.166.174 web.archive.org
 31.58.216.201 web.archive.org
 179.254.166.174 ws.audioscrobbler.com
-179.254.166.174 rewards.bing.com sydney.bing.com
+179.254.166.174 edgeservices.bing.com rewards.bing.com sydney.bing.com
 31.58.216.201 edgeservices.bing.com rewards.bing.com sydney.bing.com
 179.254.166.174 game-assets.brawlstarsgame.com game.brawlstarsgame.com
 31.58.216.201 game-assets.brawlstarsgame.com
 179.254.166.174 canva.com content-management-files.canva.com static.canva.com www.canva.com
 31.58.216.201 content-management-files.canva.com static.canva.com www.canva.com
-179.254.166.174 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+179.254.166.174 ab.chatgpt.com chatgpt.com operator.chatgpt.com webrtc.chatgpt.com
 31.58.216.201 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 179.254.166.174 game-assets.clashofclans.com
 31.58.216.201 game-assets.clashofclans.com
@@ -78,7 +78,7 @@ ff02::2 ip6-allrouters
 179.254.166.174 hybrid-analysis.com
 179.254.166.174 api.imgur.com
 31.58.216.201 api.imgur.com
-179.254.166.174 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+179.254.166.174 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com plugins.jetbrains.com
 31.58.216.201 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
 179.254.166.174 labs.google
 179.254.166.174 last.fm
@@ -104,7 +104,7 @@ ff02::2 ip6-allrouters
 31.58.216.201 www.patreon.com
 179.254.166.174 patreonusercontent.com
 179.254.166.174 o.pki.goog
-179.254.166.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+179.254.166.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
 31.58.216.201 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com
 179.254.166.174 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 31.58.216.201 api-global.squareup.com api.squareup.com
