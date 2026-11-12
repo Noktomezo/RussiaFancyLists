@@ -3,12 +3,12 @@
 
 ! Geoblock
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||sydney.bing.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||edgeservices.bing.com^$dnsrewrite=NOERROR;A;206.223.251.18
+||edgeservices.bing.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||sydney.bing.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;45.114.60.100
 ||copilot.microsoft.com^$dnsrewrite=NOERROR;A;176.12.72.184
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||copilot.microsoft.com^$dnsrewrite=NOERROR;A;206.223.251.18
-||designer.microsoft.com^$dnsrewrite=NOERROR;A;206.223.251.18
-||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;176.12.72.184
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||designer.microsoft.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;45.114.60.100
