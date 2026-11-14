@@ -16,7 +16,7 @@ ff02::2 ip6-allrouters
 31.58.216.201 game-assets.brawlstarsgame.com
 179.254.166.174 canva.com content-management-files.canva.com static.canva.com www.canva.com
 31.58.216.201 content-management-files.canva.com static.canva.com www.canva.com
-179.254.166.174 ab.chatgpt.com chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
+179.254.166.174 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 31.58.216.201 ab.chatgpt.com chatgpt.com operator.chatgpt.com sora.chatgpt.com webrtc.chatgpt.com
 179.254.166.174 game-assets.clashofclans.com
 31.58.216.201 game-assets.clashofclans.com
@@ -25,25 +25,25 @@ ff02::2 ip6-allrouters
 179.254.166.174 a.claude.ai claude.ai claude.com platform.claude.com
 31.58.216.201 a.claude.ai claude.ai platform.claude.com
 179.254.166.174 clickup.com
-179.254.166.174 api-free.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
+179.254.166.174 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com dict.deepl.com errortracking.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com
 31.58.216.201 api-free.deepl.com auth.deepl.com backend.deepl.com checkout.www.deepl.com clearance.deepl.com deepl.com dict.deepl.com errortracking.deepl.com gtm.deepl.com ita-free.app.deepl.com ita-free.www.deepl.com login-wall.deepl.com oneshot-free.www.deepl.com ott.deepl.com s.deepl.com shield.deepl.com voice-proxy.www.deepl.com w.deepl.com write-free.www.deepl.com www.deepl.com www2.deepl.com
-179.254.166.174 deezer.com payment.deezer.com www.deezer.com
+179.254.166.174 payment.deezer.com
 31.58.216.201 deezer.com payment.deezer.com www.deezer.com
-179.254.166.174 dyson.com dyson.fr www.dyson.com www.dyson.fr
+179.254.166.174 dyson.com dyson.fr
 31.58.216.201 dyson.com www.dyson.com www.dyson.fr
-179.254.166.174 api.elevenlabs.io elevenlabs.io help.elevenlabs.io
+179.254.166.174 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 31.58.216.201 api.elevenlabs.io api.us.elevenlabs.io elevenlabs.io help.elevenlabs.io
 179.254.166.174 elevenreader.io
 31.58.216.201 elevenreader.io
 179.254.166.174 api.fitbit.com
 179.254.166.174 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com flow.google.com gemini.google.com geminiweb-pa.clients6.google.com jules.google.com notebook.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-179.254.166.174 aisandbox-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
-179.254.166.174 grok.com
+179.254.166.174 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+179.254.166.174 assets.grok.com grok.com
 31.58.216.201 assets.grok.com grok.com
 179.254.166.174 hybrid-analysis.com
 179.254.166.174 api.imgur.com
 31.58.216.201 api.imgur.com
-179.254.166.174 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
+179.254.166.174 account.jetbrains.com api.jetbrains.ai download.jetbrains.com plugins.jetbrains.com
 31.58.216.201 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com plugins.jetbrains.com
 179.254.166.174 labs.google
 179.254.166.174 last.fm
@@ -51,9 +51,8 @@ ff02::2 ip6-allrouters
 31.58.216.201 client-api.linear.app constellation.linear.app linear.app public.linear.app s.linear.app static.linear.app uploads.linear.app
 179.254.166.174 copilot.microsoft.com
 31.58.216.201 copilot.microsoft.com
-179.254.166.174 calendar.notion.so notion.so www.notion.so
+179.254.166.174 app.notion.com calendar.notion.so notion.so
 31.58.216.201 app.notion.com calendar.notion.so www.notion.so
-179.254.166.174 developer.nvidia.com
 31.58.216.201 developer.nvidia.com
 179.254.166.174 cdn.oaistatic.com oaistatic.com
 31.58.216.201 cdn.oaistatic.com
@@ -61,24 +60,23 @@ ff02::2 ip6-allrouters
 31.58.216.201 files.oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 179.254.166.174 geolocation.onetrust.com
 31.58.216.201 geolocation.onetrust.com
-179.254.166.174 android.chat.openai.com api.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+179.254.166.174 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
 31.58.216.201 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com developers.openai.com ios.chat.openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
 179.254.166.174 builds.parsec.app
 31.58.216.201 builds.parsec.app
-179.254.166.174 patreon.com www.patreon.com
+179.254.166.174 patreon.com
 31.58.216.201 www.patreon.com
 179.254.166.174 patreonusercontent.com
 179.254.166.174 o.pki.goog
-179.254.166.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+179.254.166.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com gew1-dealer.g2.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com gnl-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com xpui.app.spotify.com
 31.58.216.201 accounts.spotify.com aet.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com
-179.254.166.174 concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
+179.254.166.174 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 31.58.216.201 api-global.squareup.com api.squareup.com
 179.254.166.174 strava.com
 179.254.166.174 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
 31.58.216.201 accounts.supercell.com cdn.id.supercell.com clashofclans.inbox.supercell.com security.id.supercell.com store.supercell.com
-179.254.166.174 api.tidal.com dd.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com tidal.com
+179.254.166.174 api.tidal.com auth.tidal.com fsu.fa.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com tidal.com
 31.58.216.201 api.tidal.com auth.tidal.com dd.tidal.com images.tidal.com link.tidal.com listen.tidal.com login.tidal.com resources.tidal.com
-179.254.166.174 www.tiktok.com
 31.58.216.201 static-assets-1.truthsocial.com truthsocial.com
 179.254.166.174 usher.ttvnw.net
 31.58.216.201 usher.ttvnw.net
