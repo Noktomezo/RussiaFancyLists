@@ -5,11 +5,10 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-206.223.246.75 edgeservices.bing.com sydney.bing.com
-206.223.251.18 edgeservices.bing.com sydney.bing.com
-206.223.246.75 copilot.microsoft.com designer.microsoft.com
+199.189.255.234 edgeservices.bing.com sydney.bing.com
+206.223.251.18 edgeservices.bing.com
+45.114.60.100 sydney.bing.com
+199.189.255.234 copilot.microsoft.com designer.microsoft.com
 206.223.251.18 copilot.microsoft.com designer.microsoft.com
-206.223.246.75 ecs.office.com
-206.223.251.18 ecs.office.com
-206.223.246.75 xsts.auth.xboxlive.com
-206.223.251.18 xsts.auth.xboxlive.com
+199.189.255.234 xsts.auth.xboxlive.com
+45.114.60.100 xsts.auth.xboxlive.com
