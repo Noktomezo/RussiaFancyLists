@@ -5,30 +5,22 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Geoblock
-109.120.131.200 anthropic.com api.anthropic.com console.anthropic.com
-62.60.230.61 anthropic.com api.anthropic.com console.anthropic.com
-109.120.131.200 ab.chatgpt.com chatgpt.com
-37.221.93.141 webrtc.chatgpt.com
-62.60.230.61 ab.chatgpt.com chatgpt.com
-109.120.131.200 a.claude.ai claude.ai claude.com
-37.221.93.141 platform.claude.com
-62.60.230.61 a.claude.ai claude.ai claude.com
-109.120.131.200 claudeusercontent.com
-62.60.230.61 claudeusercontent.com
-109.120.131.200 api-free.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com
-37.221.93.141 backend.deepl.com deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com www2.deepl.com
-62.60.230.61 api-free.deepl.com experimentation-grpc.deepl.com experimentation.deepl.com
-109.120.131.200 aistudio.google.com alkalimakersuite-pa.clients6.google.com gemini.google.com geminiweb-pa.clients6.google.com
-37.221.93.141 flow.google.com jules.google.com notebook.google.com notebooklm.google.com
-109.120.131.200 aisandbox-pa.googleapis.com
-37.221.93.141 generativelanguage.googleapis.com robinfrontend-pa.googleapis.com
-37.221.93.141 assets.grok.com grok.com
-37.221.93.141 labs.google
-37.221.93.141 api.manus.im manus.im
-37.221.93.141 copilot.microsoft.com
+201.58.191.60 anthropic.com api.anthropic.com console.anthropic.com
+201.58.191.60 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
+201.58.191.60 a.claude.ai claude.ai claude.com platform.claude.com
+201.58.191.60 claudeusercontent.com
+109.120.131.200 api-free.deepl.com backend.deepl.com deepl.com experimentation-grpc.deepl.com experimentation.deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com www2.deepl.com
+62.60.230.61 api-free.deepl.com backend.deepl.com deepl.com experimentation-grpc.deepl.com experimentation.deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com www2.deepl.com
+109.120.131.200 flow.google.com
+201.58.191.60 aistudio.google.com alkalimakersuite-pa.clients6.google.com jules.google.com notebooklm.google.com
+201.58.191.60 aisandbox-pa.googleapis.com generativelanguage.googleapis.com robinfrontend-pa.googleapis.com
+201.58.191.60 assets.grok.com grok.com
+201.58.191.60 labs.google
+109.120.131.200 api.manus.im manus.im
+62.60.230.61 api.manus.im manus.im
+109.120.131.200 copilot.microsoft.com
+62.60.230.61 copilot.microsoft.com
 109.120.131.200 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
 62.60.230.61 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com
-109.120.131.200 android.chat.openai.com api.openai.com auth.openai.com
-37.221.93.141 auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
-62.60.230.61 android.chat.openai.com api.openai.com auth.openai.com
-37.221.93.141 accounts.x.ai console.x.ai x.ai
+201.58.191.60 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+201.58.191.60 accounts.x.ai console.x.ai x.ai
