@@ -71,8 +71,8 @@ ff02::2 ip6-allrouters
 217.60.179.6 elevenreader.io
 48.102.233.174 elevenreader.io
 48.102.233.174 api.fitbit.com
-48.102.233.174 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com flow.google.com gemini.google.com geminiweb-pa.clients6.google.com jules.google.com notebook.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
-48.102.233.174 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com generativelanguage.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
+48.102.233.174 aistudio.google.com alkalimakersuite-pa.clients6.google.com fitbit.google.com flow.google.com jules.google.com notebook.google.com notebooklm.google.com webchannel-alkalimakersuite-pa.clients6.google.com
+48.102.233.174 aisandbox-pa.googleapis.com assistant-s3-pa.googleapis.com fitbit-pa.googleapis.com fitbitvestibuleshim-pa.googleapis.com proactivebackend-pa.googleapis.com robinfrontend-pa.googleapis.com
 217.60.179.6 assets.grok.com grok.com
 48.102.233.174 assets.grok.com grok.com
 48.102.233.174 hybrid-analysis.com
@@ -104,7 +104,7 @@ ff02::2 ip6-allrouters
 48.102.233.174 patreonusercontent.com
 48.102.233.174 o.pki.goog
 217.60.179.6 accounts.spotify.com api-partner.spotify.com api.spotify.com gew1-dealer.spotify.com gew1-spclient.spotify.com login5.spotify.com spclient.wg.spotify.com www.spotify.com
-48.102.233.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com gce.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
+48.102.233.174 account.spotify.com accounts.spotify.com aet.spotify.com analytics.spotify.com ap-gae2.spotify.com ap-gew1.spotify.com ap-gew4.spotify.com ap-guc3.spotify.com ap-gue1.spotify.com ap-sto3.spotify.com ap.spotify.com api-partner.spotify.com api.spotify.com apresolve.spotify.com auth.spotify.com client.spotify.com clienttoken.spotify.com connect.spotify.com content.spotify.com crashdump.spotify.com dealer-wg.spotify.com dealer.spotify.com desktop.spotify.com edge-web.dual-gslb.spotify.com exp.wg.spotify.com gae2-spclient.spotify.com guc3-dealer.g2.spotify.com guc3-spclient.spotify.com gue1-dealer.g2.spotify.com gue1-spclient.spotify.com image-upload.spotify.com log.spotify.com logger.spotify.com login.app.spotify.com login.spotify.com login5.spotify.com metrics.spotify.com pixel-static.spotify.com pixel.spotify.com spclient.spotify.com spclient.wg.spotify.com spotify.com web-partner.spotify.com www.spotify.com xpui.app.spotify.com
 48.102.233.174 audio-fa-tls13.spotifycdn.com concerts.spotifycdn.com heads-fa-tls13.spotifycdn.com heads4-fa-tls13.spotifycdn.com image-cdn-fa.spotifycdn.com mrkt.spotifycdn.com pickasso.spotifycdn.com podz-content.spotifycdn.com seed-mix-image.spotifycdn.com spotifycdn.com thisis-images.spotifycdn.com wap.spotifycdn.com web-sdk-assets.spotifycdn.com
 217.60.179.6 api-global.squareup.com api.squareup.com
 48.102.233.174 strava.com
@@ -118,6 +118,7 @@ ff02::2 ip6-allrouters
 217.60.179.6 usher.ttvnw.net
 48.102.233.174 usher.ttvnw.net
 217.60.179.6 gql.twitch.tv
+48.102.233.174 gql.twitch.tv
 217.60.179.6 upsx.weather.com weather.com
 48.102.233.174 upsx.weather.com weather.com
 48.102.233.174 aitestkitchen.withgoogle.com stitch.withgoogle.com

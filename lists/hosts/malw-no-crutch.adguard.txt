@@ -117,8 +117,6 @@
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||flow.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gemini.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||jules.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||notebook.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -127,7 +125,6 @@
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -253,7 +250,6 @@
 ||edge-web.dual-gslb.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||exp.wg.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gae2-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gce.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||guc3-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||guc3-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gue1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -324,6 +320,7 @@
 ||usher.ttvnw.net^$dnsrewrite=NOERROR;A;217.60.179.6
 ||usher.ttvnw.net^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gql.twitch.tv^$dnsrewrite=NOERROR;A;217.60.179.6
+||gql.twitch.tv^$dnsrewrite=NOERROR;A;48.102.233.174
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||weather.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;48.102.233.174
