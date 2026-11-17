@@ -46,9 +46,9 @@
 ||my.avira.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||avira.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||my.avira.com^$dnsrewrite=NOERROR;A;206.223.242.221
-||edgeservices.bing.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||sydney.bing.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||edgeservices.bing.com^$dnsrewrite=NOERROR;A;45.114.60.100
+||edgeservices.bing.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||edgeservices.bing.com^$dnsrewrite=NOERROR;A;206.223.246.75
+||sydney.bing.com^$dnsrewrite=NOERROR;A;206.223.246.75
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;45.114.60.100
 ||bitdefender.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||bitdefender.com^$dnsrewrite=NOERROR;A;206.223.242.221
@@ -297,7 +297,6 @@
 ||jetbrains.ai^$dnsrewrite=NOERROR;A;199.189.253.237
 ||jetbrains.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;199.189.253.237
-||www.jetbrains.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||youtrack.jetbrains.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||account.jetbrains.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||api.jetbrains.ai^$dnsrewrite=NOERROR;A;206.223.242.221
@@ -306,7 +305,6 @@
 ||jetbrains.ai^$dnsrewrite=NOERROR;A;206.223.242.221
 ||jetbrains.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||plugins.jetbrains.com^$dnsrewrite=NOERROR;A;206.223.242.221
-||www.jetbrains.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||youtrack.jetbrains.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||labs.google^$dnsrewrite=NOERROR;A;199.189.253.237
 ||labs.google^$dnsrewrite=NOERROR;A;206.223.242.221
@@ -328,10 +326,10 @@
 ||www.manus.im^$dnsrewrite=NOERROR;A;206.223.242.221
 ||trae-api-sg.mchost.guru^$dnsrewrite=NOERROR;A;199.189.253.237
 ||trae-api-sg.mchost.guru^$dnsrewrite=NOERROR;A;206.223.242.221
-||copilot.microsoft.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||designer.microsoft.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||copilot.microsoft.com^$dnsrewrite=NOERROR;A;45.114.60.100
-||designer.microsoft.com^$dnsrewrite=NOERROR;A;45.114.60.100
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||designer.microsoft.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;206.223.246.75
+||designer.microsoft.com^$dnsrewrite=NOERROR;A;206.223.246.75
 ||miro.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||www.miro.com^$dnsrewrite=NOERROR;A;199.189.253.237
 ||miro.com^$dnsrewrite=NOERROR;A;206.223.242.221
@@ -390,8 +388,8 @@
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;206.223.242.221
 ||www.oaiusercontent.com^$dnsrewrite=NOERROR;A;206.223.242.221
-||ecs.office.com^$dnsrewrite=NOERROR;A;176.12.72.184
-||ecs.office.com^$dnsrewrite=NOERROR;A;45.114.60.100
+||ecs.office.com^$dnsrewrite=NOERROR;A;199.189.255.234
+||ecs.office.com^$dnsrewrite=NOERROR;A;206.223.246.75
 ||opal.google^$dnsrewrite=NOERROR;A;199.189.253.237
 ||opal.google^$dnsrewrite=NOERROR;A;206.223.242.221
 ||android.chat.openai.com^$dnsrewrite=NOERROR;A;199.189.253.237
@@ -607,4 +605,4 @@
 ||www.x.ai^$dnsrewrite=NOERROR;A;206.223.242.221
 ||x.ai^$dnsrewrite=NOERROR;A;206.223.242.221
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;206.223.246.75
-||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;206.223.251.18
+||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;45.114.60.100

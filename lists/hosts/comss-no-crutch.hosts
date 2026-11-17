@@ -15,8 +15,9 @@ ff02::2 ip6-allrouters
 206.223.242.221 avast.com avast.ru www.avast.com
 199.189.253.237 avira.com my.avira.com
 206.223.242.221 avira.com my.avira.com
-176.12.72.184 edgeservices.bing.com sydney.bing.com
-45.114.60.100 edgeservices.bing.com sydney.bing.com
+199.189.255.234 edgeservices.bing.com
+206.223.246.75 edgeservices.bing.com sydney.bing.com
+45.114.60.100 sydney.bing.com
 199.189.253.237 bitdefender.com
 206.223.242.221 bitdefender.com
 199.189.253.237 ai-chat.bsg.brave.com
@@ -71,8 +72,8 @@ ff02::2 ip6-allrouters
 206.223.242.221 ghostrc.game.idtech.services
 199.189.253.237 api.app.prod.grazie.aws.intellij.net
 206.223.242.221 api.app.prod.grazie.aws.intellij.net
-199.189.253.237 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
-206.223.242.221 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com www.jetbrains.com youtrack.jetbrains.com
+199.189.253.237 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com youtrack.jetbrains.com
+206.223.242.221 account.jetbrains.com api.jetbrains.ai datalore.jetbrains.com download.jetbrains.com jetbrains.ai jetbrains.com plugins.jetbrains.com youtrack.jetbrains.com
 199.189.253.237 labs.google
 206.223.242.221 labs.google
 199.189.253.237 lidarr.audio
@@ -85,8 +86,8 @@ ff02::2 ip6-allrouters
 206.223.242.221 api.manus.im manus.im www.manus.im
 199.189.253.237 trae-api-sg.mchost.guru
 206.223.242.221 trae-api-sg.mchost.guru
-176.12.72.184 copilot.microsoft.com designer.microsoft.com
-45.114.60.100 copilot.microsoft.com designer.microsoft.com
+199.189.255.234 copilot.microsoft.com designer.microsoft.com
+206.223.246.75 copilot.microsoft.com designer.microsoft.com
 199.189.253.237 miro.com www.miro.com
 206.223.242.221 miro.com www.miro.com
 199.189.253.237 account.mongodb.com api.blue.mongodb.com cloud.mongodb.com mongodb.com webassets.mongodb.com www.mongodb.com
@@ -103,8 +104,8 @@ ff02::2 ip6-allrouters
 206.223.242.221 cdn.oaistatic.com www.oaistatic.com
 199.189.253.237 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
 206.223.242.221 files.oaiusercontent.com oaiusercontent.com sdmntpritalynorth.oaiusercontent.com sdmntprnortheu.oaiusercontent.com sdmntprpolandcentral.oaiusercontent.com sdmntprukwest.oaiusercontent.com www.oaiusercontent.com
-176.12.72.184 ecs.office.com
-45.114.60.100 ecs.office.com
+199.189.255.234 ecs.office.com
+206.223.246.75 ecs.office.com
 199.189.253.237 opal.google
 206.223.242.221 opal.google
 199.189.253.237 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com bps.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com www.openai.com
@@ -176,4 +177,4 @@ ff02::2 ip6-allrouters
 199.189.253.237 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai x.ai
 206.223.242.221 accounts.x.ai api.x.ai assets.x.ai console.x.ai grok.x.ai www.x.ai x.ai
 206.223.246.75 xsts.auth.xboxlive.com
-206.223.251.18 xsts.auth.xboxlive.com
+45.114.60.100 xsts.auth.xboxlive.com
