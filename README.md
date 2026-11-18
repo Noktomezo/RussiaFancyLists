@@ -37,8 +37,8 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst"><code>full-sld.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/domains/full.lst -->33.63 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->21.92 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/domains/full.lst -->33.84 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/domains/full-sld.lst -->21.96 MB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -49,9 +49,9 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/cdn.lst"><code>cdn.lst</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->939.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->611.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->186.0 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist/ipsets/full.lst -->944.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/full-and-cdn.lst -->611.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist/ipsets/cdn.lst -->185.9 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -64,10 +64,10 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/domains/full-sld.srs"><code>full-sld.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->53.11 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->10.77 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->35.98 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->7.52 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.json -->53.40 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full.srs -->10.84 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.json -->36.05 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/domains/full-sld.srs -->7.54 MB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -81,11 +81,11 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-sing-box/ipsets/cdn.srs"><code>cdn.srs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.52 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->180.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.json -->1.53 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full.srs -->181.3 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.json -->1022.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->136.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->314.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/full-and-cdn.srs -->136.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.json -->313.9 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-sing-box/ipsets/cdn.srs -->44.0 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -99,10 +99,10 @@ Generated artifacts are organized as follows:
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist-mihomo/domains/full-sld.mrs"><code>full-sld.mrs</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->44.05 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->10.23 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->29.59 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.93 MB<!-- SIZE_END -->
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.yaml -->44.30 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full.mrs -->10.28 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.yaml -->29.65 MB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/domains/full-sld.mrs -->6.94 MB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -117,10 +117,10 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.yaml -->1.25 MB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->207.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full.mrs -->208.4 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.yaml -->835.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->172.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->255.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/full-and-cdn.mrs -->172.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.yaml -->255.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/blacklist-mihomo/ipsets/cdn.mrs -->58.6 KB<!-- SIZE_END -->
       </td>
     </tr>
@@ -255,7 +255,7 @@ Generated artifacts are organized as follows:
       </td>
       <td>
         • <!-- SIZE:lists/service/prefer-direct.lst -->9.5 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service/direct-with-ech.lst -->249.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service/direct-with-ech.lst -->248.4 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -270,8 +270,8 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.json -->17.2 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-sing-box/prefer-direct.srs -->5.1 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->427.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->108.1 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service-sing-box/direct-with-ech.json -->425.4 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-sing-box/direct-with-ech.srs -->107.6 KB<!-- SIZE_END -->
       </td>
     </tr>
     <tr>
@@ -286,8 +286,8 @@ Generated artifacts are organized as follows:
       <td>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.yaml -->13.7 KB<!-- SIZE_END --><br>
         • <!-- SIZE:lists/service-mihomo/prefer-direct.mrs -->4.6 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->346.4 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->107.2 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/service-mihomo/direct-with-ech.yaml -->344.9 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/service-mihomo/direct-with-ech.mrs -->106.9 KB<!-- SIZE_END -->
       </td>
     </tr>
   </tbody>
@@ -331,12 +331,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.hosts"><code>smart-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.hosts -->58.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->55.7 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.hosts -->55.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.hosts -->53.1 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1185/2195<br>
-        • 1185/2195
+        • 1154/2195<br>
+        • 1154/2195
       </td>
     </tr>
     <tr>
@@ -346,8 +346,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.hosts"><code>combined-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.hosts -->61.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->58.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.hosts -->60.6 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.hosts -->58.2 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2195/2195<br>
@@ -361,8 +361,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.hosts"><code>geohide-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.hosts -->53.8 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->51.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.hosts -->53.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.hosts -->50.8 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1079/2195<br>
@@ -376,12 +376,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.hosts"><code>comss-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.hosts -->16.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->13.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.hosts -->2.8 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.hosts -->521 B<!-- SIZE_END -->
       </td>
       <td>
-        • 304/2195<br>
-        • 304/2195
+        • 6/2195<br>
+        • 6/2195
       </td>
     </tr>
     <tr>
@@ -429,12 +429,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.hosts"><code>malw-no-crutch.hosts</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.hosts -->11.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->8.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.hosts -->11.0 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.hosts -->8.6 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 284/2195<br>
-        • 284/2195
+        • 286/2195<br>
+        • 286/2195
       </td>
     </tr>
     <tr>
@@ -480,12 +480,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/smart-no-crutch.adguard.txt"><code>smart-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/smart.adguard.txt -->132.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->126.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/smart.adguard.txt -->128.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/smart-no-crutch.adguard.txt -->123.0 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 1185/2195<br>
-        • 1185/2195
+        • 1154/2195<br>
+        • 1154/2195
       </td>
     </tr>
     <tr>
@@ -495,8 +495,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/combined-no-crutch.adguard.txt"><code>combined-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/combined.adguard.txt -->122.3 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->116.9 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/combined.adguard.txt -->122.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/combined-no-crutch.adguard.txt -->116.6 KB<!-- SIZE_END -->
       </td>
       <td>
         • 2195/2195<br>
@@ -510,8 +510,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/geohide-no-crutch.adguard.txt"><code>geohide-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->123.2 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->117.8 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/geohide.adguard.txt -->123.1 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/geohide-no-crutch.adguard.txt -->117.6 KB<!-- SIZE_END -->
       </td>
       <td>
         • 1079/2195<br>
@@ -525,12 +525,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/comss-no-crutch.adguard.txt"><code>comss-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/comss.adguard.txt -->39.9 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->34.5 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/comss.adguard.txt -->6.3 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/comss-no-crutch.adguard.txt -->841 B<!-- SIZE_END -->
       </td>
       <td>
-        • 304/2195<br>
-        • 304/2195
+        • 6/2195<br>
+        • 6/2195
       </td>
     </tr>
     <tr>
@@ -578,12 +578,12 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
         • <a href="https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/hosts/malw-no-crutch.adguard.txt"><code>malw-no-crutch.adguard.txt</code></a>
       </td>
       <td>
-        • <!-- SIZE:lists/hosts/malw.adguard.txt -->28.0 KB<!-- SIZE_END --><br>
-        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->22.6 KB<!-- SIZE_END -->
+        • <!-- SIZE:lists/hosts/malw.adguard.txt -->27.5 KB<!-- SIZE_END --><br>
+        • <!-- SIZE:lists/hosts/malw-no-crutch.adguard.txt -->22.0 KB<!-- SIZE_END -->
       </td>
       <td>
-        • 284/2195<br>
-        • 284/2195
+        • 286/2195<br>
+        • 286/2195
       </td>
     </tr>
     <tr>
@@ -632,8 +632,8 @@ Direct hosts file mappings and Smart DNS rules for bypassing geoblocks and local
 
 ## ⚡ Smart DNS Status
 <!-- STATUS_START -->
-- **GeoHide**: 💚💚💚💚💚💚💚💚💚💚💚
-- **Comss**: 💚💚💚💚💚💚💚
+- **GeoHide**: 💚💚💚💚💚💚💚💚💚💚
+- **Comss**: 💚💚💚💚💚
 - **Xbox DNS**: 💚
 - **AstraCat**: 💚
 - **ImMALWARE**: 💚💚
