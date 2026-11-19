@@ -1,0 +1,46 @@
+! Title: RussiaFancyLists - dns-ai No-Crutch (AdGuard Home)
+! Homepage: https://github.com/Noktomezo/RussiaFancyLists
+
+! Geoblock
+||ab.chatgpt.com^$dnsrewrite=NOERROR;A;31.58.216.201
+||chatgpt.com^$dnsrewrite=NOERROR;A;31.58.216.201
+||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;31.58.216.201
+||api-free.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||backend.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||login-wall.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||s.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||w.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||www.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||www2.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||gemini.google.com^$dnsrewrite=NOERROR;A;201.58.191.60
+||gemini.google.com^$dnsrewrite=NOERROR;A;31.58.216.201
+||aistudio.google.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||jules.google.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||notebook.google.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||notebooklm.google.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||assets.grok.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||grok.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||labs.google^$dnsrewrite=NOERROR;A;37.221.93.128
+||api.manus.im^$dnsrewrite=NOERROR;A;37.221.93.128
+||manus.im^$dnsrewrite=NOERROR;A;37.221.93.128
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;31.31.207.68
+||api.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||android.chat.openai.com^$dnsrewrite=NOERROR;A;31.31.207.68
+||auth.openai.com^$dnsrewrite=NOERROR;A;31.31.207.68
+||auth0.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||chat.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||developers.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||ios.chat.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||platform.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||videos.openai.com^$dnsrewrite=NOERROR;A;37.221.93.128
+||accounts.x.ai^$dnsrewrite=NOERROR;A;201.58.191.60
+||console.x.ai^$dnsrewrite=NOERROR;A;201.58.191.60
+||x.ai^$dnsrewrite=NOERROR;A;201.58.191.60

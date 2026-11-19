@@ -1,0 +1,21 @@
+# Loopback
+127.0.0.1 localhost
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# Geoblock
+31.58.216.201 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
+217.60.179.6 api-free.deepl.com backend.deepl.com deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com www2.deepl.com
+201.58.191.60 gemini.google.com
+31.58.216.201 gemini.google.com
+37.221.93.128 aistudio.google.com alkalimakersuite-pa.clients6.google.com jules.google.com notebook.google.com notebooklm.google.com
+37.221.93.128 aisandbox-pa.googleapis.com generativelanguage.googleapis.com robinfrontend-pa.googleapis.com
+217.60.179.6 assets.grok.com grok.com
+37.221.93.128 labs.google
+37.221.93.128 api.manus.im manus.im
+31.31.207.68 copilot.microsoft.com
+217.60.179.6 api.openai.com
+31.31.207.68 android.chat.openai.com auth.openai.com
+37.221.93.128 auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+201.58.191.60 accounts.x.ai console.x.ai x.ai
