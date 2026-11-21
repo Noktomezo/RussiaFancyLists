@@ -1,0 +1,23 @@
+# Loopback
+127.0.0.1 localhost
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# Geoblock
+152.228.98.30 anthropic.com api.anthropic.com console.anthropic.com
+31.58.216.201 ab.chatgpt.com chatgpt.com webrtc.chatgpt.com
+152.228.98.30 a.claude.ai claude.ai claude.com platform.claude.com
+152.228.98.30 claudeusercontent.com
+31.31.207.68 backend.deepl.com deepl.com login-wall.deepl.com s.deepl.com w.deepl.com www.deepl.com
+31.58.216.201 api-free.deepl.com
+152.228.98.30 gemini.google.com geminiweb-pa.clients6.google.com
+31.58.216.201 jules.google.com
+31.58.216.201 aisandbox-pa.googleapis.com generativelanguage.googleapis.com
+31.31.207.68 assets.grok.com grok.com
+31.58.216.201 labs.google
+31.31.207.68 api.manus.im
+31.58.216.201 manus.im
+31.31.207.68 copilot.microsoft.com
+31.31.207.68 android.chat.openai.com api.openai.com auth.openai.com auth0.openai.com cdn.platform.openai.com chat.openai.com developers.openai.com ios.chat.openai.com openai.com platform.openai.com tcr9i.chat.openai.com videos.openai.com
+31.58.216.201 accounts.x.ai console.x.ai x.ai
