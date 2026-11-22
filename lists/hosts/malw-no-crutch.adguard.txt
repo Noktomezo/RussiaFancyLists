@@ -13,6 +13,7 @@
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||rewards.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -83,6 +84,8 @@
 ||ott.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||s.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||shield.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||voice-proxy.www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||w.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||write-free.www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www2.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -286,6 +289,7 @@
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||thisis-images.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||wap.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||api.squareup.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -316,6 +320,7 @@
 ||link.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||login.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||resources.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.tiktok.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.tiktok.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -328,6 +333,7 @@
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||weather.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||weather.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||aitestkitchen.withgoogle.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||stitch.withgoogle.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||accounts.x.ai^$dnsrewrite=NOERROR;A;217.60.179.6
