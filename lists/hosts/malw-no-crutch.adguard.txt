@@ -15,7 +15,6 @@
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||static.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -29,7 +28,7 @@
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||ab.chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||operator.chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -40,7 +39,10 @@
 ||claude.ai^$dnsrewrite=NOERROR;A;217.60.179.6
 ||platform.claude.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||a.claude.ai^$dnsrewrite=NOERROR;A;48.102.233.174
+||claude.ai^$dnsrewrite=NOERROR;A;48.102.233.174
+||claude.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||platform.claude.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||clickup.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -64,8 +66,9 @@
 ||api-free.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||auth.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||backend.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||checkout.www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||clearance.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||dict.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||errortracking.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||experimentation-grpc.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||experimentation.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -73,8 +76,6 @@
 ||ita-free.app.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||ita-free.www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||login-wall.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||oneshot-free.www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||ott.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||s.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||shield.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||voice-proxy.www.deepl.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -85,12 +86,12 @@
 ||deezer.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||payment.deezer.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.deezer.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||deezer.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||payment.deezer.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.deezer.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||dyson.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.dyson.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;217.60.179.6
+||dyson.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||dyson.fr^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.dyson.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -107,6 +108,7 @@
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||fitbit.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||flow.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gemini.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -116,6 +118,8 @@
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -145,6 +149,7 @@
 ||s.linear.app^$dnsrewrite=NOERROR;A;217.60.179.6
 ||static.linear.app^$dnsrewrite=NOERROR;A;217.60.179.6
 ||uploads.linear.app^$dnsrewrite=NOERROR;A;217.60.179.6
+||client-api.linear.app^$dnsrewrite=NOERROR;A;48.102.233.174
 ||constellation.linear.app^$dnsrewrite=NOERROR;A;48.102.233.174
 ||linear.app^$dnsrewrite=NOERROR;A;48.102.233.174
 ||public.linear.app^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -161,7 +166,6 @@
 ||notion.so^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.notion.so^$dnsrewrite=NOERROR;A;48.102.233.174
 ||developer.nvidia.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||developer.nvidia.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||cdn.oaistatic.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||oaistatic.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -170,6 +174,7 @@
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||files.oaiusercontent.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||oaiusercontent.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -192,10 +197,10 @@
 ||auth.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||auth0.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||cdn.platform.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||developers.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||chat.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||ios.chat.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||platform.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||videos.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;217.60.179.6
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -228,15 +233,15 @@
 ||api.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||apresolve.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||auth.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||client.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||clienttoken.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||connect.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||content.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||crashdump.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||dealer-wg.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||dealer.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||desktop.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||edge-web.dual-gslb.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||exp.wg.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gae2-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gce.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gew1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gew1-dealer.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -276,6 +281,7 @@
 ||web-sdk-assets.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api-global.squareup.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||api.squareup.com^$dnsrewrite=NOERROR;A;217.60.179.6
+||strava.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -283,7 +289,9 @@
 ||store.supercell.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||accounts.supercell.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||cdn.id.supercell.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||clashofclans.inbox.supercell.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||security.id.supercell.com^$dnsrewrite=NOERROR;A;48.102.233.174
+||store.supercell.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api.tidal.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -295,7 +303,6 @@
 ||api.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||auth.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||dd.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||fsu.fa.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||images.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||link.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||listen.tidal.com^$dnsrewrite=NOERROR;A;48.102.233.174
