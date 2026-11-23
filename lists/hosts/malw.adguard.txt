@@ -113,7 +113,6 @@
 ||rewards.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||game-assets.brawlstarsgame.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||content-management-files.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||static.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.canva.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -132,9 +131,7 @@
 ||sora.chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||webrtc.chatgpt.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||game-assets.clashofclans.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||game-assets.clashroyaleapp.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||a.claude.ai^$dnsrewrite=NOERROR;A;217.60.179.6
 ||claude.ai^$dnsrewrite=NOERROR;A;217.60.179.6
 ||platform.claude.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -196,7 +193,6 @@
 ||www.dyson.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;217.60.179.6
 ||dyson.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||dyson.fr^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.dyson.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||www.dyson.fr^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api.elevenlabs.io^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -210,21 +206,15 @@
 ||elevenreader.io^$dnsrewrite=NOERROR;A;217.60.179.6
 ||elevenreader.io^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api.fitbit.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||aistudio.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||flow.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gemini.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||geminiweb-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||jules.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||notebook.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||notebooklm.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||assistant-s3-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||fitbit-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||generativelanguage.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||proactivebackend-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||robinfrontend-pa.googleapis.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||assets.grok.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -286,7 +276,6 @@
 ||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||sdmntprukwest.oaiusercontent.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||geolocation.onetrust.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||geolocation.onetrust.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||android.chat.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||api.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||auth.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
@@ -297,7 +286,6 @@
 ||platform.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||tcr9i.chat.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||videos.openai.com^$dnsrewrite=NOERROR;A;217.60.179.6
-||android.chat.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||api.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||auth.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||auth0.openai.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -328,9 +316,6 @@
 ||account.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||accounts.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||aet.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||analytics.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||ap-gae2.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||ap-gew1.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||ap-gew4.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||ap-guc3.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||ap-gue1.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -350,11 +335,6 @@
 ||desktop.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||edge-web.dual-gslb.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||exp.wg.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gae2-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gce.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gew1-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gew1-dealer.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||gew1-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||gnl-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||guc3-dealer.g2.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||guc3-spclient.spotify.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -380,7 +360,6 @@
 ||heads-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||heads4-fa-tls13.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||image-cdn-fa.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||mrkt.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||pickasso.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||podz-content.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||seed-mix-image.spotifycdn.com^$dnsrewrite=NOERROR;A;48.102.233.174
@@ -431,7 +410,6 @@
 ||weather.com^$dnsrewrite=NOERROR;A;217.60.179.6
 ||upsx.weather.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||weather.com^$dnsrewrite=NOERROR;A;48.102.233.174
-||aitestkitchen.withgoogle.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||stitch.withgoogle.com^$dnsrewrite=NOERROR;A;48.102.233.174
 ||accounts.x.ai^$dnsrewrite=NOERROR;A;217.60.179.6
 ||accounts.x.ai^$dnsrewrite=NOERROR;A;48.102.233.174
