@@ -104,9 +104,9 @@
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||edgeservices.bing.com^$dnsrewrite=NOERROR;A;45.114.60.100
 ||sydney.bing.com^$dnsrewrite=NOERROR;A;45.114.60.100
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;206.223.251.18
+||copilot.microsoft.com^$dnsrewrite=NOERROR;A;45.114.60.100
 ||designer.microsoft.com^$dnsrewrite=NOERROR;A;45.114.60.100
-||ecs.office.com^$dnsrewrite=NOERROR;A;206.223.251.18
-||ecs.office.com^$dnsrewrite=NOERROR;A;45.114.60.100
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;206.223.251.18
 ||xsts.auth.xboxlive.com^$dnsrewrite=NOERROR;A;45.114.60.100
